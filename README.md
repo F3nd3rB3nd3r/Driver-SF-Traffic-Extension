@@ -1,3 +1,5 @@
+This is an AI generated repository with the intention of extending Driver: San Francisco's civilian traffic related limits.
+
 # DriverSF V29s workspace
 
 Read [START_HERE.md](START_HERE.md), then [NEXT_ACTION.md](NEXT_ACTION.md).
