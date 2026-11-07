@@ -1,10 +1,11 @@
-# Codex/Visual Studio work rules — DriverSF V29s
+# Codex/Visual Studio work rules ? DriverSF V29s
 
-Read only `START_HERE.md` and `NEXT_ACTION.md` first. **Never automatically scan the full workspace, git history, reference/, old logs, or user folders.**
+Read only `START_HERE.md` and `NEXT_ACTION.md` first. **Do not automatically scan the full workspace, git history, reference/, archive/, old logs or user folders.** A scoped inventory/hash check is appropriate when the user explicitly requests workspace organization.
 
-- The goal is 150 READY/drawable resident vehicles; today's task is **compare two V29s logs when the user supplies them**, not building V29t or patching game behavior.
-- Do not build, run the game, install dependencies, web-search, benchmark, change request counts, or launch debugging tools unless specifically asked. One focused verification or analyzer command is okay when the user explicitly requests analysis/testing.
-- Keep 150 requests / 160 slots, with ED/EF sidecars. Do not infer READY or drawable from map count. `0059F3A0` is a spatial query, not a vehicle-READY marker.
-- Do not replace source, restore old commits, or execute cleanup commands. NEVER run `git clean -fdx`, `git reset --hard`, or overwrite a user's uncommitted work.
-- On first opening: read `START_HERE.md` and `NEXT_ACTION.md`, report current state briefly, then stop until a concrete task/log arrives. If given logs, analyze before proposing any new probe or patch.
-- Use **Release / Win32** only for the active `.slnx`. Do not build every solution or both test variants by default. Exactly one traffic ASI in the game folder at a time.
+- Work on the latest concrete task or supplied log. Do not treat an archived experiment's next step as the current task. The current working baseline is ARENA_REUSE_R1; its verification scope and open questions are in the two handoff files.
+- The broader goal remains 150 READY/drawable resident vehicles. Preserve 150 requests /160 slots and ED/EF sidecars. Map/request/spool counts do not prove READY/drawable. `0059F3A0` is a spatial query.
+- Do not build, run the game, install dependencies, web-search, benchmark, change request counts or launch debugging tools unless specifically asked. Perform focused checks appropriate to an authorized analysis/verification task. Analyze supplied logs before proposing a patch.
+- Preserve uncommitted work. Do not replace production source, restore old commits or perform broad cleanup. NEVER run `git clean -fdx` or `git reset --hard`. Authorized archiving must retain original bytes/paths in a verified manifest and avoid overwriting unrelated files.
+- Use Release / Win32 only for the active `.slnx`, which contains one ARENA_REUSE project. Do not build retired variants by default. Enable exactly one traffic ASI in the game folder.
+- Some historical evidence remains as a dependency of current checks. Use `scripts/workspace_paths.py` to locate archived baseline files. Do not remove prerequisites merely because their names mention an older test.
+- On opening, report the current state briefly and wait for a concrete task/log if none was supplied. Historical project paths are restore-first material, not active build entry points.

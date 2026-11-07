@@ -1,0 +1,110 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A20C0: 83 EC 08           sub         esp,8
+  005A20C3: 55                 push        ebp
+  005A20C4: 56                 push        esi
+  005A20C5: 8B F1              mov         esi,ecx
+  005A20C7: 8D 44 24 14        lea         eax,[esp+14h]
+  005A20CB: 50                 push        eax
+  005A20CC: 8D 4C 24 0C        lea         ecx,[esp+0Ch]
+  005A20D0: 8D AE 44 5B 00 00  lea         ebp,[esi+00005B44h]
+  005A20D6: 51                 push        ecx
+  005A20D7: 8B CD              mov         ecx,ebp
+  005A20D9: E8 12 06 00 00     call        005A26F0
+  005A20DE: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  005A20E2: 3B 54 24 0C        cmp         edx,dword ptr [esp+0Ch]
+  005A20E6: 75 0B              jne         005A20F3
+  005A20E8: 5E                 pop         esi
+  005A20E9: 83 C8 FF           or          eax,0FFFFFFFFh
+  005A20EC: 5D                 pop         ebp
+  005A20ED: 83 C4 08           add         esp,8
+  005A20F0: C2 08 00           ret         8
+  005A20F3: 53                 push        ebx
+  005A20F4: 8D 44 24 18        lea         eax,[esp+18h]
+  005A20F8: 50                 push        eax
+  005A20F9: 8B CD              mov         ecx,ebp
+  005A20FB: E8 40 06 00 00     call        005A2740
+  005A2100: 8B 18              mov         ebx,dword ptr [eax]
+  005A2102: 85 DB              test        ebx,ebx
+  005A2104: 75 0C              jne         005A2112
+  005A2106: 5B                 pop         ebx
+  005A2107: 5E                 pop         esi
+  005A2108: 83 C8 FF           or          eax,0FFFFFFFFh
+  005A210B: 5D                 pop         ebp
+  005A210C: 83 C4 08           add         esp,8
+  005A210F: C2 08 00           ret         8
+  005A2112: 80 7C 24 1C 00     cmp         byte ptr [esp+1Ch],0
+  005A2117: 8B 13              mov         edx,dword ptr [ebx]
+  005A2119: 8B CB              mov         ecx,ebx
+  005A211B: 75 05              jne         005A2122
+  005A211D: 8B 42 34           mov         eax,dword ptr [edx+34h]
+  005A2120: EB 03              jmp         005A2125
+  005A2122: 8B 42 10           mov         eax,dword ptr [edx+10h]
+  005A2125: FF D0              call        eax
+  005A2127: 8B 13              mov         edx,dword ptr [ebx]
+  005A2129: 8B 42 24           mov         eax,dword ptr [edx+24h]
+  005A212C: 57                 push        edi
+  005A212D: 8B CB              mov         ecx,ebx
+  005A212F: FF D0              call        eax
+  005A2131: 84 C0              test        al,al
+  005A2133: 74 76              je          005A21AB
+  005A2135: 8B 7C 24 1C        mov         edi,dword ptr [esp+1Ch]
+  005A2139: 57                 push        edi
+  005A213A: 8B CE              mov         ecx,esi
+  005A213C: E8 8F EA FF FF     call        005A0BD0
+  005A2141: 69 C0 04 01 00 00  imul        eax,eax,104h
+  005A2147: 8B 8C 30 34 58 00  mov         ecx,dword ptr [eax+esi+00005834h]
+            00
+  005A214E: 8D 84 30 34 57 00  lea         eax,[eax+esi+00005734h]
+            00
+  005A2155: 8D 0C 88           lea         ecx,[eax+ecx*4]
+  005A2158: 85 C9              test        ecx,ecx
+  005A215A: 74 02              je          005A215E
+  005A215C: 89 19              mov         dword ptr [ecx],ebx
+  005A215E: FF 80 00 01 00 00  inc         dword ptr [eax+00000100h]
+  005A2164: 8D 54 24 1C        lea         edx,[esp+1Ch]
+  005A2168: 52                 push        edx
+  005A2169: 8B CD              mov         ecx,ebp
+  005A216B: E8 E0 04 00 00     call        005A2650
+  005A2170: 0F B7 C7           movzx       eax,di
+  005A2173: 8D 4C 24 20        lea         ecx,[esp+20h]
+  005A2177: 51                 push        ecx
+  005A2178: 8D 8E 8C 66 00 00  lea         ecx,[esi+0000668Ch]
+  005A217E: 89 44 24 24        mov         dword ptr [esp+24h],eax
+  005A2182: E8 19 05 00 00     call        005A26A0
+  005A2187: 8B 96 00 73 00 00  mov         edx,dword ptr [esi+00007300h]
+  005A218D: A1 98 B4 22 01     mov         eax,dword ptr ds:[0122B498h]
+  005A2192: 6A 00              push        0
+  005A2194: 57                 push        edi
+  005A2195: 52                 push        edx
+  005A2196: 50                 push        eax
+  005A2197: E8 24 B0 0C 00     call        0066D1C0
+  005A219C: 83 C4 10           add         esp,10h
+  005A219F: 5F                 pop         edi
+  005A21A0: 5B                 pop         ebx
+  005A21A1: 5E                 pop         esi
+  005A21A2: 33 C0              xor         eax,eax
+  005A21A4: 5D                 pop         ebp
+  005A21A5: 83 C4 08           add         esp,8
+  005A21A8: C2 08 00           ret         8
+  005A21AB: 8D 4C 24 1C        lea         ecx,[esp+1Ch]
+  005A21AF: 51                 push        ecx
+  005A21B0: 8B CD              mov         ecx,ebp
+  005A21B2: E8 89 05 00 00     call        005A2740
+  005A21B7: 8B 38              mov         edi,dword ptr [eax]
+  005A21B9: 8D 54 24 1C        lea         edx,[esp+1Ch]
+  005A21BD: 52                 push        edx
+  005A21BE: 8D 8E 5C 5F 00 00  lea         ecx,[esi+00005F5Ch]
+  005A21C4: E8 77 05 00 00     call        005A2740
+  005A21C9: 89 38              mov         dword ptr [eax],edi
+  005A21CB: 5F                 pop         edi
+  005A21CC: 5B                 pop         ebx
+  005A21CD: 5E                 pop         esi
+  005A21CE: B8
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,59 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0063BBD0: 51                 push        ecx
+  0063BBD1: 56                 push        esi
+  0063BBD2: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  0063BBD6: 57                 push        edi
+  0063BBD7: 6A 01              push        1
+  0063BBD9: 56                 push        esi
+  0063BBDA: E8 A1 3E 01 00     call        0064FA80
+  0063BBDF: 83 C4 08           add         esp,8
+  0063BBE2: 85 C0              test        eax,eax
+  0063BBE4: 74 4D              je          0063BC33
+  0063BBE6: 6A 01              push        1
+  0063BBE8: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  0063BBEC: 56                 push        esi
+  0063BBED: 50                 push        eax
+  0063BBEE: E8 0D 3F 01 00     call        0064FB00
+  0063BBF3: 8B 38              mov         edi,dword ptr [eax]
+  0063BBF5: 6A 02              push        2
+  0063BBF7: 56                 push        esi
+  0063BBF8: E8 63 1B FB FF     call        005ED760
+  0063BBFD: 83 C4 14           add         esp,14h
+  0063BC00: 85 C0              test        eax,eax
+  0063BC02: 74 2F              je          0063BC33
+  0063BC04: 6A 02              push        2
+  0063BC06: 56                 push        esi
+  0063BC07: E8 D4 1C FB FF     call        005ED8E0
+  0063BC0C: 83 C4 08           add         esp,8
+  0063BC0F: 50                 push        eax
+  0063BC10: 51                 push        ecx
+  0063BC11: 8B C4              mov         eax,esp
+  0063BC13: 89 38              mov         dword ptr [eax],edi
+  0063BC15: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0063BC1A: 85 C0              test        eax,eax
+  0063BC1C: 75 0A              jne         0063BC28
+  0063BC1E: E8 6D EA DC FF     call        0040A690
+  0063BC23: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0063BC28: 8B 88 7C 02 00 00  mov         ecx,dword ptr [eax+0000027Ch]
+  0063BC2E: E8 1D B3 F0 FF     call        00546F50
+  0063BC33: 5F                 pop         edi
+  0063BC34: 33 C0              xor         eax,eax
+  0063BC36: 5E                 pop         esi
+  0063BC37: 59                 pop         ecx
+  0063BC38: C3                 ret
+  0063BC39: CC                 int         3
+  0063BC3A: CC                 int         3
+  0063BC3B: CC                 int         3
+  0063BC3C: CC                 int         3
+  0063BC3D: CC                 int         3
+  0063BC3E: CC                 int         3
+  0063BC3F: CC                 int         3
+  0063BC40: 51                 push        ecx
+
+  Summary
+
+      9C8000 .text

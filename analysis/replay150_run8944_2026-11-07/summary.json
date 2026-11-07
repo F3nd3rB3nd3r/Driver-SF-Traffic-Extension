@@ -1,0 +1,45 @@
+{
+  "result": "softlock reproduced with correct150-ID snapshot; paused-clock/loading-completion circular wait identified",
+  "log": "dist\\MAIN_150\\DSFV29s_replay150_8944.log",
+  "log_sha256": "307c131d0e19d72779db8695f2d190791864e1335eae8079ae92d8403207173a",
+  "log_bytes": 4796908,
+  "logger_duration_ms": 199531,
+  "dump": "dist\\MAIN_150\\Driver.DMP",
+  "dump_sha256": "231432983fcbf43390ce8f912086d63186e50aa21824eeae28022ad26350dba8",
+  "dump_bytes": 1161317834,
+  "pid": 8944,
+  "user_report": "First Replay entry after playing Story once; recordings can persist across process restarts. Wait duration not specified.",
+  "snapshot_events": {
+    "capture": 17,
+    "save": 17,
+    "import": 1,
+    "restore": 1
+  },
+  "all_snapshot_events_canonical150": true,
+  "persistent_stall": {
+    "first_sample_tick": 152843,
+    "last_sample_tick": 199531,
+    "samples": 45,
+    "duration_ms": 46688,
+    "clock": 0.8916667103767395,
+    "loading": 1,
+    "lifecycle": 5,
+    "transition": 0,
+    "snapshotPhase": 0
+  },
+  "captured_loading_busy": false,
+  "captured_simulation_clock_paused": true,
+  "checks": {
+    "snapshot_telemetry": true,
+    "callback_integrity": true,
+    "inherited_structural": true
+  },
+  "conclusion": "Preserve REPLAY150_R1 snapshot correction. Target completion servicing while simulation time is paused; do not infer a new capacity limit.",
+  "limitations": [
+    "Dump captures one instant; the log supplies the persistent loading/clock plateau.",
+    "Exact caller/order that first set zero playback rate is not recorded.",
+    "A safe correction must preserve user pause and native readiness/lifecycle checks; no unconditional unpause is justified.",
+    "Older recording origin is not established from this dump; correct150-ID cache is directly verified.",
+    "Presence of DriverNGHook is not evidence it caused the stall."
+  ]
+}

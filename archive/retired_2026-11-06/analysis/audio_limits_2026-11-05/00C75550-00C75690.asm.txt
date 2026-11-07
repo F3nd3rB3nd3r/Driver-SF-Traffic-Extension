@@ -1,0 +1,112 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C75550: F6 81 E6 00 00 00  test        byte ptr [ecx+000000E6h],1
+            01
+  00C75557: 0F 85 95 00 00 00  jne         00C755F2
+  00C7555D: 83 79 5C 00        cmp         dword ptr [ecx+5Ch],0
+  00C75561: 74 0A              je          00C7556D
+  00C75563: F6 41 60 02        test        byte ptr [ecx+60h],2
+  00C75567: 0F 85 85 00 00 00  jne         00C755F2
+  00C7556D: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00C75571: 80 89 E5 00 00 00  or          byte ptr [ecx+000000E5h],80h
+            80
+  00C75578: 83 38 00           cmp         dword ptr [eax],0
+  00C7557B: 74 18              je          00C75595
+  00C7557D: 8B 50 04           mov         edx,dword ptr [eax+4]
+  00C75580: 8B 00              mov         eax,dword ptr [eax]
+  00C75582: 6A 01              push        1
+  00C75584: 52                 push        edx
+  00C75585: 50                 push        eax
+  00C75586: 68 00 00 00 02     push        2000000h
+  00C7558B: 6A 01              push        1
+  00C7558D: E8 8E F7 FF FF     call        00C74D20
+  00C75592: C2 08 00           ret         8
+  00C75595: F6 81 E4 00 00 00  test        byte ptr [ecx+000000E4h],78h
+            78
+  00C7559C: 75 1A              jne         00C755B8
+  00C7559E: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  00C755A1: 8B 02              mov         eax,dword ptr [edx]
+  00C755A3: 83 C1 04           add         ecx,4
+  00C755A6: C7 44 24 08 00 00  mov         dword ptr [esp+8],0
+            00 00
+  00C755AE: C7 44 24 04 00 00  mov         dword ptr [esp+4],0
+            00 00
+  00C755B6: FF E0              jmp         eax
+  00C755B8: 8B 41 58           mov         eax,dword ptr [ecx+58h]
+  00C755BB: 85 C0              test        eax,eax
+  00C755BD: 74 24              je          00C755E3
+  00C755BF: D9 05 E8 6B E3 00  fld         dword ptr ds:[00E36BE8h]
+  00C755C5: 6A 00              push        0
+  00C755C7: 6A 04              push        4
+  00C755C9: 6A 00              push        0
+  00C755CB: 51                 push        ecx
+  00C755CC: 8B 0D 4C 18 D7 01  mov         ecx,dword ptr ds:[01D7184Ch]
+  00C755D2: D9 1C 24           fstp        dword ptr [esp]
+  00C755D5: 68 00 00 00 02     push        2000000h
+  00C755DA: 50                 push        eax
+  00C755DB: E8 F0 59 FF FF     call        00C6AFD0
+  00C755E0: C2 08 00           ret         8
+  00C755E3: 80 7C 24 08 00     cmp         byte ptr [esp+8],0
+  00C755E8: 74 A8              je          00C75592
+  00C755EA: E8 31 F6 FF FF     call        00C74C20
+  00C755EF: C2 08 00           ret         8
+  00C755F2: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  00C755F5: 8B 02              mov         eax,dword ptr [edx]
+  00C755F7: 83 C1 04           add         ecx,4
+  00C755FA: C7 44 24 08 00 00  mov         dword ptr [esp+8],0
+            00 00
+  00C75602: C7 44 24 04 00 00  mov         dword ptr [esp+4],0
+            00 00
+  00C7560A: FF E0              jmp         eax
+  00C7560C: CC                 int         3
+  00C7560D: CC                 int         3
+  00C7560E: CC                 int         3
+  00C7560F: CC                 int         3
+  00C75610: 56                 push        esi
+  00C75611: 8B F1              mov         esi,ecx
+  00C75613: F6 86 E5 00 00 00  test        byte ptr [esi+000000E5h],40h
+            40
+  00C7561A: 75 70              jne         00C7568C
+  00C7561C: 8A 86 E6 00 00 00  mov         al,byte ptr [esi+000000E6h]
+  00C75622: A8 01              test        al,1
+  00C75624: 75 66              jne         00C7568C
+  00C75626: 0C 01              or          al,1
+  00C75628: 88 86 E6 00 00 00  mov         byte ptr [esi+000000E6h],al
+  00C7562E: 84 C0              test        al,al
+  00C75630: 78 1F              js          00C75651
+  00C75632: F3 0F 10 05 E8 6B  movss       xmm0,dword ptr ds:[00E36BE8h]
+            E3 00
+  00C7563A: C6 86 E3 00 00 00  mov         byte ptr [esi+000000E3h],0
+            00
+  00C75641: F3 0F 11 86 84 00  movss       dword ptr [esi+00000084h],xmm0
+            00 00
+  00C75649: F3 0F 11 86 8C 00  movss       dword ptr [esi+0000008Ch],xmm0
+            00 00
+  00C75651: 80 7C 24 08 00     cmp         byte ptr [esp+8],0
+  00C75656: 75 0B              jne         00C75663
+  00C75658: 56                 push        esi
+  00C75659: 6A 03              push        3
+  00C7565B: E8 B0 08 FE FF     call        00C55F10
+  00C75660: 83 C4 08           add         esp,8
+  00C75663: 8B 46 58           mov         eax,dword ptr [esi+58h]
+  00C75666: 85 C0              test        eax,eax
+  00C75668: 74 0C              je          00C75676
+  00C7566A: 8B 0D 4C 18 D7 01  mov         ecx,dword ptr ds:[01D7184Ch]
+  00C75670: 50                 push        eax
+  00C75671: E8 1A 59 FF FF     call        00C6AF90
+  00C75676: 8B B6 40 01 00 00  mov         esi,dword ptr [esi+00000140h]
+  00C7567C: 85 F6              test        esi,esi
+  00C7567E: 74 0C              je          00C7568C
+  00C75680: 8B 0D 50 18 D7 01  mov         ecx,dword ptr ds:[01D71850h]
+  00C75686: 56                 push        esi
+  00C75687: E8 34 60 FF FF     call        00C6B6C0
+  00C7568C: 5E                 pop         esi
+  00C7568D: C2 04 00           ret         4
+  00C75690: 8B
+
+  Summary
+
+      9C8000 .text

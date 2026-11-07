@@ -1,0 +1,57 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008590A0: 86 44 05 00        xchg        al,byte ptr [ebp+eax]
+  008590A4: 00 83 F8 05 77 07  add         byte ptr [ebx+077705F8h],al
+  008590AA: FF 24 85 44 92 85  jmp         dword ptr [eax*4+00859244h]
+            00
+  008590B1: B3 01              mov         bl,1
+  008590B3: E9 3D 01 00 00     jmp         008591F5
+  008590B8: 8B CE              mov         ecx,esi
+  008590BA: E8 B1 F7 FF FF     call        00858870
+  008590BF: 5F                 pop         edi
+  008590C0: 5E                 pop         esi
+  008590C1: 8A C3              mov         al,bl
+  008590C3: 5B                 pop         ebx
+  008590C4: 59                 pop         ecx
+  008590C5: C3                 ret
+  008590C6: 8B 8E 48 05 00 00  mov         ecx,dword ptr [esi+00000548h]
+  008590CC: E8 CF 2F 0A 00     call        008FC0A0
+  008590D1: 84 C0              test        al,al
+  008590D3: 0F 85 2A 01 00 00  jne         00859203
+  008590D9: C7 86 44 05 00 00  mov         dword ptr [esi+00000544h],3
+            03 00 00 00
+  008590E3: 8B 8E 60 05 00 00  mov         ecx,dword ptr [esi+00000560h]
+  008590E9: 69 C9 14 03 00 00  imul        ecx,ecx,314h
+  008590EF: 83 B9 F4 27 44 01  cmp         dword ptr [ecx+014427F4h],0
+            00
+  008590F6: 0F 85 07 01 00 00  jne         00859203
+  008590FC: BF 01 00 00 00     mov         edi,1
+  00859101: 57                 push        edi
+  00859102: 56                 push        esi
+  00859103: 89 35 CC D1 43 01  mov         dword ptr ds:[0143D1CCh],esi
+  00859109: E8 72 38 0A 00     call        008FC980
+  0085910E: 83 C4 04           add         esp,4
+  00859111: 50                 push        eax
+  00859112: B9 D4 D1 43 01     mov         ecx,143D1D4h
+  00859117: E8 34 35 0A 00     call        008FC650
+  0085911C: B9 D4 D1 43 01     mov         ecx,143D1D4h
+  00859121: C7 86 58 05 00 00  mov         dword ptr [esi+00000558h],0
+            00 00 00 00
+  0085912B: E8 00 22 0A 00     call        008FB330
+  00859130: 8B CE              mov         ecx,esi
+  00859132: 89 86 54 05 00 00  mov         dword ptr [esi+00000554h],eax
+  00859138: E8 33 F9 FF FF     call        00858A70
+  0085913D: 84 C0              test        al,al
+  0085913F: 74 11              je          00859152
+  00859141: 01 BE 58 05 00 00  add         dword ptr [esi+00000558h],edi
+  00859147: 8B CE              mov         ecx,esi
+  00859149: E8 22 F9 FF FF     call        00858A70
+  0085914E: 84 C0              test        al,al
+  00859150: 75
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,73 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0059E4B0: 00 83 C4 04 A1 28  add         byte ptr [ebx+28A104C4h],al
+  0059E4B6: 72 FE              jb          0059E4B6
+  0059E4B8: 00 85 C0 75 0A E8  add         byte ptr [ebp+E80A75C0h],al
+  0059E4BE: CE                 into
+  0059E4BF: C1 E6 FF           shl         esi,0FFh
+  0059E4C2: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0059E4C7: 5F                 pop         edi
+  0059E4C8: 5E                 pop         esi
+  0059E4C9: C7 04 98 00 00 00  mov         dword ptr [eax+ebx*4],0
+            00
+  0059E4D0: 5B                 pop         ebx
+  0059E4D1: C3                 ret
+  0059E4D2: CC                 int         3
+  0059E4D3: CC                 int         3
+  0059E4D4: CC                 int         3
+  0059E4D5: CC                 int         3
+  0059E4D6: CC                 int         3
+  0059E4D7: CC                 int         3
+  0059E4D8: CC                 int         3
+  0059E4D9: CC                 int         3
+  0059E4DA: CC                 int         3
+  0059E4DB: CC                 int         3
+  0059E4DC: CC                 int         3
+  0059E4DD: CC                 int         3
+  0059E4DE: CC                 int         3
+  0059E4DF: CC                 int         3
+  0059E4E0: 83 EC 08           sub         esp,8
+  0059E4E3: 8D 44 24 10        lea         eax,[esp+10h]
+  0059E4E7: 50                 push        eax
+  0059E4E8: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0059E4EC: 69 C0 18 18 00 00  imul        eax,eax,1818h
+  0059E4F2: 8D 54 24 04        lea         edx,[esp+4]
+  0059E4F6: 52                 push        edx
+  0059E4F7: 8D 8C 08 0C 0C 00  lea         ecx,[eax+ecx+00000C0Ch]
+            00
+  0059E4FE: E8 7D FB FF FF     call        0059E080
+  0059E503: 8B 14 24           mov         edx,dword ptr [esp]
+  0059E506: 33 C9              xor         ecx,ecx
+  0059E508: 3B 54 24 04        cmp         edx,dword ptr [esp+4]
+  0059E50C: 0F 95 C1           setne       cl
+  0059E50F: 33 C0              xor         eax,eax
+  0059E511: 3B C1              cmp         eax,ecx
+  0059E513: 1B C0              sbb         eax,eax
+  0059E515: F7 D8              neg         eax
+  0059E517: 83 C4 08           add         esp,8
+  0059E51A: C2 08 00           ret         8
+  0059E51D: CC                 int         3
+  0059E51E: CC                 int         3
+  0059E51F: CC                 int         3
+  0059E520: 83 E9 04           sub         ecx,4
+  0059E523: E9 38 00 00 00     jmp         0059E560
+  0059E528: CC                 int         3
+  0059E529: CC                 int         3
+  0059E52A: CC                 int         3
+  0059E52B: CC                 int         3
+  0059E52C: CC                 int         3
+  0059E52D: CC                 int         3
+  0059E52E: CC                 int         3
+  0059E52F: CC                 int         3
+  0059E530: 68 C8 4D 07 00     push        74DC8h
+  0059E535: E8 46 A2 68 00     call        00C28780
+  0059E53A: 83 C4 04           add         esp,4
+  0059E53D: 85 C0              test        eax,eax
+  0059E53F: 74 12              je          0059E553
+
+  Summary
+
+      9C8000 .text

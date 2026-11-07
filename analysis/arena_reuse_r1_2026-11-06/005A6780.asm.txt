@@ -1,0 +1,253 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A6780: 8B 91 98 0D 00 00  mov         edx,dword ptr [ecx+00000D98h]
+  005A6786: 56                 push        esi
+  005A6787: 8D B1 94 0D 00 00  lea         esi,[ecx+00000D94h]
+  005A678D: 32 C0              xor         al,al
+  005A678F: 3B D6              cmp         edx,esi
+  005A6791: 74 6F              je          005A6802
+  005A6793: 53                 push        ebx
+  005A6794: 57                 push        edi
+  005A6795: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  005A6799: BB 01 00 00 00     mov         ebx,1
+  005A679E: 8B FF              mov         edi,edi
+  005A67A0: 39 7A 08           cmp         dword ptr [edx+8],edi
+  005A67A3: 75 05              jne         005A67AA
+  005A67A5: 39 5A 0C           cmp         dword ptr [edx+0Ch],ebx
+  005A67A8: 74 0D              je          005A67B7
+  005A67AA: 8B 52 04           mov         edx,dword ptr [edx+4]
+  005A67AD: 3B D6              cmp         edx,esi
+  005A67AF: 75 EF              jne         005A67A0
+  005A67B1: 5F                 pop         edi
+  005A67B2: 5B                 pop         ebx
+  005A67B3: 5E                 pop         esi
+  005A67B4: C2 04 00           ret         4
+  005A67B7: 8B 81 9C 09 00 00  mov         eax,dword ptr [ecx+0000099Ch]
+  005A67BD: 8D B1 98 09 00 00  lea         esi,[ecx+00000998h]
+  005A67C3: 3B C6              cmp         eax,esi
+  005A67C5: 74 13              je          005A67DA
+  005A67C7: 39 78 08           cmp         dword ptr [eax+8],edi
+  005A67CA: 74 07              je          005A67D3
+  005A67CC: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A67CF: 3B C6              cmp         eax,esi
+  005A67D1: 75 F4              jne         005A67C7
+  005A67D3: 3B C6              cmp         eax,esi
+  005A67D5: 74 03              je          005A67DA
+  005A67D7: 89 58 10           mov         dword ptr [eax+10h],ebx
+  005A67DA: 8B 02              mov         eax,dword ptr [edx]
+  005A67DC: 8B 72 04           mov         esi,dword ptr [edx+4]
+  005A67DF: 89 70 04           mov         dword ptr [eax+4],esi
+  005A67E2: 89 06              mov         dword ptr [esi],eax
+  005A67E4: 8B 81 A0 09 00 00  mov         eax,dword ptr [ecx+000009A0h]
+  005A67EA: 89 02              mov         dword ptr [edx],eax
+  005A67EC: 01 99 A4 09 00 00  add         dword ptr [ecx+000009A4h],ebx
+  005A67F2: FF 89 A8 09 00 00  dec         dword ptr [ecx+000009A8h]
+  005A67F8: 5F                 pop         edi
+  005A67F9: 8A C3              mov         al,bl
+  005A67FB: 89 91 A0 09 00 00  mov         dword ptr [ecx+000009A0h],edx
+  005A6801: 5B                 pop         ebx
+  005A6802: 5E                 pop         esi
+  005A6803: C2 04 00           ret         4
+  005A6806: CC                 int         3
+  005A6807: CC                 int         3
+  005A6808: CC                 int         3
+  005A6809: CC                 int         3
+  005A680A: CC                 int         3
+  005A680B: CC                 int         3
+  005A680C: CC                 int         3
+  005A680D: CC                 int         3
+  005A680E: CC                 int         3
+  005A680F: CC                 int         3
+  005A6810: 8B 81 9C 09 00 00  mov         eax,dword ptr [ecx+0000099Ch]
+  005A6816: 8D 91 98 09 00 00  lea         edx,[ecx+00000998h]
+  005A681C: 3B C2              cmp         eax,edx
+  005A681E: 74 22              je          005A6842
+  005A6820: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  005A6824: 39 48 08           cmp         dword ptr [eax+8],ecx
+  005A6827: 74 07              je          005A6830
+  005A6829: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A682C: 3B C2              cmp         eax,edx
+  005A682E: 75 F4              jne         005A6824
+  005A6830: 3B C2              cmp         eax,edx
+  005A6832: 74 0E              je          005A6842
+  005A6834: 83 78 10 00        cmp         dword ptr [eax+10h],0
+  005A6838: 7E 08              jle         005A6842
+  005A683A: FF 40 10           inc         dword ptr [eax+10h]
+  005A683D: B0 01              mov         al,1
+  005A683F: C2 04 00           ret         4
+  005A6842: 32 C0              xor         al,al
+  005A6844: C2 04 00           ret         4
+  005A6847: CC                 int         3
+  005A6848: CC                 int         3
+  005A6849: CC                 int         3
+  005A684A: CC                 int         3
+  005A684B: CC                 int         3
+  005A684C: CC                 int         3
+  005A684D: CC                 int         3
+  005A684E: CC                 int         3
+  005A684F: CC                 int         3
+  005A6850: 8B 81 9C 09 00 00  mov         eax,dword ptr [ecx+0000099Ch]
+  005A6856: 83 EC 0C           sub         esp,0Ch
+  005A6859: 8D 91 98 09 00 00  lea         edx,[ecx+00000998h]
+  005A685F: 56                 push        esi
+  005A6860: 8B 74 24 14        mov         esi,dword ptr [esp+14h]
+  005A6864: 3B C2              cmp         eax,edx
+  005A6866: 74 67              je          005A68CF
+  005A6868: 39 70 08           cmp         dword ptr [eax+8],esi
+  005A686B: 74 07              je          005A6874
+  005A686D: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A6870: 3B C2              cmp         eax,edx
+  005A6872: 75 F4              jne         005A6868
+  005A6874: 3B C2              cmp         eax,edx
+  005A6876: 74 57              je          005A68CF
+  005A6878: FF 48 10           dec         dword ptr [eax+10h]
+  005A687B: 83 78 10 00        cmp         dword ptr [eax+10h],0
+  005A687F: 75 45              jne         005A68C6
+  005A6881: 89 74 24 04        mov         dword ptr [esp+4],esi
+  005A6885: 8D B1 A0 09 00 00  lea         esi,[ecx+000009A0h]
+  005A688B: 8D 44 24 04        lea         eax,[esp+4]
+  005A688F: 50                 push        eax
+  005A6890: 8B CE              mov         ecx,esi
+  005A6892: C7 44 24 0C 01 00  mov         dword ptr [esp+0Ch],1
+            00 00
+  005A689A: C7 44 24 10 01 00  mov         dword ptr [esp+10h],1
+            00 00
+  005A68A2: E8 C9 48 29 00     call        0083B170
+  005A68A7: 8D 8E F4 03 00 00  lea         ecx,[esi+000003F4h]
+  005A68AD: 89 08              mov         dword ptr [eax],ecx
+  005A68AF: 8B 96 F8 03 00 00  mov         edx,dword ptr [esi+000003F8h]
+  005A68B5: 89 50 04           mov         dword ptr [eax+4],edx
+  005A68B8: 8B 8E F8 03 00 00  mov         ecx,dword ptr [esi+000003F8h]
+  005A68BE: 89 01              mov         dword ptr [ecx],eax
+  005A68C0: 89 86 F8 03 00 00  mov         dword ptr [esi+000003F8h],eax
+  005A68C6: B0 01              mov         al,1
+  005A68C8: 5E                 pop         esi
+  005A68C9: 83 C4 0C           add         esp,0Ch
+  005A68CC: C2 04 00           ret         4
+  005A68CF: 32 C0              xor         al,al
+  005A68D1: 5E                 pop         esi
+  005A68D2: 83 C4 0C           add         esp,0Ch
+  005A68D5: C2 04 00           ret         4
+  005A68D8: CC                 int         3
+  005A68D9: CC                 int         3
+  005A68DA: CC                 int         3
+  005A68DB: CC                 int         3
+  005A68DC: CC                 int         3
+  005A68DD: CC                 int         3
+  005A68DE: CC                 int         3
+  005A68DF: CC                 int         3
+  005A68E0: 8B 81 34 03 00 00  mov         eax,dword ptr [ecx+00000334h]
+  005A68E6: 8D 91 30 03 00 00  lea         edx,[ecx+00000330h]
+  005A68EC: 3B C2              cmp         eax,edx
+  005A68EE: 74 15              je          005A6905
+  005A68F0: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  005A68F4: 56                 push        esi
+  005A68F5: 0F B7 70 08        movzx       esi,word ptr [eax+8]
+  005A68F9: 3B F1              cmp         esi,ecx
+  005A68FB: 74 07              je          005A6904
+  005A68FD: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A6900: 3B C2              cmp         eax,edx
+  005A6902: 75 F1              jne         005A68F5
+  005A6904: 5E                 pop         esi
+  005A6905: 33 C9              xor         ecx,ecx
+  005A6907: 3B C2              cmp         eax,edx
+  005A6909: 0F 95 C1           setne       cl
+  005A690C: 8A C1              mov         al,cl
+  005A690E: C2 04 00           ret         4
+  005A6911: CC                 int         3
+  005A6912: CC                 int         3
+  005A6913: CC                 int         3
+  005A6914: CC                 int         3
+  005A6915: CC                 int         3
+  005A6916: CC                 int         3
+  005A6917: CC                 int         3
+  005A6918: CC                 int         3
+  005A6919: CC                 int         3
+  005A691A: CC                 int         3
+  005A691B: CC                 int         3
+  005A691C: CC                 int         3
+  005A691D: CC                 int         3
+  005A691E: CC                 int         3
+  005A691F: CC                 int         3
+  005A6920: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  005A6924: 8D 50 0C           lea         edx,[eax+0Ch]
+  005A6927: 89 10              mov         dword ptr [eax],edx
+  005A6929: 33 D2              xor         edx,edx
+  005A692B: 89 50 04           mov         dword ptr [eax+4],edx
+  005A692E: 89 50 08           mov         dword ptr [eax+8],edx
+  005A6931: 53                 push        ebx
+  005A6932: 8D 90 64 02 00 00  lea         edx,[eax+00000264h]
+  005A6938: 56                 push        esi
+  005A6939: 89 90 68 02 00 00  mov         dword ptr [eax+00000268h],edx
+  005A693F: 89 12              mov         dword ptr [edx],edx
+  005A6941: 8B B1 34 03 00 00  mov         esi,dword ptr [ecx+00000334h]
+  005A6947: 8D 99 30 03 00 00  lea         ebx,[ecx+00000330h]
+  005A694D: 89 5C 24 0C        mov         dword ptr [esp+0Ch],ebx
+  005A6951: 3B F3              cmp         esi,ebx
+  005A6953: 74 50              je          005A69A5
+  005A6955: 55                 push        ebp
+  005A6956: 57                 push        edi
+  005A6957: EB 07              jmp         005A6960
+  005A6959: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  005A6960: 83 78 04 00        cmp         dword ptr [eax+4],0
+  005A6964: 8B 08              mov         ecx,dword ptr [eax]
+  005A6966: 0F B7 6E 08        movzx       ebp,word ptr [esi+8]
+  005A696A: 8D 79 08           lea         edi,[ecx+8]
+  005A696D: 74 13              je          005A6982
+  005A696F: 8B 19              mov         ebx,dword ptr [ecx]
+  005A6971: 85 FF              test        edi,edi
+  005A6973: 74 02              je          005A6977
+  005A6975: 89 2F              mov         dword ptr [edi],ebp
+  005A6977: FF 48 04           dec         dword ptr [eax+4]
+  005A697A: 89 18              mov         dword ptr [eax],ebx
+  005A697C: 8B 5C 24 14        mov         ebx,dword ptr [esp+14h]
+  005A6980: EB 09              jmp         005A698B
+  005A6982: 85 FF              test        edi,edi
+  005A6984: 74 02              je          005A6988
+  005A6986: 89 2F              mov         dword ptr [edi],ebp
+  005A6988: 83 00 0C           add         dword ptr [eax],0Ch
+  005A698B: 8B 3A              mov         edi,dword ptr [edx]
+  005A698D: FF 40 08           inc         dword ptr [eax+8]
+  005A6990: 89 39              mov         dword ptr [ecx],edi
+  005A6992: 89 51 04           mov         dword ptr [ecx+4],edx
+  005A6995: 8B 3A              mov         edi,dword ptr [edx]
+  005A6997: 89 4F 04           mov         dword ptr [edi+4],ecx
+  005A699A: 89 0A              mov         dword ptr [edx],ecx
+  005A699C: 8B 76 04           mov         esi,dword ptr [esi+4]
+  005A699F: 3B F3              cmp         esi,ebx
+  005A69A1: 75 BD              jne         005A6960
+  005A69A3: 5F                 pop         edi
+  005A69A4: 5D                 pop         ebp
+  005A69A5: 5E                 pop         esi
+  005A69A6: 5B                 pop         ebx
+  005A69A7: C2 04 00           ret         4
+  005A69AA: CC                 int         3
+  005A69AB: CC                 int         3
+  005A69AC: CC                 int         3
+  005A69AD: CC                 int         3
+  005A69AE: CC                 int         3
+  005A69AF: CC                 int         3
+  005A69B0: 51                 push        ecx
+  005A69B1: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  005A69B5: 8D 50 0C           lea         edx,[eax+0Ch]
+  005A69B8: 53                 push        ebx
+  005A69B9: 89 10              mov         dword ptr [eax],edx
+  005A69BB: 33 D2              xor         edx,edx
+  005A69BD: 55                 push        ebp
+  005A69BE: 89 50 04           mov         dword ptr [eax+4],edx
+  005A69C1: 89 50 08           mov         dword ptr [eax+8],edx
+  005A69C4: 56                 push        esi
+  005A69C5: 8D 90 64 02 00 00  lea         edx,[eax+00000264h]
+  005A69CB: 57                 push        edi
+  005A69CC: 89
+  005A69CD: 90                 nop
+  005A69CE: 68
+  005A69CF: 02 00              add         al,byte ptr [eax]
+
+  Summary
+
+      9C8000 .text

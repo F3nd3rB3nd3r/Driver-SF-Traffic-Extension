@@ -1,0 +1,44 @@
+{
+  "result": "passed",
+  "architecture": "Win32",
+  "capacity": 262144,
+  "native_blocks": [
+    [
+      12248688,
+      43
+    ],
+    [
+      12248752,
+      185
+    ],
+    [
+      12249696,
+      32
+    ],
+    [
+      12250080,
+      177
+    ],
+    [
+      12250272,
+      232
+    ]
+  ],
+  "production_sha256": {
+    "V29sCleanupQueueCore.inc": "0d814ead6ba1b32d237e6127ca8a7d766819420c97853077b58608d8893490a3",
+    "V29sCleanupQueueBridges.inc": "0c4749e40df307118af2adf6063321df733e9310dff22f4ac0a80293f1147f7b",
+    "V29sCleanupQueuePatch.inc": "246d00c6fe462a7e010d643a8cc2a0bfbef07447b7b73e747e661d6193bcaaca"
+  },
+  "checks": [
+    "262144 native appends through production detours",
+    "actual native drain and virtual destruction/wrapper-release order",
+    "empty drain and reuse",
+    "native replacement publishes users after enqueue and transfers reference count",
+    "native zero-ref release only enqueues on final reference and unlinks",
+    "capacity boundary/guard/owner/reentrancy refusal and late-enqueue mismatch",
+    "seven allocation failures, cold identity/signature refusal, protection/cache/rollback failures",
+    "unrelated code preserved",
+    "six ABI bridges preserve GP/flags/DF/x87/SSE"
+  ],
+  "limitations": "Native selected bytes execute in a fake manager with fixture-only imported/global/call fixups. No actual game/ASI load; user menu transition still required."
+}

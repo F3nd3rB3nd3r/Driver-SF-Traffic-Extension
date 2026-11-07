@@ -1,0 +1,82 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00858C00: 02 00              add         al,byte ptr [eax]
+  00858C02: 00 8D 44 24 18 53  add         byte ptr [ebp+53182444h],cl
+  00858C08: 8B C8              mov         ecx,eax
+  00858C0A: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00858C0E: 89 5C 24 18        mov         dword ptr [esp+18h],ebx
+  00858C12: E8 29 27 0A 00     call        008FB340
+  00858C17: 8B 8F B4 02 00 00  mov         ecx,dword ptr [edi+000002B4h]
+  00858C1D: 3B CE              cmp         ecx,esi
+  00858C1F: 74 0C              je          00858C2D
+  00858C21: 39 41 08           cmp         dword ptr [ecx+8],eax
+  00858C24: 73 07              jae         00858C2D
+  00858C26: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  00858C29: 3B CE              cmp         ecx,esi
+  00858C2B: 75 F4              jne         00858C21
+  00858C2D: 8B D1              mov         edx,ecx
+  00858C2F: 3B CE              cmp         ecx,esi
+  00858C31: 74 10              je          00858C43
+  00858C33: 3B 42 08           cmp         eax,dword ptr [edx+8]
+  00858C36: 72 07              jb          00858C3F
+  00858C38: 8B 52 04           mov         edx,dword ptr [edx+4]
+  00858C3B: 3B D6              cmp         edx,esi
+  00858C3D: 75 F4              jne         00858C33
+  00858C3F: 3B CA              cmp         ecx,edx
+  00858C41: 75 02              jne         00858C45
+  00858C43: 8B CE              mov         ecx,esi
+  00858C45: 8D 87 B0 02 00 00  lea         eax,[edi+000002B0h]
+  00858C4B: 3B C8              cmp         ecx,eax
+  00858C4D: 74 26              je          00858C75
+  00858C4F: 8D 97 BC 02 00 00  lea         edx,[edi+000002BCh]
+  00858C55: 52                 push        edx
+  00858C56: 8D 44 24 14        lea         eax,[esp+14h]
+  00858C5A: 50                 push        eax
+  00858C5B: 51                 push        ecx
+  00858C5C: 83 C1 0C           add         ecx,0Ch
+  00858C5F: 8B C4              mov         eax,esp
+  00858C61: 89 08              mov         dword ptr [eax],ecx
+  00858C63: 8B 8F 50 05 00 00  mov         ecx,dword ptr [edi+00000550h]
+  00858C69: 51                 push        ecx
+  00858C6A: 8D 8F 40 03 00 00  lea         ecx,[edi+00000340h]
+  00858C70: E8 AB FA FF FF     call        00858720
+  00858C75: 43                 inc         ebx
+  00858C76: 3B DD              cmp         ebx,ebp
+  00858C78: 72 89              jb          00858C03
+  00858C7A: 8D 4C 24 18        lea         ecx,[esp+18h]
+  00858C7E: E8 FD 31 0A 00     call        008FBE80
+  00858C83: 5F                 pop         edi
+  00858C84: 5E                 pop         esi
+  00858C85: 5D                 pop         ebp
+  00858C86: B0 01              mov         al,1
+  00858C88: 5B                 pop         ebx
+  00858C89: 81 C4 20 56 00 00  add         esp,5620h
+  00858C8F: C3                 ret
+  00858C90: 56                 push        esi
+  00858C91: 8B F1              mov         esi,ecx
+  00858C93: 8D 8E 40 03 00 00  lea         ecx,[esi+00000340h]
+  00858C99: E8 12 FB FF FF     call        008587B0
+  00858C9E: 80 BE 6A 05 00 00  cmp         byte ptr [esi+0000056Ah],0
+            00
+  00858CA5: C7 86 44 05 00 00  mov         dword ptr [esi+00000544h],5
+            05 00 00 00
+  00858CAF: 74 16              je          00858CC7
+  00858CB1: 80 BE 6D 05 00 00  cmp         byte ptr [esi+0000056Dh],0
+            00
+  00858CB8: 75 0D              jne         00858CC7
+  00858CBA: 8B 8E 5C 05 00 00  mov         ecx,dword ptr [esi+0000055Ch]
+  00858CC0: 8B 01              mov         eax,dword ptr [ecx]
+  00858CC2: 8B 50 08           mov         edx,dword ptr [eax+8]
+  00858CC5: FF D2              call        edx
+  00858CC7: C6 86 6D 05 00 00  mov         byte ptr [esi+0000056Dh],0
+            00
+  00858CCE: 5E                 pop         esi
+  00858CCF: C3                 ret
+  00858CD0: 83
+
+  Summary
+
+      9C8000 .text

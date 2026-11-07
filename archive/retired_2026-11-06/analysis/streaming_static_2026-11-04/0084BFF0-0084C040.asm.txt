@@ -1,0 +1,40 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084BFF0: 56                 push        esi
+  0084BFF1: 8B F1              mov         esi,ecx
+  0084BFF3: 51                 push        ecx
+  0084BFF4: 8B C4              mov         eax,esp
+  0084BFF6: C7 46 14 03 00 00  mov         dword ptr [esi+14h],3
+            00
+  0084BFFD: 89 30              mov         dword ptr [eax],esi
+  0084BFFF: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0084C004: 85 C0              test        eax,eax
+  0084C006: 75 0A              jne         0084C012
+  0084C008: E8 83 E6 BB FF     call        0040A690
+  0084C00D: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0084C012: 8B 48 50           mov         ecx,dword ptr [eax+50h]
+  0084C015: E8 B6 D7 FF FF     call        008497D0
+  0084C01A: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  0084C01D: 85 C0              test        eax,eax
+  0084C01F: 74 1B              je          0084C03C
+  0084C021: 56                 push        esi
+  0084C022: 68 80 BE 84 00     push        84BE80h
+  0084C027: 50                 push        eax
+  0084C028: E8 A3 5F 40 00     call        00C51FD0
+  0084C02D: 83 C4 0C           add         esp,0Ch
+  0084C030: 83 F8 01           cmp         eax,1
+  0084C033: 74 07              je          0084C03C
+  0084C035: C7 46 0C 00 00 00  mov         dword ptr [esi+0Ch],0
+            00
+  0084C03C: 5E                 pop         esi
+  0084C03D: C3                 ret
+  0084C03E: CC                 int         3
+  0084C03F: CC                 int         3
+  0084C040: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

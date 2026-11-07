@@ -1,0 +1,21 @@
+{
+  "result": "passed",
+  "architecture": "Win32",
+  "production_patch_sha256": "229dc4d53b2d0bf5e3d984ddfb8b0b1ea28e2cf05e068bcb17dea8dc7a635e2d",
+  "patch_scenarios": 20,
+  "native_predicate_cases": 15,
+  "native_predicate_sha256": "8e369836bfba61e0612956357c7897c85babef1b82ce1630bf9ab075f0eea623",
+  "covers": [
+    "cold startup and phase-aware identity",
+    "only four operand bytes changed",
+    "unknown/missing baseline refused",
+    "already initialized audio refused",
+    "threshold/code mismatch refused",
+    "late precommit changes refused",
+    "protection/cache failures restore stock",
+    "failed rollback explicitly marked",
+    "production integer pressure snapshot agrees with isolated native predicate, including unsigned and threshold boundaries",
+    "run4188 observed usage triggers native pressure; same usage with 16MiB does not"
+  ],
+  "limitations": "Patch OS calls fault-injected in fake memory. Isolated native predicate uses mocked pool stats. Full DllMain, real OS failures, playback and game behavior are not executed."
+}

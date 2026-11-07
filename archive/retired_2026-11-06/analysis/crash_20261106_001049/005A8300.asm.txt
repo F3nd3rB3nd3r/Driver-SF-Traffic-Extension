@@ -1,0 +1,202 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A8300: 51                 push        ecx
+  005A8301: 56                 push        esi
+  005A8302: 8B F1              mov         esi,ecx
+  005A8304: 8B 46 18           mov         eax,dword ptr [esi+18h]
+  005A8307: 3D FF FF FF 7F     cmp         eax,7FFFFFFFh
+  005A830C: 7D 04              jge         005A8312
+  005A830E: 40                 inc         eax
+  005A830F: 89 46 18           mov         dword ptr [esi+18h],eax
+  005A8312: 8B 06              mov         eax,dword ptr [esi]
+  005A8314: 48                 dec         eax
+  005A8315: 83 F8 03           cmp         eax,3
+  005A8318: 0F 87 CB 00 00 00  ja          005A83E9
+  005A831E: FF 24 85 EC 83 5A  jmp         dword ptr [eax*4+005A83ECh]
+            00
+  005A8325: 8B 46 04           mov         eax,dword ptr [esi+4]
+  005A8328: 3B 46 08           cmp         eax,dword ptr [esi+8]
+  005A832B: 0F 84 B8 00 00 00  je          005A83E9
+  005A8331: 8D 4C 24 04        lea         ecx,[esp+4]
+  005A8335: 68 DE 01 00 00     push        1DEh
+  005A833A: 51                 push        ecx
+  005A833B: E8 D0 95 F2 FF     call        004D1910
+  005A8340: 8B 46 08           mov         eax,dword ptr [esi+8]
+  005A8343: 83 C4 08           add         esp,8
+  005A8346: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  005A8349: 74 14              je          005A835F
+  005A834B: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  005A834F: 8B 11              mov         edx,dword ptr [ecx]
+  005A8351: 50                 push        eax
+  005A8352: 8B 42 0C           mov         eax,dword ptr [edx+0Ch]
+  005A8355: FF D0              call        eax
+  005A8357: 84 C0              test        al,al
+  005A8359: 0F 84 8A 00 00 00  je          005A83E9
+  005A835F: 8B CE              mov         ecx,esi
+  005A8361: E8 CA FC FF FF     call        005A8030
+  005A8366: 8B CE              mov         ecx,esi
+  005A8368: E8 C3 FD FF FF     call        005A8130
+  005A836D: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  005A8370: 89 4E 04           mov         dword ptr [esi+4],ecx
+  005A8373: C7 06 02 00 00 00  mov         dword ptr [esi],2
+  005A8379: 5E                 pop         esi
+  005A837A: 59                 pop         ecx
+  005A837B: C3                 ret
+  005A837C: E8 1F FF FF FF     call        005A82A0
+  005A8381: 84 C0              test        al,al
+  005A8383: 74 64              je          005A83E9
+  005A8385: 8B CE              mov         ecx,esi
+  005A8387: E8 F4 FC FF FF     call        005A8080
+  005A838C: 84 C0              test        al,al
+  005A838E: 75 59              jne         005A83E9
+  005A8390: 8B CE              mov         ecx,esi
+  005A8392: E8 E9 FD FF FF     call        005A8180
+  005A8397: 84 C0              test        al,al
+  005A8399: 75 4E              jne         005A83E9
+  005A839B: 83 C8 FF           or          eax,0FFFFFFFFh
+  005A839E: 89 46 04           mov         dword ptr [esi+4],eax
+  005A83A1: 89 46 08           mov         dword ptr [esi+8],eax
+  005A83A4: C6 46 1E 00        mov         byte ptr [esi+1Eh],0
+  005A83A8: C7 06 01 00 00 00  mov         dword ptr [esi],1
+  005A83AE: 5E                 pop         esi
+  005A83AF: 59                 pop         ecx
+  005A83B0: C3                 ret
+  005A83B1: E8 2A FD FF FF     call        005A80E0
+  005A83B6: 84 C0              test        al,al
+  005A83B8: 74 2F              je          005A83E9
+  005A83BA: 8B 56 04           mov         edx,dword ptr [esi+4]
+  005A83BD: C6 46 1C 01        mov         byte ptr [esi+1Ch],1
+  005A83C1: 3B 56 08           cmp         edx,dword ptr [esi+8]
+  005A83C4: 75 1D              jne         005A83E3
+  005A83C6: 8B CE              mov         ecx,esi
+  005A83C8: E8 B3 FD FF FF     call        005A8180
+  005A83CD: 84 C0              test        al,al
+  005A83CF: 75 18              jne         005A83E9
+  005A83D1: C7 06 01 00 00 00  mov         dword ptr [esi],1
+  005A83D7: 5E                 pop         esi
+  005A83D8: 59                 pop         ecx
+  005A83D9: C3                 ret
+  005A83DA: E8 01 FE FF FF     call        005A81E0
+  005A83DF: 84 C0              test        al,al
+  005A83E1: 74 06              je          005A83E9
+  005A83E3: C7 06 01 00 00 00  mov         dword ptr [esi],1
+  005A83E9: 5E                 pop         esi
+  005A83EA: 59                 pop         ecx
+  005A83EB: C3                 ret
+  005A83EC: 25 83 5A 00 7C     and         eax,7C005A83h
+  005A83F1: 83 5A 00 B1        sbb         dword ptr [edx],0FFFFFFB1h
+  005A83F5: 83 5A 00 DA        sbb         dword ptr [edx],0FFFFFFDAh
+  005A83F9: 83 5A 00 CC        sbb         dword ptr [edx],0FFFFFFCCh
+  005A83FD: CC                 int         3
+  005A83FE: CC                 int         3
+  005A83FF: CC                 int         3
+  005A8400: 56                 push        esi
+  005A8401: 57                 push        edi
+  005A8402: 8B F1              mov         esi,ecx
+  005A8404: BF 02 00 00 00     mov         edi,2
+  005A8409: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  005A8410: 8B CE              mov         ecx,esi
+  005A8412: E8 59 FB FF FF     call        005A7F70
+  005A8417: 83 C6 20           add         esi,20h
+  005A841A: 83 EF 01           sub         edi,1
+  005A841D: 75 F1              jne         005A8410
+  005A841F: 5F                 pop         edi
+  005A8420: 5E                 pop         esi
+  005A8421: C3                 ret
+  005A8422: CC                 int         3
+  005A8423: CC                 int         3
+  005A8424: CC                 int         3
+  005A8425: CC                 int         3
+  005A8426: CC                 int         3
+  005A8427: CC                 int         3
+  005A8428: CC                 int         3
+  005A8429: CC                 int         3
+  005A842A: CC                 int         3
+  005A842B: CC                 int         3
+  005A842C: CC                 int         3
+  005A842D: CC                 int         3
+  005A842E: CC                 int         3
+  005A842F: CC                 int         3
+  005A8430: 56                 push        esi
+  005A8431: 57                 push        edi
+  005A8432: 8B F1              mov         esi,ecx
+  005A8434: BF 02 00 00 00     mov         edi,2
+  005A8439: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  005A8440: 8B CE              mov         ecx,esi
+  005A8442: E8 69 FB FF FF     call        005A7FB0
+  005A8447: 83 C6 20           add         esi,20h
+  005A844A: 83 EF 01           sub         edi,1
+  005A844D: 75 F1              jne         005A8440
+  005A844F: 5F                 pop         edi
+  005A8450: 5E                 pop         esi
+  005A8451: C3                 ret
+  005A8452: CC                 int         3
+  005A8453: CC                 int         3
+  005A8454: CC                 int         3
+  005A8455: CC                 int         3
+  005A8456: CC                 int         3
+  005A8457: CC                 int         3
+  005A8458: CC                 int         3
+  005A8459: CC                 int         3
+  005A845A: CC                 int         3
+  005A845B: CC                 int         3
+  005A845C: CC                 int         3
+  005A845D: CC                 int         3
+  005A845E: CC                 int         3
+  005A845F: CC                 int         3
+  005A8460: 56                 push        esi
+  005A8461: 57                 push        edi
+  005A8462: 8B F1              mov         esi,ecx
+  005A8464: BF 02 00 00 00     mov         edi,2
+  005A8469: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  005A8470: 8B CE              mov         ecx,esi
+  005A8472: E8 89 FE FF FF     call        005A8300
+  005A8477: 83 C6 20           add         esi,20h
+  005A847A: 83 EF 01           sub         edi,1
+  005A847D: 75 F1              jne         005A8470
+  005A847F: 5F                 pop         edi
+  005A8480: 5E                 pop         esi
+  005A8481: C3                 ret
+  005A8482: CC                 int         3
+  005A8483: CC                 int         3
+  005A8484: CC                 int         3
+  005A8485: CC                 int         3
+  005A8486: CC                 int         3
+  005A8487: CC                 int         3
+  005A8488: CC                 int         3
+  005A8489: CC                 int         3
+  005A848A: CC                 int         3
+  005A848B: CC                 int         3
+  005A848C: CC                 int         3
+  005A848D: CC                 int         3
+  005A848E: CC                 int         3
+  005A848F: CC                 int         3
+  005A8490: 56                 push        esi
+  005A8491: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  005A8495: 33 D2              xor         edx,edx
+  005A8497: 8D 41 08           lea         eax,[ecx+8]
+  005A849A: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  005A84A0: 83 78 F8 01        cmp         dword ptr [eax-8],1
+  005A84A4: 75 05              jne         005A84AB
+  005A84A6: 39 70 FC           cmp         dword ptr [eax-4],esi
+  005A84A9: 74 11              je          005A84BC
+  005A84AB: 39 30              cmp         dword ptr [eax],esi
+  005A84AD: 74 0D              je          005A84BC
+  005A84AF: 42                 inc         edx
+  005A84B0: 83 C0 20           add         eax,20h
+  005A84B3: 83 FA 02           cmp         edx,2
+  005A84B6: 72 E8              jb          005A84A0
+  005A84B8: 5E                 pop         esi
+  005A84B9: C2 08 00           ret         8
+  005A84BC: 8A 44 24 0C        mov         al,byte ptr [esp+0Ch]
+  005A84C0: C1
+
+  Summary
+
+      9C8000 .text

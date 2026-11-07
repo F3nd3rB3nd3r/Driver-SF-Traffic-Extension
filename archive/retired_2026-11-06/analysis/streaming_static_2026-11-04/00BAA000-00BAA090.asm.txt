@@ -1,0 +1,55 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAA000: F8                 clc
+  00BAA001: 01 75 04           add         dword ptr [ebp+4],esi
+  00BAA004: 85 D2              test        edx,edx
+  00BAA006: 74 5A              je          00BAA062
+  00BAA008: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BAA00B: C1 E0 04           shl         eax,4
+  00BAA00E: 03 46 08           add         eax,dword ptr [esi+8]
+  00BAA011: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAA016: 50                 push        eax
+  00BAA017: E8 84 3C B1 FF     call        006BDCA0
+  00BAA01C: EB 44              jmp         00BAA062
+  00BAA01E: 83 F8 01           cmp         eax,1
+  00BAA021: 75 04              jne         00BAA027
+  00BAA023: 85 D2              test        edx,edx
+  00BAA025: 74 3B              je          00BAA062
+  00BAA027: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BAA02A: 8B 15 B8 A6 88 01  mov         edx,dword ptr ds:[0188A6B8h]
+  00BAA030: C1 E0 04           shl         eax,4
+  00BAA033: 03 46 08           add         eax,dword ptr [esi+8]
+  00BAA036: 8B 08              mov         ecx,dword ptr [eax]
+  00BAA038: 89 0C D5 B8 A6 86  mov         dword ptr [edx*8+0186A6B8h],ecx
+            01
+  00BAA03F: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  00BAA042: 8B 15 B8 A6 88 01  mov         edx,dword ptr ds:[0188A6B8h]
+  00BAA048: 89 0C D5 BC A6 86  mov         dword ptr [edx*8+0186A6BCh],ecx
+            01
+  00BAA04F: 8B 0D B8 A6 88 01  mov         ecx,dword ptr ds:[0188A6B8h]
+  00BAA055: 89 04 8D B8 A6 85  mov         dword ptr [ecx*4+0185A6B8h],eax
+            01
+  00BAA05C: FF 05 B8 A6 88 01  inc         dword ptr ds:[0188A6B8h]
+  00BAA062: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BAA065: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00BAA068: C7 04 D0 05 00 00  mov         dword ptr [eax+edx*8],5
+            00
+  00BAA06F: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00BAA072: 8B 56 0C           mov         edx,dword ptr [esi+0Ch]
+  00BAA075: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00BAA079: 8B 00              mov         eax,dword ptr [eax]
+  00BAA07B: 89 44 CA 04        mov         dword ptr [edx+ecx*8+4],eax
+  00BAA07F: FF 46 04           inc         dword ptr [esi+4]
+  00BAA082: 8B 4F 04           mov         ecx,dword ptr [edi+4]
+  00BAA085: 8B 17              mov         edx,dword ptr [edi]
+  00BAA087: 51                 push        ecx
+  00BAA088: 52                 push        edx
+  00BAA089: E8 12 1A 00 00     call        00BABAA0
+  00BAA08E: 83 C4 08           add         esp,8
+
+  Summary
+
+      9C8000 .text

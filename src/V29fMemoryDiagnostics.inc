@@ -101,6 +101,64 @@ static bool DiagFPoolChanged(const DiagFPool& a,const DiagFPool& b) {
         a.firstRaw!=b.firstRaw || a.lastRaw!=b.lastRaw;
 }
 
+#if defined(DSF_V29S_VEHICLE_POOL_TRACE)
+// A change-only view of both suballocators in vehicle graphics pools 8-11.
+// These are raw allocator fields, not vehicle counts or READY flags. Keep the
+// last sample for every slot so a constant pool-wide count cannot hide reuse.
+struct DiagFVehicleSlot {
+    U32 raw14,raw1C,raw40,raw48;
+};
+static DiagFVehicleSlot g_diagFVehicleSlots[4][160]={};
+static U32 g_diagFVehicleArrays[4]={},g_diagFVehicleCounts[4]={};
+static bool g_diagFVehicleSeen[4]={};
+static volatile long g_diagFVehicleChanges=0,g_diagFVehicleSkipped=0;
+static const U32 kDiagFVehicleChangeLimit=30000u;
+static void DiagFVehiclePoolSample() {
+    const U32 tick=GetTickCount()-g_diagStartTick;
+    for(U32 index=8u;index<=11u;++index) {
+        const U32 row=index-8u;
+        const UPtr runtime=Address(kGraphicsManager)+0x0Cu+index*0x5Cu;
+        if(!Readable(runtime,8u))continue;
+        const U32 array=Read32(runtime),count=Read32(runtime+4u);
+        if(!array || !count || count>160u || !Readable(array,count*0x60u)) {
+            g_diagFVehicleSeen[row]=false;continue;
+        }
+        const bool fresh=!g_diagFVehicleSeen[row] ||
+            array!=g_diagFVehicleArrays[row] || count!=g_diagFVehicleCounts[row];
+        for(U32 slot=0u;slot<count;++slot) {
+            const UPtr at=array+slot*0x60u;
+            DiagFVehicleSlot current={Read32(at+0x14u),Read32(at+0x1Cu),
+                Read32(at+0x40u),Read32(at+0x48u)};
+            const DiagFVehicleSlot& old=g_diagFVehicleSlots[row][slot];
+            if(fresh || current.raw14!=old.raw14 || current.raw1C!=old.raw1C ||
+               current.raw40!=old.raw40 || current.raw48!=old.raw48) {
+                const U32 sequence=static_cast<U32>(InterlockedIncrement(&g_diagFVehicleChanges));
+                if(sequence<=kDiagFVehicleChangeLimit) {
+                    char line[300]={};char* p=line;const char* end=line+sizeof(line)-1;
+                    AppendText(p,"DSFV29s_VPOOL tick=",end);DiagFAppendU(p,tick,end);
+                    DiagFAppendKeyU(p," pool=",index,end);
+                    DiagFAppendKeyU(p," slot=",slot,end);
+                    DiagFAppendKeyU(p," fresh=",fresh?1u:0u,end);
+                    DiagFAppendKeyHex(p," array=",array,end);
+                    DiagFAppendKeyU(p," old14=",fresh?0xFFFFFFFFu:old.raw14,end);
+                    DiagFAppendKeyU(p," raw14=",current.raw14,end);
+                    DiagFAppendKeyU(p," old1C=",fresh?0xFFFFFFFFu:old.raw1C,end);
+                    DiagFAppendKeyU(p," raw1C=",current.raw1C,end);
+                    DiagFAppendKeyU(p," old40=",fresh?0xFFFFFFFFu:old.raw40,end);
+                    DiagFAppendKeyU(p," raw40=",current.raw40,end);
+                    DiagFAppendKeyU(p," old48=",fresh?0xFFFFFFFFu:old.raw48,end);
+                    DiagFAppendKeyU(p," raw48=",current.raw48,end);
+                    AppendText(p,"\n",end);*p=0;DiagPrint(line);
+                } else InterlockedIncrement(&g_diagFVehicleSkipped);
+            }
+            g_diagFVehicleSlots[row][slot]=current;
+        }
+        g_diagFVehicleArrays[row]=array;g_diagFVehicleCounts[row]=count;
+        g_diagFVehicleSeen[row]=true;
+    }
+}
+#endif
+
 static void DiagFLogVAMemory() {
     // VirtualQuery is read-only. This walk is bounded to keep the monitor from
     // stalling if the game's address space becomes extremely fragmented.

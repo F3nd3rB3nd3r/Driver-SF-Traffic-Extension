@@ -1,0 +1,3 @@
+# Archived handoff notes
+
+`NEXT_ACTION_full_2026-11-04.md` is the byte-for-byte 101 KB research handoff before consolidation (SHA256 `45133F3F0278449DA62F846B8E63998D3A0662DC9C7AE16DB85A25CACB338044`). It contains the complete dated experiment notes, addresses, prior log references and caveats. Its old "next steps" are historical. Use the root `START_HERE.md` and `NEXT_ACTION.md` for current instructions.

@@ -1,0 +1,92 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  006BDCA0: 53                 push        ebx
+  006BDCA1: 56                 push        esi
+  006BDCA2: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  006BDCA6: 8B 56 04           mov         edx,dword ptr [esi+4]
+  006BDCA9: 8B C2              mov         eax,edx
+  006BDCAB: C1 E8 1F           shr         eax,1Fh
+  006BDCAE: 33 DB              xor         ebx,ebx
+  006BDCB0: 57                 push        edi
+  006BDCB1: 8B 3E              mov         edi,dword ptr [esi]
+  006BDCB3: 83 F8 01           cmp         eax,1
+  006BDCB6: 75 04              jne         006BDCBC
+  006BDCB8: 85 DB              test        ebx,ebx
+  006BDCBA: 74 2C              je          006BDCE8
+  006BDCBC: 68 5F 41 4E 59     push        594E415Fh
+  006BDCC1: 52                 push        edx
+  006BDCC2: 57                 push        edi
+  006BDCC3: E8 A8 0A 4F 00     call        00BAE770
+  006BDCC8: 85 C0              test        eax,eax
+  006BDCCA: 75 0F              jne         006BDCDB
+  006BDCCC: 5F                 pop         edi
+  006BDCCD: 89 06              mov         dword ptr [esi],eax
+  006BDCCF: C7 46 04 FF FF FF  mov         dword ptr [esi+4],0FFFFFFFFh
+            FF
+  006BDCD6: 5E                 pop         esi
+  006BDCD7: 5B                 pop         ebx
+  006BDCD8: C2 04 00           ret         4
+  006BDCDB: 8B 00              mov         eax,dword ptr [eax]
+  006BDCDD: 8B 00              mov         eax,dword ptr [eax]
+  006BDCDF: 89 06              mov         dword ptr [esi],eax
+  006BDCE1: C7 46 04 FF FF FF  mov         dword ptr [esi+4],0FFFFFFFFh
+            FF
+  006BDCE8: 5F                 pop         edi
+  006BDCE9: 5E                 pop         esi
+  006BDCEA: 5B                 pop         ebx
+  006BDCEB: C2 04 00           ret         4
+  006BDCEE: CC                 int         3
+  006BDCEF: CC                 int         3
+  006BDCF0: 56                 push        esi
+  006BDCF1: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  006BDCF5: 57                 push        edi
+  006BDCF6: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  006BDCFA: 3B F7              cmp         esi,edi
+  006BDCFC: 74 23              je          006BDD21
+  006BDCFE: 53                 push        ebx
+  006BDCFF: 8B 5C 24 10        mov         ebx,dword ptr [esp+10h]
+  006BDD03: 85 F6              test        esi,esi
+  006BDD05: 74 0F              je          006BDD16
+  006BDD07: 68 4C 1A 00 00     push        1A4Ch
+  006BDD0C: 53                 push        ebx
+  006BDD0D: 56                 push        esi
+  006BDD0E: E8 0D AB 56 00     call        00C28820
+  006BDD13: 83 C4 0C           add         esp,0Ch
+  006BDD16: 81 C6 4C 1A 00 00  add         esi,1A4Ch
+  006BDD1C: 3B F7              cmp         esi,edi
+  006BDD1E: 75 E3              jne         006BDD03
+  006BDD20: 5B                 pop         ebx
+  006BDD21: 5F                 pop         edi
+  006BDD22: 5E                 pop         esi
+  006BDD23: C3                 ret
+  006BDD24: CC                 int         3
+  006BDD25: CC                 int         3
+  006BDD26: CC                 int         3
+  006BDD27: CC                 int         3
+  006BDD28: CC                 int         3
+  006BDD29: CC                 int         3
+  006BDD2A: CC                 int         3
+  006BDD2B: CC                 int         3
+  006BDD2C: CC                 int         3
+  006BDD2D: CC                 int         3
+  006BDD2E: CC                 int         3
+  006BDD2F: CC                 int         3
+  006BDD30: 51                 push        ecx
+  006BDD31: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  006BDD36: 85 C0              test        eax,eax
+  006BDD38: 75 0A              jne         006BDD44
+  006BDD3A: E8 51 C9 D4 FF     call        0040A690
+  006BDD3F: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  006BDD44: 8B 40 14           mov         eax,dword ptr [eax+14h]
+  006BDD47: 8B 80 F0 B1 46 00  mov         eax,dword ptr [eax+0046B1F0h]
+  006BDD4D: 3D
+  006BDD4E: FD                 std
+  006BDD4F: FE
+  006BDD50: B3
+
+  Summary
+
+      9C8000 .text

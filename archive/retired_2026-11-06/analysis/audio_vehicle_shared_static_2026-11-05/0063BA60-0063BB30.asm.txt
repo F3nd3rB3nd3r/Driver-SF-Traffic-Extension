@@ -1,0 +1,93 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0063BA60: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0063BA65: 85 C0              test        eax,eax
+  0063BA67: 75 0A              jne         0063BA73
+  0063BA69: E8 22 EC DC FF     call        0040A690
+  0063BA6E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0063BA73: 8B 88 7C 02 00 00  mov         ecx,dword ptr [eax+0000027Ch]
+  0063BA79: E8 62 B5 F0 FF     call        00546FE0
+  0063BA7E: 33 C0              xor         eax,eax
+  0063BA80: C3                 ret
+  0063BA81: CC                 int         3
+  0063BA82: CC                 int         3
+  0063BA83: CC                 int         3
+  0063BA84: CC                 int         3
+  0063BA85: CC                 int         3
+  0063BA86: CC                 int         3
+  0063BA87: CC                 int         3
+  0063BA88: CC                 int         3
+  0063BA89: CC                 int         3
+  0063BA8A: CC                 int         3
+  0063BA8B: CC                 int         3
+  0063BA8C: CC                 int         3
+  0063BA8D: CC                 int         3
+  0063BA8E: CC                 int         3
+  0063BA8F: CC                 int         3
+  0063BA90: 51                 push        ecx
+  0063BA91: 56                 push        esi
+  0063BA92: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  0063BA96: 57                 push        edi
+  0063BA97: 6A 02              push        2
+  0063BA99: 56                 push        esi
+  0063BA9A: C6 44 24 10 01     mov         byte ptr [esp+10h],1
+  0063BA9F: E8 6C D9 FA FF     call        005E9410
+  0063BAA4: 83 C4 08           add         esp,8
+  0063BAA7: 83 F8 01           cmp         eax,1
+  0063BAAA: 75 14              jne         0063BAC0
+  0063BAAC: 6A 02              push        2
+  0063BAAE: 56                 push        esi
+  0063BAAF: E8 2C DA FA FF     call        005E94E0
+  0063BAB4: 83 C4 08           add         esp,8
+  0063BAB7: 85 C0              test        eax,eax
+  0063BAB9: 0F 95 C0           setne       al
+  0063BABC: 88 44 24 08        mov         byte ptr [esp+8],al
+  0063BAC0: 6A 01              push        1
+  0063BAC2: 56                 push        esi
+  0063BAC3: 33 FF              xor         edi,edi
+  0063BAC5: E8 B6 D9 FA FF     call        005E9480
+  0063BACA: 83 C4 08           add         esp,8
+  0063BACD: 85 C0              test        eax,eax
+  0063BACF: 74 35              je          0063BB06
+  0063BAD1: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0063BAD6: 85 C0              test        eax,eax
+  0063BAD8: 75 0A              jne         0063BAE4
+  0063BADA: E8 B1 EB DC FF     call        0040A690
+  0063BADF: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0063BAE4: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  0063BAE8: 8B B8 28 07 00 00  mov         edi,dword ptr [eax+00000728h]
+  0063BAEE: 51                 push        ecx
+  0063BAEF: 6A 00              push        0
+  0063BAF1: 6A 01              push        1
+  0063BAF3: 56                 push        esi
+  0063BAF4: E8 27 72 FB FF     call        005F2D20
+  0063BAF9: 83 C4 0C           add         esp,0Ch
+  0063BAFC: 50                 push        eax
+  0063BAFD: 8B CF              mov         ecx,edi
+  0063BAFF: E8 DC 26 0F 00     call        0072E1E0
+  0063BB04: 8B F8              mov         edi,eax
+  0063BB06: 89 7C 24 08        mov         dword ptr [esp+8],edi
+  0063BB0A: DB 44 24 08        fild        dword ptr [esp+8]
+  0063BB0E: 85 FF              test        edi,edi
+  0063BB10: 7D 06              jge         0063BB18
+  0063BB12: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  0063BB18: 51                 push        ecx
+  0063BB19: D9 1C 24           fstp        dword ptr [esp]
+  0063BB1C: 56                 push        esi
+  0063BB1D: E8 FE DA FA FF     call        005E9620
+  0063BB22: 83 C4 08           add         esp,8
+  0063BB25: 5F                 pop         edi
+  0063BB26: B8 01 00 00 00     mov         eax,1
+  0063BB2B: 5E                 pop         esi
+  0063BB2C: 59                 pop         ecx
+  0063BB2D: C3                 ret
+  0063BB2E: CC                 int         3
+  0063BB2F: CC                 int         3
+  0063BB30: 51                 push        ecx
+
+  Summary
+
+      9C8000 .text

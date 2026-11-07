@@ -25,7 +25,28 @@ static U32 DiagLength(const char* s) {
     while (n<2048u && s[n]) ++n;
     return n;
 }
+#if defined(DSF_V29S_HASH_HEAD_TRACE)
+static bool DiagHasPrefix(const char* s,const char* prefix) {
+    while(*prefix) {if(*s++!=*prefix++)return false;}
+    return true;
+}
+static bool DiagHashKeepLine(const char* s) {
+    const char* const keep[]={
+        "DSFV29c_START", "DSFV29f_START", "DSFV29n_START",
+        "DSFV29s_REQ_START", "DSFV29s_MODEL_POOL",
+        "DSFV29s_RESOURCE_COLLECTION", "DSFV29s_HANDLE_",
+        "DSFV29s_LIFE_", "DSFV29s_NEXT_BAD_WRITE",
+        "DSFV29s_HASH_HEAD_", "DSFV29s_AUDIO_"
+    };
+    for(U32 i=0u;i<sizeof(keep)/sizeof(keep[0]);++i)
+        if(DiagHasPrefix(s,keep[i]))return true;
+    return false;
+}
+#endif
 static void DiagPrint(const char* s) {
+#if defined(DSF_V29S_HASH_HEAD_TRACE)
+    if(!DiagHashKeepLine(s))return;
+#endif
     OutputDebugStringA(s);
     if (g_diagFile && reinterpret_cast<UPtr>(g_diagFile)!=0xFFFFFFFFu) {
         U32 written=0;

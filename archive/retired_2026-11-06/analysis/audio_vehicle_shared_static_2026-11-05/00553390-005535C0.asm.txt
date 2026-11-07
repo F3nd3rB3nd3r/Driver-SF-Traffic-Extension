@@ -1,0 +1,182 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00553390: 51                 push        ecx
+  00553391: 53                 push        ebx
+  00553392: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  00553396: 56                 push        esi
+  00553397: 8B F1              mov         esi,ecx
+  00553399: 8B 8E 90 02 00 00  mov         ecx,dword ptr [esi+00000290h]
+  0055339F: 83 FB 03           cmp         ebx,3
+  005533A2: 0F 84 F4 01 00 00  je          0055359C
+  005533A8: 85 C9              test        ecx,ecx
+  005533AA: 74 22              je          005533CE
+  005533AC: 8B 46 10           mov         eax,dword ptr [esi+10h]
+  005533AF: 3B 01              cmp         eax,dword ptr [ecx]
+  005533B1: 74 1B              je          005533CE
+  005533B3: 6A 01              push        1
+  005533B5: C7 86 8C 02 00 00  mov         dword ptr [esi+0000028Ch],0
+            00 00 00 00
+  005533BF: E8 9C 6B FF FF     call        00549F60
+  005533C4: C7 86 90 02 00 00  mov         dword ptr [esi+00000290h],0
+            00 00 00 00
+  005533CE: 83 BE 8C 02 00 00  cmp         dword ptr [esi+0000028Ch],0
+            00
+  005533D5: 75 3C              jne         00553413
+  005533D7: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005533DC: 85 C0              test        eax,eax
+  005533DE: 75 0A              jne         005533EA
+  005533E0: E8 AB 72 EB FF     call        0040A690
+  005533E5: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005533EA: 8B 56 10           mov         edx,dword ptr [esi+10h]
+  005533ED: 8B 88 A4 01 00 00  mov         ecx,dword ptr [eax+000001A4h]
+  005533F3: 52                 push        edx
+  005533F4: E8 47 C3 F3 FF     call        0048F740
+  005533F9: 85 C0              test        eax,eax
+  005533FB: 74 09              je          00553406
+  005533FD: 8B 40 04           mov         eax,dword ptr [eax+4]
+  00553400: 89 86 8C 02 00 00  mov         dword ptr [esi+0000028Ch],eax
+  00553406: 83 BE 8C 02 00 00  cmp         dword ptr [esi+0000028Ch],0
+            00
+  0055340D: 0F 84 94 00 00 00  je          005534A7
+  00553413: 83 BE 90 02 00 00  cmp         dword ptr [esi+00000290h],0
+            00
+  0055341A: 0F 85 87 00 00 00  jne         005534A7
+  00553420: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00553425: 85 C0              test        eax,eax
+  00553427: 75 0A              jne         00553433
+  00553429: E8 62 72 EB FF     call        0040A690
+  0055342E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00553433: 8B 88 94 02 00 00  mov         ecx,dword ptr [eax+00000294h]
+  00553439: 85 DB              test        ebx,ebx
+  0055343B: 0F 94 C2           sete        dl
+  0055343E: 0F B6 C2           movzx       eax,dl
+  00553441: 50                 push        eax
+  00553442: E8 49 72 FF FF     call        0054A690
+  00553447: 89 86 90 02 00 00  mov         dword ptr [esi+00000290h],eax
+  0055344D: 85 C0              test        eax,eax
+  0055344F: 74 56              je          005534A7
+  00553451: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  00553454: 8B 96 8C 02 00 00  mov         edx,dword ptr [esi+0000028Ch]
+  0055345A: 56                 push        esi
+  0055345B: 51                 push        ecx
+  0055345C: 52                 push        edx
+  0055345D: 8B C8              mov         ecx,eax
+  0055345F: E8 9C 43 FF FF     call        00547800
+  00553464: D9 E8              fld1
+  00553466: 8B 86 B4 00 00 00  mov         eax,dword ptr [esi+000000B4h]
+  0055346C: 8B 80 B4 05 00 00  mov         eax,dword ptr [eax+000005B4h]
+  00553472: 8B 90 18 2D 00 00  mov         edx,dword ptr [eax+00002D18h]
+  00553478: 8B 88 10 2D 00 00  mov         ecx,dword ptr [eax+00002D10h]
+  0055347E: 83 EC 0C           sub         esp,0Ch
+  00553481: D9 5C 24 08        fstp        dword ptr [esp+8]
+  00553485: 89 54 24 1C        mov         dword ptr [esp+1Ch],edx
+  00553489: D9 44 24 1C        fld         dword ptr [esp+1Ch]
+  0055348D: 89 4C 24 14        mov         dword ptr [esp+14h],ecx
+  00553491: 8B 8E 90 02 00 00  mov         ecx,dword ptr [esi+00000290h]
+  00553497: D9 5C 24 04        fstp        dword ptr [esp+4]
+  0055349B: D9 44 24 14        fld         dword ptr [esp+14h]
+  0055349F: D9 1C 24           fstp        dword ptr [esp]
+  005534A2: E8 79 4D FF FF     call        00548220
+  005534A7: 8B 8E 90 02 00 00  mov         ecx,dword ptr [esi+00000290h]
+  005534AD: 85 C9              test        ecx,ecx
+  005534AF: 0F 84 FC 00 00 00  je          005535B1
+  005534B5: 85 DB              test        ebx,ebx
+  005534B7: 0F 85 D0 00 00 00  jne         0055358D
+  005534BD: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005534C2: 85 C0              test        eax,eax
+  005534C4: 75 0A              jne         005534D0
+  005534C6: E8 C5 71 EB FF     call        0040A690
+  005534CB: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005534D0: 8B 88 44 07 00 00  mov         ecx,dword ptr [eax+00000744h]
+  005534D6: 83 39 01           cmp         dword ptr [ecx],1
+  005534D9: 7E 7F              jle         0055355A
+  005534DB: 8B 80 64 02 00 00  mov         eax,dword ptr [eax+00000264h]
+  005534E1: 56                 push        esi
+  005534E2: 8D 4C 24 14        lea         ecx,[esp+14h]
+  005534E6: 51                 push        ecx
+  005534E7: 8B C8              mov         ecx,eax
+  005534E9: E8 62 20 00 00     call        00555550
+  005534EE: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005534F3: 85 C0              test        eax,eax
+  005534F5: 75 0A              jne         00553501
+  005534F7: E8 94 71 EB FF     call        0040A690
+  005534FC: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00553501: 8B 80 84 06 00 00  mov         eax,dword ptr [eax+00000684h]
+  00553507: 6A 00              push        0
+  00553509: 8D 54 24 0C        lea         edx,[esp+0Ch]
+  0055350D: 52                 push        edx
+  0055350E: 8B C8              mov         ecx,eax
+  00553510: E8 3B 41 25 00     call        007A7650
+  00553515: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  00553519: 3B 08              cmp         ecx,dword ptr [eax]
+  0055351B: 8B 8E 90 02 00 00  mov         ecx,dword ptr [esi+00000290h]
+  00553521: 75 28              jne         0055354B
+  00553523: 6A 00              push        0
+  00553525: E8 46 79 FF FF     call        0054AE70
+  0055352A: 8D 54 24 08        lea         edx,[esp+8]
+  0055352E: 68 A5 00 00 00     push        0A5h
+  00553533: 52                 push        edx
+  00553534: E8 D7 E3 F7 FF     call        004D1910
+  00553539: 8B 08              mov         ecx,dword ptr [eax]
+  0055353B: 83 C4 08           add         esp,8
+  0055353E: E8 7D 67 FF FF     call        00549CC0
+  00553543: 5E                 pop         esi
+  00553544: B0 01              mov         al,1
+  00553546: 5B                 pop         ebx
+  00553547: 59                 pop         ecx
+  00553548: C2 04 00           ret         4
+  0055354B: 6A 01              push        1
+  0055354D: E8 1E 79 FF FF     call        0054AE70
+  00553552: 5E                 pop         esi
+  00553553: B0 01              mov         al,1
+  00553555: 5B                 pop         ebx
+  00553556: 59                 pop         ecx
+  00553557: C2 04 00           ret         4
+  0055355A: 8B 8E 90 02 00 00  mov         ecx,dword ptr [esi+00000290h]
+  00553560: 6A 00              push        0
+  00553562: E8 09 79 FF FF     call        0054AE70
+  00553567: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0055356C: 85 C0              test        eax,eax
+  0055356E: 75 0A              jne         0055357A
+  00553570: E8 1B 71 EB FF     call        0040A690
+  00553575: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0055357A: 8B 88 94 02 00 00  mov         ecx,dword ptr [eax+00000294h]
+  00553580: E8 3B 67 FF FF     call        00549CC0
+  00553585: 5E                 pop         esi
+  00553586: B0 01              mov         al,1
+  00553588: 5B                 pop         ebx
+  00553589: 59                 pop         ecx
+  0055358A: C2 04 00           ret         4
+  0055358D: 6A FF              push        0FFFFFFFFh
+  0055358F: E8 DC 78 FF FF     call        0054AE70
+  00553594: 5E                 pop         esi
+  00553595: B0 01              mov         al,1
+  00553597: 5B                 pop         ebx
+  00553598: 59                 pop         ecx
+  00553599: C2 04 00           ret         4
+  0055359C: 85 C9              test        ecx,ecx
+  0055359E: 74 11              je          005535B1
+  005535A0: 6A 00              push        0
+  005535A2: E8 B9 69 FF FF     call        00549F60
+  005535A7: C7 86 90 02 00 00  mov         dword ptr [esi+00000290h],0
+            00 00 00 00
+  005535B1: 5E                 pop         esi
+  005535B2: 32 C0              xor         al,al
+  005535B4: 5B                 pop         ebx
+  005535B5: 59                 pop         ecx
+  005535B6: C2 04 00           ret         4
+  005535B9: CC                 int         3
+  005535BA: CC                 int         3
+  005535BB: CC                 int         3
+  005535BC: CC                 int         3
+  005535BD: CC                 int         3
+  005535BE: CC                 int         3
+  005535BF: CC                 int         3
+  005535C0: 81
+
+  Summary
+
+      9C8000 .text

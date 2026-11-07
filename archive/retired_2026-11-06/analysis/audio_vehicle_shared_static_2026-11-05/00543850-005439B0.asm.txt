@@ -1,0 +1,140 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00543850: 78 DD              js          0054382F
+  00543852: F2 00 7F 34        xacquire add byte ptr [edi+34h],bh
+  00543856: 80 7D 19 00        cmp         byte ptr [ebp+19h],0
+  0054385A: 75 2E              jne         0054388A
+  0054385C: 80 7F 0C 00        cmp         byte ptr [edi+0Ch],0
+  00543860: 75 28              jne         0054388A
+  00543862: 8D 54 24 10        lea         edx,[esp+10h]
+  00543866: 52                 push        edx
+  00543867: 8B CE              mov         ecx,esi
+  00543869: E8 22 72 27 00     call        007BAA90
+  0054386E: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00543872: 3B 05 78 DD F2 00  cmp         eax,dword ptr ds:[00F2DD78h]
+  00543878: 7F 12              jg          0054388C
+  0054387A: 80 7D 19 00        cmp         byte ptr [ebp+19h],0
+  0054387E: 75 0C              jne         0054388C
+  00543880: 80 7F 0C 00        cmp         byte ptr [edi+0Ch],0
+  00543884: 75 06              jne         0054388C
+  00543886: 32 DB              xor         bl,bl
+  00543888: EB 02              jmp         0054388C
+  0054388A: B3 01              mov         bl,1
+  0054388C: 5F                 pop         edi
+  0054388D: 5E                 pop         esi
+  0054388E: 38 5D 18           cmp         byte ptr [ebp+18h],bl
+  00543891: 74 4F              je          005438E2
+  00543893: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00543898: 84 DB              test        bl,bl
+  0054389A: 74 26              je          005438C2
+  0054389C: 85 C0              test        eax,eax
+  0054389E: 75 0A              jne         005438AA
+  005438A0: E8 EB 6D EC FF     call        0040A690
+  005438A5: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005438AA: 8B 40 54           mov         eax,dword ptr [eax+54h]
+  005438AD: 68 B5 1E B7 48     push        48B71EB5h
+  005438B2: 8B C8              mov         ecx,eax
+  005438B4: E8 17 AB 30 00     call        0084E3D0
+  005438B9: 88 5D 18           mov         byte ptr [ebp+18h],bl
+  005438BC: 5D                 pop         ebp
+  005438BD: 8A C3              mov         al,bl
+  005438BF: 5B                 pop         ebx
+  005438C0: 59                 pop         ecx
+  005438C1: C3                 ret
+  005438C2: 85 C0              test        eax,eax
+  005438C4: 75 0A              jne         005438D0
+  005438C6: E8 C5 6D EC FF     call        0040A690
+  005438CB: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005438D0: 8B 40 54           mov         eax,dword ptr [eax+54h]
+  005438D3: 68 DC E1 94 10     push        1094E1DCh
+  005438D8: 8B C8              mov         ecx,eax
+  005438DA: E8 F1 AA 30 00     call        0084E3D0
+  005438DF: 88 5D 18           mov         byte ptr [ebp+18h],bl
+  005438E2: 5D                 pop         ebp
+  005438E3: 8A C3              mov         al,bl
+  005438E5: 5B                 pop         ebx
+  005438E6: 59                 pop         ecx
+  005438E7: C3                 ret
+  005438E8: CC                 int         3
+  005438E9: CC                 int         3
+  005438EA: CC                 int         3
+  005438EB: CC                 int         3
+  005438EC: CC                 int         3
+  005438ED: CC                 int         3
+  005438EE: CC                 int         3
+  005438EF: CC                 int         3
+  005438F0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  005438F4: 56                 push        esi
+  005438F5: 50                 push        eax
+  005438F6: E8 75 ED 70 00     call        00C52670
+  005438FB: 8B F0              mov         esi,eax
+  005438FD: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00543902: 83 C4 04           add         esp,4
+  00543905: 85 C0              test        eax,eax
+  00543907: 75 0A              jne         00543913
+  00543909: E8 82 6D EC FF     call        0040A690
+  0054390E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00543913: 8B 48 54           mov         ecx,dword ptr [eax+54h]
+  00543916: 56                 push        esi
+  00543917: E8 D4 AA 30 00     call        0084E3F0
+  0054391C: 5E                 pop         esi
+  0054391D: C2 04 00           ret         4
+  00543920: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00543925: 56                 push        esi
+  00543926: 8B F1              mov         esi,ecx
+  00543928: 85 C0              test        eax,eax
+  0054392A: 75 0A              jne         00543936
+  0054392C: E8 5F 6D EC FF     call        0040A690
+  00543931: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00543936: 8B 48 54           mov         ecx,dword ptr [eax+54h]
+  00543939: 80 79 36 00        cmp         byte ptr [ecx+36h],0
+  0054393D: 75 3C              jne         0054397B
+  0054393F: 80 7E 01 00        cmp         byte ptr [esi+1],0
+  00543943: 75 11              jne         00543956
+  00543945: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00543949: 50                 push        eax
+  0054394A: E8 B1 AA 30 00     call        0084E400
+  0054394F: B8 02 00 00 00     mov         eax,2
+  00543954: EB 0F              jmp         00543965
+  00543956: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0054395A: 52                 push        edx
+  0054395B: E8 D0 AA 30 00     call        0084E430
+  00543960: B8 03 00 00 00     mov         eax,3
+  00543965: 8D 4E 60           lea         ecx,[esi+60h]
+  00543968: 51                 push        ecx
+  00543969: 50                 push        eax
+  0054396A: 8B CE              mov         ecx,esi
+  0054396C: E8 9F F7 FF FF     call        00543110
+  00543971: 80 7E 01 00        cmp         byte ptr [esi+1],0
+  00543975: 0F 94 C2           sete        dl
+  00543978: 88 56 01           mov         byte ptr [esi+1],dl
+  0054397B: 5E                 pop         esi
+  0054397C: C2 04 00           ret         4
+  0054397F: CC                 int         3
+  00543980: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00543985: 53                 push        ebx
+  00543986: 55                 push        ebp
+  00543987: 56                 push        esi
+  00543988: 33 DB              xor         ebx,ebx
+  0054398A: 57                 push        edi
+  0054398B: 8B F9              mov         edi,ecx
+  0054398D: 3B C3              cmp         eax,ebx
+  0054398F: 75 0A              jne         0054399B
+  00543991: E8 FA 6C EC FF     call        0040A690
+  00543996: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0054399B: 8B 48 54           mov         ecx,dword ptr [eax+54h]
+  0054399E: 53                 push        ebx
+  0054399F: 53                 push        ebx
+  005439A0: E8 0B AA 30 00     call        0084E3B0
+  005439A5: 89 5F 34           mov         dword ptr [edi+34h],ebx
+  005439A8: 88 5F 03           mov         byte ptr [edi+3],bl
+  005439AB: 39 5F 38           cmp         dword ptr [edi+38h],ebx
+  005439AE: 74 22              je          005439D2
+  005439B0: A1
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,50 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A2110: 08 00              or          byte ptr [eax],al
+  005A2112: 80 7C 24 1C 00     cmp         byte ptr [esp+1Ch],0
+  005A2117: 8B 13              mov         edx,dword ptr [ebx]
+  005A2119: 8B CB              mov         ecx,ebx
+  005A211B: 75 05              jne         005A2122
+  005A211D: 8B 42 34           mov         eax,dword ptr [edx+34h]
+  005A2120: EB 03              jmp         005A2125
+  005A2122: 8B 42 10           mov         eax,dword ptr [edx+10h]
+  005A2125: FF D0              call        eax
+  005A2127: 8B 13              mov         edx,dword ptr [ebx]
+  005A2129: 8B 42 24           mov         eax,dword ptr [edx+24h]
+  005A212C: 57                 push        edi
+  005A212D: 8B CB              mov         ecx,ebx
+  005A212F: FF D0              call        eax
+  005A2131: 84 C0              test        al,al
+  005A2133: 74 76              je          005A21AB
+  005A2135: 8B 7C 24 1C        mov         edi,dword ptr [esp+1Ch]
+  005A2139: 57                 push        edi
+  005A213A: 8B CE              mov         ecx,esi
+  005A213C: E8 8F EA FF FF     call        005A0BD0
+  005A2141: 69 C0 04 01 00 00  imul        eax,eax,104h
+  005A2147: 8B 8C 30 34 58 00  mov         ecx,dword ptr [eax+esi+00005834h]
+            00
+  005A214E: 8D 84 30 34 57 00  lea         eax,[eax+esi+00005734h]
+            00
+  005A2155: 8D 0C 88           lea         ecx,[eax+ecx*4]
+  005A2158: 85 C9              test        ecx,ecx
+  005A215A: 74 02              je          005A215E
+  005A215C: 89 19              mov         dword ptr [ecx],ebx
+  005A215E: FF 80 00 01 00 00  inc         dword ptr [eax+00000100h]
+  005A2164: 8D 54 24 1C        lea         edx,[esp+1Ch]
+  005A2168: 52                 push        edx
+  005A2169: 8B CD              mov         ecx,ebp
+  005A216B: E8 E0 04 00 00     call        005A2650
+  005A2170: 0F B7 C7           movzx       eax,di
+  005A2173: 8D 4C 24 20        lea         ecx,[esp+20h]
+  005A2177: 51                 push        ecx
+  005A2178: 8D 8E 8C 66 00 00  lea         ecx,[esi+0000668Ch]
+  005A217E: 89
+  005A217F: 44                 inc         esp
+  005A2180: 24
+
+  Summary
+
+      9C8000 .text

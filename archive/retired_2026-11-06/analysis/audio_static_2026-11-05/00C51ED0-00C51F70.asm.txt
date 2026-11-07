@@ -1,0 +1,71 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C51ED0: 53                 push        ebx
+  00C51ED1: 8B 5C 24 08        mov         ebx,dword ptr [esp+8]
+  00C51ED5: 56                 push        esi
+  00C51ED6: F6 C3 0F           test        bl,0Fh
+  00C51ED9: 75 0D              jne         00C51EE8
+  00C51EDB: 85 DB              test        ebx,ebx
+  00C51EDD: 74 09              je          00C51EE8
+  00C51EDF: 8B 74 24 10        mov         esi,dword ptr [esp+10h]
+  00C51EE3: 83 FE 18           cmp         esi,18h
+  00C51EE6: 73 08              jae         00C51EF0
+  00C51EE8: 5E                 pop         esi
+  00C51EE9: B8 1F 00 00 00     mov         eax,1Fh
+  00C51EEE: 5B                 pop         ebx
+  00C51EEF: C3                 ret
+  00C51EF0: 56                 push        esi
+  00C51EF1: 53                 push        ebx
+  00C51EF2: E8 59 EF 00 00     call        00C60E50
+  00C51EF7: 8B 54 24 20        mov         edx,dword ptr [esp+20h]
+  00C51EFB: 56                 push        esi
+  00C51EFC: 8B C8              mov         ecx,eax
+  00C51EFE: 8B 44 24 28        mov         eax,dword ptr [esp+28h]
+  00C51F02: 53                 push        ebx
+  00C51F03: 6A FF              push        0FFFFFFFFh
+  00C51F05: 89 08              mov         dword ptr [eax],ecx
+  00C51F07: 8B 44 24 28        mov         eax,dword ptr [esp+28h]
+  00C51F0B: 52                 push        edx
+  00C51F0C: 50                 push        eax
+  00C51F0D: 6A 01              push        1
+  00C51F0F: 33 C0              xor         eax,eax
+  00C51F11: E8 0A FC FF FF     call        00C51B20
+  00C51F16: 83 C4 20           add         esp,20h
+  00C51F19: 5E                 pop         esi
+  00C51F1A: 5B                 pop         ebx
+  00C51F1B: C3                 ret
+  00C51F1C: CC                 int         3
+  00C51F1D: CC                 int         3
+  00C51F1E: CC                 int         3
+  00C51F1F: CC                 int         3
+  00C51F20: 83 EC 34           sub         esp,34h
+  00C51F23: 56                 push        esi
+  00C51F24: 57                 push        edi
+  00C51F25: 6A 00              push        0
+  00C51F27: 6A 00              push        0
+  00C51F29: 6A 00              push        0
+  00C51F2B: 6A 00              push        0
+  00C51F2D: FF 15 34 91 DC 00  call        dword ptr ds:[00DC9134h]
+  00C51F33: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00C51F37: 85 C0              test        eax,eax
+  00C51F39: 0F 84 81 00 00 00  je          00C51FC0
+  00C51F3F: 8B 4C 24 40        mov         ecx,dword ptr [esp+40h]
+  00C51F43: 89 4C 24 28        mov         dword ptr [esp+28h],ecx
+  00C51F47: 83 EC 24           sub         esp,24h
+  00C51F4A: 8D 54 24 2C        lea         edx,[esp+2Ch]
+  00C51F4E: 8B FC              mov         edi,esp
+  00C51F50: 89 54 24 44        mov         dword ptr [esp+44h],edx
+  00C51F54: B9 09 00 00 00     mov         ecx,9
+  00C51F59: 8D 74 24 3C        lea         esi,[esp+3Ch]
+  00C51F5D: 8D 44 24 38        lea         eax,[esp+38h]
+  00C51F61: C7 44 24 3C 01 00  mov         dword ptr [esp+3Ch],1
+            00 00
+  00C51F69: C7 44 24 50 FF FF  mov         dword ptr [esp+50h],0FFFFFFFFh
+            FF FF
+
+  Summary
+
+      9C8000 .text

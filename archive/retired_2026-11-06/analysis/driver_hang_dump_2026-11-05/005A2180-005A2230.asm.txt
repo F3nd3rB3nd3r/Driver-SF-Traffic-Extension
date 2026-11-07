@@ -1,0 +1,83 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A2180: 24 24              and         al,24h
+  005A2182: E8 19 05 00 00     call        005A26A0
+  005A2187: 8B 96 00 73 00 00  mov         edx,dword ptr [esi+00007300h]
+  005A218D: A1 98 B4 22 01     mov         eax,dword ptr ds:[0122B498h]
+  005A2192: 6A 00              push        0
+  005A2194: 57                 push        edi
+  005A2195: 52                 push        edx
+  005A2196: 50                 push        eax
+  005A2197: E8 24 B0 0C 00     call        0066D1C0
+  005A219C: 83 C4 10           add         esp,10h
+  005A219F: 5F                 pop         edi
+  005A21A0: 5B                 pop         ebx
+  005A21A1: 5E                 pop         esi
+  005A21A2: 33 C0              xor         eax,eax
+  005A21A4: 5D                 pop         ebp
+  005A21A5: 83 C4 08           add         esp,8
+  005A21A8: C2 08 00           ret         8
+  005A21AB: 8D 4C 24 1C        lea         ecx,[esp+1Ch]
+  005A21AF: 51                 push        ecx
+  005A21B0: 8B CD              mov         ecx,ebp
+  005A21B2: E8 89 05 00 00     call        005A2740
+  005A21B7: 8B 38              mov         edi,dword ptr [eax]
+  005A21B9: 8D 54 24 1C        lea         edx,[esp+1Ch]
+  005A21BD: 52                 push        edx
+  005A21BE: 8D 8E 5C 5F 00 00  lea         ecx,[esi+00005F5Ch]
+  005A21C4: E8 77 05 00 00     call        005A2740
+  005A21C9: 89 38              mov         dword ptr [eax],edi
+  005A21CB: 5F                 pop         edi
+  005A21CC: 5B                 pop         ebx
+  005A21CD: 5E                 pop         esi
+  005A21CE: B8 01 00 00 00     mov         eax,1
+  005A21D3: 5D                 pop         ebp
+  005A21D4: 83 C4 08           add         esp,8
+  005A21D7: C2 08 00           ret         8
+  005A21DA: CC                 int         3
+  005A21DB: CC                 int         3
+  005A21DC: CC                 int         3
+  005A21DD: CC                 int         3
+  005A21DE: CC                 int         3
+  005A21DF: CC                 int         3
+  005A21E0: 57                 push        edi
+  005A21E1: 8B F9              mov         edi,ecx
+  005A21E3: 83 BF 4C 5B 00 00  cmp         dword ptr [edi+00005B4Ch],0
+            00
+  005A21EA: 74 41              je          005A222D
+  005A21EC: 53                 push        ebx
+  005A21ED: 56                 push        esi
+  005A21EE: 8B B7 54 5F 00 00  mov         esi,dword ptr [edi+00005F54h]
+  005A21F4: 8D 9F 50 5F 00 00  lea         ebx,[edi+00005F50h]
+  005A21FA: 3B F3              cmp         esi,ebx
+  005A21FC: 74 2D              je          005A222B
+  005A21FE: 8B FF              mov         edi,edi
+  005A2200: 8B 8F EC 72 00 00  mov         ecx,dword ptr [edi+000072ECh]
+  005A2206: 85 C9              test        ecx,ecx
+  005A2208: 74 0C              je          005A2216
+  005A220A: 0F B7 56 08        movzx       edx,word ptr [esi+8]
+  005A220E: 8B 01              mov         eax,dword ptr [ecx]
+  005A2210: 8B 40 0C           mov         eax,dword ptr [eax+0Ch]
+  005A2213: 52                 push        edx
+  005A2214: FF D0              call        eax
+  005A2216: 0F B7 4E 08        movzx       ecx,word ptr [esi+8]
+  005A221A: 6A 01              push        1
+  005A221C: 51                 push        ecx
+  005A221D: 8B CF              mov         ecx,edi
+  005A221F: E8 9C FE FF FF     call        005A20C0
+  005A2224: 8B 76 04           mov         esi,dword ptr [esi+4]
+  005A2227: 3B F3              cmp         esi,ebx
+  005A2229: 75 D5              jne         005A2200
+  005A222B: 5E                 pop         esi
+  005A222C: 5B                 pop         ebx
+  005A222D: 5F                 pop         edi
+  005A222E: C3                 ret
+  005A222F: CC                 int         3
+  005A2230: 83
+
+  Summary
+
+      9C8000 .text

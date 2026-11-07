@@ -1,0 +1,38 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00599900: 56                 push        esi
+  00599901: 8B F1              mov         esi,ecx
+  00599903: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00599906: 83 F8 03           cmp         eax,3
+  00599909: 77 32              ja          0059993D
+  0059990B: FF 24 85 58 99 59  jmp         dword ptr [eax*4+00599958h]
+            00
+  00599912: B0 01              mov         al,1
+  00599914: 5E                 pop         esi
+  00599915: C3                 ret
+  00599916: 8B 0E              mov         ecx,dword ptr [esi]
+  00599918: 8B 01              mov         eax,dword ptr [ecx]
+  0059991A: 8B 50 24           mov         edx,dword ptr [eax+24h]
+  0059991D: FF D2              call        edx
+  0059991F: 84 C0              test        al,al
+  00599921: 74 1A              je          0059993D
+  00599923: 80 7E 19 00        cmp         byte ptr [esi+19h],0
+  00599927: 74 18              je          00599941
+  00599929: 8B 0E              mov         ecx,dword ptr [esi]
+  0059992B: 8B 01              mov         eax,dword ptr [ecx]
+  0059992D: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00599930: FF D2              call        edx
+  00599932: C6 46 19 00        mov         byte ptr [esi+19h],0
+  00599936: C7 46 04 03 00 00  mov         dword ptr [esi+4],3
+            00
+  0059993D: 32 C0              xor         al,al
+  0059993F: 5E                 pop         esi
+  00599940: C3                 ret
+  00599941: 8B
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,269 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C5EFE0: 9C                 pushfd
+  00C5EFE1: E6 FF              out         0FFh,al
+  00C5EFE3: FF 0F              dec         dword ptr [edi]
+  00C5EFE5: 57                 push        edi
+  00C5EFE6: C0 8D 83 E0 01 00  ror         byte ptr [ebp+0001E083h],0
+            00
+  00C5EFED: B9 06 00 00 00     mov         ecx,6
+  00C5EFF2: 0F 29 80 70 FE FF  movaps      xmmword ptr [eax+FFFFFE70h],xmm0
+            FF
+  00C5EFF9: 0F 29 80 80 FE FF  movaps      xmmword ptr [eax+FFFFFE80h],xmm0
+            FF
+  00C5F000: 0F 29 40 F0        movaps      xmmword ptr [eax-10h],xmm0
+  00C5F004: 0F 29 00           movaps      xmmword ptr [eax],xmm0
+  00C5F007: 83 C0 40           add         eax,40h
+  00C5F00A: 83 E9 01           sub         ecx,1
+  00C5F00D: 75 E3              jne         00C5EFF2
+  00C5F00F: 8A 44 24 19        mov         al,byte ptr [esp+19h]
+  00C5F013: 5F                 pop         edi
+  00C5F014: 5E                 pop         esi
+  00C5F015: 5B                 pop         ebx
+  00C5F016: 8B E5              mov         esp,ebp
+  00C5F018: 5D                 pop         ebp
+  00C5F019: C2 04 00           ret         4
+  00C5F01C: 8B CE              mov         ecx,esi
+  00C5F01E: E8 DD E2 FF FF     call        00C5D300
+  00C5F023: C6 44 24 19 00     mov         byte ptr [esp+19h],0
+  00C5F028: 8A 44 24 19        mov         al,byte ptr [esp+19h]
+  00C5F02C: 5F                 pop         edi
+  00C5F02D: 5E                 pop         esi
+  00C5F02E: 5B                 pop         ebx
+  00C5F02F: 8B E5              mov         esp,ebp
+  00C5F031: 5D                 pop         ebp
+  00C5F032: C2 04 00           ret         4
+  00C5F035: CC                 int         3
+  00C5F036: CC                 int         3
+  00C5F037: CC                 int         3
+  00C5F038: CC                 int         3
+  00C5F039: CC                 int         3
+  00C5F03A: CC                 int         3
+  00C5F03B: CC                 int         3
+  00C5F03C: CC                 int         3
+  00C5F03D: CC                 int         3
+  00C5F03E: CC                 int         3
+  00C5F03F: CC                 int         3
+  00C5F040: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00C5F044: 56                 push        esi
+  00C5F045: 50                 push        eax
+  00C5F046: 8B F1              mov         esi,ecx
+  00C5F048: E8 F3 8E 01 00     call        00C77F40
+  00C5F04D: 83 C4 04           add         esp,4
+  00C5F050: 85 C0              test        eax,eax
+  00C5F052: 74 11              je          00C5F065
+  00C5F054: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00C5F058: 51                 push        ecx
+  00C5F059: 50                 push        eax
+  00C5F05A: 8B CE              mov         ecx,esi
+  00C5F05C: E8 7F FA FF FF     call        00C5EAE0
+  00C5F061: 5E                 pop         esi
+  00C5F062: C2 08 00           ret         8
+  00C5F065: B8 02 00 00 00     mov         eax,2
+  00C5F06A: 5E                 pop         esi
+  00C5F06B: C2 08 00           ret         8
+  00C5F06E: CC                 int         3
+  00C5F06F: CC                 int         3
+  00C5F070: 56                 push        esi
+  00C5F071: 6A 00              push        0
+  00C5F073: 6A 00              push        0
+  00C5F075: 6A 01              push        1
+  00C5F077: 6A 00              push        0
+  00C5F079: 8B F1              mov         esi,ecx
+  00C5F07B: FF 15 34 91 DC 00  call        dword ptr ds:[00DC9134h]
+  00C5F081: 89 86 9C 00 00 00  mov         dword ptr [esi+0000009Ch],eax
+  00C5F087: F7 D8              neg         eax
+  00C5F089: 1B C0              sbb         eax,eax
+  00C5F08B: 83 C0 02           add         eax,2
+  00C5F08E: 83 F8 01           cmp         eax,1
+  00C5F091: 75 1A              jne         00C5F0AD
+  00C5F093: 8B 86 9C 00 00 00  mov         eax,dword ptr [esi+0000009Ch]
+  00C5F099: 50                 push        eax
+  00C5F09A: FF 15 0C 92 DC 00  call        dword ptr ds:[00DC920Ch]
+  00C5F0A0: 8D 4E 04           lea         ecx,[esi+4]
+  00C5F0A3: E8 28 01 02 00     call        00C7F1D0
+  00C5F0A8: B8 01 00 00 00     mov         eax,1
+  00C5F0AD: 5E                 pop         esi
+  00C5F0AE: C3                 ret
+  00C5F0AF: CC                 int         3
+  00C5F0B0: 55                 push        ebp
+  00C5F0B1: 56                 push        esi
+  00C5F0B2: 57                 push        edi
+  00C5F0B3: 8B F9              mov         edi,ecx
+  00C5F0B5: 8D AF 84 00 00 00  lea         ebp,[edi+00000084h]
+  00C5F0BB: 55                 push        ebp
+  00C5F0BC: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C5F0C2: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C5F0C7: 6A 38              push        38h
+  00C5F0C9: 50                 push        eax
+  00C5F0CA: E8 71 A9 03 00     call        00C99A40
+  00C5F0CF: 8B F0              mov         esi,eax
+  00C5F0D1: 33 D2              xor         edx,edx
+  00C5F0D3: 83 C4 08           add         esp,8
+  00C5F0D6: 3B F2              cmp         esi,edx
+  00C5F0D8: 0F 84 BE 00 00 00  je          00C5F19C
+  00C5F0DE: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00C5F0E2: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  00C5F0E6: 89 56 20           mov         dword ptr [esi+20h],edx
+  00C5F0E9: 89 56 10           mov         dword ptr [esi+10h],edx
+  00C5F0EC: 89 56 14           mov         dword ptr [esi+14h],edx
+  00C5F0EF: 89 56 18           mov         dword ptr [esi+18h],edx
+  00C5F0F2: 89 56 1C           mov         dword ptr [esi+1Ch],edx
+  00C5F0F5: 89 16              mov         dword ptr [esi],edx
+  00C5F0F7: C7 46 04 01 00 00  mov         dword ptr [esi+4],1
+            00
+  00C5F0FE: 89 4E 08           mov         dword ptr [esi+8],ecx
+  00C5F101: 8B 08              mov         ecx,dword ptr [eax]
+  00C5F103: 89 4E 0C           mov         dword ptr [esi+0Ch],ecx
+  00C5F106: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  00C5F109: 89 4E 20           mov         dword ptr [esi+20h],ecx
+  00C5F10C: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  00C5F10F: 89 4E 10           mov         dword ptr [esi+10h],ecx
+  00C5F112: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  00C5F115: 89 4E 14           mov         dword ptr [esi+14h],ecx
+  00C5F118: 8B 48 10           mov         ecx,dword ptr [eax+10h]
+  00C5F11B: 89 4E 18           mov         dword ptr [esi+18h],ecx
+  00C5F11E: 8B 4E 1C           mov         ecx,dword ptr [esi+1Ch]
+  00C5F121: 53                 push        ebx
+  00C5F122: 8B 58 14           mov         ebx,dword ptr [eax+14h]
+  00C5F125: 3B CA              cmp         ecx,edx
+  00C5F127: 74 07              je          00C5F130
+  00C5F129: E8 32 34 FF FF     call        00C52560
+  00C5F12E: 33 D2              xor         edx,edx
+  00C5F130: 3B DA              cmp         ebx,edx
+  00C5F132: 74 02              je          00C5F136
+  00C5F134: FF 03              inc         dword ptr [ebx]
+  00C5F136: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  00C5F13A: 8B 4C 24 1C        mov         ecx,dword ptr [esp+1Ch]
+  00C5F13E: 89 5E 1C           mov         dword ptr [esi+1Ch],ebx
+  00C5F141: 89 46 28           mov         dword ptr [esi+28h],eax
+  00C5F144: 89 4E 2C           mov         dword ptr [esi+2Ch],ecx
+  00C5F147: 5B                 pop         ebx
+  00C5F148: 3B C2              cmp         eax,edx
+  00C5F14A: 75 08              jne         00C5F154
+  00C5F14C: 81 64 24 1C 04 00  and         dword ptr [esp+1Ch],0FFFF0004h
+            FF FF
+  00C5F154: 8B 4E 20           mov         ecx,dword ptr [esi+20h]
+  00C5F157: 8B 54 24 1C        mov         edx,dword ptr [esp+1Ch]
+  00C5F15B: 89 56 30           mov         dword ptr [esi+30h],edx
+  00C5F15E: B8 85 10 42 08     mov         eax,8421085h
+  00C5F163: F7 E1              mul         eax,ecx
+  00C5F165: 8B C1              mov         eax,ecx
+  00C5F167: 2B C2              sub         eax,edx
+  00C5F169: D1 E8              shr         eax,1
+  00C5F16B: 03 C2              add         eax,edx
+  00C5F16D: C1 E8 04           shr         eax,4
+  00C5F170: 8B D0              mov         edx,eax
+  00C5F172: C1 E2 05           shl         edx,5
+  00C5F175: 2B D0              sub         edx,eax
+  00C5F177: 2B CA              sub         ecx,edx
+  00C5F179: 8B 44 8F 04        mov         eax,dword ptr [edi+ecx*4+4]
+  00C5F17D: 89 46 34           mov         dword ptr [esi+34h],eax
+  00C5F180: 89 74 8F 04        mov         dword ptr [edi+ecx*4+4],esi
+  00C5F184: FF 87 80 00 00 00  inc         dword ptr [edi+00000080h]
+  00C5F18A: 55                 push        ebp
+  00C5F18B: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C5F191: 5F                 pop         edi
+  00C5F192: 5E                 pop         esi
+  00C5F193: B8 01 00 00 00     mov         eax,1
+  00C5F198: 5D                 pop         ebp
+  00C5F199: C2 14 00           ret         14h
+  00C5F19C: 55                 push        ebp
+  00C5F19D: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C5F1A3: 5F                 pop         edi
+  00C5F1A4: 5E                 pop         esi
+  00C5F1A5: B8 02 00 00 00     mov         eax,2
+  00C5F1AA: 5D                 pop         ebp
+  00C5F1AB: C2 14 00           ret         14h
+  00C5F1AE: CC                 int         3
+  00C5F1AF: CC                 int         3
+  00C5F1B0: 56                 push        esi
+  00C5F1B1: 57                 push        edi
+  00C5F1B2: 8B F1              mov         esi,ecx
+  00C5F1B4: 8D BE 84 00 00 00  lea         edi,[esi+00000084h]
+  00C5F1BA: 57                 push        edi
+  00C5F1BB: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C5F1C1: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00C5F1C4: 33 D2              xor         edx,edx
+  00C5F1C6: 33 C9              xor         ecx,ecx
+  00C5F1C8: 3B C2              cmp         eax,edx
+  00C5F1CA: 75 18              jne         00C5F1E4
+  00C5F1CC: 8D 64 24 00        lea         esp,[esp]
+  00C5F1D0: 41                 inc         ecx
+  00C5F1D1: 83 F9 1F           cmp         ecx,1Fh
+  00C5F1D4: 73 0A              jae         00C5F1E0
+  00C5F1D6: 8B 44 8E 04        mov         eax,dword ptr [esi+ecx*4+4]
+  00C5F1DA: 3B C2              cmp         eax,edx
+  00C5F1DC: 74 F2              je          00C5F1D0
+  00C5F1DE: EB 04              jmp         00C5F1E4
+  00C5F1E0: 3B C2              cmp         eax,edx
+  00C5F1E2: 74 37              je          00C5F21B
+  00C5F1E4: 53                 push        ebx
+  00C5F1E5: 8B 5C 24 10        mov         ebx,dword ptr [esp+10h]
+  00C5F1E9: 55                 push        ebp
+  00C5F1EA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  00C5F1F0: 39 58 2C           cmp         dword ptr [eax+2Ch],ebx
+  00C5F1F3: 75 09              jne         00C5F1FE
+  00C5F1F5: 33 ED              xor         ebp,ebp
+  00C5F1F7: 89 50 28           mov         dword ptr [eax+28h],edx
+  00C5F1FA: 66 89 68 30        mov         word ptr [eax+30h],bp
+  00C5F1FE: 8B 40 34           mov         eax,dword ptr [eax+34h]
+  00C5F201: 3B C2              cmp         eax,edx
+  00C5F203: 75 EB              jne         00C5F1F0
+  00C5F205: 41                 inc         ecx
+  00C5F206: 83 F9 1F           cmp         ecx,1Fh
+  00C5F209: 73 0A              jae         00C5F215
+  00C5F20B: 8B 44 8E 04        mov         eax,dword ptr [esi+ecx*4+4]
+  00C5F20F: 3B C2              cmp         eax,edx
+  00C5F211: 74 F2              je          00C5F205
+  00C5F213: EB DB              jmp         00C5F1F0
+  00C5F215: 3B C2              cmp         eax,edx
+  00C5F217: 75 D7              jne         00C5F1F0
+  00C5F219: 5D                 pop         ebp
+  00C5F21A: 5B                 pop         ebx
+  00C5F21B: 57                 push        edi
+  00C5F21C: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C5F222: 8B 86 9C 00 00 00  mov         eax,dword ptr [esi+0000009Ch]
+  00C5F228: 6A FF              push        0FFFFFFFFh
+  00C5F22A: 50                 push        eax
+  00C5F22B: FF 15 F4 91 DC 00  call        dword ptr ds:[00DC91F4h]
+  00C5F231: 5F                 pop         edi
+  00C5F232: 5E                 pop         esi
+  00C5F233: C2 04 00           ret         4
+  00C5F236: CC                 int         3
+  00C5F237: CC                 int         3
+  00C5F238: CC                 int         3
+  00C5F239: CC                 int         3
+  00C5F23A: CC                 int         3
+  00C5F23B: CC                 int         3
+  00C5F23C: CC                 int         3
+  00C5F23D: CC                 int         3
+  00C5F23E: CC                 int         3
+  00C5F23F: CC                 int         3
+  00C5F240: 56                 push        esi
+  00C5F241: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  00C5F245: B8 85 10 42 08     mov         eax,8421085h
+  00C5F24A: F7 E6              mul         eax,esi
+  00C5F24C: 8B C6              mov         eax,esi
+  00C5F24E: 2B C2              sub         eax,edx
+  00C5F250: D1 E8              shr         eax,1
+  00C5F252: 03 C2              add         eax,edx
+  00C5F254: C1 E8 04           shr         eax,4
+  00C5F257: 8B D0              mov         edx,eax
+  00C5F259: C1 E2 05           shl         edx,5
+  00C5F25C: 2B D0              sub         edx,eax
+  00C5F25E: 8B C6              mov         eax,esi
+  00C5F260: 2B C2              sub         eax,edx
+  00C5F262: 8B 04 81           mov         eax,dword ptr [ecx+eax*4]
+  00C5F265: 85 C0              test        eax,eax
+  00C5F267: 74 13              je          00C5F27C
+  00C5F269: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00C5F270: 39
+
+  Summary
+
+      9C8000 .text

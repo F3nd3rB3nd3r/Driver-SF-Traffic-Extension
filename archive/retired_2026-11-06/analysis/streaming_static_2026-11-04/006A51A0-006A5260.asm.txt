@@ -1,0 +1,87 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  006A51A0: FF
+  006A51A1: FF 83 C4 18 C2 14  inc         dword ptr [ebx+14C218C4h]
+  006A51A7: 00 CC              add         ah,cl
+  006A51A9: CC                 int         3
+  006A51AA: CC                 int         3
+  006A51AB: CC                 int         3
+  006A51AC: CC                 int         3
+  006A51AD: CC                 int         3
+  006A51AE: CC                 int         3
+  006A51AF: CC                 int         3
+  006A51B0: 8B 81 C8 7A 15 00  mov         eax,dword ptr [ecx+00157AC8h]
+  006A51B6: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  006A51BA: 56                 push        esi
+  006A51BB: 8B 32              mov         esi,dword ptr [edx]
+  006A51BD: 89 B4 C1 C8 7A 13  mov         dword ptr [ecx+eax*8+00137AC8h],esi
+            00
+  006A51C4: 8B 72 04           mov         esi,dword ptr [edx+4]
+  006A51C7: 89 B4 C1 CC 7A 13  mov         dword ptr [ecx+eax*8+00137ACCh],esi
+            00
+  006A51CE: 8B 81 C8 7A 15 00  mov         eax,dword ptr [ecx+00157AC8h]
+  006A51D4: 89 94 81 C8 7A 12  mov         dword ptr [ecx+eax*4+00127AC8h],edx
+            00
+  006A51DB: FF 81 C8 7A 15 00  inc         dword ptr [ecx+00157AC8h]
+  006A51E1: 5E                 pop         esi
+  006A51E2: C2 04 00           ret         4
+  006A51E5: CC                 int         3
+  006A51E6: CC                 int         3
+  006A51E7: CC                 int         3
+  006A51E8: CC                 int         3
+  006A51E9: CC                 int         3
+  006A51EA: CC                 int         3
+  006A51EB: CC                 int         3
+  006A51EC: CC                 int         3
+  006A51ED: CC                 int         3
+  006A51EE: CC                 int         3
+  006A51EF: CC                 int         3
+  006A51F0: 8B 41 44           mov         eax,dword ptr [ecx+44h]
+  006A51F3: 8B 49 40           mov         ecx,dword ptr [ecx+40h]
+  006A51F6: 50                 push        eax
+  006A51F7: 51                 push        ecx
+  006A51F8: B9 78 E1 FE 00     mov         ecx,0FEE178h
+  006A51FD: E8 8E F1 DE FF     call        00494390
+  006A5202: C7 04 85 F8 A1 13  mov         dword ptr [eax*4+0113A1F8h],0
+            01 00 00 00 00
+  006A520D: C3                 ret
+  006A520E: CC                 int         3
+  006A520F: CC                 int         3
+  006A5210: 51                 push        ecx
+  006A5211: 53                 push        ebx
+  006A5212: 55                 push        ebp
+  006A5213: 33 DB              xor         ebx,ebx
+  006A5215: 8B E9              mov         ebp,ecx
+  006A5217: 56                 push        esi
+  006A5218: 57                 push        edi
+  006A5219: 89 5C 24 10        mov         dword ptr [esp+10h],ebx
+  006A521D: 39 5D 04           cmp         dword ptr [ebp+4],ebx
+  006A5220: 76 4F              jbe         006A5271
+  006A5222: 8B 45 08           mov         eax,dword ptr [ebp+8]
+  006A5225: EB 09              jmp         006A5230
+  006A5227: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  006A522E: 8B FF              mov         edi,edi
+  006A5230: 8B 7C 03 08        mov         edi,dword ptr [ebx+eax+8]
+  006A5234: 33 F6              xor         esi,esi
+  006A5236: F7 44 03 04 FF FF  test        dword ptr [ebx+eax+4],7FFFFFFFh
+            FF 7F
+  006A523E: 76 20              jbe         006A5260
+  006A5240: 57                 push        edi
+  006A5241: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  006A5246: E8 35 98 50 00     call        00BAEA80
+  006A524B: 8B 45 08           mov         eax,dword ptr [ebp+8]
+  006A524E: 8B 4C 03 04        mov         ecx,dword ptr [ebx+eax+4]
+  006A5252: 46                 inc         esi
+  006A5253: 81 E1 FF FF FF 7F  and         ecx,7FFFFFFFh
+  006A5259: 83 C7 08           add         edi,8
+  006A525C: 3B F1              cmp         esi,ecx
+  006A525E: 72 E0              jb          006A5240
+  006A5260: 8B
+
+  Summary
+
+      9C8000 .text

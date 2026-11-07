@@ -1,0 +1,105 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00848BE0: 5E                 pop         esi
+  00848BE1: C1 F3 0F           sal         ebx,0Fh
+  00848BE4: 11 78 28           adc         dword ptr [eax+28h],edi
+  00848BE7: 89 78 0C           mov         dword ptr [eax+0Ch],edi
+  00848BEA: F3 0F 11 40 08     movss       dword ptr [eax+8],xmm0
+  00848BEF: 33 D2              xor         edx,edx
+  00848BF1: 0F BF 0C 5E        movsx       ecx,word ptr [esi+ebx*2]
+  00848BF5: F3 0F 2A C1        cvtsi2ss    xmm0,ecx
+  00848BF9: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  00848BFC: F3 0F 59 C4        mulss       xmm0,xmm4
+  00848C00: F3 0F 59 C5        mulss       xmm0,xmm5
+  00848C04: F3 0F 11 40 10     movss       dword ptr [eax+10h],xmm0
+  00848C09: 3B CA              cmp         ecx,edx
+  00848C0B: 0F 84 87 00 00 00  je          00848C98
+  00848C11: 7E 39              jle         00848C4C
+  00848C13: 0F BF 3C 5E        movsx       edi,word ptr [esi+ebx*2]
+  00848C17: F3 0F 10 40 04     movss       xmm0,dword ptr [eax+4]
+  00848C1C: F3 0F 2A CF        cvtsi2ss    xmm1,edi
+  00848C20: 49                 dec         ecx
+  00848C21: 3B CA              cmp         ecx,edx
+  00848C23: F3 0F 59 CC        mulss       xmm1,xmm4
+  00848C27: F3 0F 59 C8        mulss       xmm1,xmm0
+  00848C2B: F3 0F 5C 40 08     subss       xmm0,dword ptr [eax+8]
+  00848C30: F3 0F 11 48 10     movss       dword ptr [eax+10h],xmm1
+  00848C35: F3 0F 11 40 04     movss       dword ptr [eax+4],xmm0
+  00848C3A: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  00848C3D: 7F 0D              jg          00848C4C
+  00848C3F: F3 0F 11 58 04     movss       dword ptr [eax+4],xmm3
+  00848C44: F3 0F 11 58 08     movss       dword ptr [eax+8],xmm3
+  00848C49: 89 50 0C           mov         dword ptr [eax+0Ch],edx
+  00848C4C: 8B 48 2C           mov         ecx,dword ptr [eax+2Ch]
+  00848C4F: 3B CA              cmp         ecx,edx
+  00848C51: 74 45              je          00848C98
+  00848C53: F3 0F 10 40 10     movss       xmm0,dword ptr [eax+10h]
+  00848C58: 0F 2F C3           comiss      xmm0,xmm3
+  00848C5B: F3 0F 10 48 24     movss       xmm1,dword ptr [eax+24h]
+  00848C60: 72 0E              jb          00848C70
+  00848C62: 0F 28 D1           movaps      xmm2,xmm1
+  00848C65: F3 0F 58 D0        addss       xmm2,xmm0
+  00848C69: F3 0F 11 50 10     movss       dword ptr [eax+10h],xmm2
+  00848C6E: EB 09              jmp         00848C79
+  00848C70: F3 0F 5C C1        subss       xmm0,xmm1
+  00848C74: F3 0F 11 40 10     movss       dword ptr [eax+10h],xmm0
+  00848C79: F3 0F 5C 48 28     subss       xmm1,dword ptr [eax+28h]
+  00848C7E: 49                 dec         ecx
+  00848C7F: 3B CA              cmp         ecx,edx
+  00848C81: F3 0F 11 48 24     movss       dword ptr [eax+24h],xmm1
+  00848C86: 89 48 2C           mov         dword ptr [eax+2Ch],ecx
+  00848C89: 7F 0D              jg          00848C98
+  00848C8B: F3 0F 11 58 24     movss       dword ptr [eax+24h],xmm3
+  00848C90: F3 0F 11 58 28     movss       dword ptr [eax+28h],xmm3
+  00848C95: 89 50 2C           mov         dword ptr [eax+2Ch],edx
+  00848C98: F3 0F 10 40 10     movss       xmm0,dword ptr [eax+10h]
+  00848C9D: 0F 2F 40 1C        comiss      xmm0,dword ptr [eax+1Ch]
+  00848CA1: 76 05              jbe         00848CA8
+  00848CA3: F3 0F 11 40 1C     movss       dword ptr [eax+1Ch],xmm0
+  00848CA8: 8B 4C 24 28        mov         ecx,dword ptr [esp+28h]
+  00848CAC: F3 0F 11 04 99     movss       dword ptr [ecx+ebx*4],xmm0
+  00848CB1: FF 00              inc         dword ptr [eax]
+  00848CB3: 8B 78 14           mov         edi,dword ptr [eax+14h]
+  00848CB6: 8B 08              mov         ecx,dword ptr [eax]
+  00848CB8: 4F                 dec         edi
+  00848CB9: 3B CF              cmp         ecx,edi
+  00848CBB: 89 58 18           mov         dword ptr [eax+18h],ebx
+  00848CBE: 7D 10              jge         00848CD0
+  00848CC0: 43                 inc         ebx
+  00848CC1: 3B 5D 0C           cmp         ebx,dword ptr [ebp+0Ch]
+  00848CC4: 0F 8C FE FD FF FF  jl          00848AC8
+  00848CCA: 5F                 pop         edi
+  00848CCB: 5E                 pop         esi
+  00848CCC: 5D                 pop         ebp
+  00848CCD: 5B                 pop         ebx
+  00848CCE: 59                 pop         ecx
+  00848CCF: C3                 ret
+  00848CD0: C7 00 FF FF FF FF  mov         dword ptr [eax],0FFFFFFFFh
+  00848CD6: 5F                 pop         edi
+  00848CD7: 5E                 pop         esi
+  00848CD8: 5D                 pop         ebp
+  00848CD9: 5B                 pop         ebx
+  00848CDA: 59                 pop         ecx
+  00848CDB: C3                 ret
+  00848CDC: CC                 int         3
+  00848CDD: CC                 int         3
+  00848CDE: CC                 int         3
+  00848CDF: CC                 int         3
+  00848CE0: 8B 81 D8 92 00 00  mov         eax,dword ptr [ecx+000092D8h]
+  00848CE6: 81 C1 D4 92 00 00  add         ecx,92D4h
+  00848CEC: 56                 push        esi
+  00848CED: 3B C1              cmp         eax,ecx
+  00848CEF: 74 12              je          00848D03
+  00848CF1: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  00848CF5: 8D 70 08           lea         esi,[eax+8]
+  00848CF8: 3B F2              cmp         esi,edx
+  00848CFA: 74 0D              je          00848D09
+  00848CFC: 8B 40 04           mov         eax,dword ptr [eax+4]
+  00848CFF: 3B C1              cmp         eax,ecx
+
+  Summary
+
+      9C8000 .text

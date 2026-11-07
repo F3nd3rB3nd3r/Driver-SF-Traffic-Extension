@@ -1,0 +1,58 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C5CC40: 83 EC 2C           sub         esp,2Ch
+  00C5CC43: 56                 push        esi
+  00C5CC44: 57                 push        edi
+  00C5CC45: 8B F1              mov         esi,ecx
+  00C5CC47: 8D 7E 04           lea         edi,[esi+4]
+  00C5CC4A: 57                 push        edi
+  00C5CC4B: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C5CC51: 8B 46 2C           mov         eax,dword ptr [esi+2Ch]
+  00C5CC54: 3B 46 34           cmp         eax,dword ptr [esi+34h]
+  00C5CC57: 75 12              jne         00C5CC6B
+  00C5CC59: 8B 4E 30           mov         ecx,dword ptr [esi+30h]
+  00C5CC5C: 3B 4E 38           cmp         ecx,dword ptr [esi+38h]
+  00C5CC5F: 75 0A              jne         00C5CC6B
+  00C5CC61: 80 7E 3C 00        cmp         byte ptr [esi+3Ch],0
+  00C5CC65: 75 04              jne         00C5CC6B
+  00C5CC67: B0 01              mov         al,1
+  00C5CC69: EB 02              jmp         00C5CC6D
+  00C5CC6B: 32 C0              xor         al,al
+  00C5CC6D: 84 C0              test        al,al
+  00C5CC6F: 53                 push        ebx
+  00C5CC70: 0F 94 C3           sete        bl
+  00C5CC73: 84 DB              test        bl,bl
+  00C5CC75: 74 24              je          00C5CC9B
+  00C5CC77: B8 04 00 00 00     mov         eax,4
+  00C5CC7C: 50                 push        eax
+  00C5CC7D: 8D 4C 24 10        lea         ecx,[esp+10h]
+  00C5CC81: 33 D2              xor         edx,edx
+  00C5CC83: 51                 push        ecx
+  00C5CC84: 8B CE              mov         ecx,esi
+  00C5CC86: 66 89 54 24 16     mov         word ptr [esp+16h],dx
+  00C5CC8B: 66 89 44 24 14     mov         word ptr [esp+14h],ax
+  00C5CC90: E8 3B FF FF FF     call        00C5CBD0
+  00C5CC95: FF 86 8C 00 00 00  inc         dword ptr [esi+0000008Ch]
+  00C5CC9B: 57                 push        edi
+  00C5CC9C: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C5CCA2: 84 DB              test        bl,bl
+  00C5CCA4: 5B                 pop         ebx
+  00C5CCA5: 74 0B              je          00C5CCB2
+  00C5CCA7: 8D 8E 94 00 00 00  lea         ecx,[esi+00000094h]
+  00C5CCAD: E8 CE D3 01 00     call        00C7A080
+  00C5CCB2: 5F                 pop         edi
+  00C5CCB3: B8 01 00 00 00     mov         eax,1
+  00C5CCB8: 5E                 pop         esi
+  00C5CCB9: 83 C4 2C           add         esp,2Ch
+  00C5CCBC: C3                 ret
+  00C5CCBD: CC                 int         3
+  00C5CCBE: CC                 int         3
+  00C5CCBF: CC                 int         3
+  00C5CCC0: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

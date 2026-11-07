@@ -1,0 +1,52 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C47A30: 21 FF              and         edi,edi
+  00C47A32: FF
+  00C47A33: FF 83 C4 0C 5D C3  inc         dword ptr [ebx+C35D0CC4h]
+  00C47A39: 8B FF              mov         edi,edi
+  00C47A3B: 55                 push        ebp
+  00C47A3C: 8B EC              mov         ebp,esp
+  00C47A3E: 8B 45 08           mov         eax,dword ptr [ebp+8]
+  00C47A41: 8B 00              mov         eax,dword ptr [eax]
+  00C47A43: 81 38 63 73 6D E0  cmp         dword ptr [eax],0E06D7363h
+  00C47A49: 75 2A              jne         00C47A75
+  00C47A4B: 83 78 10 03        cmp         dword ptr [eax+10h],3
+  00C47A4F: 75 24              jne         00C47A75
+  00C47A51: 8B 40 14           mov         eax,dword ptr [eax+14h]
+  00C47A54: 3D 20 05 93 19     cmp         eax,19930520h
+  00C47A59: 74 15              je          00C47A70
+  00C47A5B: 3D 21 05 93 19     cmp         eax,19930521h
+  00C47A60: 74 0E              je          00C47A70
+  00C47A62: 3D 22 05 93 19     cmp         eax,19930522h
+  00C47A67: 74 07              je          00C47A70
+  00C47A69: 3D 00 40 99 01     cmp         eax,1994000h
+  00C47A6E: 75 05              jne         00C47A75
+  00C47A70: E8 18 70 FF FF     call        00C3EA8D
+  00C47A75: 33 C0              xor         eax,eax
+  00C47A77: 5D                 pop         ebp
+  00C47A78: C2 04 00           ret         4
+  00C47A7B: 68 39 7A C4 00     push        0C47A39h
+  00C47A80: FF 15 E0 90 DC 00  call        dword ptr ds:[00DC90E0h]
+  00C47A86: 33 C0              xor         eax,eax
+  00C47A88: C3                 ret
+  00C47A89: 8B FF              mov         edi,edi
+  00C47A8B: 56                 push        esi
+  00C47A8C: 57                 push        edi
+  00C47A8D: 33 FF              xor         edi,edi
+  00C47A8F: 39 3D D0 60 D7 01  cmp         dword ptr ds:[01D760D0h],edi
+  00C47A95: 75 05              jne         00C47A9C
+  00C47A97: E8 37 4C FF FF     call        00C3C6D3
+  00C47A9C: 8B 35 AC 50 D7 01  mov         esi,dword ptr ds:[01D750ACh]
+  00C47AA2: 85 F6              test        esi,esi
+  00C47AA4: 75 05              jne         00C47AAB
+  00C47AA6: BE B8 11 EE 00     mov         esi,0EE11B8h
+  00C47AAB: 8A 06              mov         al,byte ptr [esi]
+  00C47AAD: 3C 20              cmp         al,20h
+  00C47AAF: 77 08              ja          00C47AB9
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,73 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A79F0: 56                 push        esi
+  005A79F1: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  005A79F5: 33 C0              xor         eax,eax
+  005A79F7: 3B F0              cmp         esi,eax
+  005A79F9: 89 81 C8 00 00 00  mov         dword ptr [ecx+000000C8h],eax
+  005A79FF: 7E 2E              jle         005A7A2F
+  005A7A01: 55                 push        ebp
+  005A7A02: 57                 push        edi
+  005A7A03: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  005A7A07: EB 07              jmp         005A7A10
+  005A7A09: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  005A7A10: 8B 91 C8 00 00 00  mov         edx,dword ptr [ecx+000000C8h]
+  005A7A16: 8D 14 91           lea         edx,[ecx+edx*4]
+  005A7A19: 85 D2              test        edx,edx
+  005A7A1B: 74 05              je          005A7A22
+  005A7A1D: 8B 2C 87           mov         ebp,dword ptr [edi+eax*4]
+  005A7A20: 89 2A              mov         dword ptr [edx],ebp
+  005A7A22: FF 81 C8 00 00 00  inc         dword ptr [ecx+000000C8h]
+  005A7A28: 40                 inc         eax
+  005A7A29: 3B C6              cmp         eax,esi
+  005A7A2B: 7C E3              jl          005A7A10
+  005A7A2D: 5F                 pop         edi
+  005A7A2E: 5D                 pop         ebp
+  005A7A2F: 83 B9 AC 0D 00 00  cmp         dword ptr [ecx+00000DACh],0
+            00
+  005A7A36: 5E                 pop         esi
+  005A7A37: 75 05              jne         005A7A3E
+  005A7A39: E8 52 FA FF FF     call        005A7490
+  005A7A3E: C2 08 00           ret         8
+  005A7A41: CC                 int         3
+  005A7A42: CC                 int         3
+  005A7A43: CC                 int         3
+  005A7A44: CC                 int         3
+  005A7A45: CC                 int         3
+  005A7A46: CC                 int         3
+  005A7A47: CC                 int         3
+  005A7A48: CC                 int         3
+  005A7A49: CC                 int         3
+  005A7A4A: CC                 int         3
+  005A7A4B: CC                 int         3
+  005A7A4C: CC                 int         3
+  005A7A4D: CC                 int         3
+  005A7A4E: CC                 int         3
+  005A7A4F: CC                 int         3
+  005A7A50: 56                 push        esi
+  005A7A51: 8B F1              mov         esi,ecx
+  005A7A53: 83 BE A8 09 00 00  cmp         dword ptr [esi+000009A8h],0
+            00
+  005A7A5A: 0F 84 E5 00 00 00  je          005A7B45
+  005A7A60: 8B 86 98 0D 00 00  mov         eax,dword ptr [esi+00000D98h]
+  005A7A66: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  005A7A69: 89 8E 9C 0D 00 00  mov         dword ptr [esi+00000D9Ch],ecx
+  005A7A6F: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  005A7A72: 83 C0 08           add         eax,8
+  005A7A75: 89 96 A0 0D 00 00  mov         dword ptr [esi+00000DA0h],edx
+  005A7A7B: 8B 40 08           mov         eax,dword ptr [eax+8]
+  005A7A7E: 89 86 A4 0D 00 00  mov         dword ptr [esi+00000DA4h],eax
+  005A7A84: 8B 86 98 0D 00 00  mov         eax,dword ptr [esi+00000D98h]
+  005A7A8A: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  005A7A8D: 8B
+  005A7A8E: 96                 xchg        eax,esi
+  005A7A8F: A0
+  005A7A90: 09
+
+  Summary
+
+      9C8000 .text

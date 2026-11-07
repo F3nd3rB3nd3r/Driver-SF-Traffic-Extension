@@ -1,0 +1,121 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A7B80: 51                 push        ecx
+  005A7B81: 56                 push        esi
+  005A7B82: 8B F1              mov         esi,ecx
+  005A7B84: 8B 86 AC 0D 00 00  mov         eax,dword ptr [esi+00000DACh]
+  005A7B8A: 83 F8 04           cmp         eax,4
+  005A7B8D: 0F 87 49 01 00 00  ja          005A7CDC
+  005A7B93: 57                 push        edi
+  005A7B94: FF 24 85 E0 7C 5A  jmp         dword ptr [eax*4+005A7CE0h]
+            00
+  005A7B9B: 5F                 pop         edi
+  005A7B9C: 5E                 pop         esi
+  005A7B9D: 83 C4 04           add         esp,4
+  005A7BA0: E9 AB FE FF FF     jmp         005A7A50
+  005A7BA5: E8 F6 E9 FF FF     call        005A65A0
+  005A7BAA: 84 C0              test        al,al
+  005A7BAC: 0F 84 29 01 00 00  je          005A7CDB
+  005A7BB2: 5F                 pop         edi
+  005A7BB3: 8B CE              mov         ecx,esi
+  005A7BB5: 5E                 pop         esi
+  005A7BB6: 83 C4 04           add         esp,4
+  005A7BB9: E9 92 FE FF FF     jmp         005A7A50
+  005A7BBE: 0F B7 86 9C 0D 00  movzx       eax,word ptr [esi+00000D9Ch]
+            00
+  005A7BC5: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7BCB: 8D BE 9C 0D 00 00  lea         edi,[esi+00000D9Ch]
+  005A7BD1: 50                 push        eax
+  005A7BD2: 6A 00              push        0
+  005A7BD4: E8 E7 53 FF FF     call        0059CFC0
+  005A7BD9: 84 C0              test        al,al
+  005A7BDB: 0F 84 FA 00 00 00  je          005A7CDB
+  005A7BE1: 57                 push        edi
+  005A7BE2: 8D 8E A4 05 00 00  lea         ecx,[esi+000005A4h]
+  005A7BE8: E8 43 02 00 00     call        005A7E30
+  005A7BED: 5F                 pop         edi
+  005A7BEE: 8B CE              mov         ecx,esi
+  005A7BF0: 5E                 pop         esi
+  005A7BF1: 83 C4 04           add         esp,4
+  005A7BF4: E9 57 FE FF FF     jmp         005A7A50
+  005A7BF9: 8B 8E B4 0D 00 00  mov         ecx,dword ptr [esi+00000DB4h]
+  005A7BFF: 3B 8E 9C 0D 00 00  cmp         ecx,dword ptr [esi+00000D9Ch]
+  005A7C05: 8D BE 9C 0D 00 00  lea         edi,[esi+00000D9Ch]
+  005A7C0B: 74 32              je          005A7C3F
+  005A7C0D: 0F B7 17           movzx       edx,word ptr [edi]
+  005A7C10: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7C16: 52                 push        edx
+  005A7C17: 6A 00              push        0
+  005A7C19: E8 A2 53 FF FF     call        0059CFC0
+  005A7C1E: 84 C0              test        al,al
+  005A7C20: 0F 85 B5 00 00 00  jne         005A7CDB
+  005A7C26: 0F B7 07           movzx       eax,word ptr [edi]
+  005A7C29: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7C2F: 50                 push        eax
+  005A7C30: 6A 00              push        0
+  005A7C32: E8 29 49 FF FF     call        0059C560
+  005A7C37: 84 C0              test        al,al
+  005A7C39: 0F 85 9C 00 00 00  jne         005A7CDB
+  005A7C3F: 8B 8E 9C 09 00 00  mov         ecx,dword ptr [esi+0000099Ch]
+  005A7C45: 8D 86 98 09 00 00  lea         eax,[esi+00000998h]
+  005A7C4B: 57                 push        edi
+  005A7C4C: 50                 push        eax
+  005A7C4D: 51                 push        ecx
+  005A7C4E: E8 3D 02 00 00     call        005A7E90
+  005A7C53: 83 C4 0C           add         esp,0Ch
+  005A7C56: 50                 push        eax
+  005A7C57: 8D 4C 24 0C        lea         ecx,[esp+0Ch]
+  005A7C5B: 51                 push        ecx
+  005A7C5C: 8D 8E A4 05 00 00  lea         ecx,[esi+000005A4h]
+  005A7C62: E8 A9 AA 12 00     call        006D2710
+  005A7C67: 5F                 pop         edi
+  005A7C68: 8B CE              mov         ecx,esi
+  005A7C6A: 5E                 pop         esi
+  005A7C6B: 83 C4 04           add         esp,4
+  005A7C6E: E9 DD FD FF FF     jmp         005A7A50
+  005A7C73: 83 CF FF           or          edi,0FFFFFFFFh
+  005A7C76: 39 BE B8 0D 00 00  cmp         dword ptr [esi+00000DB8h],edi
+  005A7C7C: 74 38              je          005A7CB6
+  005A7C7E: 0F B7 96 B8 0D 00  movzx       edx,word ptr [esi+00000DB8h]
+            00
+  005A7C85: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7C8B: 52                 push        edx
+  005A7C8C: 6A 00              push        0
+  005A7C8E: E8 2D 53 FF FF     call        0059CFC0
+  005A7C93: 84 C0              test        al,al
+  005A7C95: 75 44              jne         005A7CDB
+  005A7C97: 0F B7 86 B8 0D 00  movzx       eax,word ptr [esi+00000DB8h]
+            00
+  005A7C9E: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7CA4: 50                 push        eax
+  005A7CA5: 6A 00              push        0
+  005A7CA7: E8 B4 48 FF FF     call        0059C560
+  005A7CAC: 84 C0              test        al,al
+  005A7CAE: 75 2B              jne         005A7CDB
+  005A7CB0: 89 BE B8 0D 00 00  mov         dword ptr [esi+00000DB8h],edi
+  005A7CB6: 0F B7 96 B4 0D 00  movzx       edx,word ptr [esi+00000DB4h]
+            00
+  005A7CBD: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7CC3: 52                 push        edx
+  005A7CC4: 6A 00              push        0
+  005A7CC6: E8 F5 52 FF FF     call        0059CFC0
+  005A7CCB: 84 C0              test        al,al
+  005A7CCD: 74 0C              je          005A7CDB
+  005A7CCF: 5F                 pop         edi
+  005A7CD0: 8B CE              mov         ecx,esi
+  005A7CD2: 5E                 pop         esi
+  005A7CD3: 83 C4 04           add         esp,4
+  005A7CD6: E9 75 FD FF FF     jmp         005A7A50
+  005A7CDB: 5F                 pop         edi
+  005A7CDC: 5E                 pop         esi
+  005A7CDD: 59                 pop         ecx
+  005A7CDE: C3                 ret
+  005A7CDF: 90                 nop
+  005A7CE0: 9B                 wait
+
+  Summary
+
+      9C8000 .text

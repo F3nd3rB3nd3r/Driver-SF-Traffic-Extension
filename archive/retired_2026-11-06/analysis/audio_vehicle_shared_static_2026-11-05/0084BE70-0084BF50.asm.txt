@@ -1,0 +1,120 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084BE70: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0084BE74: C7 40 14 04 00 00  mov         dword ptr [eax+14h],4
+            00
+  0084BE7B: C3                 ret
+  0084BE7C: CC                 int         3
+  0084BE7D: CC                 int         3
+  0084BE7E: CC                 int         3
+  0084BE7F: CC                 int         3
+  0084BE80: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0084BE84: 33 C9              xor         ecx,ecx
+  0084BE86: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  0084BE89: 89 48 14           mov         dword ptr [eax+14h],ecx
+  0084BE8C: C3                 ret
+  0084BE8D: CC                 int         3
+  0084BE8E: CC                 int         3
+  0084BE8F: CC                 int         3
+  0084BE90: 8B C1              mov         eax,ecx
+  0084BE92: 33 C9              xor         ecx,ecx
+  0084BE94: C7 00 38 6D E3 00  mov         dword ptr [eax],0E36D38h
+  0084BE9A: 89 48 04           mov         dword ptr [eax+4],ecx
+  0084BE9D: 89 48 08           mov         dword ptr [eax+8],ecx
+  0084BEA0: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  0084BEA3: 89 48 10           mov         dword ptr [eax+10h],ecx
+  0084BEA6: 89 48 14           mov         dword ptr [eax+14h],ecx
+  0084BEA9: C3                 ret
+  0084BEAA: CC                 int         3
+  0084BEAB: CC                 int         3
+  0084BEAC: CC                 int         3
+  0084BEAD: CC                 int         3
+  0084BEAE: CC                 int         3
+  0084BEAF: CC                 int         3
+  0084BEB0: 56                 push        esi
+  0084BEB1: 8B F1              mov         esi,ecx
+  0084BEB3: 8B 46 08           mov         eax,dword ptr [esi+8]
+  0084BEB6: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  0084BEB9: 57                 push        edi
+  0084BEBA: 8D 7E 0C           lea         edi,[esi+0Ch]
+  0084BEBD: 57                 push        edi
+  0084BEBE: 56                 push        esi
+  0084BEBF: 68 70 BE 84 00     push        84BE70h
+  0084BEC4: 50                 push        eax
+  0084BEC5: 51                 push        ecx
+  0084BEC6: C7 46 14 02 00 00  mov         dword ptr [esi+14h],2
+            00
+  0084BECD: E8 FE 5F 40 00     call        00C51ED0
+  0084BED2: 83 C4 14           add         esp,14h
+  0084BED5: 83 F8 01           cmp         eax,1
+  0084BED8: 74 12              je          0084BEEC
+  0084BEDA: C7 07 00 00 00 00  mov         dword ptr [edi],0
+  0084BEE0: 5F                 pop         edi
+  0084BEE1: C7 46 14 04 00 00  mov         dword ptr [esi+14h],4
+            00
+  0084BEE8: 32 C0              xor         al,al
+  0084BEEA: 5E                 pop         esi
+  0084BEEB: C3                 ret
+  0084BEEC: 5F                 pop         edi
+  0084BEED: B0 01              mov         al,1
+  0084BEEF: 5E                 pop         esi
+  0084BEF0: C3                 ret
+  0084BEF1: CC                 int         3
+  0084BEF2: CC                 int         3
+  0084BEF3: CC                 int         3
+  0084BEF4: CC                 int         3
+  0084BEF5: CC                 int         3
+  0084BEF6: CC                 int         3
+  0084BEF7: CC                 int         3
+  0084BEF8: CC                 int         3
+  0084BEF9: CC                 int         3
+  0084BEFA: CC                 int         3
+  0084BEFB: CC                 int         3
+  0084BEFC: CC                 int         3
+  0084BEFD: CC                 int         3
+  0084BEFE: CC                 int         3
+  0084BEFF: CC                 int         3
+  0084BF00: 56                 push        esi
+  0084BF01: 8B F1              mov         esi,ecx
+  0084BF03: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  0084BF06: 85 C0              test        eax,eax
+  0084BF08: 74 1B              je          0084BF25
+  0084BF0A: 56                 push        esi
+  0084BF0B: 68 80 BE 84 00     push        84BE80h
+  0084BF10: 50                 push        eax
+  0084BF11: E8 BA 60 40 00     call        00C51FD0
+  0084BF16: 83 C4 0C           add         esp,0Ch
+  0084BF19: 83 F8 01           cmp         eax,1
+  0084BF1C: 74 0B              je          0084BF29
+  0084BF1E: C7 46 0C 00 00 00  mov         dword ptr [esi+0Ch],0
+            00
+  0084BF25: 32 C0              xor         al,al
+  0084BF27: 5E                 pop         esi
+  0084BF28: C3                 ret
+  0084BF29: B0 01              mov         al,1
+  0084BF2B: 5E                 pop         esi
+  0084BF2C: C3                 ret
+  0084BF2D: CC                 int         3
+  0084BF2E: CC                 int         3
+  0084BF2F: CC                 int         3
+  0084BF30: 53                 push        ebx
+  0084BF31: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  0084BF35: 55                 push        ebp
+  0084BF36: 56                 push        esi
+  0084BF37: 57                 push        edi
+  0084BF38: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  0084BF3C: 8B F1              mov         esi,ecx
+  0084BF3E: 53                 push        ebx
+  0084BF3F: 8B CF              mov         ecx,edi
+  0084BF41: E8 7A F4 0A 00     call        008FB3C0
+  0084BF46: 89 46 08           mov         dword ptr [esi+8],eax
+  0084BF49: 8B 47 04           mov         eax,dword ptr [edi+4]
+  0084BF4C: 83 F8 01           cmp         eax,1
+  0084BF4F: 74 19              je          0084BF6A
+
+  Summary
+
+      9C8000 .text

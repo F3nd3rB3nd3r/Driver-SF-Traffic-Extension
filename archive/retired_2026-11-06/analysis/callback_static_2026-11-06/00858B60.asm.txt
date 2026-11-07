@@ -1,0 +1,171 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00858B60: 53                 push        ebx
+  00858B61: 56                 push        esi
+  00858B62: 57                 push        edi
+  00858B63: 8B F9              mov         edi,ecx
+  00858B65: 8B B7 B4 02 00 00  mov         esi,dword ptr [edi+000002B4h]
+  00858B6B: 8D 9F B0 02 00 00  lea         ebx,[edi+000002B0h]
+  00858B71: C7 07 18 71 E3 00  mov         dword ptr [edi],0E37118h
+  00858B77: 3B F3              cmp         esi,ebx
+  00858B79: 74 1A              je          00858B95
+  00858B7B: EB 03              jmp         00858B80
+  00858B7D: 8D 49 00           lea         ecx,[ecx]
+  00858B80: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  00858B83: 8B 01              mov         eax,dword ptr [ecx]
+  00858B85: 8B 40 08           mov         eax,dword ptr [eax+8]
+  00858B88: 8D 56 10           lea         edx,[esi+10h]
+  00858B8B: 52                 push        edx
+  00858B8C: FF D0              call        eax
+  00858B8E: 8B 76 04           mov         esi,dword ptr [esi+4]
+  00858B91: 3B F3              cmp         esi,ebx
+  00858B93: 75 EB              jne         00858B80
+  00858B95: 83 7F 20 00        cmp         dword ptr [edi+20h],0
+  00858B99: 74 0F              je          00858BAA
+  00858B9B: 8D 4F 10           lea         ecx,[edi+10h]
+  00858B9E: C7 47 20 00 00 00  mov         dword ptr [edi+20h],0
+            00
+  00858BA5: E8 46 08 00 00     call        008593F0
+  00858BAA: C7 07 30 5C EA 00  mov         dword ptr [edi],0EA5C30h
+  00858BB0: 5F                 pop         edi
+  00858BB1: 5E                 pop         esi
+  00858BB2: 5B                 pop         ebx
+  00858BB3: C3                 ret
+  00858BB4: CC                 int         3
+  00858BB5: CC                 int         3
+  00858BB6: CC                 int         3
+  00858BB7: CC                 int         3
+  00858BB8: CC                 int         3
+  00858BB9: CC                 int         3
+  00858BBA: CC                 int         3
+  00858BBB: CC                 int         3
+  00858BBC: CC                 int         3
+  00858BBD: CC                 int         3
+  00858BBE: CC                 int         3
+  00858BBF: CC                 int         3
+  00858BC0: B8 20 56 00 00     mov         eax,5620h
+  00858BC5: E8 26 FC 3C 00     call        00C287F0
+  00858BCA: 53                 push        ebx
+  00858BCB: 55                 push        ebp
+  00858BCC: 56                 push        esi
+  00858BCD: 57                 push        edi
+  00858BCE: 8B F9              mov         edi,ecx
+  00858BD0: 8D 4C 24 18        lea         ecx,[esp+18h]
+  00858BD4: E8 57 32 0A 00     call        008FBE30
+  00858BD9: 8B 47 14           mov         eax,dword ptr [edi+14h]
+  00858BDC: 6A 01              push        1
+  00858BDE: 50                 push        eax
+  00858BDF: 8D 4C 24 20        lea         ecx,[esp+20h]
+  00858BE3: E8 68 3A 0A 00     call        008FC650
+  00858BE8: 8D 4C 24 18        lea         ecx,[esp+18h]
+  00858BEC: E8 3F 27 0A 00     call        008FB330
+  00858BF1: 8B E8              mov         ebp,eax
+  00858BF3: 33 DB              xor         ebx,ebx
+  00858BF5: 85 ED              test        ebp,ebp
+  00858BF7: 0F 86 7D 00 00 00  jbe         00858C7A
+  00858BFD: 8D B7 B0 02 00 00  lea         esi,[edi+000002B0h]
+  00858C03: 8D 44 24 18        lea         eax,[esp+18h]
+  00858C07: 53                 push        ebx
+  00858C08: 8B C8              mov         ecx,eax
+  00858C0A: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00858C0E: 89 5C 24 18        mov         dword ptr [esp+18h],ebx
+  00858C12: E8 29 27 0A 00     call        008FB340
+  00858C17: 8B 8F B4 02 00 00  mov         ecx,dword ptr [edi+000002B4h]
+  00858C1D: 3B CE              cmp         ecx,esi
+  00858C1F: 74 0C              je          00858C2D
+  00858C21: 39 41 08           cmp         dword ptr [ecx+8],eax
+  00858C24: 73 07              jae         00858C2D
+  00858C26: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  00858C29: 3B CE              cmp         ecx,esi
+  00858C2B: 75 F4              jne         00858C21
+  00858C2D: 8B D1              mov         edx,ecx
+  00858C2F: 3B CE              cmp         ecx,esi
+  00858C31: 74 10              je          00858C43
+  00858C33: 3B 42 08           cmp         eax,dword ptr [edx+8]
+  00858C36: 72 07              jb          00858C3F
+  00858C38: 8B 52 04           mov         edx,dword ptr [edx+4]
+  00858C3B: 3B D6              cmp         edx,esi
+  00858C3D: 75 F4              jne         00858C33
+  00858C3F: 3B CA              cmp         ecx,edx
+  00858C41: 75 02              jne         00858C45
+  00858C43: 8B CE              mov         ecx,esi
+  00858C45: 8D 87 B0 02 00 00  lea         eax,[edi+000002B0h]
+  00858C4B: 3B C8              cmp         ecx,eax
+  00858C4D: 74 26              je          00858C75
+  00858C4F: 8D 97 BC 02 00 00  lea         edx,[edi+000002BCh]
+  00858C55: 52                 push        edx
+  00858C56: 8D 44 24 14        lea         eax,[esp+14h]
+  00858C5A: 50                 push        eax
+  00858C5B: 51                 push        ecx
+  00858C5C: 83 C1 0C           add         ecx,0Ch
+  00858C5F: 8B C4              mov         eax,esp
+  00858C61: 89 08              mov         dword ptr [eax],ecx
+  00858C63: 8B 8F 50 05 00 00  mov         ecx,dword ptr [edi+00000550h]
+  00858C69: 51                 push        ecx
+  00858C6A: 8D 8F 40 03 00 00  lea         ecx,[edi+00000340h]
+  00858C70: E8 AB FA FF FF     call        00858720
+  00858C75: 43                 inc         ebx
+  00858C76: 3B DD              cmp         ebx,ebp
+  00858C78: 72 89              jb          00858C03
+  00858C7A: 8D 4C 24 18        lea         ecx,[esp+18h]
+  00858C7E: E8 FD 31 0A 00     call        008FBE80
+  00858C83: 5F                 pop         edi
+  00858C84: 5E                 pop         esi
+  00858C85: 5D                 pop         ebp
+  00858C86: B0 01              mov         al,1
+  00858C88: 5B                 pop         ebx
+  00858C89: 81 C4 20 56 00 00  add         esp,5620h
+  00858C8F: C3                 ret
+  00858C90: 56                 push        esi
+  00858C91: 8B F1              mov         esi,ecx
+  00858C93: 8D 8E 40 03 00 00  lea         ecx,[esi+00000340h]
+  00858C99: E8 12 FB FF FF     call        008587B0
+  00858C9E: 80 BE 6A 05 00 00  cmp         byte ptr [esi+0000056Ah],0
+            00
+  00858CA5: C7 86 44 05 00 00  mov         dword ptr [esi+00000544h],5
+            05 00 00 00
+  00858CAF: 74 16              je          00858CC7
+  00858CB1: 80 BE 6D 05 00 00  cmp         byte ptr [esi+0000056Dh],0
+            00
+  00858CB8: 75 0D              jne         00858CC7
+  00858CBA: 8B 8E 5C 05 00 00  mov         ecx,dword ptr [esi+0000055Ch]
+  00858CC0: 8B 01              mov         eax,dword ptr [ecx]
+  00858CC2: 8B 50 08           mov         edx,dword ptr [eax+8]
+  00858CC5: FF D2              call        edx
+  00858CC7: C6 86 6D 05 00 00  mov         byte ptr [esi+0000056Dh],0
+            00
+  00858CCE: 5E                 pop         esi
+  00858CCF: C3                 ret
+  00858CD0: 83 EC 24           sub         esp,24h
+  00858CD3: 53                 push        ebx
+  00858CD4: 55                 push        ebp
+  00858CD5: 33 ED              xor         ebp,ebp
+  00858CD7: B8 01 00 00 00     mov         eax,1
+  00858CDC: 56                 push        esi
+  00858CDD: 89 6C 24 0C        mov         dword ptr [esp+0Ch],ebp
+  00858CE1: 39 44 24 40        cmp         dword ptr [esp+40h],eax
+  00858CE5: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00858CE9: 57                 push        edi
+  00858CEA: 8B F1              mov         esi,ecx
+  00858CEC: 8D 44 24 44        lea         eax,[esp+44h]
+  00858CF0: 77 04              ja          00858CF6
+  00858CF2: 8D 44 24 18        lea         eax,[esp+18h]
+  00858CF6: 8B 18              mov         ebx,dword ptr [eax]
+  00858CF8: 8D 7E 10           lea         edi,[esi+10h]
+  00858CFB: 89 AE 44 05 00 00  mov         dword ptr [esi+00000544h],ebp
+  00858D01: 89 AE 48 05 00 00  mov         dword ptr [esi+00000548h],ebp
+  00858D07: 89 AE 4C 05 00 00  mov         dword ptr [esi+0000054Ch],ebp
+  00858D0D: C7 86 50 05 00 00  mov         dword ptr [esi+00000550h],0FFFFFFFFh
+            FF FF FF FF
+  00858D17: 89 AE 54 05 00 00  mov         dword ptr [esi+00000554h],ebp
+  00858D1D: 89
+  00858D1E: AE                 scas        byte ptr es:[edi]
+  00858D1F: 58                 pop         eax
+  00858D20: 05
+
+  Summary
+
+      9C8000 .text

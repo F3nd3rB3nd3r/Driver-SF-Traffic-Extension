@@ -1,0 +1,121 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAC530: 51                 push        ecx
+  00BAC531: 53                 push        ebx
+  00BAC532: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  00BAC536: 55                 push        ebp
+  00BAC537: 57                 push        edi
+  00BAC538: 8B 7C 24 18        mov         edi,dword ptr [esp+18h]
+  00BAC53C: 8B C3              mov         eax,ebx
+  00BAC53E: 23 C7              and         eax,edi
+  00BAC540: 8B E9              mov         ebp,ecx
+  00BAC542: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  00BAC545: 0F 84 C0 00 00 00  je          00BAC60B
+  00BAC54B: 56                 push        esi
+  00BAC54C: 8D 4C 24 18        lea         ecx,[esp+18h]
+  00BAC550: 51                 push        ecx
+  00BAC551: 8D 54 24 14        lea         edx,[esp+14h]
+  00BAC555: 8D B5 88 62 02 00  lea         esi,[ebp+00026288h]
+  00BAC55B: 52                 push        edx
+  00BAC55C: 8B CE              mov         ecx,esi
+  00BAC55E: C6 05 24 CB 6E 01  mov         byte ptr ds:[016ECB24h],1
+            01
+  00BAC565: E8 16 1C 00 00     call        00BAE180
+  00BAC56A: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00BAC56E: 85 C0              test        eax,eax
+  00BAC570: 75 1C              jne         00BAC58E
+  00BAC572: CC                 int         3
+  00BAC573: 57                 push        edi
+  00BAC574: 53                 push        ebx
+  00BAC575: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAC57A: E8 21 27 00 00     call        00BAECA0
+  00BAC57F: 5E                 pop         esi
+  00BAC580: 5F                 pop         edi
+  00BAC581: 5D                 pop         ebp
+  00BAC582: C6 05 24 CB 6E 01  mov         byte ptr ds:[016ECB24h],0
+            00
+  00BAC589: 5B                 pop         ebx
+  00BAC58A: 59                 pop         ecx
+  00BAC58B: C2 08 00           ret         8
+  00BAC58E: 8B 78 10           mov         edi,dword ptr [eax+10h]
+  00BAC591: 50                 push        eax
+  00BAC592: 8D 44 24 14        lea         eax,[esp+14h]
+  00BAC596: 50                 push        eax
+  00BAC597: 8B CE              mov         ecx,esi
+  00BAC599: E8 32 1B 00 00     call        00BAE0D0
+  00BAC59E: 8B 0D A4 49 6F 01  mov         ecx,dword ptr ds:[016F49A4h]
+  00BAC5A4: 8B 15 A0 49 6F 01  mov         edx,dword ptr ds:[016F49A0h]
+  00BAC5AA: 8B 44 24 1C        mov         eax,dword ptr [esp+1Ch]
+  00BAC5AE: 51                 push        ecx
+  00BAC5AF: 52                 push        edx
+  00BAC5B0: 68 B0 49 6F 01     push        16F49B0h
+  00BAC5B5: 50                 push        eax
+  00BAC5B6: 53                 push        ebx
+  00BAC5B7: 33 F6              xor         esi,esi
+  00BAC5B9: 57                 push        edi
+  00BAC5BA: 8D 8D D8 DE 00 00  lea         ecx,[ebp+0000DED8h]
+  00BAC5C0: 89 35 B0 09 70 01  mov         dword ptr ds:[017009B0h],esi
+  00BAC5C6: E8 15 1D 01 00     call        00BBE2E0
+  00BAC5CB: 3C 01              cmp         al,1
+  00BAC5CD: 75 34              jne         00BAC603
+  00BAC5CF: 39 35 B0 09 70 01  cmp         dword ptr ds:[017009B0h],esi
+  00BAC5D5: 76 2C              jbe         00BAC603
+  00BAC5D7: EB 07              jmp         00BAC5E0
+  00BAC5D9: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00BAC5E0: 8B 0C F5 B4 49 6F  mov         ecx,dword ptr [esi*8+016F49B4h]
+            01
+  00BAC5E7: 8B 14 F5 B0 49 6F  mov         edx,dword ptr [esi*8+016F49B0h]
+            01
+  00BAC5EE: 51                 push        ecx
+  00BAC5EF: 52                 push        edx
+  00BAC5F0: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAC5F5: E8 A6 26 00 00     call        00BAECA0
+  00BAC5FA: 46                 inc         esi
+  00BAC5FB: 3B 35 B0 09 70 01  cmp         esi,dword ptr ds:[017009B0h]
+  00BAC601: 72 DD              jb          00BAC5E0
+  00BAC603: C6 05 24 CB 6E 01  mov         byte ptr ds:[016ECB24h],0
+            00
+  00BAC60A: 5E                 pop         esi
+  00BAC60B: 5F                 pop         edi
+  00BAC60C: 5D                 pop         ebp
+  00BAC60D: 5B                 pop         ebx
+  00BAC60E: 59                 pop         ecx
+  00BAC60F: C2 08 00           ret         8
+  00BAC612: CC                 int         3
+  00BAC613: CC                 int         3
+  00BAC614: CC                 int         3
+  00BAC615: CC                 int         3
+  00BAC616: CC                 int         3
+  00BAC617: CC                 int         3
+  00BAC618: CC                 int         3
+  00BAC619: CC                 int         3
+  00BAC61A: CC                 int         3
+  00BAC61B: CC                 int         3
+  00BAC61C: CC                 int         3
+  00BAC61D: CC                 int         3
+  00BAC61E: CC                 int         3
+  00BAC61F: CC                 int         3
+  00BAC620: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  00BAC624: 83 EC 30           sub         esp,30h
+  00BAC627: 8B C1              mov         eax,ecx
+  00BAC629: C1 E8 1F           shr         eax,1Fh
+  00BAC62C: 53                 push        ebx
+  00BAC62D: 33 DB              xor         ebx,ebx
+  00BAC62F: 33 D2              xor         edx,edx
+  00BAC631: 83 F8 01           cmp         eax,1
+  00BAC634: 8B 44 24 38        mov         eax,dword ptr [esp+38h]
+  00BAC638: 75 13              jne         00BAC64D
+  00BAC63A: 3B D3              cmp         edx,ebx
+  00BAC63C: 75 0F              jne         00BAC64D
+  00BAC63E: 8B D0              mov         edx,eax
+  00BAC640: 23 D1              and         edx,ecx
+  00BAC642: 83 FA FF           cmp         edx,0FFFFFFFFh
+  00BAC645: 74
+
+  Summary
+
+      9C8000 .text

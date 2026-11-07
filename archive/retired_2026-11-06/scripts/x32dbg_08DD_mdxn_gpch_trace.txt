@@ -1,0 +1,54 @@
+mov $vehhandler, 0
+mov $vehchild, 0
+
+bp 0059BAB4
+bpcnd 0059BAB4, 0
+SetBreakpointCommandCondition 0059BAB4, word(esi+28)==8DD
+SetBreakpointCommand 0059BAB4, "mov $vehhandler, ptr(esi+14)"
+bplogcondition 0059BAB4, word(esi+28)==8DD
+bplog 0059BAB4, "8DD HANDOFF handler={p:ptr(esi+14)}"
+SetBreakpointSilent 0059BAB4, 1
+
+bp 00858AFB
+bpcnd 00858AFB, 0
+SetBreakpointCommandCondition 00858AFB, "$vehhandler!=0 && esi==$vehhandler"
+SetBreakpointCommand 00858AFB, "mov $vehchild, ebp"
+bplogcondition 00858AFB, "$vehhandler!=0 && esi==$vehhandler"
+bplog 00858AFB, "8DD MDXN_CHILD child={p:ebp} vtable={p:ptr(ebp)}"
+SetBreakpointSilent 00858AFB, 1
+
+bp 00BB94C8
+bpcnd 00BB94C8, 0
+bplogcondition 00BB94C8, "$vehchild!=0 && esi==$vehchild"
+bplog 00BB94C8, "8DD MDXN_LIST child={p:esi} item={x:ptr(esi+58)} count={x:ptr(esi+5C)}"
+SetBreakpointSilent 00BB94C8, 1
+
+bp 00BB9520
+bpcnd 00BB9520, 0
+bplogcondition 00BB9520, "$vehchild!=0 && esi==$vehchild"
+bplog 00BB9520, "8DD DRSP_START child={p:esi} item={x:ptr(esi+58)} count={x:ptr(esi+5C)}"
+SetBreakpointSilent 00BB9520, 1
+
+bp 00BB967E
+bpcnd 00BB967E, 0
+bplogcondition 00BB967E, "$vehchild!=0 && esi==$vehchild"
+bplog 00BB967E, "8DD MDXN_DONE child={p:esi} item={x:ptr(esi+58)} count={x:ptr(esi+5C)}"
+SetBreakpointSilent 00BB967E, 1
+
+bp 00BBB981
+bpcnd 00BBB981, 0
+bplogcondition 00BBB981, "$vehchild!=0 && esi==($vehchild+30)"
+bplog 00BBB981, "8DD GPCH_ENTER drsp={p:esi} data={p:edi}"
+SetBreakpointSilent 00BBB981, 1
+
+bp 00BBB989
+bpcnd 00BBB989, 0
+bplogcondition 00BBB989, "$vehchild!=0 && esi==($vehchild+30)"
+bplog 00BBB989, "8DD GPCH_RETURN drsp={p:esi} result={x:al}"
+SetBreakpointSilent 00BBB989, 1
+
+bp 00BBA14F
+bpcnd 00BBA14F, 0
+bplogcondition 00BBA14F, "$vehchild!=0 && ptr(esp+4)==($vehchild+30)"
+bplog 00BBA14F, "8DD GPCH_CREATE result={x:al} drsp={p:ptr(esp+4)} resource={p:ptr(esi)}"
+SetBreakpointSilent 00BBA14F, 1

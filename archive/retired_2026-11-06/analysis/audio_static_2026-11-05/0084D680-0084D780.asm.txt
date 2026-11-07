@@ -1,0 +1,133 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084D680: 5C                 pop         esp
+  0084D681: 24 14              and         al,14h
+  0084D683: 85 C0              test        eax,eax
+  0084D685: 74 22              je          0084D6A9
+  0084D687: 50                 push        eax
+  0084D688: 56                 push        esi
+  0084D689: 84 DB              test        bl,bl
+  0084D68B: 75 14              jne         0084D6A1
+  0084D68D: E8 AE C5 44 00     call        00C99C40
+  0084D692: 83 C4 08           add         esp,8
+  0084D695: 56                 push        esi
+  0084D696: E8 D5 C8 44 00     call        00C99F70
+  0084D69B: 83 C4 04           add         esp,4
+  0084D69E: 5B                 pop         ebx
+  0084D69F: 5E                 pop         esi
+  0084D6A0: C3                 ret
+  0084D6A1: E8 FA C4 44 00     call        00C99BA0
+  0084D6A6: 83 C4 08           add         esp,8
+  0084D6A9: 84 DB              test        bl,bl
+  0084D6AB: 75 09              jne         0084D6B6
+  0084D6AD: 56                 push        esi
+  0084D6AE: E8 BD C8 44 00     call        00C99F70
+  0084D6B3: 83 C4 04           add         esp,4
+  0084D6B6: 5B                 pop         ebx
+  0084D6B7: 5E                 pop         esi
+  0084D6B8: C3                 ret
+  0084D6B9: CC                 int         3
+  0084D6BA: CC                 int         3
+  0084D6BB: CC                 int         3
+  0084D6BC: CC                 int         3
+  0084D6BD: CC                 int         3
+  0084D6BE: CC                 int         3
+  0084D6BF: CC                 int         3
+  0084D6C0: 53                 push        ebx
+  0084D6C1: 8B 5C 24 1C        mov         ebx,dword ptr [esp+1Ch]
+  0084D6C5: 55                 push        ebp
+  0084D6C6: 8B 6C 24 14        mov         ebp,dword ptr [esp+14h]
+  0084D6CA: 56                 push        esi
+  0084D6CB: 57                 push        edi
+  0084D6CC: 8D 7D 30           lea         edi,[ebp+30h]
+  0084D6CF: 83 FB FF           cmp         ebx,0FFFFFFFFh
+  0084D6D2: 74 11              je          0084D6E5
+  0084D6D4: 53                 push        ebx
+  0084D6D5: E8 A6 C2 44 00     call        00C99980
+  0084D6DA: 83 C4 04           add         esp,4
+  0084D6DD: 83 F8 01           cmp         eax,1
+  0084D6E0: 74 03              je          0084D6E5
+  0084D6E2: 83 CB FF           or          ebx,0FFFFFFFFh
+  0084D6E5: 8B F3              mov         esi,ebx
+  0084D6E7: 83 FB FF           cmp         ebx,0FFFFFFFFh
+  0084D6EA: 75 36              jne         0084D722
+  0084D6EC: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  0084D6F0: 50                 push        eax
+  0084D6F1: 6A 09              push        9
+  0084D6F3: 57                 push        edi
+  0084D6F4: 57                 push        edi
+  0084D6F5: 6A 00              push        0
+  0084D6F7: E8 94 C6 44 00     call        00C99D90
+  0084D6FC: 8B F0              mov         esi,eax
+  0084D6FE: 83 C4 14           add         esp,14h
+  0084D701: 3B F3              cmp         esi,ebx
+  0084D703: 75 07              jne         0084D70C
+  0084D705: 5F                 pop         edi
+  0084D706: 5E                 pop         esi
+  0084D707: 5D                 pop         ebp
+  0084D708: 33 C0              xor         eax,eax
+  0084D70A: 5B                 pop         ebx
+  0084D70B: C3                 ret
+  0084D70C: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  0084D710: 51                 push        ecx
+  0084D711: 56                 push        esi
+  0084D712: E8 E9 75 14 00     call        00994D00
+  0084D717: 56                 push        esi
+  0084D718: E8 D3 C4 44 00     call        00C99BF0
+  0084D71D: 83 C4 0C           add         esp,0Ch
+  0084D720: EB 0A              jmp         0084D72C
+  0084D722: 57                 push        edi
+  0084D723: 53                 push        ebx
+  0084D724: E8 17 C3 44 00     call        00C99A40
+  0084D729: 83 C4 08           add         esp,8
+  0084D72C: 8B F8              mov         edi,eax
+  0084D72E: 8D 0C 2F           lea         ecx,[edi+ebp]
+  0084D731: 85 C9              test        ecx,ecx
+  0084D733: 74 20              je          0084D755
+  0084D735: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  0084D739: 57                 push        edi
+  0084D73A: 56                 push        esi
+  0084D73B: 52                 push        edx
+  0084D73C: E8 8F 00 00 00     call        0084D7D0
+  0084D741: 8B 54 24 24        mov         edx,dword ptr [esp+24h]
+  0084D745: 83 FB FF           cmp         ebx,0FFFFFFFFh
+  0084D748: 0F 95 C1           setne       cl
+  0084D74B: 88 48 2C           mov         byte ptr [eax+2Ch],cl
+  0084D74E: 89 3A              mov         dword ptr [edx],edi
+  0084D750: 5F                 pop         edi
+  0084D751: 5E                 pop         esi
+  0084D752: 5D                 pop         ebp
+  0084D753: 5B                 pop         ebx
+  0084D754: C3                 ret
+  0084D755: 8B 54 24 24        mov         edx,dword ptr [esp+24h]
+  0084D759: 33 C0              xor         eax,eax
+  0084D75B: 83 FB FF           cmp         ebx,0FFFFFFFFh
+  0084D75E: 0F 95 C1           setne       cl
+  0084D761: 88 48 2C           mov         byte ptr [eax+2Ch],cl
+  0084D764: 89 3A              mov         dword ptr [edx],edi
+  0084D766: 5F                 pop         edi
+  0084D767: 5E                 pop         esi
+  0084D768: 5D                 pop         ebp
+  0084D769: 5B                 pop         ebx
+  0084D76A: C3                 ret
+  0084D76B: CC                 int         3
+  0084D76C: CC                 int         3
+  0084D76D: CC                 int         3
+  0084D76E: CC                 int         3
+  0084D76F: CC                 int         3
+  0084D770: 8B 01              mov         eax,dword ptr [ecx]
+  0084D772: 8B 10              mov         edx,dword ptr [eax]
+  0084D774: 53                 push        ebx
+  0084D775: 8A 59 2C           mov         bl,byte ptr [ecx+2Ch]
+  0084D778: 56                 push        esi
+  0084D779: 8B 71 24           mov         esi,dword ptr [ecx+24h]
+  0084D77C: 57                 push        edi
+  0084D77D: 8B 79 28           mov         edi,dword ptr [ecx+28h]
+  0084D780: 6A
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,49 @@
+
+Dump of file E:\_DSF Mods\ai repos\DriverSF_V29s_VS_LEAN_2026-11-02\build\v29s_notify150_r1\DriverSF_V29s_160Capacity_150Request_NOTIFY150_R1.asi
+
+File Type: DLL
+
+  10001620: 9C                 pushfd
+  10001621: F0 FF 05 98 ED 02  lock inc    dword ptr ds:[1002ED98h]
+            10
+  10001628: 85 F6              test        esi,esi
+  1000162A: 75 2B              jne         10001657
+  1000162C: 60                 pushad
+  1000162D: 8B EC              mov         ebp,esp
+  1000162F: 81 EC 10 02 00 00  sub         esp,210h
+  10001635: 83 E4 F0           and         esp,0FFFFFFF0h
+  10001638: 0F AE 04 24        fxsave      [esp]
+  1000163C: FC                 cld
+  1000163D: FF 75 40           push        dword ptr [ebp+40h]
+  10001640: FF 75 48           push        dword ptr [ebp+48h]
+  10001643: FF 75 44           push        dword ptr [ebp+44h]
+  10001646: 6A 00              push        0
+  10001648: E8 C5 FB FF FF     call        10001212
+  1000164D: 83 C4 10           add         esp,10h
+  10001650: 0F AE 0C 24        fxrstor     [esp]
+  10001654: 8B E5              mov         esp,ebp
+  10001656: 61                 popad
+  10001657: 9D                 popfd
+  10001658: FF 25 AC ED 02 10  jmp         dword ptr ds:[1002EDACh]
+  1000165E: CC                 int         3
+  1000165F: CC                 int         3
+  10001660: CC                 int         3
+  10001661: CC                 int         3
+  10001662: CC                 int         3
+  10001663: CC                 int         3
+  10001664: CC                 int         3
+  10001665: CC                 int         3
+  10001666: CC                 int         3
+  10001667: CC                 int         3
+  10001668: CC                 int         3
+  10001669: CC                 int         3
+  1000166A: CC                 int         3
+  1000166B: CC                 int         3
+  1000166C: CC                 int         3
+  1000166D: CC                 int         3
+  1000166E: CC                 int         3
+  1000166F: CC                 int         3
+
+  Summary
+
+       23000 .text

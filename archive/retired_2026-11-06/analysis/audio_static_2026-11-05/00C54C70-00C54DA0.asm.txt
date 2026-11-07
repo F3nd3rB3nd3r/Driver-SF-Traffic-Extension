@@ -1,0 +1,113 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C54C70: 83 EC 24           sub         esp,24h
+  00C54C73: 6A 01              push        1
+  00C54C75: C7 05 BC D3 FD 00  mov         dword ptr ds:[00FDD3BCh],3
+            03 00 00 00
+  00C54C7F: E8 9C 89 01 00     call        00C6D620
+  00C54C84: 83 C4 04           add         esp,4
+  00C54C87: 84 C0              test        al,al
+  00C54C89: 75 09              jne         00C54C94
+  00C54C8B: B8 4C 00 00 00     mov         eax,4Ch
+  00C54C90: 83 C4 24           add         esp,24h
+  00C54C93: C3                 ret
+  00C54C94: E8 67 4C 04 00     call        00C99900
+  00C54C99: 84 C0              test        al,al
+  00C54C9B: 75 09              jne         00C54CA6
+  00C54C9D: B8 4A 00 00 00     mov         eax,4Ah
+  00C54CA2: 83 C4 24           add         esp,24h
+  00C54CA5: C3                 ret
+  00C54CA6: 83 3D A8 23 D7 01  cmp         dword ptr ds:[01D723A8h],0
+            00
+  00C54CAD: 75 09              jne         00C54CB8
+  00C54CAF: B8 4B 00 00 00     mov         eax,4Bh
+  00C54CB4: 83 C4 24           add         esp,24h
+  00C54CB7: C3                 ret
+  00C54CB8: 53                 push        ebx
+  00C54CB9: 8B 5C 24 2C        mov         ebx,dword ptr [esp+2Ch]
+  00C54CBD: 56                 push        esi
+  00C54CBE: 85 DB              test        ebx,ebx
+  00C54CC0: 75 0F              jne         00C54CD1
+  00C54CC2: 68 64 18 D7 01     push        1D71864h
+  00C54CC7: E8 34 C2 FF FF     call        00C50F00
+  00C54CCC: 83 C4 04           add         esp,4
+  00C54CCF: EB 10              jmp         00C54CE1
+  00C54CD1: 57                 push        edi
+  00C54CD2: B9 08 00 00 00     mov         ecx,8
+  00C54CD7: 8B F3              mov         esi,ebx
+  00C54CD9: BF 64 18 D7 01     mov         edi,1D71864h
+  00C54CDE: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00C54CE0: 5F                 pop         edi
+  00C54CE1: 8B 4C 24 34        mov         ecx,dword ptr [esp+34h]
+  00C54CE5: A1 64 18 D7 01     mov         eax,dword ptr ds:[01D71864h]
+  00C54CEA: 51                 push        ecx
+  00C54CEB: A3 84 18 D7 01     mov         dword ptr ds:[01D71884h],eax
+  00C54CF0: E8 3B 02 00 00     call        00C54F30
+  00C54CF5: 83 C4 04           add         esp,4
+  00C54CF8: 80 3D 98 18 D7 01  cmp         byte ptr ds:[01D71898h],0
+            00
+  00C54CFF: BE 02 00 00 00     mov         esi,2
+  00C54D04: 75 3B              jne         00C54D41
+  00C54D06: E8 95 D5 FF FF     call        00C522A0
+  00C54D0B: 8B F0              mov         esi,eax
+  00C54D0D: 83 FE 01           cmp         esi,1
+  00C54D10: 75 21              jne         00C54D33
+  00C54D12: 53                 push        ebx
+  00C54D13: E8 78 FB FF FF     call        00C54890
+  00C54D18: 8B F0              mov         esi,eax
+  00C54D1A: 83 C4 04           add         esp,4
+  00C54D1D: 83 FE 01           cmp         esi,1
+  00C54D20: 75 0C              jne         00C54D2E
+  00C54D22: E8 E9 D5 FF FF     call        00C52310
+  00C54D27: 8B F0              mov         esi,eax
+  00C54D29: 83 FE 01           cmp         esi,1
+  00C54D2C: 74 5F              je          00C54D8D
+  00C54D2E: E8 AD D9 FF FF     call        00C526E0
+  00C54D33: 80 3D 98 18 D7 01  cmp         byte ptr ds:[01D71898h],0
+            00
+  00C54D3A: 75 05              jne         00C54D41
+  00C54D3C: E8 AF D5 FF FF     call        00C522F0
+  00C54D41: 33 C0              xor         eax,eax
+  00C54D43: 6A 24              push        24h
+  00C54D45: 8D 54 24 0C        lea         edx,[esp+0Ch]
+  00C54D49: 68 50 5A EA 00     push        0EA5A50h
+  00C54D4E: 52                 push        edx
+  00C54D4F: C6 44 24 14 00     mov         byte ptr [esp+14h],0
+  00C54D54: 89 44 24 15        mov         dword ptr [esp+15h],eax
+  00C54D58: 89 44 24 19        mov         dword ptr [esp+19h],eax
+  00C54D5C: 89 44 24 1D        mov         dword ptr [esp+1Dh],eax
+  00C54D60: 89 44 24 21        mov         dword ptr [esp+21h],eax
+  00C54D64: 89 44 24 25        mov         dword ptr [esp+25h],eax
+  00C54D68: 89 44 24 29        mov         dword ptr [esp+29h],eax
+  00C54D6C: 89 44 24 2D        mov         dword ptr [esp+2Dh],eax
+  00C54D70: 89 44 24 31        mov         dword ptr [esp+31h],eax
+  00C54D74: 66 89 44 24 35     mov         word ptr [esp+35h],ax
+  00C54D79: 88 44 24 37        mov         byte ptr [esp+37h],al
+  00C54D7D: E8 3E 60 FD FF     call        00C2ADC0
+  00C54D82: 83 C4 0C           add         esp,0Ch
+  00C54D85: 8B C6              mov         eax,esi
+  00C54D87: 5E                 pop         esi
+  00C54D88: 5B                 pop         ebx
+  00C54D89: 83 C4 24           add         esp,24h
+  00C54D8C: C3                 ret
+  00C54D8D: C6 05 98 18 D7 01  mov         byte ptr ds:[01D71898h],1
+            01
+  00C54D94: EB AB              jmp         00C54D41
+  00C54D96: CC                 int         3
+  00C54D97: CC                 int         3
+  00C54D98: CC                 int         3
+  00C54D99: CC                 int         3
+  00C54D9A: CC                 int         3
+  00C54D9B: CC                 int         3
+  00C54D9C: CC                 int         3
+  00C54D9D: CC                 int         3
+  00C54D9E: CC                 int         3
+  00C54D9F: CC                 int         3
+  00C54DA0: 83
+
+  Summary
+
+      9C8000 .text

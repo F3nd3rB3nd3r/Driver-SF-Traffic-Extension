@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion><Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{C50C06D5-6E93-4E7E-BC36-229F1400E985}</ProjectGuid>
+    <RootNamespace>DriverSF_V29s_SPOOL0_SCRATCH</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v145</PlatformToolset><CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <TargetName>DriverSF_V29s_160Capacity_150Request_SPOOL0_SCRATCH</TargetName><TargetExt>.asi</TargetExt>
+    <OutDir>$(ProjectDir)build\v29s_spool0_scratch\</OutDir>
+    <IntDir>$(ProjectDir)build\v29s_spool0_scratch\vs_obj\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>DSF_CHAPTER7_PRELOAD_COUNT=150;DSF_GRAPHICS_ADMISSION_TARGET=160;DSF_V29S_NATIVE_TRACE=1;DSF_V29S_INCLUDE_EXPANDED=1;DSF_V29S_POOL_DIAG=1;DSF_V29S_SPOOL0_EXPANDED=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>MaxSpeed</Optimization><AdditionalOptions>/Oi- %(AdditionalOptions)</AdditionalOptions>
+      <WarningLevel>Level4</WarningLevel><LanguageStandard>stdcpp17</LanguageStandard>
+      <BufferSecurityCheck>false</BufferSecurityCheck><ExceptionHandling>false</ExceptionHandling><RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link><AdditionalDependencies>kernel32.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries><EntryPointSymbol>DllMain@12</EntryPointSymbol></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="src\DriverSF_V29b_NativeFastPath.cpp" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sNativeLoadingTrace.inc" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
+
+

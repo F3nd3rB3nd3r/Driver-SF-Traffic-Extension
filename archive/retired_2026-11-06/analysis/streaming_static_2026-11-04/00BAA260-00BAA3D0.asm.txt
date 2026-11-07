@@ -1,0 +1,161 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAA260: FF 83 C4 0C C3 CC  inc         dword ptr [ebx+CCC30CC4h]
+  00BAA266: CC                 int         3
+  00BAA267: CC                 int         3
+  00BAA268: CC                 int         3
+  00BAA269: CC                 int         3
+  00BAA26A: CC                 int         3
+  00BAA26B: CC                 int         3
+  00BAA26C: CC                 int         3
+  00BAA26D: CC                 int         3
+  00BAA26E: CC                 int         3
+  00BAA26F: CC                 int         3
+  00BAA270: F6 44 24 04 01     test        byte ptr [esp+4],1
+  00BAA275: 56                 push        esi
+  00BAA276: 8B F1              mov         esi,ecx
+  00BAA278: C7 06 A8 80 E9 00  mov         dword ptr [esi],0E980A8h
+  00BAA27E: 74 09              je          00BAA289
+  00BAA280: 56                 push        esi
+  00BAA281: E8 D4 E4 07 00     call        00C2875A
+  00BAA286: 83 C4 04           add         esp,4
+  00BAA289: 8B C6              mov         eax,esi
+  00BAA28B: 5E                 pop         esi
+  00BAA28C: C2 04 00           ret         4
+  00BAA28F: CC                 int         3
+  00BAA290: 8B 41 08           mov         eax,dword ptr [ecx+8]
+  00BAA293: 53                 push        ebx
+  00BAA294: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  00BAA298: 56                 push        esi
+  00BAA299: 8D 71 08           lea         esi,[ecx+8]
+  00BAA29C: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00BAA29F: 57                 push        edi
+  00BAA2A0: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  00BAA2A4: 3B C7              cmp         eax,edi
+  00BAA2A6: 75 04              jne         00BAA2AC
+  00BAA2A8: 3B CB              cmp         ecx,ebx
+  00BAA2AA: 74 48              je          00BAA2F4
+  00BAA2AC: 23 C1              and         eax,ecx
+  00BAA2AE: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  00BAA2B1: 74 0B              je          00BAA2BE
+  00BAA2B3: 56                 push        esi
+  00BAA2B4: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAA2B9: E8 C2 47 00 00     call        00BAEA80
+  00BAA2BE: 89 3E              mov         dword ptr [esi],edi
+  00BAA2C0: 89 5E 04           mov         dword ptr [esi+4],ebx
+  00BAA2C3: 8B 0D B8 A6 88 01  mov         ecx,dword ptr ds:[0188A6B8h]
+  00BAA2C9: 8B C7              mov         eax,edi
+  00BAA2CB: 89 04 CD B8 A6 86  mov         dword ptr [ecx*8+0186A6B8h],eax
+            01
+  00BAA2D2: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BAA2D5: A1 B8 A6 88 01     mov         eax,dword ptr ds:[0188A6B8h]
+  00BAA2DA: 89 14 C5 BC A6 86  mov         dword ptr [eax*8+0186A6BCh],edx
+            01
+  00BAA2E1: 8B 0D B8 A6 88 01  mov         ecx,dword ptr ds:[0188A6B8h]
+  00BAA2E7: 89 34 8D B8 A6 85  mov         dword ptr [ecx*4+0185A6B8h],esi
+            01
+  00BAA2EE: FF 05 B8 A6 88 01  inc         dword ptr ds:[0188A6B8h]
+  00BAA2F4: 5F                 pop         edi
+  00BAA2F5: 5E                 pop         esi
+  00BAA2F6: 5B                 pop         ebx
+  00BAA2F7: C2 08 00           ret         8
+  00BAA2FA: CC                 int         3
+  00BAA2FB: CC                 int         3
+  00BAA2FC: CC                 int         3
+  00BAA2FD: CC                 int         3
+  00BAA2FE: CC                 int         3
+  00BAA2FF: CC                 int         3
+  00BAA300: 8B 41 20           mov         eax,dword ptr [ecx+20h]
+  00BAA303: 53                 push        ebx
+  00BAA304: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  00BAA308: 56                 push        esi
+  00BAA309: 8D 71 20           lea         esi,[ecx+20h]
+  00BAA30C: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00BAA30F: 57                 push        edi
+  00BAA310: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  00BAA314: 3B C7              cmp         eax,edi
+  00BAA316: 75 04              jne         00BAA31C
+  00BAA318: 3B CB              cmp         ecx,ebx
+  00BAA31A: 74 4F              je          00BAA36B
+  00BAA31C: 23 C1              and         eax,ecx
+  00BAA31E: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  00BAA321: 74 0B              je          00BAA32E
+  00BAA323: 56                 push        esi
+  00BAA324: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAA329: E8 52 47 00 00     call        00BAEA80
+  00BAA32E: 89 3E              mov         dword ptr [esi],edi
+  00BAA330: 23 FB              and         edi,ebx
+  00BAA332: 89 5E 04           mov         dword ptr [esi+4],ebx
+  00BAA335: 83 FF FF           cmp         edi,0FFFFFFFFh
+  00BAA338: 74 31              je          00BAA36B
+  00BAA33A: 8B 06              mov         eax,dword ptr [esi]
+  00BAA33C: 8B 0D B8 A6 88 01  mov         ecx,dword ptr ds:[0188A6B8h]
+  00BAA342: 89 04 CD B8 A6 86  mov         dword ptr [ecx*8+0186A6B8h],eax
+            01
+  00BAA349: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BAA34C: A1 B8 A6 88 01     mov         eax,dword ptr ds:[0188A6B8h]
+  00BAA351: 89 14 C5 BC A6 86  mov         dword ptr [eax*8+0186A6BCh],edx
+            01
+  00BAA358: 8B 0D B8 A6 88 01  mov         ecx,dword ptr ds:[0188A6B8h]
+  00BAA35E: 89 34 8D B8 A6 85  mov         dword ptr [ecx*4+0185A6B8h],esi
+            01
+  00BAA365: FF 05 B8 A6 88 01  inc         dword ptr ds:[0188A6B8h]
+  00BAA36B: 5F                 pop         edi
+  00BAA36C: 5E                 pop         esi
+  00BAA36D: 5B                 pop         ebx
+  00BAA36E: C2 08 00           ret         8
+  00BAA371: CC                 int         3
+  00BAA372: CC                 int         3
+  00BAA373: CC                 int         3
+  00BAA374: CC                 int         3
+  00BAA375: CC                 int         3
+  00BAA376: CC                 int         3
+  00BAA377: CC                 int         3
+  00BAA378: CC                 int         3
+  00BAA379: CC                 int         3
+  00BAA37A: CC                 int         3
+  00BAA37B: CC                 int         3
+  00BAA37C: CC                 int         3
+  00BAA37D: CC                 int         3
+  00BAA37E: CC                 int         3
+  00BAA37F: CC                 int         3
+  00BAA380: 56                 push        esi
+  00BAA381: 8B F1              mov         esi,ecx
+  00BAA383: 8D 4E 28           lea         ecx,[esi+28h]
+  00BAA386: C7 06 B0 80 E9 00  mov         dword ptr [esi],0E980B0h
+  00BAA38C: E8 3F E6 00 00     call        00BB89D0
+  00BAA391: 8B 4E 20           mov         ecx,dword ptr [esi+20h]
+  00BAA394: 23 4E 24           and         ecx,dword ptr [esi+24h]
+  00BAA397: 8D 46 20           lea         eax,[esi+20h]
+  00BAA39A: 83 F9 FF           cmp         ecx,0FFFFFFFFh
+  00BAA39D: 74 0B              je          00BAA3AA
+  00BAA39F: 50                 push        eax
+  00BAA3A0: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAA3A5: E8 D6 46 00 00     call        00BAEA80
+  00BAA3AA: F6 44 24 08 01     test        byte ptr [esp+8],1
+  00BAA3AF: C7 06 A8 80 E9 00  mov         dword ptr [esi],0E980A8h
+  00BAA3B5: 74 09              je          00BAA3C0
+  00BAA3B7: 56                 push        esi
+  00BAA3B8: E8 9D E3 07 00     call        00C2875A
+  00BAA3BD: 83 C4 04           add         esp,4
+  00BAA3C0: 8B C6              mov         eax,esi
+  00BAA3C2: 5E                 pop         esi
+  00BAA3C3: C2 04 00           ret         4
+  00BAA3C6: CC                 int         3
+  00BAA3C7: CC                 int         3
+  00BAA3C8: CC                 int         3
+  00BAA3C9: CC                 int         3
+  00BAA3CA: CC                 int         3
+  00BAA3CB: CC                 int         3
+  00BAA3CC: CC                 int         3
+  00BAA3CD: CC                 int         3
+  00BAA3CE: CC                 int         3
+  00BAA3CF: CC                 int         3
+  00BAA3D0: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

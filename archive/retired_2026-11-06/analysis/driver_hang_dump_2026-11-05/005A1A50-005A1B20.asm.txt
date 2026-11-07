@@ -1,0 +1,93 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A1A50: 54                 push        esp
+  005A1A51: 24 08              and         al,8
+  005A1A53: 74 1A              je          005A1A6F
+  005A1A55: 8D 44 24 10        lea         eax,[esp+10h]
+  005A1A59: 50                 push        eax
+  005A1A5A: 8D 8E A4 69 00 00  lea         ecx,[esi+000069A4h]
+  005A1A60: E8 2B 0D 00 00     call        005A2790
+  005A1A65: 66 8B 00           mov         ax,word ptr [eax]
+  005A1A68: 5E                 pop         esi
+  005A1A69: 83 C4 08           add         esp,8
+  005A1A6C: C2 04 00           ret         4
+  005A1A6F: B8 FF FF 00 00     mov         eax,0FFFFh
+  005A1A74: 5E                 pop         esi
+  005A1A75: 83 C4 08           add         esp,8
+  005A1A78: C2 04 00           ret         4
+  005A1A7B: CC                 int         3
+  005A1A7C: CC                 int         3
+  005A1A7D: CC                 int         3
+  005A1A7E: CC                 int         3
+  005A1A7F: CC                 int         3
+  005A1A80: B8 FF FF 00 00     mov         eax,0FFFFh
+  005A1A85: 66 39 44 24 08     cmp         word ptr [esp+8],ax
+  005A1A8A: 74 1D              je          005A1AA9
+  005A1A8C: 83 7C 24 04 00     cmp         dword ptr [esp+4],0
+  005A1A91: 74 16              je          005A1AA9
+  005A1A93: 8D 54 24 08        lea         edx,[esp+8]
+  005A1A97: 52                 push        edx
+  005A1A98: 81 C1 5C 5F 00 00  add         ecx,5F5Ch
+  005A1A9E: E8 9D 0C 00 00     call        005A2740
+  005A1AA3: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  005A1AA7: 89 08              mov         dword ptr [eax],ecx
+  005A1AA9: C2 08 00           ret         8
+  005A1AAC: CC                 int         3
+  005A1AAD: CC                 int         3
+  005A1AAE: CC                 int         3
+  005A1AAF: CC                 int         3
+  005A1AB0: 83 EC 08           sub         esp,8
+  005A1AB3: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  005A1AB7: 50                 push        eax
+  005A1AB8: 8D 54 24 04        lea         edx,[esp+4]
+  005A1ABC: 52                 push        edx
+  005A1ABD: 81 C1 44 5B 00 00  add         ecx,5B44h
+  005A1AC3: E8 28 0C 00 00     call        005A26F0
+  005A1AC8: 8B 0C 24           mov         ecx,dword ptr [esp]
+  005A1ACB: 33 C0              xor         eax,eax
+  005A1ACD: 3B 4C 24 04        cmp         ecx,dword ptr [esp+4]
+  005A1AD1: 0F 95 C0           setne       al
+  005A1AD4: 33 D2              xor         edx,edx
+  005A1AD6: 3B D0              cmp         edx,eax
+  005A1AD8: 1B C0              sbb         eax,eax
+  005A1ADA: F7 D8              neg         eax
+  005A1ADC: 83 C4 08           add         esp,8
+  005A1ADF: C2 04 00           ret         4
+  005A1AE2: CC                 int         3
+  005A1AE3: CC                 int         3
+  005A1AE4: CC                 int         3
+  005A1AE5: CC                 int         3
+  005A1AE6: CC                 int         3
+  005A1AE7: CC                 int         3
+  005A1AE8: CC                 int         3
+  005A1AE9: CC                 int         3
+  005A1AEA: CC                 int         3
+  005A1AEB: CC                 int         3
+  005A1AEC: CC                 int         3
+  005A1AED: CC                 int         3
+  005A1AEE: CC                 int         3
+  005A1AEF: CC                 int         3
+  005A1AF0: 53                 push        ebx
+  005A1AF1: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  005A1AF5: 56                 push        esi
+  005A1AF6: 8B F1              mov         esi,ecx
+  005A1AF8: 8D 8E 8C 66 00 00  lea         ecx,[esi+0000668Ch]
+  005A1AFE: 84 DB              test        bl,bl
+  005A1B00: 74 11              je          005A1B13
+  005A1B02: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  005A1B06: 50                 push        eax
+  005A1B07: E8 84 0C 00 00     call        005A2790
+  005A1B0C: 33 C9              xor         ecx,ecx
+  005A1B0E: 66 89 08           mov         word ptr [eax],cx
+  005A1B11: EB 0A              jmp         005A1B1D
+  005A1B13: 8D 54 24 0C        lea         edx,[esp+0Ch]
+  005A1B17: 52                 push        edx
+  005A1B18: E8 83 0B 00 00     call        005A26A0
+  005A1B1D: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+
+  Summary
+
+      9C8000 .text

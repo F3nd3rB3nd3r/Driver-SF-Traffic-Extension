@@ -1,0 +1,268 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C51A80: 15 34 91 DC 00     adc         eax,0DC9134h
+  00C51A85: 89 07              mov         dword ptr [edi],eax
+  00C51A87: 85 C0              test        eax,eax
+  00C51A89: 75 08              jne         00C51A93
+  00C51A8B: 5F                 pop         edi
+  00C51A8C: B8 02 00 00 00     mov         eax,2
+  00C51A91: 5E                 pop         esi
+  00C51A92: C3                 ret
+  00C51A93: 89 7E 08           mov         dword ptr [esi+8],edi
+  00C51A96: 5F                 pop         edi
+  00C51A97: B8 01 00 00 00     mov         eax,1
+  00C51A9C: 5E                 pop         esi
+  00C51A9D: C3                 ret
+  00C51A9E: CC                 int         3
+  00C51A9F: CC                 int         3
+  00C51AA0: 56                 push        esi
+  00C51AA1: 57                 push        edi
+  00C51AA2: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  00C51AA6: 8B F1              mov         esi,ecx
+  00C51AA8: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00C51AAB: 83 FF 01           cmp         edi,1
+  00C51AAE: 74 19              je          00C51AC9
+  00C51AB0: 85 C0              test        eax,eax
+  00C51AB2: 74 07              je          00C51ABB
+  00C51AB4: 50                 push        eax
+  00C51AB5: FF 15 F0 91 DC 00  call        dword ptr ds:[00DC91F0h]
+  00C51ABB: 8B C7              mov         eax,edi
+  00C51ABD: 5F                 pop         edi
+  00C51ABE: C7 46 0C 00 00 00  mov         dword ptr [esi+0Ch],0
+            00
+  00C51AC5: 5E                 pop         esi
+  00C51AC6: C2 04 00           ret         4
+  00C51AC9: 6A FF              push        0FFFFFFFFh
+  00C51ACB: 50                 push        eax
+  00C51ACC: FF 15 F4 91 DC 00  call        dword ptr ds:[00DC91F4h]
+  00C51AD2: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00C51AD5: 85 C0              test        eax,eax
+  00C51AD7: 74 07              je          00C51AE0
+  00C51AD9: 50                 push        eax
+  00C51ADA: FF 15 F0 91 DC 00  call        dword ptr ds:[00DC91F0h]
+  00C51AE0: C7 46 0C 00 00 00  mov         dword ptr [esi+0Ch],0
+            00
+  00C51AE7: 8B 06              mov         eax,dword ptr [esi]
+  00C51AE9: 5F                 pop         edi
+  00C51AEA: 5E                 pop         esi
+  00C51AEB: C2 04 00           ret         4
+  00C51AEE: CC                 int         3
+  00C51AEF: CC                 int         3
+  00C51AF0: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00C51AF4: 85 C0              test        eax,eax
+  00C51AF6: 74 19              je          00C51B11
+  00C51AF8: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  00C51AFC: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  00C51B00: 89 08              mov         dword ptr [eax],ecx
+  00C51B02: 89 50 04           mov         dword ptr [eax+4],edx
+  00C51B05: 8B 40 08           mov         eax,dword ptr [eax+8]
+  00C51B08: 8B 08              mov         ecx,dword ptr [eax]
+  00C51B0A: 51                 push        ecx
+  00C51B0B: FF 15 0C 92 DC 00  call        dword ptr ds:[00DC920Ch]
+  00C51B11: C3                 ret
+  00C51B12: CC                 int         3
+  00C51B13: CC                 int         3
+  00C51B14: CC                 int         3
+  00C51B15: CC                 int         3
+  00C51B16: CC                 int         3
+  00C51B17: CC                 int         3
+  00C51B18: CC                 int         3
+  00C51B19: CC                 int         3
+  00C51B1A: CC                 int         3
+  00C51B1B: CC                 int         3
+  00C51B1C: CC                 int         3
+  00C51B1D: CC                 int         3
+  00C51B1E: CC                 int         3
+  00C51B1F: CC                 int         3
+  00C51B20: 83 EC 24           sub         esp,24h
+  00C51B23: 8B 54 24 34        mov         edx,dword ptr [esp+34h]
+  00C51B27: 89 4C 24 10        mov         dword ptr [esp+10h],ecx
+  00C51B2B: 8B 4C 24 30        mov         ecx,dword ptr [esp+30h]
+  00C51B2F: 56                 push        esi
+  00C51B30: 89 44 24 04        mov         dword ptr [esp+4],eax
+  00C51B34: 8B 44 24 30        mov         eax,dword ptr [esp+30h]
+  00C51B38: 89 4C 24 0C        mov         dword ptr [esp+0Ch],ecx
+  00C51B3C: 8B 4C 24 2C        mov         ecx,dword ptr [esp+2Ch]
+  00C51B40: 57                 push        edi
+  00C51B41: 89 54 24 1C        mov         dword ptr [esp+1Ch],edx
+  00C51B45: 8B 54 24 40        mov         edx,dword ptr [esp+40h]
+  00C51B49: 89 44 24 0C        mov         dword ptr [esp+0Ch],eax
+  00C51B4D: 8B 44 24 44        mov         eax,dword ptr [esp+44h]
+  00C51B51: 89 4C 24 14        mov         dword ptr [esp+14h],ecx
+  00C51B55: 83 EC 24           sub         esp,24h
+  00C51B58: 8B FC              mov         edi,esp
+  00C51B5A: 89 54 24 44        mov         dword ptr [esp+44h],edx
+  00C51B5E: 89 44 24 48        mov         dword ptr [esp+48h],eax
+  00C51B62: B9 09 00 00 00     mov         ecx,9
+  00C51B67: 8D 74 24 2C        lea         esi,[esp+2Ch]
+  00C51B6B: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00C51B6D: 8B 0D 48 18 D7 01  mov         ecx,dword ptr ds:[01D71848h]
+  00C51B73: E8 B8 06 01 00     call        00C62230
+  00C51B78: 5F                 pop         edi
+  00C51B79: 5E                 pop         esi
+  00C51B7A: 83 C4 24           add         esp,24h
+  00C51B7D: C3                 ret
+  00C51B7E: CC                 int         3
+  00C51B7F: CC                 int         3
+  00C51B80: 83 EC 24           sub         esp,24h
+  00C51B83: 53                 push        ebx
+  00C51B84: 8B 5C 24 34        mov         ebx,dword ptr [esp+34h]
+  00C51B88: 55                 push        ebp
+  00C51B89: 56                 push        esi
+  00C51B8A: 57                 push        edi
+  00C51B8B: 8B 7C 24 3C        mov         edi,dword ptr [esp+3Ch]
+  00C51B8F: 85 DB              test        ebx,ebx
+  00C51B91: 75 0B              jne         00C51B9E
+  00C51B93: 8D 43 1F           lea         eax,[ebx+1Fh]
+  00C51B96: 5F                 pop         edi
+  00C51B97: 5E                 pop         esi
+  00C51B98: 5D                 pop         ebp
+  00C51B99: 5B                 pop         ebx
+  00C51B9A: 83 C4 24           add         esp,24h
+  00C51B9D: C3                 ret
+  00C51B9E: 33 C0              xor         eax,eax
+  00C51BA0: 39 44 24 38        cmp         dword ptr [esp+38h],eax
+  00C51BA4: C7 44 24 1C 00 00  mov         dword ptr [esp+1Ch],0
+            00 00
+  00C51BAC: 0F 95 C0           setne       al
+  00C51BAF: 89 4C 24 18        mov         dword ptr [esp+18h],ecx
+  00C51BB3: 89 54 24 14        mov         dword ptr [esp+14h],edx
+  00C51BB7: 89 5C 24 20        mov         dword ptr [esp+20h],ebx
+  00C51BBB: 83 C0 02           add         eax,2
+  00C51BBE: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00C51BC2: 83 FB 01           cmp         ebx,1
+  00C51BC5: 75 04              jne         00C51BCB
+  00C51BC7: 8B 2F              mov         ebp,dword ptr [edi]
+  00C51BC9: EB 41              jmp         00C51C0C
+  00C51BCB: 80 7C 24 44 00     cmp         byte ptr [esp+44h],0
+  00C51BD0: 74 38              je          00C51C0A
+  00C51BD2: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C51BD7: 8D 34 9D 00 00 00  lea         esi,[ebx*4+00000000h]
+            00
+  00C51BDE: 56                 push        esi
+  00C51BDF: 50                 push        eax
+  00C51BE0: E8 5B 7E 04 00     call        00C99A40
+  00C51BE5: 8B E8              mov         ebp,eax
+  00C51BE7: 83 C4 08           add         esp,8
+  00C51BEA: 89 6C 24 24        mov         dword ptr [esp+24h],ebp
+  00C51BEE: 85 ED              test        ebp,ebp
+  00C51BF0: 75 0B              jne         00C51BFD
+  00C51BF2: 8D 45 34           lea         eax,[ebp+34h]
+  00C51BF5: 5F                 pop         edi
+  00C51BF6: 5E                 pop         esi
+  00C51BF7: 5D                 pop         ebp
+  00C51BF8: 5B                 pop         ebx
+  00C51BF9: 83 C4 24           add         esp,24h
+  00C51BFC: C3                 ret
+  00C51BFD: 56                 push        esi
+  00C51BFE: 57                 push        edi
+  00C51BFF: 55                 push        ebp
+  00C51C00: E8 1B 6C FD FF     call        00C28820
+  00C51C05: 83 C4 0C           add         esp,0Ch
+  00C51C08: EB 06              jmp         00C51C10
+  00C51C0A: 8B EF              mov         ebp,edi
+  00C51C0C: 89 6C 24 24        mov         dword ptr [esp+24h],ebp
+  00C51C10: 83 EC 24           sub         esp,24h
+  00C51C13: 8B FC              mov         edi,esp
+  00C51C15: B9 09 00 00 00     mov         ecx,9
+  00C51C1A: 8D 74 24 34        lea         esi,[esp+34h]
+  00C51C1E: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00C51C20: 8B 0D 48 18 D7 01  mov         ecx,dword ptr ds:[01D71848h]
+  00C51C26: E8 05 06 01 00     call        00C62230
+  00C51C2B: 8B F0              mov         esi,eax
+  00C51C2D: 83 FE 01           cmp         esi,1
+  00C51C30: 74 15              je          00C51C47
+  00C51C32: 83 FB 01           cmp         ebx,1
+  00C51C35: 74 10              je          00C51C47
+  00C51C37: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00C51C3D: 55                 push        ebp
+  00C51C3E: 51                 push        ecx
+  00C51C3F: E8 5C 7F 04 00     call        00C99BA0
+  00C51C44: 83 C4 08           add         esp,8
+  00C51C47: 5F                 pop         edi
+  00C51C48: 8B C6              mov         eax,esi
+  00C51C4A: 5E                 pop         esi
+  00C51C4B: 5D                 pop         ebp
+  00C51C4C: 5B                 pop         ebx
+  00C51C4D: 83 C4 24           add         esp,24h
+  00C51C50: C3                 ret
+  00C51C51: CC                 int         3
+  00C51C52: CC                 int         3
+  00C51C53: CC                 int         3
+  00C51C54: CC                 int         3
+  00C51C55: CC                 int         3
+  00C51C56: CC                 int         3
+  00C51C57: CC                 int         3
+  00C51C58: CC                 int         3
+  00C51C59: CC                 int         3
+  00C51C5A: CC                 int         3
+  00C51C5B: CC                 int         3
+  00C51C5C: CC                 int         3
+  00C51C5D: CC                 int         3
+  00C51C5E: CC                 int         3
+  00C51C5F: CC                 int         3
+  00C51C60: 83 EC 24           sub         esp,24h
+  00C51C63: 53                 push        ebx
+  00C51C64: 8B 5C 24 3C        mov         ebx,dword ptr [esp+3Ch]
+  00C51C68: 55                 push        ebp
+  00C51C69: 56                 push        esi
+  00C51C6A: 57                 push        edi
+  00C51C6B: 8B 7C 24 44        mov         edi,dword ptr [esp+44h]
+  00C51C6F: 85 DB              test        ebx,ebx
+  00C51C71: 0F 84 CB 00 00 00  je          00C51D42
+  00C51C77: 85 FF              test        edi,edi
+  00C51C79: 0F 84 C3 00 00 00  je          00C51D42
+  00C51C7F: 8A 54 24 38        mov         dl,byte ptr [esp+38h]
+  00C51C83: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00C51C87: 8B 44 24 3C        mov         eax,dword ptr [esp+3Ch]
+  00C51C8B: 89 4C 24 18        mov         dword ptr [esp+18h],ecx
+  00C51C8F: 8B 4C 24 40        mov         ecx,dword ptr [esp+40h]
+  00C51C93: C7 44 24 10 04 00  mov         dword ptr [esp+10h],4
+            00 00
+  00C51C9B: C7 44 24 1C 00 00  mov         dword ptr [esp+1Ch],0
+            00 00
+  00C51CA3: 88 54 24 28        mov         byte ptr [esp+28h],dl
+  00C51CA7: 89 44 24 20        mov         dword ptr [esp+20h],eax
+  00C51CAB: 89 4C 24 24        mov         dword ptr [esp+24h],ecx
+  00C51CAF: 89 5C 24 2C        mov         dword ptr [esp+2Ch],ebx
+  00C51CB3: 83 FB 01           cmp         ebx,1
+  00C51CB6: 75 04              jne         00C51CBC
+  00C51CB8: 8B 2F              mov         ebp,dword ptr [edi]
+  00C51CBA: EB 42              jmp         00C51CFE
+  00C51CBC: 80 7C 24 4C 00     cmp         byte ptr [esp+4Ch],0
+  00C51CC1: 74 39              je          00C51CFC
+  00C51CC3: 8B 15 B8 D3 FD 00  mov         edx,dword ptr ds:[00FDD3B8h]
+  00C51CC9: 8D 34 9D 00 00 00  lea         esi,[ebx*4+00000000h]
+            00
+  00C51CD0: 56                 push        esi
+  00C51CD1: 52                 push        edx
+  00C51CD2: E8 69 7D 04 00     call        00C99A40
+  00C51CD7: 8B E8              mov         ebp,eax
+  00C51CD9: 83 C4 08           add         esp,8
+  00C51CDC: 89 6C 24 30        mov         dword ptr [esp+30h],ebp
+  00C51CE0: 85 ED              test        ebp,ebp
+  00C51CE2: 75 0B              jne         00C51CEF
+  00C51CE4: 8D 45 34           lea         eax,[ebp+34h]
+  00C51CE7: 5F                 pop         edi
+  00C51CE8: 5E                 pop         esi
+  00C51CE9: 5D                 pop         ebp
+  00C51CEA: 5B                 pop         ebx
+  00C51CEB: 83 C4 24           add         esp,24h
+  00C51CEE: C3                 ret
+  00C51CEF: 56                 push        esi
+  00C51CF0: 57                 push        edi
+  00C51CF1: 55                 push        ebp
+  00C51CF2: E8 29 6B FD FF     call        00C28820
+  00C51CF7: 83 C4 0C           add         esp,0Ch
+  00C51CFA: EB 06              jmp         00C51D02
+  00C51CFC: 8B EF              mov         ebp,edi
+  00C51CFE: 89
+  00C51CFF: 6C                 ins         byte ptr es:[edi],dx
+  00C51D00: 24
+
+  Summary
+
+      9C8000 .text

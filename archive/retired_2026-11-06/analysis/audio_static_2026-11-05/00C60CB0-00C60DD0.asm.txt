@@ -1,0 +1,122 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C60CB0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00C60CB4: 56                 push        esi
+  00C60CB5: 8B 30              mov         esi,dword ptr [eax]
+  00C60CB7: 57                 push        edi
+  00C60CB8: 83 CF FF           or          edi,0FFFFFFFFh
+  00C60CBB: 33 D2              xor         edx,edx
+  00C60CBD: 83 FE 07           cmp         esi,7
+  00C60CC0: 77 0F              ja          00C60CD1
+  00C60CC2: FF 24 B5 00 0D C6  jmp         dword ptr [esi*4+00C60D00h]
+            00
+  00C60CC9: 8B 78 14           mov         edi,dword ptr [eax+14h]
+  00C60CCC: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00C60CCF: EB 0D              jmp         00C60CDE
+  00C60CD1: 83 78 10 01        cmp         dword ptr [eax+10h],1
+  00C60CD5: 75 05              jne         00C60CDC
+  00C60CD7: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  00C60CDA: EB 02              jmp         00C60CDE
+  00C60CDC: 33 D2              xor         edx,edx
+  00C60CDE: 8B 70 08           mov         esi,dword ptr [eax+8]
+  00C60CE1: 8B 40 04           mov         eax,dword ptr [eax+4]
+  00C60CE4: 56                 push        esi
+  00C60CE5: 8B 74 24 14        mov         esi,dword ptr [esp+14h]
+  00C60CE9: 57                 push        edi
+  00C60CEA: 56                 push        esi
+  00C60CEB: 52                 push        edx
+  00C60CEC: 50                 push        eax
+  00C60CED: 81 C1 9C 04 00 00  add         ecx,49Ch
+  00C60CF3: E8 78 8B FF FF     call        00C59870
+  00C60CF8: 5F                 pop         edi
+  00C60CF9: 5E                 pop         esi
+  00C60CFA: C2 08 00           ret         8
+  00C60CFD: 8D 49 00           lea         ecx,[ecx]
+  00C60D00: C9                 leave
+  00C60D01: 0C C6              or          al,0C6h
+  00C60D03: 00 C9              add         cl,cl
+  00C60D05: 0C C6              or          al,0C6h
+  00C60D07: 00 D1              add         cl,dl
+  00C60D09: 0C C6              or          al,0C6h
+  00C60D0B: 00 D1              add         cl,dl
+  00C60D0D: 0C C6              or          al,0C6h
+  00C60D0F: 00 DE              add         dh,bl
+  00C60D11: 0C C6              or          al,0C6h
+  00C60D13: 00 D1              add         cl,dl
+  00C60D15: 0C C6              or          al,0C6h
+  00C60D17: 00 CC              add         ah,cl
+  00C60D19: 0C C6              or          al,0C6h
+  00C60D1B: 00 CC              add         ah,cl
+  00C60D1D: 0C C6              or          al,0C6h
+  00C60D1F: 00 8B 44 24 20 53  add         byte ptr [ebx+53202444h],cl
+  00C60D25: BB 01 00 00 00     mov         ebx,1
+  00C60D2A: 55                 push        ebp
+  00C60D2B: 8B E9              mov         ebp,ecx
+  00C60D2D: 3B C3              cmp         eax,ebx
+  00C60D2F: 75 26              jne         00C60D57
+  00C60D31: 8B 44 24 24        mov         eax,dword ptr [esp+24h]
+  00C60D35: 8B 4C 24 2C        mov         ecx,dword ptr [esp+2Ch]
+  00C60D39: 8B 54 24 20        mov         edx,dword ptr [esp+20h]
+  00C60D3D: 50                 push        eax
+  00C60D3E: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00C60D42: 51                 push        ecx
+  00C60D43: 8B 0D 40 18 D7 01  mov         ecx,dword ptr ds:[01D71840h]
+  00C60D49: 52                 push        edx
+  00C60D4A: 50                 push        eax
+  00C60D4B: E8 30 C0 00 00     call        00C6CD80
+  00C60D50: 8B D8              mov         ebx,eax
+  00C60D52: E9 83 00 00 00     jmp         00C60DDA
+  00C60D57: 56                 push        esi
+  00C60D58: 33 F6              xor         esi,esi
+  00C60D5A: 85 C0              test        eax,eax
+  00C60D5C: 76 67              jbe         00C60DC5
+  00C60D5E: 8B FF              mov         edi,edi
+  00C60D60: 8B 4C 24 28        mov         ecx,dword ptr [esp+28h]
+  00C60D64: 8B 54 24 30        mov         edx,dword ptr [esp+30h]
+  00C60D68: 8B 04 B2           mov         eax,dword ptr [edx+esi*4]
+  00C60D6B: 8B 54 24 20        mov         edx,dword ptr [esp+20h]
+  00C60D6F: 51                 push        ecx
+  00C60D70: 8B 4C 24 28        mov         ecx,dword ptr [esp+28h]
+  00C60D74: 50                 push        eax
+  00C60D75: 51                 push        ecx
+  00C60D76: 8B 0D 40 18 D7 01  mov         ecx,dword ptr ds:[01D71840h]
+  00C60D7C: 52                 push        edx
+  00C60D7D: E8 FE BF 00 00     call        00C6CD80
+  00C60D82: 8B D8              mov         ebx,eax
+  00C60D84: 83 FB 01           cmp         ebx,1
+  00C60D87: 75 09              jne         00C60D92
+  00C60D89: 46                 inc         esi
+  00C60D8A: 3B 74 24 2C        cmp         esi,dword ptr [esp+2Ch]
+  00C60D8E: 72 D0              jb          00C60D60
+  00C60D90: EB 33              jmp         00C60DC5
+  00C60D92: 57                 push        edi
+  00C60D93: 33 FF              xor         edi,edi
+  00C60D95: 85 F6              test        esi,esi
+  00C60D97: 76 2B              jbe         00C60DC4
+  00C60D99: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00C60DA0: 8B 44 24 34        mov         eax,dword ptr [esp+34h]
+  00C60DA4: 8B 0C B8           mov         ecx,dword ptr [eax+edi*4]
+  00C60DA7: 8B 54 24 28        mov         edx,dword ptr [esp+28h]
+  00C60DAB: 8B 44 24 24        mov         eax,dword ptr [esp+24h]
+  00C60DAF: 6A 00              push        0
+  00C60DB1: 51                 push        ecx
+  00C60DB2: 8B 0D 40 18 D7 01  mov         ecx,dword ptr ds:[01D71840h]
+  00C60DB8: 52                 push        edx
+  00C60DB9: 50                 push        eax
+  00C60DBA: E8 C1 BF 00 00     call        00C6CD80
+  00C60DBF: 47                 inc         edi
+  00C60DC0: 3B FE              cmp         edi,esi
+  00C60DC2: 72 DC              jb          00C60DA0
+  00C60DC4: 5F                 pop         edi
+  00C60DC5: 8B 4C 24 30        mov         ecx,dword ptr [esp+30h]
+  00C60DC9: 8B 15 B8 D3 FD 00  mov         edx,dword ptr ds:[00FDD3B8h]
+  00C60DCF: 51                 push        ecx
+  00C60DD0: 52                 push        edx
+
+  Summary
+
+      9C8000 .text

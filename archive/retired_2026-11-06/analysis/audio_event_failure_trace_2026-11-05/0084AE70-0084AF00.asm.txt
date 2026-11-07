@@ -1,0 +1,68 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084AE70: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0084AE74: 56                 push        esi
+  0084AE75: 8B F1              mov         esi,ecx
+  0084AE77: 8B 08              mov         ecx,dword ptr [eax]
+  0084AE79: 89 0E              mov         dword ptr [esi],ecx
+  0084AE7B: 8A 50 04           mov         dl,byte ptr [eax+4]
+  0084AE7E: 88 56 04           mov         byte ptr [esi+4],dl
+  0084AE81: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  0084AE84: 89 4E 08           mov         dword ptr [esi+8],ecx
+  0084AE87: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  0084AE8A: 89 56 0C           mov         dword ptr [esi+0Ch],edx
+  0084AE8D: 8B 48 10           mov         ecx,dword ptr [eax+10h]
+  0084AE90: 89 4E 10           mov         dword ptr [esi+10h],ecx
+  0084AE93: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  0084AE96: 89 56 14           mov         dword ptr [esi+14h],edx
+  0084AE99: 8B 48 18           mov         ecx,dword ptr [eax+18h]
+  0084AE9C: 89 4E 18           mov         dword ptr [esi+18h],ecx
+  0084AE9F: 8B 50 1C           mov         edx,dword ptr [eax+1Ch]
+  0084AEA2: 89 56 1C           mov         dword ptr [esi+1Ch],edx
+  0084AEA5: 8B 48 20           mov         ecx,dword ptr [eax+20h]
+  0084AEA8: 89 4E 20           mov         dword ptr [esi+20h],ecx
+  0084AEAB: 8B 50 24           mov         edx,dword ptr [eax+24h]
+  0084AEAE: 89 56 24           mov         dword ptr [esi+24h],edx
+  0084AEB1: 8A 48 28           mov         cl,byte ptr [eax+28h]
+  0084AEB4: 88 4E 28           mov         byte ptr [esi+28h],cl
+  0084AEB7: 8B 88 6C 01 00 00  mov         ecx,dword ptr [eax+0000016Ch]
+  0084AEBD: 83 C0 2C           add         eax,2Ch
+  0084AEC0: 8D 56 2C           lea         edx,[esi+2Ch]
+  0084AEC3: 89 8A 40 01 00 00  mov         dword ptr [edx+00000140h],ecx
+  0084AEC9: 8D 0C 89           lea         ecx,[ecx+ecx*4]
+  0084AECC: 8D 0C 88           lea         ecx,[eax+ecx*4]
+  0084AECF: 3B C1              cmp         eax,ecx
+  0084AED1: 74 0D              je          0084AEE0
+  0084AED3: 2B C8              sub         ecx,eax
+  0084AED5: 51                 push        ecx
+  0084AED6: 50                 push        eax
+  0084AED7: 52                 push        edx
+  0084AED8: E8 43 D9 3D 00     call        00C28820
+  0084AEDD: 83 C4 0C           add         esp,0Ch
+  0084AEE0: 8B C6              mov         eax,esi
+  0084AEE2: 5E                 pop         esi
+  0084AEE3: C2 04 00           ret         4
+  0084AEE6: CC                 int         3
+  0084AEE7: CC                 int         3
+  0084AEE8: CC                 int         3
+  0084AEE9: CC                 int         3
+  0084AEEA: CC                 int         3
+  0084AEEB: CC                 int         3
+  0084AEEC: CC                 int         3
+  0084AEED: CC                 int         3
+  0084AEEE: CC                 int         3
+  0084AEEF: CC                 int         3
+  0084AEF0: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0084AEF5: 85 C0              test        eax,eax
+  0084AEF7: 75 0A              jne         0084AF03
+  0084AEF9: E8 92 F7 BB FF     call        0040A690
+  0084AEFE: A3
+  0084AEFF: 28
+  0084AF00: 72
+
+  Summary
+
+      9C8000 .text

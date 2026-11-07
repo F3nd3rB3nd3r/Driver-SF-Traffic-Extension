@@ -1,0 +1,63 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0059CEB0: F3 EB 15           rep jmp     0059CEC8
+  0059CEB3: 66 83 78 0A 01     cmp         word ptr [eax+0Ah],1
+  0059CEB8: 76 0E              jbe         0059CEC8
+  0059CEBA: B9 FF FF 00 00     mov         ecx,0FFFFh
+  0059CEBF: 66 01 48 0A        add         word ptr [eax+0Ah],cx
+  0059CEC3: C6 44 24 13 00     mov         byte ptr [esp+13h],0
+  0059CEC8: 84 D2              test        dl,dl
+  0059CECA: 75 1B              jne         0059CEE7
+  0059CECC: 38 54 24 14        cmp         byte ptr [esp+14h],dl
+  0059CED0: 75 4F              jne         0059CF21
+  0059CED2: 8B 55 14           mov         edx,dword ptr [ebp+14h]
+  0059CED5: 8B 45 10           mov         eax,dword ptr [ebp+10h]
+  0059CED8: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  0059CEDC: 52                 push        edx
+  0059CEDD: 50                 push        eax
+  0059CEDE: 56                 push        esi
+  0059CEDF: 53                 push        ebx
+  0059CEE0: E8 6B F9 FF FF     call        0059C850
+  0059CEE5: EB 3A              jmp         0059CF21
+  0059CEE7: 83 7D 14 01        cmp         dword ptr [ebp+14h],1
+  0059CEEB: 75 11              jne         0059CEFE
+  0059CEED: 8B 4D 10           mov         ecx,dword ptr [ebp+10h]
+  0059CEF0: 6A 01              push        1
+  0059CEF2: 51                 push        ecx
+  0059CEF3: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  0059CEF7: 56                 push        esi
+  0059CEF8: 53                 push        ebx
+  0059CEF9: E8 52 F9 FF FF     call        0059C850
+  0059CEFE: 80 7C 24 13 00     cmp         byte ptr [esp+13h],0
+  0059CF03: 74 1C              je          0059CF21
+  0059CF05: 8B 54 24 1C        mov         edx,dword ptr [esp+1Ch]
+  0059CF09: 8B 8A 54 22 01 00  mov         ecx,dword ptr [edx+00012254h]
+  0059CF0F: 8B 01              mov         eax,dword ptr [ecx]
+  0059CF11: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  0059CF14: 56                 push        esi
+  0059CF15: FF D2              call        edx
+  0059CF17: 6A 00              push        0
+  0059CF19: 56                 push        esi
+  0059CF1A: 8B CF              mov         ecx,edi
+  0059CF1C: E8 9F 51 00 00     call        005A20C0
+  0059CF21: 83 7D 14 01        cmp         dword ptr [ebp+14h],1
+  0059CF25: 0F 85 8C 00 00 00  jne         0059CFB7
+  0059CF2B: 80 7C 24 13 00     cmp         byte ptr [esp+13h],0
+  0059CF30: 0F 84 81 00 00 00  je          0059CFB7
+  0059CF36: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  0059CF3A: 69 DB 18 0C 00 00  imul        ebx,ebx,0C18h
+  0059CF40: 8D 45 0C           lea         eax,[ebp+0Ch]
+  0059CF43: 50                 push        eax
+  0059CF44: 8D 4C 0B 0C        lea         ecx,[ebx+ecx+0Ch]
+  0059CF48: E8 E3 10 00 00     call        0059E030
+  0059CF4D: 5F                 pop         edi
+  0059CF4E: 5E                 pop         esi
+  0059CF4F: 5B                 pop         ebx
+  0059CF50: 8B
+
+  Summary
+
+      9C8000 .text

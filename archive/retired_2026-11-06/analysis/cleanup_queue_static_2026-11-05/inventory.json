@@ -1,0 +1,514 @@
+{
+  "result": "passed",
+  "executable": "E:\\Games\\Driver San Francisco Save Bug Test\\Driver.exe",
+  "sha256": "c79987b0548f7130337c3f295c8fe269e120ceddad55c1159e6f5cbc6aa26616",
+  "imports": {
+    "00DC915C": {
+      "dll": "KERNEL32.dll",
+      "name": "InterlockedDecrement"
+    },
+    "00DC9160": {
+      "dll": "KERNEL32.dll",
+      "name": "InterlockedIncrement"
+    },
+    "00DC9168": {
+      "dll": "KERNEL32.dll",
+      "name": "InterlockedExchange"
+    },
+    "00DC91F4": {
+      "dll": "KERNEL32.dll",
+      "name": "WaitForSingleObject"
+    },
+    "00DC91FC": {
+      "dll": "KERNEL32.dll",
+      "name": "LeaveCriticalSection"
+    },
+    "00DC9200": {
+      "dll": "KERNEL32.dll",
+      "name": "EnterCriticalSection"
+    },
+    "00DC9204": {
+      "dll": "KERNEL32.dll",
+      "name": "DeleteCriticalSection"
+    },
+    "00DC9288": {
+      "dll": "KERNEL32.dll",
+      "name": "ReleaseSemaphore"
+    }
+  },
+  "targets": {
+    "drain": "00BAE6B0",
+    "append_direct": "00BAEA60",
+    "remove_object": "00BAEBE0",
+    "remove_key": "00BAECA0",
+    "constructor": "00BAE930"
+  },
+  "incoming_candidates": {
+    "drain": [
+      {
+        "site": "00BABC3D",
+        "opcode": "call",
+        "function_start_candidate": "00BABC10"
+      },
+      {
+        "site": "00BAD80E",
+        "opcode": "call",
+        "function_start_candidate": "00BAD790"
+      }
+    ],
+    "append_direct": [],
+    "remove_object": [
+      {
+        "site": "00BAD38B",
+        "opcode": "call",
+        "function_start_candidate": "00BAD1C0"
+      },
+      {
+        "site": "00BBA1E9",
+        "opcode": "call",
+        "function_start_candidate": "00BB9F40"
+      },
+      {
+        "site": "00BBAB08",
+        "opcode": "call",
+        "function_start_candidate": "00BBA890"
+      },
+      {
+        "site": "00BBABD0",
+        "opcode": "call",
+        "function_start_candidate": "00BBAB50"
+      },
+      {
+        "site": "00BBAD0D",
+        "opcode": "call",
+        "function_start_candidate": "00BBAC20"
+      }
+    ],
+    "remove_key": [
+      {
+        "site": "00BAAFBF",
+        "opcode": "call",
+        "function_start_candidate": "00BAAFB0"
+      },
+      {
+        "site": "00BABA6A",
+        "opcode": "call",
+        "function_start_candidate": "00BAB930"
+      },
+      {
+        "site": "00BABA7C",
+        "opcode": "call",
+        "function_start_candidate": "00BAB930"
+      },
+      {
+        "site": "00BABA88",
+        "opcode": "call",
+        "function_start_candidate": "00BAB930"
+      },
+      {
+        "site": "00BABB80",
+        "opcode": "call",
+        "function_start_candidate": "00BABB30"
+      },
+      {
+        "site": "00BAC57A",
+        "opcode": "call",
+        "function_start_candidate": "00BAC530"
+      },
+      {
+        "site": "00BAC5F5",
+        "opcode": "call",
+        "function_start_candidate": "00BAC530"
+      },
+      {
+        "site": "00BBA78C",
+        "opcode": "call",
+        "function_start_candidate": "00BBA760"
+      },
+      {
+        "site": "00BBCA85",
+        "opcode": "call",
+        "function_start_candidate": "00BBCA20"
+      },
+      {
+        "site": "00BBCAA4",
+        "opcode": "call",
+        "function_start_candidate": "00BBCA20"
+      },
+      {
+        "site": "00BBCAD2",
+        "opcode": "call",
+        "function_start_candidate": "00BBCA20"
+      },
+      {
+        "site": "00BBCAFE",
+        "opcode": "call",
+        "function_start_candidate": "00BBCA20"
+      },
+      {
+        "site": "00BBCB2A",
+        "opcode": "call",
+        "function_start_candidate": "00BBCA20"
+      }
+    ],
+    "constructor": [
+      {
+        "site": "00DC3F55",
+        "opcode": "call",
+        "function_start_candidate": "00DC3F50"
+      }
+    ]
+  },
+  "data_pointer_candidates": {
+    "drain": [],
+    "append_direct": [],
+    "remove_object": [],
+    "remove_key": [],
+    "constructor": []
+  },
+  "count_offset_candidates": [
+    "00BAE6BB",
+    "00BAE755",
+    "00BAE763",
+    "00BAE93B",
+    "00BAEA62",
+    "00BAEA79",
+    "00BAEC19",
+    "00BAEC2E",
+    "00BAED36",
+    "00BAED4D"
+  ],
+  "array_offset_candidates": [
+    "00BAE6D5",
+    "00BAEA69",
+    "00BAEC22",
+    "00BAED3D"
+  ],
+  "absolute_count_candidates": [],
+  "absolute_array_candidates": [],
+  "disassembly_ranges": [
+    {
+      "start": "00BA9600",
+      "end": "00BA96B0"
+    },
+    {
+      "start": "00BAAFB0",
+      "end": "00BAB00F"
+    },
+    {
+      "start": "00BAB930",
+      "end": "00BABABA"
+    },
+    {
+      "start": "00BAB930",
+      "end": "00BABACC"
+    },
+    {
+      "start": "00BAB930",
+      "end": "00BABAD8"
+    },
+    {
+      "start": "00BABB30",
+      "end": "00BABBD0"
+    },
+    {
+      "start": "00BABC10",
+      "end": "00BABC8D"
+    },
+    {
+      "start": "00BABC10",
+      "end": "00BABD20"
+    },
+    {
+      "start": "00BAC530",
+      "end": "00BAC5CA"
+    },
+    {
+      "start": "00BAC530",
+      "end": "00BAC645"
+    },
+    {
+      "start": "00BAD1C0",
+      "end": "00BAD3DB"
+    },
+    {
+      "start": "00BAD790",
+      "end": "00BAD85E"
+    },
+    {
+      "start": "00BAD790",
+      "end": "00BAD910"
+    },
+    {
+      "start": "00BAE670",
+      "end": "00BAEE50"
+    },
+    {
+      "start": "00BAE930",
+      "end": "00BAE9AD"
+    },
+    {
+      "start": "00BAEE50",
+      "end": "00BAEF60"
+    },
+    {
+      "start": "00BB4EE0",
+      "end": "00BB4FC0"
+    },
+    {
+      "start": "00BB6490",
+      "end": "00BB6680"
+    },
+    {
+      "start": "00BB81D0",
+      "end": "00BB8320"
+    },
+    {
+      "start": "00BB9F40",
+      "end": "00BBA239"
+    },
+    {
+      "start": "00BBA760",
+      "end": "00BBA7DC"
+    },
+    {
+      "start": "00BBA890",
+      "end": "00BBAB58"
+    },
+    {
+      "start": "00BBAB50",
+      "end": "00BBAC20"
+    },
+    {
+      "start": "00BBAC20",
+      "end": "00BBAD5D"
+    },
+    {
+      "start": "00BBCA20",
+      "end": "00BBCAD5"
+    },
+    {
+      "start": "00BBCA20",
+      "end": "00BBCAF4"
+    },
+    {
+      "start": "00BBCA20",
+      "end": "00BBCB22"
+    },
+    {
+      "start": "00BBCA20",
+      "end": "00BBCB4E"
+    },
+    {
+      "start": "00BBCA20",
+      "end": "00BBCB7A"
+    },
+    {
+      "start": "00C28590",
+      "end": "00C285E0"
+    },
+    {
+      "start": "00DC3F50",
+      "end": "00DC3FA5"
+    },
+    {
+      "start": "00DC7F30",
+      "end": "00DC7F50"
+    }
+  ],
+  "limitations": [
+    "Byte-reference candidates require confirmation at decoded instruction boundaries.",
+    "Padding-derived starts are candidates, not debug symbols.",
+    "Does not enumerate arbitrary computed addresses or indirect calls without a resolved table."
+  ],
+  "confirmed_incoming": [
+    {
+      "target": "drain",
+      "site": "00BABC3D",
+      "opcode": "call"
+    },
+    {
+      "target": "drain",
+      "site": "00BAD80E",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_object",
+      "site": "00BAD38B",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_object",
+      "site": "00BBA1E9",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_object",
+      "site": "00BBAB08",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_object",
+      "site": "00BBABD0",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_object",
+      "site": "00BBAD0D",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BAAFBF",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BABA6A",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BABA7C",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BABA88",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BABB80",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BAC57A",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BAC5F5",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BBA78C",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BBCA85",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BBCAA4",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BBCAD2",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BBCAFE",
+      "opcode": "call"
+    },
+    {
+      "target": "remove_key",
+      "site": "00BBCB2A",
+      "opcode": "call"
+    },
+    {
+      "target": "constructor",
+      "site": "00DC3F55",
+      "opcode": "call"
+    }
+  ],
+  "verified_spans": {
+    "00BAE6D3": "8db590e01500",
+    "00BAE6E4": "8b8e00000200",
+    "00BAE6EB": "8d3c8e",
+    "00BAE731": "8b068b088b118b026a00ffd0",
+    "00BAE73D": "8b0e51b9e03b9b01e896670000",
+    "00BAE74A": "83c6043bf775a1",
+    "00BAE753": "c78590e0170000000000",
+    "00BAE761": "898590e01700",
+    "00BAE939": "c78690e0170000000000",
+    "00BAEA60": "8b8190e017008d848190e01500",
+    "00BAEA75": "8910ff8190e01700",
+    "00BAEC17": "8b8790e017008b168d848790e01500",
+    "00BAEC2A": "8910ff8790e01700",
+    "00BAEC3E": "ff156891dc00",
+    "00BAEC44": "8b4424108906",
+    "00BAECDC": "ff155c91dc0085c00f8596000000",
+    "00BAED34": "8b8790e017008d848790e01500",
+    "00BAED45": "89308b54241cff8790e01700",
+    "00BAED7B": "e820010000",
+    "00DC3F50": "b9f02b7301e8d6a9deff68307fdc00",
+    "00DC7F30": "c3"
+  },
+  "relocation_inventory": [
+    {
+      "instruction": "00BAE6D3",
+      "role": "drain base",
+      "immediate_offset": 2
+    },
+    {
+      "instruction": "00BAEA66",
+      "role": "direct append base",
+      "immediate_offset": 3
+    },
+    {
+      "instruction": "00BAEC1F",
+      "role": "replacement append base",
+      "immediate_offset": 3
+    },
+    {
+      "instruction": "00BAED3A",
+      "role": "zero-reference append base",
+      "immediate_offset": 3
+    },
+    {
+      "instruction": "00BAE6E4",
+      "role": "drain indirect count reader",
+      "immediate_offset": 2
+    }
+  ],
+  "layout": {
+    "owner": "01732BF0",
+    "array_offset": "0015E090",
+    "count_offset": "0017E090",
+    "capacity": 32768,
+    "entry_bytes": 4,
+    "count_bits": 32,
+    "indirect_count_read": "00BAE6E4",
+    "constructor": "00BAE930",
+    "registered_exit_callback": "00DC7F30",
+    "exit_callback_bytes": "C3"
+  },
+  "native_order": {
+    "key_removal": [
+      "Lookup keyed map value, obtain wrapper and pointee.",
+      "InterlockedDecrement pointee+8; return if nonzero.",
+      "Rewrite linked handles/recycle indexed slots.",
+      "Append wrapper to deferred list, increment count.",
+      "Optional short-key recycling, then unlink/recycle hash node."
+    ],
+    "replacement": [
+      "Lookup/match keyed record.",
+      "Append old wrapper and increment count.",
+      "InterlockedExchange new pointee+8 with old reference count+1.",
+      "Publish replacement wrapper and rewrite linked users."
+    ],
+    "drain": [
+      "Snapshot count and end pointer once.",
+      "For each queued wrapper, call pointee virtual slot0 with argument0.",
+      "Return wrapper to native allocator00BB4EE0.",
+      "After full snapshot, reset native count to0."
+    ]
+  }
+}

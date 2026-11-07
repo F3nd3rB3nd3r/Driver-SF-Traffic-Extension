@@ -1,0 +1,176 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00849E10: F3 0F 10 44 24 08  movss       xmm0,dword ptr [esp+8]
+  00849E16: 83 EC 08           sub         esp,8
+  00849E19: 56                 push        esi
+  00849E1A: 8B F1              mov         esi,ecx
+  00849E1C: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  00849E20: F3 0F 10 4C 8E 50  movss       xmm1,dword ptr [esi+ecx*4+50h]
+  00849E26: 0F 2E C8           ucomiss     xmm1,xmm0
+  00849E29: 9F                 lahf
+  00849E2A: F6 C4 44           test        ah,44h
+  00849E2D: 0F 8B C5 00 00 00  jnp         00849EF8
+  00849E33: F3 0F 11 44 8E 50  movss       dword ptr [esi+ecx*4+50h],xmm0
+  00849E39: 80 7E 30 00        cmp         byte ptr [esi+30h],0
+  00849E3D: 0F 84 B5 00 00 00  je          00849EF8
+  00849E43: 83 F9 03           cmp         ecx,3
+  00849E46: 0F 87 AC 00 00 00  ja          00849EF8
+  00849E4C: 57                 push        edi
+  00849E4D: FF 24 8D 00 9F 84  jmp         dword ptr [ecx*4+00849F00h]
+            00
+  00849E54: 6A 18              push        18h
+  00849E56: BF B9 89 E0 96     mov         edi,96E089B9h
+  00849E5B: E8 C0 52 BC FF     call        0040F120
+  00849E60: 83 C4 04           add         esp,4
+  00849E63: 84 C0              test        al,al
+  00849E65: 74 7D              je          00849EE4
+  00849E67: D9 46 60           fld         dword ptr [esi+60h]
+  00849E6A: 8D 44 24 08        lea         eax,[esp+8]
+  00849E6E: D8 4E 50           fmul        dword ptr [esi+50h]
+  00849E71: 6A 18              push        18h
+  00849E73: 50                 push        eax
+  00849E74: D8 0D E4 6B E3 00  fmul        dword ptr ds:[00E36BE4h]
+  00849E7A: D9 5C 24 1C        fstp        dword ptr [esp+1Ch]
+  00849E7E: E8 8D 7A C8 FF     call        004D1910
+  00849E83: D9 44 24 1C        fld         dword ptr [esp+1Ch]
+  00849E87: 8B 08              mov         ecx,dword ptr [eax]
+  00849E89: 83 C4 04           add         esp,4
+  00849E8C: D9 1C 24           fstp        dword ptr [esp]
+  00849E8F: E8 8C 60 00 00     call        0084FF20
+  00849E94: EB 4E              jmp         00849EE4
+  00849E96: 6A 18              push        18h
+  00849E98: BF 3E 66 1A 09     mov         edi,91A663Eh
+  00849E9D: E8 7E 52 BC FF     call        0040F120
+  00849EA2: 83 C4 04           add         esp,4
+  00849EA5: 84 C0              test        al,al
+  00849EA7: 74 3B              je          00849EE4
+  00849EA9: D9 46 64           fld         dword ptr [esi+64h]
+  00849EAC: 8D 4C 24 0C        lea         ecx,[esp+0Ch]
+  00849EB0: D8 4E 54           fmul        dword ptr [esi+54h]
+  00849EB3: 6A 18              push        18h
+  00849EB5: 51                 push        ecx
+  00849EB6: D8 0D E0 6B E3 00  fmul        dword ptr ds:[00E36BE0h]
+  00849EBC: D9 5C 24 1C        fstp        dword ptr [esp+1Ch]
+  00849EC0: E8 4B 7A C8 FF     call        004D1910
+  00849EC5: D9 44 24 1C        fld         dword ptr [esp+1Ch]
+  00849EC9: 8B 08              mov         ecx,dword ptr [eax]
+  00849ECB: 83 C4 04           add         esp,4
+  00849ECE: D9 1C 24           fstp        dword ptr [esp]
+  00849ED1: E8 1A 60 00 00     call        0084FEF0
+  00849ED6: EB 0C              jmp         00849EE4
+  00849ED8: BF 3D 23 A1 54     mov         edi,54A1233Dh
+  00849EDD: EB 05              jmp         00849EE4
+  00849EDF: BF 85 01 07 CD     mov         edi,0CD070185h
+  00849EE4: D9 44 24 18        fld         dword ptr [esp+18h]
+  00849EE8: 6A FF              push        0FFFFFFFFh
+  00849EEA: 51                 push        ecx
+  00849EEB: D9 1C 24           fstp        dword ptr [esp]
+  00849EEE: 57                 push        edi
+  00849EEF: E8 DC 73 40 00     call        00C512D0
+  00849EF4: 83 C4 0C           add         esp,0Ch
+  00849EF7: 5F                 pop         edi
+  00849EF8: 5E                 pop         esi
+  00849EF9: 83 C4 08           add         esp,8
+  00849EFC: C2 08 00           ret         8
+  00849EFF: 90                 nop
+  00849F00: 54                 push        esp
+  00849F01: 9E                 sahf
+  00849F02: 84 00              test        byte ptr [eax],al
+  00849F04: 96                 xchg        eax,esi
+  00849F05: 9E                 sahf
+  00849F06: 84 00              test        byte ptr [eax],al
+  00849F08: D8 9E 84 00 DF 9E  fcomp       dword ptr [esi+9EDF0084h]
+  00849F0E: 84 00              test        byte ptr [eax],al
+  00849F10: 51                 push        ecx
+  00849F11: F3 0F 10 44 24 0C  movss       xmm0,dword ptr [esp+0Ch]
+  00849F17: 56                 push        esi
+  00849F18: 8B F1              mov         esi,ecx
+  00849F1A: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00849F1E: F3 0F 10 4C 8E 60  movss       xmm1,dword ptr [esi+ecx*4+60h]
+  00849F24: 0F 2E C8           ucomiss     xmm1,xmm0
+  00849F27: 9F                 lahf
+  00849F28: F6 C4 44           test        ah,44h
+  00849F2B: 0F 8B BA 00 00 00  jnp         00849FEB
+  00849F31: F3 0F 11 44 8E 60  movss       dword ptr [esi+ecx*4+60h],xmm0
+  00849F37: 80 7E 30 00        cmp         byte ptr [esi+30h],0
+  00849F3B: 0F 84 AA 00 00 00  je          00849FEB
+  00849F41: 8B C1              mov         eax,ecx
+  00849F43: 83 E8 00           sub         eax,0
+  00849F46: 74 61              je          00849FA9
+  00849F48: 83 E8 01           sub         eax,1
+  00849F4B: 74 15              je          00849F62
+  00849F4D: 83 E8 01           sub         eax,1
+  00849F50: 0F 85 95 00 00 00  jne         00849FEB
+  00849F56: C7 46 74 78 AA 35  mov         dword ptr [esi+74h],3C35AA78h
+            3C
+  00849F5D: 5E                 pop         esi
+  00849F5E: 59                 pop         ecx
+  00849F5F: C2 08 00           ret         8
+  00849F62: 6A 18              push        18h
+  00849F64: C7 46 70 59 A9 81  mov         dword ptr [esi+70h],0D81A959h
+            0D
+  00849F6B: E8 B0 51 BC FF     call        0040F120
+  00849F70: 83 C4 04           add         esp,4
+  00849F73: 84 C0              test        al,al
+  00849F75: 74 74              je          00849FEB
+  00849F77: D9 46 64           fld         dword ptr [esi+64h]
+  00849F7A: 8D 44 24 10        lea         eax,[esp+10h]
+  00849F7E: D8 4E 54           fmul        dword ptr [esi+54h]
+  00849F81: 6A 18              push        18h
+  00849F83: 50                 push        eax
+  00849F84: D8 0D E0 6B E3 00  fmul        dword ptr ds:[00E36BE0h]
+  00849F8A: D9 5C 24 14        fstp        dword ptr [esp+14h]
+  00849F8E: E8 7D 79 C8 FF     call        004D1910
+  00849F93: D9 44 24 14        fld         dword ptr [esp+14h]
+  00849F97: 8B 08              mov         ecx,dword ptr [eax]
+  00849F99: 83 C4 04           add         esp,4
+  00849F9C: D9 1C 24           fstp        dword ptr [esp]
+  00849F9F: E8 4C 5F 00 00     call        0084FEF0
+  00849FA4: 5E                 pop         esi
+  00849FA5: 59                 pop         ecx
+  00849FA6: C2 08 00           ret         8
+  00849FA9: 6A 18              push        18h
+  00849FAB: C7 46 6C C8 DD 96  mov         dword ptr [esi+6Ch],0F096DDC8h
+            F0
+  00849FB2: E8 69 51 BC FF     call        0040F120
+  00849FB7: 83 C4 04           add         esp,4
+  00849FBA: 84 C0              test        al,al
+  00849FBC: 74 2D              je          00849FEB
+  00849FBE: D9 46 60           fld         dword ptr [esi+60h]
+  00849FC1: 8D 4C 24 04        lea         ecx,[esp+4]
+  00849FC5: D8 4E 50           fmul        dword ptr [esi+50h]
+  00849FC8: 6A 18              push        18h
+  00849FCA: 51                 push        ecx
+  00849FCB: D8 0D E4 6B E3 00  fmul        dword ptr ds:[00E36BE4h]
+  00849FD1: D9 5C 24 14        fstp        dword ptr [esp+14h]
+  00849FD5: E8 36 79 C8 FF     call        004D1910
+  00849FDA: D9 44 24 14        fld         dword ptr [esp+14h]
+  00849FDE: 8B 08              mov         ecx,dword ptr [eax]
+  00849FE0: 83 C4 04           add         esp,4
+  00849FE3: D9 1C 24           fstp        dword ptr [esp]
+  00849FE6: E8 35 5F 00 00     call        0084FF20
+  00849FEB: 5E                 pop         esi
+  00849FEC: 59                 pop         ecx
+  00849FED: C2 08 00           ret         8
+  00849FF0: 53                 push        ebx
+  00849FF1: 56                 push        esi
+  00849FF2: 8B F1              mov         esi,ecx
+  00849FF4: 80 7E 30 00        cmp         byte ptr [esi+30h],0
+  00849FF8: 57                 push        edi
+  00849FF9: C7 06 28 6C E3 00  mov         dword ptr [esi],0E36C28h
+  00849FFF: C7 46 28 20 6C E3  mov         dword ptr [esi+28h],0E36C20h
+            00
+  0084A006: C7 46 2C 14 6C E3  mov         dword ptr [esi+2Ch],0E36C14h
+            00
+  0084A00D: 74 05              je          0084A014
+  0084A00F: E8 FC FA FF FF     call        00849B10
+  0084A014: 8B BE D8 92 00 00  mov         edi,dword ptr [esi+000092D8h]
+  0084A01A: 8D 9E D4 92 00 00  lea         ebx,[esi+000092D4h]
+  0084A020: 3B
+
+  Summary
+
+      9C8000 .text

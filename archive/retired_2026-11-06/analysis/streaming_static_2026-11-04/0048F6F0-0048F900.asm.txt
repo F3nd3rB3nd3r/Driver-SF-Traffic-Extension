@@ -1,0 +1,231 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0048F6F0: 56                 push        esi
+  0048F6F1: 8B F1              mov         esi,ecx
+  0048F6F3: 8D 4E 0C           lea         ecx,[esi+0Ch]
+  0048F6F6: C7 06 40 A0 DD 00  mov         dword ptr [esi],0DDA040h
+  0048F6FC: E8 8F C7 3B 00     call        0084BE90
+  0048F701: 8D 4E 24           lea         ecx,[esi+24h]
+  0048F704: E8 07 BF 3B 00     call        0084B610
+  0048F709: C7 46 04 01 00 00  mov         dword ptr [esi+4],1
+            00
+  0048F710: C7 46 08 FF FF FF  mov         dword ptr [esi+8],0FFFFFFFFh
+            FF
+  0048F717: 8B C6              mov         eax,esi
+  0048F719: 5E                 pop         esi
+  0048F71A: C3                 ret
+  0048F71B: CC                 int         3
+  0048F71C: CC                 int         3
+  0048F71D: CC                 int         3
+  0048F71E: CC                 int         3
+  0048F71F: CC                 int         3
+  0048F720: 56                 push        esi
+  0048F721: 8B F1              mov         esi,ecx
+  0048F723: 6A 16              push        16h
+  0048F725: C7 06 58 A0 DD 00  mov         dword ptr [esi],0DDA058h
+  0048F72B: E8 C0 A6 3D 00     call        00869DF0
+  0048F730: 83 C4 04           add         esp,4
+  0048F733: C7 06 30 5C EA 00  mov         dword ptr [esi],0EA5C30h
+  0048F739: 5E                 pop         esi
+  0048F73A: C3                 ret
+  0048F73B: CC                 int         3
+  0048F73C: CC                 int         3
+  0048F73D: CC                 int         3
+  0048F73E: CC                 int         3
+  0048F73F: CC                 int         3
+  0048F740: 8B 81 3C 02 00 00  mov         eax,dword ptr [ecx+0000023Ch]
+  0048F746: 8D 91 38 02 00 00  lea         edx,[ecx+00000238h]
+  0048F74C: 56                 push        esi
+  0048F74D: 3B C2              cmp         eax,edx
+  0048F74F: 74 19              je          0048F76A
+  0048F751: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  0048F755: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  0048F758: 83 79 04 03        cmp         dword ptr [ecx+4],3
+  0048F75C: 75 05              jne         0048F763
+  0048F75E: 39 71 08           cmp         dword ptr [ecx+8],esi
+  0048F761: 74 0D              je          0048F770
+  0048F763: 8B 40 04           mov         eax,dword ptr [eax+4]
+  0048F766: 3B C2              cmp         eax,edx
+  0048F768: 75 EB              jne         0048F755
+  0048F76A: 33 C0              xor         eax,eax
+  0048F76C: 5E                 pop         esi
+  0048F76D: C2 04 00           ret         4
+  0048F770: 8B C1              mov         eax,ecx
+  0048F772: 83 C0 24           add         eax,24h
+  0048F775: 5E                 pop         esi
+  0048F776: C2 04 00           ret         4
+  0048F779: CC                 int         3
+  0048F77A: CC                 int         3
+  0048F77B: CC                 int         3
+  0048F77C: CC                 int         3
+  0048F77D: CC                 int         3
+  0048F77E: CC                 int         3
+  0048F77F: CC                 int         3
+  0048F780: 8B 81 3C 02 00 00  mov         eax,dword ptr [ecx+0000023Ch]
+  0048F786: 8D 91 38 02 00 00  lea         edx,[ecx+00000238h]
+  0048F78C: 56                 push        esi
+  0048F78D: 3B C2              cmp         eax,edx
+  0048F78F: 74 19              je          0048F7AA
+  0048F791: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  0048F795: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  0048F798: 83 79 04 03        cmp         dword ptr [ecx+4],3
+  0048F79C: 75 05              jne         0048F7A3
+  0048F79E: 39 71 08           cmp         dword ptr [ecx+8],esi
+  0048F7A1: 74 0D              je          0048F7B0
+  0048F7A3: 8B 40 04           mov         eax,dword ptr [eax+4]
+  0048F7A6: 3B C2              cmp         eax,edx
+  0048F7A8: 75 EB              jne         0048F795
+  0048F7AA: 32 C0              xor         al,al
+  0048F7AC: 5E                 pop         esi
+  0048F7AD: C2 04 00           ret         4
+  0048F7B0: 8B C1              mov         eax,ecx
+  0048F7B2: 83 C0 0C           add         eax,0Ch
+  0048F7B5: 83 78 14 04        cmp         dword ptr [eax+14h],4
+  0048F7B9: 75 0F              jne         0048F7CA
+  0048F7BB: 83 78 0C 00        cmp         dword ptr [eax+0Ch],0
+  0048F7BF: 74 09              je          0048F7CA
+  0048F7C1: B8 01 00 00 00     mov         eax,1
+  0048F7C6: 5E                 pop         esi
+  0048F7C7: C2 04 00           ret         4
+  0048F7CA: 33 C0              xor         eax,eax
+  0048F7CC: 5E                 pop         esi
+  0048F7CD: C2 04 00           ret         4
+  0048F7D0: 51                 push        ecx
+  0048F7D1: 56                 push        esi
+  0048F7D2: 57                 push        edi
+  0048F7D3: 8D 44 24 08        lea         eax,[esp+8]
+  0048F7D7: 6A 7A              push        7Ah
+  0048F7D9: 50                 push        eax
+  0048F7DA: 8B F1              mov         esi,ecx
+  0048F7DC: E8 7F AB 3D 00     call        0086A360
+  0048F7E1: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  0048F7E5: 6A 7A              push        7Ah
+  0048F7E7: E8 14 AC 3D 00     call        0086A400
+  0048F7EC: 8B 46 04           mov         eax,dword ptr [esi+4]
+  0048F7EF: 83 C4 0C           add         esp,0Ch
+  0048F7F2: 83 7E 08 00        cmp         dword ptr [esi+8],0
+  0048F7F6: 8D 48 08           lea         ecx,[eax+8]
+  0048F7F9: 74 10              je          0048F80B
+  0048F7FB: 8B 10              mov         edx,dword ptr [eax]
+  0048F7FD: 85 C9              test        ecx,ecx
+  0048F7FF: 74 02              je          0048F803
+  0048F801: 89 39              mov         dword ptr [ecx],edi
+  0048F803: FF 4E 08           dec         dword ptr [esi+8]
+  0048F806: 89 56 04           mov         dword ptr [esi+4],edx
+  0048F809: EB 0A              jmp         0048F815
+  0048F80B: 85 C9              test        ecx,ecx
+  0048F80D: 74 02              je          0048F811
+  0048F80F: 89 39              mov         dword ptr [ecx],edi
+  0048F811: 83 46 04 0C        add         dword ptr [esi+4],0Ch
+  0048F815: 8B 96 38 02 00 00  mov         edx,dword ptr [esi+00000238h]
+  0048F81B: FF 46 0C           inc         dword ptr [esi+0Ch]
+  0048F81E: 8D 8E 38 02 00 00  lea         ecx,[esi+00000238h]
+  0048F824: 89 10              mov         dword ptr [eax],edx
+  0048F826: 89 48 04           mov         dword ptr [eax+4],ecx
+  0048F829: 8B 11              mov         edx,dword ptr [ecx]
+  0048F82B: 89 42 04           mov         dword ptr [edx+4],eax
+  0048F82E: 89 01              mov         dword ptr [ecx],eax
+  0048F830: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0048F834: 89 38              mov         dword ptr [eax],edi
+  0048F836: 5F                 pop         edi
+  0048F837: 5E                 pop         esi
+  0048F838: 59                 pop         ecx
+  0048F839: C2 04 00           ret         4
+  0048F83C: CC                 int         3
+  0048F83D: CC                 int         3
+  0048F83E: CC                 int         3
+  0048F83F: CC                 int         3
+  0048F840: 56                 push        esi
+  0048F841: 8B F1              mov         esi,ecx
+  0048F843: C7 06 58 A0 DD 00  mov         dword ptr [esi],0DDA058h
+  0048F849: 8D 46 10           lea         eax,[esi+10h]
+  0048F84C: 89 46 04           mov         dword ptr [esi+4],eax
+  0048F84F: 33 C0              xor         eax,eax
+  0048F851: 89 46 08           mov         dword ptr [esi+8],eax
+  0048F854: 89 46 0C           mov         dword ptr [esi+0Ch],eax
+  0048F857: 8D 86 38 02 00 00  lea         eax,[esi+00000238h]
+  0048F85D: 6A 2E              push        2Eh
+  0048F85F: 6A 16              push        16h
+  0048F861: 89 86 3C 02 00 00  mov         dword ptr [esi+0000023Ch],eax
+  0048F867: 89 00              mov         dword ptr [eax],eax
+  0048F869: E8 02 A8 3D 00     call        0086A070
+  0048F86E: 83 C4 08           add         esp,8
+  0048F871: 8B C6              mov         eax,esi
+  0048F873: 5E                 pop         esi
+  0048F874: C3                 ret
+  0048F875: CC                 int         3
+  0048F876: CC                 int         3
+  0048F877: CC                 int         3
+  0048F878: CC                 int         3
+  0048F879: CC                 int         3
+  0048F87A: CC                 int         3
+  0048F87B: CC                 int         3
+  0048F87C: CC                 int         3
+  0048F87D: CC                 int         3
+  0048F87E: CC                 int         3
+  0048F87F: CC                 int         3
+  0048F880: 8B 81 3C 02 00 00  mov         eax,dword ptr [ecx+0000023Ch]
+  0048F886: 8D 91 38 02 00 00  lea         edx,[ecx+00000238h]
+  0048F88C: 3B C2              cmp         eax,edx
+  0048F88E: 74 51              je          0048F8E1
+  0048F890: 56                 push        esi
+  0048F891: 57                 push        edi
+  0048F892: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  0048F896: 8B 37              mov         esi,dword ptr [edi]
+  0048F898: 39 70 08           cmp         dword ptr [eax+8],esi
+  0048F89B: 74 0C              je          0048F8A9
+  0048F89D: 8B 40 04           mov         eax,dword ptr [eax+4]
+  0048F8A0: 3B C2              cmp         eax,edx
+  0048F8A2: 75 F4              jne         0048F898
+  0048F8A4: 5F                 pop         edi
+  0048F8A5: 5E                 pop         esi
+  0048F8A6: C2 04 00           ret         4
+  0048F8A9: 8B 10              mov         edx,dword ptr [eax]
+  0048F8AB: 8B 70 04           mov         esi,dword ptr [eax+4]
+  0048F8AE: 89 72 04           mov         dword ptr [edx+4],esi
+  0048F8B1: 89 16              mov         dword ptr [esi],edx
+  0048F8B3: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  0048F8B6: 89 10              mov         dword ptr [eax],edx
+  0048F8B8: FF 41 08           inc         dword ptr [ecx+8]
+  0048F8BB: FF 49 0C           dec         dword ptr [ecx+0Ch]
+  0048F8BE: 89 41 04           mov         dword ptr [ecx+4],eax
+  0048F8C1: 8B 37              mov         esi,dword ptr [edi]
+  0048F8C3: 8B 06              mov         eax,dword ptr [esi]
+  0048F8C5: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  0048F8C8: 6A 00              push        0
+  0048F8CA: 8B CE              mov         ecx,esi
+  0048F8CC: FF D2              call        edx
+  0048F8CE: 56                 push        esi
+  0048F8CF: 6A 16              push        16h
+  0048F8D1: E8 CA A4 3D 00     call        00869DA0
+  0048F8D6: 83 C4 08           add         esp,8
+  0048F8D9: C7 07 00 00 00 00  mov         dword ptr [edi],0
+  0048F8DF: 5F                 pop         edi
+  0048F8E0: 5E                 pop         esi
+  0048F8E1: C2 04 00           ret         4
+  0048F8E4: CC                 int         3
+  0048F8E5: CC                 int         3
+  0048F8E6: CC                 int         3
+  0048F8E7: CC                 int         3
+  0048F8E8: CC                 int         3
+  0048F8E9: CC                 int         3
+  0048F8EA: CC                 int         3
+  0048F8EB: CC                 int         3
+  0048F8EC: CC                 int         3
+  0048F8ED: CC                 int         3
+  0048F8EE: CC                 int         3
+  0048F8EF: CC                 int         3
+  0048F8F0: 56                 push        esi
+  0048F8F1: 8B F1              mov         esi,ecx
+  0048F8F3: 8B 46 04           mov         eax,dword ptr [esi+4]
+  0048F8F6: 83 F8 03           cmp         eax,3
+  0048F8F9: 75 24              jne         0048F91F
+  0048F8FB: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0048F900: 85
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,54 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A4AE0: 53                 push        ebx
+  005A4AE1: 55                 push        ebp
+  005A4AE2: 8B E9              mov         ebp,ecx
+  005A4AE4: 83 BD D0 65 01 00  cmp         dword ptr [ebp+000165D0h],0
+            00
+  005A4AEB: B3 01              mov         bl,1
+  005A4AED: 74 40              je          005A4B2F
+  005A4AEF: 56                 push        esi
+  005A4AF0: 8B B5 F8 65 01 00  mov         esi,dword ptr [ebp+000165F8h]
+  005A4AF6: 57                 push        edi
+  005A4AF7: 8B BD 00 66 01 00  mov         edi,dword ptr [ebp+00016600h]
+  005A4AFD: C1 E7 04           shl         edi,4
+  005A4B00: 03 FE              add         edi,esi
+  005A4B02: 3B F7              cmp         esi,edi
+  005A4B04: 74 16              je          005A4B1C
+  005A4B06: 8B CE              mov         ecx,esi
+  005A4B08: E8 A3 4F FF FF     call        00599AB0
+  005A4B0D: 84 C0              test        al,al
+  005A4B0F: 74 09              je          005A4B1A
+  005A4B11: 83 C6 10           add         esi,10h
+  005A4B14: 3B F7              cmp         esi,edi
+  005A4B16: 75 EE              jne         005A4B06
+  005A4B18: EB 02              jmp         005A4B1C
+  005A4B1A: 32 DB              xor         bl,bl
+  005A4B1C: 8D 8D E8 65 01 00  lea         ecx,[ebp+000165E8h]
+  005A4B22: E8 89 4F FF FF     call        00599AB0
+  005A4B27: 5F                 pop         edi
+  005A4B28: 5E                 pop         esi
+  005A4B29: 84 C0              test        al,al
+  005A4B2B: 75 02              jne         005A4B2F
+  005A4B2D: 32 DB              xor         bl,bl
+  005A4B2F: 83 BD 64 65 01 00  cmp         dword ptr [ebp+00016564h],0
+            00
+  005A4B36: 74 09              je          005A4B41
+  005A4B38: 8B CD              mov         ecx,ebp
+  005A4B3A: E8 51 FC FF FF     call        005A4790
+  005A4B3F: 32 DB              xor         bl,bl
+  005A4B41: 33 C0              xor         eax,eax
+  005A4B43: 84 DB              test        bl,bl
+  005A4B45: 0F 95 C0           setne       al
+  005A4B48: 5D                 pop         ebp
+  005A4B49: 5B                 pop         ebx
+  005A4B4A: 83 C0 03           add         eax,3
+  005A4B4D: C3                 ret
+  005A4B4E: CC                 int         3
+
+  Summary
+
+      9C8000 .text

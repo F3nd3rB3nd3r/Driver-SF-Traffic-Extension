@@ -1,0 +1,43 @@
+{
+  "result": "passed",
+  "architecture": "Win32",
+  "native_blocks": [
+    [
+      5597136,
+      81
+    ],
+    [
+      8753077,
+      31
+    ],
+    [
+      8753152,
+      115
+    ],
+    [
+      14368928,
+      60
+    ]
+  ],
+  "groups": 21,
+  "capacity": 512,
+  "production_sha256": {
+    "V29sCallbackCore.inc": "7f86a367f953892b3287f8a840541220a4f14372d89a4d17fffaa96554e1c64c",
+    "V29sCallbackBridges.inc": "5d358391b97f4b5cde82be7b0bc93d73e51a500bf09cbdce6392b2dfde9bbd36",
+    "V29sCallbackPatch.inc": "b6bfd485b70a53a602a55d6ba3922e88165013e60805da7a2a1763fdb447cdbf"
+  },
+  "checks": [
+    "stock65th native insertion overwrites adjacent header",
+    "all21 groups at512 with original sentinels",
+    "513th refused before native write",
+    "actual native callback poll/remove/recycle/partial and complete drain",
+    "empty refill retains process storage",
+    "same-thread registration during callback",
+    "exact registration fragment and selector guard",
+    "non-target helper passthrough",
+    "cycles/freechain/reset/guards/selector/concurrent/recursive-poll refusals",
+    "parent/cold/allocation/signature/protection/cache/rollback failure handling",
+    "mid-function bridge GP/flags/DF/x87/SSE preservation"
+  ],
+  "limitations": "Fixture rebases six native absolute global operands and registration CALL. Native poll prefix runs real callbacks/removal; remaining resource state machine is replaced by a return stub. No game or ASI load."
+}

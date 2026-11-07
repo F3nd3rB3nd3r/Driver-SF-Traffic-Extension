@@ -1,0 +1,122 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007D7270: 83 79 04 00        cmp         dword ptr [ecx+4],0
+  007D7274: 8B 11              mov         edx,dword ptr [ecx]
+  007D7276: 56                 push        esi
+  007D7277: 57                 push        edi
+  007D7278: 8D 42 08           lea         eax,[edx+8]
+  007D727B: 74 1D              je          007D729A
+  007D727D: 8B 32              mov         esi,dword ptr [edx]
+  007D727F: 85 C0              test        eax,eax
+  007D7281: 74 10              je          007D7293
+  007D7283: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  007D7287: 53                 push        ebx
+  007D7288: 8B 1F              mov         ebx,dword ptr [edi]
+  007D728A: 89 18              mov         dword ptr [eax],ebx
+  007D728C: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  007D728F: 89 78 04           mov         dword ptr [eax+4],edi
+  007D7292: 5B                 pop         ebx
+  007D7293: FF 49 04           dec         dword ptr [ecx+4]
+  007D7296: 89 31              mov         dword ptr [ecx],esi
+  007D7298: EB 15              jmp         007D72AF
+  007D729A: 85 C0              test        eax,eax
+  007D729C: 74 0E              je          007D72AC
+  007D729E: 8B 74 24 14        mov         esi,dword ptr [esp+14h]
+  007D72A2: 8B 3E              mov         edi,dword ptr [esi]
+  007D72A4: 89 38              mov         dword ptr [eax],edi
+  007D72A6: 8B 76 04           mov         esi,dword ptr [esi+4]
+  007D72A9: 89 70 04           mov         dword ptr [eax+4],esi
+  007D72AC: 83 01 10           add         dword ptr [ecx],10h
+  007D72AF: FF 41 08           inc         dword ptr [ecx+8]
+  007D72B2: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  007D72B6: 8B 00              mov         eax,dword ptr [eax]
+  007D72B8: 89 02              mov         dword ptr [edx],eax
+  007D72BA: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  007D72BE: 89 4A 04           mov         dword ptr [edx+4],ecx
+  007D72C1: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  007D72C5: 89 11              mov         dword ptr [ecx],edx
+  007D72C7: 89 50 04           mov         dword ptr [eax+4],edx
+  007D72CA: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  007D72CE: 5F                 pop         edi
+  007D72CF: 89 10              mov         dword ptr [eax],edx
+  007D72D1: 5E                 pop         esi
+  007D72D2: C2 0C 00           ret         0Ch
+  007D72D5: CC                 int         3
+  007D72D6: CC                 int         3
+  007D72D7: CC                 int         3
+  007D72D8: CC                 int         3
+  007D72D9: CC                 int         3
+  007D72DA: CC                 int         3
+  007D72DB: CC                 int         3
+  007D72DC: CC                 int         3
+  007D72DD: CC                 int         3
+  007D72DE: CC                 int         3
+  007D72DF: CC                 int         3
+  007D72E0: 83 EC 10           sub         esp,10h
+  007D72E3: 0F 57 C0           xorps       xmm0,xmm0
+  007D72E6: F3 0F 10 0D 14 64  movss       xmm1,dword ptr ds:[00DD6414h]
+            DD 00
+  007D72EE: 53                 push        ebx
+  007D72EF: 56                 push        esi
+  007D72F0: 8B F1              mov         esi,ecx
+  007D72F2: F3 0F 11 44 24 08  movss       dword ptr [esp+8],xmm0
+  007D72F8: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  007D72FC: 89 06              mov         dword ptr [esi],eax
+  007D72FE: F3 0F 11 44 24 0C  movss       dword ptr [esp+0Ch],xmm0
+  007D7304: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  007D7308: 89 4E 04           mov         dword ptr [esi+4],ecx
+  007D730B: 68 B8 11 EE 00     push        0EE11B8h
+  007D7310: F3 0F 11 44 24 14  movss       dword ptr [esp+14h],xmm0
+  007D7316: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  007D731A: F3 0F 11 4C 24 18  movss       dword ptr [esp+18h],xmm1
+  007D7320: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  007D7324: 8D 4E 24           lea         ecx,[esi+24h]
+  007D7327: 6A 40              push        40h
+  007D7329: 89 56 08           mov         dword ptr [esi+8],edx
+  007D732C: 33 DB              xor         ebx,ebx
+  007D732E: 51                 push        ecx
+  007D732F: 89 46 0C           mov         dword ptr [esi+0Ch],eax
+  007D7332: F3 0F 11 46 10     movss       dword ptr [esi+10h],xmm0
+  007D7337: F3 0F 11 46 14     movss       dword ptr [esi+14h],xmm0
+  007D733C: F3 0F 11 46 18     movss       dword ptr [esi+18h],xmm0
+  007D7341: F3 0F 11 46 1C     movss       dword ptr [esi+1Ch],xmm0
+  007D7346: 89 5E 20           mov         dword ptr [esi+20h],ebx
+  007D7349: E8 8E 24 45 00     call        00C297DC
+  007D734E: 83 C4 0C           add         esp,0Ch
+  007D7351: 89 5E 64           mov         dword ptr [esi+64h],ebx
+  007D7354: 89 5E 6C           mov         dword ptr [esi+6Ch],ebx
+  007D7357: 89 5E 70           mov         dword ptr [esi+70h],ebx
+  007D735A: 89 5E 74           mov         dword ptr [esi+74h],ebx
+  007D735D: 89 5E 78           mov         dword ptr [esi+78h],ebx
+  007D7360: 89 5E 7C           mov         dword ptr [esi+7Ch],ebx
+  007D7363: 89 9E 80 00 00 00  mov         dword ptr [esi+00000080h],ebx
+  007D7369: 89 9E 88 00 00 00  mov         dword ptr [esi+00000088h],ebx
+  007D736F: 88 9E 8C 00 00 00  mov         byte ptr [esi+0000008Ch],bl
+  007D7375: C7 46 68 34 ED E2  mov         dword ptr [esi+68h],0E2ED34h
+            00
+  007D737C: C7 86 84 00 00 00  mov         dword ptr [esi+00000084h],0FFFFFFFFh
+            FF FF FF FF
+  007D7386: 8B C6              mov         eax,esi
+  007D7388: 5E                 pop         esi
+  007D7389: 5B                 pop         ebx
+  007D738A: 83 C4 10           add         esp,10h
+  007D738D: C3                 ret
+  007D738E: CC                 int         3
+  007D738F: CC                 int         3
+  007D7390: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  007D7395: 85 C0              test        eax,eax
+  007D7397: 75 0A              jne         007D73A3
+  007D7399: E8 F2 32 C3 FF     call        0040A690
+  007D739E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  007D73A3: 8B 88 D4 05 00 00  mov         ecx,dword ptr [eax+000005D4h]
+  007D73A9: E8 62 AB CF FF     call        004D1F10
+  007D73AE: 50                 push        eax
+  007D73AF: E8
+  007D73B0: 9C                 pushfd
+
+  Summary
+
+      9C8000 .text

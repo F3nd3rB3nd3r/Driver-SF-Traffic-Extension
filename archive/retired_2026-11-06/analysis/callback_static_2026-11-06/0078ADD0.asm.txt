@@ -1,0 +1,35 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0078ADD0: 24 1C              and         al,1Ch
+  0078ADD2: 83 C4 08           add         esp,8
+  0078ADD5: 57                 push        edi
+  0078ADD6: E8 A5 CE 01 00     call        007A7C80
+  0078ADDB: 83 78 08 00        cmp         dword ptr [eax+8],0
+  0078ADDF: 0F 84 C7 03 00 00  je          0078B1AC
+  0078ADE5: 8B D7              mov         edx,edi
+  0078ADE7: 69 D2 14 03 00 00  imul        edx,edx,314h
+  0078ADED: 80 BC 2F 48 06 00  cmp         byte ptr [edi+ebp+00000648h],0
+            00 00
+  0078ADF5: 8D 5C 2A 20        lea         ebx,[edx+ebp+20h]
+  0078ADF9: 75 0D              jne         0078AE08
+  0078ADFB: C7 44 24 18 05 00  mov         dword ptr [esp+18h],5
+            00 00
+  0078AE03: E9 0B 01 00 00     jmp         0078AF13
+  0078AE08: C6 84 2F 48 06 00  mov         byte ptr [edi+ebp+00000648h],0
+            00 00
+  0078AE10: 8B 8B 10 03 00 00  mov         ecx,dword ptr [ebx+00000310h]
+  0078AE16: 8D BB 0C 03 00 00  lea         edi,[ebx+0000030Ch]
+  0078AE1C: C7 44 24 18 01 00  mov         dword ptr [esp+18h],1
+            00 00
+  0078AE24: 3B CF              cmp         ecx,edi
+  0078AE26: 74 1A              je          0078AE42
+  0078AE28: EB 06              jmp         0078AE30
+  0078AE2A: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  0078AE30: C6
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,138 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A11E0: 83 EC 08           sub         esp,8
+  005A11E3: 53                 push        ebx
+  005A11E4: 55                 push        ebp
+  005A11E5: 56                 push        esi
+  005A11E6: 8B F1              mov         esi,ecx
+  005A11E8: 8B 46 04           mov         eax,dword ptr [esi+4]
+  005A11EB: 83 E8 01           sub         eax,1
+  005A11EE: 57                 push        edi
+  005A11EF: 0F 84 B8 01 00 00  je          005A13AD
+  005A11F5: 83 E8 01           sub         eax,1
+  005A11F8: 74 3C              je          005A1236
+  005A11FA: 83 E8 01           sub         eax,1
+  005A11FD: 0F 85 09 02 00 00  jne         005A140C
+  005A1203: 8B 8E 20 56 00 00  mov         ecx,dword ptr [esi+00005620h]
+  005A1209: 8B 01              mov         eax,dword ptr [ecx]
+  005A120B: 8B 50 24           mov         edx,dword ptr [eax+24h]
+  005A120E: FF D2              call        edx
+  005A1210: 84 C0              test        al,al
+  005A1212: 0F 84 BC 01 00 00  je          005A13D4
+  005A1218: 33 C0              xor         eax,eax
+  005A121A: 38 86 39 73 00 00  cmp         byte ptr [esi+00007339h],al
+  005A1220: 0F 95 C0           setne       al
+  005A1223: 8D 44 00 04        lea         eax,[eax+eax+4]
+  005A1227: 89 46 04           mov         dword ptr [esi+4],eax
+  005A122A: B0 01              mov         al,1
+  005A122C: 5F                 pop         edi
+  005A122D: 5E                 pop         esi
+  005A122E: 5D                 pop         ebp
+  005A122F: 5B                 pop         ebx
+  005A1230: 83 C4 08           add         esp,8
+  005A1233: C2 04 00           ret         4
+  005A1236: 8D 6E 08           lea         ebp,[esi+8]
+  005A1239: 8B CD              mov         ecx,ebp
+  005A123B: E8 60 AE 35 00     call        008FC0A0
+  005A1240: 84 C0              test        al,al
+  005A1242: 0F 85 8C 01 00 00  jne         005A13D4
+  005A1248: 8A 86 1D 56 00 00  mov         al,byte ptr [esi+0000561Dh]
+  005A124E: 84 C0              test        al,al
+  005A1250: 0F 84 12 01 00 00  je          005A1368
+  005A1256: 80 BE 39 73 00 00  cmp         byte ptr [esi+00007339h],0
+            00
+  005A125D: 74 1A              je          005A1279
+  005A125F: 8B CD              mov         ecx,ebp
+  005A1261: E8 6A A7 35 00     call        008FB9D0
+  005A1266: C7 46 04 00 00 00  mov         dword ptr [esi+4],0
+            00
+  005A126D: B0 01              mov         al,1
+  005A126F: 5F                 pop         edi
+  005A1270: 5E                 pop         esi
+  005A1271: 5D                 pop         ebp
+  005A1272: 5B                 pop         ebx
+  005A1273: 83 C4 08           add         esp,8
+  005A1276: C2 04 00           ret         4
+  005A1279: 6A 00              push        0
+  005A127B: 6A 00              push        0
+  005A127D: 51                 push        ecx
+  005A127E: 8B C4              mov         eax,esp
+  005A1280: 8D 4E F4           lea         ecx,[esi-0Ch]
+  005A1283: C6 86 38 73 00 00  mov         byte ptr [esi+00007338h],1
+            01
+  005A128A: 89 08              mov         dword ptr [eax],ecx
+  005A128C: 8D 4C 24 1C        lea         ecx,[esp+1Ch]
+  005A1290: 6A 57              push        57h
+  005A1292: 51                 push        ecx
+  005A1293: E8 78 06 F3 FF     call        004D1910
+  005A1298: 8B 96 F4 72 00 00  mov         edx,dword ptr [esi+000072F4h]
+  005A129E: 8B 00              mov         eax,dword ptr [eax]
+  005A12A0: 83 C4 08           add         esp,8
+  005A12A3: 52                 push        edx
+  005A12A4: 8D 4C 24 24        lea         ecx,[esp+24h]
+  005A12A8: 51                 push        ecx
+  005A12A9: 8B C8              mov         ecx,eax
+  005A12AB: E8 10 E7 FF FF     call        0059F9C0
+  005A12B0: 8B 10              mov         edx,dword ptr [eax]
+  005A12B2: 8B CD              mov         ecx,ebp
+  005A12B4: 89 96 20 56 00 00  mov         dword ptr [esi+00005620h],edx
+  005A12BA: E8 71 A0 35 00     call        008FB330
+  005A12BF: 8B D8              mov         ebx,eax
+  005A12C1: 33 FF              xor         edi,edi
+  005A12C3: 85 DB              test        ebx,ebx
+  005A12C5: 74 14              je          005A12DB
+  005A12C7: 57                 push        edi
+  005A12C8: 8B CD              mov         ecx,ebp
+  005A12CA: E8 71 A0 35 00     call        008FB340
+  005A12CF: 3D 53 53 49 43     cmp         eax,43495353h
+  005A12D4: 74 3C              je          005A1312
+  005A12D6: 47                 inc         edi
+  005A12D7: 3B FB              cmp         edi,ebx
+  005A12D9: 75 EC              jne         005A12C7
+  005A12DB: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005A12E0: 85 C0              test        eax,eax
+  005A12E2: 75 0A              jne         005A12EE
+  005A12E4: E8 A7 93 E6 FF     call        0040A690
+  005A12E9: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005A12EE: 8B 40 38           mov         eax,dword ptr [eax+38h]
+  005A12F1: 68 90 4D DE 00     push        0DE4D90h
+  005A12F6: 50                 push        eax
+  005A12F7: E8 64 92 2C 00     call        0086A560
+  005A12FC: 83 C4 08           add         esp,8
+  005A12FF: C7 46 04 00 00 00  mov         dword ptr [esi+4],0
+            00
+  005A1306: B0 01              mov         al,1
+  005A1308: 5F                 pop         edi
+  005A1309: 5E                 pop         esi
+  005A130A: 5D                 pop         ebp
+  005A130B: 5B                 pop         ebx
+  005A130C: 83 C4 08           add         esp,8
+  005A130F: C2 04 00           ret         4
+  005A1312: 8D 86 E8 72 00 00  lea         eax,[esi+000072E8h]
+  005A1318: 50                 push        eax
+  005A1319: 8D 8E E4 72 00 00  lea         ecx,[esi+000072E4h]
+  005A131F: 51                 push        ecx
+  005A1320: 57                 push        edi
+  005A1321: 55                 push        ebp
+  005A1322: 8D 4E F4           lea         ecx,[esi-0Ch]
+  005A1325: E8 B6 FA FF FF     call        005A0DE0
+  005A132A: 8B 86 F4 72 00 00  mov         eax,dword ptr [esi+000072F4h]
+  005A1330: 33 D2              xor         edx,edx
+  005A1332: 2B C2              sub         eax,edx
+  005A1334: 74 0A              je          005A1340
+  005A1336: 83 E8 02           sub         eax,2
+  005A1339: 75 0A              jne         005A1345
+  005A133B: 8D 50 0C           lea         edx,[eax+0Ch]
+  005A133E: EB 05              jmp         005A1345
+  005A1340: BA 08 00 00 00     mov         edx,8
+  005A1345: 8B 8E 20 56 00 00  mov         ecx,dword ptr [esi+00005620h]
+  005A134B: 8B 01              mov         eax,dword ptr [ecx]
+  005A134D: 52                 push        edx
+  005A134E: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+
+  Summary
+
+      9C8000 .text

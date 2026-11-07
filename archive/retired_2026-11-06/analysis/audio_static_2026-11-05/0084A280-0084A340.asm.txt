@@ -1,0 +1,83 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084A280: 5C                 pop         esp
+  0084A281: FF
+  0084A282: FF
+  0084A283: FF A1 28 72 FE 00  jmp         dword ptr [ecx+00FE7228h]
+  0084A289: 85 C0              test        eax,eax
+  0084A28B: 75 0A              jne         0084A297
+  0084A28D: E8 FE 03 BC FF     call        0040A690
+  0084A292: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0084A297: 8B 48 64           mov         ecx,dword ptr [eax+64h]
+  0084A29A: E8 F1 0E 00 00     call        0084B190
+  0084A29F: 8D 8E 48 09 00 00  lea         ecx,[esi+00000948h]
+  0084A2A5: E8 96 D4 FF FF     call        00847740
+  0084A2AA: 0F 57 C9           xorps       xmm1,xmm1
+  0084A2AD: 33 FF              xor         edi,edi
+  0084A2AF: 8D 5E 7C           lea         ebx,[esi+7Ch]
+  0084A2B2: 8D 6E 60           lea         ebp,[esi+60h]
+  0084A2B5: F3 0F 10 03        movss       xmm0,dword ptr [ebx]
+  0084A2B9: 0F 2F C1           comiss      xmm0,xmm1
+  0084A2BC: 76 44              jbe         0084A302
+  0084A2BE: F3 0F 10 45 00     movss       xmm0,dword ptr [ebp]
+  0084A2C3: F3 0F 58 03        addss       xmm0,dword ptr [ebx]
+  0084A2C7: 0F 2F 43 04        comiss      xmm0,dword ptr [ebx+4]
+  0084A2CB: F3 0F 11 44 24 10  movss       dword ptr [esp+10h],xmm0
+  0084A2D1: 72 1C              jb          0084A2EF
+  0084A2D3: F3 0F 10 43 04     movss       xmm0,dword ptr [ebx+4]
+  0084A2D8: F3 0F 11 44 24 10  movss       dword ptr [esp+10h],xmm0
+  0084A2DE: F3 0F 10 05 10 64  movss       xmm0,dword ptr ds:[00DD6410h]
+            DD 00
+  0084A2E6: F3 0F 11 0B        movss       dword ptr [ebx],xmm1
+  0084A2EA: F3 0F 11 43 04     movss       dword ptr [ebx+4],xmm0
+  0084A2EF: D9 44 24 10        fld         dword ptr [esp+10h]
+  0084A2F3: 51                 push        ecx
+  0084A2F4: D9 1C 24           fstp        dword ptr [esp]
+  0084A2F7: 57                 push        edi
+  0084A2F8: 8B CE              mov         ecx,esi
+  0084A2FA: E8 11 FC FF FF     call        00849F10
+  0084A2FF: 0F 57 C9           xorps       xmm1,xmm1
+  0084A302: 47                 inc         edi
+  0084A303: 83 C5 04           add         ebp,4
+  0084A306: 83 C3 08           add         ebx,8
+  0084A309: 83 FF 03           cmp         edi,3
+  0084A30C: 7C A7              jl          0084A2B5
+  0084A30E: 5F                 pop         edi
+  0084A30F: 5E                 pop         esi
+  0084A310: 5D                 pop         ebp
+  0084A311: 5B                 pop         ebx
+  0084A312: 59                 pop         ecx
+  0084A313: C3                 ret
+  0084A314: CC                 int         3
+  0084A315: CC                 int         3
+  0084A316: CC                 int         3
+  0084A317: CC                 int         3
+  0084A318: CC                 int         3
+  0084A319: CC                 int         3
+  0084A31A: CC                 int         3
+  0084A31B: CC                 int         3
+  0084A31C: CC                 int         3
+  0084A31D: CC                 int         3
+  0084A31E: CC                 int         3
+  0084A31F: CC                 int         3
+  0084A320: 53                 push        ebx
+  0084A321: 55                 push        ebp
+  0084A322: 8B 6C 24 10        mov         ebp,dword ptr [esp+10h]
+  0084A326: 56                 push        esi
+  0084A327: 57                 push        edi
+  0084A328: 8B D9              mov         ebx,ecx
+  0084A32A: 33 F6              xor         esi,esi
+  0084A32C: BF 01 00 00 00     mov         edi,1
+  0084A331: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  0084A335: 85 F8              test        eax,edi
+  0084A337: 74 10              je          0084A349
+  0084A339: D9 44 B5 00        fld         dword ptr [ebp+esi*4]
+  0084A33D: 51                 push        ecx
+  0084A33E: D9 1C 24           fstp        dword ptr [esp]
+
+  Summary
+
+      9C8000 .text

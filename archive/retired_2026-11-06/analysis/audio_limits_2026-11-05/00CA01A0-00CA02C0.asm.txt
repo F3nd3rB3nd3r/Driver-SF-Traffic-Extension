@@ -1,0 +1,114 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00CA01A0: D8 1B              fcomp       dword ptr [ebx]
+  00CA01A2: C0 83 C0 02 83 F8  rol         byte ptr [ebx+F88302C0h],1
+            01
+  00CA01A9: 75 3A              jne         00CA01E5
+  00CA01AB: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00CA01B1: 89 0D F8 D5 FD 00  mov         dword ptr ds:[00FDD5F8h],ecx
+  00CA01B7: 89 35 F0 D5 FD 00  mov         dword ptr ds:[00FDD5F0h],esi
+  00CA01BD: 89 35 E8 D5 FD 00  mov         dword ptr ds:[00FDD5E8h],esi
+  00CA01C3: C7 05 EC D5 FD 00  mov         dword ptr ds:[00FDD5ECh],0FFFFFFFFh
+            FF FF FF FF
+  00CA01CD: 89 35 F4 D5 FD 00  mov         dword ptr ds:[00FDD5F4h],esi
+  00CA01D3: 89 35 E4 D5 FD 00  mov         dword ptr ds:[00FDD5E4h],esi
+  00CA01D9: 89 35 DC D5 FD 00  mov         dword ptr ds:[00FDD5DCh],esi
+  00CA01DF: 89 35 E0 D5 FD 00  mov         dword ptr ds:[00FDD5E0h],esi
+  00CA01E5: 5E                 pop         esi
+  00CA01E6: C2 04 00           ret         4
+  00CA01E9: CC                 int         3
+  00CA01EA: CC                 int         3
+  00CA01EB: CC                 int         3
+  00CA01EC: CC                 int         3
+  00CA01ED: CC                 int         3
+  00CA01EE: CC                 int         3
+  00CA01EF: CC                 int         3
+  00CA01F0: F6 44 24 04 01     test        byte ptr [esp+4],1
+  00CA01F5: 56                 push        esi
+  00CA01F6: 8B F1              mov         esi,ecx
+  00CA01F8: C7 05 C4 23 D7 01  mov         dword ptr ds:[01D723C4h],0
+            00 00 00 00
+  00CA0202: C7 06 58 70 EA 00  mov         dword ptr [esi],0EA7058h
+  00CA0208: 74 09              je          00CA0213
+  00CA020A: 56                 push        esi
+  00CA020B: E8 4A 85 F8 FF     call        00C2875A
+  00CA0210: 83 C4 04           add         esp,4
+  00CA0213: 8B C6              mov         eax,esi
+  00CA0215: 5E                 pop         esi
+  00CA0216: C2 04 00           ret         4
+  00CA0219: CC                 int         3
+  00CA021A: CC                 int         3
+  00CA021B: CC                 int         3
+  00CA021C: CC                 int         3
+  00CA021D: CC                 int         3
+  00CA021E: CC                 int         3
+  00CA021F: CC                 int         3
+  00CA0220: 83 EC 60           sub         esp,60h
+  00CA0223: 53                 push        ebx
+  00CA0224: 55                 push        ebp
+  00CA0225: 56                 push        esi
+  00CA0226: 8B 74 24 74        mov         esi,dword ptr [esp+74h]
+  00CA022A: 33 ED              xor         ebp,ebp
+  00CA022C: 57                 push        edi
+  00CA022D: C7 44 24 10 02 00  mov         dword ptr [esp+10h],2
+            00 00
+  00CA0235: 3B F5              cmp         esi,ebp
+  00CA0237: 75 0B              jne         00CA0244
+  00CA0239: 8D 45 1F           lea         eax,[ebp+1Fh]
+  00CA023C: 5F                 pop         edi
+  00CA023D: 5E                 pop         esi
+  00CA023E: 5D                 pop         ebp
+  00CA023F: 5B                 pop         ebx
+  00CA0240: 83 C4 60           add         esp,60h
+  00CA0243: C3                 ret
+  00CA0244: 8B 9C 24 80 00 00  mov         ebx,dword ptr [esp+00000080h]
+            00
+  00CA024B: 8D 44 24 78        lea         eax,[esp+78h]
+  00CA024F: 50                 push        eax
+  00CA0250: 53                 push        ebx
+  00CA0251: 8D 4C 24 24        lea         ecx,[esp+24h]
+  00CA0255: 56                 push        esi
+  00CA0256: 51                 push        ecx
+  00CA0257: E8 94 63 FC FF     call        00C665F0
+  00CA025C: D9 44 24 2C        fld         dword ptr [esp+2Ch]
+  00CA0260: 83 C4 0C           add         esp,0Ch
+  00CA0263: D9 1C 24           fstp        dword ptr [esp]
+  00CA0266: E8 A5 66 FC FF     call        00C66910
+  00CA026B: 83 C4 04           add         esp,4
+  00CA026E: 84 C0              test        al,al
+  00CA0270: 0F 84 71 01 00 00  je          00CA03E7
+  00CA0276: 8B 16              mov         edx,dword ptr [esi]
+  00CA0278: D9 44 24 1C        fld         dword ptr [esp+1Ch]
+  00CA027C: 8B 42 74           mov         eax,dword ptr [edx+74h]
+  00CA027F: 55                 push        ebp
+  00CA0280: 55                 push        ebp
+  00CA0281: 6A 03              push        3
+  00CA0283: 53                 push        ebx
+  00CA0284: 51                 push        ecx
+  00CA0285: 8B CE              mov         ecx,esi
+  00CA0287: D9 1C 24           fstp        dword ptr [esp]
+  00CA028A: FF D0              call        eax
+  00CA028C: 89 6C 24 6C        mov         dword ptr [esp+6Ch],ebp
+  00CA0290: 89 6C 24 28        mov         dword ptr [esp+28h],ebp
+  00CA0294: 84 C0              test        al,al
+  00CA0296: 0F 84 10 01 00 00  je          00CA03AC
+  00CA029C: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00CA02A2: 68 60 01 00 00     push        160h
+  00CA02A7: 51                 push        ecx
+  00CA02A8: 89 6C 24 1C        mov         dword ptr [esp+1Ch],ebp
+  00CA02AC: 89 6C 24 20        mov         dword ptr [esp+20h],ebp
+  00CA02B0: E8 8B 97 FF FF     call        00C99A40
+  00CA02B5: 83 C4 08           add         esp,8
+  00CA02B8: 3B C5              cmp         eax,ebp
+  00CA02BA: 74 52              je          00CA030E
+  00CA02BC: 8B
+  00CA02BD: 94                 xchg        eax,esp
+  00CA02BE: 24 90              and         al,90h
+  00CA02C0: 00
+
+  Summary
+
+      9C8000 .text

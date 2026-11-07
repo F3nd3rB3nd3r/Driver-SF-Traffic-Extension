@@ -1,0 +1,158 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A3870: 81 EC 38 07 00 00  sub         esp,738h
+  005A3876: 53                 push        ebx
+  005A3877: 55                 push        ebp
+  005A3878: 8D 44 24 34        lea         eax,[esp+34h]
+  005A387C: 56                 push        esi
+  005A387D: 8B D9              mov         ebx,ecx
+  005A387F: 89 44 24 2C        mov         dword ptr [esp+2Ch],eax
+  005A3883: 33 C0              xor         eax,eax
+  005A3885: 8D 8C 24 38 03 00  lea         ecx,[esp+00000338h]
+            00
+  005A388C: 57                 push        edi
+  005A388D: 8B BC 24 4C 07 00  mov         edi,dword ptr [esp+0000074Ch]
+            00
+  005A3894: 8B D1              mov         edx,ecx
+  005A3896: 89 44 24 34        mov         dword ptr [esp+34h],eax
+  005A389A: 89 44 24 38        mov         dword ptr [esp+38h],eax
+  005A389E: 8B 07              mov         eax,dword ptr [edi]
+  005A38A0: 89 8C 24 40 03 00  mov         dword ptr [esp+00000340h],ecx
+            00
+  005A38A7: 89 94 24 3C 03 00  mov         dword ptr [esp+0000033Ch],edx
+            00
+  005A38AE: 8B 50 54           mov         edx,dword ptr [eax+54h]
+  005A38B1: 8B CF              mov         ecx,edi
+  005A38B3: FF D2              call        edx
+  005A38B5: 8B 17              mov         edx,dword ptr [edi]
+  005A38B7: 0F B7 C0           movzx       eax,ax
+  005A38BA: 89 44 24 24        mov         dword ptr [esp+24h],eax
+  005A38BE: 8B 82 84 00 00 00  mov         eax,dword ptr [edx+00000084h]
+  005A38C4: 8B CF              mov         ecx,edi
+  005A38C6: FF D0              call        eax
+  005A38C8: 8B 17              mov         edx,dword ptr [edi]
+  005A38CA: 89 44 24 20        mov         dword ptr [esp+20h],eax
+  005A38CE: 8B 42 48           mov         eax,dword ptr [edx+48h]
+  005A38D1: 8B CF              mov         ecx,edi
+  005A38D3: FF D0              call        eax
+  005A38D5: 0F 57 C0           xorps       xmm0,xmm0
+  005A38D8: F3 0F 11 83 14 66  movss       dword ptr [ebx+00016614h],xmm0
+            01 00
+  005A38E0: 89 BB 60 65 01 00  mov         dword ptr [ebx+00016560h],edi
+  005A38E6: 8B 17              mov         edx,dword ptr [edi]
+  005A38E8: 89 44 24 1C        mov         dword ptr [esp+1Ch],eax
+  005A38EC: 8B 82 9C 00 00 00  mov         eax,dword ptr [edx+0000009Ch]
+  005A38F2: 8B CF              mov         ecx,edi
+  005A38F4: FF D0              call        eax
+  005A38F6: 8B 8B 00 04 00 00  mov         ecx,dword ptr [ebx+00000400h]
+  005A38FC: 8D 0C 8B           lea         ecx,[ebx+ecx*4]
+  005A38FF: 8B C3              mov         eax,ebx
+  005A3901: C6 44 24 13 00     mov         byte ptr [esp+13h],0
+  005A3906: 89 44 24 28        mov         dword ptr [esp+28h],eax
+  005A390A: 89 4C 24 18        mov         dword ptr [esp+18h],ecx
+  005A390E: 3B D9              cmp         ebx,ecx
+  005A3910: 0F 84 9E 00 00 00  je          005A39B4
+  005A3916: 8B 30              mov         esi,dword ptr [eax]
+  005A3918: 89 74 24 14        mov         dword ptr [esp+14h],esi
+  005A391C: 3B F7              cmp         esi,edi
+  005A391E: 74 7F              je          005A399F
+  005A3920: 8B 16              mov         edx,dword ptr [esi]
+  005A3922: 8B 42 54           mov         eax,dword ptr [edx+54h]
+  005A3925: 8B CE              mov         ecx,esi
+  005A3927: FF D0              call        eax
+  005A3929: 8B 16              mov         edx,dword ptr [esi]
+  005A392B: 0F B7 E8           movzx       ebp,ax
+  005A392E: 8B 82 84 00 00 00  mov         eax,dword ptr [edx+00000084h]
+  005A3934: 8B CE              mov         ecx,esi
+  005A3936: FF D0              call        eax
+  005A3938: 66 3B 6C 24 24     cmp         bp,word ptr [esp+24h]
+  005A393D: 75 60              jne         005A399F
+  005A393F: 3B 44 24 20        cmp         eax,dword ptr [esp+20h]
+  005A3943: 75 5A              jne         005A399F
+  005A3945: 83 7C 24 1C 02     cmp         dword ptr [esp+1Ch],2
+  005A394A: 75 05              jne         005A3951
+  005A394C: C6 44 24 13 01     mov         byte ptr [esp+13h],1
+  005A3951: 8B 16              mov         edx,dword ptr [esi]
+  005A3953: 8B 42 74           mov         eax,dword ptr [edx+74h]
+  005A3956: 8B CE              mov         ecx,esi
+  005A3958: FF D0              call        eax
+  005A395A: 8B 8B 08 0C 00 00  mov         ecx,dword ptr [ebx+00000C08h]
+  005A3960: 6A 00              push        0
+  005A3962: 8D B3 08 08 00 00  lea         esi,[ebx+00000808h]
+  005A3968: 68 30 28 5A 00     push        5A2830h
+  005A396D: 8D 54 24 1C        lea         edx,[esp+1Ch]
+  005A3971: 52                 push        edx
+  005A3972: 8D 04 8E           lea         eax,[esi+ecx*4]
+  005A3975: 50                 push        eax
+  005A3976: 56                 push        esi
+  005A3977: E8 74 1E 00 00     call        005A57F0
+  005A397C: 83 C4 14           add         esp,14h
+  005A397F: 8D 4C 24 14        lea         ecx,[esp+14h]
+  005A3983: 51                 push        ecx
+  005A3984: 50                 push        eax
+  005A3985: 8D 54 24 34        lea         edx,[esp+34h]
+  005A3989: 52                 push        edx
+  005A398A: 8B CE              mov         ecx,esi
+  005A398C: E8 8F 1B 00 00     call        005A5520
+  005A3991: 8D 44 24 14        lea         eax,[esp+14h]
+  005A3995: 50                 push        eax
+  005A3996: 8D 4C 24 34        lea         ecx,[esp+34h]
+  005A399A: E8 31 2E FB FF     call        005567D0
+  005A399F: 8B 44 24 28        mov         eax,dword ptr [esp+28h]
+  005A39A3: 83 C0 04           add         eax,4
+  005A39A6: 89 44 24 28        mov         dword ptr [esp+28h],eax
+  005A39AA: 3B 44 24 18        cmp         eax,dword ptr [esp+18h]
+  005A39AE: 0F 85 62 FF FF FF  jne         005A3916
+  005A39B4: 8B 84 24 40 03 00  mov         eax,dword ptr [esp+00000340h]
+            00
+  005A39BB: 8D 8C 24 3C 03 00  lea         ecx,[esp+0000033Ch]
+            00
+  005A39C2: 8B F0              mov         esi,eax
+  005A39C4: 3B C1              cmp         eax,ecx
+  005A39C6: 74 58              je          005A3A20
+  005A39C8: EB 06              jmp         005A39D0
+  005A39CA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  005A39D0: 8B 93 00 04 00 00  mov         edx,dword ptr [ebx+00000400h]
+  005A39D6: 8D 14 93           lea         edx,[ebx+edx*4]
+  005A39D9: 8B CB              mov         ecx,ebx
+  005A39DB: 3B DA              cmp         ebx,edx
+  005A39DD: 74 0E              je          005A39ED
+  005A39DF: 8B 46 08           mov         eax,dword ptr [esi+8]
+  005A39E2: 39 01              cmp         dword ptr [ecx],eax
+  005A39E4: 74 07              je          005A39ED
+  005A39E6: 83 C1 04           add         ecx,4
+  005A39E9: 3B CA              cmp         ecx,edx
+  005A39EB: 75 F5              jne         005A39E2
+  005A39ED: 3B CA              cmp         ecx,edx
+  005A39EF: 74 21              je          005A3A12
+  005A39F1: 8D 41 04           lea         eax,[ecx+4]
+  005A39F4: 3B C2              cmp         eax,edx
+  005A39F6: 74 14              je          005A3A0C
+  005A39F8: 2B C8              sub         ecx,eax
+  005A39FA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  005A3A00: 8B 28              mov         ebp,dword ptr [eax]
+  005A3A02: 89 2C 01           mov         dword ptr [ecx+eax],ebp
+  005A3A05: 83 C0 04           add         eax,4
+  005A3A08: 3B C2              cmp         eax,edx
+  005A3A0A: 75 F4              jne         005A3A00
+  005A3A0C: FF 8B 00 04 00 00  dec         dword ptr [ebx+00000400h]
+  005A3A12: 8B 76 04           mov         esi,dword ptr [esi+4]
+  005A3A15: 8D 84 24 3C 03 00  lea         eax,[esp+0000033Ch]
+            00
+  005A3A1C: 3B F0              cmp         esi,eax
+  005A3A1E: 75 B0              jne         005A39D0
+  005A3A20: 80 7C 24 13 00     cmp         byte ptr [esp+13h],0
+  005A3A25: 74 0B              je          005A3A32
+  005A3A27: 8B 17              mov         edx,dword ptr [edi]
+  005A3A29: 8B 42 44           mov         eax,dword ptr [edx+44h]
+  005A3A2C: 6A 01              push        1
+  005A3A2E: 8B CF              mov         ecx,edi
+  005A3A30: FF D0              call        eax
+  005A3A32: 8B
+
+  Summary
+
+      9C8000 .text

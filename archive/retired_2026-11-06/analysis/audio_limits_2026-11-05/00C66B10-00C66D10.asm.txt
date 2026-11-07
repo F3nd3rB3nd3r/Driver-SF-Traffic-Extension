@@ -1,0 +1,209 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C66B10: 56                 push        esi
+  00C66B11: 8B F1              mov         esi,ecx
+  00C66B13: 83 7E 08 00        cmp         dword ptr [esi+8],0
+  00C66B17: 75 22              jne         00C66B3B
+  00C66B19: 8B 46 14           mov         eax,dword ptr [esi+14h]
+  00C66B1C: 3B 46 10           cmp         eax,dword ptr [esi+10h]
+  00C66B1F: 73 4A              jae         00C66B6B
+  00C66B21: 8B 4E 1C           mov         ecx,dword ptr [esi+1Ch]
+  00C66B24: 6A 0C              push        0Ch
+  00C66B26: 51                 push        ecx
+  00C66B27: E8 14 2F 03 00     call        00C99A40
+  00C66B2C: 83 C4 08           add         esp,8
+  00C66B2F: 85 C0              test        eax,eax
+  00C66B31: 74 38              je          00C66B6B
+  00C66B33: 8B 56 08           mov         edx,dword ptr [esi+8]
+  00C66B36: 89 10              mov         dword ptr [eax],edx
+  00C66B38: 89 46 08           mov         dword ptr [esi+8],eax
+  00C66B3B: 8B 0E              mov         ecx,dword ptr [esi]
+  00C66B3D: 85 C9              test        ecx,ecx
+  00C66B3F: 75 06              jne         00C66B47
+  00C66B41: 8B 46 08           mov         eax,dword ptr [esi+8]
+  00C66B44: 89 46 04           mov         dword ptr [esi+4],eax
+  00C66B47: 8B 46 08           mov         eax,dword ptr [esi+8]
+  00C66B4A: 8B 10              mov         edx,dword ptr [eax]
+  00C66B4C: 89 56 08           mov         dword ptr [esi+8],edx
+  00C66B4F: 89 08              mov         dword ptr [eax],ecx
+  00C66B51: FF 46 14           inc         dword ptr [esi+14h]
+  00C66B54: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  00C66B58: 89 06              mov         dword ptr [esi],eax
+  00C66B5A: 8B 11              mov         edx,dword ptr [ecx]
+  00C66B5C: 83 C0 04           add         eax,4
+  00C66B5F: 89 10              mov         dword ptr [eax],edx
+  00C66B61: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  00C66B64: 89 48 04           mov         dword ptr [eax+4],ecx
+  00C66B67: 5E                 pop         esi
+  00C66B68: C2 04 00           ret         4
+  00C66B6B: 33 C0              xor         eax,eax
+  00C66B6D: 5E                 pop         esi
+  00C66B6E: C2 04 00           ret         4
+  00C66B71: CC                 int         3
+  00C66B72: CC                 int         3
+  00C66B73: CC                 int         3
+  00C66B74: CC                 int         3
+  00C66B75: CC                 int         3
+  00C66B76: CC                 int         3
+  00C66B77: CC                 int         3
+  00C66B78: CC                 int         3
+  00C66B79: CC                 int         3
+  00C66B7A: CC                 int         3
+  00C66B7B: CC                 int         3
+  00C66B7C: CC                 int         3
+  00C66B7D: CC                 int         3
+  00C66B7E: CC                 int         3
+  00C66B7F: CC                 int         3
+  00C66B80: 83 EC 18           sub         esp,18h
+  00C66B83: 53                 push        ebx
+  00C66B84: 55                 push        ebp
+  00C66B85: 8B 6C 24 24        mov         ebp,dword ptr [esp+24h]
+  00C66B89: 56                 push        esi
+  00C66B8A: 8B 74 24 30        mov         esi,dword ptr [esp+30h]
+  00C66B8E: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00C66B91: 57                 push        edi
+  00C66B92: 8D 44 24 34        lea         eax,[esp+34h]
+  00C66B96: 50                 push        eax
+  00C66B97: 51                 push        ecx
+  00C66B98: 8D 54 24 24        lea         edx,[esp+24h]
+  00C66B9C: 55                 push        ebp
+  00C66B9D: 52                 push        edx
+  00C66B9E: C7 44 24 20 02 00  mov         dword ptr [esp+20h],2
+            00 00
+  00C66BA6: E8 45 FA FF FF     call        00C665F0
+  00C66BAB: D9 44 24 2C        fld         dword ptr [esp+2Ch]
+  00C66BAF: 83 C4 0C           add         esp,0Ch
+  00C66BB2: D9 1C 24           fstp        dword ptr [esp]
+  00C66BB5: E8 56 FD FF FF     call        00C66910
+  00C66BBA: 83 C4 04           add         esp,4
+  00C66BBD: 84 C0              test        al,al
+  00C66BBF: 0F 84 91 01 00 00  je          00C66D56
+  00C66BC5: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00C66BC8: D9 44 24 1C        fld         dword ptr [esp+1Ch]
+  00C66BCC: 8B 45 00           mov         eax,dword ptr [ebp]
+  00C66BCF: 8B 50 74           mov         edx,dword ptr [eax+74h]
+  00C66BD2: 6A 00              push        0
+  00C66BD4: 6A 00              push        0
+  00C66BD6: 6A 03              push        3
+  00C66BD8: 51                 push        ecx
+  00C66BD9: 51                 push        ecx
+  00C66BDA: 8B CD              mov         ecx,ebp
+  00C66BDC: D9 1C 24           fstp        dword ptr [esp]
+  00C66BDF: FF D2              call        edx
+  00C66BE1: 84 C0              test        al,al
+  00C66BE3: 0F 84 21 01 00 00  je          00C66D0A
+  00C66BE9: 8B 44 24 30        mov         eax,dword ptr [esp+30h]
+  00C66BED: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00C66BF0: 81 E1 00 00 FF FF  and         ecx,0FFFF0000h
+  00C66BF6: 81 F9 00 00 08 00  cmp         ecx,80000h
+  00C66BFC: 0F 94 C3           sete        bl
+  00C66BFF: 84 DB              test        bl,bl
+  00C66C01: 74 18              je          00C66C1B
+  00C66C03: 8B C6              mov         eax,esi
+  00C66C05: 8D 4C 24 30        lea         ecx,[esp+30h]
+  00C66C09: E8 92 F7 FF FF     call        00C663A0
+  00C66C0E: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00C66C12: 83 F8 01           cmp         eax,1
+  00C66C15: 0F 85 6D 01 00 00  jne         00C66D88
+  00C66C1B: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00C66C1E: 8B 11              mov         edx,dword ptr [ecx]
+  00C66C20: 8B 52 10           mov         edx,dword ptr [edx+10h]
+  00C66C23: 8D 44 24 1C        lea         eax,[esp+1Ch]
+  00C66C27: 50                 push        eax
+  00C66C28: 8B 44 24 34        mov         eax,dword ptr [esp+34h]
+  00C66C2C: 56                 push        esi
+  00C66C2D: 50                 push        eax
+  00C66C2E: 55                 push        ebp
+  00C66C2F: FF D2              call        edx
+  00C66C31: 8B F8              mov         edi,eax
+  00C66C33: 33 C0              xor         eax,eax
+  00C66C35: 3B F8              cmp         edi,eax
+  00C66C37: 0F 84 A4 00 00 00  je          00C66CE1
+  00C66C3D: C0 E3 04           shl         bl,4
+  00C66C40: 32 9F E7 00 00 00  xor         bl,byte ptr [edi+000000E7h]
+  00C66C46: 80 E3 10           and         bl,10h
+  00C66C49: 30 9F E7 00 00 00  xor         byte ptr [edi+000000E7h],bl
+  00C66C4F: 39 06              cmp         dword ptr [esi],eax
+  00C66C51: 75 18              jne         00C66C6B
+  00C66C53: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00C66C57: 89 44 24 18        mov         dword ptr [esp+18h],eax
+  00C66C5B: 8B 07              mov         eax,dword ptr [edi]
+  00C66C5D: 8B 50 04           mov         edx,dword ptr [eax+4]
+  00C66C60: 8D 4C 24 14        lea         ecx,[esp+14h]
+  00C66C64: 51                 push        ecx
+  00C66C65: 8B CF              mov         ecx,edi
+  00C66C67: FF D2              call        edx
+  00C66C69: EB 10              jmp         00C66C7B
+  00C66C6B: 8B 4E 78           mov         ecx,dword ptr [esi+78h]
+  00C66C6E: 8B 51 08           mov         edx,dword ptr [ecx+8]
+  00C66C71: 8B 07              mov         eax,dword ptr [edi]
+  00C66C73: 8B 40 04           mov         eax,dword ptr [eax+4]
+  00C66C76: 52                 push        edx
+  00C66C77: 8B CF              mov         ecx,edi
+  00C66C79: FF D0              call        eax
+  00C66C7B: 83 F8 01           cmp         eax,1
+  00C66C7E: 0F 94 C0           sete        al
+  00C66C81: 84 C0              test        al,al
+  00C66C83: 74 35              je          00C66CBA
+  00C66C85: F3 0F 10 44 24 34  movss       xmm0,dword ptr [esp+34h]
+  00C66C8B: F3 0F 11 87 04 01  movss       dword ptr [edi+00000104h],xmm0
+            00 00
+  00C66C93: 8B 4E 74           mov         ecx,dword ptr [esi+74h]
+  00C66C96: 89 8F F8 00 00 00  mov         dword ptr [edi+000000F8h],ecx
+  00C66C9C: 8B 56 70           mov         edx,dword ptr [esi+70h]
+  00C66C9F: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00C66CA2: 52                 push        edx
+  00C66CA3: 50                 push        eax
+  00C66CA4: 57                 push        edi
+  00C66CA5: E8 46 FA FF FF     call        00C666F0
+  00C66CAA: 83 C4 0C           add         esp,0Ch
+  00C66CAD: 5F                 pop         edi
+  00C66CAE: 5E                 pop         esi
+  00C66CAF: 5D                 pop         ebp
+  00C66CB0: B8 01 00 00 00     mov         eax,1
+  00C66CB5: 5B                 pop         ebx
+  00C66CB6: 83 C4 18           add         esp,18h
+  00C66CB9: C3                 ret
+  00C66CBA: 8B 17              mov         edx,dword ptr [edi]
+  00C66CBC: 8B 42 08           mov         eax,dword ptr [edx+8]
+  00C66CBF: 6A 01              push        1
+  00C66CC1: 8B CF              mov         ecx,edi
+  00C66CC3: FF D0              call        eax
+  00C66CC5: 8B 17              mov         edx,dword ptr [edi]
+  00C66CC7: 8B 02              mov         eax,dword ptr [edx]
+  00C66CC9: 8B 1D B8 D3 FD 00  mov         ebx,dword ptr ds:[00FDD3B8h]
+  00C66CCF: 6A 00              push        0
+  00C66CD1: 8B CF              mov         ecx,edi
+  00C66CD3: FF D0              call        eax
+  00C66CD5: 57                 push        edi
+  00C66CD6: 53                 push        ebx
+  00C66CD7: E8 C4 2E 03 00     call        00C99BA0
+  00C66CDC: 83 C4 08           add         esp,8
+  00C66CDF: EB 11              jmp         00C66CF2
+  00C66CE1: 8B 55 00           mov         edx,dword ptr [ebp]
+  00C66CE4: 8B 52 78           mov         edx,dword ptr [edx+78h]
+  00C66CE7: 50                 push        eax
+  00C66CE8: 8B 46 08           mov         eax,dword ptr [esi+8]
+  00C66CEB: 6A 03              push        3
+  00C66CED: 50                 push        eax
+  00C66CEE: 8B CD              mov         ecx,ebp
+  00C66CF0: FF D2              call        edx
+  00C66CF2: 8D 46 28           lea         eax,[esi+28h]
+  00C66CF5: 8D 4E 10           lea         ecx,[esi+10h]
+  00C66CF8: 50                 push        eax
+  00C66CF9: 51                 push        ecx
+  00C66CFA: 33 C9              xor         ecx,ecx
+  00C66CFC: 38 8E 81 00 00 00  cmp         byte ptr [esi+00000081h],cl
+  00C66D02: 0F 94 C1           sete        cl
+  00C66D05: 83 C1 1E           add         ecx,1Eh
+  00C66D08: EB 6B              jmp         00C66D75
+  00C66D0A: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00C66D0D: 8D 56 28           lea         edx,[esi+28h]
+  00C66D10: 52                 push        edx
+
+  Summary
+
+      9C8000 .text

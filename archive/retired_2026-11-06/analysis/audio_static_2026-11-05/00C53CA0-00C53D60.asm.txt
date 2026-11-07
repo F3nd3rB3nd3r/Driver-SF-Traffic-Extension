@@ -1,0 +1,80 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C53CA0: 51                 push        ecx
+  00C53CA1: 8B 15 B8 D3 FD 00  mov         edx,dword ptr ds:[00FDD3B8h]
+  00C53CA7: 53                 push        ebx
+  00C53CA8: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  00C53CAC: 8D 44 5B FD        lea         eax,[ebx+ebx*2-3]
+  00C53CB0: 55                 push        ebp
+  00C53CB1: 8D 0C C5 20 00 00  lea         ecx,[eax*8+00000020h]
+            00
+  00C53CB8: 51                 push        ecx
+  00C53CB9: 52                 push        edx
+  00C53CBA: E8 81 5D 04 00     call        00C99A40
+  00C53CBF: 8B E8              mov         ebp,eax
+  00C53CC1: 33 C0              xor         eax,eax
+  00C53CC3: 83 C4 08           add         esp,8
+  00C53CC6: 3B E8              cmp         ebp,eax
+  00C53CC8: 75 04              jne         00C53CCE
+  00C53CCA: 5D                 pop         ebp
+  00C53CCB: 5B                 pop         ebx
+  00C53CCC: 59                 pop         ecx
+  00C53CCD: C3                 ret
+  00C53CCE: 56                 push        esi
+  00C53CCF: 57                 push        edi
+  00C53CD0: C7 45 00 01 00 00  mov         dword ptr [ebp],1
+            00
+  00C53CD7: 89 45 04           mov         dword ptr [ebp+4],eax
+  00C53CDA: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00C53CDE: 3B D8              cmp         ebx,eax
+  00C53CE0: 0F 86 8A 00 00 00  jbe         00C53D70
+  00C53CE6: 8B 44 24 1C        mov         eax,dword ptr [esp+1Ch]
+  00C53CEA: 8B FD              mov         edi,ebp
+  00C53CEC: 8D 70 08           lea         esi,[eax+8]
+  00C53CEF: 2B F8              sub         edi,eax
+  00C53CF1: 8B 46 F8           mov         eax,dword ptr [esi-8]
+  00C53CF4: 89 04 37           mov         dword ptr [edi+esi],eax
+  00C53CF7: 8B 4E FC           mov         ecx,dword ptr [esi-4]
+  00C53CFA: 89 4C 37 04        mov         dword ptr [edi+esi+4],ecx
+  00C53CFE: 8B 16              mov         edx,dword ptr [esi]
+  00C53D00: 89 54 37 08        mov         dword ptr [edi+esi+8],edx
+  00C53D04: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00C53D07: 89 44 37 0C        mov         dword ptr [edi+esi+0Ch],eax
+  00C53D0B: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00C53D0E: 89 4C 37 10        mov         dword ptr [edi+esi+10h],ecx
+  00C53D12: 8B 56 0C           mov         edx,dword ptr [esi+0Ch]
+  00C53D15: 89 54 37 14        mov         dword ptr [edi+esi+14h],edx
+  00C53D19: 8B 06              mov         eax,dword ptr [esi]
+  00C53D1B: 85 C0              test        eax,eax
+  00C53D1D: 74 3E              je          00C53D5D
+  00C53D1F: 8D 50 02           lea         edx,[eax+2]
+  00C53D22: 66 8B 08           mov         cx,word ptr [eax]
+  00C53D25: 83 C0 02           add         eax,2
+  00C53D28: 66 85 C9           test        cx,cx
+  00C53D2B: 75 F5              jne         00C53D22
+  00C53D2D: 2B C2              sub         eax,edx
+  00C53D2F: D1 F8              sar         eax,1
+  00C53D31: 8D 5C 00 02        lea         ebx,[eax+eax+2]
+  00C53D35: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C53D3A: 53                 push        ebx
+  00C53D3B: 50                 push        eax
+  00C53D3C: E8 FF 5C 04 00     call        00C99A40
+  00C53D41: 83 C4 08           add         esp,8
+  00C53D44: 89 44 37 08        mov         dword ptr [edi+esi+8],eax
+  00C53D48: 85 C0              test        eax,eax
+  00C53D4A: 74 2C              je          00C53D78
+  00C53D4C: 8B 0E              mov         ecx,dword ptr [esi]
+  00C53D4E: 53                 push        ebx
+  00C53D4F: 51                 push        ecx
+  00C53D50: 50                 push        eax
+  00C53D51: E8 CA 4A FD FF     call        00C28820
+  00C53D56: 8B 5C 24 24        mov         ebx,dword ptr [esp+24h]
+  00C53D5A: 83 C4 0C           add         esp,0Ch
+  00C53D5D: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+
+  Summary
+
+      9C8000 .text

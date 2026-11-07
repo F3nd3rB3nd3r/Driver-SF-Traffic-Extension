@@ -1,0 +1,369 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A7490: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005A7495: 81 EC 70 02 00 00  sub         esp,270h
+  005A749B: 53                 push        ebx
+  005A749C: 55                 push        ebp
+  005A749D: 56                 push        esi
+  005A749E: 33 ED              xor         ebp,ebp
+  005A74A0: 57                 push        edi
+  005A74A1: 8B F1              mov         esi,ecx
+  005A74A3: 3B C5              cmp         eax,ebp
+  005A74A5: 75 0A              jne         005A74B1
+  005A74A7: E8 E4 31 E6 FF     call        0040A690
+  005A74AC: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005A74B1: 8B 88 30 06 00 00  mov         ecx,dword ptr [eax+00000630h]
+  005A74B7: 3B CD              cmp         ecx,ebp
+  005A74B9: 74 1B              je          005A74D6
+  005A74BB: 39 69 3C           cmp         dword ptr [ecx+3Ch],ebp
+  005A74BE: 74 16              je          005A74D6
+  005A74C0: 8B 80 48 01 00 00  mov         eax,dword ptr [eax+00000148h]
+  005A74C6: 3B C5              cmp         eax,ebp
+  005A74C8: 74 0C              je          005A74D6
+  005A74CA: 8B 08              mov         ecx,dword ptr [eax]
+  005A74CC: 8B 01              mov         eax,dword ptr [ecx]
+  005A74CE: 8B 50 20           mov         edx,dword ptr [eax+20h]
+  005A74D1: 6A 01              push        1
+  005A74D3: 55                 push        ebp
+  005A74D4: FF D2              call        edx
+  005A74D6: 8B 86 C8 00 00 00  mov         eax,dword ptr [esi+000000C8h]
+  005A74DC: 8D 4C 24 20        lea         ecx,[esp+20h]
+  005A74E0: 8D 94 24 78 02 00  lea         edx,[esp+00000278h]
+            00
+  005A74E7: 89 4C 24 14        mov         dword ptr [esp+14h],ecx
+  005A74EB: 8B CA              mov         ecx,edx
+  005A74ED: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  005A74F1: 89 6C 24 18        mov         dword ptr [esp+18h],ebp
+  005A74F5: 89 6C 24 1C        mov         dword ptr [esp+1Ch],ebp
+  005A74F9: 89 94 24 7C 02 00  mov         dword ptr [esp+0000027Ch],edx
+            00
+  005A7500: 89 8C 24 78 02 00  mov         dword ptr [esp+00000278h],ecx
+            00
+  005A7507: 3B C5              cmp         eax,ebp
+  005A7509: 0F 86 9E 01 00 00  jbe         005A76AD
+  005A750F: 8D 9E 30 03 00 00  lea         ebx,[esi+00000330h]
+  005A7515: EB 09              jmp         005A7520
+  005A7517: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  005A751E: 8B FF              mov         edi,edi
+  005A7520: 8B 86 34 03 00 00  mov         eax,dword ptr [esi+00000334h]
+  005A7526: 0F B7 3C AE        movzx       edi,word ptr [esi+ebp*4]
+  005A752A: 3B C3              cmp         eax,ebx
+  005A752C: 74 17              je          005A7545
+  005A752E: 8B FF              mov         edi,edi
+  005A7530: 66 39 78 08        cmp         word ptr [eax+8],di
+  005A7534: 74 07              je          005A753D
+  005A7536: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A7539: 3B C3              cmp         eax,ebx
+  005A753B: 75 F3              jne         005A7530
+  005A753D: 3B C3              cmp         eax,ebx
+  005A753F: 0F 85 DA 00 00 00  jne         005A761F
+  005A7545: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A754B: 57                 push        edi
+  005A754C: 6A 00              push        0
+  005A754E: E8 CD 50 FF FF     call        0059C620
+  005A7553: 84 C0              test        al,al
+  005A7555: 0F 84 47 01 00 00  je          005A76A2
+  005A755B: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7561: 57                 push        edi
+  005A7562: 6A 00              push        0
+  005A7564: E8 57 5A FF FF     call        0059CFC0
+  005A7569: 84 C0              test        al,al
+  005A756B: 74 31              je          005A759E
+  005A756D: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7573: 57                 push        edi
+  005A7574: 6A 00              push        0
+  005A7576: E8 A5 57 FF FF     call        0059CD20
+  005A757B: 85 C0              test        eax,eax
+  005A757D: 75 11              jne         005A7590
+  005A757F: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A7585: 6A 01              push        1
+  005A7587: 57                 push        edi
+  005A7588: 50                 push        eax
+  005A7589: E8 D2 65 FF FF     call        0059DB60
+  005A758E: EB 2B              jmp         005A75BB
+  005A7590: 0F B7 D7           movzx       edx,di
+  005A7593: 39 96 B4 0D 00 00  cmp         dword ptr [esi+00000DB4h],edx
+  005A7599: 74 20              je          005A75BB
+  005A759B: CC                 int         3
+  005A759C: EB 1D              jmp         005A75BB
+  005A759E: 0F B7 C7           movzx       eax,di
+  005A75A1: 39 86 B4 0D 00 00  cmp         dword ptr [esi+00000DB4h],eax
+  005A75A7: 74 12              je          005A75BB
+  005A75A9: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A75AF: 6A 01              push        1
+  005A75B1: 6A 00              push        0
+  005A75B3: 57                 push        edi
+  005A75B4: 6A 00              push        0
+  005A75B6: E8 85 65 FF FF     call        0059DB40
+  005A75BB: 83 7C 24 18 00     cmp         dword ptr [esp+18h],0
+  005A75C0: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  005A75C4: 8B D0              mov         edx,eax
+  005A75C6: 74 15              je          005A75DD
+  005A75C8: 83 C0 08           add         eax,8
+  005A75CB: 8B 48 F8           mov         ecx,dword ptr [eax-8]
+  005A75CE: 74 03              je          005A75D3
+  005A75D0: 66 89 38           mov         word ptr [eax],di
+  005A75D3: FF 4C 24 18        dec         dword ptr [esp+18h]
+  005A75D7: 89 4C 24 14        mov         dword ptr [esp+14h],ecx
+  005A75DB: EB 15              jmp         005A75F2
+  005A75DD: 8D 48 08           lea         ecx,[eax+8]
+  005A75E0: 85 C9              test        ecx,ecx
+  005A75E2: 74 07              je          005A75EB
+  005A75E4: 66 89 39           mov         word ptr [ecx],di
+  005A75E7: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  005A75EB: 83 C0 0C           add         eax,0Ch
+  005A75EE: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  005A75F2: 8B 8C 24 78 02 00  mov         ecx,dword ptr [esp+00000278h]
+            00
+  005A75F9: FF 44 24 1C        inc         dword ptr [esp+1Ch]
+  005A75FD: 89 0A              mov         dword ptr [edx],ecx
+  005A75FF: 8D 84 24 78 02 00  lea         eax,[esp+00000278h]
+            00
+  005A7606: 89 42 04           mov         dword ptr [edx+4],eax
+  005A7609: 8B 8C 24 78 02 00  mov         ecx,dword ptr [esp+00000278h]
+            00
+  005A7610: 89 51 04           mov         dword ptr [ecx+4],edx
+  005A7613: 89 94 24 78 02 00  mov         dword ptr [esp+00000278h],edx
+            00
+  005A761A: E9 83 00 00 00     jmp         005A76A2
+  005A761F: 8B 08              mov         ecx,dword ptr [eax]
+  005A7621: 8B 50 04           mov         edx,dword ptr [eax+4]
+  005A7624: 89 51 04           mov         dword ptr [ecx+4],edx
+  005A7627: 89 0A              mov         dword ptr [edx],ecx
+  005A7629: 8B 96 CC 00 00 00  mov         edx,dword ptr [esi+000000CCh]
+  005A762F: 89 10              mov         dword ptr [eax],edx
+  005A7631: FF 86 D0 00 00 00  inc         dword ptr [esi+000000D0h]
+  005A7637: FF 8E D4 00 00 00  dec         dword ptr [esi+000000D4h]
+  005A763D: 83 7C 24 18 00     cmp         dword ptr [esp+18h],0
+  005A7642: 89 86 CC 00 00 00  mov         dword ptr [esi+000000CCh],eax
+  005A7648: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  005A764C: 8B C8              mov         ecx,eax
+  005A764E: 74 15              je          005A7665
+  005A7650: 83 C0 08           add         eax,8
+  005A7653: 8B 50 F8           mov         edx,dword ptr [eax-8]
+  005A7656: 74 03              je          005A765B
+  005A7658: 66 89 38           mov         word ptr [eax],di
+  005A765B: FF 4C 24 18        dec         dword ptr [esp+18h]
+  005A765F: 89 54 24 14        mov         dword ptr [esp+14h],edx
+  005A7663: EB 15              jmp         005A767A
+  005A7665: 8D 50 08           lea         edx,[eax+8]
+  005A7668: 85 D2              test        edx,edx
+  005A766A: 74 07              je          005A7673
+  005A766C: 66 89 3A           mov         word ptr [edx],di
+  005A766F: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  005A7673: 83 C0 0C           add         eax,0Ch
+  005A7676: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  005A767A: 8B 84 24 78 02 00  mov         eax,dword ptr [esp+00000278h]
+            00
+  005A7681: FF 44 24 1C        inc         dword ptr [esp+1Ch]
+  005A7685: 89 01              mov         dword ptr [ecx],eax
+  005A7687: 8D 94 24 78 02 00  lea         edx,[esp+00000278h]
+            00
+  005A768E: 89 51 04           mov         dword ptr [ecx+4],edx
+  005A7691: 8B 84 24 78 02 00  mov         eax,dword ptr [esp+00000278h]
+            00
+  005A7698: 89 48 04           mov         dword ptr [eax+4],ecx
+  005A769B: 89 8C 24 78 02 00  mov         dword ptr [esp+00000278h],ecx
+            00
+  005A76A2: 45                 inc         ebp
+  005A76A3: 3B 6C 24 10        cmp         ebp,dword ptr [esp+10h]
+  005A76A7: 0F 82 73 FE FF FF  jb          005A7520
+  005A76AD: 8B BE 34 03 00 00  mov         edi,dword ptr [esi+00000334h]
+  005A76B3: 8D 86 30 03 00 00  lea         eax,[esi+00000330h]
+  005A76B9: 3B F8              cmp         edi,eax
+  005A76BB: 0F 84 8F 00 00 00  je          005A7750
+  005A76C1: 0F B7 5F 08        movzx       ebx,word ptr [edi+8]
+  005A76C5: 0F B7 EB           movzx       ebp,bx
+  005A76C8: 39 AE B4 0D 00 00  cmp         dword ptr [esi+00000DB4h],ebp
+  005A76CE: 74 4C              je          005A771C
+  005A76D0: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A76D6: 53                 push        ebx
+  005A76D7: 6A 00              push        0
+  005A76D9: E8 42 56 FF FF     call        0059CD20
+  005A76DE: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A76E4: F7 D8              neg         eax
+  005A76E6: 1B C0              sbb         eax,eax
+  005A76E8: 83 C0 02           add         eax,2
+  005A76EB: 50                 push        eax
+  005A76EC: 6A 00              push        0
+  005A76EE: 53                 push        ebx
+  005A76EF: 6A 00              push        0
+  005A76F1: E8 2A 64 FF FF     call        0059DB20
+  005A76F6: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005A76FB: 85 C0              test        eax,eax
+  005A76FD: 75 0A              jne         005A7709
+  005A76FF: E8 8C 2F E6 FF     call        0040A690
+  005A7704: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005A7709: 8B 80 18 02 00 00  mov         eax,dword ptr [eax+00000218h]
+  005A770F: 55                 push        ebp
+  005A7710: 8B C8              mov         ecx,eax
+  005A7712: E8 49 0F 00 00     call        005A8660
+  005A7717: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  005A771A: EB 26              jmp         005A7742
+  005A771C: 8B 0F              mov         ecx,dword ptr [edi]
+  005A771E: 8B 47 04           mov         eax,dword ptr [edi+4]
+  005A7721: 89 41 04           mov         dword ptr [ecx+4],eax
+  005A7724: 89 08              mov         dword ptr [eax],ecx
+  005A7726: 8B 8E CC 00 00 00  mov         ecx,dword ptr [esi+000000CCh]
+  005A772C: 89 0F              mov         dword ptr [edi],ecx
+  005A772E: FF 86 D0 00 00 00  inc         dword ptr [esi+000000D0h]
+  005A7734: FF 8E D4 00 00 00  dec         dword ptr [esi+000000D4h]
+  005A773A: 89 BE CC 00 00 00  mov         dword ptr [esi+000000CCh],edi
+  005A7740: 8B F8              mov         edi,eax
+  005A7742: 8D 86 30 03 00 00  lea         eax,[esi+00000330h]
+  005A7748: 3B F8              cmp         edi,eax
+  005A774A: 0F 85 71 FF FF FF  jne         005A76C1
+  005A7750: 8D BE CC 00 00 00  lea         edi,[esi+000000CCh]
+  005A7756: 57                 push        edi
+  005A7757: 8D 8E 38 03 00 00  lea         ecx,[esi+00000338h]
+  005A775D: E8 EE 05 00 00     call        005A7D50
+  005A7762: 8D 54 24 14        lea         edx,[esp+14h]
+  005A7766: 52                 push        edx
+  005A7767: 8B CF              mov         ecx,edi
+  005A7769: E8 E2 05 00 00     call        005A7D50
+  005A776E: 83 BE AC 05 00 00  cmp         dword ptr [esi+000005ACh],0
+            00
+  005A7775: 74 6A              je          005A77E1
+  005A7777: 8B 9E 34 03 00 00  mov         ebx,dword ptr [esi+00000334h]
+  005A777D: 8D 86 30 03 00 00  lea         eax,[esi+00000330h]
+  005A7783: 3B D8              cmp         ebx,eax
+  005A7785: 74 5A              je          005A77E1
+  005A7787: 8D BE 98 09 00 00  lea         edi,[esi+00000998h]
+  005A778D: 8D 49 00           lea         ecx,[ecx]
+  005A7790: 8B 86 9C 09 00 00  mov         eax,dword ptr [esi+0000099Ch]
+  005A7796: 0F B7 4B 08        movzx       ecx,word ptr [ebx+8]
+  005A779A: 3B C7              cmp         eax,edi
+  005A779C: 74 36              je          005A77D4
+  005A779E: 8B FF              mov         edi,edi
+  005A77A0: 39 48 08           cmp         dword ptr [eax+8],ecx
+  005A77A3: 74 07              je          005A77AC
+  005A77A5: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A77A8: 3B C7              cmp         eax,edi
+  005A77AA: 75 F4              jne         005A77A0
+  005A77AC: 3B C7              cmp         eax,edi
+  005A77AE: 74 24              je          005A77D4
+  005A77B0: 8B 08              mov         ecx,dword ptr [eax]
+  005A77B2: 8B 50 04           mov         edx,dword ptr [eax+4]
+  005A77B5: 89 51 04           mov         dword ptr [ecx+4],edx
+  005A77B8: 89 0A              mov         dword ptr [edx],ecx
+  005A77BA: 8B 8E A4 05 00 00  mov         ecx,dword ptr [esi+000005A4h]
+  005A77C0: 89 08              mov         dword ptr [eax],ecx
+  005A77C2: FF 86 A8 05 00 00  inc         dword ptr [esi+000005A8h]
+  005A77C8: FF 8E AC 05 00 00  dec         dword ptr [esi+000005ACh]
+  005A77CE: 89 86 A4 05 00 00  mov         dword ptr [esi+000005A4h],eax
+  005A77D4: 8B 5B 04           mov         ebx,dword ptr [ebx+4]
+  005A77D7: 8D 86 30 03 00 00  lea         eax,[esi+00000330h]
+  005A77DD: 3B D8              cmp         ebx,eax
+  005A77DF: 75 AF              jne         005A7790
+  005A77E1: 8B 8E 68 0E 00 00  mov         ecx,dword ptr [esi+00000E68h]
+  005A77E7: 85 C9              test        ecx,ecx
+  005A77E9: 74 0D              je          005A77F8
+  005A77EB: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  005A77EF: 8B 11              mov         edx,dword ptr [ecx]
+  005A77F1: 8B 52 04           mov         edx,dword ptr [edx+4]
+  005A77F4: 50                 push        eax
+  005A77F5: 56                 push        esi
+  005A77F6: FF D2              call        edx
+  005A77F8: BD 01 00 00 00     mov         ebp,1
+  005A77FD: C7 86 C8 00 00 00  mov         dword ptr [esi+000000C8h],0
+            00 00 00 00
+  005A7807: 89 AE AC 0D 00 00  mov         dword ptr [esi+00000DACh],ebp
+  005A780D: 39 AE C4 0D 00 00  cmp         dword ptr [esi+00000DC4h],ebp
+  005A7813: 74 3F              je          005A7854
+  005A7815: 8B BE 64 0E 00 00  mov         edi,dword ptr [esi+00000E64h]
+  005A781B: 8D 9E 60 0E 00 00  lea         ebx,[esi+00000E60h]
+  005A7821: 3B FB              cmp         edi,ebx
+  005A7823: 74 0F              je          005A7834
+  005A7825: 8B 4F 08           mov         ecx,dword ptr [edi+8]
+  005A7828: E8 F3 77 00 00     call        005AF020
+  005A782D: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  005A7830: 3B FB              cmp         edi,ebx
+  005A7832: 75 F1              jne         005A7825
+  005A7834: 8B 86 C0 0D 00 00  mov         eax,dword ptr [esi+00000DC0h]
+  005A783A: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  005A783D: 74 0F              je          005A784E
+  005A783F: 50                 push        eax
+  005A7840: A1 98 B4 22 01     mov         eax,dword ptr ds:[0122B498h]
+  005A7845: 50                 push        eax
+  005A7846: E8 05 3B 0A 00     call        0064B350
+  005A784B: 83 C4 08           add         esp,8
+  005A784E: 89 AE C4 0D 00 00  mov         dword ptr [esi+00000DC4h],ebp
+  005A7854: 5F                 pop         edi
+  005A7855: 5E                 pop         esi
+  005A7856: 5D                 pop         ebp
+  005A7857: 5B                 pop         ebx
+  005A7858: 81 C4 70 02 00 00  add         esp,270h
+  005A785E: C3                 ret
+  005A785F: CC                 int         3
+  005A7860: 56                 push        esi
+  005A7861: 8B F1              mov         esi,ecx
+  005A7863: 83 BE AC 0D 00 00  cmp         dword ptr [esi+00000DACh],5
+            05
+  005A786A: 57                 push        edi
+  005A786B: 74 58              je          005A78C5
+  005A786D: 8B 86 34 03 00 00  mov         eax,dword ptr [esi+00000334h]
+  005A7873: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  005A7877: 8D 8E 30 03 00 00  lea         ecx,[esi+00000330h]
+  005A787D: 3B C1              cmp         eax,ecx
+  005A787F: 74 13              je          005A7894
+  005A7881: 0F B7 50 08        movzx       edx,word ptr [eax+8]
+  005A7885: 3B D7              cmp         edx,edi
+  005A7887: 74 07              je          005A7890
+  005A7889: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A788C: 3B C1              cmp         eax,ecx
+  005A788E: 75 F1              jne         005A7881
+  005A7890: 3B C1              cmp         eax,ecx
+  005A7892: 75 2A              jne         005A78BE
+  005A7894: 57                 push        edi
+  005A7895: 8B CE              mov         ecx,esi
+  005A7897: E8 34 F7 FF FF     call        005A6FD0
+  005A789C: 84 C0              test        al,al
+  005A789E: 74 25              je          005A78C5
+  005A78A0: 8B CE              mov         ecx,esi
+  005A78A2: E8 39 F3 FF FF     call        005A6BE0
+  005A78A7: 83 BE 68 0E 00 00  cmp         dword ptr [esi+00000E68h],0
+            00
+  005A78AE: 74 0E              je          005A78BE
+  005A78B0: 8B 8E 68 0E 00 00  mov         ecx,dword ptr [esi+00000E68h]
+  005A78B6: 8B 01              mov         eax,dword ptr [ecx]
+  005A78B8: 8B 50 08           mov         edx,dword ptr [eax+8]
+  005A78BB: 57                 push        edi
+  005A78BC: FF D2              call        edx
+  005A78BE: 5F                 pop         edi
+  005A78BF: B0 01              mov         al,1
+  005A78C1: 5E                 pop         esi
+  005A78C2: C2 04 00           ret         4
+  005A78C5: 5F                 pop         edi
+  005A78C6: 32 C0              xor         al,al
+  005A78C8: 5E                 pop         esi
+  005A78C9: C2 04 00           ret         4
+  005A78CC: CC                 int         3
+  005A78CD: CC                 int         3
+  005A78CE: CC                 int         3
+  005A78CF: CC                 int         3
+  005A78D0: 56                 push        esi
+  005A78D1: 8B F1              mov         esi,ecx
+  005A78D3: 83 BE AC 0D 00 00  cmp         dword ptr [esi+00000DACh],5
+            05
+  005A78DA: 74 4F              je          005A792B
+  005A78DC: 8B 86 34 03 00 00  mov         eax,dword ptr [esi+00000334h]
+  005A78E2: 8D 8E 30 03 00 00  lea         ecx,[esi+00000330h]
+  005A78E8: 57                 push        edi
+  005A78E9: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  005A78ED: 3B C1              cmp         eax,ecx
+  005A78EF: 74 13              je          005A7904
+  005A78F1: 0F B7 50 08        movzx       edx,word ptr [eax+8]
+  005A78F5: 3B D7              cmp         edx,edi
+  005A78F7: 74 07              je          005A7900
+  005A78F9: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A78FC: 3B C1              cmp         eax,ecx
+  005A78FE: 75 F1              jne         005A78F1
+  005A7900: 3B
+
+  Summary
+
+      9C8000 .text

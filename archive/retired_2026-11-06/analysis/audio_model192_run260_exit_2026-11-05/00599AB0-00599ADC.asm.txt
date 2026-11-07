@@ -1,0 +1,29 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00599AB0: 56                 push        esi
+  00599AB1: 8B F1              mov         esi,ecx
+  00599AB3: 80 7E 0C 00        cmp         byte ptr [esi+0Ch],0
+  00599AB7: 74 19              je          00599AD2
+  00599AB9: 8B 0E              mov         ecx,dword ptr [esi]
+  00599ABB: E8 40 FE FF FF     call        00599900
+  00599AC0: 84 C0              test        al,al
+  00599AC2: 74 04              je          00599AC8
+  00599AC4: C6 46 0C 00        mov         byte ptr [esi+0Ch],0
+  00599AC8: 33 C0              xor         eax,eax
+  00599ACA: 38 46 0C           cmp         byte ptr [esi+0Ch],al
+  00599ACD: 5E                 pop         esi
+  00599ACE: 0F 94 C0           sete        al
+  00599AD1: C3                 ret
+  00599AD2: 33 C0              xor         eax,eax
+  00599AD4: 39 46 08           cmp         dword ptr [esi+8],eax
+  00599AD7: 5E                 pop         esi
+  00599AD8: 0F 94 C0           sete        al
+  00599ADB: C3                 ret
+  00599ADC: CC                 int         3
+
+  Summary
+
+      9C8000 .text

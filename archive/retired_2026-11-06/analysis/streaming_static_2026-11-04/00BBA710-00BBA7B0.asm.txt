@@ -1,0 +1,72 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BBA710: 00 00              add         byte ptr [eax],al
+  00BBA712: 00 8B 69 04 BB 01  add         byte ptr [ebx+01BB0469h],cl
+  00BBA718: 00 00              add         byte ptr [eax],al
+  00BBA71A: 00 89 5C 24 40 89  add         byte ptr [ecx+8940245Ch],cl
+  00BBA720: 54                 push        esp
+  00BBA721: 24 44              and         al,44h
+  00BBA723: 89 5C 24 48        mov         dword ptr [esp+48h],ebx
+  00BBA727: 89 54 24 4C        mov         dword ptr [esp+4Ch],edx
+  00BBA72B: 89 5C 24 50        mov         dword ptr [esp+50h],ebx
+  00BBA72F: 89 54 24 54        mov         dword ptr [esp+54h],edx
+  00BBA733: 89 5C 24 58        mov         dword ptr [esp+58h],ebx
+  00BBA737: 89 54 24 5C        mov         dword ptr [esp+5Ch],edx
+  00BBA73B: 89 54 24 60        mov         dword ptr [esp+60h],edx
+  00BBA73F: 89 7C 24 64        mov         dword ptr [esp+64h],edi
+  00BBA743: 8B 6C AC 40        mov         ebp,dword ptr [esp+ebp*4+40h]
+  00BBA747: 0F AF 29           imul        ebp,dword ptr [ecx]
+  00BBA74A: 03 C5              add         eax,ebp
+  00BBA74C: 83 C1 10           add         ecx,10h
+  00BBA74F: 2B F3              sub         esi,ebx
+  00BBA751: 75 C0              jne         00BBA713
+  00BBA753: 5F                 pop         edi
+  00BBA754: 5E                 pop         esi
+  00BBA755: 5D                 pop         ebp
+  00BBA756: 5B                 pop         ebx
+  00BBA757: 83 C4 58           add         esp,58h
+  00BBA75A: C2 14 00           ret         14h
+  00BBA75D: CC                 int         3
+  00BBA75E: CC                 int         3
+  00BBA75F: CC                 int         3
+  00BBA760: 53                 push        ebx
+  00BBA761: 8B D9              mov         ebx,ecx
+  00BBA763: 8B 43 04           mov         eax,dword ptr [ebx+4]
+  00BBA766: 85 C0              test        eax,eax
+  00BBA768: 74 4C              je          00BBA7B6
+  00BBA76A: 83 38 00           cmp         dword ptr [eax],0
+  00BBA76D: 74 47              je          00BBA7B6
+  00BBA76F: 8B 4B 08           mov         ecx,dword ptr [ebx+8]
+  00BBA772: 56                 push        esi
+  00BBA773: 8B 30              mov         esi,dword ptr [eax]
+  00BBA775: 57                 push        edi
+  00BBA776: 8D 3C CE           lea         edi,[esi+ecx*8]
+  00BBA779: 3B F7              cmp         esi,edi
+  00BBA77B: 73 1B              jae         00BBA798
+  00BBA77D: 8D 49 00           lea         ecx,[ecx]
+  00BBA780: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BBA783: 8B 06              mov         eax,dword ptr [esi]
+  00BBA785: 52                 push        edx
+  00BBA786: 50                 push        eax
+  00BBA787: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BBA78C: E8 0F 45 FF FF     call        00BAECA0
+  00BBA791: 83 C6 08           add         esi,8
+  00BBA794: 3B F7              cmp         esi,edi
+  00BBA796: 72 E8              jb          00BBA780
+  00BBA798: 8B 4B 04           mov         ecx,dword ptr [ebx+4]
+  00BBA79B: 51                 push        ecx
+  00BBA79C: B9 E0 3B 9B 01     mov         ecx,19B3BE0h
+  00BBA7A1: E8 3A A7 FF FF     call        00BB4EE0
+  00BBA7A6: 5F                 pop         edi
+  00BBA7A7: C7 43 04 00 00 00  mov         dword ptr [ebx+4],0
+            00
+  00BBA7AE: C7
+  00BBA7AF: 43                 inc         ebx
+  00BBA7B0: 08
+
+  Summary
+
+      9C8000 .text

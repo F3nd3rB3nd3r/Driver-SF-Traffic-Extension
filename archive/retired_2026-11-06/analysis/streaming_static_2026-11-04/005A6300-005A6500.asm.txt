@@ -1,0 +1,242 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A6300: 98                 cwde
+  005A6301: B4 22              mov         ah,22h
+  005A6303: 01 50 E8           add         dword ptr [eax-18h],edx
+  005A6306: E6 50              out         50h,al
+  005A6308: 0A 00              or          al,byte ptr [eax]
+  005A630A: 83 C4 08           add         esp,8
+  005A630D: C7 86 C0 0D 00 00  mov         dword ptr [esi+00000DC0h],0FFFFFFFFh
+            FF FF FF FF
+  005A6317: 5E                 pop         esi
+  005A6318: C3                 ret
+  005A6319: CC                 int         3
+  005A631A: CC                 int         3
+  005A631B: CC                 int         3
+  005A631C: CC                 int         3
+  005A631D: CC                 int         3
+  005A631E: CC                 int         3
+  005A631F: CC                 int         3
+  005A6320: C2 04 00           ret         4
+  005A6323: CC                 int         3
+  005A6324: CC                 int         3
+  005A6325: CC                 int         3
+  005A6326: CC                 int         3
+  005A6327: CC                 int         3
+  005A6328: CC                 int         3
+  005A6329: CC                 int         3
+  005A632A: CC                 int         3
+  005A632B: CC                 int         3
+  005A632C: CC                 int         3
+  005A632D: CC                 int         3
+  005A632E: CC                 int         3
+  005A632F: CC                 int         3
+  005A6330: 83 EC 50           sub         esp,50h
+  005A6333: 56                 push        esi
+  005A6334: 57                 push        edi
+  005A6335: 8D 44 24 08        lea         eax,[esp+8]
+  005A6339: 50                 push        eax
+  005A633A: 8B F1              mov         esi,ecx
+  005A633C: FF 15 D8 91 DC 00  call        dword ptr ds:[00DC91D8h]
+  005A6342: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  005A6346: 51                 push        ecx
+  005A6347: 8D 4C 24 14        lea         ecx,[esp+14h]
+  005A634B: E8 C0 01 2C 00     call        00866510
+  005A6350: 8B BE D4 00 00 00  mov         edi,dword ptr [esi+000000D4h]
+  005A6356: 8D 4C 24 10        lea         ecx,[esp+10h]
+  005A635A: E8 81 FF 2B 00     call        008662E0
+  005A635F: 33 D2              xor         edx,edx
+  005A6361: F7 F7              div         eax,edi
+  005A6363: 8B 86 34 03 00 00  mov         eax,dword ptr [esi+00000334h]
+  005A6369: 5F                 pop         edi
+  005A636A: 5E                 pop         esi
+  005A636B: 85 D2              test        edx,edx
+  005A636D: 76 09              jbe         005A6378
+  005A636F: 90                 nop
+  005A6370: 83 EA 01           sub         edx,1
+  005A6373: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A6376: 75 F8              jne         005A6370
+  005A6378: 0F B7 40 08        movzx       eax,word ptr [eax+8]
+  005A637C: 83 C4 50           add         esp,50h
+  005A637F: C3                 ret
+  005A6380: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  005A6384: 33 D2              xor         edx,edx
+  005A6386: F7 B1 D4 00 00 00  div         eax,dword ptr [ecx+000000D4h]
+  005A638C: 8B 81 34 03 00 00  mov         eax,dword ptr [ecx+00000334h]
+  005A6392: 85 D2              test        edx,edx
+  005A6394: 76 08              jbe         005A639E
+  005A6396: 83 EA 01           sub         edx,1
+  005A6399: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A639C: 75 F8              jne         005A6396
+  005A639E: 0F B7 40 08        movzx       eax,word ptr [eax+8]
+  005A63A2: C2 04 00           ret         4
+  005A63A5: CC                 int         3
+  005A63A6: CC                 int         3
+  005A63A7: CC                 int         3
+  005A63A8: CC                 int         3
+  005A63A9: CC                 int         3
+  005A63AA: CC                 int         3
+  005A63AB: CC                 int         3
+  005A63AC: CC                 int         3
+  005A63AD: CC                 int         3
+  005A63AE: CC                 int         3
+  005A63AF: CC                 int         3
+  005A63B0: B8 01 00 00 00     mov         eax,1
+  005A63B5: 39 81 AC 0D 00 00  cmp         dword ptr [ecx+00000DACh],eax
+  005A63BB: 74 09              je          005A63C6
+  005A63BD: 83 B9 C8 00 00 00  cmp         dword ptr [ecx+000000C8h],0
+            00
+  005A63C4: 74 02              je          005A63C8
+  005A63C6: 33 C0              xor         eax,eax
+  005A63C8: C3                 ret
+  005A63C9: CC                 int         3
+  005A63CA: CC                 int         3
+  005A63CB: CC                 int         3
+  005A63CC: CC                 int         3
+  005A63CD: CC                 int         3
+  005A63CE: CC                 int         3
+  005A63CF: CC                 int         3
+  005A63D0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  005A63D4: 8B 89 A8 0D 00 00  mov         ecx,dword ptr [ecx+00000DA8h]
+  005A63DA: 50                 push        eax
+  005A63DB: 6A 00              push        0
+  005A63DD: E8 3E 62 FF FF     call        0059C620
+  005A63E2: C2 04 00           ret         4
+  005A63E5: CC                 int         3
+  005A63E6: CC                 int         3
+  005A63E7: CC                 int         3
+  005A63E8: CC                 int         3
+  005A63E9: CC                 int         3
+  005A63EA: CC                 int         3
+  005A63EB: CC                 int         3
+  005A63EC: CC                 int         3
+  005A63ED: CC                 int         3
+  005A63EE: CC                 int         3
+  005A63EF: CC                 int         3
+  005A63F0: 56                 push        esi
+  005A63F1: 8B F1              mov         esi,ecx
+  005A63F3: 8B 86 B4 0D 00 00  mov         eax,dword ptr [esi+00000DB4h]
+  005A63F9: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  005A63FC: 74 3A              je          005A6438
+  005A63FE: 3B 86 B0 0D 00 00  cmp         eax,dword ptr [esi+00000DB0h]
+  005A6404: 75 32              jne         005A6438
+  005A6406: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A640C: 0F B7 C0           movzx       eax,ax
+  005A640F: 50                 push        eax
+  005A6410: 6A 00              push        0
+  005A6412: E8 A9 6B FF FF     call        0059CFC0
+  005A6417: 84 C0              test        al,al
+  005A6419: 74 1D              je          005A6438
+  005A641B: 0F B7 96 B4 0D 00  movzx       edx,word ptr [esi+00000DB4h]
+            00
+  005A6422: 8B 8E A8 0D 00 00  mov         ecx,dword ptr [esi+00000DA8h]
+  005A6428: 52                 push        edx
+  005A6429: 6A 00              push        0
+  005A642B: E8 30 61 FF FF     call        0059C560
+  005A6430: 84 C0              test        al,al
+  005A6432: 75 04              jne         005A6438
+  005A6434: B0 01              mov         al,1
+  005A6436: 5E                 pop         esi
+  005A6437: C3                 ret
+  005A6438: 32 C0              xor         al,al
+  005A643A: 5E                 pop         esi
+  005A643B: C3                 ret
+  005A643C: CC                 int         3
+  005A643D: CC                 int         3
+  005A643E: CC                 int         3
+  005A643F: CC                 int         3
+  005A6440: 8B 81 98 0D 00 00  mov         eax,dword ptr [ecx+00000D98h]
+  005A6446: 81 C1 94 0D 00 00  add         ecx,0D94h
+  005A644C: 3B C1              cmp         eax,ecx
+  005A644E: 74 16              je          005A6466
+  005A6450: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  005A6454: 39 50 08           cmp         dword ptr [eax+8],edx
+  005A6457: 75 06              jne         005A645F
+  005A6459: 83 78 0C 00        cmp         dword ptr [eax+0Ch],0
+  005A645D: 74 0C              je          005A646B
+  005A645F: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A6462: 3B C1              cmp         eax,ecx
+  005A6464: 75 EE              jne         005A6454
+  005A6466: 32 C0              xor         al,al
+  005A6468: C2 04 00           ret         4
+  005A646B: FF 40 10           inc         dword ptr [eax+10h]
+  005A646E: B0 01              mov         al,1
+  005A6470: C2 04 00           ret         4
+  005A6473: CC                 int         3
+  005A6474: CC                 int         3
+  005A6475: CC                 int         3
+  005A6476: CC                 int         3
+  005A6477: CC                 int         3
+  005A6478: CC                 int         3
+  005A6479: CC                 int         3
+  005A647A: CC                 int         3
+  005A647B: CC                 int         3
+  005A647C: CC                 int         3
+  005A647D: CC                 int         3
+  005A647E: CC                 int         3
+  005A647F: CC                 int         3
+  005A6480: 8B 91 98 0D 00 00  mov         edx,dword ptr [ecx+00000D98h]
+  005A6486: 57                 push        edi
+  005A6487: 8D B9 94 0D 00 00  lea         edi,[ecx+00000D94h]
+  005A648D: 33 C0              xor         eax,eax
+  005A648F: 3B D7              cmp         edx,edi
+  005A6491: 74 19              je          005A64AC
+  005A6493: 56                 push        esi
+  005A6494: 8B 72 0C           mov         esi,dword ptr [edx+0Ch]
+  005A6497: 85 F6              test        esi,esi
+  005A6499: 75 03              jne         005A649E
+  005A649B: 40                 inc         eax
+  005A649C: EB 06              jmp         005A64A4
+  005A649E: 83 FE 01           cmp         esi,1
+  005A64A1: 75 01              jne         005A64A4
+  005A64A3: 48                 dec         eax
+  005A64A4: 8B 52 04           mov         edx,dword ptr [edx+4]
+  005A64A7: 3B D7              cmp         edx,edi
+  005A64A9: 75 E9              jne         005A6494
+  005A64AB: 5E                 pop         esi
+  005A64AC: 8B 89 AC 0D 00 00  mov         ecx,dword ptr [ecx+00000DACh]
+  005A64B2: 5F                 pop         edi
+  005A64B3: 83 F9 02           cmp         ecx,2
+  005A64B6: 75 02              jne         005A64BA
+  005A64B8: 40                 inc         eax
+  005A64B9: C3                 ret
+  005A64BA: 83 F9 03           cmp         ecx,3
+  005A64BD: 75 01              jne         005A64C0
+  005A64BF: 48                 dec         eax
+  005A64C0: C3                 ret
+  005A64C1: CC                 int         3
+  005A64C2: CC                 int         3
+  005A64C3: CC                 int         3
+  005A64C4: CC                 int         3
+  005A64C5: CC                 int         3
+  005A64C6: CC                 int         3
+  005A64C7: CC                 int         3
+  005A64C8: CC                 int         3
+  005A64C9: CC                 int         3
+  005A64CA: CC                 int         3
+  005A64CB: CC                 int         3
+  005A64CC: CC                 int         3
+  005A64CD: CC                 int         3
+  005A64CE: CC                 int         3
+  005A64CF: CC                 int         3
+  005A64D0: 56                 push        esi
+  005A64D1: 8B F1              mov         esi,ecx
+  005A64D3: 8B 86 BC 0D 00 00  mov         eax,dword ptr [esi+00000DBCh]
+  005A64D9: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  005A64DC: 74 27              je          005A6505
+  005A64DE: 50                 push        eax
+  005A64DF: A1 98 B4 22 01     mov         eax,dword ptr ds:[0122B498h]
+  005A64E4: 50                 push        eax
+  005A64E5: E8 06 4F 0A 00     call        0064B3F0
+  005A64EA: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  005A64EE: C7 86 BC 0D 00 00  mov         dword ptr [esi+00000DBCh],0FFFFFFFFh
+            FF FF FF FF
+  005A64F8: 83 C4 08           add         esp,8
+  005A64FB: 89 8E BC 0D 00 00  mov         dword ptr [esi+00000DBCh],ecx
+
+  Summary
+
+      9C8000 .text

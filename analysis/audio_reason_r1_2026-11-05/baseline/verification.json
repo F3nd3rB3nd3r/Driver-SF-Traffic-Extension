@@ -1,0 +1,42 @@
+{
+  "binary": "E:\\_DSF Mods\\ai repos\\DriverSF_V29s_VS_LEAN_2026-11-02\\build\\v29s_audio_reason_r1\\DriverSF_V29s_160Capacity_150Request_AUDIO_REASON_R1.asi",
+  "sha256": "fcd56d9ad3faa845ecff75a86e4fd75288a8342b8b13453f44c11480b4661715",
+  "architecture": "Win32",
+  "configuration": "Release",
+  "baseline_flags_preserved": true,
+  "additional_flags": [
+    "DSF_V29S_AUDIO_DEFAULT_64M=1",
+    "DSF_V29S_AUDIO_PROBE=1",
+    "DSF_V29S_AUDIO_REASON_PROBE=1",
+    "DSF_V29S_AUDIO_SLOTS_2048=1",
+    "DSF_V29S_CAPACITY_TRACE=1",
+    "DSF_V29S_INDEXED_262144=1"
+  ],
+  "bridges": [
+    {
+      "name": "Audio",
+      "address": "0x10011510",
+      "helper": "0x10011550",
+      "fx_state_preserved": true
+    },
+    {
+      "name": "Traffic",
+      "address": "0x10011630",
+      "helper": "0x10011690",
+      "fx_state_preserved": true
+    },
+    {
+      "name": "Retire",
+      "address": "0x10011590",
+      "helper": "0x100115d0",
+      "fx_state_preserved": true
+    }
+  ],
+  "native_signature_sites": [
+    "0x849870",
+    "0x83b170",
+    "0x5a7dd1"
+  ],
+  "near_branch_interior_candidates": [],
+  "limitations": "Offline checks only; runtime hook installation, behavior and performance untested"
+}

@@ -1,0 +1,59 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C99A40: 57                 push        edi
+  00C99A41: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  00C99A45: 85 FF              test        edi,edi
+  00C99A47: 75 04              jne         00C99A4D
+  00C99A49: 33 C0              xor         eax,eax
+  00C99A4B: 5F                 pop         edi
+  00C99A4C: C3                 ret
+  00C99A4D: 53                 push        ebx
+  00C99A4E: 56                 push        esi
+  00C99A4F: 8B 74 24 10        mov         esi,dword ptr [esp+10h]
+  00C99A53: 6B F6 4C           imul        esi,esi,4Ch
+  00C99A56: 03 35 90 23 D7 01  add         esi,dword ptr ds:[01D72390h]
+  00C99A5C: 8D 5E 24           lea         ebx,[esi+24h]
+  00C99A5F: 53                 push        ebx
+  00C99A60: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C99A66: 8B 46 40           mov         eax,dword ptr [esi+40h]
+  00C99A69: 57                 push        edi
+  00C99A6A: 85 C0              test        eax,eax
+  00C99A6C: 74 0F              je          00C99A7D
+  00C99A6E: 50                 push        eax
+  00C99A6F: 8B 46 3C           mov         eax,dword ptr [esi+3Ch]
+  00C99A72: 50                 push        eax
+  00C99A73: E8 D8 09 00 00     call        00C9A450
+  00C99A78: 83 C4 0C           add         esp,0Ch
+  00C99A7B: EB 0C              jmp         00C99A89
+  00C99A7D: 8B 4E 3C           mov         ecx,dword ptr [esi+3Ch]
+  00C99A80: 51                 push        ecx
+  00C99A81: E8 6A 09 00 00     call        00C9A3F0
+  00C99A86: 83 C4 08           add         esp,8
+  00C99A89: 8B F8              mov         edi,eax
+  00C99A8B: 85 FF              test        edi,edi
+  00C99A8D: 74 0F              je          00C99A9E
+  00C99A8F: 57                 push        edi
+  00C99A90: E8 BB 08 00 00     call        00C9A350
+  00C99A95: 83 C0 08           add         eax,8
+  00C99A98: 83 C4 04           add         esp,4
+  00C99A9B: 01 46 44           add         dword ptr [esi+44h],eax
+  00C99A9E: 53                 push        ebx
+  00C99A9F: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C99AA5: 5E                 pop         esi
+  00C99AA6: 5B                 pop         ebx
+  00C99AA7: 8B C7              mov         eax,edi
+  00C99AA9: 5F                 pop         edi
+  00C99AAA: C3                 ret
+  00C99AAB: CC                 int         3
+  00C99AAC: CC                 int         3
+  00C99AAD: CC                 int         3
+  00C99AAE: CC                 int         3
+  00C99AAF: CC                 int         3
+  00C99AB0: 57                 push        edi
+
+  Summary
+
+      9C8000 .text

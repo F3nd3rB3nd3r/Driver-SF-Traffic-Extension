@@ -1,0 +1,63 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0074BA00: A8 09              test        al,9
+  0074BA02: 00 00              add         byte ptr [eax],al
+  0074BA04: 00 75 10           add         byte ptr [ebp+10h],dh
+  0074BA07: 83 BE C8 00 00 00  cmp         dword ptr [esi+000000C8h],0
+            00
+  0074BA0E: 75 07              jne         0074BA17
+  0074BA10: B8 01 00 00 00     mov         eax,1
+  0074BA15: 5E                 pop         esi
+  0074BA16: C3                 ret
+  0074BA17: 33 C0              xor         eax,eax
+  0074BA19: 5E                 pop         esi
+  0074BA1A: C3                 ret
+  0074BA1B: CC                 int         3
+  0074BA1C: CC                 int         3
+  0074BA1D: CC                 int         3
+  0074BA1E: CC                 int         3
+  0074BA1F: CC                 int         3
+  0074BA20: 81 EC 74 02 00 00  sub         esp,274h
+  0074BA26: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0074BA2B: 55                 push        ebp
+  0074BA2C: 56                 push        esi
+  0074BA2D: 33 F6              xor         esi,esi
+  0074BA2F: 8B E9              mov         ebp,ecx
+  0074BA31: 57                 push        edi
+  0074BA32: 89 6C 24 0C        mov         dword ptr [esp+0Ch],ebp
+  0074BA36: 3B C6              cmp         eax,esi
+  0074BA38: 75 0A              jne         0074BA44
+  0074BA3A: E8 51 EC CB FF     call        0040A690
+  0074BA3F: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0074BA44: 8B B8 14 02 00 00  mov         edi,dword ptr [eax+00000214h]
+  0074BA4A: 8B 45 0C           mov         eax,dword ptr [ebp+0Ch]
+  0074BA4D: 3B C6              cmp         eax,esi
+  0074BA4F: 7E 0C              jle         0074BA5D
+  0074BA51: 50                 push        eax
+  0074BA52: 8D 45 10           lea         eax,[ebp+10h]
+  0074BA55: 50                 push        eax
+  0074BA56: 8B CF              mov         ecx,edi
+  0074BA58: E8 93 BF E5 FF     call        005A79F0
+  0074BA5D: 8D 4C 24 20        lea         ecx,[esp+20h]
+  0074BA61: 89 4C 24 14        mov         dword ptr [esp+14h],ecx
+  0074BA65: 8D 94 24 78 02 00  lea         edx,[esp+00000278h]
+            00
+  0074BA6C: 53                 push        ebx
+  0074BA6D: 8D 4C 24 18        lea         ecx,[esp+18h]
+  0074BA71: 8B C2              mov         eax,edx
+  0074BA73: 51                 push        ecx
+  0074BA74: 8B CF              mov         ecx,edi
+  0074BA76: 89 74 24 20        mov         dword ptr [esp+20h],esi
+  0074BA7A: 89 74 24 24        mov         dword ptr [esp+24h],esi
+  0074BA7E: 89 94 24 84 02 00  mov         dword ptr [esp+00000284h],edx
+            00
+  0074BA85: 89 84 24 80 02 00  mov         dword ptr [esp+00000280h],eax
+            00
+  0074BA8C: E8 1F AF E5 FF     call        005A69B0
+
+  Summary
+
+      9C8000 .text

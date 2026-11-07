@@ -1,0 +1,121 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BB42E0: 53                 push        ebx
+  00BB42E1: 8B 5C 24 08        mov         ebx,dword ptr [esp+8]
+  00BB42E5: 55                 push        ebp
+  00BB42E6: 56                 push        esi
+  00BB42E7: 8B F1              mov         esi,ecx
+  00BB42E9: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  00BB42ED: 8B C1              mov         eax,ecx
+  00BB42EF: C1 E8 1F           shr         eax,1Fh
+  00BB42F2: 33 D2              xor         edx,edx
+  00BB42F4: 57                 push        edi
+  00BB42F5: 83 F8 01           cmp         eax,1
+  00BB42F8: 75 0D              jne         00BB4307
+  00BB42FA: 85 D2              test        edx,edx
+  00BB42FC: 75 09              jne         00BB4307
+  00BB42FE: 8B C3              mov         eax,ebx
+  00BB4300: 23 C1              and         eax,ecx
+  00BB4302: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  00BB4305: 75 23              jne         00BB432A
+  00BB4307: 68 5F 53 4D 4C     push        4C4D535Fh
+  00BB430C: 51                 push        ecx
+  00BB430D: 53                 push        ebx
+  00BB430E: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BB4313: E8 58 A4 FF FF     call        00BAE770
+  00BB4318: 85 C0              test        eax,eax
+  00BB431A: 74 0A              je          00BB4326
+  00BB431C: 8B 00              mov         eax,dword ptr [eax]
+  00BB431E: 85 C0              test        eax,eax
+  00BB4320: 74 04              je          00BB4326
+  00BB4322: 8B 00              mov         eax,dword ptr [eax]
+  00BB4324: EB 02              jmp         00BB4328
+  00BB4326: 33 C0              xor         eax,eax
+  00BB4328: 8B D8              mov         ebx,eax
+  00BB432A: 8B 0D A0 49 6F 01  mov         ecx,dword ptr ds:[016F49A0h]
+  00BB4330: 89 4B 18           mov         dword ptr [ebx+18h],ecx
+  00BB4333: 8B 15 A4 49 6F 01  mov         edx,dword ptr ds:[016F49A4h]
+  00BB4339: 8B CE              mov         ecx,esi
+  00BB433B: 89 53 1C           mov         dword ptr [ebx+1Ch],edx
+  00BB433E: E8 1D FF FF FF     call        00BB4260
+  00BB4343: 8B 74 24 24        mov         esi,dword ptr [esp+24h]
+  00BB4347: 8B E8              mov         ebp,eax
+  00BB4349: 66 8B 44 24 34     mov         ax,word ptr [esp+34h]
+  00BB434E: 66 89 45 3A        mov         word ptr [ebp+3Ah],ax
+  00BB4352: B9 0A 00 00 00     mov         ecx,0Ah
+  00BB4357: 8B FD              mov         edi,ebp
+  00BB4359: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00BB435B: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  00BB435F: 8B 7C 24 1C        mov         edi,dword ptr [esp+1Ch]
+  00BB4363: 8B C1              mov         eax,ecx
+  00BB4365: C1 E8 1F           shr         eax,1Fh
+  00BB4368: 33 D2              xor         edx,edx
+  00BB436A: 83 F8 01           cmp         eax,1
+  00BB436D: 75 0D              jne         00BB437C
+  00BB436F: 85 D2              test        edx,edx
+  00BB4371: 75 09              jne         00BB437C
+  00BB4373: 8B D7              mov         edx,edi
+  00BB4375: 23 D1              and         edx,ecx
+  00BB4377: 83 FA FF           cmp         edx,0FFFFFFFFh
+  00BB437A: 75 23              jne         00BB439F
+  00BB437C: 68 5F 4D 41 54     push        54414D5Fh
+  00BB4381: 51                 push        ecx
+  00BB4382: 57                 push        edi
+  00BB4383: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BB4388: E8 E3 A3 FF FF     call        00BAE770
+  00BB438D: 85 C0              test        eax,eax
+  00BB438F: 74 0A              je          00BB439B
+  00BB4391: 8B 00              mov         eax,dword ptr [eax]
+  00BB4393: 85 C0              test        eax,eax
+  00BB4395: 74 04              je          00BB439B
+  00BB4397: 8B 00              mov         eax,dword ptr [eax]
+  00BB4399: EB 02              jmp         00BB439D
+  00BB439B: 33 C0              xor         eax,eax
+  00BB439D: 8B F8              mov         edi,eax
+  00BB439F: 8B 44 24 28        mov         eax,dword ptr [esp+28h]
+  00BB43A3: 50                 push        eax
+  00BB43A4: 8B CF              mov         ecx,edi
+  00BB43A6: E8 25 77 B0 FF     call        006BBAD0
+  00BB43AB: 83 7C 24 30 FF     cmp         dword ptr [esp+30h],0FFFFFFFFh
+  00BB43B0: 8B 4F 24           mov         ecx,dword ptr [edi+24h]
+  00BB43B3: 8B 14 81           mov         edx,dword ptr [ecx+eax*4]
+  00BB43B6: 89 54 24 34        mov         dword ptr [esp+34h],edx
+  00BB43BA: 74 2F              je          00BB43EB
+  00BB43BC: 8B 0D C4 0C 9B 01  mov         ecx,dword ptr ds:[019B0CC4h]
+  00BB43C2: 8B 41 10           mov         eax,dword ptr [ecx+10h]
+  00BB43C5: 8B 31              mov         esi,dword ptr [ecx]
+  00BB43C7: 8B 0D C4 0C 9B 01  mov         ecx,dword ptr ds:[019B0CC4h]
+  00BB43CD: 83 E8 50           sub         eax,50h
+  00BB43D0: 83 E0 F0           and         eax,0FFFFFFF0h
+  00BB43D3: 03 F0              add         esi,eax
+  00BB43D5: 89 41 10           mov         dword ptr [ecx+10h],eax
+  00BB43D8: 53                 push        ebx
+  00BB43D9: 8B CE              mov         ecx,esi
+  00BB43DB: E8 20 01 00 00     call        00BB4500
+  00BB43E0: 66 8B 54 24 30     mov         dx,word ptr [esp+30h]
+  00BB43E5: 66 89 56 38        mov         word ptr [esi+38h],dx
+  00BB43E9: 8B DE              mov         ebx,esi
+  00BB43EB: 8B 0D 34 64 9B 01  mov         ecx,dword ptr ds:[019B6434h]
+  00BB43F1: 8B 41 04           mov         eax,dword ptr [ecx+4]
+  00BB43F4: 8B 54 24 2C        mov         edx,dword ptr [esp+2Ch]
+  00BB43F8: 50                 push        eax
+  00BB43F9: 8B 44 24 38        mov         eax,dword ptr [esp+38h]
+  00BB43FD: 52                 push        edx
+  00BB43FE: 50                 push        eax
+  00BB43FF: 57                 push        edi
+  00BB4400: 53                 push        ebx
+  00BB4401: 55                 push        ebp
+  00BB4402: E8 49 16 00 00     call        00BB5A50
+  00BB4407: 5F                 pop         edi
+  00BB4408: 5E                 pop         esi
+  00BB4409: 5D                 pop         ebp
+  00BB440A: 5B                 pop         ebx
+  00BB440B: C2 28 00           ret         28h
+  00BB440E: CC                 int         3
+
+  Summary
+
+      9C8000 .text

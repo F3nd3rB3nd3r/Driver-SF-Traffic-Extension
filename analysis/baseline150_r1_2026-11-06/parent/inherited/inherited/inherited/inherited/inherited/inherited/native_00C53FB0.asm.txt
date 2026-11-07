@@ -1,0 +1,84 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C53FB0: 83 EC 2C           sub         esp,2Ch
+  00C53FB3: B8 01 00 00 00     mov         eax,1
+  00C53FB8: 56                 push        esi
+  00C53FB9: 66 89 44 24 06     mov         word ptr [esp+6],ax
+  00C53FBE: 8B 44 24 48        mov         eax,dword ptr [esp+48h]
+  00C53FC2: 33 F6              xor         esi,esi
+  00C53FC4: 3B C6              cmp         eax,esi
+  00C53FC6: 74 1D              je          00C53FE5
+  00C53FC8: 8B 08              mov         ecx,dword ptr [eax]
+  00C53FCA: 8B 50 04           mov         edx,dword ptr [eax+4]
+  00C53FCD: 89 4C 24 10        mov         dword ptr [esp+10h],ecx
+  00C53FD1: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  00C53FD4: 89 54 24 14        mov         dword ptr [esp+14h],edx
+  00C53FD8: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  00C53FDB: 89 4C 24 18        mov         dword ptr [esp+18h],ecx
+  00C53FDF: 89 54 24 1C        mov         dword ptr [esp+1Ch],edx
+  00C53FE3: EB 10              jmp         00C53FF5
+  00C53FE5: 89 74 24 10        mov         dword ptr [esp+10h],esi
+  00C53FE9: 89 74 24 14        mov         dword ptr [esp+14h],esi
+  00C53FED: 89 74 24 18        mov         dword ptr [esp+18h],esi
+  00C53FF1: 89 74 24 1C        mov         dword ptr [esp+1Ch],esi
+  00C53FF5: 8B 44 24 34        mov         eax,dword ptr [esp+34h]
+  00C53FF9: 8B 0D 38 18 D7 01  mov         ecx,dword ptr ds:[01D71838h]
+  00C53FFF: 50                 push        eax
+  00C54000: 81 C1 68 06 00 00  add         ecx,668h
+  00C54006: E8 45 FF FF FF     call        00C53F50
+  00C5400B: 3B C6              cmp         eax,esi
+  00C5400D: 89 44 24 20        mov         dword ptr [esp+20h],eax
+  00C54011: 5E                 pop         esi
+  00C54012: 74 4E              je          00C54062
+  00C54014: 68 9C 18 D7 01     push        1D7189Ch
+  00C54019: FF 15 60 91 DC 00  call        dword ptr ds:[00DC9160h]
+  00C5401F: 8B 4C 24 34        mov         ecx,dword ptr [esp+34h]
+  00C54023: 8B 54 24 1C        mov         edx,dword ptr [esp+1Ch]
+  00C54027: 89 44 24 08        mov         dword ptr [esp+8],eax
+  00C5402B: 89 4C 24 04        mov         dword ptr [esp+4],ecx
+  00C5402F: 8B 42 0C           mov         eax,dword ptr [edx+0Ch]
+  00C54032: 8B 4C 24 40        mov         ecx,dword ptr [esp+40h]
+  00C54036: 8B 54 24 3C        mov         edx,dword ptr [esp+3Ch]
+  00C5403A: 50                 push        eax
+  00C5403B: 8B 44 24 3C        mov         eax,dword ptr [esp+3Ch]
+  00C5403F: 50                 push        eax
+  00C54040: 51                 push        ecx
+  00C54041: 8B 0D 5C 18 D7 01  mov         ecx,dword ptr ds:[01D7185Ch]
+  00C54047: 52                 push        edx
+  00C54048: 8D 44 24 14        lea         eax,[esp+14h]
+  00C5404C: 50                 push        eax
+  00C5404D: E8 5E B0 00 00     call        00C5F0B0
+  00C54052: 83 F8 01           cmp         eax,1
+  00C54055: 74 11              je          00C54068
+  00C54057: 8B 4C 24 1C        mov         ecx,dword ptr [esp+1Ch]
+  00C5405B: 8B 11              mov         edx,dword ptr [ecx]
+  00C5405D: 8B 42 08           mov         eax,dword ptr [edx+8]
+  00C54060: FF D0              call        eax
+  00C54062: 33 C0              xor         eax,eax
+  00C54064: 83 C4 2C           add         esp,2Ch
+  00C54067: C3                 ret
+  00C54068: E8 23 59 00 00     call        00C59990
+  00C5406D: 0F B7 C8           movzx       ecx,ax
+  00C54070: 51                 push        ecx
+  00C54071: 8B 0D 3C 18 D7 01  mov         ecx,dword ptr ds:[01D7183Ch]
+  00C54077: 8D 54 24 04        lea         edx,[esp+4]
+  00C5407B: 52                 push        edx
+  00C5407C: E8 3F 8C 00 00     call        00C5CCC0
+  00C54081: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00C54085: 83 C4 2C           add         esp,2Ch
+  00C54088: C3                 ret
+  00C54089: CC                 int         3
+  00C5408A: CC                 int         3
+  00C5408B: CC                 int         3
+  00C5408C: CC                 int         3
+  00C5408D: CC                 int         3
+  00C5408E: CC                 int         3
+  00C5408F: CC                 int         3
+  00C54090: 83
+
+  Summary
+
+      9C8000 .text

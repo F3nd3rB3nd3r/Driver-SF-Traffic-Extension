@@ -1,0 +1,97 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A7D50: 51                 push        ecx
+  005A7D51: 8B 81 68 02 00 00  mov         eax,dword ptr [ecx+00000268h]
+  005A7D57: 53                 push        ebx
+  005A7D58: 55                 push        ebp
+  005A7D59: 56                 push        esi
+  005A7D5A: 8B 74 24 14        mov         esi,dword ptr [esp+14h]
+  005A7D5E: 8B 96 68 02 00 00  mov         edx,dword ptr [esi+00000268h]
+  005A7D64: 8D AE 64 02 00 00  lea         ebp,[esi+00000264h]
+  005A7D6A: 57                 push        edi
+  005A7D6B: 89 6C 24 18        mov         dword ptr [esp+18h],ebp
+  005A7D6F: 3B D5              cmp         edx,ebp
+  005A7D71: 74 23              je          005A7D96
+  005A7D73: 8D B1 64 02 00 00  lea         esi,[ecx+00000264h]
+  005A7D79: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  005A7D80: 3B C6              cmp         eax,esi
+  005A7D82: 74 12              je          005A7D96
+  005A7D84: 66 8B 7A 08        mov         di,word ptr [edx+8]
+  005A7D88: 66 89 78 08        mov         word ptr [eax+8],di
+  005A7D8C: 8B 52 04           mov         edx,dword ptr [edx+4]
+  005A7D8F: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A7D92: 3B D5              cmp         edx,ebp
+  005A7D94: 75 EA              jne         005A7D80
+  005A7D96: 8B 38              mov         edi,dword ptr [eax]
+  005A7D98: 8D B1 64 02 00 00  lea         esi,[ecx+00000264h]
+  005A7D9E: 3B C6              cmp         eax,esi
+  005A7DA0: 74 2B              je          005A7DCD
+  005A7DA2: 89 77 04           mov         dword ptr [edi+4],esi
+  005A7DA5: 89 3E              mov         dword ptr [esi],edi
+  005A7DA7: BF 01 00 00 00     mov         edi,1
+  005A7DAC: 83 CB FF           or          ebx,0FFFFFFFFh
+  005A7DAF: 90                 nop
+  005A7DB0: 8B 50 04           mov         edx,dword ptr [eax+4]
+  005A7DB3: 8B 29              mov         ebp,dword ptr [ecx]
+  005A7DB5: 89 28              mov         dword ptr [eax],ebp
+  005A7DB7: 01 79 04           add         dword ptr [ecx+4],edi
+  005A7DBA: 01 59 08           add         dword ptr [ecx+8],ebx
+  005A7DBD: 89 01              mov         dword ptr [ecx],eax
+  005A7DBF: 8B C2              mov         eax,edx
+  005A7DC1: 3B D6              cmp         edx,esi
+  005A7DC3: 75 EB              jne         005A7DB0
+  005A7DC5: 5F                 pop         edi
+  005A7DC6: 5E                 pop         esi
+  005A7DC7: 5D                 pop         ebp
+  005A7DC8: 5B                 pop         ebx
+  005A7DC9: 59                 pop         ecx
+  005A7DCA: C2 04 00           ret         4
+  005A7DCD: 3B D5              cmp         edx,ebp
+  005A7DCF: 74 56              je          005A7E27
+  005A7DD1: 83 79 04 00        cmp         dword ptr [ecx+4],0
+  005A7DD5: 8B 01              mov         eax,dword ptr [ecx]
+  005A7DD7: 74 23              je          005A7DFC
+  005A7DD9: 8B 18              mov         ebx,dword ptr [eax]
+  005A7DDB: 89 5C 24 10        mov         dword ptr [esp+10h],ebx
+  005A7DDF: 8D 58 08           lea         ebx,[eax+8]
+  005A7DE2: 85 DB              test        ebx,ebx
+  005A7DE4: 74 0B              je          005A7DF1
+  005A7DE6: 66 8B 6A 08        mov         bp,word ptr [edx+8]
+  005A7DEA: 66 89 2B           mov         word ptr [ebx],bp
+  005A7DED: 8B 6C 24 18        mov         ebp,dword ptr [esp+18h]
+  005A7DF1: 8B 5C 24 10        mov         ebx,dword ptr [esp+10h]
+  005A7DF5: FF 49 04           dec         dword ptr [ecx+4]
+  005A7DF8: 89 19              mov         dword ptr [ecx],ebx
+  005A7DFA: EB 15              jmp         005A7E11
+  005A7DFC: 8D 58 08           lea         ebx,[eax+8]
+  005A7DFF: 85 DB              test        ebx,ebx
+  005A7E01: 74 0B              je          005A7E0E
+  005A7E03: 66 8B 6A 08        mov         bp,word ptr [edx+8]
+  005A7E07: 66 89 2B           mov         word ptr [ebx],bp
+  005A7E0A: 8B 6C 24 18        mov         ebp,dword ptr [esp+18h]
+  005A7E0E: 83 01 0C           add         dword ptr [ecx],0Ch
+  005A7E11: FF 41 08           inc         dword ptr [ecx+8]
+  005A7E14: 89 38              mov         dword ptr [eax],edi
+  005A7E16: 89 70 04           mov         dword ptr [eax+4],esi
+  005A7E19: 89 47 04           mov         dword ptr [edi+4],eax
+  005A7E1C: 89 06              mov         dword ptr [esi],eax
+  005A7E1E: 8B 52 04           mov         edx,dword ptr [edx+4]
+  005A7E21: 8B F8              mov         edi,eax
+  005A7E23: 3B D5              cmp         edx,ebp
+  005A7E25: 75 AA              jne         005A7DD1
+  005A7E27: 5F                 pop         edi
+  005A7E28: 5E                 pop         esi
+  005A7E29: 5D                 pop         ebp
+  005A7E2A: 5B                 pop         ebx
+  005A7E2B: 59                 pop         ecx
+  005A7E2C: C2 04 00           ret         4
+  005A7E2F: CC                 int         3
+  005A7E30: 8B
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,64 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C525B0: 8B C1              mov         eax,ecx
+  00C525B2: 56                 push        esi
+  00C525B3: 8D 70 01           lea         esi,[eax+1]
+  00C525B6: 8A 10              mov         dl,byte ptr [eax]
+  00C525B8: 40                 inc         eax
+  00C525B9: 84 D2              test        dl,dl
+  00C525BB: 75 F9              jne         00C525B6
+  00C525BD: 2B C6              sub         eax,esi
+  00C525BF: 8D 14 08           lea         edx,[eax+ecx]
+  00C525C2: B8 C5 9D 1C 81     mov         eax,811C9DC5h
+  00C525C7: 3B CA              cmp         ecx,edx
+  00C525C9: 73 15              jae         00C525E0
+  00C525CB: EB 03              jmp         00C525D0
+  00C525CD: 8D 49 00           lea         ecx,[ecx]
+  00C525D0: 0F B6 31           movzx       esi,byte ptr [ecx]
+  00C525D3: 69 C0 93 01 00 01  imul        eax,eax,1000193h
+  00C525D9: 41                 inc         ecx
+  00C525DA: 33 C6              xor         eax,esi
+  00C525DC: 3B CA              cmp         ecx,edx
+  00C525DE: 72 F0              jb          00C525D0
+  00C525E0: 5E                 pop         esi
+  00C525E1: C3                 ret
+  00C525E2: CC                 int         3
+  00C525E3: CC                 int         3
+  00C525E4: CC                 int         3
+  00C525E5: CC                 int         3
+  00C525E6: CC                 int         3
+  00C525E7: CC                 int         3
+  00C525E8: CC                 int         3
+  00C525E9: CC                 int         3
+  00C525EA: CC                 int         3
+  00C525EB: CC                 int         3
+  00C525EC: CC                 int         3
+  00C525ED: CC                 int         3
+  00C525EE: CC                 int         3
+  00C525EF: CC                 int         3
+  00C525F0: 55                 push        ebp
+  00C525F1: 8B EC              mov         ebp,esp
+  00C525F3: 53                 push        ebx
+  00C525F4: 8B 5D 08           mov         ebx,dword ptr [ebp+8]
+  00C525F7: 56                 push        esi
+  00C525F8: 57                 push        edi
+  00C525F9: 85 DB              test        ebx,ebx
+  00C525FB: 75 0A              jne         00C52607
+  00C525FD: 33 C0              xor         eax,eax
+  00C525FF: 8D 65 F4           lea         esp,[ebp-0Ch]
+  00C52602: 5F                 pop         edi
+  00C52603: 5E                 pop         esi
+  00C52604: 5B                 pop         ebx
+  00C52605: 5D                 pop         ebp
+  00C52606: C3                 ret
+  00C52607: 8B C3              mov         eax,ebx
+  00C52609: 8D 50 02           lea         edx,[eax+2]
+  00C5260C: 8D 64 24 00        lea         esp,[esp]
+  00C52610: 66
+
+  Summary
+
+      9C8000 .text

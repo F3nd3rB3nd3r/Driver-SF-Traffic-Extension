@@ -1,0 +1,48 @@
+{
+  "result": "passed",
+  "architecture": "Win32",
+  "capacity": 512,
+  "arena_bytes": 7232,
+  "native_blocks": [
+    [
+      8221296,
+      101
+    ],
+    [
+      5905360,
+      38
+    ],
+    [
+      5907500,
+      22
+    ],
+    [
+      5906992,
+      22
+    ],
+    [
+      5907558,
+      10
+    ]
+  ],
+  "production_sha256": {
+    "V29sPendingMapCore.inc": "457076fbec17273d38fbf34ac0f3d8cf64274118ad4c26393a15123ef5be5056",
+    "V29sPendingMapBridges.inc": "388333d4ad0b30e6a4a4637b774819cf686bb766ee3898a23134df174fb2e855",
+    "V29sPendingMapPatch.inc": "26f4c3fec28f05bd299d3787a86310242365e34379e84dc37538d5e3f3828506"
+  },
+  "checks": [
+    "stock65th insertion reproduces sentinel/neighbor overwrite",
+    "512 actual native inserts and linked traversal",
+    "513th refused before write",
+    "native inline removal/recycling256 nodes and reinsertion",
+    "native traversal entry/return with production bridges and actual native removal fragment",
+    "empty checks and nonempty/incomplete/completed traversal",
+    "constructor reset uses new arena and retains old external bytes",
+    "two owners and completed/pending maps simultaneously distinct",
+    "neighbor headers and guards preserved",
+    "allocation/identity/parent/cold/signature/protection/cache/rollback failures",
+    "cycle/free-chain/header/guard rejection",
+    "two bridge GP/flags/DF/x87/SSE ABI checks"
+  ],
+  "limitations": "Only selected native instructions run in fake packages. Traversal body is a fixture drain using the native removal fragment. No actual game/ASI execution."
+}

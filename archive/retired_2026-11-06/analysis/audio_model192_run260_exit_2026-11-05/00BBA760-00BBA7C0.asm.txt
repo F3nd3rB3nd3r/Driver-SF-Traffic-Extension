@@ -1,0 +1,54 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BBA760: 53                 push        ebx
+  00BBA761: 8B D9              mov         ebx,ecx
+  00BBA763: 8B 43 04           mov         eax,dword ptr [ebx+4]
+  00BBA766: 85 C0              test        eax,eax
+  00BBA768: 74 4C              je          00BBA7B6
+  00BBA76A: 83 38 00           cmp         dword ptr [eax],0
+  00BBA76D: 74 47              je          00BBA7B6
+  00BBA76F: 8B 4B 08           mov         ecx,dword ptr [ebx+8]
+  00BBA772: 56                 push        esi
+  00BBA773: 8B 30              mov         esi,dword ptr [eax]
+  00BBA775: 57                 push        edi
+  00BBA776: 8D 3C CE           lea         edi,[esi+ecx*8]
+  00BBA779: 3B F7              cmp         esi,edi
+  00BBA77B: 73 1B              jae         00BBA798
+  00BBA77D: 8D 49 00           lea         ecx,[ecx]
+  00BBA780: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BBA783: 8B 06              mov         eax,dword ptr [esi]
+  00BBA785: 52                 push        edx
+  00BBA786: 50                 push        eax
+  00BBA787: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BBA78C: E8 0F 45 FF FF     call        00BAECA0
+  00BBA791: 83 C6 08           add         esi,8
+  00BBA794: 3B F7              cmp         esi,edi
+  00BBA796: 72 E8              jb          00BBA780
+  00BBA798: 8B 4B 04           mov         ecx,dword ptr [ebx+4]
+  00BBA79B: 51                 push        ecx
+  00BBA79C: B9 E0 3B 9B 01     mov         ecx,19B3BE0h
+  00BBA7A1: E8 3A A7 FF FF     call        00BB4EE0
+  00BBA7A6: 5F                 pop         edi
+  00BBA7A7: C7 43 04 00 00 00  mov         dword ptr [ebx+4],0
+            00
+  00BBA7AE: C7 43 08 00 00 00  mov         dword ptr [ebx+8],0
+            00
+  00BBA7B5: 5E                 pop         esi
+  00BBA7B6: 5B                 pop         ebx
+  00BBA7B7: C3                 ret
+  00BBA7B8: CC                 int         3
+  00BBA7B9: CC                 int         3
+  00BBA7BA: CC                 int         3
+  00BBA7BB: CC                 int         3
+  00BBA7BC: CC                 int         3
+  00BBA7BD: CC                 int         3
+  00BBA7BE: CC                 int         3
+  00BBA7BF: CC                 int         3
+  00BBA7C0: 8B
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,839 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C8C7E0: 8B C1              mov         eax,ecx
+  00C8C7E2: 33 C9              xor         ecx,ecx
+  00C8C7E4: C7 00 58 70 EA 00  mov         dword ptr [eax],0EA7058h
+  00C8C7EA: 89 48 24           mov         dword ptr [eax+24h],ecx
+  00C8C7ED: 89 48 28           mov         dword ptr [eax+28h],ecx
+  00C8C7F0: 89 48 2C           mov         dword ptr [eax+2Ch],ecx
+  00C8C7F3: 33 D2              xor         edx,edx
+  00C8C7F5: 89 48 04           mov         dword ptr [eax+4],ecx
+  00C8C7F8: 89 48 08           mov         dword ptr [eax+8],ecx
+  00C8C7FB: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  00C8C7FE: 89 48 10           mov         dword ptr [eax+10h],ecx
+  00C8C801: 66 89 50 16        mov         word ptr [eax+16h],dx
+  00C8C805: 89 48 1C           mov         dword ptr [eax+1Ch],ecx
+  00C8C808: 88 48 20           mov         byte ptr [eax+20h],cl
+  00C8C80B: 88 48 21           mov         byte ptr [eax+21h],cl
+  00C8C80E: 88 48 30           mov         byte ptr [eax+30h],cl
+  00C8C811: 88 48 31           mov         byte ptr [eax+31h],cl
+  00C8C814: 89 48 34           mov         dword ptr [eax+34h],ecx
+  00C8C817: 89 48 38           mov         dword ptr [eax+38h],ecx
+  00C8C81A: 89 48 3C           mov         dword ptr [eax+3Ch],ecx
+  00C8C81D: 89 48 48           mov         dword ptr [eax+48h],ecx
+  00C8C820: 89 48 64           mov         dword ptr [eax+64h],ecx
+  00C8C823: 89 48 68           mov         dword ptr [eax+68h],ecx
+  00C8C826: C2 04 00           ret         4
+  00C8C829: CC                 int         3
+  00C8C82A: CC                 int         3
+  00C8C82B: CC                 int         3
+  00C8C82C: CC                 int         3
+  00C8C82D: CC                 int         3
+  00C8C82E: CC                 int         3
+  00C8C82F: CC                 int         3
+  00C8C830: 53                 push        ebx
+  00C8C831: 56                 push        esi
+  00C8C832: 8B F1              mov         esi,ecx
+  00C8C834: 0F B7 56 16        movzx       edx,word ptr [esi+16h]
+  00C8C838: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  00C8C83B: B3 01              mov         bl,1
+  00C8C83D: 8B C1              mov         eax,ecx
+  00C8C83F: 85 D2              test        edx,edx
+  00C8C841: 76 1F              jbe         00C8C862
+  00C8C843: 57                 push        edi
+  00C8C844: 0F B7 7E 16        movzx       edi,word ptr [esi+16h]
+  00C8C848: 84 DB              test        bl,bl
+  00C8C84A: 74 09              je          00C8C855
+  00C8C84C: 80 38 00           cmp         byte ptr [eax],0
+  00C8C84F: 74 04              je          00C8C855
+  00C8C851: B3 01              mov         bl,1
+  00C8C853: EB 02              jmp         00C8C857
+  00C8C855: 32 DB              xor         bl,bl
+  00C8C857: 40                 inc         eax
+  00C8C858: 83 EF 01           sub         edi,1
+  00C8C85B: 75 EB              jne         00C8C848
+  00C8C85D: 5F                 pop         edi
+  00C8C85E: 84 DB              test        bl,bl
+  00C8C860: 74 1B              je          00C8C87D
+  00C8C862: 85 C9              test        ecx,ecx
+  00C8C864: 74 17              je          00C8C87D
+  00C8C866: 33 C0              xor         eax,eax
+  00C8C868: 85 D2              test        edx,edx
+  00C8C86A: 76 11              jbe         00C8C87D
+  00C8C86C: 8D 64 24 00        lea         esp,[esp]
+  00C8C870: C6 01 00           mov         byte ptr [ecx],0
+  00C8C873: 0F B7 56 16        movzx       edx,word ptr [esi+16h]
+  00C8C877: 40                 inc         eax
+  00C8C878: 41                 inc         ecx
+  00C8C879: 3B C2              cmp         eax,edx
+  00C8C87B: 72 F3              jb          00C8C870
+  00C8C87D: E8 1E 05 FA FF     call        00C2CDA0
+  00C8C882: 0F B7 4E 16        movzx       ecx,word ptr [esi+16h]
+  00C8C886: 99                 cdq
+  00C8C887: F7 F9              idiv        eax,ecx
+  00C8C889: F6 46 1C 02        test        byte ptr [esi+1Ch],2
+  00C8C88D: 66 89 56 14        mov         word ptr [esi+14h],dx
+  00C8C891: 74 0C              je          00C8C89F
+  00C8C893: 0F B7 C2           movzx       eax,dx
+  00C8C896: C1 E0 04           shl         eax,4
+  00C8C899: 03 46 08           add         eax,dword ptr [esi+8]
+  00C8C89C: 89 46 10           mov         dword ptr [esi+10h],eax
+  00C8C89F: 8B 76 0C           mov         esi,dword ptr [esi+0Ch]
+  00C8C8A2: 8A C3              mov         al,bl
+  00C8C8A4: 85 F6              test        esi,esi
+  00C8C8A6: 74 07              je          00C8C8AF
+  00C8C8A8: 0F B7 CA           movzx       ecx,dx
+  00C8C8AB: C6 04 31 01        mov         byte ptr [ecx+esi],1
+  00C8C8AF: 5E                 pop         esi
+  00C8C8B0: 5B                 pop         ebx
+  00C8C8B1: C3                 ret
+  00C8C8B2: CC                 int         3
+  00C8C8B3: CC                 int         3
+  00C8C8B4: CC                 int         3
+  00C8C8B5: CC                 int         3
+  00C8C8B6: CC                 int         3
+  00C8C8B7: CC                 int         3
+  00C8C8B8: CC                 int         3
+  00C8C8B9: CC                 int         3
+  00C8C8BA: CC                 int         3
+  00C8C8BB: CC                 int         3
+  00C8C8BC: CC                 int         3
+  00C8C8BD: CC                 int         3
+  00C8C8BE: CC                 int         3
+  00C8C8BF: CC                 int         3
+  00C8C8C0: 8B 51 24           mov         edx,dword ptr [ecx+24h]
+  00C8C8C3: 3B 51 28           cmp         edx,dword ptr [ecx+28h]
+  00C8C8C6: 74 2A              je          00C8C8F2
+  00C8C8C8: 56                 push        esi
+  00C8C8C9: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00C8C8D0: 8B 02              mov         eax,dword ptr [edx]
+  00C8C8D2: 8B 40 38           mov         eax,dword ptr [eax+38h]
+  00C8C8D5: 8B 71 4C           mov         esi,dword ptr [ecx+4Ch]
+  00C8C8D8: 83 C0 18           add         eax,18h
+  00C8C8DB: 89 30              mov         dword ptr [eax],esi
+  00C8C8DD: 8B 71 50           mov         esi,dword ptr [ecx+50h]
+  00C8C8E0: 89 70 04           mov         dword ptr [eax+4],esi
+  00C8C8E3: 8B 71 54           mov         esi,dword ptr [ecx+54h]
+  00C8C8E6: 83 C2 04           add         edx,4
+  00C8C8E9: 89 70 08           mov         dword ptr [eax+8],esi
+  00C8C8EC: 3B 51 28           cmp         edx,dword ptr [ecx+28h]
+  00C8C8EF: 75 DF              jne         00C8C8D0
+  00C8C8F1: 5E                 pop         esi
+  00C8C8F2: C3                 ret
+  00C8C8F3: CC                 int         3
+  00C8C8F4: CC                 int         3
+  00C8C8F5: CC                 int         3
+  00C8C8F6: CC                 int         3
+  00C8C8F7: CC                 int         3
+  00C8C8F8: CC                 int         3
+  00C8C8F9: CC                 int         3
+  00C8C8FA: CC                 int         3
+  00C8C8FB: CC                 int         3
+  00C8C8FC: CC                 int         3
+  00C8C8FD: CC                 int         3
+  00C8C8FE: CC                 int         3
+  00C8C8FF: CC                 int         3
+  00C8C900: 56                 push        esi
+  00C8C901: 57                 push        edi
+  00C8C902: 8B F1              mov         esi,ecx
+  00C8C904: 33 FF              xor         edi,edi
+  00C8C906: 89 7E 04           mov         dword ptr [esi+4],edi
+  00C8C909: 8B 46 24           mov         eax,dword ptr [esi+24h]
+  00C8C90C: 3B C7              cmp         eax,edi
+  00C8C90E: 74 1B              je          00C8C92B
+  00C8C910: 50                 push        eax
+  00C8C911: 89 46 28           mov         dword ptr [esi+28h],eax
+  00C8C914: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C8C919: 50                 push        eax
+  00C8C91A: E8 81 D2 00 00     call        00C99BA0
+  00C8C91F: 83 C4 08           add         esp,8
+  00C8C922: 89 7E 24           mov         dword ptr [esi+24h],edi
+  00C8C925: 89 7E 28           mov         dword ptr [esi+28h],edi
+  00C8C928: 89 7E 2C           mov         dword ptr [esi+2Ch],edi
+  00C8C92B: F6 46 1C 02        test        byte ptr [esi+1Ch],2
+  00C8C92F: 74 1A              je          00C8C94B
+  00C8C931: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00C8C934: 3B C7              cmp         eax,edi
+  00C8C936: 74 13              je          00C8C94B
+  00C8C938: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00C8C93E: 50                 push        eax
+  00C8C93F: 51                 push        ecx
+  00C8C940: E8 5B D2 00 00     call        00C99BA0
+  00C8C945: 83 C4 08           add         esp,8
+  00C8C948: 89 7E 0C           mov         dword ptr [esi+0Ch],edi
+  00C8C94B: 5F                 pop         edi
+  00C8C94C: 5E                 pop         esi
+  00C8C94D: C3                 ret
+  00C8C94E: CC                 int         3
+  00C8C94F: CC                 int         3
+  00C8C950: 83 EC 0C           sub         esp,0Ch
+  00C8C953: 56                 push        esi
+  00C8C954: 8B F1              mov         esi,ecx
+  00C8C956: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  00C8C959: B8 02 00 00 00     mov         eax,2
+  00C8C95E: 85 C9              test        ecx,ecx
+  00C8C960: 0F 84 6A 01 00 00  je          00C8CAD0
+  00C8C966: 53                 push        ebx
+  00C8C967: BB 01 00 00 00     mov         ebx,1
+  00C8C96C: 88 5E 20           mov         byte ptr [esi+20h],bl
+  00C8C96F: 83 79 04 00        cmp         dword ptr [ecx+4],0
+  00C8C973: B8 25 00 00 00     mov         eax,25h
+  00C8C978: 0F 8E 51 01 00 00  jle         00C8CACF
+  00C8C97E: 33 C0              xor         eax,eax
+  00C8C980: 66 89 46 18        mov         word ptr [esi+18h],ax
+  00C8C984: 8B 01              mov         eax,dword ptr [ecx]
+  00C8C986: 55                 push        ebp
+  00C8C987: 8B D3              mov         edx,ebx
+  00C8C989: 66 89 56 18        mov         word ptr [esi+18h],dx
+  00C8C98D: D9 00              fld         dword ptr [eax]
+  00C8C98F: D9 5E 4C           fstp        dword ptr [esi+4Ch]
+  00C8C992: 57                 push        edi
+  00C8C993: D9 40 04           fld         dword ptr [eax+4]
+  00C8C996: 8D 7E 4C           lea         edi,[esi+4Ch]
+  00C8C999: D9 5E 50           fstp        dword ptr [esi+50h]
+  00C8C99C: D9 40 08           fld         dword ptr [eax+8]
+  00C8C99F: D9 5E 54           fstp        dword ptr [esi+54h]
+  00C8C9A2: 8B 40 0C           mov         eax,dword ptr [eax+0Ch]
+  00C8C9A5: 8B 2D 68 D5 FD 00  mov         ebp,dword ptr ds:[00FDD568h]
+  00C8C9AB: 8D 44 28 FF        lea         eax,[eax+ebp-1]
+  00C8C9AF: 99                 cdq
+  00C8C9B0: F7 FD              idiv        eax,ebp
+  00C8C9B2: 85 C0              test        eax,eax
+  00C8C9B4: 75 02              jne         00C8C9B8
+  00C8C9B6: 8B C3              mov         eax,ebx
+  00C8C9B8: 89 46 3C           mov         dword ptr [esi+3Ch],eax
+  00C8C9BB: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  00C8C9BE: 83 FA 01           cmp         edx,1
+  00C8C9C1: 0F 8E A6 00 00 00  jle         00C8CA6D
+  00C8C9C7: 8B 09              mov         ecx,dword ptr [ecx]
+  00C8C9C9: 8B 41 10           mov         eax,dword ptr [ecx+10h]
+  00C8C9CC: F3 0F 10 07        movss       xmm0,dword ptr [edi]
+  00C8C9D0: 83 C1 10           add         ecx,10h
+  00C8C9D3: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00C8C9D7: 8B 41 04           mov         eax,dword ptr [ecx+4]
+  00C8C9DA: 0F 2E 44 24 10     ucomiss     xmm0,dword ptr [esp+10h]
+  00C8C9DF: 8B 49 08           mov         ecx,dword ptr [ecx+8]
+  00C8C9E2: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00C8C9E6: 9F                 lahf
+  00C8C9E7: 89 4C 24 18        mov         dword ptr [esp+18h],ecx
+  00C8C9EB: F6 C4 44           test        ah,44h
+  00C8C9EE: 7A 3D              jp          00C8CA2D
+  00C8C9F0: F3 0F 10 46 50     movss       xmm0,dword ptr [esi+50h]
+  00C8C9F5: 0F 2E 44 24 14     ucomiss     xmm0,dword ptr [esp+14h]
+  00C8C9FA: 9F                 lahf
+  00C8C9FB: F6 C4 44           test        ah,44h
+  00C8C9FE: 7A 2D              jp          00C8CA2D
+  00C8CA00: F3 0F 10 46 54     movss       xmm0,dword ptr [esi+54h]
+  00C8CA05: 0F 2E 44 24 18     ucomiss     xmm0,dword ptr [esp+18h]
+  00C8CA0A: 9F                 lahf
+  00C8CA0B: F6 C4 44           test        ah,44h
+  00C8CA0E: 7A 1D              jp          00C8CA2D
+  00C8CA10: 83 FA 02           cmp         edx,2
+  00C8CA13: 7F 18              jg          00C8CA2D
+  00C8CA15: 57                 push        edi
+  00C8CA16: 8B CE              mov         ecx,esi
+  00C8CA18: E8 A3 FC FF FF     call        00C8C6C0
+  00C8CA1D: F3 0F 10 17        movss       xmm2,dword ptr [edi]
+  00C8CA21: F3 0F 10 4E 50     movss       xmm1,dword ptr [esi+50h]
+  00C8CA26: F3 0F 10 46 54     movss       xmm0,dword ptr [esi+54h]
+  00C8CA2B: EB 26              jmp         00C8CA53
+  00C8CA2D: 57                 push        edi
+  00C8CA2E: 8B CE              mov         ecx,esi
+  00C8CA30: E8 8B FC FF FF     call        00C8C6C0
+  00C8CA35: 8D 54 24 10        lea         edx,[esp+10h]
+  00C8CA39: 52                 push        edx
+  00C8CA3A: 8B CE              mov         ecx,esi
+  00C8CA3C: E8 7F FC FF FF     call        00C8C6C0
+  00C8CA41: F3 0F 10 44 24 18  movss       xmm0,dword ptr [esp+18h]
+  00C8CA47: F3 0F 10 4C 24 14  movss       xmm1,dword ptr [esp+14h]
+  00C8CA4D: F3 0F 10 54 24 10  movss       xmm2,dword ptr [esp+10h]
+  00C8CA53: F3 0F 5C 17        subss       xmm2,dword ptr [edi]
+  00C8CA57: F3 0F 5C 4E 50     subss       xmm1,dword ptr [esi+50h]
+  00C8CA5C: F3 0F 5C 46 54     subss       xmm0,dword ptr [esi+54h]
+  00C8CA61: F3 0F 11 56 58     movss       dword ptr [esi+58h],xmm2
+  00C8CA66: F3 0F 11 4E 5C     movss       dword ptr [esi+5Ch],xmm1
+  00C8CA6B: EB 0D              jmp         00C8CA7A
+  00C8CA6D: 0F 57 C0           xorps       xmm0,xmm0
+  00C8CA70: F3 0F 11 46 58     movss       dword ptr [esi+58h],xmm0
+  00C8CA75: F3 0F 11 46 5C     movss       dword ptr [esi+5Ch],xmm0
+  00C8CA7A: 8B CE              mov         ecx,esi
+  00C8CA7C: F3 0F 11 46 60     movss       dword ptr [esi+60h],xmm0
+  00C8CA81: E8 3A FE FF FF     call        00C8C8C0
+  00C8CA86: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00C8CA8A: 8B 4E 3C           mov         ecx,dword ptr [esi+3Ch]
+  00C8CA8D: 8D 14 01           lea         edx,[ecx+eax]
+  00C8CA90: 89 4C 24 20        mov         dword ptr [esp+20h],ecx
+  00C8CA94: DB 44 24 20        fild        dword ptr [esp+20h]
+  00C8CA98: 89 46 34           mov         dword ptr [esi+34h],eax
+  00C8CA9B: 89 56 38           mov         dword ptr [esi+38h],edx
+  00C8CA9E: 85 C9              test        ecx,ecx
+  00C8CAA0: 7D 06              jge         00C8CAA8
+  00C8CAA2: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  00C8CAA8: D9 E8              fld1
+  00C8CAAA: 89 44 24 20        mov         dword ptr [esp+20h],eax
+  00C8CAAE: DE F1              fdivrp      st(1),st
+  00C8CAB0: D9 56 40           fst         dword ptr [esi+40h]
+  00C8CAB3: DB 44 24 20        fild        dword ptr [esp+20h]
+  00C8CAB7: 85 C0              test        eax,eax
+  00C8CAB9: 7D 06              jge         00C8CAC1
+  00C8CABB: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  00C8CAC1: DE C9              fmulp       st(1),st
+  00C8CAC3: 5F                 pop         edi
+  00C8CAC4: 89 5E 04           mov         dword ptr [esi+4],ebx
+  00C8CAC7: 8B C3              mov         eax,ebx
+  00C8CAC9: D9 E0              fchs
+  00C8CACB: 5D                 pop         ebp
+  00C8CACC: D9 5E 44           fstp        dword ptr [esi+44h]
+  00C8CACF: 5B                 pop         ebx
+  00C8CAD0: 5E                 pop         esi
+  00C8CAD1: 83 C4 0C           add         esp,0Ch
+  00C8CAD4: C2 04 00           ret         4
+  00C8CAD7: CC                 int         3
+  00C8CAD8: CC                 int         3
+  00C8CAD9: CC                 int         3
+  00C8CADA: CC                 int         3
+  00C8CADB: CC                 int         3
+  00C8CADC: CC                 int         3
+  00C8CADD: CC                 int         3
+  00C8CADE: CC                 int         3
+  00C8CADF: CC                 int         3
+  00C8CAE0: 53                 push        ebx
+  00C8CAE1: 56                 push        esi
+  00C8CAE2: 8B F1              mov         esi,ecx
+  00C8CAE4: 83 7E 04 00        cmp         dword ptr [esi+4],0
+  00C8CAE8: 57                 push        edi
+  00C8CAE9: B8 02 00 00 00     mov         eax,2
+  00C8CAEE: 0F 85 89 00 00 00  jne         00C8CB7D
+  00C8CAF4: 8A 44 24 1C        mov         al,byte ptr [esp+1Ch]
+  00C8CAF8: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  00C8CAFC: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  00C8CB00: 8B 5C 24 18        mov         ebx,dword ptr [esp+18h]
+  00C8CB04: 8B 7C 24 20        mov         edi,dword ptr [esp+20h]
+  00C8CB08: 89 4E 08           mov         dword ptr [esi+8],ecx
+  00C8CB0B: 66 89 56 16        mov         word ptr [esi+16h],dx
+  00C8CB0F: 89 5E 1C           mov         dword ptr [esi+1Ch],ebx
+  00C8CB12: 88 46 21           mov         byte ptr [esi+21h],al
+  00C8CB15: 8B 47 04           mov         eax,dword ptr [edi+4]
+  00C8CB18: 85 C0              test        eax,eax
+  00C8CB1A: 74 20              je          00C8CB3C
+  00C8CB1C: 89 46 0C           mov         dword ptr [esi+0Ch],eax
+  00C8CB1F: 0F B7 07           movzx       eax,word ptr [edi]
+  00C8CB22: 0F B7 D0           movzx       edx,ax
+  00C8CB25: C1 E2 04           shl         edx,4
+  00C8CB28: 03 D1              add         edx,ecx
+  00C8CB2A: 5F                 pop         edi
+  00C8CB2B: 66 89 46 14        mov         word ptr [esi+14h],ax
+  00C8CB2F: 89 56 10           mov         dword ptr [esi+10h],edx
+  00C8CB32: 5E                 pop         esi
+  00C8CB33: B8 01 00 00 00     mov         eax,1
+  00C8CB38: 5B                 pop         ebx
+  00C8CB39: C2 14 00           ret         14h
+  00C8CB3C: 33 C0              xor         eax,eax
+  00C8CB3E: 66 89 46 14        mov         word ptr [esi+14h],ax
+  00C8CB42: 89 4E 10           mov         dword ptr [esi+10h],ecx
+  00C8CB45: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00C8CB4B: 52                 push        edx
+  00C8CB4C: 51                 push        ecx
+  00C8CB4D: E8 EE CE 00 00     call        00C99A40
+  00C8CB52: 83 C4 08           add         esp,8
+  00C8CB55: 89 46 0C           mov         dword ptr [esi+0Ch],eax
+  00C8CB58: 85 C0              test        eax,eax
+  00C8CB5A: 75 0B              jne         00C8CB67
+  00C8CB5C: 5F                 pop         edi
+  00C8CB5D: 5E                 pop         esi
+  00C8CB5E: B8 02 00 00 00     mov         eax,2
+  00C8CB63: 5B                 pop         ebx
+  00C8CB64: C2 14 00           ret         14h
+  00C8CB67: 8B CE              mov         ecx,esi
+  00C8CB69: E8 22 FC FF FF     call        00C8C790
+  00C8CB6E: F6 C3 01           test        bl,1
+  00C8CB71: 74 05              je          00C8CB78
+  00C8CB73: E8 B8 FC FF FF     call        00C8C830
+  00C8CB78: B8 01 00 00 00     mov         eax,1
+  00C8CB7D: 5F                 pop         edi
+  00C8CB7E: 5E                 pop         esi
+  00C8CB7F: 5B                 pop         ebx
+  00C8CB80: C2 14 00           ret         14h
+  00C8CB83: CC                 int         3
+  00C8CB84: CC                 int         3
+  00C8CB85: CC                 int         3
+  00C8CB86: CC                 int         3
+  00C8CB87: CC                 int         3
+  00C8CB88: CC                 int         3
+  00C8CB89: CC                 int         3
+  00C8CB8A: CC                 int         3
+  00C8CB8B: CC                 int         3
+  00C8CB8C: CC                 int         3
+  00C8CB8D: CC                 int         3
+  00C8CB8E: CC                 int         3
+  00C8CB8F: CC                 int         3
+  00C8CB90: 53                 push        ebx
+  00C8CB91: 56                 push        esi
+  00C8CB92: 8B F1              mov         esi,ecx
+  00C8CB94: 57                 push        edi
+  00C8CB95: 8B 7E 10           mov         edi,dword ptr [esi+10h]
+  00C8CB98: BB 11 00 00 00     mov         ebx,11h
+  00C8CB9D: 85 FF              test        edi,edi
+  00C8CB9F: 74 60              je          00C8CC01
+  00C8CBA1: 8B 4E 1C           mov         ecx,dword ptr [esi+1Ch]
+  00C8CBA4: F6 C1 01           test        cl,1
+  00C8CBA7: 74 09              je          00C8CBB2
+  00C8CBA9: 8B CE              mov         ecx,esi
+  00C8CBAB: E8 80 FC FF FF     call        00C8C830
+  00C8CBB0: EB 32              jmp         00C8CBE4
+  00C8CBB2: 66 FF 46 14        inc         word ptr [esi+14h]
+  00C8CBB6: 0F B7 46 14        movzx       eax,word ptr [esi+14h]
+  00C8CBBA: 32 D2              xor         dl,dl
+  00C8CBBC: 66 3B 46 16        cmp         ax,word ptr [esi+16h]
+  00C8CBC0: 73 0D              jae         00C8CBCF
+  00C8CBC2: F6 C1 02           test        cl,2
+  00C8CBC5: 74 1B              je          00C8CBE2
+  00C8CBC7: 83 C7 10           add         edi,10h
+  00C8CBCA: 89 7E 10           mov         dword ptr [esi+10h],edi
+  00C8CBCD: EB 13              jmp         00C8CBE2
+  00C8CBCF: F6 C1 02           test        cl,2
+  00C8CBD2: 74 06              je          00C8CBDA
+  00C8CBD4: 8B 46 08           mov         eax,dword ptr [esi+8]
+  00C8CBD7: 89 46 10           mov         dword ptr [esi+10h],eax
+  00C8CBDA: 33 C9              xor         ecx,ecx
+  00C8CBDC: 66 89 4E 14        mov         word ptr [esi+14h],cx
+  00C8CBE0: B2 01              mov         dl,1
+  00C8CBE2: 8A C2              mov         al,dl
+  00C8CBE4: F6 46 1C 02        test        byte ptr [esi+1Ch],2
+  00C8CBE8: 74 17              je          00C8CC01
+  00C8CBEA: 84 C0              test        al,al
+  00C8CBEC: 74 06              je          00C8CBF4
+  00C8CBEE: 80 7E 21 00        cmp         byte ptr [esi+21h],0
+  00C8CBF2: 74 0D              je          00C8CC01
+  00C8CBF4: 33 D2              xor         edx,edx
+  00C8CBF6: 5F                 pop         edi
+  00C8CBF7: 66 89 56 18        mov         word ptr [esi+18h],dx
+  00C8CBFB: 5E                 pop         esi
+  00C8CBFC: 8D 42 01           lea         eax,[edx+1]
+  00C8CBFF: 5B                 pop         ebx
+  00C8CC00: C3                 ret
+  00C8CC01: 5F                 pop         edi
+  00C8CC02: 5E                 pop         esi
+  00C8CC03: 8B C3              mov         eax,ebx
+  00C8CC05: 5B                 pop         ebx
+  00C8CC06: C3                 ret
+  00C8CC07: CC                 int         3
+  00C8CC08: CC                 int         3
+  00C8CC09: CC                 int         3
+  00C8CC0A: CC                 int         3
+  00C8CC0B: CC                 int         3
+  00C8CC0C: CC                 int         3
+  00C8CC0D: CC                 int         3
+  00C8CC0E: CC                 int         3
+  00C8CC0F: CC                 int         3
+  00C8CC10: 83 EC 10           sub         esp,10h
+  00C8CC13: 56                 push        esi
+  00C8CC14: 8B F1              mov         esi,ecx
+  00C8CC16: 0F B7 56 18        movzx       edx,word ptr [esi+18h]
+  00C8CC1A: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  00C8CC1D: 0F B7 C2           movzx       eax,dx
+  00C8CC20: 3B 41 04           cmp         eax,dword ptr [ecx+4]
+  00C8CC23: 0F 8D 91 00 00 00  jge         00C8CCBA
+  00C8CC29: C1 E0 04           shl         eax,4
+  00C8CC2C: 03 01              add         eax,dword ptr [ecx]
+  00C8CC2E: 57                 push        edi
+  00C8CC2F: 8B F8              mov         edi,eax
+  00C8CC31: 42                 inc         edx
+  00C8CC32: 66 89 56 18        mov         word ptr [esi+18h],dx
+  00C8CC36: D9 07              fld         dword ptr [edi]
+  00C8CC38: D9 5E 4C           fstp        dword ptr [esi+4Ch]
+  00C8CC3B: D9 47 04           fld         dword ptr [edi+4]
+  00C8CC3E: D9 5E 50           fstp        dword ptr [esi+50h]
+  00C8CC41: D9 47 08           fld         dword ptr [edi+8]
+  00C8CC44: D9 5E 54           fstp        dword ptr [esi+54h]
+  00C8CC47: E8 54 01 FA FF     call        00C2CDA0
+  00C8CC4C: F3 0F 2A C0        cvtsi2ss    xmm0,eax
+  00C8CC50: F3 0F 59 05 78 74  mulss       xmm0,dword ptr ds:[00EA7478h]
+            EA 00
+  00C8CC58: 8B 46 10           mov         eax,dword ptr [esi+10h]
+  00C8CC5B: F3 0F 5C 05 14 64  subss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00C8CC63: F3 0F 59 40 08     mulss       xmm0,dword ptr [eax+8]
+  00C8CC68: F3 0F 58 46 4C     addss       xmm0,dword ptr [esi+4Ch]
+  00C8CC6D: F3 0F 11 46 4C     movss       dword ptr [esi+4Ch],xmm0
+  00C8CC72: E8 29 01 FA FF     call        00C2CDA0
+  00C8CC77: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  00C8CC7A: F3 0F 2A C0        cvtsi2ss    xmm0,eax
+  00C8CC7E: F3 0F 59 05 78 74  mulss       xmm0,dword ptr ds:[00EA7478h]
+            EA 00
+  00C8CC86: F3 0F 5C 05 14 64  subss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00C8CC8E: F3 0F 59 41 0C     mulss       xmm0,dword ptr [ecx+0Ch]
+  00C8CC93: F3 0F 58 46 54     addss       xmm0,dword ptr [esi+54h]
+  00C8CC98: F3 0F 11 46 54     movss       dword ptr [esi+54h],xmm0
+  00C8CC9D: 8B 57 0C           mov         edx,dword ptr [edi+0Ch]
+  00C8CCA0: 8B 0D 68 D5 FD 00  mov         ecx,dword ptr ds:[00FDD568h]
+  00C8CCA6: 8D 44 0A FF        lea         eax,[edx+ecx-1]
+  00C8CCAA: 99                 cdq
+  00C8CCAB: F7 F9              idiv        eax,ecx
+  00C8CCAD: 5F                 pop         edi
+  00C8CCAE: 85 C0              test        eax,eax
+  00C8CCB0: 75 05              jne         00C8CCB7
+  00C8CCB2: B8 01 00 00 00     mov         eax,1
+  00C8CCB7: 89 46 3C           mov         dword ptr [esi+3Ch],eax
+  00C8CCBA: 0F B7 4E 18        movzx       ecx,word ptr [esi+18h]
+  00C8CCBE: 8B 46 10           mov         eax,dword ptr [esi+10h]
+  00C8CCC1: 3B 48 04           cmp         ecx,dword ptr [eax+4]
+  00C8CCC4: 7C 18              jl          00C8CCDE
+  00C8CCC6: 8B CE              mov         ecx,esi
+  00C8CCC8: E8 C3 FE FF FF     call        00C8CB90
+  00C8CCCD: 83 F8 01           cmp         eax,1
+  00C8CCD0: 74 0C              je          00C8CCDE
+  00C8CCD2: C7 46 04 00 00 00  mov         dword ptr [esi+4],0
+            00
+  00C8CCD9: 5E                 pop         esi
+  00C8CCDA: 83 C4 10           add         esp,10h
+  00C8CCDD: C3                 ret
+  00C8CCDE: 0F B7 46 18        movzx       eax,word ptr [esi+18h]
+  00C8CCE2: 8B 56 10           mov         edx,dword ptr [esi+10h]
+  00C8CCE5: C1 E0 04           shl         eax,4
+  00C8CCE8: 03 02              add         eax,dword ptr [edx]
+  00C8CCEA: 8B 08              mov         ecx,dword ptr [eax]
+  00C8CCEC: 8B 50 04           mov         edx,dword ptr [eax+4]
+  00C8CCEF: 8B 40 08           mov         eax,dword ptr [eax+8]
+  00C8CCF2: 89 4C 24 08        mov         dword ptr [esp+8],ecx
+  00C8CCF6: 89 54 24 0C        mov         dword ptr [esp+0Ch],edx
+  00C8CCFA: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00C8CCFE: E8 9D 00 FA FF     call        00C2CDA0
+  00C8CD03: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  00C8CD06: F3 0F 2A C0        cvtsi2ss    xmm0,eax
+  00C8CD0A: F3 0F 59 05 78 74  mulss       xmm0,dword ptr ds:[00EA7478h]
+            EA 00
+  00C8CD12: F3 0F 5C 05 14 64  subss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00C8CD1A: F3 0F 59 41 08     mulss       xmm0,dword ptr [ecx+8]
+  00C8CD1F: F3 0F 58 44 24 08  addss       xmm0,dword ptr [esp+8]
+  00C8CD25: F3 0F 11 44 24 08  movss       dword ptr [esp+8],xmm0
+  00C8CD2B: E8 70 00 FA FF     call        00C2CDA0
+  00C8CD30: 8B 56 10           mov         edx,dword ptr [esi+10h]
+  00C8CD33: 8B 4E 3C           mov         ecx,dword ptr [esi+3Ch]
+  00C8CD36: F3 0F 10 4C 24 08  movss       xmm1,dword ptr [esp+8]
+  00C8CD3C: F3 0F 5C 4E 4C     subss       xmm1,dword ptr [esi+4Ch]
+  00C8CD41: F3 0F 2A C0        cvtsi2ss    xmm0,eax
+  00C8CD45: F3 0F 59 05 78 74  mulss       xmm0,dword ptr ds:[00EA7478h]
+            EA 00
+  00C8CD4D: F3 0F 5C 05 14 64  subss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00C8CD55: F3 0F 59 42 0C     mulss       xmm0,dword ptr [edx+0Ch]
+  00C8CD5A: 8B 46 38           mov         eax,dword ptr [esi+38h]
+  00C8CD5D: F3 0F 58 44 24 10  addss       xmm0,dword ptr [esp+10h]
+  00C8CD63: F3 0F 5C 46 54     subss       xmm0,dword ptr [esi+54h]
+  00C8CD68: F3 0F 11 4E 58     movss       dword ptr [esi+58h],xmm1
+  00C8CD6D: F3 0F 10 4C 24 0C  movss       xmm1,dword ptr [esp+0Ch]
+  00C8CD73: F3 0F 5C 4E 50     subss       xmm1,dword ptr [esi+50h]
+  00C8CD78: 89 46 34           mov         dword ptr [esi+34h],eax
+  00C8CD7B: 03 C1              add         eax,ecx
+  00C8CD7D: 89 4C 24 04        mov         dword ptr [esp+4],ecx
+  00C8CD81: DB 44 24 04        fild        dword ptr [esp+4]
+  00C8CD85: F3 0F 11 4E 5C     movss       dword ptr [esi+5Ch],xmm1
+  00C8CD8A: F3 0F 11 46 60     movss       dword ptr [esi+60h],xmm0
+  00C8CD8F: 89 46 38           mov         dword ptr [esi+38h],eax
+  00C8CD92: 85 C9              test        ecx,ecx
+  00C8CD94: 7D 06              jge         00C8CD9C
+  00C8CD96: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  00C8CD9C: D9 E8              fld1
+  00C8CD9E: 8B 4E 34           mov         ecx,dword ptr [esi+34h]
+  00C8CDA1: DE F1              fdivrp      st(1),st
+  00C8CDA3: D9 56 40           fst         dword ptr [esi+40h]
+  00C8CDA6: DB 46 34           fild        dword ptr [esi+34h]
+  00C8CDA9: 85 C9              test        ecx,ecx
+  00C8CDAB: 7D 06              jge         00C8CDB3
+  00C8CDAD: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  00C8CDB3: DE C9              fmulp       st(1),st
+  00C8CDB5: D9 E0              fchs
+  00C8CDB7: D9 5E 44           fstp        dword ptr [esi+44h]
+  00C8CDBA: 5E                 pop         esi
+  00C8CDBB: 83 C4 10           add         esp,10h
+  00C8CDBE: C3                 ret
+  00C8CDBF: CC                 int         3
+  00C8CDC0: 83 EC 0C           sub         esp,0Ch
+  00C8CDC3: 55                 push        ebp
+  00C8CDC4: 8B 6C 24 14        mov         ebp,dword ptr [esp+14h]
+  00C8CDC8: 8B C5              mov         eax,ebp
+  00C8CDCA: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00C8CDCE: DB 44 24 14        fild        dword ptr [esp+14h]
+  00C8CDD2: 85 C0              test        eax,eax
+  00C8CDD4: 7D 06              jge         00C8CDDC
+  00C8CDD6: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  00C8CDDC: D8 49 40           fmul        dword ptr [ecx+40h]
+  00C8CDDF: D8 41 44           fadd        dword ptr [ecx+44h]
+  00C8CDE2: D9 54 24 14        fst         dword ptr [esp+14h]
+  00C8CDE6: D9 E8              fld1
+  00C8CDE8: DF F1              fcomip      st,st(1)
+  00C8CDEA: DD D8              fstp        st(0)
+  00C8CDEC: 77 0A              ja          00C8CDF8
+  00C8CDEE: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00C8CDF6: EB 11              jmp         00C8CE09
+  00C8CDF8: F3 0F 10 44 24 14  movss       xmm0,dword ptr [esp+14h]
+  00C8CDFE: 0F 57 C9           xorps       xmm1,xmm1
+  00C8CE01: 0F 2F C1           comiss      xmm0,xmm1
+  00C8CE04: 77 03              ja          00C8CE09
+  00C8CE06: 0F 28 C1           movaps      xmm0,xmm1
+  00C8CE09: F3 0F 10 49 58     movss       xmm1,dword ptr [ecx+58h]
+  00C8CE0E: 8B 51 24           mov         edx,dword ptr [ecx+24h]
+  00C8CE11: F3 0F 59 C8        mulss       xmm1,xmm0
+  00C8CE15: F3 0F 58 49 4C     addss       xmm1,dword ptr [ecx+4Ch]
+  00C8CE1A: F3 0F 11 4C 24 04  movss       dword ptr [esp+4],xmm1
+  00C8CE20: F3 0F 10 49 5C     movss       xmm1,dword ptr [ecx+5Ch]
+  00C8CE25: F3 0F 59 C8        mulss       xmm1,xmm0
+  00C8CE29: F3 0F 58 49 50     addss       xmm1,dword ptr [ecx+50h]
+  00C8CE2E: F3 0F 11 4C 24 08  movss       dword ptr [esp+8],xmm1
+  00C8CE34: F3 0F 10 49 60     movss       xmm1,dword ptr [ecx+60h]
+  00C8CE39: F3 0F 59 C8        mulss       xmm1,xmm0
+  00C8CE3D: F3 0F 58 49 54     addss       xmm1,dword ptr [ecx+54h]
+  00C8CE42: F3 0F 11 4C 24 0C  movss       dword ptr [esp+0Ch],xmm1
+  00C8CE48: 3B 51 28           cmp         edx,dword ptr [ecx+28h]
+  00C8CE4B: 74 2E              je          00C8CE7B
+  00C8CE4D: 53                 push        ebx
+  00C8CE4E: 8B 5C 24 08        mov         ebx,dword ptr [esp+8]
+  00C8CE52: 56                 push        esi
+  00C8CE53: 8B 74 24 14        mov         esi,dword ptr [esp+14h]
+  00C8CE57: 57                 push        edi
+  00C8CE58: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  00C8CE5C: 8D 64 24 00        lea         esp,[esp]
+  00C8CE60: 8B 02              mov         eax,dword ptr [edx]
+  00C8CE62: 8B 40 38           mov         eax,dword ptr [eax+38h]
+  00C8CE65: 83 C0 18           add         eax,18h
+  00C8CE68: 89 18              mov         dword ptr [eax],ebx
+  00C8CE6A: 89 78 04           mov         dword ptr [eax+4],edi
+  00C8CE6D: 83 C2 04           add         edx,4
+  00C8CE70: 89 70 08           mov         dword ptr [eax+8],esi
+  00C8CE73: 3B 51 28           cmp         edx,dword ptr [ecx+28h]
+  00C8CE76: 75 E8              jne         00C8CE60
+  00C8CE78: 5F                 pop         edi
+  00C8CE79: 5E                 pop         esi
+  00C8CE7A: 5B                 pop         ebx
+  00C8CE7B: 3B 69 38           cmp         ebp,dword ptr [ecx+38h]
+  00C8CE7E: 5D                 pop         ebp
+  00C8CE7F: 72 05              jb          00C8CE86
+  00C8CE81: E8 8A FD FF FF     call        00C8CC10
+  00C8CE86: 83 C4 0C           add         esp,0Ch
+  00C8CE89: C2 04 00           ret         4
+  00C8CE8C: CC                 int         3
+  00C8CE8D: CC                 int         3
+  00C8CE8E: CC                 int         3
+  00C8CE8F: CC                 int         3
+  00C8CE90: 55                 push        ebp
+  00C8CE91: 8B EC              mov         ebp,esp
+  00C8CE93: 6A FF              push        0FFFFFFFFh
+  00C8CE95: 68 38 B5 EF 00     push        0EFB538h
+  00C8CE9A: 68 E8 57 C3 00     push        0C357E8h
+  00C8CE9F: 64 A1 00 00 00 00  mov         eax,dword ptr fs:[00000000h]
+  00C8CEA5: 50                 push        eax
+  00C8CEA6: 64 89 25 00 00 00  mov         dword ptr fs:[00000000h],esp
+            00
+  00C8CEAD: 83 C4 F4           add         esp,0FFFFFFF4h
+  00C8CEB0: 53                 push        ebx
+  00C8CEB1: 56                 push        esi
+  00C8CEB2: 57                 push        edi
+  00C8CEB3: 89 65 E8           mov         dword ptr [ebp-18h],esp
+  00C8CEB6: C7 45 FC 00 00 00  mov         dword ptr [ebp-4],0
+            00
+  00C8CEBD: 33 C0              xor         eax,eax
+  00C8CEBF: 0F A2              cpuid
+  00C8CEC1: 85 C0              test        eax,eax
+  00C8CEC3: 74 74              je          00C8CF39
+  00C8CEC5: C7 45 FC FF FF FF  mov         dword ptr [ebp-4],0FFFFFFFFh
+            FF
+  00C8CECC: EB 19              jmp         00C8CEE7
+  00C8CECE: B8 01 00 00 00     mov         eax,1
+  00C8CED3: C3                 ret
+  00C8CED4: 8B 65 E8           mov         esp,dword ptr [ebp-18h]
+  00C8CED7: C7 45 FC FF FF FF  mov         dword ptr [ebp-4],0FFFFFFFFh
+            FF
+  00C8CEDE: EB 59              jmp         00C8CF39
+  00C8CEE0: C7 45 FC FF FF FF  mov         dword ptr [ebp-4],0FFFFFFFFh
+            FF
+  00C8CEE7: B8 01 00 00 00     mov         eax,1
+  00C8CEEC: 0F A2              cpuid
+  00C8CEEE: F7 C2 00 00 00 02  test        edx,2000000h
+  00C8CEF4: 74 43              je          00C8CF39
+  00C8CEF6: C7 45 FC 01 00 00  mov         dword ptr [ebp-4],1
+            00
+  00C8CEFD: 0F 57 C0           xorps       xmm0,xmm0
+  00C8CF00: C7 45 FC FF FF FF  mov         dword ptr [ebp-4],0FFFFFFFFh
+            FF
+  00C8CF07: EB 2C              jmp         00C8CF35
+  00C8CF09: 8B 45 EC           mov         eax,dword ptr [ebp-14h]
+  00C8CF0C: 8B 08              mov         ecx,dword ptr [eax]
+  00C8CF0E: 8B 11              mov         edx,dword ptr [ecx]
+  00C8CF10: 89 55 E4           mov         dword ptr [ebp-1Ch],edx
+  00C8CF13: B8 01 00 00 00     mov         eax,1
+  00C8CF18: C3                 ret
+  00C8CF19: 8B 65 E8           mov         esp,dword ptr [ebp-18h]
+  00C8CF1C: 81 7D E4 1D 00 00  cmp         dword ptr [ebp-1Ch],0C000001Dh
+            C0
+  00C8CF23: 75 09              jne         00C8CF2E
+  00C8CF25: C7 45 FC FF FF FF  mov         dword ptr [ebp-4],0FFFFFFFFh
+            FF
+  00C8CF2C: EB 0B              jmp         00C8CF39
+  00C8CF2E: C7 45 FC FF FF FF  mov         dword ptr [ebp-4],0FFFFFFFFh
+            FF
+  00C8CF35: B0 01              mov         al,1
+  00C8CF37: EB 02              jmp         00C8CF3B
+  00C8CF39: 32 C0              xor         al,al
+  00C8CF3B: 8B 4D F0           mov         ecx,dword ptr [ebp-10h]
+  00C8CF3E: 64 89 0D 00 00 00  mov         dword ptr fs:[00000000h],ecx
+            00
+  00C8CF45: 5F                 pop         edi
+  00C8CF46: 5E                 pop         esi
+  00C8CF47: 5B                 pop         ebx
+  00C8CF48: 8B E5              mov         esp,ebp
+  00C8CF4A: 5D                 pop         ebp
+  00C8CF4B: C3                 ret
+  00C8CF4C: CC                 int         3
+  00C8CF4D: CC                 int         3
+  00C8CF4E: CC                 int         3
+  00C8CF4F: CC                 int         3
+  00C8CF50: 56                 push        esi
+  00C8CF51: E8 3A FF FF FF     call        00C8CE90
+  00C8CF56: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  00C8CF5A: 33 C9              xor         ecx,ecx
+  00C8CF5C: 84 C0              test        al,al
+  00C8CF5E: 0F 95 C1           setne       cl
+  00C8CF61: 6A 01              push        1
+  00C8CF63: 66 89 0E           mov         word ptr [esi],cx
+  00C8CF66: E8 A4 C1 FA FF     call        00C3910F
+  00C8CF6B: 83 C4 04           add         esp,4
+  00C8CF6E: F7 D8              neg         eax
+  00C8CF70: 1B C0              sbb         eax,eax
+  00C8CF72: 83 E0 02           and         eax,2
+  00C8CF75: 66 09 06           or          word ptr [esi],ax
+  00C8CF78: 5E                 pop         esi
+  00C8CF79: C3                 ret
+  00C8CF7A: CC                 int         3
+  00C8CF7B: CC                 int         3
+  00C8CF7C: CC                 int         3
+  00C8CF7D: CC                 int         3
+  00C8CF7E: CC                 int         3
+  00C8CF7F: CC                 int         3
+  00C8CF80: 83 EC 08           sub         esp,8
+  00C8CF83: F3 0F 10 10        movss       xmm2,dword ptr [eax]
+  00C8CF87: F3 0F 10 58 04     movss       xmm3,dword ptr [eax+4]
+  00C8CF8C: F3 0F 10 60 08     movss       xmm4,dword ptr [eax+8]
+  00C8CF91: F3 0F 10 68 0C     movss       xmm5,dword ptr [eax+0Ch]
+  00C8CF96: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00C8CF9A: F3 0F 10 46 04     movss       xmm0,dword ptr [esi+4]
+  00C8CF9F: F3 0F 10 36        movss       xmm6,dword ptr [esi]
+  00C8CFA3: F3 0F 10 7E 08     movss       xmm7,dword ptr [esi+8]
+  00C8CFA8: 53                 push        ebx
+  00C8CFA9: 8B 5C 24 10        mov         ebx,dword ptr [esp+10h]
+  00C8CFAD: 8B 0B              mov         ecx,dword ptr [ebx]
+  00C8CFAF: 57                 push        edi
+  00C8CFB0: 8D 3C 81           lea         edi,[ecx+eax*4]
+  00C8CFB3: F3 0F 11 44 24 14  movss       dword ptr [esp+14h],xmm0
+  00C8CFB9: F3 0F 10 46 0C     movss       xmm0,dword ptr [esi+0Ch]
+  00C8CFBE: F3 0F 11 44 24 08  movss       dword ptr [esp+8],xmm0
+  00C8CFC4: 3B CF              cmp         ecx,edi
+  00C8CFC6: 0F 83 EB 01 00 00  jae         00C8D1B7
+  00C8CFCC: 8B C7              mov         eax,edi
+  00C8CFCE: 2B C1              sub         eax,ecx
+  00C8CFD0: 83 C0 03           add         eax,3
+  00C8CFD3: 99                 cdq
+  00C8CFD4: 83 E2 03           and         edx,3
+  00C8CFD7: 03 C2              add         eax,edx
+  00C8CFD9: C1 F8 02           sar         eax,2
+  00C8CFDC: 83 F8 04           cmp         eax,4
+  00C8CFDF: 0F 8C 6A 01 00 00  jl          00C8D14F
+  00C8CFE5: 8D 47 F4           lea         eax,[edi-0Ch]
+  00C8CFE8: EB 06              jmp         00C8CFF0
+  00C8CFEA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  00C8CFF0: F3 0F 10 09        movss       xmm1,dword ptr [ecx]
+  00C8CFF4: F3 0F 58 4C 24 14  addss       xmm1,dword ptr [esp+14h]
+  00C8CFFA: F3 0F 59 CA        mulss       xmm1,xmm2
+  00C8CFFE: 0F 28 C3           movaps      xmm0,xmm3
+  00C8D001: F3 0F 59 C6        mulss       xmm0,xmm6
+  00C8D005: F3 0F 58 C8        addss       xmm1,xmm0
+  00C8D009: F3 0F 10 01        movss       xmm0,dword ptr [ecx]
+  00C8D00D: F3 0F 11 44 24 18  movss       dword ptr [esp+18h],xmm0
+  00C8D013: F3 0F 11 74 24 14  movss       dword ptr [esp+14h],xmm6
+  00C8D019: 0F 28 C5           movaps      xmm0,xmm5
+  00C8D01C: F3 0F 59 44 24 08  mulss       xmm0,dword ptr [esp+8]
+  00C8D022: F3 0F 58 C1        addss       xmm0,xmm1
+  00C8D026: F3 0F 11 7C 24 08  movss       dword ptr [esp+8],xmm7
+  00C8D02C: 0F 28 CC           movaps      xmm1,xmm4
+  00C8D02F: F3 0F 59 CF        mulss       xmm1,xmm7
+  00C8D033: F3 0F 58 C1        addss       xmm0,xmm1
+  00C8D037: F3 0F 10 49 04     movss       xmm1,dword ptr [ecx+4]
+  00C8D03C: F3 0F 58 4C 24 14  addss       xmm1,dword ptr [esp+14h]
+  00C8D042: 0F 28 F0           movaps      xmm6,xmm0
+  00C8D045: F3 0F 11 01        movss       dword ptr [ecx],xmm0
+  00C8D049: F3 0F 10 44 24 18  movss       xmm0,dword ptr [esp+18h]
+  00C8D04F: F3 0F 11 44 24 14  movss       dword ptr [esp+14h],xmm0
+  00C8D055: F3 0F 59 CA        mulss       xmm1,xmm2
+  00C8D059: 0F 28 FB           movaps      xmm7,xmm3
+  00C8D05C: F3 0F 59 F8        mulss       xmm7,xmm0
+  00C8D060: F3 0F 10 41 04     movss       xmm0,dword ptr [ecx+4]
+  00C8D065: F3 0F 58 CF        addss       xmm1,xmm7
+  00C8D069: F3 0F 11 44 24 18  movss       dword ptr [esp+18h],xmm0
+  00C8D06F: 0F 28 C5           movaps      xmm0,xmm5
+  00C8D072: F3 0F 59 44 24 08  mulss       xmm0,dword ptr [esp+8]
+  00C8D078: F3 0F 58 C1        addss       xmm0,xmm1
+  00C8D07C: F3 0F 11 74 24 08  movss       dword ptr [esp+8],xmm6
+  00C8D082: 0F 28 CC           movaps      xmm1,xmm4
+  00C8D085: F3 0F 59 CE        mulss       xmm1,xmm6
+  00C8D089: F3 0F 58 C1        addss       xmm0,xmm1
+  00C8D08D: F3 0F 10 49 08     movss       xmm1,dword ptr [ecx+8]
+  00C8D092: F3 0F 58 4C 24 14  addss       xmm1,dword ptr [esp+14h]
+  00C8D098: 0F 28 F8           movaps      xmm7,xmm0
+  00C8D09B: F3 0F 11 41 04     movss       dword ptr [ecx+4],xmm0
+  00C8D0A0: F3 0F 10 44 24 18  movss       xmm0,dword ptr [esp+18h]
+  00C8D0A6: F3 0F 11 44 24 14  movss       dword ptr [esp+14h],xmm0
+  00C8D0AC: F3 0F 59 CA        mulss       xmm1,xmm2
+  00C8D0B0: 0F 28 F3           movaps      xmm6,xmm3
+  00C8D0B3: F3 0F 59 F0        mulss       xmm6,xmm0
+  00C8D0B7: F3 0F 10 41 08     movss       xmm0,dword ptr [ecx+8]
+  00C8D0BC: F3 0F 11 44 24 18  movss       dword ptr [esp+18h],xmm0
+  00C8D0C2: F3 0F 58 CE        addss       xmm1,xmm6
+  00C8D0C6: F3 0F 10 71 0C     movss       xmm6,dword ptr [ecx+0Ch]
+  00C8D0CB: 0F 28 C5           movaps      xmm0,xmm5
+  00C8D0CE: F3 0F 59 44 24 08  mulss       xmm0,dword ptr [esp+8]
+  00C8D0D4: F3 0F 58 C1        addss       xmm0,xmm1
+  00C8D0D8: F3 0F 11 7C 24 08  movss       dword ptr [esp+8],xmm7
+  00C8D0DE: 0F 28 CC           movaps      xmm1,xmm4
+  00C8D0E1: F3 0F 59 CF        mulss       xmm1,xmm7
+  00C8D0E5: F3 0F 58 C1        addss       xmm0,xmm1
+  00C8D0E9: F3 0F 11 44 24 0C  movss       dword ptr [esp+0Ch],xmm0
+  00C8D0EF: F3 0F 11 41 08     movss       dword ptr [ecx+8],xmm0
+  00C8D0F4: F3 0F 10 44 24 18  movss       xmm0,dword ptr [esp+18h]
+  00C8D0FA: 0F 28 CE           movaps      xmm1,xmm6
+  00C8D0FD: F3 0F 58 4C 24 14  addss       xmm1,dword ptr [esp+14h]
+  00C8D103: F3 0F 11 44 24 14  movss       dword ptr [esp+14h],xmm0
+  00C8D109: 0F 28 FB           movaps      xmm7,xmm3
+  00C8D10C: F3 0F 59 F8        mulss       xmm7,xmm0
+  00C8D110: F3 0F 59 CA        mulss       xmm1,xmm2
+  00C8D114: F3 0F 58 CF        addss       xmm1,xmm7
+  00C8D118: 0F 28 C5           movaps      xmm0,xmm5
+  00C8D11B: F3 0F 59 44 24 08  mulss       xmm0,dword ptr [esp+8]
+  00C8D121: F3 0F 58 C1        addss       xmm0,xmm1
+  00C8D125: F3 0F 10 4C 24 0C  movss       xmm1,dword ptr [esp+0Ch]
+  00C8D12B: 0F 28 FC           movaps      xmm7,xmm4
+  00C8D12E: F3 0F 59 F9        mulss       xmm7,xmm1
+  00C8D132: F3 0F 58 C7        addss       xmm0,xmm7
+  00C8D136: F3 0F 11 41 0C     movss       dword ptr [ecx+0Ch],xmm0
+  00C8D13B: 83 C1 10           add         ecx,10h
+  00C8D13E: 3B C8              cmp         ecx,eax
+  00C8D140: F3 0F 11 4C 24 08  movss       dword ptr [esp+8],xmm1
+  00C8D146: 0F 28 F8           movaps      xmm7,xmm0
+  00C8D149: 0F 8C A1 FE FF FF  jl          00C8CFF0
+  00C8D14F: 3B CF              cmp         ecx,edi
+  00C8D151: 73 64              jae         00C8D1B7
+  00C8D153: EB 0B              jmp         00C8D160
+  00C8D155: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00C8D15C: 8D 64 24 00        lea         esp,[esp]
+  00C8D160: F3
+
+  Summary
+
+      9C8000 .text

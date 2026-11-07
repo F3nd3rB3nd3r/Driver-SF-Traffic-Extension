@@ -1,0 +1,158 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00556BD0: 8D 73 44           lea         esi,[ebx+44h]
+  00556BD3: B9 10 00 00 00     mov         ecx,10h
+  00556BD8: 8D BC 24 84 00 00  lea         edi,[esp+00000084h]
+            00
+  00556BDF: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00556BE1: F3 0F 10 9C 24 BC  movss       xmm3,dword ptr [esp+000000BCh]
+            00 00 00
+  00556BEA: F3 0F 5C 5D 08     subss       xmm3,dword ptr [ebp+8]
+  00556BEF: F3 0F 10 94 24 B8  movss       xmm2,dword ptr [esp+000000B8h]
+            00 00 00
+  00556BF8: F3 0F 5C 55 04     subss       xmm2,dword ptr [ebp+4]
+  00556BFD: F3 0F 10 84 24 C0  movss       xmm0,dword ptr [esp+000000C0h]
+            00 00 00
+  00556C06: F3 0F 5C 45 0C     subss       xmm0,dword ptr [ebp+0Ch]
+  00556C0B: F3 0F 10 8C 24 B4  movss       xmm1,dword ptr [esp+000000B4h]
+            00 00 00
+  00556C14: F3 0F 5C 4D 00     subss       xmm1,dword ptr [ebp]
+  00556C19: 0F 28 E3           movaps      xmm4,xmm3
+  00556C1C: F3 0F 59 E3        mulss       xmm4,xmm3
+  00556C20: 0F 28 DA           movaps      xmm3,xmm2
+  00556C23: F3 0F 59 C0        mulss       xmm0,xmm0
+  00556C27: F3 0F 59 DA        mulss       xmm3,xmm2
+  00556C2B: F3 0F 58 C4        addss       xmm0,xmm4
+  00556C2F: 0F 28 D1           movaps      xmm2,xmm1
+  00556C32: F3 0F 59 D1        mulss       xmm2,xmm1
+  00556C36: F3 0F 10 4C 24 1C  movss       xmm1,dword ptr [esp+1Ch]
+  00556C3C: F3 0F 58 C3        addss       xmm0,xmm3
+  00556C40: F3 0F 58 C2        addss       xmm0,xmm2
+  00556C44: 0F 2F C8           comiss      xmm1,xmm0
+  00556C47: F3 0F 11 44 24 24  movss       dword ptr [esp+24h],xmm0
+  00556C4D: 76 39              jbe         00556C88
+  00556C4F: 8B 8C 24 CC 24 00  mov         ecx,dword ptr [esp+000024CCh]
+            00
+  00556C56: 85 C9              test        ecx,ecx
+  00556C58: 74 0C              je          00556C66
+  00556C5A: 8B 11              mov         edx,dword ptr [ecx]
+  00556C5C: 8B 42 04           mov         eax,dword ptr [edx+4]
+  00556C5F: 53                 push        ebx
+  00556C60: FF D0              call        eax
+  00556C62: 84 C0              test        al,al
+  00556C64: 74 22              je          00556C88
+  00556C66: 8B 8C 24 C8 24 00  mov         ecx,dword ptr [esp+000024C8h]
+            00
+  00556C6D: D9 44 24 24        fld         dword ptr [esp+24h]
+  00556C71: 51                 push        ecx
+  00556C72: 51                 push        ecx
+  00556C73: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  00556C77: D9 1C 24           fstp        dword ptr [esp]
+  00556C7A: 8D 94 24 CC 00 00  lea         edx,[esp+000000CCh]
+            00
+  00556C81: 52                 push        edx
+  00556C82: 53                 push        ebx
+  00556C83: E8 68 FC FF FF     call        005568F0
+  00556C88: 8B 83 74 05 00 00  mov         eax,dword ptr [ebx+00000574h]
+  00556C8E: 85 C0              test        eax,eax
+  00556C90: 0F 84 E8 00 00 00  je          00556D7E
+  00556C96: 80 BC 24 D0 24 00  cmp         byte ptr [esp+000024D0h],0
+            00 00
+  00556C9E: 74 06              je          00556CA6
+  00556CA0: 80 78 75 00        cmp         byte ptr [eax+75h],0
+  00556CA4: 74 18              je          00556CBE
+  00556CA6: 80 BC 24 D4 24 00  cmp         byte ptr [esp+000024D4h],0
+            00 00
+  00556CAE: 0F 84 CA 00 00 00  je          00556D7E
+  00556CB4: 80 78 75 00        cmp         byte ptr [eax+75h],0
+  00556CB8: 0F 84 C0 00 00 00  je          00556D7E
+  00556CBE: 8D 44 24 20        lea         eax,[esp+20h]
+  00556CC2: 50                 push        eax
+  00556CC3: 8B CB              mov         ecx,ebx
+  00556CC5: E8 F6 81 37 00     call        008CEEC0
+  00556CCA: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00556CCE: 8D 70 44           lea         esi,[eax+44h]
+  00556CD1: B9 10 00 00 00     mov         ecx,10h
+  00556CD6: 8D 7C 24 44        lea         edi,[esp+44h]
+  00556CDA: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00556CDC: F3 0F 10 5C 24 7C  movss       xmm3,dword ptr [esp+7Ch]
+  00556CE2: F3 0F 5C 5D 08     subss       xmm3,dword ptr [ebp+8]
+  00556CE7: F3 0F 10 54 24 78  movss       xmm2,dword ptr [esp+78h]
+  00556CED: F3 0F 5C 55 04     subss       xmm2,dword ptr [ebp+4]
+  00556CF2: F3 0F 10 84 24 80  movss       xmm0,dword ptr [esp+00000080h]
+            00 00 00
+  00556CFB: F3 0F 5C 45 0C     subss       xmm0,dword ptr [ebp+0Ch]
+  00556D00: F3 0F 10 4C 24 74  movss       xmm1,dword ptr [esp+74h]
+  00556D06: F3 0F 5C 4D 00     subss       xmm1,dword ptr [ebp]
+  00556D0B: 0F 28 E3           movaps      xmm4,xmm3
+  00556D0E: F3 0F 59 E3        mulss       xmm4,xmm3
+  00556D12: 0F 28 DA           movaps      xmm3,xmm2
+  00556D15: F3 0F 59 C0        mulss       xmm0,xmm0
+  00556D19: F3 0F 59 DA        mulss       xmm3,xmm2
+  00556D1D: F3 0F 58 C4        addss       xmm0,xmm4
+  00556D21: 0F 28 D1           movaps      xmm2,xmm1
+  00556D24: F3 0F 59 D1        mulss       xmm2,xmm1
+  00556D28: F3 0F 10 4C 24 1C  movss       xmm1,dword ptr [esp+1Ch]
+  00556D2E: F3 0F 58 C3        addss       xmm0,xmm3
+  00556D32: F3 0F 58 C2        addss       xmm0,xmm2
+  00556D36: 0F 2F C8           comiss      xmm1,xmm0
+  00556D39: F3 0F 11 44 24 34  movss       dword ptr [esp+34h],xmm0
+  00556D3F: 76 3D              jbe         00556D7E
+  00556D41: 8B 8C 24 CC 24 00  mov         ecx,dword ptr [esp+000024CCh]
+            00
+  00556D48: 85 C9              test        ecx,ecx
+  00556D4A: 74 10              je          00556D5C
+  00556D4C: 8B 11              mov         edx,dword ptr [ecx]
+  00556D4E: 50                 push        eax
+  00556D4F: 8B 42 04           mov         eax,dword ptr [edx+4]
+  00556D52: FF D0              call        eax
+  00556D54: 84 C0              test        al,al
+  00556D56: 74 26              je          00556D7E
+  00556D58: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00556D5C: 8B 8C 24 C8 24 00  mov         ecx,dword ptr [esp+000024C8h]
+            00
+  00556D63: D9 44 24 34        fld         dword ptr [esp+34h]
+  00556D67: 51                 push        ecx
+  00556D68: 51                 push        ecx
+  00556D69: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  00556D6D: D9 1C 24           fstp        dword ptr [esp]
+  00556D70: 8D 94 24 CC 00 00  lea         edx,[esp+000000CCh]
+            00
+  00556D77: 52                 push        edx
+  00556D78: 50                 push        eax
+  00556D79: E8 72 FB FF FF     call        005568F0
+  00556D7E: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00556D82: 8B 80 98 05 00 00  mov         eax,dword ptr [eax+00000598h]
+  00556D88: 8B D8              mov         ebx,eax
+  00556D8A: 89 5C 24 10        mov         dword ptr [esp+10h],ebx
+  00556D8E: 85 C0              test        eax,eax
+  00556D90: 0F 85 3A FE FF FF  jne         00556BD0
+  00556D96: 8B 74 24 18        mov         esi,dword ptr [esp+18h]
+  00556D9A: 33 FF              xor         edi,edi
+  00556D9C: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  00556DA0: 8B 59 04           mov         ebx,dword ptr [ecx+4]
+  00556DA3: 8D 4C 24 10        lea         ecx,[esp+10h]
+  00556DA7: 89 5C 24 14        mov         dword ptr [esp+14h],ebx
+  00556DAB: E8 30 53 37 00     call        008CC0E0
+  00556DB0: 8D 94 24 B4 24 00  lea         edx,[esp+000024B4h]
+            00
+  00556DB7: 3B DA              cmp         ebx,edx
+  00556DB9: 0F 85 E8 FD FF FF  jne         00556BA7
+  00556DBF: 5F                 pop         edi
+  00556DC0: 5E                 pop         esi
+  00556DC1: 5D                 pop         ebp
+  00556DC2: 5B                 pop         ebx
+  00556DC3: 81 C4 AC 24 00 00  add         esp,24ACh
+  00556DC9: C2 18 00           ret         18h
+  00556DCC: CC                 int         3
+  00556DCD: CC                 int         3
+  00556DCE: CC                 int         3
+  00556DCF: CC                 int         3
+  00556DD0: 68
+
+  Summary
+
+      9C8000 .text

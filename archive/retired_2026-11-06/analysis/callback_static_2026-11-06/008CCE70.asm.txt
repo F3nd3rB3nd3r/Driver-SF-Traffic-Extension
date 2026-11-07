@@ -1,0 +1,91 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008CCE70: 57                 push        edi
+  008CCE71: C0 D9 5E           rcr         cl,5Eh
+  008CCE74: 1C F3              sbb         al,0F3h
+  008CCE76: 0F 11 46 18        movups      xmmword ptr [esi+18h],xmm0
+  008CCE7A: 5E                 pop         esi
+  008CCE7B: C3                 ret
+  008CCE7C: CC                 int         3
+  008CCE7D: CC                 int         3
+  008CCE7E: CC                 int         3
+  008CCE7F: CC                 int         3
+  008CCE80: 83 EC 10           sub         esp,10h
+  008CCE83: 83 7C 24 1C 00     cmp         dword ptr [esp+1Ch],0
+  008CCE88: 56                 push        esi
+  008CCE89: 8B F1              mov         esi,ecx
+  008CCE8B: C6 46 24 01        mov         byte ptr [esi+24h],1
+  008CCE8F: 75 14              jne         008CCEA5
+  008CCE91: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  008CCE95: 83 C6 28           add         esi,28h
+  008CCE98: 56                 push        esi
+  008CCE99: E8 D2 F3 D5 FF     call        0062C270
+  008CCE9E: 5E                 pop         esi
+  008CCE9F: 83 C4 10           add         esp,10h
+  008CCEA2: C2 0C 00           ret         0Ch
+  008CCEA5: 53                 push        ebx
+  008CCEA6: 8B 9E 38 03 00 00  mov         ebx,dword ptr [esi+00000338h]
+  008CCEAC: 55                 push        ebp
+  008CCEAD: 8D AE 34 03 00 00  lea         ebp,[esi+00000334h]
+  008CCEB3: 3B DD              cmp         ebx,ebp
+  008CCEB5: 0F 84 A2 00 00 00  je          008CCF5D
+  008CCEBB: F3 0F 10 44 24 24  movss       xmm0,dword ptr [esp+24h]
+  008CCEC1: F3 0F 59 C0        mulss       xmm0,xmm0
+  008CCEC5: F3 0F 11 44 24 24  movss       dword ptr [esp+24h],xmm0
+  008CCECB: 57                 push        edi
+  008CCECC: 8D 64 24 00        lea         esp,[esp]
+  008CCED0: 8B 4B 08           mov         ecx,dword ptr [ebx+8]
+  008CCED3: 8B 01              mov         eax,dword ptr [ecx]
+  008CCED5: 8B 40 04           mov         eax,dword ptr [eax+4]
+  008CCED8: 8D 7B 08           lea         edi,[ebx+8]
+  008CCEDB: 8D 54 24 10        lea         edx,[esp+10h]
+  008CCEDF: 52                 push        edx
+  008CCEE0: FF D0              call        eax
+  008CCEE2: F3 0F 10 08        movss       xmm1,dword ptr [eax]
+  008CCEE6: F3 0F 5C 4E 04     subss       xmm1,dword ptr [esi+4]
+  008CCEEB: F3 0F 10 40 08     movss       xmm0,dword ptr [eax+8]
+  008CCEF0: F3 0F 5C 46 0C     subss       xmm0,dword ptr [esi+0Ch]
+  008CCEF5: F3 0F 10 58 0C     movss       xmm3,dword ptr [eax+0Ch]
+  008CCEFA: F3 0F 5C 5E 10     subss       xmm3,dword ptr [esi+10h]
+  008CCEFF: F3 0F 10 50 04     movss       xmm2,dword ptr [eax+4]
+  008CCF04: F3 0F 5C 56 08     subss       xmm2,dword ptr [esi+8]
+  008CCF09: 0F 28 E1           movaps      xmm4,xmm1
+  008CCF0C: F3 0F 59 E1        mulss       xmm4,xmm1
+  008CCF10: F3 0F 59 C0        mulss       xmm0,xmm0
+  008CCF14: F3 0F 58 C4        addss       xmm0,xmm4
+  008CCF18: 0F 28 CB           movaps      xmm1,xmm3
+  008CCF1B: F3 0F 59 CB        mulss       xmm1,xmm3
+  008CCF1F: F3 0F 58 C1        addss       xmm0,xmm1
+  008CCF23: 0F 28 CA           movaps      xmm1,xmm2
+  008CCF26: F3 0F 59 CA        mulss       xmm1,xmm2
+  008CCF2A: F3 0F 58 C1        addss       xmm0,xmm1
+  008CCF2E: 0F 2F 44 24 28     comiss      xmm0,dword ptr [esp+28h]
+  008CCF33: 77 27              ja          008CCF5C
+  008CCF35: 8B 4C 24 2C        mov         ecx,dword ptr [esp+2Ch]
+  008CCF39: 8B 11              mov         edx,dword ptr [ecx]
+  008CCF3B: 8B 07              mov         eax,dword ptr [edi]
+  008CCF3D: 8B 52 04           mov         edx,dword ptr [edx+4]
+  008CCF40: 50                 push        eax
+  008CCF41: FF D2              call        edx
+  008CCF43: 84 C0              test        al,al
+  008CCF45: 74 0A              je          008CCF51
+  008CCF47: 8B 4C 24 24        mov         ecx,dword ptr [esp+24h]
+  008CCF4B: 57                 push        edi
+  008CCF4C: E8 7F 98 C8 FF     call        005567D0
+  008CCF51: 8B 5B 04           mov         ebx,dword ptr [ebx+4]
+  008CCF54: 3B DD              cmp         ebx,ebp
+  008CCF56: 0F 85 74 FF FF FF  jne         008CCED0
+  008CCF5C: 5F                 pop         edi
+  008CCF5D: 5D                 pop         ebp
+  008CCF5E: 5B                 pop         ebx
+  008CCF5F: 5E                 pop         esi
+  008CCF60: 83 C4 10           add         esp,10h
+  008CCF63: C2 0C 00           ret         0Ch
+  008CCF66: CC                 int         3
+
+  Summary
+
+      9C8000 .text

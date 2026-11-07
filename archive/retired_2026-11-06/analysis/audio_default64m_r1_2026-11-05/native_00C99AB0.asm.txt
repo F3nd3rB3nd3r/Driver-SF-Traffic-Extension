@@ -1,0 +1,46 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C99AB0: 57                 push        edi
+  00C99AB1: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  00C99AB5: 85 FF              test        edi,edi
+  00C99AB7: 75 04              jne         00C99ABD
+  00C99AB9: 33 C0              xor         eax,eax
+  00C99ABB: 5F                 pop         edi
+  00C99ABC: C3                 ret
+  00C99ABD: 53                 push        ebx
+  00C99ABE: 56                 push        esi
+  00C99ABF: 8B 74 24 10        mov         esi,dword ptr [esp+10h]
+  00C99AC3: 6B F6 4C           imul        esi,esi,4Ch
+  00C99AC6: 03 35 90 23 D7 01  add         esi,dword ptr ds:[01D72390h]
+  00C99ACC: 8D 5E 24           lea         ebx,[esi+24h]
+  00C99ACF: 53                 push        ebx
+  00C99AD0: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C99AD6: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  00C99ADA: 8B 4E 3C           mov         ecx,dword ptr [esi+3Ch]
+  00C99ADD: 57                 push        edi
+  00C99ADE: 50                 push        eax
+  00C99ADF: 51                 push        ecx
+  00C99AE0: E8 6B 09 00 00     call        00C9A450
+  00C99AE5: 8B F8              mov         edi,eax
+  00C99AE7: 83 C4 0C           add         esp,0Ch
+  00C99AEA: 85 FF              test        edi,edi
+  00C99AEC: 74 0F              je          00C99AFD
+  00C99AEE: 57                 push        edi
+  00C99AEF: E8 5C 08 00 00     call        00C9A350
+  00C99AF4: 83 C0 08           add         eax,8
+  00C99AF7: 83 C4 04           add         esp,4
+  00C99AFA: 01 46 44           add         dword ptr [esi+44h],eax
+  00C99AFD: 53                 push        ebx
+  00C99AFE: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C99B04: 5E                 pop         esi
+  00C99B05: 5B                 pop         ebx
+  00C99B06: 8B C7              mov         eax,edi
+  00C99B08: 5F                 pop         edi
+  00C99B09: C3                 ret
+
+  Summary
+
+      9C8000 .text

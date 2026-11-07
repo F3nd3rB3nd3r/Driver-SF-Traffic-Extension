@@ -1,0 +1,82 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C647B0: 3C 49              cmp         al,49h
+  00C647B2: FF
+  00C647B3: FF 8B 4C 24 64 3B  dec         dword ptr [ebx+3B64244Ch]
+  00C647B9: 4C                 dec         esp
+  00C647BA: 24 20              and         al,20h
+  00C647BC: 0F 84 42 FE FF FF  je          00C64604
+  00C647C2: EB 45              jmp         00C64809
+  00C647C4: 8B 54 24 18        mov         edx,dword ptr [esp+18h]
+  00C647C8: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00C647CC: 8B 0B              mov         ecx,dword ptr [ebx]
+  00C647CE: 52                 push        edx
+  00C647CF: 50                 push        eax
+  00C647D0: 51                 push        ecx
+  00C647D1: 8B CD              mov         ecx,ebp
+  00C647D3: E8 98 CB FF FF     call        00C61370
+  00C647D8: 8B F0              mov         esi,eax
+  00C647DA: E9 25 FE FF FF     jmp         00C64604
+  00C647DF: 8B 54 24 20        mov         edx,dword ptr [esp+20h]
+  00C647E3: 52                 push        edx
+  00C647E4: 8B CD              mov         ecx,ebp
+  00C647E6: E8 35 CA FF FF     call        00C61220
+  00C647EB: 8B F0              mov         esi,eax
+  00C647ED: E9 12 FE FF FF     jmp         00C64604
+  00C647F2: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00C647F6: 50                 push        eax
+  00C647F7: 8B CD              mov         ecx,ebp
+  00C647F9: E8 D2 C7 FF FF     call        00C60FD0
+  00C647FE: 8B F0              mov         esi,eax
+  00C64800: E9 FF FD FF FF     jmp         00C64604
+  00C64805: 85 C0              test        eax,eax
+  00C64807: 74 05              je          00C6480E
+  00C64809: BE 07 00 00 00     mov         esi,7
+  00C6480E: 83 7C 24 5C 00     cmp         dword ptr [esp+5Ch],0
+  00C64813: 74 2E              je          00C64843
+  00C64815: E8 16 FC 01 00     call        00C84430
+  00C6481A: 85 C0              test        eax,eax
+  00C6481C: 75 0F              jne         00C6482D
+  00C6481E: 8B 5C 24 5C        mov         ebx,dword ptr [esp+5Ch]
+  00C64822: 53                 push        ebx
+  00C64823: E8 88 FC 01 00     call        00C844B0
+  00C64828: 83 C4 04           add         esp,4
+  00C6482B: EB 0D              jmp         00C6483A
+  00C6482D: 8B 10              mov         edx,dword ptr [eax]
+  00C6482F: 8B C8              mov         ecx,eax
+  00C64831: 8B 42 08           mov         eax,dword ptr [edx+8]
+  00C64834: FF D0              call        eax
+  00C64836: 8B 5C 24 5C        mov         ebx,dword ptr [esp+5Ch]
+  00C6483A: 8B 13              mov         edx,dword ptr [ebx]
+  00C6483C: 8B 42 08           mov         eax,dword ptr [edx+8]
+  00C6483F: 8B CB              mov         ecx,ebx
+  00C64841: FF D0              call        eax
+  00C64843: 8B CF              mov         ecx,edi
+  00C64845: E8 56 46 FF FF     call        00C58EA0
+  00C6484A: 5B                 pop         ebx
+  00C6484B: 5F                 pop         edi
+  00C6484C: 8B C6              mov         eax,esi
+  00C6484E: 5E                 pop         esi
+  00C6484F: 5D                 pop         ebp
+  00C64850: 83 C4 24           add         esp,24h
+  00C64853: C2 30 00           ret         30h
+  00C64856: 8B FF              mov         edi,edi
+  00C64858: E7 46              out         46h,eax
+  00C6485A: C6 00 D1           mov         byte ptr [eax],0D1h
+  00C6485D: 46                 inc         esi
+  00C6485E: C6 00 AD           mov         byte ptr [eax],0ADh
+  00C64861: 46                 inc         esi
+  00C64862: C6 00 D1           mov         byte ptr [eax],0D1h
+  00C64865: 46                 inc         esi
+  00C64866: C6 00 C4           mov         byte ptr [eax],0C4h
+  00C64869: 47                 inc         edi
+  00C6486A: C6 00 C4           mov         byte ptr [eax],0C4h
+  00C6486D: 47                 inc         edi
+  00C6486E: C6 00 A3           mov         byte ptr [eax],0A3h
+
+  Summary
+
+      9C8000 .text

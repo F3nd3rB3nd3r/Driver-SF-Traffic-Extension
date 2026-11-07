@@ -1,0 +1,87 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0066E560: 55                 push        ebp
+  0066E561: 8B EC              mov         ebp,esp
+  0066E563: 51                 push        ecx
+  0066E564: 53                 push        ebx
+  0066E565: 56                 push        esi
+  0066E566: 8B 75 08           mov         esi,dword ptr [ebp+8]
+  0066E569: 57                 push        edi
+  0066E56A: 6A FE              push        0FFFFFFFEh
+  0066E56C: 56                 push        esi
+  0066E56D: E8 6E 86 F8 FF     call        005F6BE0
+  0066E572: 8B F8              mov         edi,eax
+  0066E574: 6A FF              push        0FFFFFFFFh
+  0066E576: 56                 push        esi
+  0066E577: 89 7D FC           mov         dword ptr [ebp-4],edi
+  0066E57A: E8 91 AE F7 FF     call        005E9410
+  0066E57F: 83 C4 10           add         esp,10h
+  0066E582: 83 F8 05           cmp         eax,5
+  0066E585: 75 71              jne         0066E5F8
+  0066E587: 8D 04 BD 00 00 00  lea         eax,[edi*4+00000000h]
+            00
+  0066E58E: E8 FD EC 5B 00     call        00C2D290
+  0066E593: 8B DC              mov         ebx,esp
+  0066E595: 56                 push        esi
+  0066E596: 33 FF              xor         edi,edi
+  0066E598: E8 63 B0 F7 FF     call        005E9600
+  0066E59D: 6A FE              push        0FFFFFFFEh
+  0066E59F: 56                 push        esi
+  0066E5A0: E8 2B 40 F8 FF     call        005F25D0
+  0066E5A5: 83 C4 0C           add         esp,0Ch
+  0066E5A8: 85 C0              test        eax,eax
+  0066E5AA: 74 2C              je          0066E5D8
+  0066E5AC: 8D 64 24 00        lea         esp,[esp]
+  0066E5B0: 3B 7D FC           cmp         edi,dword ptr [ebp-4]
+  0066E5B3: 7D 23              jge         0066E5D8
+  0066E5B5: 6A FF              push        0FFFFFFFFh
+  0066E5B7: 56                 push        esi
+  0066E5B8: E8 23 86 F8 FF     call        005F6BE0
+  0066E5BD: 6A FE              push        0FFFFFFFEh
+  0066E5BF: 89 04 BB           mov         dword ptr [ebx+edi*4],eax
+  0066E5C2: 56                 push        esi
+  0066E5C3: 47                 inc         edi
+  0066E5C4: E8 47 AD F7 FF     call        005E9310
+  0066E5C9: 6A FE              push        0FFFFFFFEh
+  0066E5CB: 56                 push        esi
+  0066E5CC: E8 FF 3F F8 FF     call        005F25D0
+  0066E5D1: 83 C4 18           add         esp,18h
+  0066E5D4: 85 C0              test        eax,eax
+  0066E5D6: 75 D8              jne         0066E5B0
+  0066E5D8: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0066E5DD: 85 C0              test        eax,eax
+  0066E5DF: 75 0A              jne         0066E5EB
+  0066E5E1: E8 AA C0 D9 FF     call        0040A690
+  0066E5E6: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0066E5EB: 8B 88 14 02 00 00  mov         ecx,dword ptr [eax+00000214h]
+  0066E5F1: 57                 push        edi
+  0066E5F2: 53                 push        ebx
+  0066E5F3: E8 F8 93 F3 FF     call        005A79F0
+  0066E5F8: 33 C0              xor         eax,eax
+  0066E5FA: 8D 65 F0           lea         esp,[ebp-10h]
+  0066E5FD: 5F                 pop         edi
+  0066E5FE: 5E                 pop         esi
+  0066E5FF: 5B                 pop         ebx
+  0066E600: 8B E5              mov         esp,ebp
+  0066E602: 5D                 pop         ebp
+  0066E603: C3                 ret
+  0066E604: CC                 int         3
+  0066E605: CC                 int         3
+  0066E606: CC                 int         3
+  0066E607: CC                 int         3
+  0066E608: CC                 int         3
+  0066E609: CC                 int         3
+  0066E60A: CC                 int         3
+  0066E60B: CC                 int         3
+  0066E60C: CC                 int         3
+  0066E60D: CC                 int         3
+  0066E60E: CC                 int         3
+  0066E60F: CC                 int         3
+  0066E610: A1
+
+  Summary
+
+      9C8000 .text

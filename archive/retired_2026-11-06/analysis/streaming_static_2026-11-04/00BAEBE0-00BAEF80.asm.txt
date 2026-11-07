@@ -1,0 +1,391 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAEBE0: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00BAEBE4: 8B 00              mov         eax,dword ptr [eax]
+  00BAEBE6: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00BAEBE9: 56                 push        esi
+  00BAEBEA: 57                 push        edi
+  00BAEBEB: 8B F9              mov         edi,ecx
+  00BAEBED: 8B 48 14           mov         ecx,dword ptr [eax+14h]
+  00BAEBF0: 51                 push        ecx
+  00BAEBF1: 52                 push        edx
+  00BAEBF2: 8B CF              mov         ecx,edi
+  00BAEBF4: E8 07 02 00 00     call        00BAEE00
+  00BAEBF9: 8B F0              mov         esi,eax
+  00BAEBFB: 85 F6              test        esi,esi
+  00BAEBFD: 0F 84 89 00 00 00  je          00BAEC8C
+  00BAEC03: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BAEC06: 3B 44 24 0C        cmp         eax,dword ptr [esp+0Ch]
+  00BAEC0A: 0F 85 7C 00 00 00  jne         00BAEC8C
+  00BAEC10: 8B 0E              mov         ecx,dword ptr [esi]
+  00BAEC12: 8B 01              mov         eax,dword ptr [ecx]
+  00BAEC14: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  00BAEC17: 8B 87 90 E0 17 00  mov         eax,dword ptr [edi+0017E090h]
+  00BAEC1D: 8B 16              mov         edx,dword ptr [esi]
+  00BAEC1F: 8D 84 87 90 E0 15  lea         eax,[edi+eax*4+0015E090h]
+            00
+  00BAEC26: 85 C0              test        eax,eax
+  00BAEC28: 74 02              je          00BAEC2C
+  00BAEC2A: 89 10              mov         dword ptr [eax],edx
+  00BAEC2C: FF 87 90 E0 17 00  inc         dword ptr [edi+0017E090h]
+  00BAEC32: 41                 inc         ecx
+  00BAEC33: 51                 push        ecx
+  00BAEC34: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  00BAEC38: 8B 11              mov         edx,dword ptr [ecx]
+  00BAEC3A: 83 C2 08           add         edx,8
+  00BAEC3D: 52                 push        edx
+  00BAEC3E: FF 15 68 91 DC 00  call        dword ptr ds:[00DC9168h]
+  00BAEC44: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00BAEC48: 89 06              mov         dword ptr [esi],eax
+  00BAEC4A: 8B 76 08           mov         esi,dword ptr [esi+8]
+  00BAEC4D: 85 F6              test        esi,esi
+  00BAEC4F: 74 3B              je          00BAEC8C
+  00BAEC51: 53                 push        ebx
+  00BAEC52: 55                 push        ebp
+  00BAEC53: 8B 06              mov         eax,dword ptr [esi]
+  00BAEC55: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BAEC58: B1 20              mov         cl,20h
+  00BAEC5A: E8 41 D2 07 00     call        00C2BEA0
+  00BAEC5F: 8B 5C 24 18        mov         ebx,dword ptr [esp+18h]
+  00BAEC63: 8B 1B              mov         ebx,dword ptr [ebx]
+  00BAEC65: 25 FF FF FF 7F     and         eax,7FFFFFFFh
+  00BAEC6A: 8B C8              mov         ecx,eax
+  00BAEC6C: 81 C9 00 00 00 80  or          ecx,80000000h
+  00BAEC72: 33 D2              xor         edx,edx
+  00BAEC74: 33 ED              xor         ebp,ebp
+  00BAEC76: 0B D3              or          edx,ebx
+  00BAEC78: 0B CD              or          ecx,ebp
+  00BAEC7A: 89 16              mov         dword ptr [esi],edx
+  00BAEC7C: 89 4E 04           mov         dword ptr [esi+4],ecx
+  00BAEC7F: 8B B4 C7 98 E0 17  mov         esi,dword ptr [edi+eax*8+0017E098h]
+            00
+  00BAEC86: 85 F6              test        esi,esi
+  00BAEC88: 75 C9              jne         00BAEC53
+  00BAEC8A: 5D                 pop         ebp
+  00BAEC8B: 5B                 pop         ebx
+  00BAEC8C: 5F                 pop         edi
+  00BAEC8D: 5E                 pop         esi
+  00BAEC8E: C2 08 00           ret         8
+  00BAEC91: CC                 int         3
+  00BAEC92: CC                 int         3
+  00BAEC93: CC                 int         3
+  00BAEC94: CC                 int         3
+  00BAEC95: CC                 int         3
+  00BAEC96: CC                 int         3
+  00BAEC97: CC                 int         3
+  00BAEC98: CC                 int         3
+  00BAEC99: CC                 int         3
+  00BAEC9A: CC                 int         3
+  00BAEC9B: CC                 int         3
+  00BAEC9C: CC                 int         3
+  00BAEC9D: CC                 int         3
+  00BAEC9E: CC                 int         3
+  00BAEC9F: CC                 int         3
+  00BAECA0: 51                 push        ecx
+  00BAECA1: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00BAECA5: 53                 push        ebx
+  00BAECA6: 55                 push        ebp
+  00BAECA7: 8B 6C 24 10        mov         ebp,dword ptr [esp+10h]
+  00BAECAB: 57                 push        edi
+  00BAECAC: 50                 push        eax
+  00BAECAD: 55                 push        ebp
+  00BAECAE: 8B F9              mov         edi,ecx
+  00BAECB0: E8 4B 01 00 00     call        00BAEE00
+  00BAECB5: 8B D8              mov         ebx,eax
+  00BAECB7: 85 DB              test        ebx,ebx
+  00BAECB9: 0F 84 C2 00 00 00  je          00BAED81
+  00BAECBF: 56                 push        esi
+  00BAECC0: 8B 33              mov         esi,dword ptr [ebx]
+  00BAECC2: 89 74 24 10        mov         dword ptr [esp+10h],esi
+  00BAECC6: 85 F6              test        esi,esi
+  00BAECC8: 0F 84 B2 00 00 00  je          00BAED80
+  00BAECCE: 8B 06              mov         eax,dword ptr [esi]
+  00BAECD0: 85 C0              test        eax,eax
+  00BAECD2: 0F 84 A8 00 00 00  je          00BAED80
+  00BAECD8: 83 C0 08           add         eax,8
+  00BAECDB: 50                 push        eax
+  00BAECDC: FF 15 5C 91 DC 00  call        dword ptr ds:[00DC915Ch]
+  00BAECE2: 85 C0              test        eax,eax
+  00BAECE4: 0F 85 96 00 00 00  jne         00BAED80
+  00BAECEA: 39 43 08           cmp         dword ptr [ebx+8],eax
+  00BAECED: 74 45              je          00BAED34
+  00BAECEF: 90                 nop
+  00BAECF0: 8B 73 08           mov         esi,dword ptr [ebx+8]
+  00BAECF3: 8B 06              mov         eax,dword ptr [esi]
+  00BAECF5: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BAECF8: B1 20              mov         cl,20h
+  00BAECFA: E8 A1 D1 07 00     call        00C2BEA0
+  00BAECFF: 8B 54 24 1C        mov         edx,dword ptr [esp+1Ch]
+  00BAED03: 25 FF FF FF 7F     and         eax,7FFFFFFFh
+  00BAED08: 8B 8C C7 98 E0 17  mov         ecx,dword ptr [edi+eax*8+0017E098h]
+            00
+  00BAED0F: 8D 84 C7 94 E0 17  lea         eax,[edi+eax*8+0017E094h]
+            00
+  00BAED16: 89 2E              mov         dword ptr [esi],ebp
+  00BAED18: 89 56 04           mov         dword ptr [esi+4],edx
+  00BAED1B: 8B 97 94 E0 27 00  mov         edx,dword ptr [edi+0027E094h]
+  00BAED21: 89 10              mov         dword ptr [eax],edx
+  00BAED23: 89 87 94 E0 27 00  mov         dword ptr [edi+0027E094h],eax
+  00BAED29: 89 4B 08           mov         dword ptr [ebx+8],ecx
+  00BAED2C: 85 C9              test        ecx,ecx
+  00BAED2E: 75 C0              jne         00BAECF0
+  00BAED30: 8B 74 24 10        mov         esi,dword ptr [esp+10h]
+  00BAED34: 8B 87 90 E0 17 00  mov         eax,dword ptr [edi+0017E090h]
+  00BAED3A: 8D 84 87 90 E0 15  lea         eax,[edi+eax*4+0015E090h]
+            00
+  00BAED41: 85 C0              test        eax,eax
+  00BAED43: 74 02              je          00BAED47
+  00BAED45: 89 30              mov         dword ptr [eax],esi
+  00BAED47: 8B 54 24 1C        mov         edx,dword ptr [esp+1Ch]
+  00BAED4B: FF 87 90 E0 17 00  inc         dword ptr [edi+0017E090h]
+  00BAED51: 52                 push        edx
+  00BAED52: 55                 push        ebp
+  00BAED53: 8B CF              mov         ecx,edi
+  00BAED55: E8 16 F9 FF FF     call        00BAE670
+  00BAED5A: 84 C0              test        al,al
+  00BAED5C: 74 19              je          00BAED77
+  00BAED5E: 66 8B 87 8C E0 15  mov         ax,word ptr [edi+0015E08Ch]
+            00
+  00BAED65: 0F B7 CD           movzx       ecx,bp
+  00BAED68: 66 89 84 4F CC 7A  mov         word ptr [edi+ecx*2+00157ACCh],ax
+            15 00
+  00BAED70: 66 89 AF 8C E0 15  mov         word ptr [edi+0015E08Ch],bp
+            00
+  00BAED77: 52                 push        edx
+  00BAED78: 55                 push        ebp
+  00BAED79: 8B CF              mov         ecx,edi
+  00BAED7B: E8 20 01 00 00     call        00BAEEA0
+  00BAED80: 5E                 pop         esi
+  00BAED81: 5F                 pop         edi
+  00BAED82: 5D                 pop         ebp
+  00BAED83: 5B                 pop         ebx
+  00BAED84: 59                 pop         ecx
+  00BAED85: C2 08 00           ret         8
+  00BAED88: CC                 int         3
+  00BAED89: CC                 int         3
+  00BAED8A: CC                 int         3
+  00BAED8B: CC                 int         3
+  00BAED8C: CC                 int         3
+  00BAED8D: CC                 int         3
+  00BAED8E: CC                 int         3
+  00BAED8F: CC                 int         3
+  00BAED90: 53                 push        ebx
+  00BAED91: 56                 push        esi
+  00BAED92: 8B 74 24 10        mov         esi,dword ptr [esp+10h]
+  00BAED96: 57                 push        edi
+  00BAED97: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  00BAED9B: 8B C6              mov         eax,esi
+  00BAED9D: 33 C7              xor         eax,edi
+  00BAED9F: 8B D0              mov         edx,eax
+  00BAEDA1: C1 EA 10           shr         edx,10h
+  00BAEDA4: 33 D0              xor         edx,eax
+  00BAEDA6: 8B 81 C0 7A 12 00  mov         eax,dword ptr [ecx+00127AC0h]
+  00BAEDAC: 81 E2 FF 7F 00 00  and         edx,7FFFh
+  00BAEDB2: 85 C0              test        eax,eax
+  00BAEDB4: 75 11              jne         00BAEDC7
+  00BAEDB6: 8B 81 C4 7A 12 00  mov         eax,dword ptr [ecx+00127AC4h]
+  00BAEDBC: 8D 58 18           lea         ebx,[eax+18h]
+  00BAEDBF: 89 99 C4 7A 12 00  mov         dword ptr [ecx+00127AC4h],ebx
+  00BAEDC5: EB 09              jmp         00BAEDD0
+  00BAEDC7: 8B 58 08           mov         ebx,dword ptr [eax+8]
+  00BAEDCA: 89 99 C0 7A 12 00  mov         dword ptr [ecx+00127AC0h],ebx
+  00BAEDD0: 89 70 04           mov         dword ptr [eax+4],esi
+  00BAEDD3: 8B 74 24 18        mov         esi,dword ptr [esp+18h]
+  00BAEDD7: 89 38              mov         dword ptr [eax],edi
+  00BAEDD9: 8B 3E              mov         edi,dword ptr [esi]
+  00BAEDDB: 89 78 0C           mov         dword ptr [eax+0Ch],edi
+  00BAEDDE: 8B 7E 04           mov         edi,dword ptr [esi+4]
+  00BAEDE1: 89 78 10           mov         dword ptr [eax+10h],edi
+  00BAEDE4: 8B 76 08           mov         esi,dword ptr [esi+8]
+  00BAEDE7: 89 70 14           mov         dword ptr [eax+14h],esi
+  00BAEDEA: 8B 34 91           mov         esi,dword ptr [ecx+edx*4]
+  00BAEDED: 5F                 pop         edi
+  00BAEDEE: 89 70 08           mov         dword ptr [eax+8],esi
+  00BAEDF1: 5E                 pop         esi
+  00BAEDF2: 89 04 91           mov         dword ptr [ecx+edx*4],eax
+  00BAEDF5: 5B                 pop         ebx
+  00BAEDF6: C2 0C 00           ret         0Ch
+  00BAEDF9: CC                 int         3
+  00BAEDFA: CC                 int         3
+  00BAEDFB: CC                 int         3
+  00BAEDFC: CC                 int         3
+  00BAEDFD: CC                 int         3
+  00BAEDFE: CC                 int         3
+  00BAEDFF: CC                 int         3
+  00BAEE00: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  00BAEE04: 56                 push        esi
+  00BAEE05: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  00BAEE09: 57                 push        edi
+  00BAEE0A: 8B C2              mov         eax,edx
+  00BAEE0C: 33 C6              xor         eax,esi
+  00BAEE0E: 8B F8              mov         edi,eax
+  00BAEE10: C1 EF 10           shr         edi,10h
+  00BAEE13: 33 F8              xor         edi,eax
+  00BAEE15: 81 E7 FF 7F 00 00  and         edi,7FFFh
+  00BAEE1B: 8B 04 B9           mov         eax,dword ptr [ecx+edi*4]
+  00BAEE1E: 85 C0              test        eax,eax
+  00BAEE20: 74 14              je          00BAEE36
+  00BAEE22: 8B 08              mov         ecx,dword ptr [eax]
+  00BAEE24: 3B CE              cmp         ecx,esi
+  00BAEE26: 75 07              jne         00BAEE2F
+  00BAEE28: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  00BAEE2B: 3B CA              cmp         ecx,edx
+  00BAEE2D: 74 0E              je          00BAEE3D
+  00BAEE2F: 8B 40 08           mov         eax,dword ptr [eax+8]
+  00BAEE32: 85 C0              test        eax,eax
+  00BAEE34: 75 EC              jne         00BAEE22
+  00BAEE36: 5F                 pop         edi
+  00BAEE37: 33 C0              xor         eax,eax
+  00BAEE39: 5E                 pop         esi
+  00BAEE3A: C2 08 00           ret         8
+  00BAEE3D: 5F                 pop         edi
+  00BAEE3E: 83 C0 0C           add         eax,0Ch
+  00BAEE41: 5E                 pop         esi
+  00BAEE42: C2 08 00           ret         8
+  00BAEE45: CC                 int         3
+  00BAEE46: CC                 int         3
+  00BAEE47: CC                 int         3
+  00BAEE48: CC                 int         3
+  00BAEE49: CC                 int         3
+  00BAEE4A: CC                 int         3
+  00BAEE4B: CC                 int         3
+  00BAEE4C: CC                 int         3
+  00BAEE4D: CC                 int         3
+  00BAEE4E: CC                 int         3
+  00BAEE4F: CC                 int         3
+  00BAEE50: 56                 push        esi
+  00BAEE51: 8B F1              mov         esi,ecx
+  00BAEE53: 57                 push        edi
+  00BAEE54: 8D BE 00 00 02 00  lea         edi,[esi+00020000h]
+  00BAEE5A: B9 C7 AF 00 00     mov         ecx,0AFC7h
+  00BAEE5F: 8D 47 0C           lea         eax,[edi+0Ch]
+  00BAEE62: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  00BAEE68: 83 C0 18           add         eax,18h
+  00BAEE6B: 83 E9 01           sub         ecx,1
+  00BAEE6E: 79 F2              jns         00BAEE62
+  00BAEE70: 68 00 00 02 00     push        20000h
+  00BAEE75: 6A 00              push        0
+  00BAEE77: 56                 push        esi
+  00BAEE78: E8 63 98 07 00     call        00C286E0
+  00BAEE7D: 83 C4 0C           add         esp,0Ch
+  00BAEE80: 89 BE C4 7A 12 00  mov         dword ptr [esi+00127AC4h],edi
+  00BAEE86: 5F                 pop         edi
+  00BAEE87: C7 86 C0 7A 12 00  mov         dword ptr [esi+00127AC0h],0
+            00 00 00 00
+  00BAEE91: 8B C6              mov         eax,esi
+  00BAEE93: 5E                 pop         esi
+  00BAEE94: C3                 ret
+  00BAEE95: CC                 int         3
+  00BAEE96: CC                 int         3
+  00BAEE97: CC                 int         3
+  00BAEE98: CC                 int         3
+  00BAEE99: CC                 int         3
+  00BAEE9A: CC                 int         3
+  00BAEE9B: CC                 int         3
+  00BAEE9C: CC                 int         3
+  00BAEE9D: CC                 int         3
+  00BAEE9E: CC                 int         3
+  00BAEE9F: CC                 int         3
+  00BAEEA0: 53                 push        ebx
+  00BAEEA1: 8B 5C 24 08        mov         ebx,dword ptr [esp+8]
+  00BAEEA5: 56                 push        esi
+  00BAEEA6: 57                 push        edi
+  00BAEEA7: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  00BAEEAB: 8B C7              mov         eax,edi
+  00BAEEAD: 33 C3              xor         eax,ebx
+  00BAEEAF: 8B D0              mov         edx,eax
+  00BAEEB1: C1 EA 10           shr         edx,10h
+  00BAEEB4: 33 D0              xor         edx,eax
+  00BAEEB6: 81 E2 FF 7F 00 00  and         edx,7FFFh
+  00BAEEBC: 8B 04 91           mov         eax,dword ptr [ecx+edx*4]
+  00BAEEBF: 33 F6              xor         esi,esi
+  00BAEEC1: 85 C0              test        eax,eax
+  00BAEEC3: 74 40              je          00BAEF05
+  00BAEEC5: 55                 push        ebp
+  00BAEEC6: 8B 28              mov         ebp,dword ptr [eax]
+  00BAEEC8: 3B EB              cmp         ebp,ebx
+  00BAEECA: 75 07              jne         00BAEED3
+  00BAEECC: 8B 68 04           mov         ebp,dword ptr [eax+4]
+  00BAEECF: 3B EF              cmp         ebp,edi
+  00BAEED1: 74 10              je          00BAEEE3
+  00BAEED3: 8B F0              mov         esi,eax
+  00BAEED5: 8B 40 08           mov         eax,dword ptr [eax+8]
+  00BAEED8: 85 C0              test        eax,eax
+  00BAEEDA: 75 EA              jne         00BAEEC6
+  00BAEEDC: 5D                 pop         ebp
+  00BAEEDD: 5F                 pop         edi
+  00BAEEDE: 5E                 pop         esi
+  00BAEEDF: 5B                 pop         ebx
+  00BAEEE0: C2 08 00           ret         8
+  00BAEEE3: 85 F6              test        esi,esi
+  00BAEEE5: 75 08              jne         00BAEEEF
+  00BAEEE7: 8B 70 08           mov         esi,dword ptr [eax+8]
+  00BAEEEA: 89 34 91           mov         dword ptr [ecx+edx*4],esi
+  00BAEEED: EB 06              jmp         00BAEEF5
+  00BAEEEF: 8B 50 08           mov         edx,dword ptr [eax+8]
+  00BAEEF2: 89 56 08           mov         dword ptr [esi+8],edx
+  00BAEEF5: 8B 91 C0 7A 12 00  mov         edx,dword ptr [ecx+00127AC0h]
+  00BAEEFB: 89 50 08           mov         dword ptr [eax+8],edx
+  00BAEEFE: 89 81 C0 7A 12 00  mov         dword ptr [ecx+00127AC0h],eax
+  00BAEF04: 5D                 pop         ebp
+  00BAEF05: 5F                 pop         edi
+  00BAEF06: 5E                 pop         esi
+  00BAEF07: 5B                 pop         ebx
+  00BAEF08: C2 08 00           ret         8
+  00BAEF0B: CC                 int         3
+  00BAEF0C: CC                 int         3
+  00BAEF0D: CC                 int         3
+  00BAEF0E: CC                 int         3
+  00BAEF0F: CC                 int         3
+  00BAEF10: 53                 push        ebx
+  00BAEF11: 56                 push        esi
+  00BAEF12: 57                 push        edi
+  00BAEF13: BE A4 0C 9B 01     mov         esi,19B0CA4h
+  00BAEF18: BF 02 00 00 00     mov         edi,2
+  00BAEF1D: BB 00 00 40 00     mov         ebx,400000h
+  00BAEF22: 53                 push        ebx
+  00BAEF23: E8 34 A1 07 00     call        00C2905C
+  00BAEF28: 89 46 F8           mov         dword ptr [esi-8],eax
+  00BAEF2B: 89 5E FC           mov         dword ptr [esi-4],ebx
+  00BAEF2E: C7 06 00 00 00 00  mov         dword ptr [esi],0
+  00BAEF34: 89 5E 08           mov         dword ptr [esi+8],ebx
+  00BAEF37: 83 C4 04           add         esp,4
+  00BAEF3A: 83 C6 14           add         esi,14h
+  00BAEF3D: 83 EF 01           sub         edi,1
+  00BAEF40: 75 E0              jne         00BAEF22
+  00BAEF42: 5F                 pop         edi
+  00BAEF43: 5E                 pop         esi
+  00BAEF44: C7 05 C4 0C 9B 01  mov         dword ptr ds:[019B0CC4h],19B0C9Ch
+            9C 0C 9B 01
+  00BAEF4E: C7 05 C8 0C 9B 01  mov         dword ptr ds:[019B0CC8h],19B0CB0h
+            B0 0C 9B 01
+  00BAEF58: B0 01              mov         al,1
+  00BAEF5A: 5B                 pop         ebx
+  00BAEF5B: C3                 ret
+  00BAEF5C: CC                 int         3
+  00BAEF5D: CC                 int         3
+  00BAEF5E: CC                 int         3
+  00BAEF5F: CC                 int         3
+  00BAEF60: 56                 push        esi
+  00BAEF61: 33 F6              xor         esi,esi
+  00BAEF63: 8B 86 9C 0C 9B 01  mov         eax,dword ptr [esi+019B0C9Ch]
+  00BAEF69: 50                 push        eax
+  00BAEF6A: E8 10 A0 07 00     call        00C28F7F
+  00BAEF6F: 83 C6 14           add         esi,14h
+  00BAEF72: 83 C4 04           add         esp,4
+  00BAEF75: 83 FE 28           cmp         esi,28h
+  00BAEF78: 72 E9              jb          00BAEF63
+  00BAEF7A: 5E                 pop         esi
+  00BAEF7B: C3                 ret
+  00BAEF7C: CC                 int         3
+  00BAEF7D: CC                 int         3
+  00BAEF7E: CC                 int         3
+  00BAEF7F: CC                 int         3
+  00BAEF80: 8B
+
+  Summary
+
+      9C8000 .text

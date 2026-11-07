@@ -1,0 +1,64 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084CD20: 51                 push        ecx
+  0084CD21: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0084CD26: 56                 push        esi
+  0084CD27: 8B F1              mov         esi,ecx
+  0084CD29: 85 C0              test        eax,eax
+  0084CD2B: 75 0A              jne         0084CD37
+  0084CD2D: E8 5E D9 BB FF     call        0040A690
+  0084CD32: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0084CD37: 8B 48 50           mov         ecx,dword ptr [eax+50h]
+  0084CD3A: 6A 00              push        0
+  0084CD3C: E8 CF B5 FF FF     call        00848310
+  0084CD41: F3 0F 10 40 20     movss       xmm0,dword ptr [eax+20h]
+  0084CD46: 0F 57 05 20 64 DD  xorps       xmm0,xmmword ptr ds:[00DD6420h]
+            00
+  0084CD4D: F3 0F 5C 46 20     subss       xmm0,dword ptr [esi+20h]
+  0084CD52: F3 0F 10 50 1C     movss       xmm2,dword ptr [eax+1Ch]
+  0084CD57: F3 0F 5C 56 1C     subss       xmm2,dword ptr [esi+1Ch]
+  0084CD5C: F3 0F 10 48 18     movss       xmm1,dword ptr [eax+18h]
+  0084CD61: F3 0F 5C 4E 18     subss       xmm1,dword ptr [esi+18h]
+  0084CD66: 0F 28 D8           movaps      xmm3,xmm0
+  0084CD69: F3 0F 59 D8        mulss       xmm3,xmm0
+  0084CD6D: 0F 28 C2           movaps      xmm0,xmm2
+  0084CD70: F3 0F 59 C2        mulss       xmm0,xmm2
+  0084CD74: F3 0F 58 D8        addss       xmm3,xmm0
+  0084CD78: 0F 28 C1           movaps      xmm0,xmm1
+  0084CD7B: F3 0F 59 C1        mulss       xmm0,xmm1
+  0084CD7F: F3 0F 58 D8        addss       xmm3,xmm0
+  0084CD83: F3 0F 11 5C 24 04  movss       dword ptr [esp+4],xmm3
+  0084CD89: D9 44 24 04        fld         dword ptr [esp+4]
+  0084CD8D: 5E                 pop         esi
+  0084CD8E: 59                 pop         ecx
+  0084CD8F: C3                 ret
+  0084CD90: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0084CD94: 56                 push        esi
+  0084CD95: 50                 push        eax
+  0084CD96: 8B F1              mov         esi,ecx
+  0084CD98: E8 D3 58 40 00     call        00C52670
+  0084CD9D: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  0084CDA1: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  0084CDA5: 83 C4 04           add         esp,4
+  0084CDA8: 51                 push        ecx
+  0084CDA9: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  0084CDAD: 52                 push        edx
+  0084CDAE: 51                 push        ecx
+  0084CDAF: 50                 push        eax
+  0084CDB0: 8B CE              mov         ecx,esi
+  0084CDB2: E8 D9 FE FF FF     call        0084CC90
+  0084CDB7: 5E                 pop         esi
+  0084CDB8: C2 10 00           ret         10h
+  0084CDBB: CC                 int         3
+  0084CDBC: CC                 int         3
+  0084CDBD: CC                 int         3
+  0084CDBE: CC                 int         3
+  0084CDBF: CC                 int         3
+  0084CDC0: 8B
+
+  Summary
+
+      9C8000 .text

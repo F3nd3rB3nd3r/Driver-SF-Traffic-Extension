@@ -1,0 +1,104 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A0A80: 8B 91 F8 72 00 00  mov         edx,dword ptr [ecx+000072F8h]
+  005A0A86: 85 D2              test        edx,edx
+  005A0A88: 74 33              je          005A0ABD
+  005A0A8A: 8B 89 FC 72 00 00  mov         ecx,dword ptr [ecx+000072FCh]
+  005A0A90: 85 C9              test        ecx,ecx
+  005A0A92: 74 29              je          005A0ABD
+  005A0A94: 0F B7 52 02        movzx       edx,word ptr [edx+2]
+  005A0A98: 33 C0              xor         eax,eax
+  005A0A9A: 56                 push        esi
+  005A0A9B: 85 D2              test        edx,edx
+  005A0A9D: 74 12              je          005A0AB1
+  005A0A9F: 66 8B 74 24 08     mov         si,word ptr [esp+8]
+  005A0AA4: 66 39 31           cmp         word ptr [ecx],si
+  005A0AA7: 74 0E              je          005A0AB7
+  005A0AA9: 40                 inc         eax
+  005A0AAA: 83 C1 06           add         ecx,6
+  005A0AAD: 3B C2              cmp         eax,edx
+  005A0AAF: 75 F3              jne         005A0AA4
+  005A0AB1: 32 C0              xor         al,al
+  005A0AB3: 5E                 pop         esi
+  005A0AB4: C2 04 00           ret         4
+  005A0AB7: B0 01              mov         al,1
+  005A0AB9: 5E                 pop         esi
+  005A0ABA: C2 04 00           ret         4
+  005A0ABD: 32 C0              xor         al,al
+  005A0ABF: C2 04 00           ret         4
+  005A0AC2: CC                 int         3
+  005A0AC3: CC                 int         3
+  005A0AC4: CC                 int         3
+  005A0AC5: CC                 int         3
+  005A0AC6: CC                 int         3
+  005A0AC7: CC                 int         3
+  005A0AC8: CC                 int         3
+  005A0AC9: CC                 int         3
+  005A0ACA: CC                 int         3
+  005A0ACB: CC                 int         3
+  005A0ACC: CC                 int         3
+  005A0ACD: CC                 int         3
+  005A0ACE: CC                 int         3
+  005A0ACF: CC                 int         3
+  005A0AD0: 8B 81 F8 72 00 00  mov         eax,dword ptr [ecx+000072F8h]
+  005A0AD6: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  005A0ADA: 0F B6 44 08 18     movzx       eax,byte ptr [eax+ecx+18h]
+  005A0ADF: C2 04 00           ret         4
+  005A0AE2: CC                 int         3
+  005A0AE3: CC                 int         3
+  005A0AE4: CC                 int         3
+  005A0AE5: CC                 int         3
+  005A0AE6: CC                 int         3
+  005A0AE7: CC                 int         3
+  005A0AE8: CC                 int         3
+  005A0AE9: CC                 int         3
+  005A0AEA: CC                 int         3
+  005A0AEB: CC                 int         3
+  005A0AEC: CC                 int         3
+  005A0AED: CC                 int         3
+  005A0AEE: CC                 int         3
+  005A0AEF: CC                 int         3
+  005A0AF0: 8B 81 F8 72 00 00  mov         eax,dword ptr [ecx+000072F8h]
+  005A0AF6: 85 C0              test        eax,eax
+  005A0AF8: 75 05              jne         005A0AFF
+  005A0AFA: D9 EE              fldz
+  005A0AFC: C2 08 00           ret         8
+  005A0AFF: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  005A0B03: 8B 54 88 08        mov         edx,dword ptr [eax+ecx*4+8]
+  005A0B07: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  005A0B0B: 0F AF D0           imul        edx,eax
+  005A0B0E: 89 54 24 08        mov         dword ptr [esp+8],edx
+  005A0B12: DB 44 24 08        fild        dword ptr [esp+8]
+  005A0B16: 85 D2              test        edx,edx
+  005A0B18: 7D 06              jge         005A0B20
+  005A0B1A: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  005A0B20: D8 0D 08 49 DE 00  fmul        dword ptr ds:[00DE4908h]
+  005A0B26: 89 44 24 08        mov         dword ptr [esp+8],eax
+  005A0B2A: DB 44 24 08        fild        dword ptr [esp+8]
+  005A0B2E: 85 C0              test        eax,eax
+  005A0B30: 7D 06              jge         005A0B38
+  005A0B32: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  005A0B38: D8 0D 20 4D DE 00  fmul        dword ptr ds:[00DE4D20h]
+  005A0B3E: DE C1              faddp       st(1),st
+  005A0B40: C2 08 00           ret         8
+  005A0B43: CC                 int         3
+  005A0B44: CC                 int         3
+  005A0B45: CC                 int         3
+  005A0B46: CC                 int         3
+  005A0B47: CC                 int         3
+  005A0B48: CC                 int         3
+  005A0B49: CC                 int         3
+  005A0B4A: CC                 int         3
+  005A0B4B: CC                 int         3
+  005A0B4C: CC                 int         3
+  005A0B4D: CC                 int         3
+  005A0B4E: CC                 int         3
+  005A0B4F: CC                 int         3
+  005A0B50: 8B
+
+  Summary
+
+      9C8000 .text

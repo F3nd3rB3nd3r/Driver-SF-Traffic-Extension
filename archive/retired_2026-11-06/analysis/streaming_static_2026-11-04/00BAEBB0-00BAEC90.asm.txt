@@ -1,0 +1,97 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAEBB0: 74 05              je          00BAEBB7
+  00BAEBB2: 89 7D 04           mov         dword ptr [ebp+4],edi
+  00BAEBB5: EB 07              jmp         00BAEBBE
+  00BAEBB7: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  00BAEBBB: 89 79 08           mov         dword ptr [ecx+8],edi
+  00BAEBBE: 85 C0              test        eax,eax
+  00BAEBC0: 74 04              je          00BAEBC6
+  00BAEBC2: 8B 13              mov         edx,dword ptr [ebx]
+  00BAEBC4: 89 10              mov         dword ptr [eax],edx
+  00BAEBC6: 8B 86 94 E0 27 00  mov         eax,dword ptr [esi+0027E094h]
+  00BAEBCC: 89 03              mov         dword ptr [ebx],eax
+  00BAEBCE: 89 9E 94 E0 27 00  mov         dword ptr [esi+0027E094h],ebx
+  00BAEBD4: 5F                 pop         edi
+  00BAEBD5: 5E                 pop         esi
+  00BAEBD6: 5D                 pop         ebp
+  00BAEBD7: 5B                 pop         ebx
+  00BAEBD8: C2 04 00           ret         4
+  00BAEBDB: CC                 int         3
+  00BAEBDC: CC                 int         3
+  00BAEBDD: CC                 int         3
+  00BAEBDE: CC                 int         3
+  00BAEBDF: CC                 int         3
+  00BAEBE0: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00BAEBE4: 8B 00              mov         eax,dword ptr [eax]
+  00BAEBE6: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00BAEBE9: 56                 push        esi
+  00BAEBEA: 57                 push        edi
+  00BAEBEB: 8B F9              mov         edi,ecx
+  00BAEBED: 8B 48 14           mov         ecx,dword ptr [eax+14h]
+  00BAEBF0: 51                 push        ecx
+  00BAEBF1: 52                 push        edx
+  00BAEBF2: 8B CF              mov         ecx,edi
+  00BAEBF4: E8 07 02 00 00     call        00BAEE00
+  00BAEBF9: 8B F0              mov         esi,eax
+  00BAEBFB: 85 F6              test        esi,esi
+  00BAEBFD: 0F 84 89 00 00 00  je          00BAEC8C
+  00BAEC03: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BAEC06: 3B 44 24 0C        cmp         eax,dword ptr [esp+0Ch]
+  00BAEC0A: 0F 85 7C 00 00 00  jne         00BAEC8C
+  00BAEC10: 8B 0E              mov         ecx,dword ptr [esi]
+  00BAEC12: 8B 01              mov         eax,dword ptr [ecx]
+  00BAEC14: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  00BAEC17: 8B 87 90 E0 17 00  mov         eax,dword ptr [edi+0017E090h]
+  00BAEC1D: 8B 16              mov         edx,dword ptr [esi]
+  00BAEC1F: 8D 84 87 90 E0 15  lea         eax,[edi+eax*4+0015E090h]
+            00
+  00BAEC26: 85 C0              test        eax,eax
+  00BAEC28: 74 02              je          00BAEC2C
+  00BAEC2A: 89 10              mov         dword ptr [eax],edx
+  00BAEC2C: FF 87 90 E0 17 00  inc         dword ptr [edi+0017E090h]
+  00BAEC32: 41                 inc         ecx
+  00BAEC33: 51                 push        ecx
+  00BAEC34: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  00BAEC38: 8B 11              mov         edx,dword ptr [ecx]
+  00BAEC3A: 83 C2 08           add         edx,8
+  00BAEC3D: 52                 push        edx
+  00BAEC3E: FF 15 68 91 DC 00  call        dword ptr ds:[00DC9168h]
+  00BAEC44: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00BAEC48: 89 06              mov         dword ptr [esi],eax
+  00BAEC4A: 8B 76 08           mov         esi,dword ptr [esi+8]
+  00BAEC4D: 85 F6              test        esi,esi
+  00BAEC4F: 74 3B              je          00BAEC8C
+  00BAEC51: 53                 push        ebx
+  00BAEC52: 55                 push        ebp
+  00BAEC53: 8B 06              mov         eax,dword ptr [esi]
+  00BAEC55: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BAEC58: B1 20              mov         cl,20h
+  00BAEC5A: E8 41 D2 07 00     call        00C2BEA0
+  00BAEC5F: 8B 5C 24 18        mov         ebx,dword ptr [esp+18h]
+  00BAEC63: 8B 1B              mov         ebx,dword ptr [ebx]
+  00BAEC65: 25 FF FF FF 7F     and         eax,7FFFFFFFh
+  00BAEC6A: 8B C8              mov         ecx,eax
+  00BAEC6C: 81 C9 00 00 00 80  or          ecx,80000000h
+  00BAEC72: 33 D2              xor         edx,edx
+  00BAEC74: 33 ED              xor         ebp,ebp
+  00BAEC76: 0B D3              or          edx,ebx
+  00BAEC78: 0B CD              or          ecx,ebp
+  00BAEC7A: 89 16              mov         dword ptr [esi],edx
+  00BAEC7C: 89 4E 04           mov         dword ptr [esi+4],ecx
+  00BAEC7F: 8B B4 C7 98 E0 17  mov         esi,dword ptr [edi+eax*8+0017E098h]
+            00
+  00BAEC86: 85 F6              test        esi,esi
+  00BAEC88: 75 C9              jne         00BAEC53
+  00BAEC8A: 5D                 pop         ebp
+  00BAEC8B: 5B                 pop         ebx
+  00BAEC8C: 5F                 pop         edi
+  00BAEC8D: 5E                 pop         esi
+  00BAEC8E: C2 08 00           ret         8
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,66 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008650D0: 6A 0A              push        0Ah
+  008650D2: 50                 push        eax
+  008650D3: E8 E8 53 00 00     call        0086A4C0
+  008650D8: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  008650DD: 8B 7D 5C           mov         edi,dword ptr [ebp+5Ch]
+  008650E0: 83 C4 08           add         esp,8
+  008650E3: 85 C0              test        eax,eax
+  008650E5: 75 0A              jne         008650F1
+  008650E7: E8 A4 55 BA FF     call        0040A690
+  008650EC: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  008650F1: 89 78 28           mov         dword ptr [eax+28h],edi
+  008650F4: 8B 17              mov         edx,dword ptr [edi]
+  008650F6: 8B 42 04           mov         eax,dword ptr [edx+4]
+  008650F9: 8B CF              mov         ecx,edi
+  008650FB: FF D0              call        eax
+  008650FD: 84 C0              test        al,al
+  008650FF: 74 42              je          00865143
+  00865101: 8B 4D 7C           mov         ecx,dword ptr [ebp+7Ch]
+  00865104: 51                 push        ecx
+  00865105: 56                 push        esi
+  00865106: FF 15 C8 93 DC 00  call        dword ptr ds:[00DC93C8h]
+  0086510C: 56                 push        esi
+  0086510D: FF 15 90 93 DC 00  call        dword ptr ds:[00DC9390h]
+  00865113: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00865118: C6 05 D8 74 44 01  mov         byte ptr ds:[014474D8h],1
+            01
+  0086511F: 85 C0              test        eax,eax
+  00865121: 75 0A              jne         0086512D
+  00865123: E8 68 55 BA FF     call        0040A690
+  00865128: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0086512D: 8B 48 28           mov         ecx,dword ptr [eax+28h]
+  00865130: E8 AB 81 FF FF     call        0085D2E0
+  00865135: 56                 push        esi
+  00865136: C6 05 D8 74 44 01  mov         byte ptr ds:[014474D8h],0
+            00
+  0086513D: FF 15 94 93 DC 00  call        dword ptr ds:[00DC9394h]
+  00865143: 6A 10              push        10h
+  00865145: E8 56 85 FF FF     call        0085D6A0
+  0086514A: 6A 0A              push        0Ah
+  0086514C: E8 4F 85 FF FF     call        0085D6A0
+  00865151: 6A 07              push        7
+  00865153: E8 48 85 FF FF     call        0085D6A0
+  00865158: 8B 55 50           mov         edx,dword ptr [ebp+50h]
+  0086515B: 83 C4 0C           add         esp,0Ch
+  0086515E: 52                 push        edx
+  0086515F: FF 15 C4 92 DC 00  call        dword ptr ds:[00DC92C4h]
+  00865165: 53                 push        ebx
+  00865166: 8D 45 20           lea         eax,[ebp+20h]
+  00865169: 50                 push        eax
+  0086516A: FF 15 44 93 DC 00  call        dword ptr ds:[00DC9344h]
+  00865170: E8 4B 59 32 00     call        00B8AAC0
+  00865175: 83 7D 08 10        cmp         dword ptr [ebp+8],10h
+  00865179: 72 0C              jb          00865187
+  0086517B: 8B 4D F4           mov         ecx,dword ptr [ebp-0Ch]
+  0086517E: 51                 push        ecx
+  0086517F: E8
+  00865180: D6
+
+  Summary
+
+      9C8000 .text

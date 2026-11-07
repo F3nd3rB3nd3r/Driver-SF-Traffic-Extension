@@ -1,0 +1,658 @@
+
+Dump of file E:\_DSF Mods\ai repos\DriverSF_V29s_VS_LEAN_2026-11-02\build\v29s_callback512_r1\DriverSF_V29s_160Capacity_150Request_CALLBACK512_R1.asi
+
+File Type: DLL
+
+  1000CE90: 55                 push        ebp
+  1000CE91: 8B EC              mov         ebp,esp
+  1000CE93: 83 EC 28           sub         esp,28h
+  1000CE96: C7 05 84 BC 36 10  mov         dword ptr ds:[1036BC84h],0FFFFFFFFh
+            FF FF FF FF
+  1000CEA0: C7 05 40 80 02 10  mov         dword ptr ds:[10028040h],100260ECh
+            EC 60 02 10
+  1000CEAA: 53                 push        ebx
+  1000CEAB: 56                 push        esi
+  1000CEAC: 57                 push        edi
+  1000CEAD: E8 BE 05 00 00     call        1000D470
+  1000CEB2: 84 C0              test        al,al
+  1000CEB4: 0F 84 46 04 00 00  je          1000D300
+  1000CEBA: C7 05 40 80 02 10  mov         dword ptr ds:[10028040h],10025B98h
+            98 5B 02 10
+  1000CEC4: E8 17 6F 00 00     call        10013DE0
+  1000CEC9: 84 C0              test        al,al
+  1000CECB: 0F 84 2F 04 00 00  je          1000D300
+  1000CED1: 83 3D BC 8E 02 10  cmp         dword ptr ds:[10028EBCh],0
+            00
+  1000CED8: 0F 85 22 04 00 00  jne         1000D300
+  1000CEDE: 6A 00              push        0
+  1000CEE0: C7 05 40 80 02 10  mov         dword ptr ds:[10028040h],10024608h
+            08 46 02 10
+  1000CEEA: E8 71 0C 00 00     call        1000DB60
+  1000CEEF: 83 C4 04           add         esp,4
+  1000CEF2: 84 C0              test        al,al
+  1000CEF4: 0F 84 06 04 00 00  je          1000D300
+  1000CEFA: 6A 04              push        4
+  1000CEFC: 68 00 30 00 00     push        3000h
+  1000CF01: 68 34 C1 01 00     push        1C134h
+  1000CF06: 6A 00              push        0
+  1000CF08: C7 05 40 80 02 10  mov         dword ptr ds:[10028040h],100258C0h
+            C0 58 02 10
+  1000CF12: FF 15 24 50 41 10  call        dword ptr ds:[10415024h]
+  1000CF18: 8B D0              mov         edx,eax
+  1000CF1A: 89 15 74 8E 02 10  mov         dword ptr ds:[10028E74h],edx
+  1000CF20: 85 D2              test        edx,edx
+  1000CF22: 0F 84 D8 03 00 00  je          1000D300
+  1000CF28: 33 FF              xor         edi,edi
+  1000CF2A: 66 0F 1F 44 00 00  nop         word ptr [eax+eax]
+  1000CF30: 33 C9              xor         ecx,ecx
+  1000CF32: 69 F7 64 15 00 00  imul        esi,edi,1564h
+  1000CF38: 0F 1F 84 00 00 00  nop         dword ptr [eax+eax+00000000h]
+            00 00
+  1000CF40: 8D 04 8E           lea         eax,[esi+ecx*4]
+  1000CF43: C7 84 10 10 15 00  mov         dword ptr [eax+edx+00001510h],43423531h
+            00 31 35 42 43
+  1000CF4E: 8D 04 8E           lea         eax,[esi+ecx*4]
+  1000CF51: 41                 inc         ecx
+  1000CF52: C7 04 10 31 35 42  mov         dword ptr [eax+edx],43423531h
+            43
+  1000CF59: 83 F9 04           cmp         ecx,4
+  1000CF5C: 72 E2              jb          1000CF40
+  1000CF5E: 47                 inc         edi
+  1000CF5F: 83 FF 15           cmp         edi,15h
+  1000CF62: 72 CC              jb          1000CF30
+  1000CF64: C7 05 40 80 02 10  mov         dword ptr ds:[10028040h],10024614h
+            14 46 02 10
+  1000CF6E: 33 DB              xor         ebx,ebx
+  1000CF70: 8D 04 9B           lea         eax,[ebx+ebx*4]
+  1000CF73: 8D 34 85 00 F7 01  lea         esi,[eax*4+1001F700h]
+            10
+  1000CF7A: 8B 46 04           mov         eax,dword ptr [esi+4]
+  1000CF7D: 6A 40              push        40h
+  1000CF7F: 68 00 30 00 00     push        3000h
+  1000CF84: 83 C0 05           add         eax,5
+  1000CF87: 50                 push        eax
+  1000CF88: 6A 00              push        0
+  1000CF8A: FF 15 24 50 41 10  call        dword ptr ds:[10415024h]
+  1000CF90: 8B F8              mov         edi,eax
+  1000CF92: 85 FF              test        edi,edi
+  1000CF94: 0F 84 66 03 00 00  je          1000D300
+  1000CF9A: 8B 56 04           mov         edx,dword ptr [esi+4]
+  1000CF9D: 33 C9              xor         ecx,ecx
+  1000CF9F: 89 3C 9D 8C 8E 02  mov         dword ptr [ebx*4+10028E8Ch],edi
+            10
+  1000CFA6: 85 D2              test        edx,edx
+  1000CFA8: 74 15              je          1000CFBF
+  1000CFAA: 66 0F 1F 44 00 00  nop         word ptr [eax+eax]
+  1000CFB0: 8A 44 0E 08        mov         al,byte ptr [esi+ecx+8]
+  1000CFB4: 88 04 39           mov         byte ptr [ecx+edi],al
+  1000CFB7: 41                 inc         ecx
+  1000CFB8: 8B 56 04           mov         edx,dword ptr [esi+4]
+  1000CFBB: 3B CA              cmp         ecx,edx
+  1000CFBD: 72 F1              jb          1000CFB0
+  1000CFBF: C6 04 3A E9        mov         byte ptr [edx+edi],0E9h
+  1000CFC3: 43                 inc         ebx
+  1000CFC4: 8B 15 C8 22 11 10  mov         edx,dword ptr ds:[101122C8h]
+  1000CFCA: 8B 06              mov         eax,dword ptr [esi]
+  1000CFCC: 2B C7              sub         eax,edi
+  1000CFCE: 8D 8A FB FF BF FF  lea         ecx,[edx+FFBFFFFBh]
+  1000CFD4: 03 C8              add         ecx,eax
+  1000CFD6: 8B 46 04           mov         eax,dword ptr [esi+4]
+  1000CFD9: 89 4C 38 01        mov         dword ptr [eax+edi+1],ecx
+  1000CFDD: 83 FB 03           cmp         ebx,3
+  1000CFE0: 72 8E              jb          1000CF70
+  1000CFE2: A1 8C 8E 02 10     mov         eax,dword ptr ds:[10028E8Ch]
+  1000CFE7: 0F 57 C0           xorps       xmm0,xmm0
+  1000CFEA: 8B 1D 04 50 41 10  mov         ebx,dword ptr ds:[10415004h]
+  1000CFF0: 33 F6              xor         esi,esi
+  1000CFF2: A3 84 8E 02 10     mov         dword ptr ds:[10028E84h],eax
+  1000CFF7: A1 94 8E 02 10     mov         eax,dword ptr ds:[10028E94h]
+  1000CFFC: A3 88 8E 02 10     mov         dword ptr ds:[10028E88h],eax
+  1000D001: 8D 82 00 60 15 00  lea         eax,[edx+00156000h]
+  1000D007: 89 45 E4           mov         dword ptr [ebp-1Ch],eax
+  1000D00A: 8D 82 00 80 45 00  lea         eax,[edx+00458000h]
+  1000D010: 89 45 E8           mov         dword ptr [ebp-18h],eax
+  1000D013: 8D 82 00 90 45 00  lea         eax,[edx+00459000h]
+  1000D019: 89 45 EC           mov         dword ptr [ebp-14h],eax
+  1000D01C: 66 0F D6 45 D8     movq        mmword ptr [ebp-28h],xmm0
+  1000D021: C7 45 E0 00 00 00  mov         dword ptr [ebp-20h],0
+            00
+  1000D028: C7 45 F8 00 00 00  mov         dword ptr [ebp-8],0
+            00
+  1000D02F: C7 05 40 80 02 10  mov         dword ptr ds:[10028040h],10024630h
+            30 46 02 10
+  1000D039: 0F 1F 80 00 00 00  nop         dword ptr [eax+00000000h]
+            00
+  1000D040: 8D 45 D8           lea         eax,[ebp-28h]
+  1000D043: 8D 04 B0           lea         eax,[eax+esi*4]
+  1000D046: 50                 push        eax
+  1000D047: 6A 40              push        40h
+  1000D049: 68 00 10 00 00     push        1000h
+  1000D04E: FF 74 B5 E4        push        dword ptr [ebp+esi*4-1Ch]
+  1000D052: FF D3              call        ebx
+  1000D054: 85 C0              test        eax,eax
+  1000D056: 0F 84 60 02 00 00  je          1000D2BC
+  1000D05C: 46                 inc         esi
+  1000D05D: 8B FE              mov         edi,esi
+  1000D05F: 83 FE 03           cmp         esi,3
+  1000D062: 72 DC              jb          1000D040
+  1000D064: 83 FF 03           cmp         edi,3
+  1000D067: 0F 85 53 02 00 00  jne         1000D2C0
+  1000D06D: 83 3D CC 66 0C 10  cmp         dword ptr ds:[100C66CCh],1
+            01
+  1000D074: 0F 85 3E 02 00 00  jne         1000D2B8
+  1000D07A: 83 3D 7C BC 36 10  cmp         dword ptr ds:[1036BC7Ch],1
+            01
+  1000D081: 0F 85 31 02 00 00  jne         1000D2B8
+  1000D087: 6A 01              push        1
+  1000D089: E8 42 4E 00 00     call        10011ED0
+  1000D08E: 83 C4 04           add         esp,4
+  1000D091: 84 C0              test        al,al
+  1000D093: 0F 84 1F 02 00 00  je          1000D2B8
+  1000D099: E8 92 C0 00 00     call        10019130
+  1000D09E: 84 C0              test        al,al
+  1000D0A0: 0F 84 12 02 00 00  je          1000D2B8
+  1000D0A6: 83 3D 88 66 0C 10  cmp         dword ptr ds:[100C6688h],0
+            00
+  1000D0AD: 0F 84 05 02 00 00  je          1000D2B8
+  1000D0B3: 6A 01              push        1
+  1000D0B5: E8 D6 AC 00 00     call        10017D90
+  1000D0BA: 83 C4 04           add         esp,4
+  1000D0BD: 84 C0              test        al,al
+  1000D0BF: 0F 84 F3 01 00 00  je          1000D2B8
+  1000D0C5: 83 3D 80 51 29 10  cmp         dword ptr ds:[10295180h],1
+            01
+  1000D0CC: 0F 85 E6 01 00 00  jne         1000D2B8
+  1000D0D2: E8 39 3B 00 00     call        10010C10
+  1000D0D7: 84 C0              test        al,al
+  1000D0D9: 0F 84 D9 01 00 00  je          1000D2B8
+  1000D0DF: E8 FC 6C 00 00     call        10013DE0
+  1000D0E4: 84 C0              test        al,al
+  1000D0E6: 0F 84 D4 01 00 00  je          1000D2C0
+  1000D0EC: 83 3D BC 8E 02 10  cmp         dword ptr ds:[10028EBCh],0
+            00
+  1000D0F3: 0F 85 C7 01 00 00  jne         1000D2C0
+  1000D0F9: 6A 00              push        0
+  1000D0FB: E8 60 0A 00 00     call        1000DB60
+  1000D100: 83 C4 04           add         esp,4
+  1000D103: 84 C0              test        al,al
+  1000D105: 0F 84 B5 01 00 00  je          1000D2C0
+  1000D10B: 8B 35 C8 22 11 10  mov         esi,dword ptr ds:[101122C8h]
+  1000D111: B9 00 F7 01 10     mov         ecx,1001F700h
+  1000D116: 8B 11              mov         edx,dword ptr [ecx]
+  1000D118: 81 C2 00 00 C0 FF  add         edx,0FFC00000h
+  1000D11E: 03 D6              add         edx,esi
+  1000D120: C6 02 E9           mov         byte ptr [edx],0E9h
+  1000D123: 8B 41 10           mov         eax,dword ptr [ecx+10h]
+  1000D126: 2B C2              sub         eax,edx
+  1000D128: 83 E8 05           sub         eax,5
+  1000D12B: 89 42 01           mov         dword ptr [edx+1],eax
+  1000D12E: B8 05 00 00 00     mov         eax,5
+  1000D133: 39 41 04           cmp         dword ptr [ecx+4],eax
+  1000D136: 76 0A              jbe         1000D142
+  1000D138: C6 04 10 90        mov         byte ptr [eax+edx],90h
+  1000D13C: 40                 inc         eax
+  1000D13D: 3B 41 04           cmp         eax,dword ptr [ecx+4]
+  1000D140: 72 F6              jb          1000D138
+  1000D142: 83 C1 14           add         ecx,14h
+  1000D145: 81 F9 3C F7 01 10  cmp         ecx,1001F73Ch
+  1000D14B: 75 C9              jne         1000D116
+  1000D14D: 6A 01              push        1
+  1000D14F: E8 0C 0A 00 00     call        1000DB60
+  1000D154: 8B 3D 04 50 41 10  mov         edi,dword ptr ds:[10415004h]
+  1000D15A: 83 C4 04           add         esp,4
+  1000D15D: 33 DB              xor         ebx,ebx
+  1000D15F: 88 45 F0           mov         byte ptr [ebp-10h],al
+  1000D162: 89 5D F4           mov         dword ptr [ebp-0Ch],ebx
+  1000D165: FF 15 30 50 41 10  call        dword ptr ds:[10415030h]
+  1000D16B: 8B 74 9D E4        mov         esi,dword ptr [ebp+ebx*4-1Ch]
+  1000D16F: 68 00 10 00 00     push        1000h
+  1000D174: 56                 push        esi
+  1000D175: 50                 push        eax
+  1000D176: FF 15 2C 50 41 10  call        dword ptr ds:[1041502Ch]
+  1000D17C: 8B D8              mov         ebx,eax
+  1000D17E: 8D 45 F8           lea         eax,[ebp-8]
+  1000D181: 50                 push        eax
+  1000D182: 8B 45 F4           mov         eax,dword ptr [ebp-0Ch]
+  1000D185: F7 DB              neg         ebx
+  1000D187: 1A DB              sbb         bl,bl
+  1000D189: 22 5D F0           and         bl,byte ptr [ebp-10h]
+  1000D18C: FF 74 85 D8        push        dword ptr [ebp+eax*4-28h]
+  1000D190: 68 00 10 00 00     push        1000h
+  1000D195: 56                 push        esi
+  1000D196: FF D7              call        edi
+  1000D198: F7 D8              neg         eax
+  1000D19A: 1A C0              sbb         al,al
+  1000D19C: 22 C3              and         al,bl
+  1000D19E: 8B 5D F4           mov         ebx,dword ptr [ebp-0Ch]
+  1000D1A1: 43                 inc         ebx
+  1000D1A2: 89 45 F0           mov         dword ptr [ebp-10h],eax
+  1000D1A5: 89 5D F4           mov         dword ptr [ebp-0Ch],ebx
+  1000D1A8: 83 FB 03           cmp         ebx,3
+  1000D1AB: 72 B8              jb          1000D165
+  1000D1AD: 84 C0              test        al,al
+  1000D1AF: 74 1D              je          1000D1CE
+  1000D1B1: 5F                 pop         edi
+  1000D1B2: 5E                 pop         esi
+  1000D1B3: C7 05 84 BC 36 10  mov         dword ptr ds:[1036BC84h],1
+            01 00 00 00
+  1000D1BD: B0 01              mov         al,1
+  1000D1BF: C7 05 40 80 02 10  mov         dword ptr ds:[10028040h],10026104h
+            04 61 02 10
+  1000D1C9: 5B                 pop         ebx
+  1000D1CA: 8B E5              mov         esp,ebp
+  1000D1CC: 5D                 pop         ebp
+  1000D1CD: C3                 ret
+  1000D1CE: B3 01              mov         bl,1
+  1000D1D0: 33 F6              xor         esi,esi
+  1000D1D2: 8D 45 F8           lea         eax,[ebp-8]
+  1000D1D5: 50                 push        eax
+  1000D1D6: 6A 40              push        40h
+  1000D1D8: 68 00 10 00 00     push        1000h
+  1000D1DD: FF 74 B5 E4        push        dword ptr [ebp+esi*4-1Ch]
+  1000D1E1: FF D7              call        edi
+  1000D1E3: F7 D8              neg         eax
+  1000D1E5: 1A C0              sbb         al,al
+  1000D1E7: 46                 inc         esi
+  1000D1E8: 22 D8              and         bl,al
+  1000D1EA: 83 FE 03           cmp         esi,3
+  1000D1ED: 72 E3              jb          1000D1D2
+  1000D1EF: 89 5D F4           mov         dword ptr [ebp-0Ch],ebx
+  1000D1F2: 84 DB              test        bl,bl
+  1000D1F4: 74 38              je          1000D22E
+  1000D1F6: 8B 3D C8 22 11 10  mov         edi,dword ptr ds:[101122C8h]
+  1000D1FC: BE 00 F7 01 10     mov         esi,1001F700h
+  1000D201: 33 D2              xor         edx,edx
+  1000D203: 39 56 04           cmp         dword ptr [esi+4],edx
+  1000D206: 76 15              jbe         1000D21D
+  1000D208: 8B 0E              mov         ecx,dword ptr [esi]
+  1000D20A: 8A 44 16 08        mov         al,byte ptr [esi+edx+8]
+  1000D20E: 03 CA              add         ecx,edx
+  1000D210: 42                 inc         edx
+  1000D211: 88 84 39 00 00 C0  mov         byte ptr [ecx+edi+FFC00000h],al
+            FF
+  1000D218: 3B 56 04           cmp         edx,dword ptr [esi+4]
+  1000D21B: 72 EB              jb          1000D208
+  1000D21D: 83 C6 14           add         esi,14h
+  1000D220: 81 FE 3C F7 01 10  cmp         esi,1001F73Ch
+  1000D226: 75 D9              jne         1000D201
+  1000D228: 8B 3D 04 50 41 10  mov         edi,dword ptr ds:[10415004h]
+  1000D22E: 33 C0              xor         eax,eax
+  1000D230: 89 45 F0           mov         dword ptr [ebp-10h],eax
+  1000D233: 8B 74 85 E4        mov         esi,dword ptr [ebp+eax*4-1Ch]
+  1000D237: 8D 4D F8           lea         ecx,[ebp-8]
+  1000D23A: 51                 push        ecx
+  1000D23B: FF 74 85 D8        push        dword ptr [ebp+eax*4-28h]
+  1000D23F: 68 00 10 00 00     push        1000h
+  1000D244: 56                 push        esi
+  1000D245: FF D7              call        edi
+  1000D247: 8B D8              mov         ebx,eax
+  1000D249: F7 DB              neg         ebx
+  1000D24B: 1A DB              sbb         bl,bl
+  1000D24D: 22 5D F4           and         bl,byte ptr [ebp-0Ch]
+  1000D250: FF 15 30 50 41 10  call        dword ptr ds:[10415030h]
+  1000D256: 68 00 10 00 00     push        1000h
+  1000D25B: 56                 push        esi
+  1000D25C: 50                 push        eax
+  1000D25D: FF 15 2C 50 41 10  call        dword ptr ds:[1041502Ch]
+  1000D263: F7 D8              neg         eax
+  1000D265: 1A C0              sbb         al,al
+  1000D267: 22 C3              and         al,bl
+  1000D269: 89 45 F4           mov         dword ptr [ebp-0Ch],eax
+  1000D26C: 8B 45 F0           mov         eax,dword ptr [ebp-10h]
+  1000D26F: 40                 inc         eax
+  1000D270: 89 45 F0           mov         dword ptr [ebp-10h],eax
+  1000D273: 83 F8 03           cmp         eax,3
+  1000D276: 72 BB              jb          1000D233
+  1000D278: 6A 00              push        0
+  1000D27A: E8 E1 08 00 00     call        1000DB60
+  1000D27F: 83 C4 04           add         esp,4
+  1000D282: B9 00 00 00 00     mov         ecx,0
+  1000D287: F6 D8              neg         al
+  1000D289: BA 9C 45 02 10     mov         edx,1002459Ch
+  1000D28E: 1A C0              sbb         al,al
+  1000D290: 22 45 F4           and         al,byte ptr [ebp-0Ch]
+  1000D293: 5F                 pop         edi
+  1000D294: 0F 95 C1           setne       cl
+  1000D297: 83 C1 FE           add         ecx,0FFFFFFFEh
+  1000D29A: 84 C0              test        al,al
+  1000D29C: 89 0D 84 BC 36 10  mov         dword ptr ds:[1036BC84h],ecx
+  1000D2A2: B9 80 45 02 10     mov         ecx,10024580h
+  1000D2A7: 0F 44 CA           cmove       ecx,edx
+  1000D2AA: 32 C0              xor         al,al
+  1000D2AC: 5E                 pop         esi
+  1000D2AD: 89 0D 40 80 02 10  mov         dword ptr ds:[10028040h],ecx
+  1000D2B3: 5B                 pop         ebx
+  1000D2B4: 8B E5              mov         esp,ebp
+  1000D2B6: 5D                 pop         ebp
+  1000D2B7: C3                 ret
+  1000D2B8: 8B F7              mov         esi,edi
+  1000D2BA: EB 04              jmp         1000D2C0
+  1000D2BC: 85 F6              test        esi,esi
+  1000D2BE: 74 40              je          1000D300
+  1000D2C0: C6 45 FF 01        mov         byte ptr [ebp-1],1
+  1000D2C4: 33 FF              xor         edi,edi
+  1000D2C6: 8D 45 F8           lea         eax,[ebp-8]
+  1000D2C9: 50                 push        eax
+  1000D2CA: FF 74 BD D8        push        dword ptr [ebp+edi*4-28h]
+  1000D2CE: 68 00 10 00 00     push        1000h
+  1000D2D3: FF 74 BD E4        push        dword ptr [ebp+edi*4-1Ch]
+  1000D2D7: FF D3              call        ebx
+  1000D2D9: F7 D8              neg         eax
+  1000D2DB: 1A C0              sbb         al,al
+  1000D2DD: 47                 inc         edi
+  1000D2DE: 22 45 FF           and         al,byte ptr [ebp-1]
+  1000D2E1: 88 45 FF           mov         byte ptr [ebp-1],al
+  1000D2E4: 3B FE              cmp         edi,esi
+  1000D2E6: 72 DE              jb          1000D2C6
+  1000D2E8: 84 C0              test        al,al
+  1000D2EA: 75 14              jne         1000D300
+  1000D2EC: C7 05 84 BC 36 10  mov         dword ptr ds:[1036BC84h],0FFFFFFFEh
+            FE FF FF FF
+  1000D2F6: C7 05 40 80 02 10  mov         dword ptr ds:[10028040h],100258D8h
+            D8 58 02 10
+  1000D300: 5F                 pop         edi
+  1000D301: 5E                 pop         esi
+  1000D302: 32 C0              xor         al,al
+  1000D304: 5B                 pop         ebx
+  1000D305: 8B E5              mov         esp,ebp
+  1000D307: 5D                 pop         ebp
+  1000D308: C3                 ret
+  1000D309: CC                 int         3
+  1000D30A: CC                 int         3
+  1000D30B: CC                 int         3
+  1000D30C: CC                 int         3
+  1000D30D: CC                 int         3
+  1000D30E: CC                 int         3
+  1000D30F: CC                 int         3
+  1000D310: CC                 int         3
+  1000D311: CC                 int         3
+  1000D312: CC                 int         3
+  1000D313: CC                 int         3
+  1000D314: CC                 int         3
+  1000D315: CC                 int         3
+  1000D316: CC                 int         3
+  1000D317: CC                 int         3
+  1000D318: CC                 int         3
+  1000D319: CC                 int         3
+  1000D31A: CC                 int         3
+  1000D31B: CC                 int         3
+  1000D31C: CC                 int         3
+  1000D31D: CC                 int         3
+  1000D31E: CC                 int         3
+  1000D31F: CC                 int         3
+  1000D320: CC                 int         3
+  1000D321: CC                 int         3
+  1000D322: CC                 int         3
+  1000D323: CC                 int         3
+  1000D324: CC                 int         3
+  1000D325: CC                 int         3
+  1000D326: CC                 int         3
+  1000D327: CC                 int         3
+  1000D328: CC                 int         3
+  1000D329: CC                 int         3
+  1000D32A: CC                 int         3
+  1000D32B: CC                 int         3
+  1000D32C: CC                 int         3
+  1000D32D: CC                 int         3
+  1000D32E: CC                 int         3
+  1000D32F: CC                 int         3
+  1000D330: CC                 int         3
+  1000D331: CC                 int         3
+  1000D332: CC                 int         3
+  1000D333: CC                 int         3
+  1000D334: CC                 int         3
+  1000D335: CC                 int         3
+  1000D336: CC                 int         3
+  1000D337: CC                 int         3
+  1000D338: CC                 int         3
+  1000D339: CC                 int         3
+  1000D33A: CC                 int         3
+  1000D33B: CC                 int         3
+  1000D33C: CC                 int         3
+  1000D33D: CC                 int         3
+  1000D33E: CC                 int         3
+  1000D33F: CC                 int         3
+  1000D340: CC                 int         3
+  1000D341: CC                 int         3
+  1000D342: CC                 int         3
+  1000D343: CC                 int         3
+  1000D344: CC                 int         3
+  1000D345: CC                 int         3
+  1000D346: CC                 int         3
+  1000D347: CC                 int         3
+  1000D348: CC                 int         3
+  1000D349: CC                 int         3
+  1000D34A: CC                 int         3
+  1000D34B: CC                 int         3
+  1000D34C: CC                 int         3
+  1000D34D: CC                 int         3
+  1000D34E: CC                 int         3
+  1000D34F: CC                 int         3
+  1000D350: CC                 int         3
+  1000D351: CC                 int         3
+  1000D352: CC                 int         3
+  1000D353: CC                 int         3
+  1000D354: CC                 int         3
+  1000D355: CC                 int         3
+  1000D356: CC                 int         3
+  1000D357: CC                 int         3
+  1000D358: CC                 int         3
+  1000D359: CC                 int         3
+  1000D35A: CC                 int         3
+  1000D35B: CC                 int         3
+  1000D35C: CC                 int         3
+  1000D35D: CC                 int         3
+  1000D35E: CC                 int         3
+  1000D35F: CC                 int         3
+  1000D360: CC                 int         3
+  1000D361: CC                 int         3
+  1000D362: CC                 int         3
+  1000D363: CC                 int         3
+  1000D364: CC                 int         3
+  1000D365: CC                 int         3
+  1000D366: CC                 int         3
+  1000D367: CC                 int         3
+  1000D368: CC                 int         3
+  1000D369: CC                 int         3
+  1000D36A: CC                 int         3
+  1000D36B: CC                 int         3
+  1000D36C: CC                 int         3
+  1000D36D: CC                 int         3
+  1000D36E: CC                 int         3
+  1000D36F: CC                 int         3
+  1000D370: CC                 int         3
+  1000D371: CC                 int         3
+  1000D372: CC                 int         3
+  1000D373: CC                 int         3
+  1000D374: CC                 int         3
+  1000D375: CC                 int         3
+  1000D376: CC                 int         3
+  1000D377: CC                 int         3
+  1000D378: CC                 int         3
+  1000D379: CC                 int         3
+  1000D37A: CC                 int         3
+  1000D37B: CC                 int         3
+  1000D37C: CC                 int         3
+  1000D37D: CC                 int         3
+  1000D37E: CC                 int         3
+  1000D37F: CC                 int         3
+  1000D380: CC                 int         3
+  1000D381: CC                 int         3
+  1000D382: CC                 int         3
+  1000D383: CC                 int         3
+  1000D384: CC                 int         3
+  1000D385: CC                 int         3
+  1000D386: CC                 int         3
+  1000D387: CC                 int         3
+  1000D388: CC                 int         3
+  1000D389: CC                 int         3
+  1000D38A: CC                 int         3
+  1000D38B: CC                 int         3
+  1000D38C: CC                 int         3
+  1000D38D: CC                 int         3
+  1000D38E: CC                 int         3
+  1000D38F: CC                 int         3
+  1000D390: CC                 int         3
+  1000D391: CC                 int         3
+  1000D392: CC                 int         3
+  1000D393: CC                 int         3
+  1000D394: CC                 int         3
+  1000D395: CC                 int         3
+  1000D396: CC                 int         3
+  1000D397: CC                 int         3
+  1000D398: CC                 int         3
+  1000D399: CC                 int         3
+  1000D39A: CC                 int         3
+  1000D39B: CC                 int         3
+  1000D39C: CC                 int         3
+  1000D39D: CC                 int         3
+  1000D39E: CC                 int         3
+  1000D39F: CC                 int         3
+  1000D3A0: CC                 int         3
+  1000D3A1: CC                 int         3
+  1000D3A2: CC                 int         3
+  1000D3A3: CC                 int         3
+  1000D3A4: CC                 int         3
+  1000D3A5: CC                 int         3
+  1000D3A6: CC                 int         3
+  1000D3A7: CC                 int         3
+  1000D3A8: CC                 int         3
+  1000D3A9: CC                 int         3
+  1000D3AA: CC                 int         3
+  1000D3AB: CC                 int         3
+  1000D3AC: CC                 int         3
+  1000D3AD: CC                 int         3
+  1000D3AE: CC                 int         3
+  1000D3AF: CC                 int         3
+  1000D3B0: CC                 int         3
+  1000D3B1: CC                 int         3
+  1000D3B2: CC                 int         3
+  1000D3B3: CC                 int         3
+  1000D3B4: CC                 int         3
+  1000D3B5: CC                 int         3
+  1000D3B6: CC                 int         3
+  1000D3B7: CC                 int         3
+  1000D3B8: CC                 int         3
+  1000D3B9: CC                 int         3
+  1000D3BA: CC                 int         3
+  1000D3BB: CC                 int         3
+  1000D3BC: CC                 int         3
+  1000D3BD: CC                 int         3
+  1000D3BE: CC                 int         3
+  1000D3BF: CC                 int         3
+  1000D3C0: CC                 int         3
+  1000D3C1: CC                 int         3
+  1000D3C2: CC                 int         3
+  1000D3C3: CC                 int         3
+  1000D3C4: CC                 int         3
+  1000D3C5: CC                 int         3
+  1000D3C6: CC                 int         3
+  1000D3C7: CC                 int         3
+  1000D3C8: CC                 int         3
+  1000D3C9: CC                 int         3
+  1000D3CA: CC                 int         3
+  1000D3CB: CC                 int         3
+  1000D3CC: CC                 int         3
+  1000D3CD: CC                 int         3
+  1000D3CE: CC                 int         3
+  1000D3CF: CC                 int         3
+  1000D3D0: CC                 int         3
+  1000D3D1: CC                 int         3
+  1000D3D2: CC                 int         3
+  1000D3D3: CC                 int         3
+  1000D3D4: CC                 int         3
+  1000D3D5: CC                 int         3
+  1000D3D6: CC                 int         3
+  1000D3D7: CC                 int         3
+  1000D3D8: CC                 int         3
+  1000D3D9: CC                 int         3
+  1000D3DA: CC                 int         3
+  1000D3DB: CC                 int         3
+  1000D3DC: CC                 int         3
+  1000D3DD: CC                 int         3
+  1000D3DE: CC                 int         3
+  1000D3DF: CC                 int         3
+  1000D3E0: CC                 int         3
+  1000D3E1: CC                 int         3
+  1000D3E2: CC                 int         3
+  1000D3E3: CC                 int         3
+  1000D3E4: CC                 int         3
+  1000D3E5: CC                 int         3
+  1000D3E6: CC                 int         3
+  1000D3E7: CC                 int         3
+  1000D3E8: CC                 int         3
+  1000D3E9: CC                 int         3
+  1000D3EA: CC                 int         3
+  1000D3EB: CC                 int         3
+  1000D3EC: CC                 int         3
+  1000D3ED: CC                 int         3
+  1000D3EE: CC                 int         3
+  1000D3EF: CC                 int         3
+  1000D3F0: CC                 int         3
+  1000D3F1: CC                 int         3
+  1000D3F2: CC                 int         3
+  1000D3F3: CC                 int         3
+  1000D3F4: CC                 int         3
+  1000D3F5: CC                 int         3
+  1000D3F6: CC                 int         3
+  1000D3F7: CC                 int         3
+  1000D3F8: CC                 int         3
+  1000D3F9: CC                 int         3
+  1000D3FA: CC                 int         3
+  1000D3FB: CC                 int         3
+  1000D3FC: CC                 int         3
+  1000D3FD: CC                 int         3
+  1000D3FE: CC                 int         3
+  1000D3FF: CC                 int         3
+  1000D400: CC                 int         3
+  1000D401: CC                 int         3
+  1000D402: CC                 int         3
+  1000D403: CC                 int         3
+  1000D404: CC                 int         3
+  1000D405: CC                 int         3
+  1000D406: CC                 int         3
+  1000D407: CC                 int         3
+  1000D408: CC                 int         3
+  1000D409: CC                 int         3
+  1000D40A: CC                 int         3
+  1000D40B: CC                 int         3
+  1000D40C: CC                 int         3
+  1000D40D: CC                 int         3
+  1000D40E: CC                 int         3
+  1000D40F: CC                 int         3
+  1000D410: CC                 int         3
+  1000D411: CC                 int         3
+  1000D412: CC                 int         3
+  1000D413: CC                 int         3
+  1000D414: CC                 int         3
+  1000D415: CC                 int         3
+  1000D416: CC                 int         3
+  1000D417: CC                 int         3
+  1000D418: CC                 int         3
+  1000D419: CC                 int         3
+  1000D41A: CC                 int         3
+  1000D41B: CC                 int         3
+  1000D41C: CC                 int         3
+  1000D41D: CC                 int         3
+  1000D41E: CC                 int         3
+  1000D41F: CC                 int         3
+  1000D420: CC                 int         3
+  1000D421: CC                 int         3
+  1000D422: CC                 int         3
+  1000D423: CC                 int         3
+  1000D424: CC                 int         3
+  1000D425: CC                 int         3
+  1000D426: CC                 int         3
+  1000D427: CC                 int         3
+  1000D428: CC                 int         3
+  1000D429: CC                 int         3
+  1000D42A: CC                 int         3
+  1000D42B: CC                 int         3
+  1000D42C: CC                 int         3
+  1000D42D: CC                 int         3
+  1000D42E: CC                 int         3
+  1000D42F: CC                 int         3
+
+  Summary
+
+       1E000 .text

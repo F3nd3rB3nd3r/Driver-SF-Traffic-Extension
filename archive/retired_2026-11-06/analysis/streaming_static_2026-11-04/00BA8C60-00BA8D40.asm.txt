@@ -1,0 +1,83 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BA8C60: 00 EB              add         bl,ch
+  00BA8C62: 02 33              add         dh,byte ptr [ebx]
+  00BA8C64: D2 F3              sal         bl,cl
+  00BA8C66: 0F 10 40 08        movups      xmm0,xmmword ptr [eax+8]
+  00BA8C6A: 0F 2F C3           comiss      xmm0,xmm3
+  00BA8C6D: 72 07              jb          00BA8C76
+  00BA8C6F: B8 01 00 00 00     mov         eax,1
+  00BA8C74: EB 02              jmp         00BA8C78
+  00BA8C76: 33 C0              xor         eax,eax
+  00BA8C78: 03 C9              add         ecx,ecx
+  00BA8C7A: 0B CA              or          ecx,edx
+  00BA8C7C: 03 C9              add         ecx,ecx
+  00BA8C7E: 0B C8              or          ecx,eax
+  00BA8C80: F3 0F 11 14 24     movss       dword ptr [esp],xmm2
+  00BA8C85: 8B 04 24           mov         eax,dword ptr [esp]
+  00BA8C88: F3 0F 10 15 14 64  movss       xmm2,dword ptr ds:[00DD6414h]
+            DD 00
+  00BA8C90: F3 0F 11 0C 24     movss       dword ptr [esp],xmm1
+  00BA8C95: 8B 14 24           mov         edx,dword ptr [esp]
+  00BA8C98: 25 FF FF FF 7F     and         eax,7FFFFFFFh
+  00BA8C9D: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00BA8CA1: F3 0F 10 4C 24 10  movss       xmm1,dword ptr [esp+10h]
+  00BA8CA7: F3 0F 11 04 24     movss       dword ptr [esp],xmm0
+  00BA8CAC: 8B 04 24           mov         eax,dword ptr [esp]
+  00BA8CAF: 25 FF FF FF 7F     and         eax,7FFFFFFFh
+  00BA8CB4: 81 E2 FF FF FF 7F  and         edx,7FFFFFFFh
+  00BA8CBA: 89 04 24           mov         dword ptr [esp],eax
+  00BA8CBD: F3 0F 10 24 24     movss       xmm4,dword ptr [esp]
+  00BA8CC2: F3 0F 58 CC        addss       xmm1,xmm4
+  00BA8CC6: 89 54 24 20        mov         dword ptr [esp+20h],edx
+  00BA8CCA: F3 0F 10 5C 24 20  movss       xmm3,dword ptr [esp+20h]
+  00BA8CD0: F3 0F 58 CB        addss       xmm1,xmm3
+  00BA8CD4: 0F 28 C2           movaps      xmm0,xmm2
+  00BA8CD7: F3 0F 5E C1        divss       xmm0,xmm1
+  00BA8CDB: 0F 28 C8           movaps      xmm1,xmm0
+  00BA8CDE: F3 0F 59 CB        mulss       xmm1,xmm3
+  00BA8CE2: F3 0F 5C D1        subss       xmm2,xmm1
+  00BA8CE6: 0F 28 CA           movaps      xmm1,xmm2
+  00BA8CE9: F3 0F 59 0D BC 95  mulss       xmm1,dword ptr ds:[00DE95BCh]
+            DE 00
+  00BA8CF1: F3 0F 2C C1        cvttss2si   eax,xmm1
+  00BA8CF5: F3 0F 10 0D 34 64  movss       xmm1,dword ptr ds:[00DD6434h]
+            DD 00
+  00BA8CFD: 0F 2F CA           comiss      xmm1,xmm2
+  00BA8D00: 76 10              jbe         00BA8D12
+  00BA8D02: 0F AF C0           imul        eax,eax
+  00BA8D05: 33 D2              xor         edx,edx
+  00BA8D07: 03 C2              add         eax,edx
+  00BA8D09: C1 E1 0D           shl         ecx,0Dh
+  00BA8D0C: 0B C1              or          eax,ecx
+  00BA8D0E: 83 C4 30           add         esp,30h
+  00BA8D11: C3                 ret
+  00BA8D12: 8D 14 00           lea         edx,[eax+eax]
+  00BA8D15: 0F AF C0           imul        eax,eax
+  00BA8D18: F3 0F 59 C4        mulss       xmm0,xmm4
+  00BA8D1C: F3 0F 2A CA        cvtsi2ss    xmm1,edx
+  00BA8D20: F3 0F 5E C2        divss       xmm0,xmm2
+  00BA8D24: F3 0F 59 C1        mulss       xmm0,xmm1
+  00BA8D28: F3 0F 2C D0        cvttss2si   edx,xmm0
+  00BA8D2C: 03 C2              add         eax,edx
+  00BA8D2E: C1 E1 0D           shl         ecx,0Dh
+  00BA8D31: 0B C1              or          eax,ecx
+  00BA8D33: 83 C4 30           add         esp,30h
+  00BA8D36: C3                 ret
+  00BA8D37: CC                 int         3
+  00BA8D38: CC                 int         3
+  00BA8D39: CC                 int         3
+  00BA8D3A: CC                 int         3
+  00BA8D3B: CC                 int         3
+  00BA8D3C: CC                 int         3
+  00BA8D3D: CC                 int         3
+  00BA8D3E: CC                 int         3
+  00BA8D3F: CC                 int         3
+  00BA8D40: 83
+
+  Summary
+
+      9C8000 .text

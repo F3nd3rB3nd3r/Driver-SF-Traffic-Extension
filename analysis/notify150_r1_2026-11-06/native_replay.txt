@@ -1,0 +1,98 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00754AC0: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00754AC5: 85 C0              test        eax,eax
+  00754AC7: 75 0A              jne         00754AD3
+  00754AC9: E8 C2 5B CB FF     call        0040A690
+  00754ACE: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00754AD3: 8B 88 2C 02 00 00  mov         ecx,dword ptr [eax+0000022Ch]
+  00754AD9: 56                 push        esi
+  00754ADA: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  00754ADE: 57                 push        edi
+  00754ADF: 8D B9 E4 38 04 00  lea         edi,[ecx+000438E4h]
+  00754AE5: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  00754AE8: 83 F9 03           cmp         ecx,3
+  00754AEB: 77 63              ja          00754B50
+  00754AED: FF 24 8D 94 4B 75  jmp         dword ptr [ecx*4+00754B94h]
+            00
+  00754AF4: 8B CF              mov         ecx,edi
+  00754AF6: E8 D5 6E FF FF     call        0074B9D0
+  00754AFB: 84 C0              test        al,al
+  00754AFD: 75 05              jne         00754B04
+  00754AFF: 5F                 pop         edi
+  00754B00: 5E                 pop         esi
+  00754B01: C2 04 00           ret         4
+  00754B04: 8B 46 14           mov         eax,dword ptr [esi+14h]
+  00754B07: 50                 push        eax
+  00754B08: 83 C6 18           add         esi,18h
+  00754B0B: 56                 push        esi
+  00754B0C: 8B CF              mov         ecx,edi
+  00754B0E: E8 3D 6E FF FF     call        0074B950
+  00754B13: 5F                 pop         edi
+  00754B14: B0 01              mov         al,1
+  00754B16: 5E                 pop         esi
+  00754B17: C2 04 00           ret         4
+  00754B1A: 8B 4E 14           mov         ecx,dword ptr [esi+14h]
+  00754B1D: 51                 push        ecx
+  00754B1E: 8B CF              mov         ecx,edi
+  00754B20: E8 4B 6E FF FF     call        0074B970
+  00754B25: 5F                 pop         edi
+  00754B26: B0 01              mov         al,1
+  00754B28: 5E                 pop         esi
+  00754B29: C2 04 00           ret         4
+  00754B2C: 8B 56 14           mov         edx,dword ptr [esi+14h]
+  00754B2F: 52                 push        edx
+  00754B30: 8B CF              mov         ecx,edi
+  00754B32: E8 59 6E FF FF     call        0074B990
+  00754B37: 5F                 pop         edi
+  00754B38: B0 01              mov         al,1
+  00754B3A: 5E                 pop         esi
+  00754B3B: C2 04 00           ret         4
+  00754B3E: 8B 46 14           mov         eax,dword ptr [esi+14h]
+  00754B41: 50                 push        eax
+  00754B42: 8B CF              mov         ecx,edi
+  00754B44: E8 67 6E FF FF     call        0074B9B0
+  00754B49: 5F                 pop         edi
+  00754B4A: B0 01              mov         al,1
+  00754B4C: 5E                 pop         esi
+  00754B4D: C2 04 00           ret         4
+  00754B50: 8B 40 1C           mov         eax,dword ptr [eax+1Ch]
+  00754B53: 8B 10              mov         edx,dword ptr [eax]
+  00754B55: 8B C8              mov         ecx,eax
+  00754B57: 8B 42 10           mov         eax,dword ptr [edx+10h]
+  00754B5A: FF D0              call        eax
+  00754B5C: 84 C0              test        al,al
+  00754B5E: 74 2B              je          00754B8B
+  00754B60: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00754B65: 85 C0              test        eax,eax
+  00754B67: 75 0A              jne         00754B73
+  00754B69: E8 22 5B CB FF     call        0040A690
+  00754B6E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00754B73: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00754B76: 8B 11              mov         edx,dword ptr [ecx]
+  00754B78: 8B 42 14           mov         eax,dword ptr [edx+14h]
+  00754B7B: FF D0              call        eax
+  00754B7D: 68 58 AE E2 00     push        0E2AE58h
+  00754B82: 50                 push        eax
+  00754B83: E8 28 6D FE FF     call        0073B8B0
+  00754B88: 83 C4 08           add         esp,8
+  00754B8B: 5F                 pop         edi
+  00754B8C: B0 01              mov         al,1
+  00754B8E: 5E                 pop         esi
+  00754B8F: C2 04 00           ret         4
+  00754B92: 8B FF              mov         edi,edi
+  00754B94: F4                 hlt
+  00754B95: 4A                 dec         edx
+  00754B96: 75 00              jne         00754B98
+  00754B98: 1A 4B 75           sbb         cl,byte ptr [ebx+75h]
+  00754B9B: 00 2C 4B           add         byte ptr [ebx+ecx*2],ch
+  00754B9E: 75 00              jne         00754BA0
+  00754BA0: 3E 4B              dec         ebx
+  00754BA2: 75 00              jne         00754BA4
+
+  Summary
+
+      9C8000 .text

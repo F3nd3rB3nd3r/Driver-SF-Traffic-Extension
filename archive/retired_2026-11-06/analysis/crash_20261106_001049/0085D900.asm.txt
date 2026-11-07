@@ -1,0 +1,67 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0085D900: 80 78 20 00        cmp         byte ptr [eax+20h],0
+  0085D904: 75 30              jne         0085D936
+  0085D906: 85 F6              test        esi,esi
+  0085D908: 74 05              je          0085D90F
+  0085D90A: 8D 4E FC           lea         ecx,[esi-4]
+  0085D90D: EB 02              jmp         0085D911
+  0085D90F: 33 C9              xor         ecx,ecx
+  0085D911: 8B D5              mov         edx,ebp
+  0085D913: F7 DA              neg         edx
+  0085D915: 8B C7              mov         eax,edi
+  0085D917: 83 D0 00           adc         eax,0
+  0085D91A: F7 D8              neg         eax
+  0085D91C: 01 51 10           add         dword ptr [ecx+10h],edx
+  0085D91F: 11 41 14           adc         dword ptr [ecx+14h],eax
+  0085D922: 85 F6              test        esi,esi
+  0085D924: 74 05              je          0085D92B
+  0085D926: 8D 4E FC           lea         ecx,[esi-4]
+  0085D929: EB 02              jmp         0085D92D
+  0085D92B: 33 C9              xor         ecx,ecx
+  0085D92D: 8B 11              mov         edx,dword ptr [ecx]
+  0085D92F: 8B 42 08           mov         eax,dword ptr [edx+8]
+  0085D932: 57                 push        edi
+  0085D933: 55                 push        ebp
+  0085D934: FF D0              call        eax
+  0085D936: 8B 36              mov         esi,dword ptr [esi]
+  0085D938: 3B 74 24 14        cmp         esi,dword ptr [esp+14h]
+  0085D93C: 75 B7              jne         0085D8F5
+  0085D93E: 80 7C 24 13 00     cmp         byte ptr [esp+13h],0
+  0085D943: 74 2D              je          0085D972
+  0085D945: F7 DD              neg         ebp
+  0085D947: 83 D7 00           adc         edi,0
+  0085D94A: F7 DF              neg         edi
+  0085D94C: 01 6C 24 28        add         dword ptr [esp+28h],ebp
+  0085D950: 11 7C 24 2C        adc         dword ptr [esp+2Ch],edi
+  0085D954: 8B 4B 18           mov         ecx,dword ptr [ebx+18h]
+  0085D957: 8B 53 1C           mov         edx,dword ptr [ebx+1Ch]
+  0085D95A: 8B 03              mov         eax,dword ptr [ebx]
+  0085D95C: 89 4B 10           mov         dword ptr [ebx+10h],ecx
+  0085D95F: 89 53 14           mov         dword ptr [ebx+14h],edx
+  0085D962: 8B 50 04           mov         edx,dword ptr [eax+4]
+  0085D965: 8B CB              mov         ecx,ebx
+  0085D967: FF D2              call        edx
+  0085D969: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  0085D96D: E9 01 FF FF FF     jmp         0085D873
+  0085D972: 8B 44 24 24        mov         eax,dword ptr [esp+24h]
+  0085D976: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  0085D979: 83 C3 10           add         ebx,10h
+  0085D97C: 3B 4B 04           cmp         ecx,dword ptr [ebx+4]
+  0085D97F: 7F 0A              jg          0085D98B
+  0085D981: 7C 06              jl          0085D989
+  0085D983: 8B 10              mov         edx,dword ptr [eax]
+  0085D985: 3B 13              cmp         edx,dword ptr [ebx]
+  0085D987: 73 02              jae         0085D98B
+  0085D989: 8B D8              mov         ebx,eax
+  0085D98B: 8B 0B              mov         ecx,dword ptr [ebx]
+  0085D98D: 5E                 pop         esi
+  0085D98E: 5D                 pop         ebp
+  0085D98F: 89 08              mov         dword ptr [eax],ecx
+
+  Summary
+
+      9C8000 .text

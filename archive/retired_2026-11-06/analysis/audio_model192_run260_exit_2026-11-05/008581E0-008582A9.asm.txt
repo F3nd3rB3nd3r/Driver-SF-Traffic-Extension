@@ -1,0 +1,69 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008581E0: 96                 xchg        eax,esi
+  008581E1: 54                 push        esp
+  008581E2: 05 00 00 88 44     add         eax,44880000h
+  008581E7: 24 1C              and         al,1Ch
+  008581E9: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  008581ED: 8B 4C 24 1C        mov         ecx,dword ptr [esp+1Ch]
+  008581F1: 50                 push        eax
+  008581F2: 8B 86 50 05 00 00  mov         eax,dword ptr [esi+00000550h]
+  008581F8: 51                 push        ecx
+  008581F9: 52                 push        edx
+  008581FA: 50                 push        eax
+  008581FB: 8B CE              mov         ecx,esi
+  008581FD: E8 EE FA FF FF     call        00857CF0
+  00858202: E9 85 02 00 00     jmp         0085848C
+  00858207: 8B 8E 44 05 00 00  mov         ecx,dword ptr [esi+00000544h]
+  0085820D: E8 8E 3E 0A 00     call        008FC0A0
+  00858212: 84 C0              test        al,al
+  00858214: 0F 85 72 02 00 00  jne         0085848C
+  0085821A: C7 86 44 05 00 00  mov         dword ptr [esi+00000544h],0
+            00 00 00 00
+  00858224: 38 86 84 5B 00 00  cmp         byte ptr [esi+00005B84h],al
+  0085822A: 74 08              je          00858234
+  0085822C: 89 7E 04           mov         dword ptr [esi+4],edi
+  0085822F: E9 58 02 00 00     jmp         0085848C
+  00858234: 8B CE              mov         ecx,esi
+  00858236: C7 46 04 03 00 00  mov         dword ptr [esi+4],3
+            00
+  0085823D: E8 6E F9 FF FF     call        00857BB0
+  00858242: 84 C0              test        al,al
+  00858244: 0F 84 42 02 00 00  je          0085848C
+  0085824A: 0F B6 8E 89 5B 00  movzx       ecx,byte ptr [esi+00005B89h]
+            00
+  00858251: 8B 96 80 5B 00 00  mov         edx,dword ptr [esi+00005B80h]
+  00858257: 6A 00              push        0
+  00858259: 6A 00              push        0
+  0085825B: 51                 push        ecx
+  0085825C: 52                 push        edx
+  0085825D: E8 9E 13 35 00     call        00BA9600
+  00858262: 83 C4 10           add         esp,10h
+  00858265: 8B CE              mov         ecx,esi
+  00858267: C6 86 89 5B 00 00  mov         byte ptr [esi+00005B89h],0
+            00
+  0085826E: E8 0D FE FF FF     call        00858080
+  00858273: 80 BE 87 5B 00 00  cmp         byte ptr [esi+00005B87h],0
+            00
+  0085827A: 88 44 24 0F        mov         byte ptr [esp+0Fh],al
+  0085827E: 74 1F              je          0085829F
+  00858280: 84 C0              test        al,al
+  00858282: 74 16              je          0085829A
+  00858284: 8B 8E 7C 5B 00 00  mov         ecx,dword ptr [esi+00005B7Ch]
+  0085828A: 8B 01              mov         eax,dword ptr [ecx]
+  0085828C: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  0085828F: FF D2              call        edx
+  00858291: C6 44 24 0F 01     mov         byte ptr [esp+0Fh],1
+  00858296: 84 C0              test        al,al
+  00858298: 75 05              jne         0085829F
+  0085829A: C6 44 24 0F 00     mov         byte ptr [esp+0Fh],0
+  0085829F: E8 CC 13 35 00     call        00BA9670
+  008582A4: E9 E3 01 00 00     jmp         0085848C
+  008582A9: 8D
+
+  Summary
+
+      9C8000 .text

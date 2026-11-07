@@ -1,0 +1,123 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAD790: 53                 push        ebx
+  00BAD791: 56                 push        esi
+  00BAD792: 57                 push        edi
+  00BAD793: 8B F9              mov         edi,ecx
+  00BAD795: B9 98 D7 6E 01     mov         ecx,16ED798h
+  00BAD79A: E8 C1 AA 00 00     call        00BB8260
+  00BAD79F: A1 20 6B D4 01     mov         eax,dword ptr ds:[01D46B20h]
+  00BAD7A4: 8B 30              mov         esi,dword ptr [eax]
+  00BAD7A6: 8B 0E              mov         ecx,dword ptr [esi]
+  00BAD7A8: E8 73 B3 01 00     call        00BC8B20
+  00BAD7AD: 33 DB              xor         ebx,ebx
+  00BAD7AF: 89 9E 60 05 00 00  mov         dword ptr [esi+00000560h],ebx
+  00BAD7B5: E8 66 D6 FF FF     call        00BAAE20
+  00BAD7BA: 84 C0              test        al,al
+  00BAD7BC: 74 0D              je          00BAD7CB
+  00BAD7BE: 53                 push        ebx
+  00BAD7BF: B9 98 D7 6E 01     mov         ecx,16ED798h
+  00BAD7C4: E8 07 AB 00 00     call        00BB82D0
+  00BAD7C9: EB 0A              jmp         00BAD7D5
+  00BAD7CB: C7 05 30 64 9B 01  mov         dword ptr ds:[019B6430h],1
+            01 00 00 00
+  00BAD7D5: 8A 0D 25 CB 6E 01  mov         cl,byte ptr ds:[016ECB25h]
+  00BAD7DB: 84 C9              test        cl,cl
+  00BAD7DD: 75 24              jne         00BAD803
+  00BAD7DF: 38 1D 68 D7 6E 01  cmp         byte ptr ds:[016ED768h],bl
+  00BAD7E5: 74 15              je          00BAD7FC
+  00BAD7E7: 8B 15 4C D7 6E 01  mov         edx,dword ptr ds:[016ED74Ch]
+  00BAD7ED: 6A FF              push        0FFFFFFFFh
+  00BAD7EF: 52                 push        edx
+  00BAD7F0: FF 15 F4 91 DC 00  call        dword ptr ds:[00DC91F4h]
+  00BAD7F6: 88 1D 68 D7 6E 01  mov         byte ptr ds:[016ED768h],bl
+  00BAD7FC: C6 05 25 CB 6E 01  mov         byte ptr ds:[016ECB25h],1
+            01
+  00BAD803: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAD808: 88 1D 25 CB 6E 01  mov         byte ptr ds:[016ECB25h],bl
+  00BAD80E: E8 9D 0E 00 00     call        00BAE6B0
+  00BAD813: 8B 0D 74 BA 9B 01  mov         ecx,dword ptr ds:[019BBA74h]
+  00BAD819: E8 82 E3 00 00     call        00BBBBA0
+  00BAD81E: E8 CD 18 00 00     call        00BAF0F0
+  00BAD823: B9 34 64 9B 01     mov         ecx,19B6434h
+  00BAD828: E8 43 8D 00 00     call        00BB6570
+  00BAD82D: 83 05 A0 49 6F 01  add         dword ptr ds:[016F49A0h],1
+            01
+  00BAD834: 68 40 D7 6E 01     push        16ED740h
+  00BAD839: B9 D0 0C 9B 01     mov         ecx,19B0CD0h
+  00BAD83E: 11 1D A4 49 6F 01  adc         dword ptr ds:[016F49A4h],ebx
+  00BAD844: E8 A7 25 00 00     call        00BAFDF0
+  00BAD849: A1 48 D7 6E 01     mov         eax,dword ptr ds:[016ED748h]
+  00BAD84E: 53                 push        ebx
+  00BAD84F: 6A 01              push        1
+  00BAD851: 50                 push        eax
+  00BAD852: FF 15 88 92 DC 00  call        dword ptr ds:[00DC9288h]
+  00BAD858: C6 05 68 D7 6E 01  mov         byte ptr ds:[016ED768h],1
+            01
+  00BAD85F: 8B 87 1C 04 00 00  mov         eax,dword ptr [edi+0000041Ch]
+  00BAD865: 3B C3              cmp         eax,ebx
+  00BAD867: 7E 07              jle         00BAD870
+  00BAD869: 48                 dec         eax
+  00BAD86A: 89 87 1C 04 00 00  mov         dword ptr [edi+0000041Ch],eax
+  00BAD870: 38 1D 27 CB 6E 01  cmp         byte ptr ds:[016ECB27h],bl
+  00BAD876: 74 14              je          00BAD88C
+  00BAD878: 38 1D 14 39 9B 01  cmp         byte ptr ds:[019B3914h],bl
+  00BAD87E: 74 0C              je          00BAD88C
+  00BAD880: 88 1D 27 CB 6E 01  mov         byte ptr ds:[016ECB27h],bl
+  00BAD886: 88 1D 14 39 9B 01  mov         byte ptr ds:[019B3914h],bl
+  00BAD88C: 8D 8F 30 04 00 00  lea         ecx,[edi+00000430h]
+  00BAD892: 5F                 pop         edi
+  00BAD893: 5E                 pop         esi
+  00BAD894: 5B                 pop         ebx
+  00BAD895: E9 96 9A 00 00     jmp         00BB7330
+  00BAD89A: CC                 int         3
+  00BAD89B: CC                 int         3
+  00BAD89C: CC                 int         3
+  00BAD89D: CC                 int         3
+  00BAD89E: CC                 int         3
+  00BAD89F: CC                 int         3
+  00BAD8A0: 83 EC 10           sub         esp,10h
+  00BAD8A3: 53                 push        ebx
+  00BAD8A4: 56                 push        esi
+  00BAD8A5: 57                 push        edi
+  00BAD8A6: 8B 7C 24 20        mov         edi,dword ptr [esp+20h]
+  00BAD8AA: 8B D9              mov         ebx,ecx
+  00BAD8AC: BE 01 00 00 00     mov         esi,1
+  00BAD8B1: 83 FF 03           cmp         edi,3
+  00BAD8B4: 77 5D              ja          00BAD913
+  00BAD8B6: FF 24 BD 4C D9 BA  jmp         dword ptr [edi*4+00BAD94Ch]
+            00
+  00BAD8BD: 8B 44 24 24        mov         eax,dword ptr [esp+24h]
+  00BAD8C1: 50                 push        eax
+  00BAD8C2: BE 10 00 00 00     mov         esi,10h
+  00BAD8C7: 8D 4C 24 10        lea         ecx,[esp+10h]
+  00BAD8CB: 56                 push        esi
+  00BAD8CC: 51                 push        ecx
+  00BAD8CD: E8 5E 0C 00 00     call        00BAE530
+  00BAD8D2: 83 C4 0C           add         esp,0Ch
+  00BAD8D5: EB 3C              jmp         00BAD913
+  00BAD8D7: 8B 54 24 24        mov         edx,dword ptr [esp+24h]
+  00BAD8DB: 8B 02              mov         eax,dword ptr [edx]
+  00BAD8DD: BE 04 00 00 00     mov         esi,4
+  00BAD8E2: 89 44 24 0C        mov         dword ptr [esp+0Ch],eax
+  00BAD8E6: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00BAD8EA: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  00BAD8EE: 89 44 24 18        mov         dword ptr [esp+18h],eax
+  00BAD8F2: EB 1F              jmp         00BAD913
+  00BAD8F4: 8B 44 24 24        mov         eax,dword ptr [esp+24h]
+  00BAD8F8: 8B 08              mov         ecx,dword ptr [eax]
+  00BAD8FA: 8B 50 04           mov         edx,dword ptr [eax+4]
+  00BAD8FD: 89 4C 24 0C        mov         dword ptr [esp+0Ch],ecx
+  00BAD901: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  00BAD904: 89 54 24 10        mov         dword ptr [esp+10h],edx
+  00BAD908: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  00BAD90B: 89 4C 24 14        mov         dword ptr [esp+14h],ecx
+  00BAD90F: 89
+  00BAD910: 54                 push        esp
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,131 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00859260: 8B C1              mov         eax,ecx
+  00859262: 33 C9              xor         ecx,ecx
+  00859264: C7 00 18 71 E3 00  mov         dword ptr [eax],0E37118h
+  0085926A: 89 48 20           mov         dword ptr [eax+20h],ecx
+  0085926D: 89 48 28           mov         dword ptr [eax+28h],ecx
+  00859270: 89 48 2C           mov         dword ptr [eax+2Ch],ecx
+  00859273: 8D 50 30           lea         edx,[eax+30h]
+  00859276: 89 50 24           mov         dword ptr [eax+24h],edx
+  00859279: 8D 90 B0 02 00 00  lea         edx,[eax+000002B0h]
+  0085927F: 89 90 B4 02 00 00  mov         dword ptr [eax+000002B4h],edx
+  00859285: 89 12              mov         dword ptr [edx],edx
+  00859287: 89 88 3C 03 00 00  mov         dword ptr [eax+0000033Ch],ecx
+  0085928D: 89 88 40 05 00 00  mov         dword ptr [eax+00000540h],ecx
+  00859293: 89 88 44 05 00 00  mov         dword ptr [eax+00000544h],ecx
+  00859299: 89 88 48 05 00 00  mov         dword ptr [eax+00000548h],ecx
+  0085929F: 89 88 4C 05 00 00  mov         dword ptr [eax+0000054Ch],ecx
+  008592A5: C7 80 50 05 00 00  mov         dword ptr [eax+00000550h],0FFFFFFFFh
+            FF FF FF FF
+  008592AF: 89 88 54 05 00 00  mov         dword ptr [eax+00000554h],ecx
+  008592B5: 89 88 58 05 00 00  mov         dword ptr [eax+00000558h],ecx
+  008592BB: 89 88 5C 05 00 00  mov         dword ptr [eax+0000055Ch],ecx
+  008592C1: 89 88 60 05 00 00  mov         dword ptr [eax+00000560h],ecx
+  008592C7: 89 88 64 05 00 00  mov         dword ptr [eax+00000564h],ecx
+  008592CD: 88 88 68 05 00 00  mov         byte ptr [eax+00000568h],cl
+  008592D3: 88 88 69 05 00 00  mov         byte ptr [eax+00000569h],cl
+  008592D9: 88 88 6A 05 00 00  mov         byte ptr [eax+0000056Ah],cl
+  008592DF: 88 88 6B 05 00 00  mov         byte ptr [eax+0000056Bh],cl
+  008592E5: 88 88 6C 05 00 00  mov         byte ptr [eax+0000056Ch],cl
+  008592EB: 88 88 6D 05 00 00  mov         byte ptr [eax+0000056Dh],cl
+  008592F1: 88 88 6E 05 00 00  mov         byte ptr [eax+0000056Eh],cl
+  008592F7: C3                 ret
+  008592F8: CC                 int         3
+  008592F9: CC                 int         3
+  008592FA: CC                 int         3
+  008592FB: CC                 int         3
+  008592FC: CC                 int         3
+  008592FD: CC                 int         3
+  008592FE: CC                 int         3
+  008592FF: CC                 int         3
+  00859300: 56                 push        esi
+  00859301: 8B F1              mov         esi,ecx
+  00859303: 8B 06              mov         eax,dword ptr [esi]
+  00859305: 8B 50 28           mov         edx,dword ptr [eax+28h]
+  00859308: FF D2              call        edx
+  0085930A: 84 C0              test        al,al
+  0085930C: 75 14              jne         00859322
+  0085930E: 38 86 6A 05 00 00  cmp         byte ptr [esi+0000056Ah],al
+  00859314: 75 0C              jne         00859322
+  00859316: 38 86 6D 05 00 00  cmp         byte ptr [esi+0000056Dh],al
+  0085931C: 75 04              jne         00859322
+  0085931E: 33 C0              xor         eax,eax
+  00859320: 5E                 pop         esi
+  00859321: C3                 ret
+  00859322: B8 01 00 00 00     mov         eax,1
+  00859327: 5E                 pop         esi
+  00859328: C3                 ret
+  00859329: CC                 int         3
+  0085932A: CC                 int         3
+  0085932B: CC                 int         3
+  0085932C: CC                 int         3
+  0085932D: CC                 int         3
+  0085932E: CC                 int         3
+  0085932F: CC                 int         3
+  00859330: 8A 81 6D 05 00 00  mov         al,byte ptr [ecx+0000056Dh]
+  00859336: C3                 ret
+  00859337: CC                 int         3
+  00859338: CC                 int         3
+  00859339: CC                 int         3
+  0085933A: CC                 int         3
+  0085933B: CC                 int         3
+  0085933C: CC                 int         3
+  0085933D: CC                 int         3
+  0085933E: CC                 int         3
+  0085933F: CC                 int         3
+  00859340: 33 C0              xor         eax,eax
+  00859342: 83 B9 44 05 00 00  cmp         dword ptr [ecx+00000544h],5
+            05
+  00859349: 0F 94 C0           sete        al
+  0085934C: C3                 ret
+  0085934D: CC                 int         3
+  0085934E: CC                 int         3
+  0085934F: CC                 int         3
+  00859350: 56                 push        esi
+  00859351: 8B F1              mov         esi,ecx
+  00859353: E8 08 F8 FF FF     call        00858B60
+  00859358: F6 44 24 08 01     test        byte ptr [esp+8],1
+  0085935D: 74 09              je          00859368
+  0085935F: 56                 push        esi
+  00859360: E8 F5 F3 3C 00     call        00C2875A
+  00859365: 83 C4 04           add         esp,4
+  00859368: 8B C6              mov         eax,esi
+  0085936A: 5E                 pop         esi
+  0085936B: C2 04 00           ret         4
+  0085936E: CC                 int         3
+  0085936F: CC                 int         3
+  00859370: 68 70 05 00 00     push        570h
+  00859375: E8 06 F4 3C 00     call        00C28780
+  0085937A: 83 C4 04           add         esp,4
+  0085937D: 85 C0              test        eax,eax
+  0085937F: 74 10              je          00859391
+  00859381: 8B C8              mov         ecx,eax
+  00859383: E8 D8 FE FF FF     call        00859260
+  00859388: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  0085938C: 89 01              mov         dword ptr [ecx],eax
+  0085938E: 8B C1              mov         eax,ecx
+  00859390: C3                 ret
+  00859391: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00859395: 33 C9              xor         ecx,ecx
+  00859397: 89 08              mov         dword ptr [eax],ecx
+  00859399: C3                 ret
+  0085939A: CC                 int         3
+  0085939B: CC                 int         3
+  0085939C: CC                 int         3
+  0085939D: CC                 int         3
+  0085939E: CC                 int         3
+  0085939F: CC                 int         3
+  008593A0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  008593A4: 68 80 00 00 00     push        80h
+  008593A9: 50                 push        eax
+  008593AA: E8 28 56 3D 00     call        00C2E9D7
+  008593AF: 83
+  008593B0: C4
+
+  Summary
+
+      9C8000 .text

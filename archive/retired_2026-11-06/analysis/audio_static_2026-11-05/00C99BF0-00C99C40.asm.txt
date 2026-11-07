@@ -1,0 +1,45 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C99BF0: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  00C99BF4: 6B C9 4C           imul        ecx,ecx,4Ch
+  00C99BF7: 03 0D 90 23 D7 01  add         ecx,dword ptr ds:[01D72390h]
+  00C99BFD: 8B 41 10           mov         eax,dword ptr [ecx+10h]
+  00C99C00: 85 C0              test        eax,eax
+  00C99C02: 74 31              je          00C99C35
+  00C99C04: 8B D0              mov         edx,eax
+  00C99C06: 85 D2              test        edx,edx
+  00C99C08: 74 25              je          00C99C2F
+  00C99C0A: 83 3A 00           cmp         dword ptr [edx],0
+  00C99C0D: 75 18              jne         00C99C27
+  00C99C0F: FF 49 18           dec         dword ptr [ecx+18h]
+  00C99C12: C7 41 10 00 00 00  mov         dword ptr [ecx+10h],0
+            00
+  00C99C19: C7 41 14 00 00 00  mov         dword ptr [ecx+14h],0
+            00
+  00C99C20: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  00C99C23: 01 51 44           add         dword ptr [ecx+44h],edx
+  00C99C26: C3                 ret
+  00C99C27: 8B 12              mov         edx,dword ptr [edx]
+  00C99C29: FF 49 18           dec         dword ptr [ecx+18h]
+  00C99C2C: 89 51 10           mov         dword ptr [ecx+10h],edx
+  00C99C2F: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  00C99C32: 01 51 44           add         dword ptr [ecx+44h],edx
+  00C99C35: C3                 ret
+  00C99C36: CC                 int         3
+  00C99C37: CC                 int         3
+  00C99C38: CC                 int         3
+  00C99C39: CC                 int         3
+  00C99C3A: CC                 int         3
+  00C99C3B: CC                 int         3
+  00C99C3C: CC                 int         3
+  00C99C3D: CC                 int         3
+  00C99C3E: CC                 int         3
+  00C99C3F: CC                 int         3
+  00C99C40: 8B
+
+  Summary
+
+      9C8000 .text

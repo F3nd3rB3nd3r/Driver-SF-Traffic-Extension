@@ -1,0 +1,107 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00555250: 5E                 pop         esi
+  00555251: 5B                 pop         ebx
+  00555252: 5F                 pop         edi
+  00555253: 5D                 pop         ebp
+  00555254: C2 04 00           ret         4
+  00555257: CC                 int         3
+  00555258: CC                 int         3
+  00555259: CC                 int         3
+  0055525A: CC                 int         3
+  0055525B: CC                 int         3
+  0055525C: CC                 int         3
+  0055525D: CC                 int         3
+  0055525E: CC                 int         3
+  0055525F: CC                 int         3
+  00555260: 56                 push        esi
+  00555261: 57                 push        edi
+  00555262: 8D 71 10           lea         esi,[ecx+10h]
+  00555265: BF 07 00 00 00     mov         edi,7
+  0055526A: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  00555270: 83 3E 00           cmp         dword ptr [esi],0
+  00555273: 74 15              je          0055528A
+  00555275: 8D 4E 04           lea         ecx,[esi+4]
+  00555278: E8 93 C2 FF FF     call        00551510
+  0055527D: C7 06 00 00 00 00  mov         dword ptr [esi],0
+  00555283: C7 46 FC FF FF FF  mov         dword ptr [esi-4],0FFFFFFFFh
+            FF
+  0055528A: 81 C6 CC 02 00 00  add         esi,2CCh
+  00555290: 83 EF 01           sub         edi,1
+  00555293: 75 DB              jne         00555270
+  00555295: 5F                 pop         edi
+  00555296: 5E                 pop         esi
+  00555297: C3                 ret
+  00555298: CC                 int         3
+  00555299: CC                 int         3
+  0055529A: CC                 int         3
+  0055529B: CC                 int         3
+  0055529C: CC                 int         3
+  0055529D: CC                 int         3
+  0055529E: CC                 int         3
+  0055529F: CC                 int         3
+  005552A0: 56                 push        esi
+  005552A1: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  005552A5: 85 F6              test        esi,esi
+  005552A7: 74 5F              je          00555308
+  005552A9: 33 C0              xor         eax,eax
+  005552AB: 8D 51 10           lea         edx,[ecx+10h]
+  005552AE: 8B FF              mov         edi,edi
+  005552B0: 39 32              cmp         dword ptr [edx],esi
+  005552B2: 74 10              je          005552C4
+  005552B4: 40                 inc         eax
+  005552B5: 81 C2 CC 02 00 00  add         edx,2CCh
+  005552BB: 83 F8 07           cmp         eax,7
+  005552BE: 72 F0              jb          005552B0
+  005552C0: 5E                 pop         esi
+  005552C1: C2 04 00           ret         4
+  005552C4: 69 C0 CC 02 00 00  imul        eax,eax,2CCh
+  005552CA: 8D 74 08 0C        lea         esi,[eax+ecx+0Ch]
+  005552CE: 8B 06              mov         eax,dword ptr [esi]
+  005552D0: 83 F8 03           cmp         eax,3
+  005552D3: 74 33              je          00555308
+  005552D5: 6A 03              push        3
+  005552D7: 8D 4E 08           lea         ecx,[esi+8]
+  005552DA: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  005552DD: 75 1E              jne         005552FD
+  005552DF: 8B 46 04           mov         eax,dword ptr [esi+4]
+  005552E2: 50                 push        eax
+  005552E3: E8 78 E5 FF FF     call        00553860
+  005552E8: 84 C0              test        al,al
+  005552EA: 75 16              jne         00555302
+  005552EC: C7 46 04 00 00 00  mov         dword ptr [esi+4],0
+            00
+  005552F3: C7 06 FF FF FF FF  mov         dword ptr [esi],0FFFFFFFFh
+  005552F9: 5E                 pop         esi
+  005552FA: C2 04 00           ret         4
+  005552FD: E8 BE ED FF FF     call        005540C0
+  00555302: C7 06 03 00 00 00  mov         dword ptr [esi],3
+  00555308: 5E                 pop         esi
+  00555309: C2 04 00           ret         4
+  0055530C: CC                 int         3
+  0055530D: CC                 int         3
+  0055530E: CC                 int         3
+  0055530F: CC                 int         3
+  00555310: 8D 81 A0 13 00 00  lea         eax,[ecx+000013A0h]
+  00555316: 8B 88 80 00 00 00  mov         ecx,dword ptr [eax+00000080h]
+  0055531C: 8D 14 88           lea         edx,[eax+ecx*4]
+  0055531F: 3B C2              cmp         eax,edx
+  00555321: 74 18              je          0055533B
+  00555323: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  00555327: 8D 0C 88           lea         ecx,[eax+ecx*4]
+  0055532A: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  00555330: 39 10              cmp         dword ptr [eax],edx
+  00555332: 74 0C              je          00555340
+  00555334: 83 C0 04           add         eax,4
+  00555337: 3B C1              cmp         eax,ecx
+  00555339: 75 F5              jne         00555330
+  0055533B: 32 C0              xor         al,al
+  0055533D: C2 04 00           ret         4
+  00555340: B0
+
+  Summary
+
+      9C8000 .text

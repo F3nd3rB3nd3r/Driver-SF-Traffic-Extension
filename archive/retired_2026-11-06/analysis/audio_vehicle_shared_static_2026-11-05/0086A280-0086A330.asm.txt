@@ -1,0 +1,72 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0086A280: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  0086A284: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  0086A288: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0086A28C: 89 0C 82           mov         dword ptr [edx+eax*4],ecx
+  0086A28F: C3                 ret
+  0086A290: C3                 ret
+  0086A291: CC                 int         3
+  0086A292: CC                 int         3
+  0086A293: CC                 int         3
+  0086A294: CC                 int         3
+  0086A295: CC                 int         3
+  0086A296: CC                 int         3
+  0086A297: CC                 int         3
+  0086A298: CC                 int         3
+  0086A299: CC                 int         3
+  0086A29A: CC                 int         3
+  0086A29B: CC                 int         3
+  0086A29C: CC                 int         3
+  0086A29D: CC                 int         3
+  0086A29E: CC                 int         3
+  0086A29F: CC                 int         3
+  0086A2A0: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  0086A2A4: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0086A2A8: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  0086A2AC: 50                 push        eax
+  0086A2AD: 8B 04 8A           mov         eax,dword ptr [edx+ecx*4]
+  0086A2B0: FF D0              call        eax
+  0086A2B2: 8B 08              mov         ecx,dword ptr [eax]
+  0086A2B4: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0086A2B8: 83 C4 04           add         esp,4
+  0086A2BB: 89 08              mov         dword ptr [eax],ecx
+  0086A2BD: C3                 ret
+  0086A2BE: CC                 int         3
+  0086A2BF: CC                 int         3
+  0086A2C0: 53                 push        ebx
+  0086A2C1: 57                 push        edi
+  0086A2C2: 33 C0              xor         eax,eax
+  0086A2C4: B9 12 01 00 00     mov         ecx,112h
+  0086A2C9: BF 08 8C 44 01     mov         edi,1448C08h
+  0086A2CE: BB 01 00 00 00     mov         ebx,1
+  0086A2D3: F3 AB              rep stos    dword ptr es:[edi]
+  0086A2D5: C7 05 00 8C 44 01  mov         dword ptr ds:[01448C00h],86A340h
+            40 A3 86 00
+  0086A2DF: 84 1D 24 72 FE 00  test        byte ptr ds:[00FE7224h],bl
+  0086A2E5: 75 1D              jne         0086A304
+  0086A2E7: 09 1D 24 72 FE 00  or          dword ptr ds:[00FE7224h],ebx
+  0086A2ED: 68 90 83 40 00     push        408390h
+  0086A2F2: E8 99 E2 3B 00     call        00C28590
+  0086A2F7: 83 C4 04           add         esp,4
+  0086A2FA: C7 05 20 72 FE 00  mov         dword ptr ds:[00FE7220h],0
+            00 00 00 00
+  0086A304: A1 20 72 FE 00     mov         eax,dword ptr ds:[00FE7220h]
+  0086A309: A3 04 8C 44 01     mov         dword ptr ds:[01448C04h],eax
+  0086A30E: 84 1D 24 72 FE 00  test        byte ptr ds:[00FE7224h],bl
+  0086A314: 75 13              jne         0086A329
+  0086A316: 09 1D 24 72 FE 00  or          dword ptr ds:[00FE7224h],ebx
+  0086A31C: 68 90 83 40 00     push        408390h
+  0086A321: E8 6A E2 3B 00     call        00C28590
+  0086A326: 83 C4 04           add         esp,4
+  0086A329: 5F                 pop         edi
+  0086A32A: B8 08 8C 44 01     mov         eax,1448C08h
+  0086A32F: C7
+  0086A330: 05
+
+  Summary
+
+      9C8000 .text

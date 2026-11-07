@@ -1,0 +1,37 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008497D0: 8B 81 44 95 00 00  mov         eax,dword ptr [ecx+00009544h]
+  008497D6: 8D 91 40 95 00 00  lea         edx,[ecx+00009540h]
+  008497DC: 3B C2              cmp         eax,edx
+  008497DE: 74 3A              je          0084981A
+  008497E0: 56                 push        esi
+  008497E1: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  008497E5: 39 70 08           cmp         dword ptr [eax+8],esi
+  008497E8: 74 0B              je          008497F5
+  008497EA: 8B 40 04           mov         eax,dword ptr [eax+4]
+  008497ED: 3B C2              cmp         eax,edx
+  008497EF: 75 F4              jne         008497E5
+  008497F1: 5E                 pop         esi
+  008497F2: C2 04 00           ret         4
+  008497F5: 8B 10              mov         edx,dword ptr [eax]
+  008497F7: 8B 70 04           mov         esi,dword ptr [eax+4]
+  008497FA: 89 72 04           mov         dword ptr [edx+4],esi
+  008497FD: 89 16              mov         dword ptr [esi],edx
+  008497FF: 8B 91 DC 92 00 00  mov         edx,dword ptr [ecx+000092DCh]
+  00849805: 89 10              mov         dword ptr [eax],edx
+  00849807: FF 81 E0 92 00 00  inc         dword ptr [ecx+000092E0h]
+  0084980D: FF 89 E4 92 00 00  dec         dword ptr [ecx+000092E4h]
+  00849813: 89 81 DC 92 00 00  mov         dword ptr [ecx+000092DCh],eax
+  00849819: 5E                 pop         esi
+  0084981A: C2 04 00           ret         4
+  0084981D: CC                 int         3
+  0084981E: CC                 int         3
+  0084981F: CC                 int         3
+  00849820: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

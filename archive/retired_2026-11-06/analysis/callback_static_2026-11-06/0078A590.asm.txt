@@ -1,0 +1,182 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0078A590: 43                 inc         ebx
+  0078A591: 3B 5D 0C           cmp         ebx,dword ptr [ebp+0Ch]
+  0078A594: 0F 8C FE FD FF FF  jl          0078A398
+  0078A59A: 5F                 pop         edi
+  0078A59B: 5E                 pop         esi
+  0078A59C: 5D                 pop         ebp
+  0078A59D: 5B                 pop         ebx
+  0078A59E: 59                 pop         ecx
+  0078A59F: C3                 ret
+  0078A5A0: C7 00 FF FF FF FF  mov         dword ptr [eax],0FFFFFFFFh
+  0078A5A6: 5F                 pop         edi
+  0078A5A7: 5E                 pop         esi
+  0078A5A8: 5D                 pop         ebp
+  0078A5A9: 5B                 pop         ebx
+  0078A5AA: 59                 pop         ecx
+  0078A5AB: C3                 ret
+  0078A5AC: CC                 int         3
+  0078A5AD: CC                 int         3
+  0078A5AE: CC                 int         3
+  0078A5AF: CC                 int         3
+  0078A5B0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0078A5B4: 55                 push        ebp
+  0078A5B5: 56                 push        esi
+  0078A5B6: 57                 push        edi
+  0078A5B7: 8B F9              mov         edi,ecx
+  0078A5B9: 8B C8              mov         ecx,eax
+  0078A5BB: 69 C9 14 03 00 00  imul        ecx,ecx,314h
+  0078A5C1: 83 7C 39 28 00     cmp         dword ptr [ecx+edi+28h],0
+  0078A5C6: 8D 74 39 20        lea         esi,[ecx+edi+20h]
+  0078A5CA: 74 44              je          0078A610
+  0078A5CC: 8D AE 0C 03 00 00  lea         ebp,[esi+0000030Ch]
+  0078A5D2: 8B 86 10 03 00 00  mov         eax,dword ptr [esi+00000310h]
+  0078A5D8: 6A 00              push        0
+  0078A5DA: 51                 push        ecx
+  0078A5DB: 8B CC              mov         ecx,esp
+  0078A5DD: 83 C0 08           add         eax,8
+  0078A5E0: 89 39              mov         dword ptr [ecx],edi
+  0078A5E2: 8B 08              mov         ecx,dword ptr [eax]
+  0078A5E4: E8 97 92 14 00     call        008D3880
+  0078A5E9: 8B 86 10 03 00 00  mov         eax,dword ptr [esi+00000310h]
+  0078A5EF: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  0078A5F2: 8B 16              mov         edx,dword ptr [esi]
+  0078A5F4: 89 10              mov         dword ptr [eax],edx
+  0078A5F6: FF 46 04           inc         dword ptr [esi+4]
+  0078A5F9: FF 4E 08           dec         dword ptr [esi+8]
+  0078A5FC: 89 06              mov         dword ptr [esi],eax
+  0078A5FE: 89 29              mov         dword ptr [ecx],ebp
+  0078A600: 89 8E 10 03 00 00  mov         dword ptr [esi+00000310h],ecx
+  0078A606: 83 7E 08 00        cmp         dword ptr [esi+8],0
+  0078A60A: 75 C6              jne         0078A5D2
+  0078A60C: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0078A610: C6 84 38 48 06 00  mov         byte ptr [eax+edi+00000648h],1
+            00 01
+  0078A618: 5F                 pop         edi
+  0078A619: 5E                 pop         esi
+  0078A61A: 5D                 pop         ebp
+  0078A61B: C2 04 00           ret         4
+  0078A61E: CC                 int         3
+  0078A61F: CC                 int         3
+  0078A620: 56                 push        esi
+  0078A621: 57                 push        edi
+  0078A622: 8B F9              mov         edi,ecx
+  0078A624: C7 07 A0 BF E2 00  mov         dword ptr [edi],0E2BFA0h
+  0078A62A: 33 F6              xor         esi,esi
+  0078A62C: 8D 64 24 00        lea         esp,[esp]
+  0078A630: 56                 push        esi
+  0078A631: 8B CF              mov         ecx,edi
+  0078A633: E8 78 FF FF FF     call        0078A5B0
+  0078A638: 46                 inc         esi
+  0078A639: 83 FE 02           cmp         esi,2
+  0078A63C: 7C F2              jl          0078A630
+  0078A63E: C7 07 30 5C EA 00  mov         dword ptr [edi],0EA5C30h
+  0078A644: 5F                 pop         edi
+  0078A645: 5E                 pop         esi
+  0078A646: C3                 ret
+  0078A647: CC                 int         3
+  0078A648: CC                 int         3
+  0078A649: CC                 int         3
+  0078A64A: CC                 int         3
+  0078A64B: CC                 int         3
+  0078A64C: CC                 int         3
+  0078A64D: CC                 int         3
+  0078A64E: CC                 int         3
+  0078A64F: CC                 int         3
+  0078A650: 8A 44 24 04        mov         al,byte ptr [esp+4]
+  0078A654: 57                 push        edi
+  0078A655: 8B F9              mov         edi,ecx
+  0078A657: 38 47 1D           cmp         byte ptr [edi+1Dh],al
+  0078A65A: 74 15              je          0078A671
+  0078A65C: 56                 push        esi
+  0078A65D: 88 47 1D           mov         byte ptr [edi+1Dh],al
+  0078A660: 33 F6              xor         esi,esi
+  0078A662: 56                 push        esi
+  0078A663: 8B CF              mov         ecx,edi
+  0078A665: E8 46 FF FF FF     call        0078A5B0
+  0078A66A: 46                 inc         esi
+  0078A66B: 83 FE 02           cmp         esi,2
+  0078A66E: 7C F2              jl          0078A662
+  0078A670: 5E                 pop         esi
+  0078A671: 5F                 pop         edi
+  0078A672: C2 04 00           ret         4
+  0078A675: CC                 int         3
+  0078A676: CC                 int         3
+  0078A677: CC                 int         3
+  0078A678: CC                 int         3
+  0078A679: CC                 int         3
+  0078A67A: CC                 int         3
+  0078A67B: CC                 int         3
+  0078A67C: CC                 int         3
+  0078A67D: CC                 int         3
+  0078A67E: CC                 int         3
+  0078A67F: CC                 int         3
+  0078A680: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0078A684: 55                 push        ebp
+  0078A685: 56                 push        esi
+  0078A686: 8D 81 2C 03 00 00  lea         eax,[ecx+0000032Ch]
+  0078A68C: BD 02 00 00 00     mov         ebp,2
+  0078A691: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  0078A694: 3B C8              cmp         ecx,eax
+  0078A696: 74 0C              je          0078A6A4
+  0078A698: 39 51 08           cmp         dword ptr [ecx+8],edx
+  0078A69B: 74 07              je          0078A6A4
+  0078A69D: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  0078A6A0: 3B C8              cmp         ecx,eax
+  0078A6A2: 75 F4              jne         0078A698
+  0078A6A4: 8B F0              mov         esi,eax
+  0078A6A6: 3B CE              cmp         ecx,esi
+  0078A6A8: 74 28              je          0078A6D2
+  0078A6AA: 8B 11              mov         edx,dword ptr [ecx]
+  0078A6AC: 8B 71 04           mov         esi,dword ptr [ecx+4]
+  0078A6AF: 89 72 04           mov         dword ptr [edx+4],esi
+  0078A6B2: 89 16              mov         dword ptr [esi],edx
+  0078A6B4: 8B 90 F4 FC FF FF  mov         edx,dword ptr [eax+FFFFFCF4h]
+  0078A6BA: 89 11              mov         dword ptr [ecx],edx
+  0078A6BC: FF 80 F8 FC FF FF  inc         dword ptr [eax+FFFFFCF8h]
+  0078A6C2: FF 88 FC FC FF FF  dec         dword ptr [eax+FFFFFCFCh]
+  0078A6C8: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  0078A6CC: 89 88 F4 FC FF FF  mov         dword ptr [eax+FFFFFCF4h],ecx
+  0078A6D2: 05 14 03 00 00     add         eax,314h
+  0078A6D7: 83 ED 01           sub         ebp,1
+  0078A6DA: 75 B5              jne         0078A691
+  0078A6DC: 5E                 pop         esi
+  0078A6DD: 5D                 pop         ebp
+  0078A6DE: C2 04 00           ret         4
+  0078A6E1: CC                 int         3
+  0078A6E2: CC                 int         3
+  0078A6E3: CC                 int         3
+  0078A6E4: CC                 int         3
+  0078A6E5: CC                 int         3
+  0078A6E6: CC                 int         3
+  0078A6E7: CC                 int         3
+  0078A6E8: CC                 int         3
+  0078A6E9: CC                 int         3
+  0078A6EA: CC                 int         3
+  0078A6EB: CC                 int         3
+  0078A6EC: CC                 int         3
+  0078A6ED: CC                 int         3
+  0078A6EE: CC                 int         3
+  0078A6EF: CC                 int         3
+  0078A6F0: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0078A6F4: 8B 40 0C           mov         eax,dword ptr [eax+0Ch]
+  0078A6F7: 85 C0              test        eax,eax
+  0078A6F9: 74 39              je          0078A734
+  0078A6FB: 8B 90 50 0A 00 00  mov         edx,dword ptr [eax+00000A50h]
+  0078A701: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  0078A705: 69 C0 14 03 00 00  imul        eax,eax,314h
+  0078A70B: 03 C1              add         eax,ecx
+  0078A70D: 8D 88 2C 03 00 00  lea         ecx,[eax+0000032Ch]
+  0078A713: 8B 80 30 03 00 00  mov         eax,dword ptr [eax+00000330h]
+  0078A719: 3B C1              cmp         eax,ecx
+  0078A71B: 74 17              je          0078A734
+  0078A71D: 8D 49 00           lea         ecx,[ecx]
+  0078A720: 39
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,207 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A17D0: 0E                 push        cs
+  005A17D1: 00 00              add         byte ptr [eax],al
+  005A17D3: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  005A17D7: 33 C0              xor         eax,eax
+  005A17D9: 3B 4C 24 0C        cmp         ecx,dword ptr [esp+0Ch]
+  005A17DD: 0F 95 C0           setne       al
+  005A17E0: 85 C0              test        eax,eax
+  005A17E2: 77 29              ja          005A180D
+  005A17E4: 8B 87 54 5F 00 00  mov         eax,dword ptr [edi+00005F54h]
+  005A17EA: 8D 8F 50 5F 00 00  lea         ecx,[edi+00005F50h]
+  005A17F0: 3B C1              cmp         eax,ecx
+  005A17F2: 74 07              je          005A17FB
+  005A17F4: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A17F7: 3B C1              cmp         eax,ecx
+  005A17F9: 75 F9              jne         005A17F4
+  005A17FB: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  005A17FF: 5F                 pop         edi
+  005A1800: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  005A1806: 5D                 pop         ebp
+  005A1807: 83 C4 08           add         esp,8
+  005A180A: C2 10 00           ret         10h
+  005A180D: 8B 87 B4 6C 00 00  mov         eax,dword ptr [edi+00006CB4h]
+  005A1813: 8D 8F B0 6C 00 00  lea         ecx,[edi+00006CB0h]
+  005A1819: 3B C1              cmp         eax,ecx
+  005A181B: 74 10              je          005A182D
+  005A181D: 8D 49 00           lea         ecx,[ecx]
+  005A1820: 66 39 68 0A        cmp         word ptr [eax+0Ah],bp
+  005A1824: 74 D5              je          005A17FB
+  005A1826: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A1829: 3B C1              cmp         eax,ecx
+  005A182B: 75 F3              jne         005A1820
+  005A182D: 8B 87 CC 6F 00 00  mov         eax,dword ptr [edi+00006FCCh]
+  005A1833: 8D 8F C8 6F 00 00  lea         ecx,[edi+00006FC8h]
+  005A1839: 32 D2              xor         dl,dl
+  005A183B: 53                 push        ebx
+  005A183C: 66 8B 5C 24 1C     mov         bx,word ptr [esp+1Ch]
+  005A1841: 3B C1              cmp         eax,ecx
+  005A1843: 74 13              je          005A1858
+  005A1845: 66 39 58 08        cmp         word ptr [eax+8],bx
+  005A1849: 75 02              jne         005A184D
+  005A184B: B2 01              mov         dl,1
+  005A184D: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A1850: 3B C1              cmp         eax,ecx
+  005A1852: 75 F1              jne         005A1845
+  005A1854: 84 D2              test        dl,dl
+  005A1856: 75 3E              jne         005A1896
+  005A1858: 8B 87 54 5F 00 00  mov         eax,dword ptr [edi+00005F54h]
+  005A185E: 8D 97 44 5B 00 00  lea         edx,[edi+00005B44h]
+  005A1864: 89 54 24 20        mov         dword ptr [esp+20h],edx
+  005A1868: 81 C2 0C 04 00 00  add         edx,40Ch
+  005A186E: 3B C2              cmp         eax,edx
+  005A1870: 74 0D              je          005A187F
+  005A1872: 66 39 68 08        cmp         word ptr [eax+8],bp
+  005A1876: 73 07              jae         005A187F
+  005A1878: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A187B: 3B C2              cmp         eax,edx
+  005A187D: 75 F3              jne         005A1872
+  005A187F: 8B C8              mov         ecx,eax
+  005A1881: 3B C2              cmp         eax,edx
+  005A1883: 74 11              je          005A1896
+  005A1885: 66 3B 69 08        cmp         bp,word ptr [ecx+8]
+  005A1889: 72 07              jb          005A1892
+  005A188B: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  005A188E: 3B CA              cmp         ecx,edx
+  005A1890: 75 F3              jne         005A1885
+  005A1892: 3B C1              cmp         eax,ecx
+  005A1894: 75 13              jne         005A18A9
+  005A1896: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  005A189A: 5B                 pop         ebx
+  005A189B: 5F                 pop         edi
+  005A189C: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  005A18A2: 5D                 pop         ebp
+  005A18A3: 83 C4 08           add         esp,8
+  005A18A6: C2 10 00           ret         10h
+  005A18A9: 8B 87 B4 6C 00 00  mov         eax,dword ptr [edi+00006CB4h]
+  005A18AF: 8D 8F A4 69 00 00  lea         ecx,[edi+000069A4h]
+  005A18B5: 56                 push        esi
+  005A18B6: 8D B1 0C 03 00 00  lea         esi,[ecx+0000030Ch]
+  005A18BC: 3B C6              cmp         eax,esi
+  005A18BE: 74 0D              je          005A18CD
+  005A18C0: 66 39 58 08        cmp         word ptr [eax+8],bx
+  005A18C4: 73 07              jae         005A18CD
+  005A18C6: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A18C9: 3B C6              cmp         eax,esi
+  005A18CB: 75 F3              jne         005A18C0
+  005A18CD: 8B D0              mov         edx,eax
+  005A18CF: 3B C6              cmp         eax,esi
+  005A18D1: 74 11              je          005A18E4
+  005A18D3: 66 3B 5A 08        cmp         bx,word ptr [edx+8]
+  005A18D7: 72 07              jb          005A18E0
+  005A18D9: 8B 52 04           mov         edx,dword ptr [edx+4]
+  005A18DC: 3B D6              cmp         edx,esi
+  005A18DE: 75 F3              jne         005A18D3
+  005A18E0: 3B C2              cmp         eax,edx
+  005A18E2: 75 1E              jne         005A1902
+  005A18E4: 33 D2              xor         edx,edx
+  005A18E6: 66 89 54 24 22     mov         word ptr [esp+22h],dx
+  005A18EB: 8D 54 24 20        lea         edx,[esp+20h]
+  005A18EF: 52                 push        edx
+  005A18F0: 50                 push        eax
+  005A18F1: 8D 44 24 30        lea         eax,[esp+30h]
+  005A18F5: 50                 push        eax
+  005A18F6: 66 89 5C 24 2C     mov         word ptr [esp+2Ch],bx
+  005A18FB: E8 20 C8 FF FF     call        0059E120
+  005A1900: 8B 00              mov         eax,dword ptr [eax]
+  005A1902: 83 C0 0A           add         eax,0Ah
+  005A1905: 8D 8F BC 6C 00 00  lea         ecx,[edi+00006CBCh]
+  005A190B: 66 89 28           mov         word ptr [eax],bp
+  005A190E: 8B 81 10 03 00 00  mov         eax,dword ptr [ecx+00000310h]
+  005A1914: 8D B1 0C 03 00 00  lea         esi,[ecx+0000030Ch]
+  005A191A: 3B C6              cmp         eax,esi
+  005A191C: 74 0F              je          005A192D
+  005A191E: 8B FF              mov         edi,edi
+  005A1920: 66 39 58 08        cmp         word ptr [eax+8],bx
+  005A1924: 73 07              jae         005A192D
+  005A1926: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A1929: 3B C6              cmp         eax,esi
+  005A192B: 75 F3              jne         005A1920
+  005A192D: 8B D0              mov         edx,eax
+  005A192F: 3B C6              cmp         eax,esi
+  005A1931: 74 11              je          005A1944
+  005A1933: 66 3B 5A 08        cmp         bx,word ptr [edx+8]
+  005A1937: 72 07              jb          005A1940
+  005A1939: 8B 52 04           mov         edx,dword ptr [edx+4]
+  005A193C: 3B D6              cmp         edx,esi
+  005A193E: 75 F3              jne         005A1933
+  005A1940: 3B C2              cmp         eax,edx
+  005A1942: 75 1E              jne         005A1962
+  005A1944: 33 D2              xor         edx,edx
+  005A1946: 66 89 54 24 22     mov         word ptr [esp+22h],dx
+  005A194B: 8D 54 24 20        lea         edx,[esp+20h]
+  005A194F: 52                 push        edx
+  005A1950: 50                 push        eax
+  005A1951: 8D 44 24 30        lea         eax,[esp+30h]
+  005A1955: 50                 push        eax
+  005A1956: 66 89 5C 24 2C     mov         word ptr [esp+2Ch],bx
+  005A195B: E8 C0 C7 FF FF     call        0059E120
+  005A1960: 8B 00              mov         eax,dword ptr [eax]
+  005A1962: 8B 74 24 24        mov         esi,dword ptr [esp+24h]
+  005A1966: 83 C0 0A           add         eax,0Ah
+  005A1969: B9 01 00 00 00     mov         ecx,1
+  005A196E: 66 89 08           mov         word ptr [eax],cx
+  005A1971: 8B 86 10 04 00 00  mov         eax,dword ptr [esi+00000410h]
+  005A1977: 8D 96 0C 04 00 00  lea         edx,[esi+0000040Ch]
+  005A197D: 3B C2              cmp         eax,edx
+  005A197F: 74 0D              je          005A198E
+  005A1981: 66 39 68 08        cmp         word ptr [eax+8],bp
+  005A1985: 73 07              jae         005A198E
+  005A1987: 8B 40 04           mov         eax,dword ptr [eax+4]
+  005A198A: 3B C2              cmp         eax,edx
+  005A198C: 75 F3              jne         005A1981
+  005A198E: 8B C8              mov         ecx,eax
+  005A1990: 3B C2              cmp         eax,edx
+  005A1992: 74 11              je          005A19A5
+  005A1994: 66 3B 69 08        cmp         bp,word ptr [ecx+8]
+  005A1998: 72 07              jb          005A19A1
+  005A199A: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  005A199D: 3B CA              cmp         ecx,edx
+  005A199F: 75 F3              jne         005A1994
+  005A19A1: 3B C1              cmp         eax,ecx
+  005A19A3: 75 21              jne         005A19C6
+  005A19A5: 8B 54 24 20        mov         edx,dword ptr [esp+20h]
+  005A19A9: 8D 4C 24 10        lea         ecx,[esp+10h]
+  005A19AD: 51                 push        ecx
+  005A19AE: 89 54 24 18        mov         dword ptr [esp+18h],edx
+  005A19B2: 50                 push        eax
+  005A19B3: 8D 54 24 28        lea         edx,[esp+28h]
+  005A19B7: 52                 push        edx
+  005A19B8: 8B CE              mov         ecx,esi
+  005A19BA: 66 89 6C 24 1C     mov         word ptr [esp+1Ch],bp
+  005A19BF: E8 AC 58 23 00     call        007D7270
+  005A19C4: 8B 00              mov         eax,dword ptr [eax]
+  005A19C6: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  005A19C9: 5E                 pop         esi
+  005A19CA: 83 C0 0C           add         eax,0Ch
+  005A19CD: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  005A19D1: 5B                 pop         ebx
+  005A19D2: 5F                 pop         edi
+  005A19D3: 89 08              mov         dword ptr [eax],ecx
+  005A19D5: 5D                 pop         ebp
+  005A19D6: 83 C4 08           add         esp,8
+  005A19D9: C2 10 00           ret         10h
+  005A19DC: CC                 int         3
+  005A19DD: CC                 int         3
+  005A19DE: CC                 int         3
+  005A19DF: CC                 int         3
+  005A19E0: 83 EC 08           sub         esp,8
+  005A19E3: 56                 push        esi
+  005A19E4: 8D B1 D4 6F 00 00  lea         esi,[ecx+00006FD4h]
+  005A19EA: 8D 44 24 10        lea         eax,[esp+10h]
+  005A19EE: 50                 push        eax
+  005A19EF: 8D 4C 24 08        lea         ecx,[esp+8]
+  005A19F3: 51                 push        ecx
+  005A19F4: 8B CE              mov         ecx,esi
+  005A19F6: E8 05 0C 00 00     call        005A2600
+  005A19FB: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  005A19FF: 3B
+  005A1A00: 54                 push        esp
+
+  Summary
+
+      9C8000 .text

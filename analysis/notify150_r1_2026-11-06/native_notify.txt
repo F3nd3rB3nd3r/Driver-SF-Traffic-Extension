@@ -1,0 +1,61 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00754C70: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00754C75: 81 EC D0 00 00 00  sub         esp,0D0h
+  00754C7B: 85 C0              test        eax,eax
+  00754C7D: 75 0A              jne         00754C89
+  00754C7F: E8 0C 5A CB FF     call        0040A690
+  00754C84: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00754C89: 56                 push        esi
+  00754C8A: 8B B0 2C 02 00 00  mov         esi,dword ptr [eax+0000022Ch]
+  00754C90: 83 BE 88 E5 04 00  cmp         dword ptr [esi+0004E588h],1
+            01
+  00754C97: 75 6A              jne         00754D03
+  00754C99: 83 BE E0 E9 04 00  cmp         dword ptr [esi+0004E9E0h],0
+            00
+  00754CA0: 77 61              ja          00754D03
+  00754CA2: 53                 push        ebx
+  00754CA3: 57                 push        edi
+  00754CA4: 8B BC 24 E4 00 00  mov         edi,dword ptr [esp+000000E4h]
+            00
+  00754CAB: C7 44 24 0C 00 00  mov         dword ptr [esp+0Ch],0
+            00 00
+  00754CB3: 89 7C 24 10        mov         dword ptr [esp+10h],edi
+  00754CB7: 85 FF              test        edi,edi
+  00754CB9: 7E 1D              jle         00754CD8
+  00754CBB: 8B 8C 24 E0 00 00  mov         ecx,dword ptr [esp+000000E0h]
+            00
+  00754CC2: 8D 04 BD 00 00 00  lea         eax,[edi*4+00000000h]
+            00
+  00754CC9: 50                 push        eax
+  00754CCA: 51                 push        ecx
+  00754CCB: 8D 54 24 1C        lea         edx,[esp+1Ch]
+  00754CCF: 52                 push        edx
+  00754CD0: E8 4B 3B 4D 00     call        00C28820
+  00754CD5: 83 C4 0C           add         esp,0Ch
+  00754CD8: 8B 9E 8C E5 04 00  mov         ebx,dword ptr [esi+0004E58Ch]
+  00754CDE: 8D 04 BD 08 00 00  lea         eax,[edi*4+00000008h]
+            00
+  00754CE5: 50                 push        eax
+  00754CE6: 8D 4C 24 10        lea         ecx,[esp+10h]
+  00754CEA: 51                 push        ecx
+  00754CEB: 8B CE              mov         ecx,esi
+  00754CED: E8 EE 3F FE FF     call        00738CE0
+  00754CF2: 51                 push        ecx
+  00754CF3: D9 1C 24           fstp        dword ptr [esp]
+  00754CF6: 6A 01              push        1
+  00754CF8: 6A 05              push        5
+  00754CFA: 8B CB              mov         ecx,ebx
+  00754CFC: E8 CF 1A FF FF     call        007467D0
+  00754D01: 5F                 pop         edi
+  00754D02: 5B                 pop         ebx
+  00754D03: 5E                 pop         esi
+  00754D04: 81 C4 D0 00 00 00  add         esp,0D0h
+  00754D0A: C2 08 00           ret         8
+
+  Summary
+
+      9C8000 .text

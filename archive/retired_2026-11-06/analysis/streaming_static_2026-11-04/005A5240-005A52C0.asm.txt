@@ -1,0 +1,63 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A5240: 84 DB              test        bl,bl
+  005A5242: 74 23              je          005A5267
+  005A5244: EB 04              jmp         005A524A
+  005A5246: 84 DB              test        bl,bl
+  005A5248: 74 0C              je          005A5256
+  005A524A: 8B 55 00           mov         edx,dword ptr [ebp]
+  005A524D: 8B 42 0C           mov         eax,dword ptr [edx+0Ch]
+  005A5250: 6A 03              push        3
+  005A5252: 8B CD              mov         ecx,ebp
+  005A5254: FF D0              call        eax
+  005A5256: 8B 55 00           mov         edx,dword ptr [ebp]
+  005A5259: 8B 82 90 00 00 00  mov         eax,dword ptr [edx+00000090h]
+  005A525F: 8B CD              mov         ecx,ebp
+  005A5261: FF D0              call        eax
+  005A5263: 84 C0              test        al,al
+  005A5265: 75 1B              jne         005A5282
+  005A5267: 83 C6 04           add         esi,4
+  005A526A: 3B 74 24 18        cmp         esi,dword ptr [esp+18h]
+  005A526E: 75 90              jne         005A5200
+  005A5270: 5B                 pop         ebx
+  005A5271: 5D                 pop         ebp
+  005A5272: 5F                 pop         edi
+  005A5273: B8 02 00 00 00     mov         eax,2
+  005A5278: 5E                 pop         esi
+  005A5279: 81 C4 20 0C 00 00  add         esp,0C20h
+  005A527F: C2 08 00           ret         8
+  005A5282: 55                 push        ebp
+  005A5283: 8B CF              mov         ecx,edi
+  005A5285: E8 E6 E5 FF FF     call        005A3870
+  005A528A: 5B                 pop         ebx
+  005A528B: 5D                 pop         ebp
+  005A528C: 5F                 pop         edi
+  005A528D: B8 02 00 00 00     mov         eax,2
+  005A5292: 5E                 pop         esi
+  005A5293: 81 C4 20 0C 00 00  add         esp,0C20h
+  005A5299: C2 08 00           ret         8
+  005A529C: E8 3F F8 FF FF     call        005A4AE0
+  005A52A1: 5F                 pop         edi
+  005A52A2: 5E                 pop         esi
+  005A52A3: 81 C4 20 0C 00 00  add         esp,0C20h
+  005A52A9: C2 08 00           ret         8
+  005A52AC: 5F                 pop         edi
+  005A52AD: 8B C6              mov         eax,esi
+  005A52AF: 5E                 pop         esi
+  005A52B0: 81 C4 20 0C 00 00  add         esp,0C20h
+  005A52B6: C2 08 00           ret         8
+  005A52B9: CC                 int         3
+  005A52BA: CC                 int         3
+  005A52BB: CC                 int         3
+  005A52BC: CC                 int         3
+  005A52BD: CC                 int         3
+  005A52BE: CC                 int         3
+  005A52BF: CC                 int         3
+  005A52C0: 53                 push        ebx
+
+  Summary
+
+      9C8000 .text

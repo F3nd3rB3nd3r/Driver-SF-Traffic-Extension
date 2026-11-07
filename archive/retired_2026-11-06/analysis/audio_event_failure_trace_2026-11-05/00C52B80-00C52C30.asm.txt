@@ -1,0 +1,71 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C52B80: 24 02              and         al,2
+  00C52B82: 89 54 24 04        mov         dword ptr [esp+4],edx
+  00C52B86: 89 44 24 08        mov         dword ptr [esp+8],eax
+  00C52B8A: E8 21 6E 00 00     call        00C599B0
+  00C52B8F: 0F B7 C0           movzx       eax,ax
+  00C52B92: 50                 push        eax
+  00C52B93: 8D 4C 24 04        lea         ecx,[esp+4]
+  00C52B97: 51                 push        ecx
+  00C52B98: 8B 0D 3C 18 D7 01  mov         ecx,dword ptr ds:[01D7183Ch]
+  00C52B9E: E8 1D A1 00 00     call        00C5CCC0
+  00C52BA3: 83 C4 2C           add         esp,2Ch
+  00C52BA6: C3                 ret
+  00C52BA7: B8 0F 00 00 00     mov         eax,0Fh
+  00C52BAC: 83 C4 2C           add         esp,2Ch
+  00C52BAF: C3                 ret
+  00C52BB0: 83 EC 2C           sub         esp,2Ch
+  00C52BB3: 8B 44 24 34        mov         eax,dword ptr [esp+34h]
+  00C52BB7: 8B 54 24 30        mov         edx,dword ptr [esp+30h]
+  00C52BBB: B9 03 00 00 00     mov         ecx,3
+  00C52BC0: 66 89 4C 24 02     mov         word ptr [esp+2],cx
+  00C52BC5: 33 C9              xor         ecx,ecx
+  00C52BC7: 3D DB 3B A3 2C     cmp         eax,2CA33BDBh
+  00C52BCC: 0F 44 C1           cmove       eax,ecx
+  00C52BCF: 89 54 24 04        mov         dword ptr [esp+4],edx
+  00C52BD3: 89 44 24 08        mov         dword ptr [esp+8],eax
+  00C52BD7: 88 4C 24 0C        mov         byte ptr [esp+0Ch],cl
+  00C52BDB: 88 4C 24 0D        mov         byte ptr [esp+0Dh],cl
+  00C52BDF: E8 9C 64 BE FF     call        00839080
+  00C52BE4: 0F B7 C0           movzx       eax,ax
+  00C52BE7: 50                 push        eax
+  00C52BE8: 8D 4C 24 04        lea         ecx,[esp+4]
+  00C52BEC: 51                 push        ecx
+  00C52BED: 8B 0D 3C 18 D7 01  mov         ecx,dword ptr ds:[01D7183Ch]
+  00C52BF3: E8 C8 A0 00 00     call        00C5CCC0
+  00C52BF8: 83 C4 2C           add         esp,2Ch
+  00C52BFB: C3                 ret
+  00C52BFC: CC                 int         3
+  00C52BFD: CC                 int         3
+  00C52BFE: CC                 int         3
+  00C52BFF: CC                 int         3
+  00C52C00: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00C52C04: 56                 push        esi
+  00C52C05: 50                 push        eax
+  00C52C06: E8 E5 F9 FF FF     call        00C525F0
+  00C52C0B: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  00C52C0F: 51                 push        ecx
+  00C52C10: 8B F0              mov         esi,eax
+  00C52C12: E8 D9 F9 FF FF     call        00C525F0
+  00C52C17: 83 C4 08           add         esp,8
+  00C52C1A: 85 F6              test        esi,esi
+  00C52C1C: 74 10              je          00C52C2E
+  00C52C1E: 85 C0              test        eax,eax
+  00C52C20: 74 0C              je          00C52C2E
+  00C52C22: 50                 push        eax
+  00C52C23: 56                 push        esi
+  00C52C24: E8 87 FF FF FF     call        00C52BB0
+  00C52C29: 83 C4 08           add         esp,8
+  00C52C2C: 5E                 pop         esi
+  00C52C2D: C3                 ret
+  00C52C2E: B8
+  00C52C2F: 0F
+  00C52C30: 00
+
+  Summary
+
+      9C8000 .text

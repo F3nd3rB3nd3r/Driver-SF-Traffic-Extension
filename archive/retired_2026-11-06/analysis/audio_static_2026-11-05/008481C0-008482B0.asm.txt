@@ -1,0 +1,104 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008481C0: AC                 lods        byte ptr [esi]
+  008481C1: 8D 40 00           lea         eax,[eax]
+  008481C4: 83 C4 50           add         esp,50h
+  008481C7: 68 10 D8 CC 00     push        0CCD810h
+  008481CC: 68 30 D5 CC 00     push        0CCD530h
+  008481D1: 6A 66              push        66h
+  008481D3: 6A 00              push        0
+  008481D5: 6A 02              push        2
+  008481D7: E8 94 8D 40 00     call        00C50F70
+  008481DC: 68 70 FA CC 00     push        0CCFA70h
+  008481E1: 68 70 F9 CC 00     push        0CCF970h
+  008481E6: 68 C8 00 00 00     push        0C8h
+  008481EB: 6A 00              push        0
+  008481ED: 6A 02              push        2
+  008481EF: E8 7C 8D 40 00     call        00C50F70
+  008481F4: 68 B0 2E B7 00     push        0B72EB0h
+  008481F9: 68 70 2D B7 00     push        0B72D70h
+  008481FE: 68 C8 00 00 00     push        0C8h
+  00848203: 6A 65              push        65h
+  00848205: 6A 02              push        2
+  00848207: E8 64 8D 40 00     call        00C50F70
+  0084820C: 83 C4 3C           add         esp,3Ch
+  0084820F: C3                 ret
+  00848210: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00848214: 6A 10              push        10h
+  00848216: 50                 push        eax
+  00848217: E8 BB 67 3E 00     call        00C2E9D7
+  0084821C: 83 C4 08           add         esp,8
+  0084821F: C2 04 00           ret         4
+  00848222: CC                 int         3
+  00848223: CC                 int         3
+  00848224: CC                 int         3
+  00848225: CC                 int         3
+  00848226: CC                 int         3
+  00848227: CC                 int         3
+  00848228: CC                 int         3
+  00848229: CC                 int         3
+  0084822A: CC                 int         3
+  0084822B: CC                 int         3
+  0084822C: CC                 int         3
+  0084822D: CC                 int         3
+  0084822E: CC                 int         3
+  0084822F: CC                 int         3
+  00848230: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00848234: 50                 push        eax
+  00848235: E8 83 67 3E 00     call        00C2E9BD
+  0084823A: 59                 pop         ecx
+  0084823B: C2 04 00           ret         4
+  0084823E: CC                 int         3
+  0084823F: CC                 int         3
+  00848240: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00848244: D9 44 81 60        fld         dword ptr [ecx+eax*4+60h]
+  00848248: C2 04 00           ret         4
+  0084824B: CC                 int         3
+  0084824C: CC                 int         3
+  0084824D: CC                 int         3
+  0084824E: CC                 int         3
+  0084824F: CC                 int         3
+  00848250: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  00848254: F3 0F 10 44 91 60  movss       xmm0,dword ptr [ecx+edx*4+60h]
+  0084825A: F3 0F 10 0D 14 64  movss       xmm1,dword ptr ds:[00DD6414h]
+            DD 00
+  00848262: 0F 2E C1           ucomiss     xmm0,xmm1
+  00848265: 9F                 lahf
+  00848266: F6 C4 44           test        ah,44h
+  00848269: 7B 28              jnp         00848293
+  0084826B: 0F 28 D1           movaps      xmm2,xmm1
+  0084826E: F3 0F 5C D0        subss       xmm2,xmm0
+  00848272: F3 0F 10 44 24 08  movss       xmm0,dword ptr [esp+8]
+  00848278: F3 0F 59 05 34 82  mulss       xmm0,dword ptr ds:[00EC8234h]
+            EC 00
+  00848280: F3 0F 5E D0        divss       xmm2,xmm0
+  00848284: F3 0F 11 54 D1 7C  movss       dword ptr [ecx+edx*8+7Ch],xmm2
+  0084828A: F3 0F 11 8C D1 80  movss       dword ptr [ecx+edx*8+00000080h],xmm1
+            00 00 00
+  00848293: C2 08 00           ret         8
+  00848296: CC                 int         3
+  00848297: CC                 int         3
+  00848298: CC                 int         3
+  00848299: CC                 int         3
+  0084829A: CC                 int         3
+  0084829B: CC                 int         3
+  0084829C: CC                 int         3
+  0084829D: CC                 int         3
+  0084829E: CC                 int         3
+  0084829F: CC                 int         3
+  008482A0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  008482A4: D9 44 81 50        fld         dword ptr [ecx+eax*4+50h]
+  008482A8: C2 04 00           ret         4
+  008482AB: CC                 int         3
+  008482AC: CC                 int         3
+  008482AD: CC                 int         3
+  008482AE: CC                 int         3
+  008482AF: CC                 int         3
+  008482B0: D9
+
+  Summary
+
+      9C8000 .text

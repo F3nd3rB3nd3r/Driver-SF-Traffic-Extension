@@ -1,0 +1,72 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C81CA0: 75 F5              jne         00C81C97
+  00C81CA2: 8B C6              mov         eax,esi
+  00C81CA4: 5E                 pop         esi
+  00C81CA5: C2 08 00           ret         8
+  00C81CA8: 85 C0              test        eax,eax
+  00C81CAA: 74 1F              je          00C81CCB
+  00C81CAC: 83 C0 08           add         eax,8
+  00C81CAF: 81 C1 54 FF FF FF  add         ecx,0FFFFFF54h
+  00C81CB5: 80 7C 24 0C 00     cmp         byte ptr [esp+0Ch],0
+  00C81CBA: 50                 push        eax
+  00C81CBB: 74 09              je          00C81CC6
+  00C81CBD: E8 BE FD FF FF     call        00C81A80
+  00C81CC2: 5E                 pop         esi
+  00C81CC3: C2 08 00           ret         8
+  00C81CC6: E8 15 FE FF FF     call        00C81AE0
+  00C81CCB: 8B C6              mov         eax,esi
+  00C81CCD: 5E                 pop         esi
+  00C81CCE: C2 08 00           ret         8
+  00C81CD1: CC                 int         3
+  00C81CD2: CC                 int         3
+  00C81CD3: CC                 int         3
+  00C81CD4: CC                 int         3
+  00C81CD5: CC                 int         3
+  00C81CD6: CC                 int         3
+  00C81CD7: CC                 int         3
+  00C81CD8: CC                 int         3
+  00C81CD9: CC                 int         3
+  00C81CDA: CC                 int         3
+  00C81CDB: CC                 int         3
+  00C81CDC: CC                 int         3
+  00C81CDD: CC                 int         3
+  00C81CDE: CC                 int         3
+  00C81CDF: CC                 int         3
+  00C81CE0: 83 EC 08           sub         esp,8
+  00C81CE3: 80 3D 80 18 D7 01  cmp         byte ptr ds:[01D71880h],0
+            00
+  00C81CEA: 56                 push        esi
+  00C81CEB: 8B F1              mov         esi,ecx
+  00C81CED: 89 74 24 08        mov         dword ptr [esp+8],esi
+  00C81CF1: 75 09              jne         00C81CFC
+  00C81CF3: 5E                 pop         esi
+  00C81CF4: 83 C4 08           add         esp,8
+  00C81CF7: E9 64 E6 FF FF     jmp         00C80360
+  00C81CFC: 83 BE B4 00 00 00  cmp         dword ptr [esi+000000B4h],0
+            00
+  00C81D03: 55                 push        ebp
+  00C81D04: 57                 push        edi
+  00C81D05: BF 01 00 00 00     mov         edi,1
+  00C81D0A: 89 7C 24 0C        mov         dword ptr [esp+0Ch],edi
+  00C81D0E: 0F 85 0E 01 00 00  jne         00C81E22
+  00C81D14: 8B 86 B8 00 00 00  mov         eax,dword ptr [esi+000000B8h]
+  00C81D1A: 8B 96 BC 00 00 00  mov         edx,dword ptr [esi+000000BCh]
+  00C81D20: 53                 push        ebx
+  00C81D21: 50                 push        eax
+  00C81D22: 8D 8E AC 00 00 00  lea         ecx,[esi+000000ACh]
+  00C81D28: 52                 push        edx
+  00C81D29: E8 D2 5E 01 00     call        00C97C00
+  00C81D2E: 8B D8              mov         ebx,eax
+  00C81D30: 85 DB              test        ebx,ebx
+  00C81D32: 0F 84 E1 00 00 00  je          00C81E19
+  00C81D38: 8B AE C4 00 00 00  mov         ebp,dword ptr [esi+000000C4h]
+  00C81D3E: 85 ED              test        ebp,ebp
+  00C81D40: 0F
+
+  Summary
+
+      9C8000 .text

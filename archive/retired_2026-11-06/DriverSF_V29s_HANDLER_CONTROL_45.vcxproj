@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion><Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{7C5A82D3-7710-4B0B-98F2-4B29A0C04433}</ProjectGuid>
+    <RootNamespace>DriverSF_V29s_HANDLER_CONTROL_45</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v145</PlatformToolset><CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <TargetName>DriverSF_V29s_160Capacity_45Request_HANDLER</TargetName><TargetExt>.asi</TargetExt>
+    <OutDir>$(ProjectDir)build\v29s_handler_probe_control\</OutDir>
+    <IntDir>$(ProjectDir)build\v29s_handler_probe_control\vs_obj\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>DSF_CHAPTER7_PRELOAD_COUNT=45;DSF_GRAPHICS_ADMISSION_TARGET=160;DSF_V29S_NATIVE_TRACE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>MaxSpeed</Optimization><AdditionalOptions>/Oi- %(AdditionalOptions)</AdditionalOptions>
+      <WarningLevel>Level4</WarningLevel><LanguageStandard>stdcpp17</LanguageStandard>
+      <BufferSecurityCheck>false</BufferSecurityCheck><ExceptionHandling>false</ExceptionHandling><RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link><AdditionalDependencies>kernel32.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries><EntryPointSymbol>DllMain@12</EntryPointSymbol></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="src\DriverSF_V29b_NativeFastPath.cpp" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sNativeLoadingTrace.inc" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

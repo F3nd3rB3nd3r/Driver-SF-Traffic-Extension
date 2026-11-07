@@ -1,0 +1,92 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084A400: 11 4D 70           adc         dword ptr [ebp+70h],ecx
+  0084A403: 8B 45 70           mov         eax,dword ptr [ebp+70h]
+  0084A406: 89 96 A8 00 00 00  mov         dword ptr [esi+000000A8h],edx
+  0084A40C: F3 0F 11 45 64     movss       dword ptr [ebp+64h],xmm0
+  0084A411: 8B 4D 64           mov         ecx,dword ptr [ebp+64h]
+  0084A414: 89 8E B0 00 00 00  mov         dword ptr [esi+000000B0h],ecx
+  0084A41A: 89 86 AC 00 00 00  mov         dword ptr [esi+000000ACh],eax
+  0084A420: F3 0F 11 45 68     movss       dword ptr [ebp+68h],xmm0
+  0084A425: 8B 55 68           mov         edx,dword ptr [ebp+68h]
+  0084A428: F3 0F 11 45 6C     movss       dword ptr [ebp+6Ch],xmm0
+  0084A42D: 8B 45 6C           mov         eax,dword ptr [ebp+6Ch]
+  0084A430: 89 96 B4 00 00 00  mov         dword ptr [esi+000000B4h],edx
+  0084A436: F3 0F 11 4D 70     movss       dword ptr [ebp+70h],xmm1
+  0084A43B: 8B 4D 70           mov         ecx,dword ptr [ebp+70h]
+  0084A43E: 89 86 B8 00 00 00  mov         dword ptr [esi+000000B8h],eax
+  0084A444: 89 8E BC 00 00 00  mov         dword ptr [esi+000000BCh],ecx
+  0084A44A: F3 0F 11 8E 00 01  movss       dword ptr [esi+00000100h],xmm1
+            00 00
+  0084A452: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0084A457: 85 C0              test        eax,eax
+  0084A459: 75 0A              jne         0084A465
+  0084A45B: E8 30 02 BC FF     call        0040A690
+  0084A460: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0084A465: 8B 48 2C           mov         ecx,dword ptr [eax+2Ch]
+  0084A468: D9 05 34 82 EC 00  fld         dword ptr ds:[00EC8234h]
+  0084A46E: 51                 push        ecx
+  0084A46F: D9 1C 24           fstp        dword ptr [esp]
+  0084A472: 56                 push        esi
+  0084A473: E8 28 33 01 00     call        0085D7A0
+  0084A478: 6A 30              push        30h
+  0084A47A: 8D 55 04           lea         edx,[ebp+4]
+  0084A47D: 6A 00              push        0
+  0084A47F: 52                 push        edx
+  0084A480: C7 45 60 00 00 00  mov         dword ptr [ebp+60h],0
+            00
+  0084A487: E8 54 E2 3D 00     call        00C286E0
+  0084A48C: 33 C0              xor         eax,eax
+  0084A48E: 6A 3C              push        3Ch
+  0084A490: 50                 push        eax
+  0084A491: 89 45 34           mov         dword ptr [ebp+34h],eax
+  0084A494: 89 45 38           mov         dword ptr [ebp+38h],eax
+  0084A497: 89 45 3C           mov         dword ptr [ebp+3Ch],eax
+  0084A49A: 89 45 40           mov         dword ptr [ebp+40h],eax
+  0084A49D: 89 45 44           mov         dword ptr [ebp+44h],eax
+  0084A4A0: 89 45 48           mov         dword ptr [ebp+48h],eax
+  0084A4A3: 89 45 4C           mov         dword ptr [ebp+4Ch],eax
+  0084A4A6: 89 45 50           mov         dword ptr [ebp+50h],eax
+  0084A4A9: 89 45 54           mov         dword ptr [ebp+54h],eax
+  0084A4AC: 89 45 58           mov         dword ptr [ebp+58h],eax
+  0084A4AF: 8D 45 C8           lea         eax,[ebp-38h]
+  0084A4B2: 50                 push        eax
+  0084A4B3: E8 28 E2 3D 00     call        00C286E0
+  0084A4B8: 8D 4D 5C           lea         ecx,[ebp+5Ch]
+  0084A4BB: 51                 push        ecx
+  0084A4BC: C7 45 5C 14 00 00  mov         dword ptr [ebp+5Ch],14h
+            00
+  0084A4C3: E8 48 F8 44 00     call        00C99D10
+  0084A4C8: 83 C4 1C           add         esp,1Ch
+  0084A4CB: 83 F8 01           cmp         eax,1
+  0084A4CE: 74 12              je          0084A4E2
+  0084A4D0: 32 C0              xor         al,al
+  0084A4D2: 8D A5 BC FD FF FF  lea         esp,[ebp+FFFFFDBCh]
+  0084A4D8: 5F                 pop         edi
+  0084A4D9: 5E                 pop         esi
+  0084A4DA: 5B                 pop         ebx
+  0084A4DB: 83 C5 78           add         ebp,78h
+  0084A4DE: 8B E5              mov         esp,ebp
+  0084A4E0: 5D                 pop         ebp
+  0084A4E1: C3                 ret
+  0084A4E2: 8D 55 60           lea         edx,[ebp+60h]
+  0084A4E5: 52                 push        edx
+  0084A4E6: E8 15 01 45 00     call        00C9A600
+  0084A4EB: 8D 45 60           lea         eax,[ebp+60h]
+  0084A4EE: 50                 push        eax
+  0084A4EF: E8 0C 07 45 00     call        00C9AC00
+  0084A4F4: 83 C4 08           add         esp,8
+  0084A4F7: 85 C0              test        eax,eax
+  0084A4F9: 74 D5              je          0084A4D0
+  0084A4FB: 8D 4D 04           lea         ecx,[ebp+4]
+  0084A4FE: 51                 push        ecx
+  0084A4FF: E8 0C 01 45 00     call        00C9A610
+  0084A504: F3
+  0084A505: 0F
+
+  Summary
+
+      9C8000 .text

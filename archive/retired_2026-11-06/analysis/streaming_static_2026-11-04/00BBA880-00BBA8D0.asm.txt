@@ -1,0 +1,40 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BBA880: 83 C1 08           add         ecx,8
+  00BBA883: E9 D8 FE FF FF     jmp         00BBA760
+  00BBA888: CC                 int         3
+  00BBA889: CC                 int         3
+  00BBA88A: CC                 int         3
+  00BBA88B: CC                 int         3
+  00BBA88C: CC                 int         3
+  00BBA88D: CC                 int         3
+  00BBA88E: CC                 int         3
+  00BBA88F: CC                 int         3
+  00BBA890: B8 58 56 00 00     mov         eax,5658h
+  00BBA895: E8 56 DF 06 00     call        00C287F0
+  00BBA89A: 53                 push        ebx
+  00BBA89B: 55                 push        ebp
+  00BBA89C: 56                 push        esi
+  00BBA89D: 8B F1              mov         esi,ecx
+  00BBA89F: 57                 push        edi
+  00BBA8A0: 8D 4C 24 50        lea         ecx,[esp+50h]
+  00BBA8A4: E8 87 15 D4 FF     call        008FBE30
+  00BBA8A9: 8B 84 24 6C 56 00  mov         eax,dword ptr [esp+0000566Ch]
+            00
+  00BBA8B0: 6A 01              push        1
+  00BBA8B2: 50                 push        eax
+  00BBA8B3: 8D 4C 24 58        lea         ecx,[esp+58h]
+  00BBA8B7: E8 94 1D D4 FF     call        008FC650
+  00BBA8BC: 84 C0              test        al,al
+  00BBA8BE: 0F 84 49 02 00 00  je          00BBAB0D
+  00BBA8C4: 33 FF              xor         edi,edi
+  00BBA8C6: 83 7E 18 02        cmp         dword ptr [esi+18h],2
+  00BBA8CA: 89 7C 24 3C        mov         dword ptr [esp+3Ch],edi
+  00BBA8CE: 0F 94 C1           sete        cl
+
+  Summary
+
+      9C8000 .text

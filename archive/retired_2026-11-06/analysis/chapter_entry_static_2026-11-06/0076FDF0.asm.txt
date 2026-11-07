@@ -1,0 +1,72 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0076FDF0: 81 EC A0 00 00 00  sub         esp,0A0h
+  0076FDF6: 53                 push        ebx
+  0076FDF7: 56                 push        esi
+  0076FDF8: 57                 push        edi
+  0076FDF9: 8B BC 24 B0 00 00  mov         edi,dword ptr [esp+000000B0h]
+            00
+  0076FE00: 8B F1              mov         esi,ecx
+  0076FE02: 8B 0D C0 7A FE 00  mov         ecx,dword ptr ds:[00FE7AC0h]
+  0076FE08: 57                 push        edi
+  0076FE09: E8 72 A9 C9 FF     call        0040A780
+  0076FE0E: 8B D8              mov         ebx,eax
+  0076FE10: 85 DB              test        ebx,ebx
+  0076FE12: 0F 84 90 00 00 00  je          0076FEA8
+  0076FE18: 6A 00              push        0
+  0076FE1A: 8B CE              mov         ecx,esi
+  0076FE1C: E8 3F FD FF FF     call        0076FB60
+  0076FE21: 8B 84 24 B4 00 00  mov         eax,dword ptr [esp+000000B4h]
+            00
+  0076FE28: 89 BE 40 A8 5C 00  mov         dword ptr [esi+005CA840h],edi
+  0076FE2E: 89 86 44 A8 5C 00  mov         dword ptr [esi+005CA844h],eax
+  0076FE34: E8 07 94 FF FF     call        00769240
+  0076FE39: 8B B6 44 A8 5C 00  mov         esi,dword ptr [esi+005CA844h]
+  0076FE3F: 0F B7 7C 73 0E     movzx       edi,word ptr [ebx+esi*2+0Eh]
+  0076FE44: 0F B7 4C 73 04     movzx       ecx,word ptr [ebx+esi*2+4]
+  0076FE49: 33 C0              xor         eax,eax
+  0076FE4B: 85 FF              test        edi,edi
+  0076FE4D: 7E 27              jle         0076FE76
+  0076FE4F: 8B 15 C0 7A FE 00  mov         edx,dword ptr ds:[00FE7AC0h]
+  0076FE55: 03 C9              add         ecx,ecx
+  0076FE57: EB 07              jmp         0076FE60
+  0076FE59: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  0076FE60: 8B B2 24 01 00 00  mov         esi,dword ptr [edx+00000124h]
+  0076FE66: 0F B7 34 0E        movzx       esi,word ptr [esi+ecx]
+  0076FE6A: 89 74 84 0C        mov         dword ptr [esp+eax*4+0Ch],esi
+  0076FE6E: 40                 inc         eax
+  0076FE6F: 83 C1 02           add         ecx,2
+  0076FE72: 3B C7              cmp         eax,edi
+  0076FE74: 7C EA              jl          0076FE60
+  0076FE76: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0076FE7B: 85 C0              test        eax,eax
+  0076FE7D: 75 0A              jne         0076FE89
+  0076FE7F: E8 0C A8 C9 FF     call        0040A690
+  0076FE84: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0076FE89: 57                 push        edi
+  0076FE8A: 8D 4C 24 10        lea         ecx,[esp+10h]
+  0076FE8E: 51                 push        ecx
+  0076FE8F: 8B 88 14 02 00 00  mov         ecx,dword ptr [eax+00000214h]
+  0076FE95: E8 56 7B E3 FF     call        005A79F0
+  0076FE9A: 5F                 pop         edi
+  0076FE9B: 5E                 pop         esi
+  0076FE9C: B0 01              mov         al,1
+  0076FE9E: 5B                 pop         ebx
+  0076FE9F: 81 C4 A0 00 00 00  add         esp,0A0h
+  0076FEA5: C2 08 00           ret         8
+  0076FEA8: 5F                 pop         edi
+  0076FEA9: 5E                 pop         esi
+  0076FEAA: 32 C0              xor         al,al
+  0076FEAC: 5B                 pop         ebx
+  0076FEAD: 81
+  0076FEAE: C4
+  0076FEAF: A0
+  0076FEB0: 00
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,66 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C522A0: 83 3D B8 D3 FD 00  cmp         dword ptr ds:[00FDD3B8h],0FFFFFFFFh
+            FF
+  00C522A7: 75 34              jne         00C522DD
+  00C522A9: A1 70 18 D7 01     mov         eax,dword ptr ds:[01D71870h]
+  00C522AE: 83 F8 40           cmp         eax,40h
+  00C522B1: 77 05              ja          00C522B8
+  00C522B3: B8 00 00 00 01     mov         eax,1000000h
+  00C522B8: 6A 00              push        0
+  00C522BA: 6A 01              push        1
+  00C522BC: 6A 40              push        40h
+  00C522BE: 50                 push        eax
+  00C522BF: 6A 00              push        0
+  00C522C1: E8 CA 7A 04 00     call        00C99D90
+  00C522C6: 83 C4 14           add         esp,14h
+  00C522C9: A3 B8 D3 FD 00     mov         dword ptr ds:[00FDD3B8h],eax
+  00C522CE: A3 0C D4 FD 00     mov         dword ptr ds:[00FDD40Ch],eax
+  00C522D3: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  00C522D6: B8 34 00 00 00     mov         eax,34h
+  00C522DB: 74 05              je          00C522E2
+  00C522DD: B8 01 00 00 00     mov         eax,1
+  00C522E2: C3                 ret
+  00C522E3: CC                 int         3
+  00C522E4: CC                 int         3
+  00C522E5: CC                 int         3
+  00C522E6: CC                 int         3
+  00C522E7: CC                 int         3
+  00C522E8: CC                 int         3
+  00C522E9: CC                 int         3
+  00C522EA: CC                 int         3
+  00C522EB: CC                 int         3
+  00C522EC: CC                 int         3
+  00C522ED: CC                 int         3
+  00C522EE: CC                 int         3
+  00C522EF: CC                 int         3
+  00C522F0: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C522F5: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  00C522F8: 74 13              je          00C5230D
+  00C522FA: 50                 push        eax
+  00C522FB: E8 70 7C 04 00     call        00C99F70
+  00C52300: 83 C4 04           add         esp,4
+  00C52303: C7 05 B8 D3 FD 00  mov         dword ptr ds:[00FDD3B8h],0FFFFFFFFh
+            FF FF FF FF
+  00C5230D: C3                 ret
+  00C5230E: CC                 int         3
+  00C5230F: CC                 int         3
+  00C52310: E8 8B 42 01 00     call        00C665A0
+  00C52315: 83 3D 3C 18 D7 01  cmp         dword ptr ds:[01D7183Ch],0
+            00
+  00C5231C: 75 52              jne         00C52370
+  00C5231E: 83 F8 01           cmp         eax,1
+  00C52321: 75 4D              jne         00C52370
+  00C52323: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C52328: 68 A4 00 00 00     push        0A4h
+  00C5232D: 50                 push        eax
+  00C5232E: E8
+  00C5232F: 0D
+  00C52330: 77
+
+  Summary
+
+      9C8000 .text

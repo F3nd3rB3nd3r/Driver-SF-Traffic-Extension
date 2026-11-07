@@ -1,0 +1,77 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0059C5C0: 83 B9 90 FD 06 00  cmp         dword ptr [ecx+0006FD90h],2
+            02
+  0059C5C7: 75 1E              jne         0059C5E7
+  0059C5C9: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0059C5CD: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0059C5D1: 69 D2 4C 73 00 00  imul        edx,edx,734Ch
+  0059C5D7: 50                 push        eax
+  0059C5D8: 8D 8C 0A 68 AF 00  lea         ecx,[edx+ecx+0000AF68h]
+            00
+  0059C5DF: E8 EC 44 00 00     call        005A0AD0
+  0059C5E4: C2 08 00           ret         8
+  0059C5E7: 33 C0              xor         eax,eax
+  0059C5E9: C2 08 00           ret         8
+  0059C5EC: CC                 int         3
+  0059C5ED: CC                 int         3
+  0059C5EE: CC                 int         3
+  0059C5EF: CC                 int         3
+  0059C5F0: 83 B9 90 FD 06 00  cmp         dword ptr [ecx+0006FD90h],2
+            02
+  0059C5F7: 75 1E              jne         0059C617
+  0059C5F9: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0059C5FD: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0059C601: 69 D2 4C 73 00 00  imul        edx,edx,734Ch
+  0059C607: 50                 push        eax
+  0059C608: 8D 8C 0A 68 AF 00  lea         ecx,[edx+ecx+0000AF68h]
+            00
+  0059C60F: E8 BC 46 00 00     call        005A0CD0
+  0059C614: C2 08 00           ret         8
+  0059C617: 33 C0              xor         eax,eax
+  0059C619: C2 08 00           ret         8
+  0059C61C: CC                 int         3
+  0059C61D: CC                 int         3
+  0059C61E: CC                 int         3
+  0059C61F: CC                 int         3
+  0059C620: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0059C624: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0059C628: 69 D2 4C 73 00 00  imul        edx,edx,734Ch
+  0059C62E: 50                 push        eax
+  0059C62F: 8D 8C 0A 68 AF 00  lea         ecx,[edx+ecx+0000AF68h]
+            00
+  0059C636: E8 45 44 00 00     call        005A0A80
+  0059C63B: C2 08 00           ret         8
+  0059C63E: CC                 int         3
+  0059C63F: CC                 int         3
+  0059C640: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0059C644: 69 C0 4C 73 00 00  imul        eax,eax,734Ch
+  0059C64A: 03 C1              add         eax,ecx
+  0059C64C: 83 B8 78 AF 00 00  cmp         dword ptr [eax+0000AF78h],5
+            05
+  0059C653: 56                 push        esi
+  0059C654: 57                 push        edi
+  0059C655: 75 2C              jne         0059C683
+  0059C657: 83 B9 90 FD 06 00  cmp         dword ptr [ecx+0006FD90h],2
+            02
+  0059C65E: 75 23              jne         0059C683
+  0059C660: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  0059C664: 8D B0 68 AF 00 00  lea         esi,[eax+0000AF68h]
+  0059C66A: 57                 push        edi
+  0059C66B: 8B CE              mov         ecx,esi
+  0059C66D: E8 0E 44 00 00     call        005A0A80
+  0059C672: 84 C0              test        al,al
+  0059C674: 74 0D              je          0059C683
+  0059C676: 57                 push        edi
+  0059C677: 8B CE              mov         ecx,esi
+  0059C679: E8 52 45 00 00     call        005A0BD0
+  0059C67E: 5F                 pop         edi
+  0059C67F: 5E                 pop         esi
+  0059C680: C2
+
+  Summary
+
+      9C8000 .text

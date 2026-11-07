@@ -1,0 +1,285 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084E4D0: 83 C4 04           add         esp,4
+  0084E4D3: 5E                 pop         esi
+  0084E4D4: 85 C9              test        ecx,ecx
+  0084E4D6: 74 09              je          0084E4E1
+  0084E4D8: 89 44 24 04        mov         dword ptr [esp+4],eax
+  0084E4DC: E9 DF E8 FF FF     jmp         0084CDC0
+  0084E4E1: 33 C0              xor         eax,eax
+  0084E4E3: C2 04 00           ret         4
+  0084E4E6: CC                 int         3
+  0084E4E7: CC                 int         3
+  0084E4E8: CC                 int         3
+  0084E4E9: CC                 int         3
+  0084E4EA: CC                 int         3
+  0084E4EB: CC                 int         3
+  0084E4EC: CC                 int         3
+  0084E4ED: CC                 int         3
+  0084E4EE: CC                 int         3
+  0084E4EF: CC                 int         3
+  0084E4F0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0084E4F4: 56                 push        esi
+  0084E4F5: 50                 push        eax
+  0084E4F6: 8B F1              mov         esi,ecx
+  0084E4F8: E8 73 41 40 00     call        00C52670
+  0084E4FD: 8B 4E 30           mov         ecx,dword ptr [esi+30h]
+  0084E500: 83 C4 04           add         esp,4
+  0084E503: 5E                 pop         esi
+  0084E504: 85 C9              test        ecx,ecx
+  0084E506: 74 09              je          0084E511
+  0084E508: 89 44 24 04        mov         dword ptr [esp+4],eax
+  0084E50C: E9 1F DC FF FF     jmp         0084C130
+  0084E511: C2 04 00           ret         4
+  0084E514: CC                 int         3
+  0084E515: CC                 int         3
+  0084E516: CC                 int         3
+  0084E517: CC                 int         3
+  0084E518: CC                 int         3
+  0084E519: CC                 int         3
+  0084E51A: CC                 int         3
+  0084E51B: CC                 int         3
+  0084E51C: CC                 int         3
+  0084E51D: CC                 int         3
+  0084E51E: CC                 int         3
+  0084E51F: CC                 int         3
+  0084E520: 8B 81 88 00 00 00  mov         eax,dword ptr [ecx+00000088h]
+  0084E526: 55                 push        ebp
+  0084E527: 8D A9 84 00 00 00  lea         ebp,[ecx+00000084h]
+  0084E52D: 3B C5              cmp         eax,ebp
+  0084E52F: 74 2B              je          0084E55C
+  0084E531: 56                 push        esi
+  0084E532: 83 78 0C 03        cmp         dword ptr [eax+0Ch],3
+  0084E536: 75 1C              jne         0084E554
+  0084E538: 8B 30              mov         esi,dword ptr [eax]
+  0084E53A: 8B 50 04           mov         edx,dword ptr [eax+4]
+  0084E53D: 89 56 04           mov         dword ptr [esi+4],edx
+  0084E540: 89 32              mov         dword ptr [edx],esi
+  0084E542: 8B 71 40           mov         esi,dword ptr [ecx+40h]
+  0084E545: 89 30              mov         dword ptr [eax],esi
+  0084E547: FF 41 44           inc         dword ptr [ecx+44h]
+  0084E54A: FF 49 48           dec         dword ptr [ecx+48h]
+  0084E54D: 89 41 40           mov         dword ptr [ecx+40h],eax
+  0084E550: 8B C2              mov         eax,edx
+  0084E552: EB 03              jmp         0084E557
+  0084E554: 8B 40 04           mov         eax,dword ptr [eax+4]
+  0084E557: 3B C5              cmp         eax,ebp
+  0084E559: 75 D7              jne         0084E532
+  0084E55B: 5E                 pop         esi
+  0084E55C: 5D                 pop         ebp
+  0084E55D: C3                 ret
+  0084E55E: CC                 int         3
+  0084E55F: CC                 int         3
+  0084E560: 53                 push        ebx
+  0084E561: 55                 push        ebp
+  0084E562: 56                 push        esi
+  0084E563: 8B F1              mov         esi,ecx
+  0084E565: 57                 push        edi
+  0084E566: 8B BE 88 00 00 00  mov         edi,dword ptr [esi+00000088h]
+  0084E56C: 8D 9E 84 00 00 00  lea         ebx,[esi+00000084h]
+  0084E572: 3B FB              cmp         edi,ebx
+  0084E574: 74 28              je          0084E59E
+  0084E576: BD 02 00 00 00     mov         ebp,2
+  0084E57B: EB 03              jmp         0084E580
+  0084E57D: 8D 49 00           lea         ecx,[ecx]
+  0084E580: 8D 47 08           lea         eax,[edi+8]
+  0084E583: 50                 push        eax
+  0084E584: 89 6F 0C           mov         dword ptr [edi+0Ch],ebp
+  0084E587: 8B 00              mov         eax,dword ptr [eax]
+  0084E589: 68 C0 B7 84 00     push        84B7C0h
+  0084E58E: 50                 push        eax
+  0084E58F: E8 3C 3A 40 00     call        00C51FD0
+  0084E594: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  0084E597: 83 C4 0C           add         esp,0Ch
+  0084E59A: 3B FB              cmp         edi,ebx
+  0084E59C: 75 E2              jne         0084E580
+  0084E59E: 80 7C 24 14 00     cmp         byte ptr [esp+14h],0
+  0084E5A3: 75 43              jne         0084E5E8
+  0084E5A5: BD 01 00 00 00     mov         ebp,1
+  0084E5AA: 83 CF FF           or          edi,0FFFFFFFFh
+  0084E5AD: 8D 49 00           lea         ecx,[ecx]
+  0084E5B0: E8 BB C2 00 00     call        0085A870
+  0084E5B5: E8 A6 7A FE FF     call        00836060
+  0084E5BA: 8B 86 88 00 00 00  mov         eax,dword ptr [esi+00000088h]
+  0084E5C0: 3B C3              cmp         eax,ebx
+  0084E5C2: 74 24              je          0084E5E8
+  0084E5C4: 83 78 0C 03        cmp         dword ptr [eax+0Ch],3
+  0084E5C8: 75 E6              jne         0084E5B0
+  0084E5CA: 8B 10              mov         edx,dword ptr [eax]
+  0084E5CC: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  0084E5CF: 89 4A 04           mov         dword ptr [edx+4],ecx
+  0084E5D2: 89 11              mov         dword ptr [ecx],edx
+  0084E5D4: 8B 56 40           mov         edx,dword ptr [esi+40h]
+  0084E5D7: 89 10              mov         dword ptr [eax],edx
+  0084E5D9: 01 6E 44           add         dword ptr [esi+44h],ebp
+  0084E5DC: 01 7E 48           add         dword ptr [esi+48h],edi
+  0084E5DF: 89 46 40           mov         dword ptr [esi+40h],eax
+  0084E5E2: 8B C1              mov         eax,ecx
+  0084E5E4: 3B CB              cmp         ecx,ebx
+  0084E5E6: 75 DC              jne         0084E5C4
+  0084E5E8: 5F                 pop         edi
+  0084E5E9: 5E                 pop         esi
+  0084E5EA: 5D                 pop         ebp
+  0084E5EB: 5B                 pop         ebx
+  0084E5EC: C2 04 00           ret         4
+  0084E5EF: CC                 int         3
+  0084E5F0: 83 EC 14           sub         esp,14h
+  0084E5F3: 53                 push        ebx
+  0084E5F4: 55                 push        ebp
+  0084E5F5: 57                 push        edi
+  0084E5F6: 8B F9              mov         edi,ecx
+  0084E5F8: E8 23 FF FF FF     call        0084E520
+  0084E5FD: 8B 87 88 00 00 00  mov         eax,dword ptr [edi+00000088h]
+  0084E603: 8B 6C 24 24        mov         ebp,dword ptr [esp+24h]
+  0084E607: 8D 9F 84 00 00 00  lea         ebx,[edi+00000084h]
+  0084E60D: 3B C3              cmp         eax,ebx
+  0084E60F: 74 1B              je          0084E62C
+  0084E611: 3B 68 08           cmp         ebp,dword ptr [eax+8]
+  0084E614: 74 07              je          0084E61D
+  0084E616: 8B 40 04           mov         eax,dword ptr [eax+4]
+  0084E619: 3B C3              cmp         eax,ebx
+  0084E61B: 75 F4              jne         0084E611
+  0084E61D: 3B C3              cmp         eax,ebx
+  0084E61F: 74 0B              je          0084E62C
+  0084E621: 5F                 pop         edi
+  0084E622: 5D                 pop         ebp
+  0084E623: 32 C0              xor         al,al
+  0084E625: 5B                 pop         ebx
+  0084E626: 83 C4 14           add         esp,14h
+  0084E629: C2 0C 00           ret         0Ch
+  0084E62C: 56                 push        esi
+  0084E62D: 8D 77 40           lea         esi,[edi+40h]
+  0084E630: 8D 46 44           lea         eax,[esi+44h]
+  0084E633: 39 06              cmp         dword ptr [esi],eax
+  0084E635: 74 75              je          0084E6AC
+  0084E637: 33 C0              xor         eax,eax
+  0084E639: 8D 4C 24 10        lea         ecx,[esp+10h]
+  0084E63D: 51                 push        ecx
+  0084E63E: 8B CE              mov         ecx,esi
+  0084E640: 89 6C 24 14        mov         dword ptr [esp+14h],ebp
+  0084E644: 89 44 24 18        mov         dword ptr [esp+18h],eax
+  0084E648: C7 44 24 1C 02 00  mov         dword ptr [esp+1Ch],2
+            00 00
+  0084E650: 89 44 24 20        mov         dword ptr [esp+20h],eax
+  0084E654: 89 44 24 24        mov         dword ptr [esp+24h],eax
+  0084E658: E8 03 99 F8 FF     call        007D7F60
+  0084E65D: 8B 56 44           mov         edx,dword ptr [esi+44h]
+  0084E660: 89 10              mov         dword ptr [eax],edx
+  0084E662: 8D 4E 44           lea         ecx,[esi+44h]
+  0084E665: 89 48 04           mov         dword ptr [eax+4],ecx
+  0084E668: 8B 11              mov         edx,dword ptr [ecx]
+  0084E66A: 89 42 04           mov         dword ptr [edx+4],eax
+  0084E66D: 8B 54 24 30        mov         edx,dword ptr [esp+30h]
+  0084E671: 89 01              mov         dword ptr [ecx],eax
+  0084E673: 8B 03              mov         eax,dword ptr [ebx]
+  0084E675: 8B 4C 24 2C        mov         ecx,dword ptr [esp+2Ch]
+  0084E679: 83 C0 08           add         eax,8
+  0084E67C: C7 40 04 01 00 00  mov         dword ptr [eax+4],1
+            00
+  0084E683: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  0084E686: 89 50 10           mov         dword ptr [eax+10h],edx
+  0084E689: 8B 4F 2C           mov         ecx,dword ptr [edi+2Ch]
+  0084E68C: 51                 push        ecx
+  0084E68D: 50                 push        eax
+  0084E68E: 68 70 B7 84 00     push        84B770h
+  0084E693: 55                 push        ebp
+  0084E694: E8 D7 37 40 00     call        00C51E70
+  0084E699: 83 C4 10           add         esp,10h
+  0084E69C: 5E                 pop         esi
+  0084E69D: 5F                 pop         edi
+  0084E69E: 83 F8 01           cmp         eax,1
+  0084E6A1: 5D                 pop         ebp
+  0084E6A2: 0F 94 C0           sete        al
+  0084E6A5: 5B                 pop         ebx
+  0084E6A6: 83 C4 14           add         esp,14h
+  0084E6A9: C2 0C 00           ret         0Ch
+  0084E6AC: 5E                 pop         esi
+  0084E6AD: 5F                 pop         edi
+  0084E6AE: 5D                 pop         ebp
+  0084E6AF: 32 C0              xor         al,al
+  0084E6B1: 5B                 pop         ebx
+  0084E6B2: 83 C4 14           add         esp,14h
+  0084E6B5: C2 0C 00           ret         0Ch
+  0084E6B8: CC                 int         3
+  0084E6B9: CC                 int         3
+  0084E6BA: CC                 int         3
+  0084E6BB: CC                 int         3
+  0084E6BC: CC                 int         3
+  0084E6BD: CC                 int         3
+  0084E6BE: CC                 int         3
+  0084E6BF: CC                 int         3
+  0084E6C0: 56                 push        esi
+  0084E6C1: 57                 push        edi
+  0084E6C2: 8B F9              mov         edi,ecx
+  0084E6C4: 8B B7 88 00 00 00  mov         esi,dword ptr [edi+00000088h]
+  0084E6CA: 8D 87 84 00 00 00  lea         eax,[edi+00000084h]
+  0084E6D0: 3B F0              cmp         esi,eax
+  0084E6D2: 74 78              je          0084E74C
+  0084E6D4: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  0084E6D8: 3B 4E 08           cmp         ecx,dword ptr [esi+8]
+  0084E6DB: 74 07              je          0084E6E4
+  0084E6DD: 8B 76 04           mov         esi,dword ptr [esi+4]
+  0084E6E0: 3B F0              cmp         esi,eax
+  0084E6E2: 75 F4              jne         0084E6D8
+  0084E6E4: 3B F0              cmp         esi,eax
+  0084E6E6: 74 64              je          0084E74C
+  0084E6E8: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0084E6EC: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  0084E6F0: 53                 push        ebx
+  0084E6F1: 89 46 14           mov         dword ptr [esi+14h],eax
+  0084E6F4: 8D 46 08           lea         eax,[esi+8]
+  0084E6F7: 50                 push        eax
+  0084E6F8: BB 02 00 00 00     mov         ebx,2
+  0084E6FD: 89 5E 0C           mov         dword ptr [esi+0Ch],ebx
+  0084E700: 89 4E 18           mov         dword ptr [esi+18h],ecx
+  0084E703: 8B 10              mov         edx,dword ptr [eax]
+  0084E705: 68 C0 B7 84 00     push        84B7C0h
+  0084E70A: 52                 push        edx
+  0084E70B: E8 C0 38 40 00     call        00C51FD0
+  0084E710: 83 C4 0C           add         esp,0Ch
+  0084E713: 83 F8 01           cmp         eax,1
+  0084E716: 75 33              jne         0084E74B
+  0084E718: 80 7C 24 1C 00     cmp         byte ptr [esp+1Ch],0
+  0084E71D: 75 2C              jne         0084E74B
+  0084E71F: 39 5E 0C           cmp         dword ptr [esi+0Ch],ebx
+  0084E722: 75 0F              jne         0084E733
+  0084E724: E8 47 C1 00 00     call        0085A870
+  0084E729: E8 32 79 FE FF     call        00836060
+  0084E72E: 39 5E 0C           cmp         dword ptr [esi+0Ch],ebx
+  0084E731: 74 F1              je          0084E724
+  0084E733: 8B 06              mov         eax,dword ptr [esi]
+  0084E735: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  0084E738: 89 48 04           mov         dword ptr [eax+4],ecx
+  0084E73B: 89 01              mov         dword ptr [ecx],eax
+  0084E73D: 8B 47 40           mov         eax,dword ptr [edi+40h]
+  0084E740: 89 06              mov         dword ptr [esi],eax
+  0084E742: FF 47 44           inc         dword ptr [edi+44h]
+  0084E745: FF 4F 48           dec         dword ptr [edi+48h]
+  0084E748: 89 77 40           mov         dword ptr [edi+40h],esi
+  0084E74B: 5B                 pop         ebx
+  0084E74C: 5F                 pop         edi
+  0084E74D: 5E                 pop         esi
+  0084E74E: C2 10 00           ret         10h
+  0084E751: CC                 int         3
+  0084E752: CC                 int         3
+  0084E753: CC                 int         3
+  0084E754: CC                 int         3
+  0084E755: CC                 int         3
+  0084E756: CC                 int         3
+  0084E757: CC                 int         3
+  0084E758: CC                 int         3
+  0084E759: CC                 int         3
+  0084E75A: CC                 int         3
+  0084E75B: CC                 int         3
+  0084E75C: CC                 int         3
+  0084E75D: CC                 int         3
+  0084E75E: CC                 int         3
+  0084E75F: CC                 int         3
+  0084E760: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

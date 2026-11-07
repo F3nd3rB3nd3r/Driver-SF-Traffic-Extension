@@ -1,0 +1,47 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BB95F0: 1C 26              sbb         al,26h
+  00BB95F2: 00 00              add         byte ptr [eax],al
+  00BB95F4: 84 C0              test        al,al
+  00BB95F6: 0F 84 D4 00 00 00  je          00BB96D0
+  00BB95FC: 56                 push        esi
+  00BB95FD: E8 AE 32 D4 FF     call        008FC8B0
+  00BB9602: 83 C4 04           add         esp,4
+  00BB9605: FF 46 58           inc         dword ptr [esi+58h]
+  00BB9608: 8B CE              mov         ecx,esi
+  00BB960A: E8 81 FC FF FF     call        00BB9290
+  00BB960F: 84 C0              test        al,al
+  00BB9611: 0F 85 B9 00 00 00  jne         00BB96D0
+  00BB9617: EB 65              jmp         00BB967E
+  00BB9619: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  00BB961C: 8B 46 14           mov         eax,dword ptr [esi+14h]
+  00BB961F: 83 C1 07           add         ecx,7
+  00BB9622: 83 D0 00           adc         eax,0
+  00BB9625: 3B 05 A4 49 6F 01  cmp         eax,dword ptr ds:[016F49A4h]
+  00BB962B: 0F 8F 9F 00 00 00  jg          00BB96D0
+  00BB9631: 7C 0C              jl          00BB963F
+  00BB9633: 3B 0D A0 49 6F 01  cmp         ecx,dword ptr ds:[016F49A0h]
+  00BB9639: 0F 83 91 00 00 00  jae         00BB96D0
+  00BB963F: 8D 4E 28           lea         ecx,[esi+28h]
+  00BB9642: E8 39 12 00 00     call        00BBA880
+  00BB9647: C7 46 60 07 00 00  mov         dword ptr [esi+60h],7
+            00
+  00BB964E: 8B 0D A0 49 6F 01  mov         ecx,dword ptr ds:[016F49A0h]
+  00BB9654: 89 4E 10           mov         dword ptr [esi+10h],ecx
+  00BB9657: 8B 15 A4 49 6F 01  mov         edx,dword ptr ds:[016F49A4h]
+  00BB965D: 5F                 pop         edi
+  00BB965E: 89 56 14           mov         dword ptr [esi+14h],edx
+  00BB9661: 5E                 pop         esi
+  00BB9662: 8A C3              mov         al,bl
+  00BB9664: 5B                 pop         ebx
+  00BB9665: C3                 ret
+  00BB9666: 8B 46 14           mov         eax,dword ptr [esi+14h]
+  00BB9669: 3B 05 A4 49 6F 01  cmp         eax,dword ptr ds:[016F49A4h]
+  00BB966F: 7F 5F              jg          00BB96D0
+
+  Summary
+
+      9C8000 .text

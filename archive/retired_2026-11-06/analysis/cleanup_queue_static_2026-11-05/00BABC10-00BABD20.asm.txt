@@ -1,0 +1,97 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BABC10: 56                 push        esi
+  00BABC11: 8B F1              mov         esi,ecx
+  00BABC13: E8 18 FF FF FF     call        00BABB30
+  00BABC18: 8D 8E C8 37 09 00  lea         ecx,[esi+000937C8h]
+  00BABC1E: E8 FD 0D 01 00     call        00BBCA20
+  00BABC23: B9 98 D7 6E 01     mov         ecx,16ED798h
+  00BABC28: E8 63 C6 00 00     call        00BB8290
+  00BABC2D: 84 C0              test        al,al
+  00BABC2F: 74 F2              je          00BABC23
+  00BABC31: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BABC36: C6 86 90 DE 00 00  mov         byte ptr [esi+0000DE90h],0
+            00
+  00BABC3D: E8 6E 2A 00 00     call        00BAE6B0
+  00BABC42: B9 44 64 9B 01     mov         ecx,19B6444h
+  00BABC47: E8 84 C5 00 00     call        00BB81D0
+  00BABC4C: B9 D0 0C 9B 01     mov         ecx,19B0CD0h
+  00BABC51: E8 3A 59 00 00     call        00BB1590
+  00BABC56: E8 05 33 00 00     call        00BAEF60
+  00BABC5B: A0 25 CB 6E 01     mov         al,byte ptr ds:[016ECB25h]
+  00BABC60: 84 C0              test        al,al
+  00BABC62: 75 25              jne         00BABC89
+  00BABC64: 38 05 68 D7 6E 01  cmp         byte ptr ds:[016ED768h],al
+  00BABC6A: 74 16              je          00BABC82
+  00BABC6C: 8B 0D 4C D7 6E 01  mov         ecx,dword ptr ds:[016ED74Ch]
+  00BABC72: 6A FF              push        0FFFFFFFFh
+  00BABC74: 51                 push        ecx
+  00BABC75: FF 15 F4 91 DC 00  call        dword ptr ds:[00DC91F4h]
+  00BABC7B: C6 05 68 D7 6E 01  mov         byte ptr ds:[016ED768h],0
+            00
+  00BABC82: C6 05 25 CB 6E 01  mov         byte ptr ds:[016ECB25h],1
+            01
+  00BABC89: B9 40 D7 6E 01     mov         ecx,16ED740h
+  00BABC8E: E8 8D 6F D7 FF     call        00922C20
+  00BABC93: E8 C8 0C 01 00     call        00BBC960
+  00BABC98: 83 7E 04 00        cmp         dword ptr [esi+4],0
+  00BABC9C: 74 13              je          00BABCB1
+  00BABC9E: 8B CE              mov         ecx,esi
+  00BABCA0: E8 3B EB FF FF     call        00BAA7E0
+  00BABCA5: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BABCA8: 52                 push        edx
+  00BABCA9: E8 AC CA 07 00     call        00C2875A
+  00BABCAE: 83 C4 04           add         esp,4
+  00BABCB1: 5E                 pop         esi
+  00BABCB2: C3                 ret
+  00BABCB3: CC                 int         3
+  00BABCB4: CC                 int         3
+  00BABCB5: CC                 int         3
+  00BABCB6: CC                 int         3
+  00BABCB7: CC                 int         3
+  00BABCB8: CC                 int         3
+  00BABCB9: CC                 int         3
+  00BABCBA: CC                 int         3
+  00BABCBB: CC                 int         3
+  00BABCBC: CC                 int         3
+  00BABCBD: CC                 int         3
+  00BABCBE: CC                 int         3
+  00BABCBF: CC                 int         3
+  00BABCC0: 53                 push        ebx
+  00BABCC1: 56                 push        esi
+  00BABCC2: BE 20 00 00 00     mov         esi,20h
+  00BABCC7: C7 05 C0 2B 73 01  mov         dword ptr ds:[01732BC0h],0
+            00 00 00 00
+  00BABCD1: 8D 51 14           lea         edx,[ecx+14h]
+  00BABCD4: 8D 5E E1           lea         ebx,[esi-1Fh]
+  00BABCD7: EB 07              jmp         00BABCE0
+  00BABCD9: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00BABCE0: 8B 4A FC           mov         ecx,dword ptr [edx-4]
+  00BABCE3: A1 C0 2B 73 01     mov         eax,dword ptr ds:[01732BC0h]
+  00BABCE8: 8D 04 85 C0 29 73  lea         eax,[eax*4+017329C0h]
+            01
+  00BABCEF: 85 C9              test        ecx,ecx
+  00BABCF1: 75 0C              jne         00BABCFF
+  00BABCF3: 85 C0              test        eax,eax
+  00BABCF5: 74 12              je          00BABD09
+  00BABCF7: C7 00 FF FF FF FF  mov         dword ptr [eax],0FFFFFFFFh
+  00BABCFD: EB 0A              jmp         00BABD09
+  00BABCFF: 85 C0              test        eax,eax
+  00BABD01: 74 06              je          00BABD09
+  00BABD03: 0F B6 49 3C        movzx       ecx,byte ptr [ecx+3Ch]
+  00BABD07: 89 08              mov         dword ptr [eax],ecx
+  00BABD09: 01 1D C0 2B 73 01  add         dword ptr ds:[01732BC0h],ebx
+  00BABD0F: 8B 0A              mov         ecx,dword ptr [edx]
+  00BABD11: A1 C0 2B 73 01     mov         eax,dword ptr ds:[01732BC0h]
+  00BABD16: 8D 04 85 C0 29 73  lea         eax,[eax*4+017329C0h]
+            01
+  00BABD1D: 85 C9              test        ecx,ecx
+  00BABD1F: 75 0C              jne         00BABD2D
+
+  Summary
+
+      9C8000 .text

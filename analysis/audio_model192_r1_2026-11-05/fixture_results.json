@@ -1,0 +1,27 @@
+{
+  "result": "passed",
+  "architecture": "Win32",
+  "bridge_invocations": 8,
+  "production_sha256": {
+    "V29sAudioModelRegistryCore.inc": "82bc1f9bf5b0d600021972cf0b3af0c49167bf3e7ef7521e38e7b300d045ed78",
+    "V29sAudioModelRegistryBridges.inc": "cabfd9e702f2e71e5d3b742a2e0772eaef2c4759bd95e1e5e6295eecac8363b5",
+    "V29sAudioModelRegistryPatch.inc": "bbc1aea10248f8878deded7f7fc2b816d5c4042f1d5793d0d4f27ff3d1d2d375"
+  },
+  "checks": [
+    "cold owned baseline and all signatures",
+    "seven storage/trampoline allocation failure cases",
+    "page protection/cache rollback and explicit failure",
+    "only detour spans changed",
+    "native constructor/register/find/insert/lookup/remove executed in guarded fake objects",
+    "192 actual native registrations and lookups",
+    "193rd registration refused safely",
+    "duplicate update atfull/belowfull",
+    "native removal/reuse of external nodes",
+    "sentinel/default/provider bounds and external canaries preserved",
+    "constructor address reuse reattaches",
+    "nonempty stock45 map refuses migration",
+    "setup bank/return/fallback frame outcomes",
+    "eight bridge ABI invocations and CMP/TEST flags, ignored-ESP continuation, GP/x87/SSE preservation"
+  ],
+  "limitations": "Selected native map instructions execute with rebased test pointers/calls and guarded fake objects. Synthetic setup frames and OS fault injection; no Driver.exe execution or ASI loading."
+}

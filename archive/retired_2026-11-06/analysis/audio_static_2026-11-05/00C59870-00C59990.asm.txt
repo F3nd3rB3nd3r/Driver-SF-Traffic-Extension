@@ -1,0 +1,157 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C59870: 83 7C 24 04 00     cmp         dword ptr [esp+4],0
+  00C59875: 56                 push        esi
+  00C59876: 8B F1              mov         esi,ecx
+  00C59878: 74 77              je          00C598F1
+  00C5987A: 55                 push        ebp
+  00C5987B: 57                 push        edi
+  00C5987C: 8D 6E 0C           lea         ebp,[esi+0Ch]
+  00C5987F: 55                 push        ebp
+  00C59880: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C59886: 8B 06              mov         eax,dword ptr [esi]
+  00C59888: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00C5988B: 8B 7C 24 20        mov         edi,dword ptr [esp+20h]
+  00C5988F: 3B C1              cmp         eax,ecx
+  00C59891: 74 55              je          00C598E8
+  00C59893: 39 38              cmp         dword ptr [eax],edi
+  00C59895: 74 07              je          00C5989E
+  00C59897: 83 C0 0C           add         eax,0Ch
+  00C5989A: 3B C1              cmp         eax,ecx
+  00C5989C: 75 F5              jne         00C59893
+  00C5989E: 3B C1              cmp         eax,ecx
+  00C598A0: 74 46              je          00C598E8
+  00C598A2: 83 C0 04           add         eax,4
+  00C598A5: 74 41              je          00C598E8
+  00C598A7: 8B 50 04           mov         edx,dword ptr [eax+4]
+  00C598AA: 8B 08              mov         ecx,dword ptr [eax]
+  00C598AC: 85 D2              test        edx,edx
+  00C598AE: 53                 push        ebx
+  00C598AF: 0F 95 C3           setne       bl
+  00C598B2: 83 F9 01           cmp         ecx,1
+  00C598B5: 77 0A              ja          00C598C1
+  00C598B7: 57                 push        edi
+  00C598B8: 8B CE              mov         ecx,esi
+  00C598BA: E8 21 14 01 00     call        00C6ACE0
+  00C598BF: EB 0B              jmp         00C598CC
+  00C598C1: 49                 dec         ecx
+  00C598C2: 89 08              mov         dword ptr [eax],ecx
+  00C598C4: 84 DB              test        bl,bl
+  00C598C6: 74 08              je          00C598D0
+  00C598C8: 4A                 dec         edx
+  00C598C9: 89 50 04           mov         dword ptr [eax+4],edx
+  00C598CC: 84 DB              test        bl,bl
+  00C598CE: 75 17              jne         00C598E7
+  00C598D0: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00C598D4: 8B 4C 24 1C        mov         ecx,dword ptr [esp+1Ch]
+  00C598D8: 8B 54 24 18        mov         edx,dword ptr [esp+18h]
+  00C598DC: 57                 push        edi
+  00C598DD: 50                 push        eax
+  00C598DE: 51                 push        ecx
+  00C598DF: 52                 push        edx
+  00C598E0: FF 54 24 24        call        dword ptr [esp+24h]
+  00C598E4: 83 C4 10           add         esp,10h
+  00C598E7: 5B                 pop         ebx
+  00C598E8: 55                 push        ebp
+  00C598E9: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C598EF: 5F                 pop         edi
+  00C598F0: 5D                 pop         ebp
+  00C598F1: 5E                 pop         esi
+  00C598F2: C2 14 00           ret         14h
+  00C598F5: CC                 int         3
+  00C598F6: CC                 int         3
+  00C598F7: CC                 int         3
+  00C598F8: CC                 int         3
+  00C598F9: CC                 int         3
+  00C598FA: CC                 int         3
+  00C598FB: CC                 int         3
+  00C598FC: CC                 int         3
+  00C598FD: CC                 int         3
+  00C598FE: CC                 int         3
+  00C598FF: CC                 int         3
+  00C59900: 56                 push        esi
+  00C59901: 57                 push        edi
+  00C59902: 8B F1              mov         esi,ecx
+  00C59904: 8D 7E 0C           lea         edi,[esi+0Ch]
+  00C59907: 57                 push        edi
+  00C59908: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C5990E: 8B 06              mov         eax,dword ptr [esi]
+  00C59910: 8B 76 04           mov         esi,dword ptr [esi+4]
+  00C59913: 3B C6              cmp         eax,esi
+  00C59915: 74 22              je          00C59939
+  00C59917: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00C5991B: EB 03              jmp         00C59920
+  00C5991D: 8D 49 00           lea         ecx,[ecx]
+  00C59920: 39 08              cmp         dword ptr [eax],ecx
+  00C59922: 74 07              je          00C5992B
+  00C59924: 83 C0 0C           add         eax,0Ch
+  00C59927: 3B C6              cmp         eax,esi
+  00C59929: 75 F5              jne         00C59920
+  00C5992B: 3B C6              cmp         eax,esi
+  00C5992D: 74 0A              je          00C59939
+  00C5992F: 83 C0 04           add         eax,4
+  00C59932: 74 05              je          00C59939
+  00C59934: 8B 08              mov         ecx,dword ptr [eax]
+  00C59936: 89 48 04           mov         dword ptr [eax+4],ecx
+  00C59939: 57                 push        edi
+  00C5993A: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C59940: 5F                 pop         edi
+  00C59941: 5E                 pop         esi
+  00C59942: C2 04 00           ret         4
+  00C59945: CC                 int         3
+  00C59946: CC                 int         3
+  00C59947: CC                 int         3
+  00C59948: CC                 int         3
+  00C59949: CC                 int         3
+  00C5994A: CC                 int         3
+  00C5994B: CC                 int         3
+  00C5994C: CC                 int         3
+  00C5994D: CC                 int         3
+  00C5994E: CC                 int         3
+  00C5994F: CC                 int         3
+  00C59950: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00C59954: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  00C59957: 50                 push        eax
+  00C59958: 51                 push        ecx
+  00C59959: E8 E2 00 04 00     call        00C99A40
+  00C5995E: 83 C4 08           add         esp,8
+  00C59961: C2 04 00           ret         4
+  00C59964: CC                 int         3
+  00C59965: CC                 int         3
+  00C59966: CC                 int         3
+  00C59967: CC                 int         3
+  00C59968: CC                 int         3
+  00C59969: CC                 int         3
+  00C5996A: CC                 int         3
+  00C5996B: CC                 int         3
+  00C5996C: CC                 int         3
+  00C5996D: CC                 int         3
+  00C5996E: CC                 int         3
+  00C5996F: CC                 int         3
+  00C59970: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00C59974: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  00C59977: 50                 push        eax
+  00C59978: 51                 push        ecx
+  00C59979: E8 22 02 04 00     call        00C99BA0
+  00C5997E: 83 C4 08           add         esp,8
+  00C59981: C2 04 00           ret         4
+  00C59984: CC                 int         3
+  00C59985: CC                 int         3
+  00C59986: CC                 int         3
+  00C59987: CC                 int         3
+  00C59988: CC                 int         3
+  00C59989: CC                 int         3
+  00C5998A: CC                 int         3
+  00C5998B: CC                 int         3
+  00C5998C: CC                 int         3
+  00C5998D: CC                 int         3
+  00C5998E: CC                 int         3
+  00C5998F: CC                 int         3
+  00C59990: B8
+
+  Summary
+
+      9C8000 .text

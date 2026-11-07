@@ -1,0 +1,39 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007467D0: 83 EC 10           sub         esp,10h
+  007467D3: 66 8B 44 24 14     mov         ax,word ptr [esp+14h]
+  007467D8: F3 0F 10 44 24 1C  movss       xmm0,dword ptr [esp+1Ch]
+  007467DE: 56                 push        esi
+  007467DF: 8B F1              mov         esi,ecx
+  007467E1: 33 C9              xor         ecx,ecx
+  007467E3: 38 4C 24 1C        cmp         byte ptr [esp+1Ch],cl
+  007467E7: 57                 push        edi
+  007467E8: 8B 7C 24 2C        mov         edi,dword ptr [esp+2Ch]
+  007467EC: 0F 95 C1           setne       cl
+  007467EF: 6A 10              push        10h
+  007467F1: 8D 54 24 0C        lea         edx,[esp+0Ch]
+  007467F5: 52                 push        edx
+  007467F6: C7 44 24 1C 00 00  mov         dword ptr [esp+1Ch],0
+            00 00
+  007467FE: 66 89 44 24 10     mov         word ptr [esp+10h],ax
+  00746803: 89 7C 24 18        mov         dword ptr [esp+18h],edi
+  00746807: 66 89 4C 24 12     mov         word ptr [esp+12h],cx
+  0074680C: 8B CE              mov         ecx,esi
+  0074680E: F3 0F 11 44 24 14  movss       dword ptr [esp+14h],xmm0
+  00746814: E8 37 FE FF FF     call        00746650
+  00746819: 8B 44 24 28        mov         eax,dword ptr [esp+28h]
+  0074681D: 57                 push        edi
+  0074681E: 50                 push        eax
+  0074681F: 8B CE              mov         ecx,esi
+  00746821: E8 2A FE FF FF     call        00746650
+  00746826: 5F                 pop         edi
+  00746827: 5E                 pop         esi
+  00746828: 83 C4 10           add         esp,10h
+  0074682B: C2 14 00           ret         14h
+
+  Summary
+
+      9C8000 .text

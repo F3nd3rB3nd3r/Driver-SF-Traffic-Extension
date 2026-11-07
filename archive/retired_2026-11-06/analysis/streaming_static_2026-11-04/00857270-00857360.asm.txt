@@ -1,0 +1,106 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00857270: 57                 push        edi
+  00857271: 8B F9              mov         edi,ecx
+  00857273: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00857277: 8B C1              mov         eax,ecx
+  00857279: 83 E0 03           and         eax,3
+  0085727C: 83 E8 00           sub         eax,0
+  0085727F: 74 1F              je          008572A0
+  00857281: 83 E8 01           sub         eax,1
+  00857284: 74 13              je          00857299
+  00857286: 83 E8 01           sub         eax,1
+  00857289: 74 07              je          00857292
+  0085728B: 83 C8 FF           or          eax,0FFFFFFFFh
+  0085728E: 5F                 pop         edi
+  0085728F: C2 08 00           ret         8
+  00857292: B8 02 00 00 00     mov         eax,2
+  00857297: EB 09              jmp         008572A2
+  00857299: B8 01 00 00 00     mov         eax,1
+  0085729E: EB 02              jmp         008572A2
+  008572A0: 33 C0              xor         eax,eax
+  008572A2: 84 C9              test        cl,cl
+  008572A4: 79 05              jns         008572AB
+  008572A6: 0D 00 00 00 80     or          eax,80000000h
+  008572AB: F6 C1 40           test        cl,40h
+  008572AE: 74 05              je          008572B5
+  008572B0: 0D 00 00 00 10     or          eax,10000000h
+  008572B5: F7 C1 00 01 00 00  test        ecx,100h
+  008572BB: 74 05              je          008572C2
+  008572BD: 0D 00 00 00 20     or          eax,20000000h
+  008572C2: F7 C1 00 02 00 00  test        ecx,200h
+  008572C8: 74 05              je          008572CF
+  008572CA: 0D 00 00 00 40     or          eax,40000000h
+  008572CF: 56                 push        esi
+  008572D0: 33 F6              xor         esi,esi
+  008572D2: 80 BC 37 80 00 00  cmp         byte ptr [edi+esi+00000080h],0
+            00 00
+  008572DA: 74 0E              je          008572EA
+  008572DC: 46                 inc         esi
+  008572DD: 83 FE 20           cmp         esi,20h
+  008572E0: 7C F0              jl          008572D2
+  008572E2: 5E                 pop         esi
+  008572E3: 83 C8 FF           or          eax,0FFFFFFFFh
+  008572E6: 5F                 pop         edi
+  008572E7: C2 08 00           ret         8
+  008572EA: 8B 0C B7           mov         ecx,dword ptr [edi+esi*4]
+  008572ED: 50                 push        eax
+  008572EE: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  008572F2: 50                 push        eax
+  008572F3: E8 D8 39 00 00     call        0085ACD0
+  008572F8: 84 C0              test        al,al
+  008572FA: 74 E6              je          008572E2
+  008572FC: C6 84 3E 80 00 00  mov         byte ptr [esi+edi+00000080h],1
+            00 01
+  00857304: FF 87 A0 00 00 00  inc         dword ptr [edi+000000A0h]
+  0085730A: 8B C6              mov         eax,esi
+  0085730C: 5E                 pop         esi
+  0085730D: 5F                 pop         edi
+  0085730E: C2 08 00           ret         8
+  00857311: CC                 int         3
+  00857312: CC                 int         3
+  00857313: CC                 int         3
+  00857314: CC                 int         3
+  00857315: CC                 int         3
+  00857316: CC                 int         3
+  00857317: CC                 int         3
+  00857318: CC                 int         3
+  00857319: CC                 int         3
+  0085731A: CC                 int         3
+  0085731B: CC                 int         3
+  0085731C: CC                 int         3
+  0085731D: CC                 int         3
+  0085731E: CC                 int         3
+  0085731F: CC                 int         3
+  00857320: 51                 push        ecx
+  00857321: 55                 push        ebp
+  00857322: 56                 push        esi
+  00857323: 57                 push        edi
+  00857324: 8B F9              mov         edi,ecx
+  00857326: 33 F6              xor         esi,esi
+  00857328: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  0085732C: 6A 00              push        0
+  0085732E: 50                 push        eax
+  0085732F: E8 2C 30 01 00     call        0086A360
+  00857334: 8B 6C 24 14        mov         ebp,dword ptr [esp+14h]
+  00857338: 6A 00              push        0
+  0085733A: E8 C1 30 01 00     call        0086A400
+  0085733F: 89 2C B7           mov         dword ptr [edi+esi*4],ebp
+  00857342: C6 84 37 80 00 00  mov         byte ptr [edi+esi+00000080h],0
+            00 00
+  0085734A: 46                 inc         esi
+  0085734B: 83 C4 0C           add         esp,0Ch
+  0085734E: 83 FE 20           cmp         esi,20h
+  00857351: 7C D5              jl          00857328
+  00857353: C7 87 A0 00 00 00  mov         dword ptr [edi+000000A0h],0
+            00 00 00 00
+  0085735D: 8B C7              mov         eax,edi
+  0085735F: 5F                 pop         edi
+  00857360: 5E                 pop         esi
+
+  Summary
+
+      9C8000 .text

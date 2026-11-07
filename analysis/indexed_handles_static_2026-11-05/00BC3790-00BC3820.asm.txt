@@ -1,0 +1,62 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BC3790: 56                 push        esi
+  00BC3791: 8B F1              mov         esi,ecx
+  00BC3793: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BC3796: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00BC379A: 8B 11              mov         edx,dword ptr [ecx]
+  00BC379C: C1 E0 04           shl         eax,4
+  00BC379F: 03 46 08           add         eax,dword ptr [esi+8]
+  00BC37A2: 57                 push        edi
+  00BC37A3: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  00BC37A7: 89 10              mov         dword ptr [eax],edx
+  00BC37A9: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  00BC37AC: 89 50 04           mov         dword ptr [eax+4],edx
+  00BC37AF: 8B 51 08           mov         edx,dword ptr [ecx+8]
+  00BC37B2: 89 50 08           mov         dword ptr [eax+8],edx
+  00BC37B5: 8B 51 0C           mov         edx,dword ptr [ecx+0Ch]
+  00BC37B8: 89 50 0C           mov         dword ptr [eax+0Ch],edx
+  00BC37BB: 83 3F 05           cmp         dword ptr [edi],5
+  00BC37BE: 75 4F              jne         00BC380F
+  00BC37C0: 8B 11              mov         edx,dword ptr [ecx]
+  00BC37C2: 8B 41 04           mov         eax,dword ptr [ecx+4]
+  00BC37C5: 0B D0              or          edx,eax
+  00BC37C7: 74 46              je          00BC380F
+  00BC37C9: 33 C9              xor         ecx,ecx
+  00BC37CB: C1 E8 1F           shr         eax,1Fh
+  00BC37CE: 39 4E 20           cmp         dword ptr [esi+20h],ecx
+  00BC37D1: 74 1F              je          00BC37F2
+  00BC37D3: 83 F8 01           cmp         eax,1
+  00BC37D6: 75 04              jne         00BC37DC
+  00BC37D8: 85 C9              test        ecx,ecx
+  00BC37DA: 74 33              je          00BC380F
+  00BC37DC: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BC37DF: C1 E0 04           shl         eax,4
+  00BC37E2: 03 46 08           add         eax,dword ptr [esi+8]
+  00BC37E5: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BC37EA: 50                 push        eax
+  00BC37EB: E8 B0 A4 AF FF     call        006BDCA0
+  00BC37F0: EB 1D              jmp         00BC380F
+  00BC37F2: 83 F8 01           cmp         eax,1
+  00BC37F5: 75 04              jne         00BC37FB
+  00BC37F7: 85 C9              test        ecx,ecx
+  00BC37F9: 74 14              je          00BC380F
+  00BC37FB: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00BC37FE: C1 E1 04           shl         ecx,4
+  00BC3801: 03 4E 08           add         ecx,dword ptr [esi+8]
+  00BC3804: 51                 push        ecx
+  00BC3805: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BC380A: E8 A1 19 AE FF     call        006A51B0
+  00BC380F: 8B 17              mov         edx,dword ptr [edi]
+  00BC3811: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00BC3814: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00BC3817: 89 14 C8           mov         dword ptr [eax+ecx*8],edx
+  00BC381A: 8B 57 04           mov         edx,dword ptr [edi+4]
+  00BC381D: 89 54 C8 04        mov         dword ptr [eax+ecx*8+4],edx
+
+  Summary
+
+      9C8000 .text

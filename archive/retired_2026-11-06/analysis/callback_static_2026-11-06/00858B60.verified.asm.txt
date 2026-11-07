@@ -1,0 +1,41 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00858B60: 53                 push        ebx
+  00858B61: 56                 push        esi
+  00858B62: 57                 push        edi
+  00858B63: 8B F9              mov         edi,ecx
+  00858B65: 8B B7 B4 02 00 00  mov         esi,dword ptr [edi+000002B4h]
+  00858B6B: 8D 9F B0 02 00 00  lea         ebx,[edi+000002B0h]
+  00858B71: C7 07 18 71 E3 00  mov         dword ptr [edi],0E37118h
+  00858B77: 3B F3              cmp         esi,ebx
+  00858B79: 74 1A              je          00858B95
+  00858B7B: EB 03              jmp         00858B80
+  00858B7D: 8D 49 00           lea         ecx,[ecx]
+  00858B80: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  00858B83: 8B 01              mov         eax,dword ptr [ecx]
+  00858B85: 8B 40 08           mov         eax,dword ptr [eax+8]
+  00858B88: 8D 56 10           lea         edx,[esi+10h]
+  00858B8B: 52                 push        edx
+  00858B8C: FF D0              call        eax
+  00858B8E: 8B 76 04           mov         esi,dword ptr [esi+4]
+  00858B91: 3B F3              cmp         esi,ebx
+  00858B93: 75 EB              jne         00858B80
+  00858B95: 83 7F 20 00        cmp         dword ptr [edi+20h],0
+  00858B99: 74 0F              je          00858BAA
+  00858B9B: 8D 4F 10           lea         ecx,[edi+10h]
+  00858B9E: C7 47 20 00 00 00  mov         dword ptr [edi+20h],0
+            00
+  00858BA5: E8 46 08 00 00     call        008593F0
+  00858BAA: C7 07 30 5C EA 00  mov         dword ptr [edi],0EA5C30h
+  00858BB0: 5F                 pop         edi
+  00858BB1: 5E                 pop         esi
+  00858BB2: 5B                 pop         ebx
+  00858BB3: C3                 ret
+  00858BB4: CC                 int         3
+
+  Summary
+
+      9C8000 .text

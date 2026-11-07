@@ -1,0 +1,59 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C9A380: 57                 push        edi
+  00C9A381: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  00C9A385: 81 C7 94 F3 FF FF  add         edi,0FFFFF394h
+  00C9A38B: 8B C7              mov         eax,edi
+  00C9A38D: 83 E0 03           and         eax,3
+  00C9A390: 2B F8              sub         edi,eax
+  00C9A392: 8D 4F F4           lea         ecx,[edi-0Ch]
+  00C9A395: 81 F9 F4 FF FF 3F  cmp         ecx,3FFFFFF4h
+  00C9A39B: 77 43              ja          00C9A3E0
+  00C9A39D: 53                 push        ebx
+  00C9A39E: 56                 push        esi
+  00C9A39F: 8B 74 24 10        mov         esi,dword ptr [esp+10h]
+  00C9A3A3: 8B D6              mov         edx,esi
+  00C9A3A5: E8 E6 FE FF FF     call        00C9A290
+  00C9A3AA: 8B D7              mov         edx,edi
+  00C9A3AC: 83 E2 03           and         edx,3
+  00C9A3AF: 2B FA              sub         edi,edx
+  00C9A3B1: 8D 9E 60 0C 00 00  lea         ebx,[esi+00000C60h]
+  00C9A3B7: 83 E7 FD           and         edi,0FFFFFFFDh
+  00C9A3BA: 83 CF 01           or          edi,1
+  00C9A3BD: 8B C3              mov         eax,ebx
+  00C9A3BF: 89 7B 04           mov         dword ptr [ebx+4],edi
+  00C9A3C2: E8 E9 FC FF FF     call        00C9A0B0
+  00C9A3C7: 8B 43 04           mov         eax,dword ptr [ebx+4]
+  00C9A3CA: 83 E0 FC           and         eax,0FFFFFFFCh
+  00C9A3CD: 8D 44 18 04        lea         eax,[eax+ebx+4]
+  00C9A3D1: 89 18              mov         dword ptr [eax],ebx
+  00C9A3D3: C7 40 04 02 00 00  mov         dword ptr [eax+4],2
+            00
+  00C9A3DA: 8B C6              mov         eax,esi
+  00C9A3DC: 5E                 pop         esi
+  00C9A3DD: 5B                 pop         ebx
+  00C9A3DE: 5F                 pop         edi
+  00C9A3DF: C3                 ret
+  00C9A3E0: 33 C0              xor         eax,eax
+  00C9A3E2: 5F                 pop         edi
+  00C9A3E3: C3                 ret
+  00C9A3E4: CC                 int         3
+  00C9A3E5: CC                 int         3
+  00C9A3E6: CC                 int         3
+  00C9A3E7: CC                 int         3
+  00C9A3E8: CC                 int         3
+  00C9A3E9: CC                 int         3
+  00C9A3EA: CC                 int         3
+  00C9A3EB: CC                 int         3
+  00C9A3EC: CC                 int         3
+  00C9A3ED: CC                 int         3
+  00C9A3EE: CC                 int         3
+  00C9A3EF: CC                 int         3
+  00C9A3F0: 8B
+
+  Summary
+
+      9C8000 .text

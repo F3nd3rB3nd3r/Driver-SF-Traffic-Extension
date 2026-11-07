@@ -1,0 +1,93 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BA9FD0: 56                 push        esi
+  00BA9FD1: 8B F1              mov         esi,ecx
+  00BA9FD3: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BA9FD6: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00BA9FD9: 57                 push        edi
+  00BA9FDA: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  00BA9FDE: 8B 17              mov         edx,dword ptr [edi]
+  00BA9FE0: C1 E0 04           shl         eax,4
+  00BA9FE3: 89 14 08           mov         dword ptr [eax+ecx],edx
+  00BA9FE6: 8B 57 04           mov         edx,dword ptr [edi+4]
+  00BA9FE9: 89 54 08 04        mov         dword ptr [eax+ecx+4],edx
+  00BA9FED: 8B 07              mov         eax,dword ptr [edi]
+  00BA9FEF: 8B 57 04           mov         edx,dword ptr [edi+4]
+  00BA9FF2: B1 3F              mov         cl,3Fh
+  00BA9FF4: E8 A7 1E 08 00     call        00C2BEA0
+  00BA9FF9: 83 7E 20 00        cmp         dword ptr [esi+20h],0
+  00BA9FFD: 74 1F              je          00BAA01E
+  00BA9FFF: 83 F8 01           cmp         eax,1
+  00BAA002: 75 04              jne         00BAA008
+  00BAA004: 85 D2              test        edx,edx
+  00BAA006: 74 5A              je          00BAA062
+  00BAA008: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BAA00B: C1 E0 04           shl         eax,4
+  00BAA00E: 03 46 08           add         eax,dword ptr [esi+8]
+  00BAA011: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAA016: 50                 push        eax
+  00BAA017: E8 84 3C B1 FF     call        006BDCA0
+  00BAA01C: EB 44              jmp         00BAA062
+  00BAA01E: 83 F8 01           cmp         eax,1
+  00BAA021: 75 04              jne         00BAA027
+  00BAA023: 85 D2              test        edx,edx
+  00BAA025: 74 3B              je          00BAA062
+  00BAA027: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00BAA02A: 8B 15 B8 A6 88 01  mov         edx,dword ptr ds:[0188A6B8h]
+  00BAA030: C1 E0 04           shl         eax,4
+  00BAA033: 03 46 08           add         eax,dword ptr [esi+8]
+  00BAA036: 8B 08              mov         ecx,dword ptr [eax]
+  00BAA038: 89 0C D5 B8 A6 86  mov         dword ptr [edx*8+0186A6B8h],ecx
+            01
+  00BAA03F: 8B 48 04           mov         ecx,dword ptr [eax+4]
+  00BAA042: 8B 15 B8 A6 88 01  mov         edx,dword ptr ds:[0188A6B8h]
+  00BAA048: 89 0C D5 BC A6 86  mov         dword ptr [edx*8+0186A6BCh],ecx
+            01
+  00BAA04F: 8B 0D B8 A6 88 01  mov         ecx,dword ptr ds:[0188A6B8h]
+  00BAA055: 89 04 8D B8 A6 85  mov         dword ptr [ecx*4+0185A6B8h],eax
+            01
+  00BAA05C: FF 05 B8 A6 88 01  inc         dword ptr ds:[0188A6B8h]
+  00BAA062: 8B 56 04           mov         edx,dword ptr [esi+4]
+  00BAA065: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00BAA068: C7 04 D0 05 00 00  mov         dword ptr [eax+edx*8],5
+            00
+  00BAA06F: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00BAA072: 8B 56 0C           mov         edx,dword ptr [esi+0Ch]
+  00BAA075: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00BAA079: 8B 00              mov         eax,dword ptr [eax]
+  00BAA07B: 89 44 CA 04        mov         dword ptr [edx+ecx*8+4],eax
+  00BAA07F: FF 46 04           inc         dword ptr [esi+4]
+  00BAA082: 8B 4F 04           mov         ecx,dword ptr [edi+4]
+  00BAA085: 8B 17              mov         edx,dword ptr [edi]
+  00BAA087: 51                 push        ecx
+  00BAA088: 52                 push        edx
+  00BAA089: E8 12 1A 00 00     call        00BABAA0
+  00BAA08E: 83 C4 08           add         esp,8
+  00BAA091: 5F                 pop         edi
+  00BAA092: 5E                 pop         esi
+  00BAA093: C2 08 00           ret         8
+  00BAA096: CC                 int         3
+  00BAA097: CC                 int         3
+  00BAA098: CC                 int         3
+  00BAA099: CC                 int         3
+  00BAA09A: CC                 int         3
+  00BAA09B: CC                 int         3
+  00BAA09C: CC                 int         3
+  00BAA09D: CC                 int         3
+  00BAA09E: CC                 int         3
+  00BAA09F: CC                 int         3
+  00BAA0A0: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  00BAA0A4: 8B 02              mov         eax,dword ptr [edx]
+  00BAA0A6: 53                 push        ebx
+  00BAA0A7: 56                 push        esi
+  00BAA0A8: 8B 35 50 64 9B 01  mov         esi,dword ptr ds:[019B6450h]
+  00BAA0AE: 57                 push        edi
+  00BAA0AF: 8B
+  00BAA0B0: 79
+
+  Summary
+
+      9C8000 .text

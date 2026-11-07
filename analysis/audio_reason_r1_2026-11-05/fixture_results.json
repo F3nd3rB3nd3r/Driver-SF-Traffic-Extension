@@ -1,0 +1,27 @@
+{
+  "result": "passed",
+  "architecture": "Win32",
+  "bridge_invocations": 10,
+  "production_sha256": {
+    "V29sAudioReasonCore.inc": "cbb74a40fc1fc3d66be3c892a260bb6902cdf5efa9ab2716645037eca3346177",
+    "V29sAudioReasonBridges.inc": "f7b317c4be55c6edac1f4c61d15f2a0adba7ecebe38eb3d5366f86e9be165313",
+    "V29sAudioReasonPatch.inc": "c017fd050c0ab5c24dd282bf7ca6ea690e0455e85f7221e69b926c0b1ec4d86c"
+  },
+  "checks": [
+    "cold verified2048 baseline required",
+    "all ten native signatures",
+    "trampolines preserve originals including limit16",
+    "all allocation/preprotect failures leave original bytes",
+    "only hook spans change",
+    "late phase/signature changes refused",
+    "cache/protection commit rollback and explicit failed rollback",
+    "lookup/create/wrapper stack offsets",
+    "per-owner request/full/accept/zero and callback/removal accounting",
+    "no native state writes by callbacks",
+    "native string hash and null/unreadable names",
+    "separate none/other detail bounds",
+    "bounded table overflow counters",
+    "ten bridge frame arguments, registers, flags/DF and defined x87/SSE image preserved"
+  ],
+  "limitations": "Fake native memory and OS fault injection; synthetic bridge frames. Does not execute Driver.exe, load an ASI or establish runtime audio benefit."
+}

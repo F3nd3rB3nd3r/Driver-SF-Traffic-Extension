@@ -1,0 +1,41 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BABC10: 56                 push        esi
+  00BABC11: 8B F1              mov         esi,ecx
+  00BABC13: E8 18 FF FF FF     call        00BABB30
+  00BABC18: 8D 8E C8 37 09 00  lea         ecx,[esi+000937C8h]
+  00BABC1E: E8 FD 0D 01 00     call        00BBCA20
+  00BABC23: B9 98 D7 6E 01     mov         ecx,16ED798h
+  00BABC28: E8 63 C6 00 00     call        00BB8290
+  00BABC2D: 84 C0              test        al,al
+  00BABC2F: 74 F2              je          00BABC23
+  00BABC31: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BABC36: C6 86 90 DE 00 00  mov         byte ptr [esi+0000DE90h],0
+            00
+  00BABC3D: E8 6E 2A 00 00     call        00BAE6B0
+  00BABC42: B9 44 64 9B 01     mov         ecx,19B6444h
+  00BABC47: E8 84 C5 00 00     call        00BB81D0
+  00BABC4C: B9 D0 0C 9B 01     mov         ecx,19B0CD0h
+  00BABC51: E8 3A 59 00 00     call        00BB1590
+  00BABC56: E8 05 33 00 00     call        00BAEF60
+  00BABC5B: A0 25 CB 6E 01     mov         al,byte ptr ds:[016ECB25h]
+  00BABC60: 84 C0              test        al,al
+  00BABC62: 75 25              jne         00BABC89
+  00BABC64: 38 05 68 D7 6E 01  cmp         byte ptr ds:[016ED768h],al
+  00BABC6A: 74 16              je          00BABC82
+  00BABC6C: 8B 0D 4C D7 6E 01  mov         ecx,dword ptr ds:[016ED74Ch]
+  00BABC72: 6A FF              push        0FFFFFFFFh
+  00BABC74: 51                 push        ecx
+  00BABC75: FF 15 F4 91 DC 00  call        dword ptr ds:[00DC91F4h]
+  00BABC7B: C6 05 68 D7 6E 01  mov         byte ptr ds:[016ED768h],0
+            00
+  00BABC82: C6 05 25 CB 6E 01  mov         byte ptr ds:[016ECB25h],1
+            01
+  00BABC89: B9 40 D7 6E 01     mov         ecx,16ED740h
+
+  Summary
+
+      9C8000 .text

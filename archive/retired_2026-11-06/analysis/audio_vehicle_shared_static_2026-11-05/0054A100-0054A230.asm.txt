@@ -1,0 +1,96 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0054A100: 01 00              add         dword ptr [eax],eax
+  0054A102: C6 86 2D 05 01 00  mov         byte ptr [esi+0001052Dh],1
+            01
+  0054A109: 5E                 pop         esi
+  0054A10A: 59                 pop         ecx
+  0054A10B: C3                 ret
+  0054A10C: CC                 int         3
+  0054A10D: CC                 int         3
+  0054A10E: CC                 int         3
+  0054A10F: CC                 int         3
+  0054A110: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0054A114: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0054A118: 89 81 98 05 01 00  mov         dword ptr [ecx+00010598h],eax
+  0054A11E: 89 91 9C 05 01 00  mov         dword ptr [ecx+0001059Ch],edx
+  0054A124: E8 C7 EF FF FF     call        005490F0
+  0054A129: C2 08 00           ret         8
+  0054A12C: CC                 int         3
+  0054A12D: CC                 int         3
+  0054A12E: CC                 int         3
+  0054A12F: CC                 int         3
+  0054A130: 83 EC 08           sub         esp,8
+  0054A133: 53                 push        ebx
+  0054A134: 56                 push        esi
+  0054A135: 8B F1              mov         esi,ecx
+  0054A137: 33 DB              xor         ebx,ebx
+  0054A139: 38 9E AC 82 00 00  cmp         byte ptr [esi+000082ACh],bl
+  0054A13F: 0F 84 D9 00 00 00  je          0054A21E
+  0054A145: F3 0F 10 86 34 56  movss       xmm0,dword ptr [esi+00005634h]
+            00 00
+  0054A14D: F3 0F 59 05 7C 9E  mulss       xmm0,dword ptr ds:[00DD9E7Ch]
+            DD 00
+  0054A155: 8B 4C 24 1C        mov         ecx,dword ptr [esp+1Ch]
+  0054A159: 88 9E AC 82 00 00  mov         byte ptr [esi+000082ACh],bl
+  0054A15F: B8 80 00 00 00     mov         eax,80h
+  0054A164: F3 0F 2A C8        cvtsi2ss    xmm1,eax
+  0054A168: F3 0F 59 C8        mulss       xmm1,xmm0
+  0054A16C: F3 0F 11 09        movss       dword ptr [ecx],xmm1
+  0054A170: 48                 dec         eax
+  0054A171: 83 C1 04           add         ecx,4
+  0054A174: 3B C3              cmp         eax,ebx
+  0054A176: 7F EC              jg          0054A164
+  0054A178: 0F 57 C0           xorps       xmm0,xmm0
+  0054A17B: 88 9E 8E 82 00 00  mov         byte ptr [esi+0000828Eh],bl
+  0054A181: 88 9E 8F 82 00 00  mov         byte ptr [esi+0000828Fh],bl
+  0054A187: 89 9E 90 82 00 00  mov         dword ptr [esi+00008290h],ebx
+  0054A18D: 89 9E 94 82 00 00  mov         dword ptr [esi+00008294h],ebx
+  0054A193: 89 9E 98 82 00 00  mov         dword ptr [esi+00008298h],ebx
+  0054A199: 89 9E 9C 82 00 00  mov         dword ptr [esi+0000829Ch],ebx
+  0054A19F: 89 9E A0 82 00 00  mov         dword ptr [esi+000082A0h],ebx
+  0054A1A5: F3 0F 11 86 A4 82  movss       dword ptr [esi+000082A4h],xmm0
+            00 00
+  0054A1AD: 33 C0              xor         eax,eax
+  0054A1AF: 66 89 86 8C 82 00  mov         word ptr [esi+0000828Ch],ax
+            00
+  0054A1B6: 89 9E 38 56 00 00  mov         dword ptr [esi+00005638h],ebx
+  0054A1BC: 89 9E 3C 56 00 00  mov         dword ptr [esi+0000563Ch],ebx
+  0054A1C2: 89 9E 50 56 00 00  mov         dword ptr [esi+00005650h],ebx
+  0054A1C8: C7 86 24 56 00 00  mov         dword ptr [esi+00005624h],0FFFFFFFFh
+            FF FF FF FF
+  0054A1D2: F3 0F 11 86 28 56  movss       dword ptr [esi+00005628h],xmm0
+            00 00
+  0054A1DA: F3 0F 11 86 2C 56  movss       dword ptr [esi+0000562Ch],xmm0
+            00 00
+  0054A1E2: F3 0F 11 86 34 56  movss       dword ptr [esi+00005634h],xmm0
+            00 00
+  0054A1EA: F3 0F 11 86 40 56  movss       dword ptr [esi+00005640h],xmm0
+            00 00
+  0054A1F2: F3 0F 11 86 44 56  movss       dword ptr [esi+00005644h],xmm0
+            00 00
+  0054A1FA: F3 0F 11 86 48 56  movss       dword ptr [esi+00005648h],xmm0
+            00 00
+  0054A202: F3 0F 11 86 4C 56  movss       dword ptr [esi+0000564Ch],xmm0
+            00 00
+  0054A20A: C6 86 AD 82 00 00  mov         byte ptr [esi+000082ADh],1
+            01
+  0054A211: 5E                 pop         esi
+  0054A212: B8 80 00 00 00     mov         eax,80h
+  0054A217: 5B                 pop         ebx
+  0054A218: 83 C4 08           add         esp,8
+  0054A21B: C2 0C 00           ret         0Ch
+  0054A21E: 8D 8E 54 56 00 00  lea         ecx,[esi+00005654h]
+  0054A224: 85 C9              test        ecx,ecx
+  0054A226: 0F 84 55 01 00 00  je          0054A381
+  0054A22C: 38
+  0054A22D: 9E                 sahf
+  0054A22E: 70 82              jo          0054A1B2
+  0054A230: 00
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,78 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAB930: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  00BAB934: 8B 01              mov         eax,dword ptr [ecx]
+  00BAB936: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  00BAB939: 53                 push        ebx
+  00BAB93A: 8B D0              mov         edx,eax
+  00BAB93C: 23 D1              and         edx,ecx
+  00BAB93E: 56                 push        esi
+  00BAB93F: 57                 push        edi
+  00BAB940: 83 FA FF           cmp         edx,0FFFFFFFFh
+  00BAB943: 0F 84 90 00 00 00  je          00BAB9D9
+  00BAB949: 8B D0              mov         edx,eax
+  00BAB94B: 8B C1              mov         eax,ecx
+  00BAB94D: C1 E8 1F           shr         eax,1Fh
+  00BAB950: 33 F6              xor         esi,esi
+  00BAB952: 83 F8 01           cmp         eax,1
+  00BAB955: 75 08              jne         00BAB95F
+  00BAB957: 85 F6              test        esi,esi
+  00BAB959: 75 04              jne         00BAB95F
+  00BAB95B: 8B C2              mov         eax,edx
+  00BAB95D: EB 21              jmp         00BAB980
+  00BAB95F: 68 5F 53 4D 4C     push        4C4D535Fh
+  00BAB964: 51                 push        ecx
+  00BAB965: 52                 push        edx
+  00BAB966: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BAB96B: E8 00 2E 00 00     call        00BAE770
+  00BAB970: 85 C0              test        eax,eax
+  00BAB972: 74 0A              je          00BAB97E
+  00BAB974: 8B 00              mov         eax,dword ptr [eax]
+  00BAB976: 85 C0              test        eax,eax
+  00BAB978: 74 04              je          00BAB97E
+  00BAB97A: 8B 00              mov         eax,dword ptr [eax]
+  00BAB97C: EB 02              jmp         00BAB980
+  00BAB97E: 33 C0              xor         eax,eax
+  00BAB980: 8B 70 44           mov         esi,dword ptr [eax+44h]
+  00BAB983: 8B 78 3C           mov         edi,dword ptr [eax+3Ch]
+  00BAB986: 8B CE              mov         ecx,esi
+  00BAB988: E8 73 D6 00 00     call        00BB9000
+  00BAB98D: 8B CF              mov         ecx,edi
+  00BAB98F: E8 4C D7 00 00     call        00BB90E0
+  00BAB994: 8B CE              mov         ecx,esi
+  00BAB996: E8 95 D6 00 00     call        00BB9030
+  00BAB99B: 8B CF              mov         ecx,edi
+  00BAB99D: 8B D8              mov         ebx,eax
+  00BAB99F: E8 6C D7 00 00     call        00BB9110
+  00BAB9A4: 8B 54 24 18        mov         edx,dword ptr [esp+18h]
+  00BAB9A8: 8B 4C 24 1C        mov         ecx,dword ptr [esp+1Ch]
+  00BAB9AC: 52                 push        edx
+  00BAB9AD: 8B 54 24 18        mov         edx,dword ptr [esp+18h]
+  00BAB9B1: 53                 push        ebx
+  00BAB9B2: 52                 push        edx
+  00BAB9B3: 50                 push        eax
+  00BAB9B4: 51                 push        ecx
+  00BAB9B5: 8B C4              mov         eax,esp
+  00BAB9B7: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  00BAB9BD: 8B 01              mov         eax,dword ptr [ecx]
+  00BAB9BF: 8B 50 04           mov         edx,dword ptr [eax+4]
+  00BAB9C2: FF D2              call        edx
+  00BAB9C4: 8B CE              mov         ecx,esi
+  00BAB9C6: E8 75 D6 00 00     call        00BB9040
+  00BAB9CB: 8B CF              mov         ecx,edi
+  00BAB9CD: E8 4E D7 00 00     call        00BB9120
+  00BAB9D2: C6 05 24 CB 6E 01  mov         byte ptr ds:[016ECB24h],0
+            00
+  00BAB9D9: 5F                 pop         edi
+  00BAB9DA: 5E                 pop         esi
+  00BAB9DB: 5B                 pop         ebx
+  00BAB9DC: C2 10 00           ret         10h
+  00BAB9DF: CC                 int         3
+  00BAB9E0: A0
+
+  Summary
+
+      9C8000 .text

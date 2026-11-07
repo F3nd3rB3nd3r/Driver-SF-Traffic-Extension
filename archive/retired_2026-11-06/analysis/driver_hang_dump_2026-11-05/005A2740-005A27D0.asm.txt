@@ -1,0 +1,62 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A2740: 83 EC 08           sub         esp,8
+  005A2743: 56                 push        esi
+  005A2744: 57                 push        edi
+  005A2745: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  005A2749: 57                 push        edi
+  005A274A: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  005A274E: 50                 push        eax
+  005A274F: 8B F1              mov         esi,ecx
+  005A2751: E8 9A FF FF FF     call        005A26F0
+  005A2756: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  005A275A: 3B 44 24 0C        cmp         eax,dword ptr [esp+0Ch]
+  005A275E: 75 24              jne         005A2784
+  005A2760: 66 8B 0F           mov         cx,word ptr [edi]
+  005A2763: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  005A2767: 66 89 4C 24 08     mov         word ptr [esp+8],cx
+  005A276C: 8D 4C 24 08        lea         ecx,[esp+8]
+  005A2770: 51                 push        ecx
+  005A2771: 89 54 24 10        mov         dword ptr [esp+10h],edx
+  005A2775: 50                 push        eax
+  005A2776: 8D 54 24 1C        lea         edx,[esp+1Ch]
+  005A277A: 52                 push        edx
+  005A277B: 8B CE              mov         ecx,esi
+  005A277D: E8 EE 4A 23 00     call        007D7270
+  005A2782: 8B 00              mov         eax,dword ptr [eax]
+  005A2784: 5F                 pop         edi
+  005A2785: 83 C0 0C           add         eax,0Ch
+  005A2788: 5E                 pop         esi
+  005A2789: 83 C4 08           add         esp,8
+  005A278C: C2 04 00           ret         4
+  005A278F: CC                 int         3
+  005A2790: 83 EC 08           sub         esp,8
+  005A2793: 56                 push        esi
+  005A2794: 57                 push        edi
+  005A2795: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  005A2799: 57                 push        edi
+  005A279A: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  005A279E: 50                 push        eax
+  005A279F: 8B F1              mov         esi,ecx
+  005A27A1: E8 5A FE FF FF     call        005A2600
+  005A27A6: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  005A27AA: 3B 44 24 0C        cmp         eax,dword ptr [esp+0Ch]
+  005A27AE: 75 23              jne         005A27D3
+  005A27B0: 66 8B 0F           mov         cx,word ptr [edi]
+  005A27B3: 66 89 4C 24 14     mov         word ptr [esp+14h],cx
+  005A27B8: 33 D2              xor         edx,edx
+  005A27BA: 8D 4C 24 14        lea         ecx,[esp+14h]
+  005A27BE: 51                 push        ecx
+  005A27BF: 66 89 54 24 1A     mov         word ptr [esp+1Ah],dx
+  005A27C4: 50                 push        eax
+  005A27C5: 8D 54 24 10        lea         edx,[esp+10h]
+  005A27C9: 52                 push        edx
+  005A27CA: 8B CE              mov         ecx,esi
+  005A27CC: E8 4F B9 FF FF     call        0059E120
+
+  Summary
+
+      9C8000 .text

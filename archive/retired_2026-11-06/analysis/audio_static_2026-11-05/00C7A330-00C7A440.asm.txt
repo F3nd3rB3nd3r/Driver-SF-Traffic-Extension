@@ -1,0 +1,120 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C7A330: 8B 15 74 D5 FD 00  mov         edx,dword ptr ds:[00FDD574h]
+  00C7A336: 53                 push        ebx
+  00C7A337: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  00C7A33B: 55                 push        ebp
+  00C7A33C: 56                 push        esi
+  00C7A33D: 8B F1              mov         esi,ecx
+  00C7A33F: 8B 46 1C           mov         eax,dword ptr [esi+1Ch]
+  00C7A342: 8B CA              mov         ecx,edx
+  00C7A344: 2B C8              sub         ecx,eax
+  00C7A346: 57                 push        edi
+  00C7A347: 3B CB              cmp         ecx,ebx
+  00C7A349: 72 21              jb          00C7A36C
+  00C7A34B: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  00C7A34F: 8B 4E 18           mov         ecx,dword ptr [esi+18h]
+  00C7A352: 53                 push        ebx
+  00C7A353: 52                 push        edx
+  00C7A354: 8B 16              mov         edx,dword ptr [esi]
+  00C7A356: 8B 0C CA           mov         ecx,dword ptr [edx+ecx*8]
+  00C7A359: 03 C8              add         ecx,eax
+  00C7A35B: 51                 push        ecx
+  00C7A35C: E8 BF E4 FA FF     call        00C28820
+  00C7A361: 83 C4 0C           add         esp,0Ch
+  00C7A364: 01 5E 1C           add         dword ptr [esi+1Ch],ebx
+  00C7A367: E9 94 00 00 00     jmp         00C7A400
+  00C7A36C: 80 7E 20 00        cmp         byte ptr [esi+20h],0
+  00C7A370: 75 22              jne         00C7A394
+  00C7A372: 8B 0E              mov         ecx,dword ptr [esi]
+  00C7A374: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00C7A377: 8B 7E 18           mov         edi,dword ptr [esi+18h]
+  00C7A37A: 2B C1              sub         eax,ecx
+  00C7A37C: 47                 inc         edi
+  00C7A37D: C1 F8 03           sar         eax,3
+  00C7A380: 3B F8              cmp         edi,eax
+  00C7A382: 72 02              jb          00C7A386
+  00C7A384: 33 FF              xor         edi,edi
+  00C7A386: 39 7E 10           cmp         dword ptr [esi+10h],edi
+  00C7A389: 75 5D              jne         00C7A3E8
+  00C7A38B: 3B 46 0C           cmp         eax,dword ptr [esi+0Ch]
+  00C7A38E: 72 10              jb          00C7A3A0
+  00C7A390: C6 46 20 01        mov         byte ptr [esi+20h],1
+  00C7A394: 5F                 pop         edi
+  00C7A395: 5E                 pop         esi
+  00C7A396: 5D                 pop         ebp
+  00C7A397: B8 34 00 00 00     mov         eax,34h
+  00C7A39C: 5B                 pop         ebx
+  00C7A39D: C2 08 00           ret         8
+  00C7A3A0: 52                 push        edx
+  00C7A3A1: 8B 15 B8 D3 FD 00  mov         edx,dword ptr ds:[00FDD3B8h]
+  00C7A3A7: 52                 push        edx
+  00C7A3A8: E8 93 F6 01 00     call        00C99A40
+  00C7A3AD: 8B E8              mov         ebp,eax
+  00C7A3AF: 83 C4 08           add         esp,8
+  00C7A3B2: 85 ED              test        ebp,ebp
+  00C7A3B4: 74 DA              je          00C7A390
+  00C7A3B6: 57                 push        edi
+  00C7A3B7: 8B CE              mov         ecx,esi
+  00C7A3B9: E8 12 E2 FE FF     call        00C685D0
+  00C7A3BE: 85 C0              test        eax,eax
+  00C7A3C0: 75 1F              jne         00C7A3E1
+  00C7A3C2: C6 46 20 01        mov         byte ptr [esi+20h],1
+  00C7A3C6: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C7A3CB: 55                 push        ebp
+  00C7A3CC: 50                 push        eax
+  00C7A3CD: E8 CE F7 01 00     call        00C99BA0
+  00C7A3D2: 83 C4 08           add         esp,8
+  00C7A3D5: 5F                 pop         edi
+  00C7A3D6: 5E                 pop         esi
+  00C7A3D7: 5D                 pop         ebp
+  00C7A3D8: B8 34 00 00 00     mov         eax,34h
+  00C7A3DD: 5B                 pop         ebx
+  00C7A3DE: C2 08 00           ret         8
+  00C7A3E1: 89 28              mov         dword ptr [eax],ebp
+  00C7A3E3: FF 46 10           inc         dword ptr [esi+10h]
+  00C7A3E6: EB 03              jmp         00C7A3EB
+  00C7A3E8: 8B 2C F9           mov         ebp,dword ptr [ecx+edi*8]
+  00C7A3EB: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  00C7A3EF: 53                 push        ebx
+  00C7A3F0: 51                 push        ecx
+  00C7A3F1: 55                 push        ebp
+  00C7A3F2: 89 7E 18           mov         dword ptr [esi+18h],edi
+  00C7A3F5: 89 5E 1C           mov         dword ptr [esi+1Ch],ebx
+  00C7A3F8: E8 23 E4 FA FF     call        00C28820
+  00C7A3FD: 83 C4 0C           add         esp,0Ch
+  00C7A400: 8B 06              mov         eax,dword ptr [esi]
+  00C7A402: 8B 56 18           mov         edx,dword ptr [esi+18h]
+  00C7A405: 8B 4E 1C           mov         ecx,dword ptr [esi+1Ch]
+  00C7A408: 5F                 pop         edi
+  00C7A409: 5E                 pop         esi
+  00C7A40A: 5D                 pop         ebp
+  00C7A40B: 89 4C D0 04        mov         dword ptr [eax+edx*8+4],ecx
+  00C7A40F: B8 01 00 00 00     mov         eax,1
+  00C7A414: 5B                 pop         ebx
+  00C7A415: C2 08 00           ret         8
+  00C7A418: CC                 int         3
+  00C7A419: CC                 int         3
+  00C7A41A: CC                 int         3
+  00C7A41B: CC                 int         3
+  00C7A41C: CC                 int         3
+  00C7A41D: CC                 int         3
+  00C7A41E: CC                 int         3
+  00C7A41F: CC                 int         3
+  00C7A420: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00C7A424: 56                 push        esi
+  00C7A425: 50                 push        eax
+  00C7A426: 8B F1              mov         esi,ecx
+  00C7A428: E8 F3 48 00 00     call        00C7ED20
+  00C7A42D: 8B 56 14           mov         edx,dword ptr [esi+14h]
+  00C7A430: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  00C7A434: 81 E1 FF FF FF 00  and         ecx,0FFFFFFh
+  00C7A43A: 81 E2 00 00 00 C4  and         edx,0C4000000h
+  00C7A440: 33
+
+  Summary
+
+      9C8000 .text

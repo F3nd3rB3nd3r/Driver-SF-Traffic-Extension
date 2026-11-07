@@ -1,0 +1,93 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  006991C0: DC 2E              fsubr       qword ptr [esi]
+  006991C2: 51                 push        ecx
+  006991C3: 00 C2              add         dl,al
+  006991C5: 04 00              add         al,0
+  006991C7: CC                 int         3
+  006991C8: CC                 int         3
+  006991C9: CC                 int         3
+  006991CA: CC                 int         3
+  006991CB: CC                 int         3
+  006991CC: CC                 int         3
+  006991CD: CC                 int         3
+  006991CE: CC                 int         3
+  006991CF: CC                 int         3
+  006991D0: 51                 push        ecx
+  006991D1: 56                 push        esi
+  006991D2: 8B F1              mov         esi,ecx
+  006991D4: C7 06 B0 7E E1 00  mov         dword ptr [esi],0E17EB0h
+  006991DA: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  006991DF: 85 C0              test        eax,eax
+  006991E1: 75 0A              jne         006991ED
+  006991E3: E8 A8 14 D7 FF     call        0040A690
+  006991E8: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  006991ED: 8B 80 34 03 00 00  mov         eax,dword ptr [eax+00000334h]
+  006991F3: 50                 push        eax
+  006991F4: 8D 4C 24 08        lea         ecx,[esp+8]
+  006991F8: E8 33 06 00 00     call        00699830
+  006991FD: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00699202: 85 C0              test        eax,eax
+  00699204: 75 0A              jne         00699210
+  00699206: E8 85 14 D7 FF     call        0040A690
+  0069920B: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00699210: 6A 7E              push        7Eh
+  00699212: C7 80 34 03 00 00  mov         dword ptr [eax+00000334h],0
+            00 00 00 00
+  0069921C: E8 8F 10 00 00     call        0069A2B0
+  00699221: 68 D1 00 00 00     push        0D1h
+  00699226: E8 15 0B 00 00     call        00699D40
+  0069922B: 83 C4 08           add         esp,8
+  0069922E: 56                 push        esi
+  0069922F: B9 3C D5 6E 01     mov         ecx,16ED53Ch
+  00699234: E8 37 FA F0 FF     call        005A8C70
+  00699239: 8D 4E 40           lea         ecx,[esi+40h]
+  0069923C: 5E                 pop         esi
+  0069923D: 83 C4 04           add         esp,4
+  00699240: E9 5B 0E 00 00     jmp         0069A0A0
+  00699245: CC                 int         3
+  00699246: CC                 int         3
+  00699247: CC                 int         3
+  00699248: CC                 int         3
+  00699249: CC                 int         3
+  0069924A: CC                 int         3
+  0069924B: CC                 int         3
+  0069924C: CC                 int         3
+  0069924D: CC                 int         3
+  0069924E: CC                 int         3
+  0069924F: CC                 int         3
+  00699250: 83 EC 20           sub         esp,20h
+  00699253: 53                 push        ebx
+  00699254: 55                 push        ebp
+  00699255: 56                 push        esi
+  00699256: 57                 push        edi
+  00699257: 8B F9              mov         edi,ecx
+  00699259: 89 7C 24 18        mov         dword ptr [esp+18h],edi
+  0069925D: E8 6E 14 02 00     call        006BA6D0
+  00699262: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00699267: E8 24 55 51 00     call        00BAE790
+  0069926C: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00699271: 33 F6              xor         esi,esi
+  00699273: 32 DB              xor         bl,bl
+  00699275: 3B C6              cmp         eax,esi
+  00699277: 75 0A              jne         00699283
+  00699279: E8 12 14 D7 FF     call        0040A690
+  0069927E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00699283: 8B 68 0C           mov         ebp,dword ptr [eax+0Ch]
+  00699286: 89 6C 24 20        mov         dword ptr [esp+20h],ebp
+  0069928A: 3B EE              cmp         ebp,esi
+  0069928C: 74 1E              je          006992AC
+  0069928E: 8B CD              mov         ecx,ebp
+  00699290: E8 1B 1B 51 00     call        00BAADB0
+  00699295: 84 C0              test        al,al
+  00699297: 74 13              je          006992AC
+  00699299: 8B CD              mov         ecx,ebp
+  0069929B: E8 00 1A 51 00     call        00BAACA0
+  006992A0: 83
+
+  Summary
+
+      9C8000 .text

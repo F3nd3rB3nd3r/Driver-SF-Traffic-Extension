@@ -1,0 +1,268 @@
+
+Dump of file E:\_DSF Mods\ai repos\DriverSF_V29s_VS_LEAN_2026-11-02\build\v29s_parked150_r1\DriverSF_V29s_160Capacity_150Request_PARKED150_R1.asi
+
+File Type: DLL
+
+  10002310: 55                 push        ebp
+  10002311: 8B EC              mov         ebp,esp
+  10002313: 83 EC 10           sub         esp,10h
+  10002316: 8B C1              mov         eax,ecx
+  10002318: C7 45 F8 00 00 00  mov         dword ptr [ebp-8],0
+            00
+  1000231F: 8D 4D F8           lea         ecx,[ebp-8]
+  10002322: 89 45 F4           mov         dword ptr [ebp-0Ch],eax
+  10002325: 51                 push        ecx
+  10002326: 50                 push        eax
+  10002327: E8 24 CE 00 00     call        1000F150
+  1000232C: 83 C4 08           add         esp,8
+  1000232F: 84 C0              test        al,al
+  10002331: 75 16              jne         10002349
+  10002333: 6A 00              push        0
+  10002335: FF 35 40 00 03 10  push        dword ptr ds:[10030040h]
+  1000233B: E8 90 CB 00 00     call        1000EED0
+  10002340: 83 C4 08           add         esp,8
+  10002343: 32 C0              xor         al,al
+  10002345: 8B E5              mov         esp,ebp
+  10002347: 5D                 pop         ebp
+  10002348: C3                 ret
+  10002349: A1 DC A2 11 10     mov         eax,dword ptr ds:[1011A2DCh]
+  1000234E: 53                 push        ebx
+  1000234F: 56                 push        esi
+  10002350: 57                 push        edi
+  10002351: 8B 7D F8           mov         edi,dword ptr [ebp-8]
+  10002354: 8D B0 EC 27 04 01  lea         esi,[eax+010427ECh]
+  1000235A: 69 CF 14 03 00 00  imul        ecx,edi,314h
+  10002360: 69 DF 64 15 00 00  imul        ebx,edi,1564h
+  10002366: 03 F1              add         esi,ecx
+  10002368: 03 1D 7C 0E 03 10  add         ebx,dword ptr ds:[10030E7Ch]
+  1000236E: 53                 push        ebx
+  1000236F: 89 75 F0           mov         dword ptr [ebp-10h],esi
+  10002372: E8 09 C9 00 00     call        1000EC80
+  10002377: 83 C4 04           add         esp,4
+  1000237A: 84 C0              test        al,al
+  1000237C: 0F 84 2B 01 00 00  je          100024AD
+  10002382: 83 BB 30 15 00 00  cmp         dword ptr [ebx+00001530h],0
+            00
+  10002389: 0F 85 E9 00 00 00  jne         10002478
+  1000238F: 57                 push        edi
+  10002390: E8 BB DE 00 00     call        10010250
+  10002395: 83 C4 04           add         esp,4
+  10002398: 84 C0              test        al,al
+  1000239A: 0F 84 CF 00 00 00  je          1000246F
+  100023A0: 8B 83 30 15 00 00  mov         eax,dword ptr [ebx+00001530h]
+  100023A6: 8B 4D F4           mov         ecx,dword ptr [ebp-0Ch]
+  100023A9: 40                 inc         eax
+  100023AA: 89 83 30 15 00 00  mov         dword ptr [ebx+00001530h],eax
+  100023B0: 8B 83 54 15 00 00  mov         eax,dword ptr [ebx+00001554h]
+  100023B6: 40                 inc         eax
+  100023B7: 89 83 54 15 00 00  mov         dword ptr [ebx+00001554h],eax
+  100023BD: 89 8B 5C 15 00 00  mov         dword ptr [ebx+0000155Ch],ecx
+  100023C3: 8B 7E 08           mov         edi,dword ptr [esi+8]
+  100023C6: 8B B3 38 15 00 00  mov         esi,dword ptr [ebx+00001538h]
+  100023CC: A1 90 0E 03 10     mov         eax,dword ptr ds:[10030E90h]
+  100023D1: FF D0              call        eax
+  100023D3: 2B FE              sub         edi,esi
+  100023D5: 88 45 FF           mov         byte ptr [ebp-1],al
+  100023D8: 8B 75 F0           mov         esi,dword ptr [ebp-10h]
+  100023DB: 8B 83 38 15 00 00  mov         eax,dword ptr [ebx+00001538h]
+  100023E1: 03 C7              add         eax,edi
+  100023E3: 89 45 F4           mov         dword ptr [ebp-0Ch],eax
+  100023E6: 8B 7E 08           mov         edi,dword ptr [esi+8]
+  100023E9: 3B F8              cmp         edi,eax
+  100023EB: 77 42              ja          1000242F
+  100023ED: FF 75 F8           push        dword ptr [ebp-8]
+  100023F0: E8 5B DE 00 00     call        10010250
+  100023F5: 83 C4 04           add         esp,4
+  100023F8: 84 C0              test        al,al
+  100023FA: 74 33              je          1000242F
+  100023FC: 8B 83 58 15 00 00  mov         eax,dword ptr [ebx+00001558h]
+  10002402: 8B 4D F4           mov         ecx,dword ptr [ebp-0Ch]
+  10002405: 2B CF              sub         ecx,edi
+  10002407: 03 C1              add         eax,ecx
+  10002409: 89 83 58 15 00 00  mov         dword ptr [ebx+00001558h],eax
+  1000240F: 8B 83 30 15 00 00  mov         eax,dword ptr [ebx+00001530h]
+  10002415: 48                 dec         eax
+  10002416: 53                 push        ebx
+  10002417: 89 83 30 15 00 00  mov         dword ptr [ebx+00001530h],eax
+  1000241D: E8 BE D4 00 00     call        1000F8E0
+  10002422: 8A 45 FF           mov         al,byte ptr [ebp-1]
+  10002425: 83 C4 04           add         esp,4
+  10002428: 5F                 pop         edi
+  10002429: 5E                 pop         esi
+  1000242A: 5B                 pop         ebx
+  1000242B: 8B E5              mov         esp,ebp
+  1000242D: 5D                 pop         ebp
+  1000242E: C3                 ret
+  1000242F: 68 88 7C 36 10     push        10367C88h
+  10002434: C7 05 40 00 03 10  mov         dword ptr ds:[10030040h],10028BB8h
+            B8 8B 02 10
+  1000243E: FF 15 38 10 44 10  call        dword ptr ds:[10441038h]
+  10002444: 8B 83 30 15 00 00  mov         eax,dword ptr [ebx+00001530h]
+  1000244A: 48                 dec         eax
+  1000244B: 53                 push        ebx
+  1000244C: 89 83 30 15 00 00  mov         dword ptr [ebx+00001530h],eax
+  10002452: E8 89 D4 00 00     call        1000F8E0
+  10002457: 56                 push        esi
+  10002458: FF 35 40 00 03 10  push        dword ptr ds:[10030040h]
+  1000245E: E8 6D CA 00 00     call        1000EED0
+  10002463: 83 C4 0C           add         esp,0Ch
+  10002466: 32 C0              xor         al,al
+  10002468: 5F                 pop         edi
+  10002469: 5E                 pop         esi
+  1000246A: 5B                 pop         ebx
+  1000246B: 8B E5              mov         esp,ebp
+  1000246D: 5D                 pop         ebp
+  1000246E: C3                 ret
+  1000246F: 83 BB 30 15 00 00  cmp         dword ptr [ebx+00001530h],0
+            00
+  10002476: 74 15              je          1000248D
+  10002478: 68 88 7C 36 10     push        10367C88h
+  1000247D: C7 05 40 00 03 10  mov         dword ptr ds:[10030040h],10028BA0h
+            A0 8B 02 10
+  10002487: FF 15 38 10 44 10  call        dword ptr ds:[10441038h]
+  1000248D: 8B 83 2C 15 00 00  mov         eax,dword ptr [ebx+0000152Ch]
+  10002493: 83 C0 FF           add         eax,0FFFFFFFFh
+  10002496: 89 83 2C 15 00 00  mov         dword ptr [ebx+0000152Ch],eax
+  1000249C: 75 0F              jne         100024AD
+  1000249E: 6A 00              push        0
+  100024A0: 8D 83 28 15 00 00  lea         eax,[ebx+00001528h]
+  100024A6: 50                 push        eax
+  100024A7: FF 15 3C 10 44 10  call        dword ptr ds:[1044103Ch]
+  100024AD: 56                 push        esi
+  100024AE: FF 35 40 00 03 10  push        dword ptr ds:[10030040h]
+  100024B4: E8 17 CA 00 00     call        1000EED0
+  100024B9: 83 C4 08           add         esp,8
+  100024BC: 32 C0              xor         al,al
+  100024BE: 5F                 pop         edi
+  100024BF: 5E                 pop         esi
+  100024C0: 5B                 pop         ebx
+  100024C1: 8B E5              mov         esp,ebp
+  100024C3: 5D                 pop         ebp
+  100024C4: C3                 ret
+  100024C5: CC                 int         3
+  100024C6: CC                 int         3
+  100024C7: CC                 int         3
+  100024C8: CC                 int         3
+  100024C9: CC                 int         3
+  100024CA: CC                 int         3
+  100024CB: CC                 int         3
+  100024CC: CC                 int         3
+  100024CD: CC                 int         3
+  100024CE: CC                 int         3
+  100024CF: CC                 int         3
+  100024D0: CC                 int         3
+  100024D1: CC                 int         3
+  100024D2: CC                 int         3
+  100024D3: CC                 int         3
+  100024D4: CC                 int         3
+  100024D5: CC                 int         3
+  100024D6: CC                 int         3
+  100024D7: CC                 int         3
+  100024D8: CC                 int         3
+  100024D9: CC                 int         3
+  100024DA: CC                 int         3
+  100024DB: CC                 int         3
+  100024DC: CC                 int         3
+  100024DD: CC                 int         3
+  100024DE: CC                 int         3
+  100024DF: CC                 int         3
+  100024E0: CC                 int         3
+  100024E1: CC                 int         3
+  100024E2: CC                 int         3
+  100024E3: CC                 int         3
+  100024E4: CC                 int         3
+  100024E5: CC                 int         3
+  100024E6: CC                 int         3
+  100024E7: CC                 int         3
+  100024E8: CC                 int         3
+  100024E9: CC                 int         3
+  100024EA: CC                 int         3
+  100024EB: CC                 int         3
+  100024EC: CC                 int         3
+  100024ED: CC                 int         3
+  100024EE: CC                 int         3
+  100024EF: CC                 int         3
+  100024F0: CC                 int         3
+  100024F1: CC                 int         3
+  100024F2: CC                 int         3
+  100024F3: CC                 int         3
+  100024F4: CC                 int         3
+  100024F5: CC                 int         3
+  100024F6: CC                 int         3
+  100024F7: CC                 int         3
+  100024F8: CC                 int         3
+  100024F9: CC                 int         3
+  100024FA: CC                 int         3
+  100024FB: CC                 int         3
+  100024FC: CC                 int         3
+  100024FD: CC                 int         3
+  100024FE: CC                 int         3
+  100024FF: CC                 int         3
+  10002500: CC                 int         3
+  10002501: CC                 int         3
+  10002502: CC                 int         3
+  10002503: CC                 int         3
+  10002504: CC                 int         3
+  10002505: CC                 int         3
+  10002506: CC                 int         3
+  10002507: CC                 int         3
+  10002508: CC                 int         3
+  10002509: CC                 int         3
+  1000250A: CC                 int         3
+  1000250B: CC                 int         3
+  1000250C: CC                 int         3
+  1000250D: CC                 int         3
+  1000250E: CC                 int         3
+  1000250F: CC                 int         3
+  10002510: CC                 int         3
+  10002511: CC                 int         3
+  10002512: CC                 int         3
+  10002513: CC                 int         3
+  10002514: CC                 int         3
+  10002515: CC                 int         3
+  10002516: CC                 int         3
+  10002517: CC                 int         3
+  10002518: CC                 int         3
+  10002519: CC                 int         3
+  1000251A: CC                 int         3
+  1000251B: CC                 int         3
+  1000251C: CC                 int         3
+  1000251D: CC                 int         3
+  1000251E: CC                 int         3
+  1000251F: CC                 int         3
+  10002520: CC                 int         3
+  10002521: CC                 int         3
+  10002522: CC                 int         3
+  10002523: CC                 int         3
+  10002524: CC                 int         3
+  10002525: CC                 int         3
+  10002526: CC                 int         3
+  10002527: CC                 int         3
+  10002528: CC                 int         3
+  10002529: CC                 int         3
+  1000252A: CC                 int         3
+  1000252B: CC                 int         3
+  1000252C: CC                 int         3
+  1000252D: CC                 int         3
+  1000252E: CC                 int         3
+  1000252F: CC                 int         3
+  10002530: CC                 int         3
+  10002531: CC                 int         3
+  10002532: CC                 int         3
+  10002533: CC                 int         3
+  10002534: CC                 int         3
+  10002535: CC                 int         3
+  10002536: CC                 int         3
+  10002537: CC                 int         3
+  10002538: CC                 int         3
+  10002539: CC                 int         3
+  1000253A: CC                 int         3
+  1000253B: CC                 int         3
+  1000253C: CC                 int         3
+  1000253D: CC                 int         3
+  1000253E: CC                 int         3
+  1000253F: CC                 int         3
+
+  Summary
+
+       24000 .text

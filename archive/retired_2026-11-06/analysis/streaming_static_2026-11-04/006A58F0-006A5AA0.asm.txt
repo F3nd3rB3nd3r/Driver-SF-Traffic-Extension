@@ -1,0 +1,159 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  006A58F0: 51                 push        ecx
+  006A58F1: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  006A58F5: 56                 push        esi
+  006A58F6: 8B F1              mov         esi,ecx
+  006A58F8: 01 46 0C           add         dword ptr [esi+0Ch],eax
+  006A58FB: 01 46 08           add         dword ptr [esi+8],eax
+  006A58FE: 8B 46 04           mov         eax,dword ptr [esi+4]
+  006A5901: 8B 56 0C           mov         edx,dword ptr [esi+0Ch]
+  006A5904: 8B C8              mov         ecx,eax
+  006A5906: 81 E1 FF FF FF 7F  and         ecx,7FFFFFFFh
+  006A590C: 57                 push        edi
+  006A590D: 76 6D              jbe         006A597C
+  006A590F: F6 02 01           test        byte ptr [edx],1
+  006A5912: 74 68              je          006A597C
+  006A5914: 0D 00 00 00 80     or          eax,80000000h
+  006A5919: 33 C9              xor         ecx,ecx
+  006A591B: 89 46 04           mov         dword ptr [esi+4],eax
+  006A591E: A9 FF FF FF 7F     test        eax,7FFFFFFFh
+  006A5923: 0F 86 36 01 00 00  jbe         006A5A5F
+  006A5929: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  006A5930: 8B 46 08           mov         eax,dword ptr [esi+8]
+  006A5933: 8B 14 C8           mov         edx,dword ptr [eax+ecx*8]
+  006A5936: 8B 3D B8 A6 88 01  mov         edi,dword ptr ds:[0188A6B8h]
+  006A593C: 8D 04 C8           lea         eax,[eax+ecx*8]
+  006A593F: 89 14 FD B8 A6 86  mov         dword ptr [edi*8+0186A6B8h],edx
+            01
+  006A5946: 8B 50 04           mov         edx,dword ptr [eax+4]
+  006A5949: 8B 3D B8 A6 88 01  mov         edi,dword ptr ds:[0188A6B8h]
+  006A594F: 89 14 FD BC A6 86  mov         dword ptr [edi*8+0186A6BCh],edx
+            01
+  006A5956: 8B 15 B8 A6 88 01  mov         edx,dword ptr ds:[0188A6B8h]
+  006A595C: 89 04 95 B8 A6 85  mov         dword ptr [edx*4+0185A6B8h],eax
+            01
+  006A5963: FF 05 B8 A6 88 01  inc         dword ptr ds:[0188A6B8h]
+  006A5969: 8B 46 04           mov         eax,dword ptr [esi+4]
+  006A596C: 41                 inc         ecx
+  006A596D: 25 FF FF FF 7F     and         eax,7FFFFFFFh
+  006A5972: 3B C8              cmp         ecx,eax
+  006A5974: 72 BA              jb          006A5930
+  006A5976: 5F                 pop         edi
+  006A5977: 5E                 pop         esi
+  006A5978: 59                 pop         ecx
+  006A5979: C2 04 00           ret         4
+  006A597C: 33 FF              xor         edi,edi
+  006A597E: 89 4E 04           mov         dword ptr [esi+4],ecx
+  006A5981: 89 7E 0C           mov         dword ptr [esi+0Ch],edi
+  006A5984: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  006A5989: 3B C7              cmp         eax,edi
+  006A598B: 75 0A              jne         006A5997
+  006A598D: E8 FE 4C D6 FF     call        0040A690
+  006A5992: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  006A5997: F7 46 04 FF FF FF  test        dword ptr [esi+4],7FFFFFFFh
+            7F
+  006A599E: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  006A59A1: 89 4C 24 08        mov         dword ptr [esp+8],ecx
+  006A59A5: 89 7C 24 10        mov         dword ptr [esp+10h],edi
+  006A59A9: 0F 86 B0 00 00 00  jbe         006A5A5F
+  006A59AF: 53                 push        ebx
+  006A59B0: 55                 push        ebp
+  006A59B1: 8B 7C 24 18        mov         edi,dword ptr [esp+18h]
+  006A59B5: 8B 46 08           mov         eax,dword ptr [esi+8]
+  006A59B8: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  006A59BC: 03 FF              add         edi,edi
+  006A59BE: 03 FF              add         edi,edi
+  006A59C0: 03 FF              add         edi,edi
+  006A59C2: 8B 5C 07 04        mov         ebx,dword ptr [edi+eax+4]
+  006A59C6: 8B 2C 07           mov         ebp,dword ptr [edi+eax]
+  006A59C9: 53                 push        ebx
+  006A59CA: 55                 push        ebp
+  006A59CB: E8 F0 5E 50 00     call        00BAB8C0
+  006A59D0: 8B 0D B4 FF F3 00  mov         ecx,dword ptr ds:[00F3FFB4h]
+  006A59D6: 51                 push        ecx
+  006A59D7: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  006A59DB: 52                 push        edx
+  006A59DC: 50                 push        eax
+  006A59DD: E8 CE 68 50 00     call        00BAC2B0
+  006A59E2: 83 F8 01           cmp         eax,1
+  006A59E5: 75 24              jne         006A5A0B
+  006A59E7: 8B 46 08           mov         eax,dword ptr [esi+8]
+  006A59EA: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  006A59ED: 8B 14 C8           mov         edx,dword ptr [eax+ecx*8]
+  006A59F0: 89 14 07           mov         dword ptr [edi+eax],edx
+  006A59F3: 8B 4C C8 04        mov         ecx,dword ptr [eax+ecx*8+4]
+  006A59F7: 89 4C 07 04        mov         dword ptr [edi+eax+4],ecx
+  006A59FB: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  006A59FE: 8B 46 08           mov         eax,dword ptr [esi+8]
+  006A5A01: 89 2C C8           mov         dword ptr [eax+ecx*8],ebp
+  006A5A04: 89 5C C8 04        mov         dword ptr [eax+ecx*8+4],ebx
+  006A5A08: FF 46 0C           inc         dword ptr [esi+0Ch]
+  006A5A0B: 8B 46 08           mov         eax,dword ptr [esi+8]
+  006A5A0E: 8B 14 38           mov         edx,dword ptr [eax+edi]
+  006A5A11: 8B 0D B8 A6 88 01  mov         ecx,dword ptr ds:[0188A6B8h]
+  006A5A17: 03 C7              add         eax,edi
+  006A5A19: 89 14 CD B8 A6 86  mov         dword ptr [ecx*8+0186A6B8h],edx
+            01
+  006A5A20: 8B 50 04           mov         edx,dword ptr [eax+4]
+  006A5A23: 8B 0D B8 A6 88 01  mov         ecx,dword ptr ds:[0188A6B8h]
+  006A5A29: 89 14 CD BC A6 86  mov         dword ptr [ecx*8+0186A6BCh],edx
+            01
+  006A5A30: 8B 15 B8 A6 88 01  mov         edx,dword ptr ds:[0188A6B8h]
+  006A5A36: 89 04 95 B8 A6 85  mov         dword ptr [edx*4+0185A6B8h],eax
+            01
+  006A5A3D: FF 05 B8 A6 88 01  inc         dword ptr ds:[0188A6B8h]
+  006A5A43: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  006A5A47: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  006A5A4A: 40                 inc         eax
+  006A5A4B: 81 E1 FF FF FF 7F  and         ecx,7FFFFFFFh
+  006A5A51: 89 44 24 18        mov         dword ptr [esp+18h],eax
+  006A5A55: 3B C1              cmp         eax,ecx
+  006A5A57: 0F 82 54 FF FF FF  jb          006A59B1
+  006A5A5D: 5D                 pop         ebp
+  006A5A5E: 5B                 pop         ebx
+  006A5A5F: 5F                 pop         edi
+  006A5A60: 5E                 pop         esi
+  006A5A61: 59                 pop         ecx
+  006A5A62: C2 04 00           ret         4
+  006A5A65: CC                 int         3
+  006A5A66: CC                 int         3
+  006A5A67: CC                 int         3
+  006A5A68: CC                 int         3
+  006A5A69: CC                 int         3
+  006A5A6A: CC                 int         3
+  006A5A6B: CC                 int         3
+  006A5A6C: CC                 int         3
+  006A5A6D: CC                 int         3
+  006A5A6E: CC                 int         3
+  006A5A6F: CC                 int         3
+  006A5A70: 53                 push        ebx
+  006A5A71: 56                 push        esi
+  006A5A72: 8B F1              mov         esi,ecx
+  006A5A74: 01 76 08           add         dword ptr [esi+8],esi
+  006A5A77: 57                 push        edi
+  006A5A78: 33 FF              xor         edi,edi
+  006A5A7A: 39 3E              cmp         dword ptr [esi],edi
+  006A5A7C: 76 13              jbe         006A5A91
+  006A5A7E: 8D 5E 10           lea         ebx,[esi+10h]
+  006A5A81: 56                 push        esi
+  006A5A82: 8B CB              mov         ecx,ebx
+  006A5A84: E8 27 F8 FF FF     call        006A52B0
+  006A5A89: 47                 inc         edi
+  006A5A8A: 83 C3 60           add         ebx,60h
+  006A5A8D: 3B 3E              cmp         edi,dword ptr [esi]
+  006A5A8F: 72 F0              jb          006A5A81
+  006A5A91: 33 FF              xor         edi,edi
+  006A5A93: 39 7E 04           cmp         dword ptr [esi+4],edi
+  006A5A96: 76 1C              jbe         006A5AB4
+  006A5A98: 33 DB              xor         ebx,ebx
+  006A5A9A: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  006A5AA0: 8B
+
+  Summary
+
+      9C8000 .text

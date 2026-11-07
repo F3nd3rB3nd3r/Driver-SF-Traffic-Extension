@@ -1,0 +1,52 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005452B0: 39 FF              cmp         edi,edi
+  005452B2: 75 11              jne         005452C5
+  005452B4: 89 44 24 08        mov         dword ptr [esp+8],eax
+  005452B8: C7 44 24 04 04 00  mov         dword ptr [esp+4],4
+            00 00
+  005452C0: E9 6B FB FF FF     jmp         00544E30
+  005452C5: C2 08 00           ret         8
+  005452C8: CC                 int         3
+  005452C9: CC                 int         3
+  005452CA: CC                 int         3
+  005452CB: CC                 int         3
+  005452CC: CC                 int         3
+  005452CD: CC                 int         3
+  005452CE: CC                 int         3
+  005452CF: CC                 int         3
+  005452D0: 53                 push        ebx
+  005452D1: 8A 5C 24 08        mov         bl,byte ptr [esp+8]
+  005452D5: 56                 push        esi
+  005452D6: 8B F1              mov         esi,ecx
+  005452D8: 38 9E EC 00 00 00  cmp         byte ptr [esi+000000ECh],bl
+  005452DE: 0F 84 B4 00 00 00  je          00545398
+  005452E4: 84 DB              test        bl,bl
+  005452E6: 74 51              je          00545339
+  005452E8: 80 7E 06 00        cmp         byte ptr [esi+6],0
+  005452EC: 74 11              je          005452FF
+  005452EE: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  005452F6: C6 46 0B 01        mov         byte ptr [esi+0Bh],1
+  005452FA: F3 0F 11 46 18     movss       dword ptr [esi+18h],xmm0
+  005452FF: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00545304: 85 C0              test        eax,eax
+  00545306: 75 0A              jne         00545312
+  00545308: E8 83 53 EC FF     call        0040A690
+  0054530D: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00545312: 8B 88 68 02 00 00  mov         ecx,dword ptr [eax+00000268h]
+  00545318: 6A 01              push        1
+  0054531A: E8 71 95 FF FF     call        0053E890
+  0054531F: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00545324: 85 C0              test        eax,eax
+  00545326: 75 0A              jne         00545332
+  00545328: E8 63 53 EC FF     call        0040A690
+  0054532D: A3
+  0054532E: 28 72 FE           sub         byte ptr [edx-2],dh
+
+  Summary
+
+      9C8000 .text

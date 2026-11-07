@@ -1,0 +1,63 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C54DA0: 83 EC 10           sub         esp,10h
+  00C54DA3: 53                 push        ebx
+  00C54DA4: 57                 push        edi
+  00C54DA5: 8B 7C 24 30        mov         edi,dword ptr [esp+30h]
+  00C54DA9: 33 C0              xor         eax,eax
+  00C54DAB: 85 FF              test        edi,edi
+  00C54DAD: 74 30              je          00C54DDF
+  00C54DAF: 89 44 24 08        mov         dword ptr [esp+8],eax
+  00C54DB3: 89 44 24 0C        mov         dword ptr [esp+0Ch],eax
+  00C54DB7: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00C54DBB: 8B 44 24 34        mov         eax,dword ptr [esp+34h]
+  00C54DBF: 50                 push        eax
+  00C54DC0: 57                 push        edi
+  00C54DC1: E8 DA EE FF FF     call        00C53CA0
+  00C54DC6: 8B D8              mov         ebx,eax
+  00C54DC8: 83 C4 08           add         esp,8
+  00C54DCB: 89 5C 24 14        mov         dword ptr [esp+14h],ebx
+  00C54DCF: 85 DB              test        ebx,ebx
+  00C54DD1: 75 06              jne         00C54DD9
+  00C54DD3: 5F                 pop         edi
+  00C54DD4: 5B                 pop         ebx
+  00C54DD5: 83 C4 10           add         esp,10h
+  00C54DD8: C3                 ret
+  00C54DD9: 8D 44 24 08        lea         eax,[esp+8]
+  00C54DDD: EB 04              jmp         00C54DE3
+  00C54DDF: 8B 5C 24 14        mov         ebx,dword ptr [esp+14h]
+  00C54DE3: 8B 4C 24 2C        mov         ecx,dword ptr [esp+2Ch]
+  00C54DE7: 8B 54 24 28        mov         edx,dword ptr [esp+28h]
+  00C54DEB: 56                 push        esi
+  00C54DEC: 50                 push        eax
+  00C54DED: 8B 44 24 2C        mov         eax,dword ptr [esp+2Ch]
+  00C54DF1: 51                 push        ecx
+  00C54DF2: 8B 4C 24 2C        mov         ecx,dword ptr [esp+2Ch]
+  00C54DF6: 52                 push        edx
+  00C54DF7: 8B 54 24 2C        mov         edx,dword ptr [esp+2Ch]
+  00C54DFB: 50                 push        eax
+  00C54DFC: 51                 push        ecx
+  00C54DFD: 52                 push        edx
+  00C54DFE: E8 AD F1 FF FF     call        00C53FB0
+  00C54E03: 8B F0              mov         esi,eax
+  00C54E05: 83 C4 18           add         esp,18h
+  00C54E08: 85 F6              test        esi,esi
+  00C54E0A: 75 0B              jne         00C54E17
+  00C54E0C: 85 FF              test        edi,edi
+  00C54E0E: 74 07              je          00C54E17
+  00C54E10: 8B CB              mov         ecx,ebx
+  00C54E12: E8 49 D7 FF FF     call        00C52560
+  00C54E17: 8B C6              mov         eax,esi
+  00C54E19: 5E                 pop         esi
+  00C54E1A: 5F                 pop         edi
+  00C54E1B: 5B                 pop         ebx
+  00C54E1C: 83 C4 10           add         esp,10h
+  00C54E1F: C3                 ret
+  00C54E20: 8B
+
+  Summary
+
+      9C8000 .text

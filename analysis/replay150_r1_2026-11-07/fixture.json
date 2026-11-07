@@ -1,0 +1,82 @@
+{
+  "result": "passed",
+  "source_sha256": {
+    "src/V29sReplay150.inc": "dbc030b38801648ba5a862979298bf139170112dc86e5dc3f49f1334502a4a91",
+    "src/V29sReplay150Core.inc": "feb4ba3a271c0f2853e490f79dabab88055d768d4d0437e6be29096889a7a18a",
+    "src/V29sReplay150Layout.inc": "6d342180512bc46e39adc1c52bd27e5df76b651634ec6d7d9b311d1d90cda07c",
+    "src/V29sReplay150Native.inc": "575a3d479326bf2144de1a43ad8837e0704c8322a4562234fd00b9df13044435",
+    "tests/Replay150Test.cpp": "4ad36625a05627d3ebb0dbad9edfaa8a7f58ade21ddb45a7e600f09140fc3ea4"
+  },
+  "checks": [
+    "native retained-list filters, order and special model match",
+    "all seven patch boundaries, signature rejection and exact rollback passed",
+    "complete native producer reproduces ID181 overwrite",
+    "native save/load instruction slices: counts0..150, retained0/3/50/51/150/256, cached snapshots, guards and ABI passed",
+    "native phase tick: deferred1, restore2, completed0 and extra state passed",
+    "temporary storage recycled across threads, stack reuse and repeated transitions",
+    "oversize input, allocation failure and stale cache guard refused",
+    "replay150 checks passed"
+  ],
+  "spans": [
+    [
+      "ReplayCapture",
+      7649184,
+      368
+    ],
+    [
+      "ReplayRestore",
+      7649824,
+      288
+    ],
+    [
+      "ReplayImport",
+      7650176,
+      112
+    ],
+    [
+      "ReplaySaveTraffic",
+      7652733,
+      5
+    ],
+    [
+      "ReplaySaveRetained",
+      7652767,
+      5
+    ],
+    [
+      "ReplayLoadTraffic",
+      7659273,
+      5
+    ],
+    [
+      "ReplayLoadRetained",
+      7659338,
+      5
+    ],
+    [
+      "ReplaySaveSlice",
+      7652670,
+      102
+    ],
+    [
+      "ReplayLoadSlice",
+      7659228,
+      173
+    ],
+    [
+      "ReplayRetainedClone",
+      5925296,
+      322
+    ],
+    [
+      "ReplayNativeRefs",
+      5925632,
+      128
+    ],
+    [
+      "ReplayTick",
+      7650112,
+      51
+    ]
+  ]
+}

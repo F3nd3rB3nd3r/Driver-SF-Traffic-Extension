@@ -1,0 +1,39 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C518A0: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00C518A4: 85 C0              test        eax,eax
+  00C518A6: 75 06              jne         00C518AE
+  00C518A8: B8 1F 00 00 00     mov         eax,1Fh
+  00C518AD: C3                 ret
+  00C518AE: 8B 0D 60 18 D7 01  mov         ecx,dword ptr ds:[01D71860h]
+  00C518B4: 50                 push        eax
+  00C518B5: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00C518B9: 50                 push        eax
+  00C518BA: E8 41 E5 00 00     call        00C5FE00
+  00C518BF: C3                 ret
+  00C518C0: 83 EC 2C           sub         esp,2Ch
+  00C518C3: B8 16 00 00 00     mov         eax,16h
+  00C518C8: 68 9C 18 D7 01     push        1D7189Ch
+  00C518CD: 66 89 44 24 06     mov         word ptr [esp+6],ax
+  00C518D2: FF 15 60 91 DC 00  call        dword ptr ds:[00DC9160h]
+  00C518D8: 8B 4C 24 40        mov         ecx,dword ptr [esp+40h]
+  00C518DC: 51                 push        ecx
+  00C518DD: 50                 push        eax
+  00C518DE: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00C518E2: E8 79 EF 00 00     call        00C60860
+  00C518E7: 33 C9              xor         ecx,ecx
+  00C518E9: 83 C4 08           add         esp,8
+  00C518EC: 89 44 24 1C        mov         dword ptr [esp+1Ch],eax
+  00C518F0: 3B C1              cmp         eax,ecx
+  00C518F2: 74 4C              je          00C51940
+  00C518F4: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00C518F8: 8B 54 24 30        mov         edx,dword ptr [esp+30h]
+  00C518FC: 50                 push        eax
+  00C518FD: 8B 44 24 3C        mov         eax,dword ptr [esp+3Ch]
+
+  Summary
+
+      9C8000 .text

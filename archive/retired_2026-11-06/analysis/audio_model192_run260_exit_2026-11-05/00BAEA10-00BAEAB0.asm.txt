@@ -1,0 +1,72 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAEA10: 83 EC 0C           sub         esp,0Ch
+  00BAEA13: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  00BAEA17: 8B 10              mov         edx,dword ptr [eax]
+  00BAEA19: 56                 push        esi
+  00BAEA1A: 8B 72 10           mov         esi,dword ptr [edx+10h]
+  00BAEA1D: 8B 52 14           mov         edx,dword ptr [edx+14h]
+  00BAEA20: 89 54 24 08        mov         dword ptr [esp+8],edx
+  00BAEA24: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  00BAEA28: 89 54 24 08        mov         dword ptr [esp+8],edx
+  00BAEA2C: 89 74 24 04        mov         dword ptr [esp+4],esi
+  00BAEA30: 89 44 24 04        mov         dword ptr [esp+4],eax
+  00BAEA34: 8B 00              mov         eax,dword ptr [eax]
+  00BAEA36: 8D 54 24 04        lea         edx,[esp+4]
+  00BAEA3A: 52                 push        edx
+  00BAEA3B: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  00BAEA3E: 8B 40 10           mov         eax,dword ptr [eax+10h]
+  00BAEA41: 52                 push        edx
+  00BAEA42: 50                 push        eax
+  00BAEA43: C7 44 24 18 00 00  mov         dword ptr [esp+18h],0
+            00 00
+  00BAEA4B: E8 40 03 00 00     call        00BAED90
+  00BAEA50: 5E                 pop         esi
+  00BAEA51: 83 C4 0C           add         esp,0Ch
+  00BAEA54: C2 08 00           ret         8
+  00BAEA57: CC                 int         3
+  00BAEA58: CC                 int         3
+  00BAEA59: CC                 int         3
+  00BAEA5A: CC                 int         3
+  00BAEA5B: CC                 int         3
+  00BAEA5C: CC                 int         3
+  00BAEA5D: CC                 int         3
+  00BAEA5E: CC                 int         3
+  00BAEA5F: CC                 int         3
+  00BAEA60: 8B 81 90 E0 17 00  mov         eax,dword ptr [ecx+0017E090h]
+  00BAEA66: 8D 84 81 90 E0 15  lea         eax,[ecx+eax*4+0015E090h]
+            00
+  00BAEA6D: 85 C0              test        eax,eax
+  00BAEA6F: 74 06              je          00BAEA77
+  00BAEA71: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  00BAEA75: 89 10              mov         dword ptr [eax],edx
+  00BAEA77: FF 81 90 E0 17 00  inc         dword ptr [ecx+0017E090h]
+  00BAEA7D: C2 04 00           ret         4
+  00BAEA80: 53                 push        ebx
+  00BAEA81: 8B 5C 24 08        mov         ebx,dword ptr [esp+8]
+  00BAEA85: 8B 13              mov         edx,dword ptr [ebx]
+  00BAEA87: 55                 push        ebp
+  00BAEA88: 56                 push        esi
+  00BAEA89: 57                 push        edi
+  00BAEA8A: 8B 7B 04           mov         edi,dword ptr [ebx+4]
+  00BAEA8D: 8B C7              mov         eax,edi
+  00BAEA8F: 8B F1              mov         esi,ecx
+  00BAEA91: C1 E8 1F           shr         eax,1Fh
+  00BAEA94: 33 C9              xor         ecx,ecx
+  00BAEA96: 83 F8 01           cmp         eax,1
+  00BAEA99: 75 04              jne         00BAEA9F
+  00BAEA9B: 85 C9              test        ecx,ecx
+  00BAEA9D: 74 6B              je          00BAEB0A
+  00BAEA9F: 33 FF              xor         edi,edi
+  00BAEAA1: 39 8E C8 7A 15 00  cmp         dword ptr [esi+00157AC8h],ecx
+  00BAEAA7: 0F 86 27 01 00 00  jbe         00BAEBD4
+  00BAEAAD: 8D
+  00BAEAAE: 8E C8              mov         cs,ax
+  00BAEAB0: 7A
+
+  Summary
+
+      9C8000 .text

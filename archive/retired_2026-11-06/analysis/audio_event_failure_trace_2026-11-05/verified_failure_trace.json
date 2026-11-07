@@ -1,0 +1,260 @@
+{
+  "executable_sha256": "c79987b0548f7130337c3f295c8fe269e120ceddad55c1159e6f5cbc6aa26616",
+  "verified_instruction_spans": [
+    {
+      "address": "00C54006",
+      "signature": "e845ffffff",
+      "role": "event index lookup call"
+    },
+    {
+      "address": "00C5400B",
+      "signature": "3bc6894424205e",
+      "role": "lookup result observation before null branch"
+    },
+    {
+      "address": "00C54012",
+      "signature": "744e",
+      "role": "null event definition -> zero return"
+    },
+    {
+      "address": "00C5404D",
+      "signature": "e85eb00000",
+      "role": "playing-record creation"
+    },
+    {
+      "address": "00C54052",
+      "signature": "83f8017411",
+      "role": "creation result !=1 -> cleanup/zero"
+    },
+    {
+      "address": "00C54057",
+      "signature": "8b4c241c8b11",
+      "role": "selected creation-failure observation"
+    },
+    {
+      "address": "00C54062",
+      "signature": "33c083c42cc3",
+      "role": "common failure zero return"
+    },
+    {
+      "address": "00C5F0C7",
+      "signature": "6a3850",
+      "role": "fixed56-byte request and pool argument"
+    },
+    {
+      "address": "00C5F0CA",
+      "signature": "e871a90300",
+      "role": "Malloc for playing record"
+    },
+    {
+      "address": "00C5F0D8",
+      "signature": "0f84be000000",
+      "role": "null allocation -> creation failure"
+    },
+    {
+      "address": "00C5F1A5",
+      "signature": "b802000000",
+      "role": "only ordinary creation failure result2"
+    },
+    {
+      "address": "00C99AA5",
+      "signature": "5e5b8bc75f",
+      "role": "existing Malloc probe spans nonzero-size return"
+    },
+    {
+      "address": "0084CC98",
+      "signature": "83be6c01000010",
+      "role": "per-object playing-entry limit16"
+    },
+    {
+      "address": "0084CC9F",
+      "signature": "7367",
+      "role": "full -> wrapper zero without PostEvent"
+    },
+    {
+      "address": "0084CCC4",
+      "signature": "e8d7804000",
+      "role": "wrapper numeric PostEvent call"
+    },
+    {
+      "address": "0084CCC9",
+      "signature": "83c41c3bc3",
+      "role": "wrapper result observation"
+    },
+    {
+      "address": "0084CCDA",
+      "signature": "8d0c898d4c8e2c",
+      "role": "20-byte event records starting at object+2C"
+    },
+    {
+      "address": "0084CCF8",
+      "signature": "ff866c010000",
+      "role": "increment count after nonzero post"
+    },
+    {
+      "address": "0084CD0A",
+      "signature": "33c0",
+      "role": "wrapper shared zero result"
+    },
+    {
+      "address": "0084C988",
+      "signature": "750d",
+      "role": "only callback type1 takes record-removal call"
+    },
+    {
+      "address": "0084C992",
+      "signature": "e879040000",
+      "role": "callback invokes erase helper with object+2C header"
+    },
+    {
+      "address": "0084CE5F",
+      "signature": "ff8940010000",
+      "role": "erase decrements header+140 = object+16C"
+    },
+    {
+      "address": "00C525C2",
+      "signature": "b8c59d1c81",
+      "role": "native FNV seed"
+    },
+    {
+      "address": "00C525D3",
+      "signature": "69c0930100014133c6",
+      "role": "native FNV multiply before XOR"
+    },
+    {
+      "address": "00C526B6",
+      "signature": "3c417c093c5a7f0504208804",
+      "role": "ASCII uppercase normalization"
+    },
+    {
+      "address": "00C52BC7",
+      "signature": "3ddb3ba32c0f44c1",
+      "role": "SetState handles hash none specially"
+    }
+  ],
+  "per_object_layout": {
+    "entries_offset": 44,
+    "entry_bytes": 20,
+    "capacity": 16,
+    "count_offset": 364,
+    "payload_bytes": 368,
+    "equation": "0x2C + 16*20 == 0x16C; count DWORD ends at0x170",
+    "existing_probes_measure_full_refusal": false
+  },
+  "log_sha256": "28e9a07cdbdf3b73aab7475e751c5e218671584f8993d3871bd2c6108b66d155",
+  "classification": {
+    "total": 123,
+    "none_hash": 95,
+    "menu_move_hash": 1,
+    "literal_zero_event": 1,
+    "other_unresolved_event_hashes": 26,
+    "malloc_failures": 0,
+    "malign_failures": 0,
+    "early_post_zero": 0,
+    "events": [
+      {
+        "event": "2CA33BDB",
+        "count": 95,
+        "distinct_game_objects": 13,
+        "game_objects": [
+          "1A803B54",
+          "1A803CCC",
+          "1A803FBC",
+          "1A804134",
+          "1A8042AC",
+          "1A804424",
+          "1A80459C",
+          "1A804B7C",
+          "1A804CF4",
+          "1A804E6C",
+          "1A80515C",
+          "1A8052D4",
+          "1A80544C"
+        ],
+        "callers": [
+          "0084CCC9"
+        ]
+      },
+      {
+        "event": "38C61846",
+        "count": 12,
+        "distinct_game_objects": 1,
+        "game_objects": [
+          "1A802CA4"
+        ],
+        "callers": [
+          "0084CCC9"
+        ]
+      },
+      {
+        "event": "DFBD7040",
+        "count": 11,
+        "distinct_game_objects": 1,
+        "game_objects": [
+          "1A802CA4"
+        ],
+        "callers": [
+          "0084CCC9"
+        ]
+      },
+      {
+        "event": "A6073B55",
+        "count": 1,
+        "distinct_game_objects": 1,
+        "game_objects": [
+          "FFFFFFFE"
+        ],
+        "callers": [
+          "00848422"
+        ]
+      },
+      {
+        "event": "2E385822",
+        "count": 1,
+        "distinct_game_objects": 1,
+        "game_objects": [
+          "1A802F94"
+        ],
+        "callers": [
+          "0084CCC9"
+        ]
+      },
+      {
+        "event": "12E6FA03",
+        "count": 1,
+        "distinct_game_objects": 1,
+        "game_objects": [
+          "FFFFFFFE"
+        ],
+        "callers": [
+          "00848439"
+        ]
+      },
+      {
+        "event": "72DCBB24",
+        "count": 1,
+        "distinct_game_objects": 1,
+        "game_objects": [
+          "1A802F94"
+        ],
+        "callers": [
+          "0084CCC9"
+        ]
+      },
+      {
+        "event": "00000000",
+        "count": 1,
+        "distinct_game_objects": 1,
+        "game_objects": [
+          "FFFFFFFC"
+        ],
+        "callers": [
+          "0072F37D"
+        ]
+      }
+    ]
+  },
+  "runtime_inference": "Missing event definitions strongly indicated for ordinary zero returns: only competing ordinary branch needs a56-byte Malloc failure, absent from existing measurements. Direct branch outcome still unmeasured.",
+  "counter_wrap_exception": "A generated playing ID could be zero on32-bit wrap; no wrap instrumentation, implausible explanation for repeated failures in this run.",
+  "limitations": "Native signatures verified; no ASI build, debugger or game execution. Hash matches do not prove which string supplied a runtime ID or its car association."
+}

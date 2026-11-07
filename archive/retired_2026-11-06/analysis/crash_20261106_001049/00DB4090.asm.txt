@@ -1,0 +1,47 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00DB4090: FC                 cld
+  00DB4091: 44                 inc         esp
+  00DB4092: E7 FF              out         0FFh,eax
+  00DB4094: 59                 pop         ecx
+  00DB4095: C3                 ret
+  00DB4096: CC                 int         3
+  00DB4097: CC                 int         3
+  00DB4098: CC                 int         3
+  00DB4099: CC                 int         3
+  00DB409A: CC                 int         3
+  00DB409B: CC                 int         3
+  00DB409C: CC                 int         3
+  00DB409D: CC                 int         3
+  00DB409E: CC                 int         3
+  00DB409F: CC                 int         3
+  00DB40A0: BA 14 00 00 00     mov         edx,14h
+  00DB40A5: B8 F0 27 44 01     mov         eax,14427F0h
+  00DB40AA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  00DB40B0: 8D 48 08           lea         ecx,[eax+8]
+  00DB40B3: 89 48 FC           mov         dword ptr [eax-4],ecx
+  00DB40B6: 8D 88 08 03 00 00  lea         ecx,[eax+00000308h]
+  00DB40BC: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  00DB40C2: C7 40 04 00 00 00  mov         dword ptr [eax+4],0
+            00
+  00DB40C9: 89 88 0C 03 00 00  mov         dword ptr [eax+0000030Ch],ecx
+  00DB40CF: 05 14 03 00 00     add         eax,314h
+  00DB40D4: 83 EA 01           sub         edx,1
+  00DB40D7: 89 09              mov         dword ptr [ecx],ecx
+  00DB40D9: 79 D5              jns         00DB40B0
+  00DB40DB: C3                 ret
+  00DB40DC: CC                 int         3
+  00DB40DD: CC                 int         3
+  00DB40DE: CC                 int         3
+  00DB40DF: CC                 int         3
+  00DB40E0: 68 A4 74 44 01     push        14474A4h
+  00DB40E5: FF 15 14 92 DC 00  call        dword ptr ds:[00DC9214h]
+  00DB40EB: 68 F0 62 DC 00     push        0DC62F0h
+  00DB40F0: E8
+
+  Summary
+
+      9C8000 .text

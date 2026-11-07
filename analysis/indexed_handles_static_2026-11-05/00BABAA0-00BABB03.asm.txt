@@ -1,0 +1,47 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BABAA0: 51                 push        ecx
+  00BABAA1: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00BABAA5: 8B C1              mov         eax,ecx
+  00BABAA7: C1 E8 1F           shr         eax,1Fh
+  00BABAAA: 33 D2              xor         edx,edx
+  00BABAAC: 83 F8 01           cmp         eax,1
+  00BABAAF: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00BABAB3: 75 13              jne         00BABAC8
+  00BABAB5: 85 D2              test        edx,edx
+  00BABAB7: 75 0F              jne         00BABAC8
+  00BABAB9: 8B D0              mov         edx,eax
+  00BABABB: 23 D1              and         edx,ecx
+  00BABABD: 83 FA FF           cmp         edx,0FFFFFFFFh
+  00BABAC0: 74 06              je          00BABAC8
+  00BABAC2: 8D 44 24 08        lea         eax,[esp+8]
+  00BABAC6: EB 21              jmp         00BABAE9
+  00BABAC8: 68 5F 41 4E 59     push        594E415Fh
+  00BABACD: 51                 push        ecx
+  00BABACE: 50                 push        eax
+  00BABACF: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BABAD4: E8 97 2C 00 00     call        00BAE770
+  00BABAD9: 85 C0              test        eax,eax
+  00BABADB: 75 06              jne         00BABAE3
+  00BABADD: 89 04 24           mov         dword ptr [esp],eax
+  00BABAE0: 8D 04 24           lea         eax,[esp]
+  00BABAE3: 8B 00              mov         eax,dword ptr [eax]
+  00BABAE5: 85 C0              test        eax,eax
+  00BABAE7: 74 18              je          00BABB01
+  00BABAE9: 8B 00              mov         eax,dword ptr [eax]
+  00BABAEB: 85 C0              test        eax,eax
+  00BABAED: 74 12              je          00BABB01
+  00BABAEF: 8B 0D A0 49 6F 01  mov         ecx,dword ptr ds:[016F49A0h]
+  00BABAF5: 89 48 18           mov         dword ptr [eax+18h],ecx
+  00BABAF8: 8B 15 A4 49 6F 01  mov         edx,dword ptr ds:[016F49A4h]
+  00BABAFE: 89 50 1C           mov         dword ptr [eax+1Ch],edx
+  00BABB01: 59                 pop         ecx
+  00BABB02: C3                 ret
+  00BABB03: CC                 int         3
+
+  Summary
+
+      9C8000 .text

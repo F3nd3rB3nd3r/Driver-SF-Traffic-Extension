@@ -15,6 +15,77 @@ static volatile long g_diagHNext=0;
 static long g_diagHDrained=0;
 static volatile long g_diagHFirstFree[18]={};
 static volatile long g_diagHLastLowRaw[18]={};
+#if defined(DSF_V29S_VEHICLE_POOL_TRACE)
+// Separate circular ring keeps late vehicle-pool events available even if the
+// earlier city-pool diagnostic fills its small startup ring.
+static const U32 kDiagHVehicleEvents=4096u;
+struct DiagHVehicleEvent {
+    volatile long sequence;
+    U32 tick,kind,pool,slot,part,raw14,raw1C,caller,size,alignment;
+};
+static DiagHVehicleEvent g_diagHVehicleEvents[kDiagHVehicleEvents]={};
+static volatile long g_diagHVehicleNext=0;
+static U32 g_diagHVehicleDrained=0u,g_diagHVehicleMissed=0u;
+static bool DiagHVehicleClassify(UPtr sub,U32& pool,U32& slot,U32& part) {
+    for(U32 row=0u;row<4u;++row) {
+        const U32 array=g_diagFVehicleArrays[row],count=g_diagFVehicleCounts[row];
+        if(!array || !count || sub<array || sub-array>=count*0x60u)continue;
+        const U32 offset=sub-array,within=offset%0x60u;
+        if(within!=0u && within!=0x2Cu)continue;
+        pool=row+8u;slot=offset/0x60u;part=within?1u:0u;
+        return true;
+    }
+    return false;
+}
+static void DiagHVehicleRecord(U32 kind,U32 pool,U32 slot,U32 part,
+                               UPtr sub,UPtr caller,U32 size,U32 alignment) {
+    const long sequence=InterlockedIncrement(&g_diagHVehicleNext);
+    if(sequence<=0)return;
+    DiagHVehicleEvent& e=g_diagHVehicleEvents[
+        (static_cast<U32>(sequence)-1u)%kDiagHVehicleEvents];
+    e.tick=GetTickCount()-g_diagStartTick;e.kind=kind;
+    e.pool=pool;e.slot=slot;e.part=part;
+    e.raw14=Read32(sub+0x14u);e.raw1C=Read32(sub+0x1Cu);
+    e.caller=caller;e.size=size;e.alignment=alignment;
+    InterlockedExchange(&e.sequence,sequence);
+}
+static void DiagHVehicleDrain() {
+    const U32 written=static_cast<U32>(g_diagHVehicleNext);
+    if(written>g_diagHVehicleDrained+kDiagHVehicleEvents) {
+        g_diagHVehicleMissed+=written-g_diagHVehicleDrained-kDiagHVehicleEvents;
+        g_diagHVehicleDrained=written-kDiagHVehicleEvents;
+    }
+    while(g_diagHVehicleDrained<written) {
+        const U32 sequence=g_diagHVehicleDrained+1u;
+        const DiagHVehicleEvent& e=g_diagHVehicleEvents[(sequence-1u)%kDiagHVehicleEvents];
+        if(static_cast<U32>(e.sequence)!=sequence)break;
+        char line[310]={};char* p=line;const char* end=line+sizeof(line)-1;
+        AppendText(p,"DSFV29s_VPOOL_EVENT tick=",end);DiagFAppendU(p,e.tick,end);
+        DiagFAppendKeyU(p," kind=",e.kind,end);
+        DiagFAppendKeyU(p," pool=",e.pool,end);
+        DiagFAppendKeyU(p," slot=",e.slot,end);
+        DiagFAppendKeyU(p," part=",e.part,end);
+        DiagFAppendKeyU(p," preRaw14=",e.raw14,end);
+        DiagFAppendKeyU(p," preRaw1C=",e.raw1C,end);
+        DiagFAppendKeyHex(p," callerCandidate=",e.caller,end);
+        DiagFAppendKeyU(p," size=",e.size,end);
+        DiagFAppendKeyU(p," alignment=",e.alignment,end);
+        AppendText(p,"\n",end);*p=0;DiagPrint(line);
+        g_diagHVehicleDrained=sequence;
+    }
+}
+static void DiagHVehicleStatus(U32 loops) {
+    if(loops%25u!=0u)return;
+    char line[220]={};char* p=line;const char* end=line+sizeof(line)-1;
+    AppendText(p,"DSFV29s_VPOOL_STATUS tick=",end);
+    DiagFAppendU(p,GetTickCount()-g_diagStartTick,end);
+    DiagFAppendKeyU(p," changes=",static_cast<U32>(g_diagFVehicleChanges),end);
+    DiagFAppendKeyU(p," skipped=",static_cast<U32>(g_diagFVehicleSkipped),end);
+    DiagFAppendKeyU(p," events=",static_cast<U32>(g_diagHVehicleNext),end);
+    DiagFAppendKeyU(p," missed=",g_diagHVehicleMissed,end);
+    AppendText(p,"\n",end);*p=0;DiagPrint(line);
+}
+#endif
 static DiagFDetour g_diagHFreeDetour={},g_diagHRejectDetour={};
 extern "C" UPtr g_diagHFreeTrampoline=0;
 extern "C" UPtr g_diagHRejectTrampoline=0;
@@ -46,6 +117,11 @@ static void DiagHRecord(U32 kind,U32 pool,U32 slot,U32 part,UPtr sub,
     InterlockedExchange(&e.sequence,sequence);
 }
 extern "C" __declspec(noinline) void __cdecl DiagHObserveFree(UPtr sub,UPtr caller) {
+#if defined(DSF_V29S_VEHICLE_POOL_TRACE)
+    U32 vehiclePool=0u,vehicleSlot=0u,vehiclePart=0u;
+    if(DiagHVehicleClassify(sub,vehiclePool,vehicleSlot,vehiclePart))
+        DiagHVehicleRecord(1u,vehiclePool,vehicleSlot,vehiclePart,sub,caller,0u,0u);
+#endif
     const U32 array=g_diagGArray;
     if(!array || sub<array || sub-array>=18u*0x60u)return;
     const U32 offset=sub-array;
@@ -67,12 +143,17 @@ extern "C" __declspec(noinline) void __cdecl DiagHObserveReject(
     if(pool!=0xFFFFFFFFu && Readable(sub+0x14u,12u)) {
         raw=Read32(sub+0x14u);raw1C=Read32(sub+0x1Cu);
     }
+#if defined(DSF_V29S_VEHICLE_POOL_TRACE)
+    if(pool>=8u && pool<=11u)
+        DiagHVehicleRecord(2u,pool,slot,part,sub,caller,size,alignment);
+#endif
     DiagHRecord(2u,pool,slot,part,sub,raw,raw1C,caller,size,alignment);
 }
 extern "C" __declspec(naked) void DiagHFreeEntry() {
     __asm {
         pushfd
         pushad
+#if !defined(DSF_V29S_VEHICLE_POOL_TRACE)
         mov eax,dword ptr [g_diagGArray]
         test eax,eax
         jz h_free_done
@@ -82,13 +163,16 @@ extern "C" __declspec(naked) void DiagHFreeEntry() {
         add eax,6C0h
         cmp edx,eax
         jae h_free_done
+#endif
         // BB4890 entry ESP+28 is the return address of BB4EE0's caller.
         mov eax,dword ptr [esp+64]
         push eax
         push edx
         call DiagHObserveFree
         add esp,8
+#if !defined(DSF_V29S_VEHICLE_POOL_TRACE)
     h_free_done:
+#endif
         popad
         popfd
         jmp dword ptr [g_diagHFreeTrampoline]

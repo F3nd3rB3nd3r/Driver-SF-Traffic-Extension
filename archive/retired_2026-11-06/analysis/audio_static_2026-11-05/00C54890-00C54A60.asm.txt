@@ -1,0 +1,132 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C54890: 83 EC 08           sub         esp,8
+  00C54893: 56                 push        esi
+  00C54894: 57                 push        edi
+  00C54895: 8D 44 24 08        lea         eax,[esp+8]
+  00C54899: 50                 push        eax
+  00C5489A: FF 15 D4 91 DC 00  call        dword ptr ds:[00DC91D4h]
+  00C548A0: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00C548A4: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  00C548A8: 33 F6              xor         esi,esi
+  00C548AA: 56                 push        esi
+  00C548AB: 68 E8 03 00 00     push        3E8h
+  00C548B0: 51                 push        ecx
+  00C548B1: 52                 push        edx
+  00C548B2: E8 A9 A6 FD FF     call        00C2EF60
+  00C548B7: 89 44 24 08        mov         dword ptr [esp+8],eax
+  00C548BB: 89 54 24 0C        mov         dword ptr [esp+0Ch],edx
+  00C548BF: DF 6C 24 08        fild        qword ptr [esp+8]
+  00C548C3: D9 1D 74 1A D7 01  fstp        dword ptr ds:[01D71A74h]
+  00C548C9: 39 35 38 18 D7 01  cmp         dword ptr ds:[01D71838h],esi
+  00C548CF: 75 46              jne         00C54917
+  00C548D1: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C548D6: 68 28 19 00 00     push        1928h
+  00C548DB: 50                 push        eax
+  00C548DC: E8 5F 51 04 00     call        00C99A40
+  00C548E1: 83 C4 08           add         esp,8
+  00C548E4: 3B C6              cmp         eax,esi
+  00C548E6: 74 18              je          00C54900
+  00C548E8: 8B C8              mov         ecx,eax
+  00C548EA: E8 21 F5 FF FF     call        00C53E10
+  00C548EF: A3 38 18 D7 01     mov         dword ptr ds:[01D71838h],eax
+  00C548F4: 3B C6              cmp         eax,esi
+  00C548F6: 75 18              jne         00C54910
+  00C548F8: 8D 46 34           lea         eax,[esi+34h]
+  00C548FB: E9 4C 03 00 00     jmp         00C54C4C
+  00C54900: 89 35 38 18 D7 01  mov         dword ptr ds:[01D71838h],esi
+  00C54906: B8 34 00 00 00     mov         eax,34h
+  00C5490B: E9 3C 03 00 00     jmp         00C54C4C
+  00C54910: 8B C8              mov         ecx,eax
+  00C54912: E8 F9 27 01 00     call        00C67110
+  00C54917: 68 FF 00 00 00     push        0FFh
+  00C5491C: 68 4D 01 00 00     push        14Dh
+  00C54921: 68 4D 01 00 00     push        14Dh
+  00C54926: B9 B8 18 D7 01     mov         ecx,1D718B8h
+  00C5492B: E8 A0 2B 01 00     call        00C674D0
+  00C54930: 83 F8 01           cmp         eax,1
+  00C54933: 0F 85 13 03 00 00  jne         00C54C4C
+  00C54939: 39 35 54 18 D7 01  cmp         dword ptr ds:[01D71854h],esi
+  00C5493F: 75 52              jne         00C54993
+  00C54941: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00C54947: 68 80 09 00 00     push        980h
+  00C5494C: 51                 push        ecx
+  00C5494D: E8 EE 50 04 00     call        00C99A40
+  00C54952: 83 C4 08           add         esp,8
+  00C54955: 3B C6              cmp         eax,esi
+  00C54957: 74 1A              je          00C54973
+  00C54959: 8B C8              mov         ecx,eax
+  00C5495B: E8 30 41 01 00     call        00C68A90
+  00C54960: A3 54 18 D7 01     mov         dword ptr ds:[01D71854h],eax
+  00C54965: 3B C6              cmp         eax,esi
+  00C54967: 75 1A              jne         00C54983
+  00C54969: B8 34 00 00 00     mov         eax,34h
+  00C5496E: E9 D9 02 00 00     jmp         00C54C4C
+  00C54973: 89 35 54 18 D7 01  mov         dword ptr ds:[01D71854h],esi
+  00C54979: B8 34 00 00 00     mov         eax,34h
+  00C5497E: E9 C9 02 00 00     jmp         00C54C4C
+  00C54983: 8B C8              mov         ecx,eax
+  00C54985: E8 86 57 01 00     call        00C6A110
+  00C5498A: 83 F8 01           cmp         eax,1
+  00C5498D: 0F 85 B9 02 00 00  jne         00C54C4C
+  00C54993: 39 35 58 18 D7 01  cmp         dword ptr ds:[01D71858h],esi
+  00C54999: 75 52              jne         00C549ED
+  00C5499B: 8B 15 B8 D3 FD 00  mov         edx,dword ptr ds:[00FDD3B8h]
+  00C549A1: 68 CC 00 00 00     push        0CCh
+  00C549A6: 52                 push        edx
+  00C549A7: E8 94 50 04 00     call        00C99A40
+  00C549AC: 83 C4 08           add         esp,8
+  00C549AF: 3B C6              cmp         eax,esi
+  00C549B1: 74 1A              je          00C549CD
+  00C549B3: 8B C8              mov         ecx,eax
+  00C549B5: E8 36 F2 FF FF     call        00C53BF0
+  00C549BA: A3 58 18 D7 01     mov         dword ptr ds:[01D71858h],eax
+  00C549BF: 3B C6              cmp         eax,esi
+  00C549C1: 75 1A              jne         00C549DD
+  00C549C3: B8 34 00 00 00     mov         eax,34h
+  00C549C8: E9 7F 02 00 00     jmp         00C54C4C
+  00C549CD: 89 35 58 18 D7 01  mov         dword ptr ds:[01D71858h],esi
+  00C549D3: B8 34 00 00 00     mov         eax,34h
+  00C549D8: E9 6F 02 00 00     jmp         00C54C4C
+  00C549DD: 8B C8              mov         ecx,eax
+  00C549DF: E8 CC 0E 01 00     call        00C658B0
+  00C549E4: 83 F8 01           cmp         eax,1
+  00C549E7: 0F 85 5F 02 00 00  jne         00C54C4C
+  00C549ED: 39 35 48 18 D7 01  cmp         dword ptr ds:[01D71848h],esi
+  00C549F3: 75 51              jne         00C54A46
+  00C549F5: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C549FA: 68 C0 04 00 00     push        4C0h
+  00C549FF: 50                 push        eax
+  00C54A00: E8 3B 50 04 00     call        00C99A40
+  00C54A05: 83 C4 08           add         esp,8
+  00C54A08: 3B C6              cmp         eax,esi
+  00C54A0A: 74 1A              je          00C54A26
+  00C54A0C: 8B C8              mov         ecx,eax
+  00C54A0E: E8 ED D0 00 00     call        00C61B00
+  00C54A13: A3 48 18 D7 01     mov         dword ptr ds:[01D71848h],eax
+  00C54A18: 3B C6              cmp         eax,esi
+  00C54A1A: 75 1A              jne         00C54A36
+  00C54A1C: B8 34 00 00 00     mov         eax,34h
+  00C54A21: E9 26 02 00 00     jmp         00C54C4C
+  00C54A26: 89 35 48 18 D7 01  mov         dword ptr ds:[01D71848h],esi
+  00C54A2C: B8 34 00 00 00     mov         eax,34h
+  00C54A31: E9 16 02 00 00     jmp         00C54C4C
+  00C54A36: 8B C8              mov         ecx,eax
+  00C54A38: E8 C3 0B 01 00     call        00C65600
+  00C54A3D: 83 F8 01           cmp         eax,1
+  00C54A40: 0F 85 06 02 00 00  jne         00C54C4C
+  00C54A46: 39 35 5C 18 D7 01  cmp         dword ptr ds:[01D7185Ch],esi
+  00C54A4C: 75 52              jne         00C54AA0
+  00C54A4E: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00C54A54: 68 A0 00 00 00     push        0A0h
+  00C54A59: 51                 push        ecx
+  00C54A5A: E8 E1 4F 04 00     call        00C99A40
+  00C54A5F: 83
+  00C54A60: C4
+
+  Summary
+
+      9C8000 .text

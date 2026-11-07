@@ -1,0 +1,50 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  006BAF20: 8C 24 C8           mov         word ptr [eax+ecx*8],fs
+  006BAF23: 00 00              add         byte ptr [eax],al
+  006BAF25: 00 D9              add         cl,bl
+  006BAF27: 04 8A              add         al,8Ah
+  006BAF29: 8B 4D 04           mov         ecx,dword ptr [ebp+4]
+  006BAF2C: D9 1C 24           fstp        dword ptr [esp]
+  006BAF2F: 8D 94 24 88 00 00  lea         edx,[esp+00000088h]
+            00
+  006BAF36: 52                 push        edx
+  006BAF37: 8B 50 04           mov         edx,dword ptr [eax+4]
+  006BAF3A: 51                 push        ecx
+  006BAF3B: 8B 4C 24 34        mov         ecx,dword ptr [esp+34h]
+  006BAF3F: FF D2              call        edx
+  006BAF41: 89 44 24 2C        mov         dword ptr [esp+2Ch],eax
+  006BAF45: 80 7C 24 13 00     cmp         byte ptr [esp+13h],0
+  006BAF4A: 0F 84 2E 04 00 00  je          006BB37E
+  006BAF50: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  006BAF54: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  006BAF57: 81 E2 00 00 90 01  and         edx,1900000h
+  006BAF5D: 81 FA 00 00 80 00  cmp         edx,800000h
+  006BAF63: 0F 94 C1           sete        cl
+  006BAF66: B8 08 00 00 00     mov         eax,8
+  006BAF6B: 88 4C 24 27        mov         byte ptr [esp+27h],cl
+  006BAF6F: 84 C9              test        cl,cl
+  006BAF71: 74 05              je          006BAF78
+  006BAF73: B8 0A 00 00 00     mov         eax,0Ah
+  006BAF78: 8B 8C 24 C8 00 00  mov         ecx,dword ptr [esp+000000C8h]
+            00
+  006BAF7F: 51                 push        ecx
+  006BAF80: 50                 push        eax
+  006BAF81: E8 8A F6 FF FF     call        006BA610
+  006BAF86: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  006BAF8A: 83 C4 08           add         esp,8
+  006BAF8D: 8D 54 24 3C        lea         edx,[esp+3Ch]
+  006BAF91: 52                 push        edx
+  006BAF92: 89 44 24 18        mov         dword ptr [esp+18h],eax
+  006BAF96: E8 E5 E3 FF FF     call        006B9380
+  006BAF9B: 0F 57 C0           xorps       xmm0,xmm0
+  006BAF9E: 0F
+  006BAF9F: 2F                 das
+  006BAFA0: 44                 inc         esp
+
+  Summary
+
+      9C8000 .text

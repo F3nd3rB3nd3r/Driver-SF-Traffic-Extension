@@ -1,0 +1,91 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C6B740: 56                 push        esi
+  00C6B741: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  00C6B745: 57                 push        edi
+  00C6B746: 8B F9              mov         edi,ecx
+  00C6B748: 85 F6              test        esi,esi
+  00C6B74A: 75 05              jne         00C6B751
+  00C6B74C: BE FF 00 00 00     mov         esi,0FFh
+  00C6B751: 89 77 10           mov         dword ptr [edi+10h],esi
+  00C6B754: 85 F6              test        esi,esi
+  00C6B756: 74 2E              je          00C6B786
+  00C6B758: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00C6B75E: 8D 04 B5 00 00 00  lea         eax,[esi*4+00000000h]
+            00
+  00C6B765: 50                 push        eax
+  00C6B766: 51                 push        ecx
+  00C6B767: E8 D4 E2 02 00     call        00C99A40
+  00C6B76C: 83 C4 08           add         esp,8
+  00C6B76F: 89 47 04           mov         dword ptr [edi+4],eax
+  00C6B772: 89 47 08           mov         dword ptr [edi+8],eax
+  00C6B775: 85 C0              test        eax,eax
+  00C6B777: 75 0A              jne         00C6B783
+  00C6B779: 5F                 pop         edi
+  00C6B77A: B8 34 00 00 00     mov         eax,34h
+  00C6B77F: 5E                 pop         esi
+  00C6B780: C2 04 00           ret         4
+  00C6B783: 89 77 0C           mov         dword ptr [edi+0Ch],esi
+  00C6B786: 5F                 pop         edi
+  00C6B787: B8 01 00 00 00     mov         eax,1
+  00C6B78C: 5E                 pop         esi
+  00C6B78D: C2 04 00           ret         4
+  00C6B790: 56                 push        esi
+  00C6B791: 57                 push        edi
+  00C6B792: 8B F9              mov         edi,ecx
+  00C6B794: 8B 77 04           mov         esi,dword ptr [edi+4]
+  00C6B797: 3B 77 08           cmp         esi,dword ptr [edi+8]
+  00C6B79A: 74 1C              je          00C6B7B8
+  00C6B79C: 53                 push        ebx
+  00C6B79D: 8B 5C 24 10        mov         ebx,dword ptr [esp+10h]
+  00C6B7A1: 8B 0E              mov         ecx,dword ptr [esi]
+  00C6B7A3: 83 79 04 01        cmp         dword ptr [ecx+4],1
+  00C6B7A7: 75 06              jne         00C6B7AF
+  00C6B7A9: 53                 push        ebx
+  00C6B7AA: E8 11 16 02 00     call        00C8CDC0
+  00C6B7AF: 83 C6 04           add         esi,4
+  00C6B7B2: 3B 77 08           cmp         esi,dword ptr [edi+8]
+  00C6B7B5: 75 EA              jne         00C6B7A1
+  00C6B7B7: 5B                 pop         ebx
+  00C6B7B8: 5F                 pop         edi
+  00C6B7B9: 5E                 pop         esi
+  00C6B7BA: C2 04 00           ret         4
+  00C6B7BD: CC                 int         3
+  00C6B7BE: CC                 int         3
+  00C6B7BF: CC                 int         3
+  00C6B7C0: 53                 push        ebx
+  00C6B7C1: 8B D9              mov         ebx,ecx
+  00C6B7C3: 57                 push        edi
+  00C6B7C4: 8B 7B 04           mov         edi,dword ptr [ebx+4]
+  00C6B7C7: 3B 7B 08           cmp         edi,dword ptr [ebx+8]
+  00C6B7CA: 74 35              je          00C6B801
+  00C6B7CC: 55                 push        ebp
+  00C6B7CD: 56                 push        esi
+  00C6B7CE: 8B FF              mov         edi,edi
+  00C6B7D0: 8B 37              mov         esi,dword ptr [edi]
+  00C6B7D2: 8B CE              mov         ecx,esi
+  00C6B7D4: E8 27 11 02 00     call        00C8C900
+  00C6B7D9: 8B 2D B8 D3 FD 00  mov         ebp,dword ptr ds:[00FDD3B8h]
+  00C6B7DF: 85 F6              test        esi,esi
+  00C6B7E1: 74 14              je          00C6B7F7
+  00C6B7E3: 8B 06              mov         eax,dword ptr [esi]
+  00C6B7E5: 8B 10              mov         edx,dword ptr [eax]
+  00C6B7E7: 6A 00              push        0
+  00C6B7E9: 8B CE              mov         ecx,esi
+  00C6B7EB: FF D2              call        edx
+  00C6B7ED: 56                 push        esi
+  00C6B7EE: 55                 push        ebp
+  00C6B7EF: E8 AC E3 02 00     call        00C99BA0
+  00C6B7F4: 83 C4 08           add         esp,8
+  00C6B7F7: 83 C7 04           add         edi,4
+  00C6B7FA: 3B 7B 08           cmp         edi,dword ptr [ebx+8]
+  00C6B7FD: 75 D1              jne         00C6B7D0
+  00C6B7FF: 5E                 pop         esi
+  00C6B800: 5D                 pop         ebp
+
+  Summary
+
+      9C8000 .text

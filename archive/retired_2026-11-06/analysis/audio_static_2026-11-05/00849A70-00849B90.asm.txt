@@ -1,0 +1,120 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00849A70: 0F 11 46 50        movups      xmmword ptr [esi+50h],xmm0
+  00849A74: F3 0F 11 46 54     movss       dword ptr [esi+54h],xmm0
+  00849A79: F3 0F 11 46 58     movss       dword ptr [esi+58h],xmm0
+  00849A7E: F3 0F 11 46 5C     movss       dword ptr [esi+5Ch],xmm0
+  00849A83: 89 5E 6C           mov         dword ptr [esi+6Ch],ebx
+  00849A86: 89 5E 70           mov         dword ptr [esi+70h],ebx
+  00849A89: 89 5E 74           mov         dword ptr [esi+74h],ebx
+  00849A8C: F3 0F 11 46 60     movss       dword ptr [esi+60h],xmm0
+  00849A91: F3 0F 11 46 64     movss       dword ptr [esi+64h],xmm0
+  00849A96: F3 0F 11 46 68     movss       dword ptr [esi+68h],xmm0
+  00849A9B: 5F                 pop         edi
+  00849A9C: 88 9E 49 95 00 00  mov         byte ptr [esi+00009549h],bl
+  00849AA2: 88 9E 48 95 00 00  mov         byte ptr [esi+00009548h],bl
+  00849AA8: 8B C6              mov         eax,esi
+  00849AAA: 5E                 pop         esi
+  00849AAB: 5B                 pop         ebx
+  00849AAC: C3                 ret
+  00849AAD: CC                 int         3
+  00849AAE: CC                 int         3
+  00849AAF: CC                 int         3
+  00849AB0: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00849AB5: 56                 push        esi
+  00849AB6: 57                 push        edi
+  00849AB7: 8B F1              mov         esi,ecx
+  00849AB9: 85 C0              test        eax,eax
+  00849ABB: 75 0A              jne         00849AC7
+  00849ABD: E8 CE 0B BC FF     call        0040A690
+  00849AC2: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00849AC7: 8B 78 20           mov         edi,dword ptr [eax+20h]
+  00849ACA: 6A 00              push        0
+  00849ACC: 51                 push        ecx
+  00849ACD: 8B CC              mov         ecx,esp
+  00849ACF: 85 F6              test        esi,esi
+  00849AD1: 74 05              je          00849AD8
+  00849AD3: 8D 46 2C           lea         eax,[esi+2Ch]
+  00849AD6: EB 02              jmp         00849ADA
+  00849AD8: 33 C0              xor         eax,eax
+  00849ADA: 89 01              mov         dword ptr [ecx],eax
+  00849ADC: 8B CF              mov         ecx,edi
+  00849ADE: E8 5D F5 01 00     call        00869040
+  00849AE3: 6A 01              push        1
+  00849AE5: 51                 push        ecx
+  00849AE6: 8B CC              mov         ecx,esp
+  00849AE8: 85 F6              test        esi,esi
+  00849AEA: 74 0F              je          00849AFB
+  00849AEC: 8D 46 2C           lea         eax,[esi+2Ch]
+  00849AEF: 89 01              mov         dword ptr [ecx],eax
+  00849AF1: 8B CF              mov         ecx,edi
+  00849AF3: E8 48 F5 01 00     call        00869040
+  00849AF8: 5F                 pop         edi
+  00849AF9: 5E                 pop         esi
+  00849AFA: C3                 ret
+  00849AFB: 33 C0              xor         eax,eax
+  00849AFD: 89 01              mov         dword ptr [ecx],eax
+  00849AFF: 8B CF              mov         ecx,edi
+  00849B01: E8 3A F5 01 00     call        00869040
+  00849B06: 5F                 pop         edi
+  00849B07: 5E                 pop         esi
+  00849B08: C3                 ret
+  00849B09: CC                 int         3
+  00849B0A: CC                 int         3
+  00849B0B: CC                 int         3
+  00849B0C: CC                 int         3
+  00849B0D: CC                 int         3
+  00849B0E: CC                 int         3
+  00849B0F: CC                 int         3
+  00849B10: 53                 push        ebx
+  00849B11: 55                 push        ebp
+  00849B12: 56                 push        esi
+  00849B13: 33 DB              xor         ebx,ebx
+  00849B15: 8B F1              mov         esi,ecx
+  00849B17: 89 5E 38           mov         dword ptr [esi+38h],ebx
+  00849B1A: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00849B1F: 57                 push        edi
+  00849B20: 3B C3              cmp         eax,ebx
+  00849B22: 75 0A              jne         00849B2E
+  00849B24: E8 67 0B BC FF     call        0040A690
+  00849B29: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00849B2E: 8B 48 30           mov         ecx,dword ptr [eax+30h]
+  00849B31: 51                 push        ecx
+  00849B32: 8B D4              mov         edx,esp
+  00849B34: 3B F3              cmp         esi,ebx
+  00849B36: 74 05              je          00849B3D
+  00849B38: 8D 46 28           lea         eax,[esi+28h]
+  00849B3B: EB 02              jmp         00849B3F
+  00849B3D: 33 C0              xor         eax,eax
+  00849B3F: 89 02              mov         dword ptr [edx],eax
+  00849B41: 8B 01              mov         eax,dword ptr [ecx]
+  00849B43: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  00849B46: FF D2              call        edx
+  00849B48: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00849B4D: 3B C3              cmp         eax,ebx
+  00849B4F: 75 0A              jne         00849B5B
+  00849B51: E8 3A 0B BC FF     call        0040A690
+  00849B56: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00849B5B: 8B 48 64           mov         ecx,dword ptr [eax+64h]
+  00849B5E: E8 ED 14 00 00     call        0084B050
+  00849B63: 6A 19              push        19h
+  00849B65: E8 86 13 00 00     call        0084AEF0
+  00849B6A: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00849B6F: 83 C4 04           add         esp,4
+  00849B72: 3B C3              cmp         eax,ebx
+  00849B74: 75 0A              jne         00849B80
+  00849B76: E8 15 0B BC FF     call        0040A690
+  00849B7B: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00849B80: 8B 48 2C           mov         ecx,dword ptr [eax+2Ch]
+  00849B83: 56                 push        esi
+  00849B84: E8 27 3E 01 00     call        0085D9B0
+  00849B89: 6A FF              push        0FFFFFFFFh
+  00849B8B: E8 F0 87 40 00     call        00C52380
+  00849B90: 83
+
+  Summary
+
+      9C8000 .text

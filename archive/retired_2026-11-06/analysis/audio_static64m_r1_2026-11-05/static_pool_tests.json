@@ -1,0 +1,19 @@
+{
+  "result": "passed",
+  "architecture": "Win32",
+  "scenarios": 29,
+  "production_static_patch_sha256": "84be1d4f028d4c6a96d52f99fb737285e26695cebb3e972bdf4f688586bbcea2",
+  "production_default_patch_sha256": "229dc4d53b2d0bf5e3d984ddfb8b0b1ea28e2cf05e068bcb17dea8dc7a635e2d",
+  "checks": [
+    "default16 production installation precedes static patch",
+    "sole four-byte static operand changes",
+    "prior baseline/identity/hooks validated",
+    "engine root and audio memory manager must remain cold",
+    "unknown code/context refused",
+    "late cold/code mutations refused",
+    "protection/cache rollback",
+    "incomplete rollback explicitly reported",
+    "default16 operand survives static rollback"
+  ],
+  "limitations": "Fake image and fault-injected OS calls execute production installer logic. Does not exercise real game allocation, full DllMain, ASI loading or playback."
+}

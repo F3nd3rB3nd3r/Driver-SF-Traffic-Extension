@@ -1,0 +1,30 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C50F00: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00C50F04: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00C50F0C: B9 FF 00 00 00     mov         ecx,0FFh
+  00C50F11: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  00C50F17: 89 48 04           mov         dword ptr [eax+4],ecx
+  00C50F1A: 89 48 08           mov         dword ptr [eax+8],ecx
+  00C50F1D: C7 40 0C 00 00 00  mov         dword ptr [eax+0Ch],1000000h
+            01
+  00C50F24: F3 0F 11 40 10     movss       dword ptr [eax+10h],xmm0
+  00C50F29: C7 40 14 00 00 04  mov         dword ptr [eax+14h],40000h
+            00
+  00C50F30: C7 40 18 FF FF FF  mov         dword ptr [eax+18h],0FFFFFFFFh
+            FF
+  00C50F37: C6 40 1C 00        mov         byte ptr [eax+1Ch],0
+  00C50F3B: C3                 ret
+  00C50F3C: CC                 int         3
+  00C50F3D: CC                 int         3
+  00C50F3E: CC                 int         3
+  00C50F3F: CC                 int         3
+  00C50F40: E9
+
+  Summary
+
+      9C8000 .text

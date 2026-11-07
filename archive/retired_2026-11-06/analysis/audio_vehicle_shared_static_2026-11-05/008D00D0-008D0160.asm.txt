@@ -1,0 +1,54 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008D00D0: 51                 push        ecx
+  008D00D1: 56                 push        esi
+  008D00D2: 8B F1              mov         esi,ecx
+  008D00D4: 83 BE 44 05 00 00  cmp         dword ptr [esi+00000544h],3
+            03
+  008D00DB: 75 31              jne         008D010E
+  008D00DD: 8B 8E 3C 05 00 00  mov         ecx,dword ptr [esi+0000053Ch]
+  008D00E3: 8D 44 24 04        lea         eax,[esp+4]
+  008D00E7: 50                 push        eax
+  008D00E8: E8 03 AF 00 00     call        008DAFF0
+  008D00ED: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  008D00F1: 85 C9              test        ecx,ecx
+  008D00F3: 74 19              je          008D010E
+  008D00F5: 8B 54 24 10        mov         edx,dword ptr [esp+10h]
+  008D00F9: D9 44 24 0C        fld         dword ptr [esp+0Ch]
+  008D00FD: 6A 00              push        0
+  008D00FF: 52                 push        edx
+  008D0100: 51                 push        ecx
+  008D0101: D9 1C 24           fstp        dword ptr [esp]
+  008D0104: E8 27 49 FB FF     call        00884A30
+  008D0109: 5E                 pop         esi
+  008D010A: 59                 pop         ecx
+  008D010B: C2 08 00           ret         8
+  008D010E: 83 BE 1C 05 00 00  cmp         dword ptr [esi+0000051Ch],8
+            08
+  008D0115: 0F 84 A0 00 00 00  je          008D01BB
+  008D011B: F3 0F 10 44 24 0C  movss       xmm0,dword ptr [esp+0Ch]
+  008D0121: F3 0F 59 05 44 A7  mulss       xmm0,dword ptr ds:[00E3A744h]
+            E3 00
+  008D0129: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  008D012D: F3 0F 10 15 40 A7  movss       xmm2,dword ptr ds:[00E3A740h]
+            E3 00
+  008D0135: F3 0F 10 49 08     movss       xmm1,dword ptr [ecx+8]
+  008D013A: F3 0F 2C C0        cvttss2si   eax,xmm0
+  008D013E: F3 0F 10 86 C4 04  movss       xmm0,dword ptr [esi+000004C4h]
+            00 00
+  008D0146: 88 44 24 0C        mov         byte ptr [esp+0Ch],al
+  008D014A: 0F 28 D8           movaps      xmm3,xmm0
+  008D014D: F3 0F 59 DA        mulss       xmm3,xmm2
+  008D0151: 32 C0              xor         al,al
+  008D0153: 0F 2F CB           comiss      xmm1,xmm3
+  008D0156: F3 0F 10 1D 3C A7  movss       xmm3,dword ptr ds:[00E3A73Ch]
+            E3 00
+  008D015E: 76 04              jbe         008D0164
+  008D0160: B0
+
+  Summary
+
+      9C8000 .text

@@ -1,10 +1,16 @@
-# DriverSF V29s — lean VS workspace
+# DriverSF V29s workspace
 
-Open `START_HERE.md` first. This is a clean, focused snapshot from the larger DriverSF traffic research repository. No raw logs, old binaries, generated build directories, third-party unpacked files, or obsolete solution folders are bundled.
+Read [START_HERE.md](START_HERE.md), then [NEXT_ACTION.md](NEXT_ACTION.md).
 
-- For the Visual Studio AI, paste the text in `PROMPT_FOR_VISUAL_STUDIO.md` once.
-- For the only active VS solution, open `DriverSF_V29s_NATIVE_TRACE.slnx` (**Release | Win32**, v145).
-- The 150/160 main and 45/160 control compiled test ASIs are in separate `dist/` folders. They must NOT be installed together.
-- A fresh Git repository contains this handoff snapshot as an initial commit; it is deliberately **not** the original dirty historical Git working tree. The previous full V29s archive preserves that history and uncommitted files.
-- Python analysis needs no external packages. VS 2026 with x86 C++ build tools is required to rebuild natively.
-- `reference/` is optional background material. The VS AI must not read it wholesale at startup.
+The current staged test is **REPLAY150_R1**; PARKED150_R1 is its live-validated parked parent, with replay stability still under test. The active `DriverSF_V29s_NATIVE_TRACE.slnx` contains only `DriverSF_V29s_ARENA_REUSE.vcxproj`, Release / Win32.
+
+- `src/`: preserved production source and shared conditional implementation.
+- `dist/MAIN_150/`: current ASI, its test guide and latest validated user log.
+- `build/v29s_replay150_r1/`: current generated build output.
+- `analysis/`: current reports plus explicitly retained verification prerequisites; see its README.
+- `scripts/` and `tests/`: current entry points and inherited checks; see their READMEs.
+- `archive/retired_2026-11-06/`: retired projects, tests, ASIs, logs, reports and deferred Forza files, with a SHA256/path manifest.
+
+The dated archive preserves history; it is not a second active build tree. Restore specific historical files to their recorded original paths before trying to rerun an old experiment. Existing earlier archive, reference, tools, IDE and git data were left in place.
+
+This reorganization preserves the source and working binary. It reduces active clutter; archived files still occupy disk space.

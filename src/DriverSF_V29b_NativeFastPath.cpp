@@ -40,6 +40,45 @@ constexpr bool Check150Roster() {
 }
 static_assert(Check150Roster(), "150-ID roster is invalid or omits stock models");
 
+// Test whether request order affects the later civilian vehicle visual delay.
+// Keep the baseline roster intact; only the ordered build defines this flag.
+#if defined(DSF_CHAPTER7_ORDERED_ROSTER)
+static_assert(DSF_CHAPTER7_PRELOAD_COUNT == 150,
+              "The ordered-roster experiment is defined only for 150 requests");
+struct OrderedChapter7Roster {
+    unsigned ids[150]{};
+    constexpr OrderedChapter7Roster() {
+        for (unsigned i = 0; i < 150; ++i) ids[i] = kChapter7AllPositiveIds[i];
+        for (unsigned i = 1; i < 150; ++i) {
+            const unsigned value = ids[i];
+            unsigned j = i;
+            while (j > 0 && ids[j - 1] > value) {
+                ids[j] = ids[j - 1];
+                --j;
+            }
+            ids[j] = value;
+        }
+    }
+};
+constexpr OrderedChapter7Roster kChapter7OrderedRoster{};
+constexpr bool CheckOrdered150Roster() {
+    for (unsigned i = 0; i < 150; ++i) {
+        if (kChapter7OrderedRoster.ids[i] != kChapter7AllPositiveIds[i]) {
+            bool found = false;
+            for (unsigned j = 0; j < 150; ++j)
+                if (kChapter7OrderedRoster.ids[i] == kChapter7AllPositiveIds[j]) found = true;
+            if (!found) return false;
+        }
+        if (i && kChapter7OrderedRoster.ids[i - 1] >= kChapter7OrderedRoster.ids[i]) return false;
+    }
+    return true;
+}
+static_assert(CheckOrdered150Roster(), "Ordered roster must contain the same 150 unique IDs");
+constexpr const unsigned* kChapter7Active150Ids = kChapter7OrderedRoster.ids;
+#else
+constexpr const unsigned* kChapter7Active150Ids = kChapter7AllPositiveIds;
+#endif
+
 typedef unsigned char  U8;
 typedef unsigned short U16;
 typedef unsigned int   U32;
@@ -68,6 +107,7 @@ __declspec(dllimport) HANDLE __stdcall GetCurrentProcess();
 __declspec(dllimport) void __stdcall ExitProcess(U32);
 __declspec(dllimport) BOOL __stdcall GetProcessMemoryInfo(HANDLE, void*, DWORD); // PSAPI.dll
 __declspec(dllimport) long __stdcall InterlockedIncrement(volatile long*);
+__declspec(dllimport) long __stdcall InterlockedDecrement(volatile long*);
 __declspec(dllimport) long __stdcall InterlockedExchange(volatile long*, long);
 __declspec(dllimport) long __stdcall InterlockedCompareExchange(volatile long*, long, long);
 __declspec(dllimport) U32 __stdcall GetTempPathA(U32, char*);
@@ -80,6 +120,7 @@ __declspec(dllimport) DWORD __stdcall GetTickCount();
 
 extern "C" void* _ReturnAddress();
 #pragma intrinsic(_ReturnAddress)
+
 
 // Compiler-generated aggregate zeroing must not introduce a CRT dependency.
 extern "C" __declspec(noinline) void* __cdecl memset(void* destination, int value, unsigned size) {
@@ -155,6 +196,11 @@ extern "C" __declspec(dllexport) volatile long DSFV27B_LiveAdmission = -1;
 extern "C" __declspec(dllexport) volatile long DSFV27B_HookInstalled = 0;
 
 namespace {
+#if defined(DSF_V29S_ARENA_REUSE)
+static void LegacyExit(U32 code,const char* reason,UPtr owner=0u,UPtr cursor=0u,U32 active=0u,U32 recycled=0u);
+#else
+static void LegacyExit(U32 code,const char*,UPtr=0u,UPtr=0u,U32=0u,U32=0u){ExitProcess(code);}
+#endif
 constexpr UPtr kPreferredBase = 0x00400000u;
 constexpr U32 kTimestamp = 0x4EC0D92Bu;
 constexpr U32 kSizeOfImage = 0x019C0000u;
@@ -212,11 +258,16 @@ volatile UPtr g_hashFirstOwner = 0;
 bool g_hashPatchInstalled = false;
 extern "C" UPtr g_hashAllocationResumeAddress = 0;
 UPtr g_base = 0;
+#if defined(DSF_V29S_INDEXED_262144)
+static bool g_indexedStockVerified=false;
+#endif
 typedef UPtr (__thiscall* HandlerInitFn)(void*);
 HandlerInitFn g_originalHandlerInit = nullptr;
 void* g_handlerTrampoline = nullptr;
 
 inline UPtr Address(UPtr preferred) { return g_base + (preferred - kPreferredBase); }
+inline U8 Read8(UPtr address) { return *reinterpret_cast<volatile const U8*>(address); }
+inline U16 Read16(UPtr address) { return *reinterpret_cast<volatile const U16*>(address); }
 inline U32 Read32(UPtr address) { return *reinterpret_cast<volatile const U32*>(address); }
 inline void Write32(UPtr address, U32 value) { *reinterpret_cast<volatile U32*>(address) = value; }
 
@@ -230,30 +281,7 @@ bool Readable(UPtr address, U32 bytes) {
     return end >= address && address + bytes <= end;
 }
 
-bool VerifyExecutable() {
-    if (!g_base || !Readable(g_base, 0x1000)) return false;
-    const U8* image = reinterpret_cast<const U8*>(g_base);
-    if (image[0] != 'M' || image[1] != 'Z') return false;
-    const U32 peOffset = Read32(g_base + 0x3cu);
-    if (peOffset < 0x40 || peOffset > 0x800) return false;
-    const UPtr nt = g_base + peOffset;
-    if (Read32(nt) != 0x00004550u ||
-        *reinterpret_cast<const U16*>(nt + 4) != 0x014cu ||
-        Read32(nt + 8) != kTimestamp ||
-        *reinterpret_cast<const U16*>(nt + 24) != 0x010bu ||
-        Read32(nt + 0x50) != kSizeOfImage) return false;
-    const U8 ctor[] = {0x81, 0xEC, 0x5C, 0x02, 0x00, 0x00};
-    const UPtr ctorPtr = Address(kGraphicsCtor);
-    if (!Readable(ctorPtr, sizeof(ctor))) return false;
-    for (unsigned i = 0; i < sizeof(ctor); ++i)
-        if (*reinterpret_cast<const U8*>(ctorPtr + i) != ctor[i]) return false;
-    const U8 handler[] = {0xA1, 0x28, 0x72, 0xFE, 0x00};
-    const UPtr handlerPtr = Address(kHandlerInit);
-    if (g_base != kPreferredBase || !Readable(handlerPtr, sizeof(handler))) return false;
-    for (unsigned i = 0; i < sizeof(handler); ++i)
-        if (*reinterpret_cast<const U8*>(handlerPtr + i) != handler[i]) return false;
-    return true;
-}
+#include "V29sStartupChecks.inc"
 
 // V29b: preserve native fast path until the 45000-node cursor reaches the end.
 // The game's ordinary recycled-node path (0xBAEDC7) is deliberately untouched.
@@ -264,7 +292,7 @@ extern "C" __declspec(noinline) UPtr __cdecl V29AcquireFreshHashNode(UPtr owner)
     if (!owner || !g_hashExternal || (g_hashFirstOwner && owner != g_hashFirstOwner)) {
         ++DSFV29_HashFaults;
         OutputDebugStringA("DSFV29b: FATAL unexpected hash root or missing arena; stopping to prevent memory overwrite.\n");
-        ExitProcess(0x29u);
+        LegacyExit(0x29u,"hashOwnerOrStorage",owner);
         return 0;
     }
     if (!g_hashFirstOwner) g_hashFirstOwner = owner;
@@ -286,7 +314,7 @@ extern "C" __declspec(noinline) UPtr __cdecl V29AcquireFreshHashNode(UPtr owner)
         if (idx >= kHashExtraNodes) {
             ++DSFV29_HashFaults;
             OutputDebugStringA("DSFV29b: FATAL external 45000-node arena exhausted.\n");
-            ExitProcess(0x29u);
+            LegacyExit(0x29u,"hashExternalExhausted",owner,unused);
             return 0;
         }
         if (idx == 0) {
@@ -298,7 +326,7 @@ extern "C" __declspec(noinline) UPtr __cdecl V29AcquireFreshHashNode(UPtr owner)
     }
     ++DSFV29_HashFaults;
     OutputDebugStringA("DSFV29b: FATAL hash node cursor invalid or 90000-node total reached; stopping before corruption.\n");
-    ExitProcess(0x29u);
+    LegacyExit(0x29u,"hashCursor",owner,unused);
     return 0;
 }
 
@@ -412,6 +440,9 @@ void ApplyPreinitGraphicsExpansion() {
         Log("DSFV29b: executable identity/signature did not match, NO PATCH.\n");
         return;
     }
+#if defined(DSF_V29S_INDEXED_262144)
+    g_indexedStockVerified=true; // VerifyExecutable passed before our code writes.
+#endif
     const UPtr manager = Address(kGraphicsManager);
     if (!Readable(manager + 0x348u, 8u) || Read32(manager + 0x348u) != 0u) {
         DSF150_Status = -2;
@@ -480,6 +511,147 @@ void ApplyPreinitGraphicsExpansion() {
         : "DSFV29b: early graphics source patched 35 -> 150.\n");
     Log("DSFV29b: City Region budget A 0x4000 -> 0x8000, B 0x20000 -> 0x40000; City Region count remains ZERO.\n");
 }
+
+#if defined(DSF_V29S_MODEL_POOL_EXPANDED)
+// The 0xF8 vehicle-definition allocator uses the third pool initialized by
+// 0088A4C0. Its stock capacity is 0x2D (45). The same EDX writes +48 and +64;
+// changing only this immediate lets the native allocator size both arrays.
+static bool g_sModelPoolPatched=false;
+static bool RestoreModelPoolCapacity() {
+    if(!g_sModelPoolPatched)return true;
+    const UPtr site=Address(0x0088A4F3u);
+    DWORD old=0;
+    if(!VirtualProtect(reinterpret_cast<void*>(site),4u,kPageExecuteReadWrite,&old))return false;
+    Write32(site,45u);
+    const BOOL flushed=FlushInstructionCache(GetCurrentProcess(),reinterpret_cast<void*>(site),4u);
+    DWORD discarded=0;
+    const BOOL protectedAgain=VirtualProtect(reinterpret_cast<void*>(site),4u,old,&discarded);
+    if(flushed && protectedAgain)g_sModelPoolPatched=false;
+    return flushed && protectedAgain;
+}
+static bool InstallModelPoolCapacity() {
+    const UPtr entry=Address(0x0088A4F2u);
+    const U8 stock[]={0xBA,0x2D,0x00,0x00,0x00,0x89,0x50,0x48};
+    const U8 secondWrite[]={0x89,0x50,0x64};
+    const UPtr singleton=Address(0x0144BCFCu);
+    if(!VerifyExecutable() || !Readable(entry,sizeof(stock)) ||
+       !Readable(Address(0x0088A506u),sizeof(secondWrite)) ||
+       !Readable(singleton,4u) || Read32(singleton)!=0u)return false;
+    for(U32 i=0;i<sizeof(stock);++i)
+        if(*reinterpret_cast<const U8*>(entry+i)!=stock[i])return false;
+    for(U32 i=0;i<sizeof(secondWrite);++i)
+        if(*reinterpret_cast<const U8*>(Address(0x0088A506u)+i)!=secondWrite[i])return false;
+    DWORD old=0;
+    if(!VirtualProtect(reinterpret_cast<void*>(entry+1u),4u,kPageExecuteReadWrite,&old))return false;
+    Write32(entry+1u,160u);
+    g_sModelPoolPatched=true;
+    const BOOL flushed=FlushInstructionCache(GetCurrentProcess(),reinterpret_cast<void*>(entry),8u);
+    DWORD discarded=0;
+    const BOOL protectedAgain=VirtualProtect(reinterpret_cast<void*>(entry+1u),4u,old,&discarded);
+    if(!flushed || !protectedAgain || Read32(entry+1u)!=160u) {
+        RestoreModelPoolCapacity();return false;
+    }
+    Log("DSFV29s: vehicle-definition pool source capacity 45 -> 160 before allocator initialization.\n");
+    return true;
+}
+#endif
+
+#if defined(DSF_V29S_RESOURCE_COLLECTION_EXPANDED)
+// Driver.exe keeps a 16,384-entry pointer array immediately before its
+// 16,384-entry pair array, with the count immediately after the pair array.
+// The append at 006A594F writes through the count at index 16384. Keep the
+// native count and redirect BOTH arrays, including the manager-relative
+// traversal/compaction accesses, to one larger pair of backing arrays.
+static const U32 kResourceCollectionCapacity=131072u;
+static U32 g_sResourcePointers[kResourceCollectionCapacity]={};
+static U32 g_sResourcePairs[kResourceCollectionCapacity*2u]={};
+struct ResourceArrayPatch { UPtr site; U8 offset; U32 stock; U8 target; bool relative; bool done; };
+// target: 0=pointer array, 1=pair first word, 2=pair second word.
+static ResourceArrayPatch g_sResourceArrayPatches[]={
+    {0x006A51BDu,3u,0x00137AC8u,1u,true,false},
+    {0x006A51C7u,3u,0x00137ACCu,2u,true,false},
+    {0x006A51D4u,3u,0x00127AC8u,0u,true,false},
+    {0x006A593Fu,3u,0x0186A6B8u,1u,false,false},
+    {0x006A594Fu,3u,0x0186A6BCu,2u,false,false},
+    {0x006A595Cu,3u,0x0185A6B8u,0u,false,false},
+    {0x006A5A19u,3u,0x0186A6B8u,1u,false,false},
+    {0x006A5A29u,3u,0x0186A6BCu,2u,false,false},
+    {0x006A5A36u,3u,0x0185A6B8u,0u,false,false},
+    {0x006CC661u,3u,0x0186A6B8u,1u,false,false},
+    {0x006CC671u,3u,0x0186A6BCu,2u,false,false},
+    {0x006CC683u,3u,0x0185A6B8u,0u,false,false},
+    {0x00BAA038u,3u,0x0186A6B8u,1u,false,false},
+    {0x00BAA048u,3u,0x0186A6BCu,2u,false,false},
+    {0x00BAA055u,3u,0x0185A6B8u,0u,false,false},
+    {0x00BAA2CBu,3u,0x0186A6B8u,1u,false,false},
+    {0x00BAA2DAu,3u,0x0186A6BCu,2u,false,false},
+    {0x00BAA2E7u,3u,0x0185A6B8u,0u,false,false},
+    {0x00BAA342u,3u,0x0186A6B8u,1u,false,false},
+    {0x00BAA351u,3u,0x0186A6BCu,2u,false,false},
+    {0x00BAA35Eu,3u,0x0185A6B8u,0u,false,false},
+    {0x00BAE7AEu,2u,0x00137AC8u,1u,true,false},
+    {0x00BAE7B9u,2u,0x00127AC8u,0u,true,false},
+    {0x00BAE8D9u,3u,0x00127AC8u,0u,true,false},
+    {0x00BAE8EDu,3u,0x00137AC8u,1u,true,false},
+    {0x00BAE8F6u,3u,0x00137ACCu,2u,true,false},
+    {0x00BAEAADu,2u,0x00137AC8u,1u,true,false},
+    {0x00BAEAB3u,2u,0x00127AC8u,0u,true,false},
+    {0x00BAEAD0u,3u,0x00127AC8u,0u,true,false},
+    {0x00BAEADFu,3u,0x00137AC8u,1u,true,false},
+    {0x00BAEAE8u,3u,0x00137ACCu,2u,true,false}
+};
+static U32 g_sResourcePatchCount=0u;
+static U32 ResourceArrayReplacement(const ResourceArrayPatch& patch) {
+    const UPtr target=patch.target==0u
+        ? reinterpret_cast<UPtr>(g_sResourcePointers)
+        : reinterpret_cast<UPtr>(g_sResourcePairs)+(patch.target==2u?4u:0u);
+    return static_cast<U32>(target-(patch.relative?Address(0x01732BF0u):0u));
+}
+static bool RestoreResourceCollection() {
+    bool okay=true;
+    for(U32 i=static_cast<U32>(sizeof(g_sResourceArrayPatches)/sizeof(g_sResourceArrayPatches[0]));i>0u;--i) {
+        ResourceArrayPatch& patch=g_sResourceArrayPatches[i-1u];
+        if(!patch.done)continue;
+        const UPtr site=Address(patch.site)+patch.offset;
+        DWORD old=0,discarded=0;
+        if(!VirtualProtect(reinterpret_cast<void*>(site),4u,kPageExecuteReadWrite,&old)) {okay=false;continue;}
+        Write32(site,patch.stock);
+        const bool flushed=FlushInstructionCache(GetCurrentProcess(),reinterpret_cast<void*>(site),4u)!=0;
+        const bool restored=VirtualProtect(reinterpret_cast<void*>(site),4u,old,&discarded)!=0;
+        if(!flushed || !restored)okay=false;
+        patch.done=false;
+    }
+    if(okay)g_sResourcePatchCount=0u;
+    return okay;
+}
+static bool InstallResourceCollection() {
+    if(!VerifyExecutable() || !Readable(Address(0x0188A6B8u),4u) ||
+       Read32(Address(0x0188A6B8u))!=0u ||
+       Address(0x01732BF0u)+0x00157AC8u!=Address(0x0188A6B8u))return false;
+    for(const ResourceArrayPatch& patch:g_sResourceArrayPatches) {
+        const UPtr site=Address(patch.site)+patch.offset;
+        if(!Readable(site,4u) || Read32(site)!=patch.stock)return false;
+    }
+    for(ResourceArrayPatch& patch:g_sResourceArrayPatches) {
+        const UPtr site=Address(patch.site)+patch.offset;
+        DWORD old=0,discarded=0;
+        if(!VirtualProtect(reinterpret_cast<void*>(site),4u,kPageExecuteReadWrite,&old)) {
+            RestoreResourceCollection();return false;
+        }
+        const U32 replacement=ResourceArrayReplacement(patch);
+        Write32(site,replacement);
+        patch.done=true;
+        ++g_sResourcePatchCount;
+        const bool flushed=FlushInstructionCache(GetCurrentProcess(),reinterpret_cast<void*>(site),4u)!=0;
+        const bool restored=VirtualProtect(reinterpret_cast<void*>(site),4u,old,&discarded)!=0;
+        if(!flushed || !restored || Read32(site)!=replacement) {
+            RestoreResourceCollection();return false;
+        }
+    }
+    Log("DSFV29s: resource collection pointer/pair arrays redirected together, capacity 16384 -> 131072.\n");
+    return true;
+}
+#endif
 
 // The native initializer at 0x005A1420 begins with a 5-byte MOV EAX,[root].
 // No relative control transfer is present in those five bytes. This exact
@@ -690,6 +862,9 @@ extern "C" __declspec(dllexport) volatile long DSFV27B_InstructionRedirectCalls 
 constexpr U32 kReqInline = 50u;
 constexpr U32 kReqCapacity = 150u;
 struct RequestSidecar { UPtr owner; U32 count; U32 ids[kReqCapacity]; };
+#if defined(DSF_V29S_BASELINE150)
+static void BaselineRequest(UPtr owner,UPtr caller,const U32* original,int originalCount,const U32* effective,U32 count,const char* result);
+#endif
 static RequestSidecar g_reqSidecars[16] = {};
 static volatile long g_reqLock = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_RequestLastCount = 0;
@@ -697,6 +872,16 @@ extern "C" __declspec(dllexport) volatile long DSFV27B_RequestHighWater = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_RequestExtraReads = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_RequestRejected = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_RequestFault = 0;
+#if defined(DSF_V29S_NATIVE_TRACE)
+// Passive snapshots at the original 50-ID inline boundary. The request
+// reader still supplies exactly the same EDI value to the game.
+static const U32 kRequestProbeIndex[10]={0u,44u,49u,50u,51u,52u,100u,101u,102u,149u};
+static volatile long g_requestProbeCalls[10]={};
+static volatile long g_requestProbeId[10]={};
+static volatile long g_requestProbeFound[10]={};
+static volatile long g_requestProbeBad[10]={};
+extern "C" __declspec(dllexport) volatile long DSFV29s_RequestBoundaryBad=0;
+#endif
 extern "C" __declspec(dllexport) volatile long DSFV27B_RequestFramePatchCount = 0;
 extern "C" __declspec(dllexport) volatile long DSF_Chapter7PreloadHits = 0;
 extern "C" __declspec(dllexport) volatile long DSF_Chapter7PreloadLastHash = 0;
@@ -725,6 +910,15 @@ bool IsExactChapter7StockRequest(const U32* list, U32 count) {
     return true;
 }
 
+#if defined(DSF_V29S_CHAPTERS)
+static_assert(DSF_CHAPTER7_PRELOAD_COUNT==150 && DSF_GRAPHICS_ADMISSION_TARGET==160,
+              "Chapter-independent selection retains the validated 150/160 capacities");
+#if !defined(DSF_V29S_PENDING512)
+#error Chapter-independent selection requires the validated pending512 baseline
+#endif
+#include "V29sChapterCore.inc"
+#endif
+
 void RequestLock() { while (InterlockedExchange(&g_reqLock, 1u)) {} }
 void RequestUnlock() { InterlockedExchange(&g_reqLock,0); }
 RequestSidecar* RequestSlot(UPtr ctx, bool create) {
@@ -737,18 +931,63 @@ RequestSidecar* RequestSlot(UPtr ctx, bool create) {
     return nullptr;
 }
 
+#if defined(DSF_V29S_REG_SOURCE_DIAG)
+static const U32 kSRequestBatchCapacity=64u,kSRequestBatchIds=160u;
+struct DiagSRequestBatch {
+    volatile long sequence;
+    U32 tick,context,originalCount,effectiveCount;
+    U32 originalIds[kSRequestBatchIds],effectiveIds[kSRequestBatchIds];
+};
+static DiagSRequestBatch g_sRequestBatches[kSRequestBatchCapacity]={};
+static volatile long g_sRequestBatchNext=0,g_sRequestBatchDrops=0;
+static long g_sRequestBatchDrained=0;
+static void DiagSRecordRequestBatch(UPtr context,const U32* original,int originalCount,
+                                    const U32* effective,int effectiveCount) {
+    if(originalCount<18 && effectiveCount<18)return;
+    const long sequence=InterlockedIncrement(&g_sRequestBatchNext);
+    if(sequence<1 || static_cast<U32>(sequence)>kSRequestBatchCapacity) {
+        InterlockedIncrement(&g_sRequestBatchDrops);return;
+    }
+    DiagSRequestBatch& batch=g_sRequestBatches[sequence-1];
+    batch.tick=GetTickCount();batch.context=context;
+    batch.originalCount=originalCount>0?static_cast<U32>(originalCount):0u;
+    batch.effectiveCount=effectiveCount>0?static_cast<U32>(effectiveCount):0u;
+    const U32 originalCopy=batch.originalCount<kSRequestBatchIds?
+        batch.originalCount:kSRequestBatchIds;
+    const U32 effectiveCopy=batch.effectiveCount<kSRequestBatchIds?
+        batch.effectiveCount:kSRequestBatchIds;
+    for(U32 i=0;i<originalCopy;++i)batch.originalIds[i]=original[i];
+    for(U32 i=0;i<effectiveCopy;++i)batch.effectiveIds[i]=effective[i];
+    InterlockedExchange(&batch.sequence,sequence);
+}
+#endif
+
 // ABI: original 0x005A79F0 is thiscall, stack args [list, signed count],
 // callee pops 8. __fastcall takes ECX=self and an unused EDX, then the
 // same two stack arguments and produces a matching RET 8.
 extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list, int requested) {
     const UPtr ctx=reinterpret_cast<UPtr>(self);
+#if defined(DSF_V29S_BASELINE150)
+    const U32* baselineOriginal=list;const int baselineCount=requested;
+    const UPtr baselineCaller=reinterpret_cast<UPtr>(_ReturnAddress());
+#endif
+#if defined(DSF_V29S_REG_SOURCE_DIAG)
+    const U32* const originalList=list;
+    const int originalRequested=requested;
+#endif
     if (!Readable(ctx, 0xDB0u) || requested > static_cast<int>(kReqCapacity) ||
         (requested > 0 && (!list || !Readable(reinterpret_cast<UPtr>(list),
                                                   static_cast<U32>(requested)*4u)))) {
         ++DSFV27B_RequestRejected;
         Log("DSFV29b: REJECT request with bad count/context/source, previous request retained.\n");
+#if defined(DSF_V29S_BASELINE150)
+        BaselineRequest(ctx,baselineCaller,baselineOriginal,baselineCount,nullptr,0u,"invalidInput");
+#endif
         return;
     }
+#if defined(DSF_V29S_CHAPTERS)
+    ChapterSelectRequest(reinterpret_cast<UPtr>(_ReturnAddress()),ctx,list,requested);
+#else
     // Match the exact 18-ID Chapter 7/f0 native request during normal loading.
     // Direct 45-ID console requests do not match this fingerprint.
     if (requested == 18) ++DSF_Chapter7PreloadSeen18;
@@ -773,16 +1012,24 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
                 list=kChapter7Trial45Ids;
                 requested=45;
             } else {
-                list=kChapter7AllPositiveIds;
+                list=kChapter7Active150Ids;
                 requested=150;
             }
             ++DSF_Chapter7PreloadHits;
+#if defined(DSF_CHAPTER7_ORDERED_ROSTER)
+            Log("DSFV29b: Chapter 7 150-ID request order=ascending.\n");
+#endif
             Log(DSF_CHAPTER7_PRELOAD_COUNT == 45
                 ? "DSFV29b: exact Chapter 7 native request expanded to 45 during normal chapter load.\n"
                 : "DSFV29b: exact Chapter 7 native request expanded to 150 during normal chapter load.\n");
 #endif
         }
     }
+// Preserve the original Chapter7 experiment for builds without CHAPTERS.
+#endif
+#if defined(DSF_V29S_REG_SOURCE_DIAG)
+    DiagSRecordRequestBatch(ctx,originalList,originalRequested,list,requested);
+#endif
     const U32 count=requested>0 ? static_cast<U32>(requested):0u;
     RequestLock();
     RequestSidecar* slot=RequestSlot(ctx, true);
@@ -790,6 +1037,9 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
         RequestUnlock();
         ++DSFV27B_RequestRejected;
         Log("DSFV29b: REJECT request: no free request sidecar.\n");
+#if defined(DSF_V29S_BASELINE150)
+        BaselineRequest(ctx,baselineCaller,baselineOriginal,baselineCount,nullptr,0u,"requestOwnerFull");
+#endif
         return;
     }
     for (U32 i=0;i<count;++i) {
@@ -798,6 +1048,9 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
             RequestUnlock();
             ++DSFV27B_RequestRejected;
             Log("DSFV29b: REJECT request: vehicle ID exceeds 16 bits.\n");
+#if defined(DSF_V29S_BASELINE150)
+            BaselineRequest(ctx,baselineCaller,baselineOriginal,baselineCount,nullptr,0u,"idOutOfRange");
+#endif
             return;
         }
     }
@@ -807,6 +1060,9 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
     for (U32 i=0;i<count && i<kReqInline;++i) Write32(ctx+i*4u,slot->ids[i]);
     Write32(ctx+0xC8u,count);
     RequestUnlock();
+#if defined(DSF_V29S_BASELINE150)
+    BaselineRequest(ctx,baselineCaller,baselineOriginal,baselineCount,list,count,"accepted");
+#endif
     DSFV27B_RequestLastCount=static_cast<long>(count);
     if (static_cast<long>(count)>DSFV27B_RequestHighWater)
         DSFV27B_RequestHighWater=static_cast<long>(count);
@@ -818,11 +1074,33 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
     }
 }
 
+#if defined(DSF_V29S_NATIVE_TRACE)
+static void RecordRequestProbe(UPtr ctx,U32 index,U32 id,bool found) {
+    if(Read32(ctx+0xC8u)!=static_cast<U32>(DSF_CHAPTER7_PRELOAD_COUNT))return;
+    for(U32 i=0;i<10u;++i) {
+        if(index!=kRequestProbeIndex[i])continue;
+        const U32 expected=DSF_CHAPTER7_PRELOAD_COUNT==45 ?
+            (index<45u?kChapter7Trial45Ids[index]:0xFFFFu) :
+            kChapter7Active150Ids[index];
+        InterlockedIncrement(&g_requestProbeCalls[i]);
+        g_requestProbeId[i]=static_cast<long>(id);
+        g_requestProbeFound[i]=found?1:0;
+        if(!found || id!=expected) {
+            InterlockedIncrement(&g_requestProbeBad[i]);
+            InterlockedIncrement(&DSFV29s_RequestBoundaryBad);
+        }
+        break;
+    }
+}
+#endif
 extern "C" __declspec(noinline) void __cdecl RequestReadBridge(CpuRegs* r) {
     // Stolen instructions: mov eax,[esi+0x334]; movzx edi,word [esi+ebp*4].
     r->eax=Read32(r->esi+0x334u);
     if (r->ebp<kReqInline) {
         r->edi=Read32(r->esi+4u*r->ebp)&0xFFFFu;
+#if defined(DSF_V29S_NATIVE_TRACE)
+        RecordRequestProbe(r->esi,r->ebp,r->edi,true);
+#endif
         return;
     }
     U32 id=0xFFFFu;
@@ -839,6 +1117,9 @@ extern "C" __declspec(noinline) void __cdecl RequestReadBridge(CpuRegs* r) {
         Log("DSFV29b: FATAL extended request index unavailable; stop process.\n");
     } else ++DSFV27B_RequestExtraReads;
     r->edi=id&0xFFFFu;
+#if defined(DSF_V29S_NATIVE_TRACE)
+    RecordRequestProbe(r->esi,r->ebp,r->edi,found);
+#endif
 }
 
 extern "C" UPtr g_retRequestRead = 0;
@@ -1134,6 +1415,11 @@ void AppendText(char*& cursor,const char* text,const char* end);
 void AppendHex32(char*& cursor,U32 value,const char* end);
 static void DiagPrint(const char* text);
 
+#if defined(DSF_V29S_PENDING512)
+static void CapacityMax(volatile long& destination,U32 value);
+#include "V29sPendingMapCore.inc"
+#endif
+
 // Diagnostic-only EF lifecycle events. Producers do no I/O or allocation.
 // A single monitor consumer formats and drains the bounded ring below.
 constexpr U32 kEfEventSlots=4096u;
@@ -1298,6 +1584,9 @@ static ResourceMap16Sidecar* FindResourceMap16(UPtr map) {
 
 UPtr __fastcall MapInsertBridge(void* self,void*,UPtr a,UPtr b,UPtr c) {
     const UPtr map=reinterpret_cast<UPtr>(self);
+#if defined(DSF_V29S_PENDING512)
+    if(PendingOwns(map))return PendingInsert(map,a,b,c);
+#endif
     const bool ef=IsResourceMap16Variant(map,0xEFu);
     const UPtr efOwner=map-0x23Cu;
     const U32 efGen=ef?EfGeneration(efOwner):0u;
@@ -2234,6 +2523,84 @@ static void EfDrainEvents() {
 #include "V29hGraphicsDiagnostics.inc"
 #if defined(DSF_V29S_NATIVE_TRACE)
 #include "V29sNativeLoadingTrace.inc"
+#if defined(DSF_V29S_VISUAL_TRACE)
+#include "V29sVisualTrace.inc"
+#endif
+#if defined(DSF_V29S_SUBMISSION_TRACE)
+#include "V29sSubmissionTrace.inc"
+#endif
+#if defined(DSF_V29S_DRAW_QUEUE_TRACE)
+#include "V29sDrawQueueTrace.inc"
+#endif
+#if defined(DSF_V29S_HANDLE_CHAIN_TRACE)
+#include "V29sHandleChainTrace.inc"
+#endif
+#if defined(DSF_V29S_HASH_HEAD_TRACE)
+#include "V29sHashHeadTrace.inc"
+#endif
+#if defined(DSF_V29S_AUDIO_TRACE)
+#include "V29sAudioBankTrace.inc"
+#endif
+#if defined(DSF_V29S_CAPACITY_TRACE)
+#if defined(DSF_V29S_INDEXED_262144)
+#include "V29sIndexedCapacity.inc"
+#endif
+#include "V29sCapacityTrace.inc"
+#if defined(DSF_V29S_AUDIO_DEFAULT_16M) || defined(DSF_V29S_AUDIO_DEFAULT_64M)
+#include "V29sAudioDefaultPoolPatch.inc"
+#endif
+#if defined(DSF_V29S_AUDIO_PROBE)
+#include "V29sAudioProbe.inc"
+#if defined(DSF_V29S_AUDIO_DEFAULT_16M) || defined(DSF_V29S_AUDIO_DEFAULT_64M)
+#include "V29sAudioDefaultPool.inc"
+#endif
+#if defined(DSF_V29S_AUDIO_SLOTS_2048)
+#include "V29sAudioSlots.inc"
+#endif
+#if defined(DSF_V29S_AUDIO_REASON_PROBE)
+#include "V29sAudioReason.inc"
+#endif
+#if defined(DSF_V29S_AUDIO_MODEL192)
+#include "V29sAudioModelRegistry.inc"
+#endif
+#if defined(DSF_V29S_CLEANUP_262144)
+#include "V29sCleanupQueue.inc"
+#endif
+#if defined(DSF_V29S_PENDING512)
+#include "V29sPendingMap.inc"
+#endif
+#if defined(DSF_V29S_CHAPTERS)
+#include "V29sChapterRuntime.inc"
+#endif
+#if defined(DSF_V29S_CALLBACK512)
+#if !defined(DSF_V29S_CHAPTERS)
+#error Callback extension requires the chapter-independent parent
+#endif
+#include "V29sCallback.inc"
+#endif
+#if defined(DSF_V29S_ARENA_REUSE)
+#if !defined(DSF_V29S_CALLBACK512)
+#error Arena lifetime repair requires the callback/chapter parent
+#endif
+#include "V29sArenaReuse.inc"
+#if defined(DSF_V29S_BASELINE150)
+#include "V29sBaseline150.inc"
+#if defined(DSF_V29S_NOTIFY150)
+#include "V29sNotify150.inc"
+#if defined(DSF_V29S_PARKED150)
+#include "V29sParked150.inc"
+#if defined(DSF_V29S_REPLAY150)
+#include "V29sReplay150.inc"
+#endif
+#endif
+#endif
+#endif
+#endif
+#if defined(DSF_V29S_AUDIO_STATIC_64M)
+#include "V29sAudioStatic64.inc"
+#endif
+#endif
+#endif
 #elif defined(DSF_V29R_CALLERS)
 #include "V29rCallerDiagnostics.inc"
 #elif defined(DSF_V29Q_TRAVERSAL)
@@ -2242,6 +2609,86 @@ static void EfDrainEvents() {
 
 // A very low-frequency read-only monitor. This never modifies resource lists,
 // admits extra IDs, or blocks their normal release paths.
+#if defined(DSF_V29S_PERF_CONTROL)
+DWORD __stdcall Monitor(void*) {
+#if defined(DSF_V29S_CAPACITY_TRACE)
+    CapacityStartLine();
+#endif
+    for (;;) {
+        const UPtr pool9 = Address(kGraphicsManager) + 0x348u;
+        if (DSF150_Status == 1 && Readable(pool9, 8u) && Read32(pool9) != 0u) {
+            DSF150_GraphicsSlots = static_cast<long>(Read32(pool9 + 4u));
+            DSF150_Status = DSF150_GraphicsSlots == static_cast<long>(kNewSlots) ? 2 : -7;
+        }
+        const UPtr rootLocation = Address(kRootPtr);
+        if (Readable(rootLocation, 4u)) {
+            const UPtr root = Read32(rootLocation);
+            if (Readable(root + 0x194u, 4u)) {
+                const UPtr pool = Read32(root + 0x194u);
+                if (Readable(pool + 0x1814u, 4u) && Read32(pool) == Address(0x00DDA2C8u)) {
+                    const U32 count = Read32(pool + 0x1010u);
+                    const U32 free = Read32(pool + 0x1814u);
+                    if (DSFV27B_PoolStatus == 1 && count == 512u && free <= 512u)
+                        DSFV27B_PoolStatus = 2;
+                    if ((count != 0u && count != 512u) || free > 512u) {
+                        DSFV27B_PoolStatus = -1;
+                        DSFV27B_UnsafeBoundary = 20;
+                    }
+                }
+            }
+        }
+#if defined(DSF_V29S_CAPACITY_TRACE)
+        CapacityPoll();
+#if defined(DSF_V29S_BASELINE150)
+        BaselinePoll();
+#if defined(DSF_V29S_NOTIFY150)
+        NotifyPoll();
+#if defined(DSF_V29S_PARKED150)
+        ParkPoll();
+#if defined(DSF_V29S_REPLAY150)
+        ReplayPoll();
+#endif
+#endif
+#endif
+#endif
+#if defined(DSF_V29S_CHAPTERS)
+        ChapterPoll();
+#endif
+#if defined(DSF_V29S_CALLBACK512)
+        CallbackPoll();
+#endif
+#if defined(DSF_V29S_ARENA_REUSE)
+        ArenaReusePoll();
+#endif
+#if defined(DSF_V29S_AUDIO_PROBE)
+        AudioProbePoll();
+#if defined(DSF_V29S_AUDIO_DEFAULT_16M) || defined(DSF_V29S_AUDIO_DEFAULT_64M)
+        AudioDefaultPoolPoll();
+#endif
+#if defined(DSF_V29S_AUDIO_SLOTS_2048)
+        AudioSlotsPoll();
+#endif
+#if defined(DSF_V29S_AUDIO_REASON_PROBE)
+        AudioReasonPoll();
+#endif
+#if defined(DSF_V29S_AUDIO_MODEL192)
+        AudioModelPoll();
+#endif
+#if defined(DSF_V29S_CLEANUP_262144)
+        CleanupPoll();
+#endif
+#if defined(DSF_V29S_PENDING512)
+        PendingPoll();
+#endif
+#if defined(DSF_V29S_AUDIO_STATIC_64M)
+        AudioStaticPoolPoll();
+#endif
+#endif
+#endif
+        Sleep(200u);
+    }
+}
+#else
 DWORD __stdcall Monitor(void*) {
     U32 loops = 0;
     long previousMap = -1;
@@ -2261,13 +2708,99 @@ DWORD __stdcall Monitor(void*) {
 #endif
     DiagPrint("DSFV29g_START city7SampleMs=200 maxRows=8192 fields=raw14,raw1C,secondRaw baseSampler=1\n");
 #if defined(DSF_V29S_NATIVE_TRACE)
-    DiagPrint(DSFV29s_Hooks==5 ? "DSFV29s_START hooks=5 reconcile=005A7490 gate=0059DB40 dispatch=0059D740 pass=0059D778 transfer=0059BAD0 noGameDataWrites=1\n" : "DSFV29s_START hooks=-1 signatureFailed=1 v29pRetained=1\n");
+    DiagPrint(DSFV29s_Hooks==5 ? "DSFV29s_START hooks=5 reconcile=005A7490 gate=0059DB40 dispatch=0059D740 pass=0059D778 transfer=0059BAD0 handlerWords=16 handlerState=00859000 handlerSampleMs=5000 noGameDataWrites=1\n" : "DSFV29s_START hooks=-1 signatureFailed=1 v29pRetained=1\n");
+    DiagPrint(DSFV29s_WaitHooks==2 ? "DSFV29s_WAIT_START hooks=2 failA=005A65DF failB=005A665A predicate=005A63B0 noGameDataWrites=1\n" : "DSFV29s_WAIT_START hooks=-1 signatureFailed=1\n");
+#if defined(DSF_V29S_POOL_DIAG)
+    DiagPrint(g_sPoolHooks==2 ? "DSFV29s_POOL_START hooks=2 site0=005A7DD1 site1=0083B170 site2=reconcile site3=waitA site4=waitB ring=8192 registers=all pools=CC,338,5A4,9A0 snapshotMs=1000 noPoolWrites=1\n" : "DSFV29s_POOL_START hooks=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_SPOOL0_EXPANDED)
+    DiagPrint(g_sScratchHook==2 ? "DSFV29s_SPOOL0_START pool=owner+CC inline=50 capacity=256 reconcileRedirect=1 scratchHooks=005A75DD,005A7665 scratchNodes=256\n" : "DSFV29s_SPOOL0_START scratchHooks=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_CLONE_EXPANDED)
+    DiagPrint(g_sCloneHook==1 ? "DSFV29s_CLONE_START hook=005A6960 caller=008093D1 inline=50 capacity=256 arenas=32 reuseByStackHeader=1\n" : "DSFV29s_CLONE_START hook=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_BUCKET_DIAG)
+    DiagPrint(g_sBucketHook==1 ? "DSFV29s_BUCKET_START hook=00809443 buckets=25 inlinePerBucket=50 readOnly=1\n" : "DSFV29s_BUCKET_START hook=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_MODEL_DIAG)
+    DiagPrint(g_sModelHook==1 ? "DSFV29s_MODEL_START hook=00890949 vehicleDefinitionId=EDI descriptor=EAX readOnly=1\n" : "DSFV29s_MODEL_START hook=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_LIVE_MODEL_DIAG)
+    DiagPrint(g_sLiveModelHooks==2 ? "DSFV29s_LIVE_MODEL_START hooks=2 sites=008DDFC4,008DA1EA vehicleDefinitionId=object+4850->14 readOnly=1\n" : "DSFV29s_LIVE_MODEL_START hooks=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_REG_SOURCE_DIAG)
+    DiagPrint(g_sRegHooks==3 ? "DSFV29s_REG_START hooks=3 entry=0086BCF0,0086BD40 create=0086BAB0 batches=RequestWriteBridge readOnly=1\n" : "DSFV29s_REG_START hooks=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_MODEL_POOL_EXPANDED)
+    DiagPrint(g_sModelPoolPatched && g_sRegMapHook==1 ? "DSFV29s_MODEL_POOL_START source=0088A4F3 stock=45 target=160 allocationType=F8 mapHook=0086BE5F inlineNodes=45 externalNodes=512\n" : "DSFV29s_MODEL_POOL_START patch=-1 preinitFailed=1\n");
+#endif
+#if defined(DSF_V29S_RESOURCE_COLLECTION_EXPANDED)
+    DiagPrint("DSFV29s_RESOURCE_COLLECTION_START count=0188A6B8 pointerArray=0185A6B8 pairArray=0186A6B8 stock=16384 target=131072 patchSites=31\n");
+#endif
+#if defined(DSF_V29S_ZAP_TARGET_DIAG)
+    DiagPrint("DSFV29s_ZAP_START source=GetTargetedGameVehicle player=0 selector=manager+338 fields=+1C,+18 nativeVehicleVptr=00E3A74C captureBytes=1536 modelLink=vehicle+5B4 modelVptr=00E39EAC pollMs=200 retainMs=10000 readOnly=1\n");
+#endif
+#if defined(DSF_V29S_EXTERIOR_TRACE)
+    DiagPrint("DSFV29s_EXT_START slotSite=00858860 drawEntry=008A8DA0 drawMask=008A8E53 arg0=raw slot=esp+8 sceneModelSlot=+564 events=2048 recentModels=4 readOnly=1\n");
+#endif
+#if defined(DSF_V29S_LOD_TRACE)
+    DiagPrint("DSFV29s_LOD_START requestSite=005A7FC6 base=owner+8 interior=owner+10 exterior=owner+12 extLoadedFlag=owner+1D drawId=base+2000 readOnly=1\n");
+    DiagPrint("DSFV29s_DRAW_SAMPLE_START entry=008A8DA0 mask=008A8E53 ring=2048 maxObjects=64 modelId=E39EAC:+4850->14 sceneSlot=E37118:+564 readOnly=1\n");
+    DiagPrint(g_sBodyHook==1 ? "DSFV29s_BODY_START hook=1 entry=008D56A0 callsDraw=008D590C model=vehicle+5B4 ring=2048 readOnly=1\n" : "DSFV29s_BODY_START hook=-1 signatureFailed=1\n");
+    DiagPrint(g_sCommonHooks==2 ? "DSFV29s_COMMON_START hooks=2 merge=008A8ECA walk=008A7D10 model=drawObject ring=2048 readOnly=1\n" : "DSFV29s_COMMON_START hooks=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_VISUAL_TRACE)
+    DiagPrint(g_vVisualHooks==2 ? "DSFV29s_VIS_START hooks=2 decision=008A8D05 candidate=008A8D12 ring=16384 model=currentShiftTarget caller716C=00716C0E caller8D59=008D5911 readOnly=1\n" : "DSFV29s_VIS_START hooks=-1 signatureFailed=1\n");
+    DiagPrint(g_vContextHook==1 ? "DSFV29s_CONTEXT_START hook=00716C3A rawContext=EBX rawField38=EBX+38 filtered=0 returnPath=00716C0E readOnly=1\n" : "DSFV29s_CONTEXT_START hook=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_SUBMISSION_TRACE)
+    DiagPrint(g_vSubmitHook==1 ? "DSFV29s_SUBMIT_START hooks=008A8B99,008A8D6F after=00697F10 selectedModel=dynamic resourceFields=48,4C budget=1 ring=8192 readOnly=1\n" : "DSFV29s_SUBMIT_START hook=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_DRAW_QUEUE_TRACE)
+    DiagPrint(g_vDrawQueueHook==3 ? "DSFV29s_DRAW_QUEUE_START hooks=3 flip=00BB5780 jobCheck=006C21F9 trapCheck=00BB5A8C capacity=16384 frameRing=8192 readOnly=1\n" : "DSFV29s_DRAW_QUEUE_START hooks=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_HANDLE_CHAIN_TRACE)
+    DiagPrint(g_vHandleHooks==8 ? "DSFV29s_HANDLE_START hooks=8 firstLink=00BAE8B3 secondLink=00BAE8C4 unlink=00BAEA80 alloc=00BAE888 reject=00BAE8A4 free=00BAEBCC freeAlt=00BAED21 unlinkNext=00BAEB8B indexedSlots=131072 nextProvenance=1 readOnly=1\n" : "DSFV29s_HANDLE_START hooks=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_HASH_HEAD_TRACE)
+#if DSF_CHAPTER7_PRELOAD_COUNT == 45
+    DiagPrint(g_vHashHeadHooks==4 ? "DSFV29s_HASH_HEAD_START hooks=4 insert=00BAE8BE unlink=00BAEBB7 alternate=00BAED29 lookup=00BAEB4F ledger=131072 request=45 modelSlots=160 logFilter=1 readOnly=1\n" : "DSFV29s_HASH_HEAD_START hooks=-1 signatureFailed=1\n");
+#else
+    DiagPrint(g_vHashHeadHooks==4 ? "DSFV29s_HASH_HEAD_START hooks=4 insert=00BAE8BE unlink=00BAEBB7 alternate=00BAED29 lookup=00BAEB4F ledger=131072 request=150 modelSlots=160 logFilter=1 readOnly=1\n" : "DSFV29s_HASH_HEAD_START hooks=-1 signatureFailed=1\n");
+#endif
+#endif
+#if defined(DSF_V29S_AUDIO_TRACE)
+    DiagPrint(g_audioHooks==5 ? "DSFV29s_AUDIO_START hooks=5 submit=0084BED2 callback=0084BE74 open=008FC54E lookup=0048F780 matched=0048F7B0 statusMs=5000 readOnly=1\n" : "DSFV29s_AUDIO_START hooks=-1 signatureFailed=1\n");
+#endif
+    DiagPrint("DSFV29s_WAIT_IDS_START scope=observedFailures recentMs=5000 zeroMeansUnobserved noGameDataWrites=1\n");
+    DiagPrint(g_sMemberDetailSignature==1 ? "DSFV29s_MEMBER_DETAIL_START ids=126,231 kind=0 include=005A10C0 exclude=005A0F60 global=0059E4E0 sampledOnFailure=1 noGameDataWrites=1\n" : "DSFV29s_MEMBER_DETAIL_START signatureFailed=1\n");
+#if defined(DSF_V29S_INCLUDE_EXPANDED)
+    DiagPrint(g_sMutationHooks==3 ? "DSFV29s_MUTATION_START hooks=3 ids=126,231 insertA=005A2740 insertB=005A2790 remove=005A26A0 op=0,1,2 buffer=4096 includeCursorRedirect=1\n" : "DSFV29s_MUTATION_START hooks=-1 signatureFailed=1\n");
+    DiagPrint(g_sGuardHook==1 ? "DSFV29s_GUARD_START hook=005A200E ids=126,231 count=section+6694 expandedCapacity=256 includeCursorRedirect=1\n" : "DSFV29s_GUARD_START hooks=-1 signatureFailed=1\n");
+#if defined(DSF_V29S_LISTA_EXPANDED)
+    DiagPrint(g_sListAHook==1 ? "DSFV29s_LISTA_START hook=005A7DD1 inline=50 capacity=512 stride=12 owner=spooler+338 redirect=1\n" : "DSFV29s_LISTA_START hook=-1 signatureFailed=1\n");
+#endif
+#if defined(DSF_V29S_LISTB_EXPANDED)
+    DiagPrint(g_sListBHook==1 ? "DSFV29s_LISTB_START hook=0083B170 inline=50 capacity=512 stride=20 owner=spooler+5A4 redirect=1\n" : "DSFV29s_LISTB_START hook=-1 signatureFailed=1\n");
+#endif
+#else
+    DiagPrint(g_sMutationHooks==3 ? "DSFV29s_MUTATION_START hooks=3 ids=126,231 insertA=005A2740 insertB=005A2790 remove=005A26A0 op=0,1,2 buffer=4096 noGameDataWrites=1\n" : "DSFV29s_MUTATION_START hooks=-1 signatureFailed=1\n");
+    DiagPrint(g_sGuardHook==1 ? "DSFV29s_GUARD_START hook=005A200E ids=126,231 count=section+6694 skipWhen=64 noGameDataWrites=1\n" : "DSFV29s_GUARD_START hooks=-1 signatureFailed=1\n");
+#endif
+#if DSF_CHAPTER7_PRELOAD_COUNT == 45
+    DiagPrint("DSFV29s_REQ_START inline=50 target=45 indices=0,44,49,50,51,52,100,101,102,149 noGameDataWrites=1\n");
+#else
+    DiagPrint("DSFV29s_REQ_START inline=50 target=150 indices=0,44,49,50,51,52,100,101,102,149 noGameDataWrites=1\n");
+#endif
 #elif defined(DSF_V29R_CALLERS)
     DiagPrint(DSFV29r_Hooks==2 ? "DSFV29r_START hooks=2 entry=00BAE790 return=00BAE921 callerAttribution=1 stepHook=0 diagNoGameDataWrites=1\n" : "DSFV29r_START hooks=-1 signatureFailed=1 v29pRetained=1\n");
 #elif defined(DSF_V29Q_TRAVERSAL)
     DiagPrint(DSFV29q_Hooks==3 ? "DSFV29q_START hooks=3 entry=00BAE790 step=00BAE81D return=00BAE921 steps=approx noGameWrites=1\n" : "DSFV29q_START hooks=-1 signaturesUnavailable=1 v29pRetained=1\n");
 #endif
     DiagPrint(DSFV29h_Hooks==2 ? "DSFV29h_START hooks=2 ring=256 noSuppression=1\n" : "DSFV29h_START hooks=-1 graphics hooks unavailable; V29g sampling active\n");
+#if defined(DSF_V29S_VEHICLE_POOL_TRACE)
+    DiagPrint("DSFV29s_VPOOL_START pools=8,9,10,11 rawOffsets=14,1C,40,48 changeLimit=30000 eventRing=4096 eventKind=1:free,2:reject cadenceMs=200 noGameDataWrites=1\n");
+#endif
     for (;;) {
         // Two-pass snapshots run on the existing monitoring thread; no disk I/O
         // or heap allocations run in the game's callback/handler hot paths.
@@ -2276,11 +2809,82 @@ DWORD __stdcall Monitor(void*) {
         DiagDrainCallbacks();
         EfDrainEvents();
         DiagFMemorySample(loops);
+#if defined(DSF_V29S_VEHICLE_POOL_TRACE)
+        DiagFVehiclePoolSample();
+#endif
         DiagGCitySample();
         DiagHDrain();
         DiagHPrintStatus(loops);
+#if defined(DSF_V29S_VEHICLE_POOL_TRACE)
+        DiagHVehicleDrain();
+        DiagHVehicleStatus(loops);
+#endif
 #if defined(DSF_V29S_NATIVE_TRACE)
         DiagSPrintStatus(loops);
+        DiagSPrintWait(loops);
+        DiagSPrintWaitIds(loops);
+        DiagSPrintMemberDetail(loops);
+        DiagSPrintMutationEvents(loops);
+        DiagSPrintGuard(loops);
+#if defined(DSF_V29S_SPOOL0_EXPANDED)
+        DiagSPrintSpool0(loops);
+#endif
+#if defined(DSF_V29S_CLONE_EXPANDED)
+        DiagSPrintClone(loops);
+#endif
+#if defined(DSF_V29S_BUCKET_DIAG)
+        DiagSPrintBucket(loops);
+#endif
+#if defined(DSF_V29S_MODEL_DIAG)
+        DiagSPrintModel(loops);
+#endif
+#if defined(DSF_V29S_LIVE_MODEL_DIAG)
+        DiagSPrintLiveModel(loops);
+#endif
+#if defined(DSF_V29S_REG_SOURCE_DIAG)
+        DiagSPrintRegSource(loops);
+#endif
+#if defined(DSF_V29S_MODEL_POOL_EXPANDED)
+        DiagSPrintModelPool(loops);
+#endif
+#if defined(DSF_V29S_RESOURCE_COLLECTION_EXPANDED)
+        DiagSPrintResourceCollection(loops);
+#endif
+#if defined(DSF_V29S_ZAP_TARGET_DIAG)
+        DiagSPrintZapTarget();
+#endif
+#if defined(DSF_V29S_EXTERIOR_TRACE)
+        DiagSPrintExterior(loops);
+#endif
+#if defined(DSF_V29S_LOD_TRACE)
+        DiagSPrintLod(loops);
+#endif
+#if defined(DSF_V29S_VISUAL_TRACE)
+        DiagVVisualPrint(loops);
+        DiagVContextPrint(loops);
+#endif
+#if defined(DSF_V29S_SUBMISSION_TRACE)
+        DiagVSubmissionPrint(loops);
+        DiagVGraphicsBudgetPrint(loops);
+#endif
+#if defined(DSF_V29S_DRAW_QUEUE_TRACE)
+        DiagVDrawQueuePrint(loops);
+#endif
+#if defined(DSF_V29S_HANDLE_CHAIN_TRACE)
+        DiagVHandlePrint(loops);
+#endif
+#if defined(DSF_V29S_HASH_HEAD_TRACE)
+        DiagVHashHeadPrintStatus(loops);
+#endif
+#if defined(DSF_V29S_AUDIO_TRACE)
+        DiagAudioPrintStatus(loops);
+#endif
+#if defined(DSF_V29S_POOL_DIAG)
+        DiagSPrintPoolEvents();
+        DiagSPrintPoolState(loops);
+#endif
+        DiagSPrintRequestProbe(loops);
+        DiagSPrintHandlerWords(loops);
 #elif defined(DSF_V29R_CALLERS)
         DiagRPrintStatus(loops);
 #elif defined(DSF_V29Q_TRAVERSAL)
@@ -2422,12 +3026,19 @@ DWORD __stdcall Monitor(void*) {
         Sleep(200u);
     }
 }
+#endif
 } // namespace
 
 extern "C" __declspec(dllexport) BOOL __stdcall DllMain(HMODULE module, DWORD reason, void*) {
     if (reason == 1u) { // DLL_PROCESS_ATTACH
         DisableThreadLibraryCalls(module);
         g_base = reinterpret_cast<UPtr>(GetModuleHandleW(nullptr));
+#if defined(DSF_V29S_INDEXED_262144)
+        CapacityOpen(); // Also record baseline/startup refusal before Monitor exists.
+#endif
+#if defined(DSF_V29S_CHAPTERS)
+        if(!ChapterPreflight()){ChapterStartLine();ExitProcess(0x29F1u);return 0;}
+#endif
         ApplyPreinitGraphicsExpansion();
         if (DSF150_Status == 1 && !InstallPool512Patches()) {
             RestorePoolPatches(); RollbackGraphicsConfig();
@@ -2455,20 +3066,192 @@ extern "C" __declspec(dllexport) BOOL __stdcall DllMain(HMODULE module, DWORD re
             DSF150_Status = -14;
             Log("DSFV29b: hash arena preflight/allocation failed; ALL INITIAL PATCHES ROLLED BACK.\n");
         }
+#if defined(DSF_V29S_MODEL_POOL_EXPANDED)
+        if (DSF150_Status == 1) {
+            g_sRegMapHook=DiagSRegMapInstall()?1:-1;
+            if(g_sRegMapHook!=1) {
+                RemoveHashArenaHook(); RestoreExtendedSites(); RestoreMerge150Fix();
+                RestoreRequestFramePatches(); RestorePoolPatches(); RollbackGraphicsConfig();
+                DSF150_Status=-16;
+                Log("DSFV29s: vehicle-definition map redirect preflight failed; initial patches rolled back.\n");
+            }
+        }
+        if (DSF150_Status == 1 && !InstallModelPoolCapacity()) {
+            RestoreModelPoolCapacity(); DiagSRegMapRestore(); RemoveHashArenaHook(); RestoreExtendedSites(); RestoreMerge150Fix();
+            RestoreRequestFramePatches(); RestorePoolPatches(); RollbackGraphicsConfig();
+            DSF150_Status = -15;
+            Log("DSFV29s: vehicle-definition pool preinit patch failed; initial patches rolled back.\n");
+        }
+#endif
+#if defined(DSF_V29S_RESOURCE_COLLECTION_EXPANDED)
+        if (DSF150_Status == 1 && !InstallResourceCollection()) {
+            RestoreResourceCollection();
+#if defined(DSF_V29S_MODEL_POOL_EXPANDED)
+            RestoreModelPoolCapacity(); DiagSRegMapRestore();
+#endif
+            RemoveHashArenaHook(); RestoreExtendedSites(); RestoreMerge150Fix();
+            RestoreRequestFramePatches(); RestorePoolPatches(); RollbackGraphicsConfig();
+            DSF150_Status=-17;
+            Log("DSFV29s: resource collection preflight/redirect failed; initial patches rolled back.\n");
+        }
+#endif
         if (DSF150_Status == 1 && !InstallHandlerHook()) {
+#if defined(DSF_V29S_RESOURCE_COLLECTION_EXPANDED)
+            RestoreResourceCollection();
+#endif
+#if defined(DSF_V29S_MODEL_POOL_EXPANDED)
+            RestoreModelPoolCapacity();
+            DiagSRegMapRestore();
+#endif
             RemoveHashArenaHook(); RestoreExtendedSites(); RestoreMerge150Fix(); RestoreRequestFramePatches(); RestorePoolPatches(); RollbackGraphicsConfig();
             DSF150_Status = -9;
             Log("DSFV29b: handler detour failed; all experimental patches rolled back.\n");
         }
         if (DSF150_Status == 1) {
+#if !defined(DSF_V29S_PERF_CONTROL)
             // Two extra passive callback sites, exact bytes verified offline.
             // An optional hook install failure keeps original V29b hooks active.
             InstallV29cCallbackHooks();
             DSFV29f_StreamHooks=DiagFInstallStreamHooks()?2:-1;
             DSFV29h_Hooks=DiagHInstallHooks()?2:-1;
+#endif
 #if defined(DSF_V29S_NATIVE_TRACE)
+#if defined(DSF_V29S_PERF_CONTROL)
+            DSFV29s_Hooks=DiagSInstall()?5:-1;
+            g_sMutationHooks=DSFV29s_Hooks==5 && DiagSMutationInstall()?3:-1;
+            g_sGuardHook=DSFV29s_Hooks==5 && g_sMutationHooks==3 && DiagSGuardInstall()?1:-1;
+#else
             DSFV29s_Hooks=DiagSInstall()?5:-1;
             Log(DSFV29s_Hooks==5 ? "DSFV29s: five passive native dispatch/lifecycle hooks armed.\n" : "DSFV29s: preflight failed; V29p retained without V29s probes.\n");
+            g_sMutationHooks=DSFV29s_Hooks==5 && DiagSMutationInstall()?3:-1;
+            g_sGuardHook=DSFV29s_Hooks==5 && g_sMutationHooks==3 && DiagSGuardInstall()?1:-1;
+#endif
+#if defined(DSF_V29S_SPOOL0_EXPANDED)
+            g_sScratchHook=g_sGuardHook==1 && DiagSScratchInstall()?2:-1;
+#endif
+#if defined(DSF_V29S_CLONE_EXPANDED)
+            g_sCloneHook=g_sScratchHook==2 && DiagSCloneInstall()?1:-1;
+#endif
+#if defined(DSF_V29S_BUCKET_DIAG)
+            g_sBucketHook=g_sCloneHook==1 && DiagSBucketInstall()?1:-1;
+#endif
+#if defined(DSF_V29S_MODEL_DIAG)
+            g_sModelHook=g_sCloneHook==1 && DiagSModelInstall()?1:-1;
+#endif
+#if defined(DSF_V29S_LIVE_MODEL_DIAG)
+            g_sLiveModelHooks=g_sCloneHook==1 && DiagSLiveModelInstall()?2:-1;
+#endif
+#if defined(DSF_V29S_REG_SOURCE_DIAG)
+            g_sRegHooks=g_sCloneHook==1 && DiagSRegInstall()?3:-1;
+#endif
+#if defined(DSF_V29S_EXTERIOR_TRACE)
+            g_sExteriorHook=g_sCloneHook==1 && DiagSExteriorInstall()?1:-1;
+            g_sDrawHooks=g_sExteriorHook==1 && DiagSDrawInstall()?2:-1;
+#endif
+#if defined(DSF_V29S_LOD_TRACE)
+            g_sLodHook=g_sDrawHooks==2 && DiagSLodInstall()?1:-1;
+            g_sBodyHook=g_sLodHook==1 && DiagSBodyInstall()?1:-1;
+            g_sCommonHooks=g_sDrawHooks==2 && DiagSCommonInstall()?2:-1;
+#endif
+#if defined(DSF_V29S_VISUAL_TRACE)
+            g_vVisualHooks=g_sCommonHooks==2 && DiagVVisualInstall()?2:-1;
+            g_vContextHook=g_vVisualHooks==2 && DiagVContextInstall()?1:-1;
+#endif
+#if defined(DSF_V29S_SUBMISSION_TRACE)
+            g_vSubmitHook=g_sCommonHooks==2 && DiagVSubmissionInstall()?1:-1;
+#endif
+#if defined(DSF_V29S_DRAW_QUEUE_TRACE)
+            g_vDrawQueueHook=DiagVDrawQueueInstall()?3:-1;
+#endif
+#if defined(DSF_V29S_HANDLE_CHAIN_TRACE)
+            g_vHandleHooks=DiagVHandleInstall()?8:-1;
+#endif
+#if defined(DSF_V29S_HASH_HEAD_TRACE)
+            g_vHashHeadHooks=DiagVHashHeadInstall()?4:-1;
+#endif
+#if defined(DSF_V29S_AUDIO_TRACE)
+            g_audioHooks=DiagAudioInstall()?5:-1;
+#endif
+#if defined(DSF_V29S_POOL_DIAG)
+            g_sPoolHooks=g_sGuardHook==1 && DiagSPoolInstall()?2:-1;
+#endif
+#if defined(DSF_V29S_LISTA_EXPANDED)
+            g_sListAHook=g_sGuardHook==1 && DiagSListAInstall()?1:-1;
+#endif
+#if defined(DSF_V29S_LISTB_EXPANDED)
+            g_sListBHook=g_sGuardHook==1 && DiagSListBInstall()?1:-1;
+#endif
+#if defined(DSF_V29S_CAPACITY_TRACE)
+#if !defined(DSF_V29S_INDEXED_262144)
+            CapacityOpen();
+#endif
+            g_capacityHooks=DSFV29s_Hooks==5 && g_sGuardHook==1 &&
+                g_sScratchHook==2 && g_sCloneHook==1 && CapacityInstall()?3:-1;
+#if defined(DSF_V29S_INDEXED_262144)
+            if(g_capacityHooks==3) IndexedInstall();
+            else {g_indexedStatus=-8;g_indexedReason="baselineHooksUnavailable";}
+            IndexedStartLine();
+#if defined(DSF_V29S_AUDIO_PROBE)
+            AudioProbeInstall();
+#if defined(DSF_V29S_AUDIO_DEFAULT_16M) || defined(DSF_V29S_AUDIO_DEFAULT_64M)
+            AudioDefaultPoolInstall();
+            AudioDefaultPoolStartLine();
+#endif
+#if defined(DSF_V29S_AUDIO_SLOTS_2048)
+            AudioSlotsInstall();
+            AudioSlotsStartLine();
+#endif
+#if defined(DSF_V29S_AUDIO_REASON_PROBE)
+            AudioReasonInstall();
+            AudioReasonStartLine();
+#endif
+#if defined(DSF_V29S_AUDIO_MODEL192)
+            AudioModelInstall();
+            AudioModelStartLine();
+#endif
+#if defined(DSF_V29S_CLEANUP_262144)
+            CleanupInstall();CleanupStartLine();
+            if(g_cleanupStatus!=1)CleanupFatal(g_cleanupReason);
+#endif
+#if defined(DSF_V29S_PENDING512)
+            PendingInstall();PendingStartLine();
+            if(g_pendingStatus!=1)PendingFatal(g_pendingReason,0u);
+#endif
+#if defined(DSF_V29S_CHAPTERS)
+            ChapterStartLine();
+#endif
+#if defined(DSF_V29S_CALLBACK512)
+            CallbackInstall();CallbackStartLine();
+            if(g_callbackStatus!=1)CallbackFatal(g_callbackReason,0u);
+#endif
+#if defined(DSF_V29S_ARENA_REUSE)
+            ArenaReuseStartLine();
+#if defined(DSF_V29S_BASELINE150)
+            BaselineInstall();
+#if defined(DSF_V29S_NOTIFY150)
+            NotifyInstall();
+#if defined(DSF_V29S_PARKED150)
+            ParkInstall();
+#if defined(DSF_V29S_REPLAY150)
+            ReplayInstall();
+#endif
+#endif
+#endif
+#endif
+#endif
+#if defined(DSF_V29S_AUDIO_STATIC_64M)
+            AudioStaticPoolInstall();
+            AudioStaticPoolStartLine();
+#endif
+            AudioProbeStartLine();
+#endif
+#endif
+#endif
+#if !defined(DSF_V29S_PERF_CONTROL)
+            DSFV29s_WaitHooks=DSFV29s_Hooks==5 && DiagSWaitInstall()?2:-1;
+            Log(DSFV29s_WaitHooks==2 ? "DSFV29s: two passive traffic-wait failure hooks armed.\n" : "DSFV29s: traffic-wait hooks unavailable.\n");
+            g_sMemberDetailSignature=DSFV29s_WaitHooks==2 && DiagSMemberDetailCheck()?1:-1;
+#endif
 #elif defined(DSF_V29R_CALLERS)
             DSFV29r_Hooks=DiagRInstallHooks()?2:-1;
             Log(DSFV29r_Hooks==2 ? "DSFV29r: two passive caller/return hooks armed; no step hook.\n" : "DSFV29r: hook preflight failed; V29p active without V29r probes.\n");
@@ -2476,11 +3259,52 @@ extern "C" __declspec(dllexport) BOOL __stdcall DllMain(HMODULE module, DWORD re
             DSFV29q_Hooks=DiagQInstallHooks()?3:-1;
             Log(DSFV29q_Hooks==3 ? "DSFV29q: three passive traversal hooks armed.\n" : "DSFV29q: hook preflight failed; base V29p active without traversal probes.\n");
 #endif
+#if !defined(DSF_V29S_PERF_CONTROL)
             Log(DSFV29f_StreamHooks==2 ? "DSFV29f: stream dispatch/residency counters active.\n" : "DSFV29f: stream signature mismatch; pool/memory snapshots remain active.\n");
+#endif
             Log("DSFV29b: 150 admission + pool512 + request150/frame150 armed; awaiting pkg0 initializer.\n");
             HANDLE worker = CreateThread(nullptr, 0, &Monitor, nullptr, 0, nullptr);
             if (worker) CloseHandle(worker);
         }
+#if defined(DSF_V29S_INDEXED_262144)
+        if(g_indexedStatus==0) {
+            g_indexedStatus=-8;g_indexedReason="baselineStartupRefused";
+            IndexedStartLine();
+#if defined(DSF_V29S_AUDIO_PROBE)
+            g_audioProbeStatus=-1;g_audioProbeReason="baselineStartupRefused";
+#if defined(DSF_V29S_AUDIO_DEFAULT_16M) || defined(DSF_V29S_AUDIO_DEFAULT_64M)
+            g_audioDefaultStatus=-1;g_audioDefaultReason="baselineStartupRefused";
+            AudioDefaultPoolStartLine();
+#endif
+#if defined(DSF_V29S_AUDIO_SLOTS_2048)
+            g_audioSlotsStatus=-1;g_audioSlotsReason="baselineStartupRefused";
+            AudioSlotsStartLine();
+#endif
+#if defined(DSF_V29S_AUDIO_REASON_PROBE)
+            g_audioReasonStatus=-1;g_audioReasonReason="baselineStartupRefused";
+            AudioReasonStartLine();
+#endif
+#if defined(DSF_V29S_AUDIO_MODEL192)
+            g_audioModelStatus=-1;g_audioModelReason="baselineStartupRefused";
+            AudioModelStartLine();
+#endif
+#if defined(DSF_V29S_CLEANUP_262144)
+            g_cleanupStatus=-1;g_cleanupReason="baselineStartupRefused";CleanupStartLine();
+#endif
+#if defined(DSF_V29S_PENDING512)
+            g_pendingStatus=-1;g_pendingReason="baselineStartupRefused";PendingStartLine();
+#endif
+#if defined(DSF_V29S_CALLBACK512)
+            g_callbackStatus=-1;g_callbackReason="baselineStartupRefused";CallbackStartLine();CallbackFatal(g_callbackReason,0u);
+#endif
+#if defined(DSF_V29S_AUDIO_STATIC_64M)
+            g_audioStaticStatus=-1;g_audioStaticReason="baselineStartupRefused";
+            AudioStaticPoolStartLine();
+#endif
+            AudioProbeStartLine();
+#endif
+        }
+#endif
     }
     return 1;
 }

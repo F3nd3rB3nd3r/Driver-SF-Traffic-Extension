@@ -1,0 +1,98 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005568F0: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  005568F4: 53                 push        ebx
+  005568F5: 8B 59 08           mov         ebx,dword ptr [ecx+8]
+  005568F8: 85 DB              test        ebx,ebx
+  005568FA: 75 1C              jne         00556918
+  005568FC: 8D 44 24 10        lea         eax,[esp+10h]
+  00556900: 50                 push        eax
+  00556901: E8 8A FF FF FF     call        00556890
+  00556906: 8D 4C 24 08        lea         ecx,[esp+8]
+  0055690A: 51                 push        ecx
+  0055690B: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  0055690F: E8 BC FE FF FF     call        005567D0
+  00556914: 5B                 pop         ebx
+  00556915: C2 10 00           ret         10h
+  00556918: 8B 91 10 03 00 00  mov         edx,dword ptr [ecx+00000310h]
+  0055691E: F3 0F 10 44 24 10  movss       xmm0,dword ptr [esp+10h]
+  00556924: 55                 push        ebp
+  00556925: 56                 push        esi
+  00556926: 8B 74 24 1C        mov         esi,dword ptr [esp+1Ch]
+  0055692A: 8D 81 0C 03 00 00  lea         eax,[ecx+0000030Ch]
+  00556930: 57                 push        edi
+  00556931: 8B BE 10 03 00 00  mov         edi,dword ptr [esi+00000310h]
+  00556937: 3B D0              cmp         edx,eax
+  00556939: 74 19              je          00556954
+  0055693B: EB 03              jmp         00556940
+  0055693D: 8D 49 00           lea         ecx,[ecx]
+  00556940: F3 0F 10 4A 08     movss       xmm1,dword ptr [edx+8]
+  00556945: 0F 2F C8           comiss      xmm1,xmm0
+  00556948: 77 39              ja          00556983
+  0055694A: 8B 52 04           mov         edx,dword ptr [edx+4]
+  0055694D: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  00556950: 3B D0              cmp         edx,eax
+  00556952: 75 EC              jne         00556940
+  00556954: 83 FB 40           cmp         ebx,40h
+  00556957: 0F 84 37 01 00 00  je          00556A94
+  0055695D: 8B 11              mov         edx,dword ptr [ecx]
+  0055695F: 83 CD FF           or          ebp,0FFFFFFFFh
+  00556962: 83 79 04 00        cmp         dword ptr [ecx+4],0
+  00556966: 8D 7A 08           lea         edi,[edx+8]
+  00556969: 0F 84 BE 00 00 00  je          00556A2D
+  0055696F: 8B 1A              mov         ebx,dword ptr [edx]
+  00556971: 85 FF              test        edi,edi
+  00556973: 74 04              je          00556979
+  00556975: F3 0F 11 07        movss       dword ptr [edi],xmm0
+  00556979: 01 69 04           add         dword ptr [ecx+4],ebp
+  0055697C: 89 19              mov         dword ptr [ecx],ebx
+  0055697E: E9 B5 00 00 00     jmp         00556A38
+  00556983: 89 7C 24 20        mov         dword ptr [esp+20h],edi
+  00556987: 83 FB 40           cmp         ebx,40h
+  0055698A: 75 78              jne         00556A04
+  0055698C: 3B 10              cmp         edx,dword ptr [eax]
+  0055698E: 75 13              jne         005569A3
+  00556990: F3 0F 11 42 08     movss       dword ptr [edx+8],xmm0
+  00556995: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  00556999: 89 57 08           mov         dword ptr [edi+8],edx
+  0055699C: 5F                 pop         edi
+  0055699D: 5E                 pop         esi
+  0055699E: 5D                 pop         ebp
+  0055699F: 5B                 pop         ebx
+  005569A0: C2 10 00           ret         10h
+  005569A3: 8B 38              mov         edi,dword ptr [eax]
+  005569A5: 8B 1F              mov         ebx,dword ptr [edi]
+  005569A7: 8B 29              mov         ebp,dword ptr [ecx]
+  005569A9: 89 2F              mov         dword ptr [edi],ebp
+  005569AB: FF 41 04           inc         dword ptr [ecx+4]
+  005569AE: FF 49 08           dec         dword ptr [ecx+8]
+  005569B1: 89 39              mov         dword ptr [ecx],edi
+  005569B3: 89 43 04           mov         dword ptr [ebx+4],eax
+  005569B6: 89 18              mov         dword ptr [eax],ebx
+  005569B8: 8B BE 0C 03 00 00  mov         edi,dword ptr [esi+0000030Ch]
+  005569BE: 8B 1F              mov         ebx,dword ptr [edi]
+  005569C0: 8B 2E              mov         ebp,dword ptr [esi]
+  005569C2: 8D 86 0C 03 00 00  lea         eax,[esi+0000030Ch]
+  005569C8: 89 2F              mov         dword ptr [edi],ebp
+  005569CA: FF 46 04           inc         dword ptr [esi+4]
+  005569CD: FF 4E 08           dec         dword ptr [esi+8]
+  005569D0: 89 3E              mov         dword ptr [esi],edi
+  005569D2: 89 43 04           mov         dword ptr [ebx+4],eax
+  005569D5: 89 18              mov         dword ptr [eax],ebx
+  005569D7: 8D 44 24 1C        lea         eax,[esp+1Ch]
+  005569DB: 50                 push        eax
+  005569DC: 52                 push        edx
+  005569DD: 8D 54 24 20        lea         edx,[esp+20h]
+  005569E1: 52                 push        edx
+  005569E2: E8 39 93 11 00     call        0066FD20
+  005569E7: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  005569EB: 8D 44 24 14        lea         eax,[esp+14h]
+  005569EF: 50                 push        eax
+  005569F0: 51                 push        ecx
+
+  Summary
+
+      9C8000 .text

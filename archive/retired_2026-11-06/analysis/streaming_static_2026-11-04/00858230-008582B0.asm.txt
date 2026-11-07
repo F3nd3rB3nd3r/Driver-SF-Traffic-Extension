@@ -1,0 +1,49 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00858230: 58                 pop         eax
+  00858231: 02 00              add         al,byte ptr [eax]
+  00858233: 00 8B CE C7 46 04  add         byte ptr [ebx+0446C7CEh],cl
+  00858239: 03 00              add         eax,dword ptr [eax]
+  0085823B: 00 00              add         byte ptr [eax],al
+  0085823D: E8 6E F9 FF FF     call        00857BB0
+  00858242: 84 C0              test        al,al
+  00858244: 0F 84 42 02 00 00  je          0085848C
+  0085824A: 0F B6 8E 89 5B 00  movzx       ecx,byte ptr [esi+00005B89h]
+            00
+  00858251: 8B 96 80 5B 00 00  mov         edx,dword ptr [esi+00005B80h]
+  00858257: 6A 00              push        0
+  00858259: 6A 00              push        0
+  0085825B: 51                 push        ecx
+  0085825C: 52                 push        edx
+  0085825D: E8 9E 13 35 00     call        00BA9600
+  00858262: 83 C4 10           add         esp,10h
+  00858265: 8B CE              mov         ecx,esi
+  00858267: C6 86 89 5B 00 00  mov         byte ptr [esi+00005B89h],0
+            00
+  0085826E: E8 0D FE FF FF     call        00858080
+  00858273: 80 BE 87 5B 00 00  cmp         byte ptr [esi+00005B87h],0
+            00
+  0085827A: 88 44 24 0F        mov         byte ptr [esp+0Fh],al
+  0085827E: 74 1F              je          0085829F
+  00858280: 84 C0              test        al,al
+  00858282: 74 16              je          0085829A
+  00858284: 8B 8E 7C 5B 00 00  mov         ecx,dword ptr [esi+00005B7Ch]
+  0085828A: 8B 01              mov         eax,dword ptr [ecx]
+  0085828C: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  0085828F: FF D2              call        edx
+  00858291: C6 44 24 0F 01     mov         byte ptr [esp+0Fh],1
+  00858296: 84 C0              test        al,al
+  00858298: 75 05              jne         0085829F
+  0085829A: C6 44 24 0F 00     mov         byte ptr [esp+0Fh],0
+  0085829F: E8 CC 13 35 00     call        00BA9670
+  008582A4: E9 E3 01 00 00     jmp         0085848C
+  008582A9: 8D 8E 58 05 00 00  lea         ecx,[esi+00000558h]
+  008582AF: E8
+  008582B0: EC                 in          al,dx
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,553 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084BE30: 03 33              add         esi,dword ptr [ebx]
+  0084BE32: C0 C3 B8           rol         bl,0B8h
+  0084BE35: 01 00              add         dword ptr [eax],eax
+  0084BE37: 00 00              add         byte ptr [eax],al
+  0084BE39: C3                 ret
+  0084BE3A: CC                 int         3
+  0084BE3B: CC                 int         3
+  0084BE3C: CC                 int         3
+  0084BE3D: CC                 int         3
+  0084BE3E: CC                 int         3
+  0084BE3F: CC                 int         3
+  0084BE40: C7 01 C0 64 DD 00  mov         dword ptr [ecx],0DD64C0h
+  0084BE46: C3                 ret
+  0084BE47: CC                 int         3
+  0084BE48: CC                 int         3
+  0084BE49: CC                 int         3
+  0084BE4A: CC                 int         3
+  0084BE4B: CC                 int         3
+  0084BE4C: CC                 int         3
+  0084BE4D: CC                 int         3
+  0084BE4E: CC                 int         3
+  0084BE4F: CC                 int         3
+  0084BE50: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  0084BE54: 8B 01              mov         eax,dword ptr [ecx]
+  0084BE56: 8B 00              mov         eax,dword ptr [eax]
+  0084BE58: 52                 push        edx
+  0084BE59: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  0084BE5D: 52                 push        edx
+  0084BE5E: FF D0              call        eax
+  0084BE60: C2 0C 00           ret         0Ch
+  0084BE63: CC                 int         3
+  0084BE64: CC                 int         3
+  0084BE65: CC                 int         3
+  0084BE66: CC                 int         3
+  0084BE67: CC                 int         3
+  0084BE68: CC                 int         3
+  0084BE69: CC                 int         3
+  0084BE6A: CC                 int         3
+  0084BE6B: CC                 int         3
+  0084BE6C: CC                 int         3
+  0084BE6D: CC                 int         3
+  0084BE6E: CC                 int         3
+  0084BE6F: CC                 int         3
+  0084BE70: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0084BE74: C7 40 14 04 00 00  mov         dword ptr [eax+14h],4
+            00
+  0084BE7B: C3                 ret
+  0084BE7C: CC                 int         3
+  0084BE7D: CC                 int         3
+  0084BE7E: CC                 int         3
+  0084BE7F: CC                 int         3
+  0084BE80: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0084BE84: 33 C9              xor         ecx,ecx
+  0084BE86: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  0084BE89: 89 48 14           mov         dword ptr [eax+14h],ecx
+  0084BE8C: C3                 ret
+  0084BE8D: CC                 int         3
+  0084BE8E: CC                 int         3
+  0084BE8F: CC                 int         3
+  0084BE90: 8B C1              mov         eax,ecx
+  0084BE92: 33 C9              xor         ecx,ecx
+  0084BE94: C7 00 38 6D E3 00  mov         dword ptr [eax],0E36D38h
+  0084BE9A: 89 48 04           mov         dword ptr [eax+4],ecx
+  0084BE9D: 89 48 08           mov         dword ptr [eax+8],ecx
+  0084BEA0: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  0084BEA3: 89 48 10           mov         dword ptr [eax+10h],ecx
+  0084BEA6: 89 48 14           mov         dword ptr [eax+14h],ecx
+  0084BEA9: C3                 ret
+  0084BEAA: CC                 int         3
+  0084BEAB: CC                 int         3
+  0084BEAC: CC                 int         3
+  0084BEAD: CC                 int         3
+  0084BEAE: CC                 int         3
+  0084BEAF: CC                 int         3
+  0084BEB0: 56                 push        esi
+  0084BEB1: 8B F1              mov         esi,ecx
+  0084BEB3: 8B 46 08           mov         eax,dword ptr [esi+8]
+  0084BEB6: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  0084BEB9: 57                 push        edi
+  0084BEBA: 8D 7E 0C           lea         edi,[esi+0Ch]
+  0084BEBD: 57                 push        edi
+  0084BEBE: 56                 push        esi
+  0084BEBF: 68 70 BE 84 00     push        84BE70h
+  0084BEC4: 50                 push        eax
+  0084BEC5: 51                 push        ecx
+  0084BEC6: C7 46 14 02 00 00  mov         dword ptr [esi+14h],2
+            00
+  0084BECD: E8 FE 5F 40 00     call        00C51ED0
+  0084BED2: 83 C4 14           add         esp,14h
+  0084BED5: 83 F8 01           cmp         eax,1
+  0084BED8: 74 12              je          0084BEEC
+  0084BEDA: C7 07 00 00 00 00  mov         dword ptr [edi],0
+  0084BEE0: 5F                 pop         edi
+  0084BEE1: C7 46 14 04 00 00  mov         dword ptr [esi+14h],4
+            00
+  0084BEE8: 32 C0              xor         al,al
+  0084BEEA: 5E                 pop         esi
+  0084BEEB: C3                 ret
+  0084BEEC: 5F                 pop         edi
+  0084BEED: B0 01              mov         al,1
+  0084BEEF: 5E                 pop         esi
+  0084BEF0: C3                 ret
+  0084BEF1: CC                 int         3
+  0084BEF2: CC                 int         3
+  0084BEF3: CC                 int         3
+  0084BEF4: CC                 int         3
+  0084BEF5: CC                 int         3
+  0084BEF6: CC                 int         3
+  0084BEF7: CC                 int         3
+  0084BEF8: CC                 int         3
+  0084BEF9: CC                 int         3
+  0084BEFA: CC                 int         3
+  0084BEFB: CC                 int         3
+  0084BEFC: CC                 int         3
+  0084BEFD: CC                 int         3
+  0084BEFE: CC                 int         3
+  0084BEFF: CC                 int         3
+  0084BF00: 56                 push        esi
+  0084BF01: 8B F1              mov         esi,ecx
+  0084BF03: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  0084BF06: 85 C0              test        eax,eax
+  0084BF08: 74 1B              je          0084BF25
+  0084BF0A: 56                 push        esi
+  0084BF0B: 68 80 BE 84 00     push        84BE80h
+  0084BF10: 50                 push        eax
+  0084BF11: E8 BA 60 40 00     call        00C51FD0
+  0084BF16: 83 C4 0C           add         esp,0Ch
+  0084BF19: 83 F8 01           cmp         eax,1
+  0084BF1C: 74 0B              je          0084BF29
+  0084BF1E: C7 46 0C 00 00 00  mov         dword ptr [esi+0Ch],0
+            00
+  0084BF25: 32 C0              xor         al,al
+  0084BF27: 5E                 pop         esi
+  0084BF28: C3                 ret
+  0084BF29: B0 01              mov         al,1
+  0084BF2B: 5E                 pop         esi
+  0084BF2C: C3                 ret
+  0084BF2D: CC                 int         3
+  0084BF2E: CC                 int         3
+  0084BF2F: CC                 int         3
+  0084BF30: 53                 push        ebx
+  0084BF31: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  0084BF35: 55                 push        ebp
+  0084BF36: 56                 push        esi
+  0084BF37: 57                 push        edi
+  0084BF38: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  0084BF3C: 8B F1              mov         esi,ecx
+  0084BF3E: 53                 push        ebx
+  0084BF3F: 8B CF              mov         ecx,edi
+  0084BF41: E8 7A F4 0A 00     call        008FB3C0
+  0084BF46: 89 46 08           mov         dword ptr [esi+8],eax
+  0084BF49: 8B 47 04           mov         eax,dword ptr [edi+4]
+  0084BF4C: 83 F8 01           cmp         eax,1
+  0084BF4F: 74 19              je          0084BF6A
+  0084BF51: 83 F8 02           cmp         eax,2
+  0084BF54: 74 14              je          0084BF6A
+  0084BF56: 83 F8 03           cmp         eax,3
+  0084BF59: 75 55              jne         0084BFB0
+  0084BF5B: 8B 8F 04 56 00 00  mov         ecx,dword ptr [edi+00005604h]
+  0084BF61: E8 AA FE FF FF     call        0084BE10
+  0084BF66: 84 C0              test        al,al
+  0084BF68: 74 46              je          0084BFB0
+  0084BF6A: 6A 00              push        0
+  0084BF6C: 53                 push        ebx
+  0084BF6D: 8B CF              mov         ecx,edi
+  0084BF6F: E8 AC F7 0A 00     call        008FB720
+  0084BF74: 8B E8              mov         ebp,eax
+  0084BF76: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0084BF7B: 85 C0              test        eax,eax
+  0084BF7D: 75 0A              jne         0084BF89
+  0084BF7F: E8 0C E7 BB FF     call        0040A690
+  0084BF84: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0084BF89: 8B 48 50           mov         ecx,dword ptr [eax+50h]
+  0084BF8C: 55                 push        ebp
+  0084BF8D: E8 7E C2 FF FF     call        00848210
+  0084BF92: 6A 00              push        0
+  0084BF94: 50                 push        eax
+  0084BF95: 53                 push        ebx
+  0084BF96: 8B CF              mov         ecx,edi
+  0084BF98: 89 46 10           mov         dword ptr [esi+10h],eax
+  0084BF9B: E8 F0 FE 0A 00     call        008FBE90
+  0084BFA0: 8B CF              mov         ecx,edi
+  0084BFA2: E8 F9 00 0B 00     call        008FC0A0
+  0084BFA7: 84 C0              test        al,al
+  0084BFA9: 75 F5              jne         0084BFA0
+  0084BFAB: 8B 46 10           mov         eax,dword ptr [esi+10h]
+  0084BFAE: EB 08              jmp         0084BFB8
+  0084BFB0: 53                 push        ebx
+  0084BFB1: 8B CF              mov         ecx,edi
+  0084BFB3: E8 E8 F3 0A 00     call        008FB3A0
+  0084BFB8: 89 46 04           mov         dword ptr [esi+4],eax
+  0084BFBB: 51                 push        ecx
+  0084BFBC: 8B C4              mov         eax,esp
+  0084BFBE: C7 46 14 01 00 00  mov         dword ptr [esi+14h],1
+            00
+  0084BFC5: 89 30              mov         dword ptr [eax],esi
+  0084BFC7: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0084BFCC: 85 C0              test        eax,eax
+  0084BFCE: 75 0A              jne         0084BFDA
+  0084BFD0: E8 BB E6 BB FF     call        0040A690
+  0084BFD5: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0084BFDA: 8B 48 50           mov         ecx,dword ptr [eax+50h]
+  0084BFDD: E8 8E D8 FF FF     call        00849870
+  0084BFE2: 5F                 pop         edi
+  0084BFE3: 5E                 pop         esi
+  0084BFE4: 5D                 pop         ebp
+  0084BFE5: 5B                 pop         ebx
+  0084BFE6: C2 08 00           ret         8
+  0084BFE9: CC                 int         3
+  0084BFEA: CC                 int         3
+  0084BFEB: CC                 int         3
+  0084BFEC: CC                 int         3
+  0084BFED: CC                 int         3
+  0084BFEE: CC                 int         3
+  0084BFEF: CC                 int         3
+  0084BFF0: 56                 push        esi
+  0084BFF1: 8B F1              mov         esi,ecx
+  0084BFF3: 51                 push        ecx
+  0084BFF4: 8B C4              mov         eax,esp
+  0084BFF6: C7 46 14 03 00 00  mov         dword ptr [esi+14h],3
+            00
+  0084BFFD: 89 30              mov         dword ptr [eax],esi
+  0084BFFF: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0084C004: 85 C0              test        eax,eax
+  0084C006: 75 0A              jne         0084C012
+  0084C008: E8 83 E6 BB FF     call        0040A690
+  0084C00D: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0084C012: 8B 48 50           mov         ecx,dword ptr [eax+50h]
+  0084C015: E8 B6 D7 FF FF     call        008497D0
+  0084C01A: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  0084C01D: 85 C0              test        eax,eax
+  0084C01F: 74 1B              je          0084C03C
+  0084C021: 56                 push        esi
+  0084C022: 68 80 BE 84 00     push        84BE80h
+  0084C027: 50                 push        eax
+  0084C028: E8 A3 5F 40 00     call        00C51FD0
+  0084C02D: 83 C4 0C           add         esp,0Ch
+  0084C030: 83 F8 01           cmp         eax,1
+  0084C033: 74 07              je          0084C03C
+  0084C035: C7 46 0C 00 00 00  mov         dword ptr [esi+0Ch],0
+            00
+  0084C03C: 5E                 pop         esi
+  0084C03D: C3                 ret
+  0084C03E: CC                 int         3
+  0084C03F: CC                 int         3
+  0084C040: 56                 push        esi
+  0084C041: 8B F1              mov         esi,ecx
+  0084C043: 83 7E 14 03        cmp         dword ptr [esi+14h],3
+  0084C047: 75 39              jne         0084C082
+  0084C049: 83 7E 0C 00        cmp         dword ptr [esi+0Ch],0
+  0084C04D: 75 37              jne         0084C086
+  0084C04F: 83 7E 10 00        cmp         dword ptr [esi+10h],0
+  0084C053: 74 26              je          0084C07B
+  0084C055: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0084C05A: 85 C0              test        eax,eax
+  0084C05C: 75 0A              jne         0084C068
+  0084C05E: E8 2D E6 BB FF     call        0040A690
+  0084C063: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0084C068: 8B 48 50           mov         ecx,dword ptr [eax+50h]
+  0084C06B: 8B 46 10           mov         eax,dword ptr [esi+10h]
+  0084C06E: 50                 push        eax
+  0084C06F: E8 BC C1 FF FF     call        00848230
+  0084C074: C7 46 10 00 00 00  mov         dword ptr [esi+10h],0
+            00
+  0084C07B: C7 46 14 04 00 00  mov         dword ptr [esi+14h],4
+            00
+  0084C082: B0 01              mov         al,1
+  0084C084: 5E                 pop         esi
+  0084C085: C3                 ret
+  0084C086: 32 C0              xor         al,al
+  0084C088: 5E                 pop         esi
+  0084C089: C3                 ret
+  0084C08A: CC                 int         3
+  0084C08B: CC                 int         3
+  0084C08C: CC                 int         3
+  0084C08D: CC                 int         3
+  0084C08E: CC                 int         3
+  0084C08F: CC                 int         3
+  0084C090: B8 53 42 41 4B     mov         eax,4B414253h
+  0084C095: C3                 ret
+  0084C096: CC                 int         3
+  0084C097: CC                 int         3
+  0084C098: CC                 int         3
+  0084C099: CC                 int         3
+  0084C09A: CC                 int         3
+  0084C09B: CC                 int         3
+  0084C09C: CC                 int         3
+  0084C09D: CC                 int         3
+  0084C09E: CC                 int         3
+  0084C09F: CC                 int         3
+  0084C0A0: 6A 18              push        18h
+  0084C0A2: E8 D9 C6 3D 00     call        00C28780
+  0084C0A7: 33 C9              xor         ecx,ecx
+  0084C0A9: 83 C4 04           add         esp,4
+  0084C0AC: 3B C1              cmp         eax,ecx
+  0084C0AE: 74 1E              je          0084C0CE
+  0084C0B0: 89 48 04           mov         dword ptr [eax+4],ecx
+  0084C0B3: 89 48 08           mov         dword ptr [eax+8],ecx
+  0084C0B6: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  0084C0B9: 89 48 10           mov         dword ptr [eax+10h],ecx
+  0084C0BC: 89 48 14           mov         dword ptr [eax+14h],ecx
+  0084C0BF: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  0084C0C3: C7 00 38 6D E3 00  mov         dword ptr [eax],0E36D38h
+  0084C0C9: 89 01              mov         dword ptr [ecx],eax
+  0084C0CB: 8B C1              mov         eax,ecx
+  0084C0CD: C3                 ret
+  0084C0CE: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0084C0D2: 89 08              mov         dword ptr [eax],ecx
+  0084C0D4: C3                 ret
+  0084C0D5: CC                 int         3
+  0084C0D6: CC                 int         3
+  0084C0D7: CC                 int         3
+  0084C0D8: CC                 int         3
+  0084C0D9: CC                 int         3
+  0084C0DA: CC                 int         3
+  0084C0DB: CC                 int         3
+  0084C0DC: CC                 int         3
+  0084C0DD: CC                 int         3
+  0084C0DE: CC                 int         3
+  0084C0DF: CC                 int         3
+  0084C0E0: 8B 01              mov         eax,dword ptr [ecx]
+  0084C0E2: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  0084C0E6: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0084C0EA: 50                 push        eax
+  0084C0EB: 51                 push        ecx
+  0084C0EC: 52                 push        edx
+  0084C0ED: E8 2E 52 40 00     call        00C51320
+  0084C0F2: 83 C4 0C           add         esp,0Ch
+  0084C0F5: 83 F8 01           cmp         eax,1
+  0084C0F8: 0F 94 C0           sete        al
+  0084C0FB: C2 08 00           ret         8
+  0084C0FE: CC                 int         3
+  0084C0FF: CC                 int         3
+  0084C100: 8B 01              mov         eax,dword ptr [ecx]
+  0084C102: D9 44 24 08        fld         dword ptr [esp+8]
+  0084C106: 50                 push        eax
+  0084C107: 51                 push        ecx
+  0084C108: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  0084C10C: D9 1C 24           fstp        dword ptr [esp]
+  0084C10F: 51                 push        ecx
+  0084C110: E8 BB 51 40 00     call        00C512D0
+  0084C115: 83 C4 0C           add         esp,0Ch
+  0084C118: 83 F8 01           cmp         eax,1
+  0084C11B: 0F 94 C0           sete        al
+  0084C11E: C2 08 00           ret         8
+  0084C121: CC                 int         3
+  0084C122: CC                 int         3
+  0084C123: CC                 int         3
+  0084C124: CC                 int         3
+  0084C125: CC                 int         3
+  0084C126: CC                 int         3
+  0084C127: CC                 int         3
+  0084C128: CC                 int         3
+  0084C129: CC                 int         3
+  0084C12A: CC                 int         3
+  0084C12B: CC                 int         3
+  0084C12C: CC                 int         3
+  0084C12D: CC                 int         3
+  0084C12E: CC                 int         3
+  0084C12F: CC                 int         3
+  0084C130: 8B 01              mov         eax,dword ptr [ecx]
+  0084C132: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  0084C136: 50                 push        eax
+  0084C137: 51                 push        ecx
+  0084C138: E8 33 52 40 00     call        00C51370
+  0084C13D: 48                 dec         eax
+  0084C13E: 83 C4 08           add         esp,8
+  0084C141: F7 D8              neg         eax
+  0084C143: 1B C0              sbb         eax,eax
+  0084C145: 40                 inc         eax
+  0084C146: C2 04 00           ret         4
+  0084C149: CC                 int         3
+  0084C14A: CC                 int         3
+  0084C14B: CC                 int         3
+  0084C14C: CC                 int         3
+  0084C14D: CC                 int         3
+  0084C14E: CC                 int         3
+  0084C14F: CC                 int         3
+  0084C150: 8B 01              mov         eax,dword ptr [ecx]
+  0084C152: 50                 push        eax
+  0084C153: E8 28 62 40 00     call        00C52380
+  0084C158: 59                 pop         ecx
+  0084C159: C3                 ret
+  0084C15A: CC                 int         3
+  0084C15B: CC                 int         3
+  0084C15C: CC                 int         3
+  0084C15D: CC                 int         3
+  0084C15E: CC                 int         3
+  0084C15F: CC                 int         3
+  0084C160: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0084C164: 85 C0              test        eax,eax
+  0084C166: 74 07              je          0084C16F
+  0084C168: 50                 push        eax
+  0084C169: E8 62 62 40 00     call        00C523D0
+  0084C16E: 59                 pop         ecx
+  0084C16F: C2 04 00           ret         4
+  0084C172: CC                 int         3
+  0084C173: CC                 int         3
+  0084C174: CC                 int         3
+  0084C175: CC                 int         3
+  0084C176: CC                 int         3
+  0084C177: CC                 int         3
+  0084C178: CC                 int         3
+  0084C179: CC                 int         3
+  0084C17A: CC                 int         3
+  0084C17B: CC                 int         3
+  0084C17C: CC                 int         3
+  0084C17D: CC                 int         3
+  0084C17E: CC                 int         3
+  0084C17F: CC                 int         3
+  0084C180: 56                 push        esi
+  0084C181: 8B F1              mov         esi,ecx
+  0084C183: 56                 push        esi
+  0084C184: E8 D7 56 40 00     call        00C51860
+  0084C189: 8B 06              mov         eax,dword ptr [esi]
+  0084C18B: 50                 push        eax
+  0084C18C: E8 2F 58 40 00     call        00C519C0
+  0084C191: 83 C4 08           add         esp,8
+  0084C194: 5E                 pop         esi
+  0084C195: C3                 ret
+  0084C196: CC                 int         3
+  0084C197: CC                 int         3
+  0084C198: CC                 int         3
+  0084C199: CC                 int         3
+  0084C19A: CC                 int         3
+  0084C19B: CC                 int         3
+  0084C19C: CC                 int         3
+  0084C19D: CC                 int         3
+  0084C19E: CC                 int         3
+  0084C19F: CC                 int         3
+  0084C1A0: 8A 44 24 04        mov         al,byte ptr [esp+4]
+  0084C1A4: 88 41 04           mov         byte ptr [ecx+4],al
+  0084C1A7: 84 C0              test        al,al
+  0084C1A9: 75 16              jne         0084C1C1
+  0084C1AB: 8B 01              mov         eax,dword ptr [ecx]
+  0084C1AD: D9 EE              fldz
+  0084C1AF: 50                 push        eax
+  0084C1B0: 51                 push        ecx
+  0084C1B1: D9 1C 24           fstp        dword ptr [esp]
+  0084C1B4: 68 CD B1 DF C0     push        0C0DFB1CDh
+  0084C1B9: E8 12 51 40 00     call        00C512D0
+  0084C1BE: 83 C4 0C           add         esp,0Ch
+  0084C1C1: C2 04 00           ret         4
+  0084C1C4: CC                 int         3
+  0084C1C5: CC                 int         3
+  0084C1C6: CC                 int         3
+  0084C1C7: CC                 int         3
+  0084C1C8: CC                 int         3
+  0084C1C9: CC                 int         3
+  0084C1CA: CC                 int         3
+  0084C1CB: CC                 int         3
+  0084C1CC: CC                 int         3
+  0084C1CD: CC                 int         3
+  0084C1CE: CC                 int         3
+  0084C1CF: CC                 int         3
+  0084C1D0: 8A 41 04           mov         al,byte ptr [ecx+4]
+  0084C1D3: C3                 ret
+  0084C1D4: CC                 int         3
+  0084C1D5: CC                 int         3
+  0084C1D6: CC                 int         3
+  0084C1D7: CC                 int         3
+  0084C1D8: CC                 int         3
+  0084C1D9: CC                 int         3
+  0084C1DA: CC                 int         3
+  0084C1DB: CC                 int         3
+  0084C1DC: CC                 int         3
+  0084C1DD: CC                 int         3
+  0084C1DE: CC                 int         3
+  0084C1DF: CC                 int         3
+  0084C1E0: F3 0F 10 44 24 04  movss       xmm0,dword ptr [esp+4]
+  0084C1E6: 0F 2F 05 9C 94 E9  comiss      xmm0,dword ptr ds:[00E9949Ch]
+            00
+  0084C1ED: 76 13              jbe         0084C202
+  0084C1EF: D9 44 24 04        fld         dword ptr [esp+4]
+  0084C1F3: 8B 01              mov         eax,dword ptr [ecx]
+  0084C1F5: 51                 push        ecx
+  0084C1F6: D9 1C 24           fstp        dword ptr [esp]
+  0084C1F9: 50                 push        eax
+  0084C1FA: E8 D1 4E 40 00     call        00C510D0
+  0084C1FF: 83 C4 08           add         esp,8
+  0084C202: C2 04 00           ret         4
+  0084C205: CC                 int         3
+  0084C206: CC                 int         3
+  0084C207: CC                 int         3
+  0084C208: CC                 int         3
+  0084C209: CC                 int         3
+  0084C20A: CC                 int         3
+  0084C20B: CC                 int         3
+  0084C20C: CC                 int         3
+  0084C20D: CC                 int         3
+  0084C20E: CC                 int         3
+  0084C20F: CC                 int         3
+  0084C210: A1 04 D1 43 01     mov         eax,dword ptr ds:[0143D104h]
+  0084C215: 8B 15 00 D1 43 01  mov         edx,dword ptr ds:[0143D100h]
+  0084C21B: 50                 push        eax
+  0084C21C: 8B 01              mov         eax,dword ptr [ecx]
+  0084C21E: 52                 push        edx
+  0084C21F: 50                 push        eax
+  0084C220: E8 2B 52 40 00     call        00C51450
+  0084C225: 83 C4 0C           add         esp,0Ch
+  0084C228: C3                 ret
+  0084C229: CC                 int         3
+  0084C22A: CC                 int         3
+  0084C22B: CC                 int         3
+  0084C22C: CC                 int         3
+  0084C22D: CC                 int         3
+  0084C22E: CC                 int         3
+  0084C22F: CC                 int         3
+  0084C230: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0084C234: 8B 09              mov         ecx,dword ptr [ecx]
+  0084C236: 50                 push        eax
+  0084C237: 51                 push        ecx
+  0084C238: E8 33 4F 40 00     call        00C51170
+  0084C23D: 83 C4 08           add         esp,8
+  0084C240: C2 04 00           ret         4
+  0084C243: CC                 int         3
+  0084C244: CC                 int         3
+  0084C245: CC                 int         3
+  0084C246: CC                 int         3
+  0084C247: CC                 int         3
+  0084C248: CC                 int         3
+  0084C249: CC                 int         3
+  0084C24A: CC                 int         3
+  0084C24B: CC                 int         3
+  0084C24C: CC                 int         3
+  0084C24D: CC                 int         3
+  0084C24E: CC                 int         3
+  0084C24F: CC                 int         3
+  0084C250: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0084C254: 56                 push        esi
+  0084C255: 57                 push        edi
+  0084C256: 50                 push        eax
+  0084C257: 8B F1              mov         esi,ecx
+  0084C259: E8 12 64 40 00     call        00C52670
+  0084C25E: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  0084C262: 51                 push        ecx
+  0084C263: 8B F8              mov         edi,eax
+  0084C265: E8 06 64 40 00     call        00C52670
+  0084C26A: 8B 16              mov         edx,dword ptr [esi]
+  0084C26C: 52                 push        edx
+  0084C26D: 50                 push        eax
+  0084C26E: 57                 push        edi
+  0084C26F: E8
+  0084C270: AC                 lods        byte ptr [esi]
+
+  Summary
+
+      9C8000 .text

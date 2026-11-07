@@ -1,0 +1,53 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084CE10: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0084CE14: 56                 push        esi
+  0084CE15: 8B B1 40 01 00 00  mov         esi,dword ptr [ecx+00000140h]
+  0084CE1B: 8D 34 B6           lea         esi,[esi+esi*4]
+  0084CE1E: 8D 42 14           lea         eax,[edx+14h]
+  0084CE21: 8D 34 B1           lea         esi,[ecx+esi*4]
+  0084CE24: 3B C6              cmp         eax,esi
+  0084CE26: 74 33              je          0084CE5B
+  0084CE28: 57                 push        edi
+  0084CE29: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  0084CE30: 8B 38              mov         edi,dword ptr [eax]
+  0084CE32: 89 3A              mov         dword ptr [edx],edi
+  0084CE34: 8B 78 04           mov         edi,dword ptr [eax+4]
+  0084CE37: 89 7A 04           mov         dword ptr [edx+4],edi
+  0084CE3A: 8B 78 08           mov         edi,dword ptr [eax+8]
+  0084CE3D: 89 7A 08           mov         dword ptr [edx+8],edi
+  0084CE40: 8B 78 0C           mov         edi,dword ptr [eax+0Ch]
+  0084CE43: 89 7A 0C           mov         dword ptr [edx+0Ch],edi
+  0084CE46: 8B 78 10           mov         edi,dword ptr [eax+10h]
+  0084CE49: 89 7A 10           mov         dword ptr [edx+10h],edi
+  0084CE4C: 83 C0 14           add         eax,14h
+  0084CE4F: 83 C2 14           add         edx,14h
+  0084CE52: 3B C6              cmp         eax,esi
+  0084CE54: 75 DA              jne         0084CE30
+  0084CE56: 8B 54 24 10        mov         edx,dword ptr [esp+10h]
+  0084CE5A: 5F                 pop         edi
+  0084CE5B: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0084CE5F: FF 89 40 01 00 00  dec         dword ptr [ecx+00000140h]
+  0084CE65: 89 10              mov         dword ptr [eax],edx
+  0084CE67: 5E                 pop         esi
+  0084CE68: C2 08 00           ret         8
+  0084CE6B: CC                 int         3
+  0084CE6C: CC                 int         3
+  0084CE6D: CC                 int         3
+  0084CE6E: CC                 int         3
+  0084CE6F: CC                 int         3
+  0084CE70: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0084CE74: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0084CE78: 83 EC 14           sub         esp,14h
+  0084CE7B: 3B C2              cmp         eax,edx
+  0084CE7D: 74 35              je          0084CEB4
+  0084CE7F: 56                 push        esi
+  0084CE80: 8B
+
+  Summary
+
+      9C8000 .text

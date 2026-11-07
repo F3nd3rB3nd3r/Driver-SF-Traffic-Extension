@@ -1,0 +1,132 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00557000: 68 F0 02 00 00     push        2F0h
+  00557005: E8 76 17 6D 00     call        00C28780
+  0055700A: 33 D2              xor         edx,edx
+  0055700C: 83 C4 04           add         esp,4
+  0055700F: 3B C2              cmp         eax,edx
+  00557011: 74 2F              je          00557042
+  00557013: C7 00 24 38 DE 00  mov         dword ptr [eax],0DE3824h
+  00557019: 8D 48 10           lea         ecx,[eax+10h]
+  0055701C: 89 48 04           mov         dword ptr [eax+4],ecx
+  0055701F: 8D 88 E0 02 00 00  lea         ecx,[eax+000002E0h]
+  00557025: 89 88 E4 02 00 00  mov         dword ptr [eax+000002E4h],ecx
+  0055702B: 89 09              mov         dword ptr [ecx],ecx
+  0055702D: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  00557031: 89 50 08           mov         dword ptr [eax+8],edx
+  00557034: 89 50 0C           mov         dword ptr [eax+0Ch],edx
+  00557037: 89 90 EC 02 00 00  mov         dword ptr [eax+000002ECh],edx
+  0055703D: 89 01              mov         dword ptr [ecx],eax
+  0055703F: 8B C1              mov         eax,ecx
+  00557041: C3                 ret
+  00557042: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00557046: 33 C9              xor         ecx,ecx
+  00557048: 89 08              mov         dword ptr [eax],ecx
+  0055704A: C3                 ret
+  0055704B: CC                 int         3
+  0055704C: CC                 int         3
+  0055704D: CC                 int         3
+  0055704E: CC                 int         3
+  0055704F: CC                 int         3
+  00557050: 83 EC 0C           sub         esp,0Ch
+  00557053: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  00557057: 53                 push        ebx
+  00557058: 55                 push        ebp
+  00557059: 56                 push        esi
+  0055705A: 8B 70 08           mov         esi,dword ptr [eax+8]
+  0055705D: 81 FE 11 2B 00 00  cmp         esi,2B11h
+  00557063: 57                 push        edi
+  00557064: C7 44 24 14 00 00  mov         dword ptr [esp+14h],0
+            00 00
+  0055706C: 7E 05              jle         00557073
+  0055706E: BE 11 2B 00 00     mov         esi,2B11h
+  00557073: 8B 7C 24 20        mov         edi,dword ptr [esp+20h]
+  00557077: 8B 3F              mov         edi,dword ptr [edi]
+  00557079: 0F BF 28           movsx       ebp,word ptr [eax]
+  0055707C: 8B 15 84 72 F0 00  mov         edx,dword ptr ds:[00F07284h]
+  00557082: 32 C9              xor         cl,cl
+  00557084: BB 01 00 00 00     mov         ebx,1
+  00557089: 89 7C 24 10        mov         dword ptr [esp+10h],edi
+  0055708D: 38 48 02           cmp         byte ptr [eax+2],cl
+  00557090: 76 08              jbe         0055709A
+  00557092: 0F B6 40 02        movzx       eax,byte ptr [eax+2]
+  00557096: 01 44 24 10        add         dword ptr [esp+10h],eax
+  0055709A: 85 F6              test        esi,esi
+  0055709C: 0F 8E 9E 00 00 00  jle         00557140
+  005570A2: 8B 7C 24 28        mov         edi,dword ptr [esp+28h]
+  005570A6: EB 0C              jmp         005570B4
+  005570A8: EB 06              jmp         005570B0
+  005570AA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  005570B0: 8A 4C 24 20        mov         cl,byte ptr [esp+20h]
+  005570B4: 80 F9 01           cmp         cl,1
+  005570B7: 75 06              jne         005570BF
+  005570B9: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  005570BD: EB 12              jmp         005570D1
+  005570BF: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  005570C3: 0F BE 00           movsx       eax,byte ptr [eax]
+  005570C6: FF 44 24 10        inc         dword ptr [esp+10h]
+  005570CA: 89 44 24 14        mov         dword ptr [esp+14h],eax
+  005570CE: C1 F8 04           sar         eax,4
+  005570D1: 83 E0 0F           and         eax,0Fh
+  005570D4: 84 C9              test        cl,cl
+  005570D6: 0F 94 C1           sete        cl
+  005570D9: 03 1C 85 40 72 F0  add         ebx,dword ptr [eax*4+00F07240h]
+            00
+  005570E0: 88 4C 24 20        mov         byte ptr [esp+20h],cl
+  005570E4: 79 04              jns         005570EA
+  005570E6: 33 DB              xor         ebx,ebx
+  005570E8: EB 0A              jmp         005570F4
+  005570EA: 83 FB 58           cmp         ebx,58h
+  005570ED: 7E 05              jle         005570F4
+  005570EF: BB 58 00 00 00     mov         ebx,58h
+  005570F4: 8B C8              mov         ecx,eax
+  005570F6: 83 E1 07           and         ecx,7
+  005570F9: 0F AF CA           imul        ecx,edx
+  005570FC: C1 F9 02           sar         ecx,2
+  005570FF: C1 FA 03           sar         edx,3
+  00557102: 03 CA              add         ecx,edx
+  00557104: A8 08              test        al,8
+  00557106: 74 04              je          0055710C
+  00557108: 2B E9              sub         ebp,ecx
+  0055710A: EB 02              jmp         0055710E
+  0055710C: 03 E9              add         ebp,ecx
+  0055710E: 81 FD FF 7F 00 00  cmp         ebp,7FFFh
+  00557114: 7E 07              jle         0055711D
+  00557116: BD FF 7F 00 00     mov         ebp,7FFFh
+  0055711B: EB 0D              jmp         0055712A
+  0055711D: 81 FD 00 80 FF FF  cmp         ebp,0FFFF8000h
+  00557123: 7D 05              jge         0055712A
+  00557125: BD 00 80 FF FF     mov         ebp,0FFFF8000h
+  0055712A: 8B 14 9D 80 72 F0  mov         edx,dword ptr [ebx*4+00F07280h]
+            00
+  00557131: 66 89 2F           mov         word ptr [edi],bp
+  00557134: 4E                 dec         esi
+  00557135: 83 C7 02           add         edi,2
+  00557138: 85 F6              test        esi,esi
+  0055713A: 0F 8F 70 FF FF FF  jg          005570B0
+  00557140: 8B 54 24 28        mov         edx,dword ptr [esp+28h]
+  00557144: DD 05 E0 BA DD 00  fld         qword ptr ds:[00DDBAE0h]
+  0055714A: 83 C2 02           add         edx,2
+  0055714D: 89 54 24 14        mov         dword ptr [esp+14h],edx
+  00557151: C7 44 24 20 05 00  mov         dword ptr [esp+20h],5
+            00 00
+  00557159: 8B 74 24 14        mov         esi,dword ptr [esp+14h]
+  0055715D: BF 0A 00 00 00     mov         edi,0Ah
+  00557162: 0F B7 46 FE        movzx       eax,word ptr [esi-2]
+  00557166: 0F BF 4E 02        movsx       ecx,word ptr [esi+2]
+  0055716A: 98                 cwde
+  0055716B: 2B C8              sub         ecx,eax
+  0055716D: 89 4C 24 10        mov         dword ptr [esp+10h],ecx
+  00557171: 89 44 24 18        mov         dword ptr [esp+18h],eax
+  00557175: DB 44 24 10        fild        dword ptr [esp+10h]
+  00557179: D8 C9              fmul        st,st(1)
+  0055717B: DA 44 24 18        fiadd       dword ptr [esp+18h]
+  0055717F: E8
+  00557180: AC                 lods        byte ptr [esi]
+
+  Summary
+
+      9C8000 .text

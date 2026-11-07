@@ -1,0 +1,153 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C62230: 53                 push        ebx
+  00C62231: 56                 push        esi
+  00C62232: 57                 push        edi
+  00C62233: 8B F9              mov         edi,ecx
+  00C62235: 8D 5F 34           lea         ebx,[edi+34h]
+  00C62238: 53                 push        ebx
+  00C62239: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C6223F: 83 7C 24 14 00     cmp         dword ptr [esp+14h],0
+  00C62244: 74 17              je          00C6225D
+  00C62246: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  00C6224A: 50                 push        eax
+  00C6224B: 8D 8F 9C 04 00 00  lea         ecx,[edi+0000049Ch]
+  00C62251: E8 4A 75 FF FF     call        00C597A0
+  00C62256: 8B F0              mov         esi,eax
+  00C62258: 83 FE 01           cmp         esi,1
+  00C6225B: 75 41              jne         00C6229E
+  00C6225D: 8D 4C 24 10        lea         ecx,[esp+10h]
+  00C62261: 51                 push        ecx
+  00C62262: 8D 4F 64           lea         ecx,[edi+64h]
+  00C62265: E8 96 FE FF FF     call        00C62100
+  00C6226A: 8B F0              mov         esi,eax
+  00C6226C: F7 DE              neg         esi
+  00C6226E: 1B F6              sbb         esi,esi
+  00C62270: 83 C6 02           add         esi,2
+  00C62273: 83 7C 24 14 00     cmp         dword ptr [esp+14h],0
+  00C62278: 74 15              je          00C6228F
+  00C6227A: 83 FE 01           cmp         esi,1
+  00C6227D: 74 15              je          00C62294
+  00C6227F: 8B 54 24 18        mov         edx,dword ptr [esp+18h]
+  00C62283: 52                 push        edx
+  00C62284: 8D 8F 9C 04 00 00  lea         ecx,[edi+0000049Ch]
+  00C6228A: E8 81 75 FF FF     call        00C59810
+  00C6228F: 83 FE 01           cmp         esi,1
+  00C62292: 75 0A              jne         00C6229E
+  00C62294: 8B 47 2C           mov         eax,dword ptr [edi+2Ch]
+  00C62297: 50                 push        eax
+  00C62298: FF 15 0C 92 DC 00  call        dword ptr ds:[00DC920Ch]
+  00C6229E: 53                 push        ebx
+  00C6229F: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C622A5: 5F                 pop         edi
+  00C622A6: 8B C6              mov         eax,esi
+  00C622A8: 5E                 pop         esi
+  00C622A9: 5B                 pop         ebx
+  00C622AA: C2 24 00           ret         24h
+  00C622AD: CC                 int         3
+  00C622AE: CC                 int         3
+  00C622AF: CC                 int         3
+  00C622B0: 53                 push        ebx
+  00C622B1: 8B 5C 24 18        mov         ebx,dword ptr [esp+18h]
+  00C622B5: 55                 push        ebp
+  00C622B6: 56                 push        esi
+  00C622B7: 57                 push        edi
+  00C622B8: 8B F1              mov         esi,ecx
+  00C622BA: BD 01 00 00 00     mov         ebp,1
+  00C622BF: E8 EC CE 01 00     call        00C7F1B0
+  00C622C4: 53                 push        ebx
+  00C622C5: 8D 8E 94 03 00 00  lea         ecx,[esi+00000394h]
+  00C622CB: E8 B0 D0 01 00     call        00C7F380
+  00C622D0: 8B F8              mov         edi,eax
+  00C622D2: 85 FF              test        edi,edi
+  00C622D4: 74 52              je          00C62328
+  00C622D6: 8B 0D 48 18 D7 01  mov         ecx,dword ptr ds:[01D71848h]
+  00C622DC: 53                 push        ebx
+  00C622DD: 81 C1 94 03 00 00  add         ecx,394h
+  00C622E3: E8 D8 CF 01 00     call        00C7F2C0
+  00C622E8: F6 47 48 01        test        byte ptr [edi+48h],1
+  00C622EC: 74 1E              je          00C6230C
+  00C622EE: E8 CD CE 01 00     call        00C7F1C0
+  00C622F3: 8B 44 24 1C        mov         eax,dword ptr [esp+1Ch]
+  00C622F7: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  00C622FB: 50                 push        eax
+  00C622FC: 51                 push        ecx
+  00C622FD: 57                 push        edi
+  00C622FE: 8B CE              mov         ecx,esi
+  00C62300: E8 3B FD FF FF     call        00C62040
+  00C62305: 5F                 pop         edi
+  00C62306: 5E                 pop         esi
+  00C62307: 5D                 pop         ebp
+  00C62308: 5B                 pop         ebx
+  00C62309: C2 24 00           ret         24h
+  00C6230C: E8 AF CE 01 00     call        00C7F1C0
+  00C62311: 6A 01              push        1
+  00C62313: 8D 54 24 18        lea         edx,[esp+18h]
+  00C62317: 52                 push        edx
+  00C62318: 8B CE              mov         ecx,esi
+  00C6231A: E8 91 E9 FF FF     call        00C60CB0
+  00C6231F: 5F                 pop         edi
+  00C62320: 5E                 pop         esi
+  00C62321: 8B C5              mov         eax,ebp
+  00C62323: 5D                 pop         ebp
+  00C62324: 5B                 pop         ebx
+  00C62325: C2 24 00           ret         24h
+  00C62328: E8 93 CE 01 00     call        00C7F1C0
+  00C6232D: 6A 01              push        1
+  00C6232F: 8D 44 24 18        lea         eax,[esp+18h]
+  00C62333: 50                 push        eax
+  00C62334: 8B CE              mov         ecx,esi
+  00C62336: E8 75 E9 FF FF     call        00C60CB0
+  00C6233B: 5F                 pop         edi
+  00C6233C: 5E                 pop         esi
+  00C6233D: 8B C5              mov         eax,ebp
+  00C6233F: 5D                 pop         ebp
+  00C62340: 5B                 pop         ebx
+  00C62341: C2 24 00           ret         24h
+  00C62344: CC                 int         3
+  00C62345: CC                 int         3
+  00C62346: CC                 int         3
+  00C62347: CC                 int         3
+  00C62348: CC                 int         3
+  00C62349: CC                 int         3
+  00C6234A: CC                 int         3
+  00C6234B: CC                 int         3
+  00C6234C: CC                 int         3
+  00C6234D: CC                 int         3
+  00C6234E: CC                 int         3
+  00C6234F: CC                 int         3
+  00C62350: 55                 push        ebp
+  00C62351: 8B EC              mov         ebp,esp
+  00C62353: 83 EC 44           sub         esp,44h
+  00C62356: 53                 push        ebx
+  00C62357: 56                 push        esi
+  00C62358: 8B F1              mov         esi,ecx
+  00C6235A: 57                 push        edi
+  00C6235B: 89 75 F8           mov         dword ptr [ebp-8],esi
+  00C6235E: 33 DB              xor         ebx,ebx
+  00C62360: 33 FF              xor         edi,edi
+  00C62362: E8 49 CE 01 00     call        00C7F1B0
+  00C62367: 8D 8E 94 03 00 00  lea         ecx,[esi+00000394h]
+  00C6236D: E8 EE 42 85 FF     call        004B6660
+  00C62372: 8B F0              mov         esi,eax
+  00C62374: 8B 46 7C           mov         eax,dword ptr [esi+7Ch]
+  00C62377: 85 C0              test        eax,eax
+  00C62379: 74 6C              je          00C623E7
+  00C6237B: 03 C0              add         eax,eax
+  00C6237D: 03 C0              add         eax,eax
+  00C6237F: E8 0C AF FC FF     call        00C2D290
+  00C62384: 8D 45 E8           lea         eax,[ebp-18h]
+  00C62387: 89 65 FC           mov         dword ptr [ebp-4],esp
+  00C6238A: 50                 push        eax
+  00C6238B: 8B CE              mov         ecx,esi
+  00C6238D: E8
+  00C6238E: EE                 out         dx,al
+  00C6238F: F0
+  00C62390: FF
+
+  Summary
+
+      9C8000 .text

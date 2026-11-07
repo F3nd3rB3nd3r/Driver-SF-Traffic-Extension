@@ -1,0 +1,72 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C315D0: 01 00              add         dword ptr [eax],eax
+  00C315D2: 8B C8              mov         ecx,eax
+  00C315D4: 8B 45 E8           mov         eax,dword ptr [ebp-18h]
+  00C315D7: 64 A3 00 00 00 00  mov         dword ptr fs:[00000000h],eax
+  00C315DD: 8B C1              mov         eax,ecx
+  00C315DF: C9                 leave
+  00C315E0: C3                 ret
+  00C315E1: 8B FF              mov         edi,edi
+  00C315E3: 55                 push        ebp
+  00C315E4: 8B EC              mov         ebp,esp
+  00C315E6: 83 EC 20           sub         esp,20h
+  00C315E9: 8B 45 08           mov         eax,dword ptr [ebp+8]
+  00C315EC: 56                 push        esi
+  00C315ED: 57                 push        edi
+  00C315EE: 6A 08              push        8
+  00C315F0: 59                 pop         ecx
+  00C315F1: BE 30 91 E9 00     mov         esi,0E99130h
+  00C315F6: 8D 7D E0           lea         edi,[ebp-20h]
+  00C315F9: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00C315FB: 89 45 F8           mov         dword ptr [ebp-8],eax
+  00C315FE: 8B 45 0C           mov         eax,dword ptr [ebp+0Ch]
+  00C31601: 5F                 pop         edi
+  00C31602: 89 45 FC           mov         dword ptr [ebp-4],eax
+  00C31605: 5E                 pop         esi
+  00C31606: 85 C0              test        eax,eax
+  00C31608: 74 0C              je          00C31616
+  00C3160A: F6 00 08           test        byte ptr [eax],8
+  00C3160D: 74 07              je          00C31616
+  00C3160F: C7 45 F4 00 40 99  mov         dword ptr [ebp-0Ch],1994000h
+            01
+  00C31616: 8D 45 F4           lea         eax,[ebp-0Ch]
+  00C31619: 50                 push        eax
+  00C3161A: FF 75 F0           push        dword ptr [ebp-10h]
+  00C3161D: FF 75 E4           push        dword ptr [ebp-1Ch]
+  00C31620: FF 75 E0           push        dword ptr [ebp-20h]
+  00C31623: FF 15 84 91 DC 00  call        dword ptr ds:[00DC9184h]
+  00C31629: C9                 leave
+  00C3162A: C2 08 00           ret         8
+  00C3162D: 8B FF              mov         edi,edi
+  00C3162F: 55                 push        ebp
+  00C31630: 8B EC              mov         ebp,esp
+  00C31632: 53                 push        ebx
+  00C31633: 8B 5D 08           mov         ebx,dword ptr [ebp+8]
+  00C31636: 56                 push        esi
+  00C31637: 57                 push        edi
+  00C31638: 8B F9              mov         edi,ecx
+  00C3163A: C7 07 54 91 E9 00  mov         dword ptr [edi],0E99154h
+  00C31640: 8B 03              mov         eax,dword ptr [ebx]
+  00C31642: 85 C0              test        eax,eax
+  00C31644: 74 26              je          00C3166C
+  00C31646: 50                 push        eax
+  00C31647: E8 44 EB FF FF     call        00C30190
+  00C3164C: 8B F0              mov         esi,eax
+  00C3164E: 46                 inc         esi
+  00C3164F: 56                 push        esi
+  00C31650: E8 07 7A FF FF     call        00C2905C
+  00C31655: 59                 pop         ecx
+  00C31656: 59                 pop         ecx
+  00C31657: 89 47 04           mov         dword ptr [edi+4],eax
+  00C3165A: 85 C0              test        eax,eax
+  00C3165C: 74 12              je          00C31670
+  00C3165E: FF 33              push        dword ptr [ebx]
+  00C31660: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

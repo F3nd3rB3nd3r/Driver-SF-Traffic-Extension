@@ -1,0 +1,81 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C8C3A0: 0F 57 C0           xorps       xmm0,xmm0
+  00C8C3A3: 8B C1              mov         eax,ecx
+  00C8C3A5: 33 C9              xor         ecx,ecx
+  00C8C3A7: C7 00 58 70 EA 00  mov         dword ptr [eax],0EA7058h
+  00C8C3AD: 89 48 28           mov         dword ptr [eax+28h],ecx
+  00C8C3B0: 89 48 2C           mov         dword ptr [eax+2Ch],ecx
+  00C8C3B3: 89 48 30           mov         dword ptr [eax+30h],ecx
+  00C8C3B6: 80 60 38 FC        and         byte ptr [eax+38h],0FCh
+  00C8C3BA: 88 48 39           mov         byte ptr [eax+39h],cl
+  00C8C3BD: 89 48 14           mov         dword ptr [eax+14h],ecx
+  00C8C3C0: 89 48 34           mov         dword ptr [eax+34h],ecx
+  00C8C3C3: F3 0F 11 40 20     movss       dword ptr [eax+20h],xmm0
+  00C8C3C8: C3                 ret
+  00C8C3C9: CC                 int         3
+  00C8C3CA: CC                 int         3
+  00C8C3CB: CC                 int         3
+  00C8C3CC: CC                 int         3
+  00C8C3CD: CC                 int         3
+  00C8C3CE: CC                 int         3
+  00C8C3CF: CC                 int         3
+  00C8C3D0: 83 EC 08           sub         esp,8
+  00C8C3D3: 0F 57 C9           xorps       xmm1,xmm1
+  00C8C3D6: 53                 push        ebx
+  00C8C3D7: 56                 push        esi
+  00C8C3D8: 8B F1              mov         esi,ecx
+  00C8C3DA: F3 0F 10 46 1C     movss       xmm0,dword ptr [esi+1Ch]
+  00C8C3DF: 32 DB              xor         bl,bl
+  00C8C3E1: 0F 2E C1           ucomiss     xmm0,xmm1
+  00C8C3E4: 9F                 lahf
+  00C8C3E5: 57                 push        edi
+  00C8C3E6: 88 5C 24 0C        mov         byte ptr [esp+0Ch],bl
+  00C8C3EA: F3 0F 11 44 24 10  movss       dword ptr [esp+10h],xmm0
+  00C8C3F0: F6 C4 44           test        ah,44h
+  00C8C3F3: 7B 63              jnp         00C8C458
+  00C8C3F5: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  00C8C3F9: DB 44 24 18        fild        dword ptr [esp+18h]
+  00C8C3FD: 85 C0              test        eax,eax
+  00C8C3FF: 7D 06              jge         00C8C407
+  00C8C401: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  00C8C407: D8 66 18           fsub        dword ptr [esi+18h]
+  00C8C40A: D8 74 24 10        fdiv        dword ptr [esp+10h]
+  00C8C40E: D9 54 24 18        fst         dword ptr [esp+18h]
+  00C8C412: D9 56 20           fst         dword ptr [esi+20h]
+  00C8C415: D9 E8              fld1
+  00C8C417: D9 C9              fxch        st(1)
+  00C8C419: DF F1              fcomip      st,st(1)
+  00C8C41B: DD D8              fstp        st(0)
+  00C8C41D: 73 39              jae         00C8C458
+  00C8C41F: 0F 2F 4C 24 18     comiss      xmm1,dword ptr [esp+18h]
+  00C8C424: 76 05              jbe         00C8C42B
+  00C8C426: F3 0F 11 4E 20     movss       dword ptr [esi+20h],xmm1
+  00C8C42B: F6 46 38 01        test        byte ptr [esi+38h],1
+  00C8C42F: D9 46 0C           fld         dword ptr [esi+0Ch]
+  00C8C432: 74 54              je          00C8C488
+  00C8C434: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00C8C437: 51                 push        ecx
+  00C8C438: 83 EC 0C           sub         esp,0Ch
+  00C8C43B: D9 5C 24 08        fstp        dword ptr [esp+8]
+  00C8C43F: B9 B8 18 D7 01     mov         ecx,1D718B8h
+  00C8C444: D9 46 08           fld         dword ptr [esi+8]
+  00C8C447: D9 5C 24 04        fstp        dword ptr [esp+4]
+  00C8C44B: D9 46 20           fld         dword ptr [esi+20h]
+  00C8C44E: D9 1C 24           fstp        dword ptr [esp]
+  00C8C451: E8 7A B7 FD FF     call        00C67BD0
+  00C8C456: EB 52              jmp         00C8C4AA
+  00C8C458: F3 0F 10 46 0C     movss       xmm0,dword ptr [esi+0Ch]
+  00C8C45D: B3 01              mov         bl,1
+  00C8C45F: 88 5C 24 0C        mov         byte ptr [esp+0Ch],bl
+  00C8C463: F3 0F 11 44 24 10  movss       dword ptr [esp+10h],xmm0
+  00C8C469: F3 0F 11 44 24 18  movss       dword ptr [esp+18h],xmm0
+  00C8C46F: 84
+  00C8C470: 5E                 pop         esi
+
+  Summary
+
+      9C8000 .text

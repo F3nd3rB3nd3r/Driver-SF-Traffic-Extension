@@ -1,0 +1,57 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00849B90: 83 C4 04           add         esp,4
+  00849B93: 8D AE D4 92 00 00  lea         ebp,[esi+000092D4h]
+  00849B99: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00849BA0: 8B BE D8 92 00 00  mov         edi,dword ptr [esi+000092D8h]
+  00849BA6: 3B FD              cmp         edi,ebp
+  00849BA8: 74 1D              je          00849BC7
+  00849BAA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  00849BB0: 8D 4F 08           lea         ecx,[edi+8]
+  00849BB3: E8 68 27 00 00     call        0084C320
+  00849BB8: 84 C0              test        al,al
+  00849BBA: 0F 85 4D 01 00 00  jne         00849D0D
+  00849BC0: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  00849BC3: 3B FD              cmp         edi,ebp
+  00849BC5: 75 E9              jne         00849BB0
+  00849BC7: 8D 86 58 0A 00 00  lea         eax,[esi+00000A58h]
+  00849BCD: 89 86 4C 0A 00 00  mov         dword ptr [esi+00000A4Ch],eax
+  00849BD3: 8D 86 90 0E 00 00  lea         eax,[esi+00000E90h]
+  00849BD9: 89 9E 50 0A 00 00  mov         dword ptr [esi+00000A50h],ebx
+  00849BDF: 89 9E 54 0A 00 00  mov         dword ptr [esi+00000A54h],ebx
+  00849BE5: 89 86 94 0E 00 00  mov         dword ptr [esi+00000E94h],eax
+  00849BEB: 89 00              mov         dword ptr [eax],eax
+  00849BED: 8B BE D8 92 00 00  mov         edi,dword ptr [esi+000092D8h]
+  00849BF3: 3B FD              cmp         edi,ebp
+  00849BF5: 74 0F              je          00849C06
+  00849BF7: 8D 4F 08           lea         ecx,[edi+8]
+  00849BFA: E8 81 25 00 00     call        0084C180
+  00849BFF: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  00849C02: 3B FD              cmp         edi,ebp
+  00849C04: 75 F1              jne         00849BF7
+  00849C06: 8D 8E 98 0E 00 00  lea         ecx,[esi+00000E98h]
+  00849C0C: E8 BF 0E 00 00     call        0084AAD0
+  00849C11: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00849C16: 89 1D FC D0 43 01  mov         dword ptr ds:[0143D0FCh],ebx
+  00849C1C: 3B C3              cmp         eax,ebx
+  00849C1E: 75 0A              jne         00849C2A
+  00849C20: E8 6B 0A BC FF     call        0040A690
+  00849C25: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00849C2A: 8B 78 5C           mov         edi,dword ptr [eax+5Ch]
+  00849C2D: 6A 01              push        1
+  00849C2F: 8B CF              mov         ecx,edi
+  00849C31: E8 9A 1D 00 00     call        0084B9D0
+  00849C36: 53                 push        ebx
+  00849C37: 8B CF              mov         ecx,edi
+  00849C39: E8 92 1D 00 00     call        0084B9D0
+  00849C3E: E8 FD 70 45 00     call        00CA0D40
+  00849C43: E8
+  00849C44: A8 72              test        al,72h
+
+  Summary
+
+      9C8000 .text

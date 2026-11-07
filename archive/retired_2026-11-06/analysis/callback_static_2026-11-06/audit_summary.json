@@ -1,0 +1,165 @@
+{
+  "result": "passed",
+  "exe": "E:\\Games\\Driver San Francisco Save Bug Test\\Driver.exe",
+  "sha256": "c79987b0548f7130337c3f295c8fe269e120ceddad55c1159e6f5cbc6aa26616",
+  "verified_signatures": {
+    "005567D0": "837904008b01568d5008",
+    "005567FF": "83010c",
+    "00556805": "8b910c03000081c10c030000",
+    "00858FB5": "8b8e6005000069c9140300005781c1ec274401",
+    "00859031": "8b4f088b018b500cffd2",
+    "0085905A": "8b108917ff4004ff480889388bf9",
+    "00DB40A0": "ba14000000b8f0274401"
+  },
+  "geometry": {
+    "origin": "0x14427ec",
+    "exclusive_end": "0x1446890",
+    "groups": 21,
+    "stride": 788,
+    "node_bytes": 12,
+    "inline_capacity": 64
+  },
+  "replay": {
+    "result": "passed",
+    "kind": "Python decoded-operation design replay, not native fixture",
+    "groups": 21,
+    "proposed_capacity": 512,
+    "native_inline": 64,
+    "private_extra": 448,
+    "private_node_bytes_total": 112896,
+    "all_groups_full_and_adjacent_headers_valid": true,
+    "refused_513_before_mutation": true,
+    "alternating_removal_and_full_reuse": true,
+    "empty_refill_preserves_fresh_cursor": true,
+    "partial_recycle_before_inline_boundary": true,
+    "limitations": "No production hook, native execution, callback side effects, concurrency or live demand validation."
+  },
+  "reference_census": {
+    "arena_operand_instructions": [
+      {
+        "address": "00858A4A",
+        "text": "00858A4A: 83 B8 F4 27 44 01  cmp         dword ptr [eax+014427F4h],0"
+      },
+      {
+        "address": "00858FC2",
+        "text": "00858FC2: 81 C1 EC 27 44 01  add         ecx,14427ECh"
+      },
+      {
+        "address": "00859013",
+        "text": "00859013: 83 B8 F4 27 44 01  cmp         dword ptr [eax+014427F4h],0"
+      },
+      {
+        "address": "0085901D",
+        "text": "0085901D: 8B B8 FC 2A 44 01  mov         edi,dword ptr [eax+01442AFCh]"
+      },
+      {
+        "address": "00859023",
+        "text": "00859023: 8D 88 F8 2A 44 01  lea         ecx,[eax+01442AF8h]"
+      },
+      {
+        "address": "00859053",
+        "text": "00859053: 05 EC 27 44 01     add         eax,14427ECh"
+      },
+      {
+        "address": "00859088",
+        "text": "00859088: 83 B8 F4 27 44 01  cmp         dword ptr [eax+014427F4h],0"
+      },
+      {
+        "address": "008590EF",
+        "text": "008590EF: 83 B9 F4 27 44 01  cmp         dword ptr [ecx+014427F4h],0"
+      },
+      {
+        "address": "00DB40A5",
+        "text": "00DB40A5: B8 F0 27 44 01     mov         eax,14427F0h"
+      }
+    ],
+    "stride314_arithmetic_instructions": [
+      {
+        "address": "0078A5BB",
+        "text": "0078A5BB: 69 C9 14 03 00 00  imul        ecx,ecx,314h"
+      },
+      {
+        "address": "0078A6D2",
+        "text": "0078A6D2: 05 14 03 00 00     add         eax,314h"
+      },
+      {
+        "address": "0078A705",
+        "text": "0078A705: 69 C0 14 03 00 00  imul        eax,eax,314h"
+      },
+      {
+        "address": "0078ADE7",
+        "text": "0078ADE7: 69 D2 14 03 00 00  imul        edx,edx,314h"
+      },
+      {
+        "address": "007ACA42",
+        "text": "007ACA42: 81 C4 14 03 00 00  add         esp,314h"
+      },
+      {
+        "address": "00858A44",
+        "text": "00858A44: 69 C0 14 03 00 00  imul        eax,eax,314h"
+      },
+      {
+        "address": "00858FBB",
+        "text": "00858FBB: 69 C9 14 03 00 00  imul        ecx,ecx,314h"
+      },
+      {
+        "address": "0085900B",
+        "text": "0085900B: 69 C0 14 03 00 00  imul        eax,eax,314h"
+      },
+      {
+        "address": "00859047",
+        "text": "00859047: 69 C0 14 03 00 00  imul        eax,eax,314h"
+      },
+      {
+        "address": "00859082",
+        "text": "00859082: 69 C0 14 03 00 00  imul        eax,eax,314h"
+      },
+      {
+        "address": "008590E9",
+        "text": "008590E9: 69 C9 14 03 00 00  imul        ecx,ecx,314h"
+      },
+      {
+        "address": "00C07987",
+        "text": "00C07987: 81 C4 14 03 00 00  add         esp,314h"
+      },
+      {
+        "address": "00C07996",
+        "text": "00C07996: 81 C4 14 03 00 00  add         esp,314h"
+      },
+      {
+        "address": "00DB40CF",
+        "text": "00DB40CF: 05 14 03 00 00     add         eax,314h"
+      }
+    ],
+    "helper_direct_calls": [
+      {
+        "address": "0055690F",
+        "text": "0055690F: E8 BC FE FF FF     call        005567D0"
+      },
+      {
+        "address": "005A399A",
+        "text": "005A399A: E8 31 2E FB FF     call        005567D0"
+      },
+      {
+        "address": "00858FC8",
+        "text": "00858FC8: E8 03 D8 CF FF     call        005567D0"
+      },
+      {
+        "address": "008CCF4C",
+        "text": "008CCF4C: E8 7F 98 C8 FF     call        005567D0"
+      }
+    ],
+    "helper_absolute_byte_refs": [],
+    "constructor_absolute_byte_refs": [
+      "00DD50F4"
+    ],
+    "non_executable_raw_byte_candidates": [
+      {
+        "section": ".data",
+        "address": "00F10D71",
+        "value": "01442F00"
+      }
+    ],
+    "limitations": "Linear disassembly and literal-reference census; computed/indirect references are not exhaustively disproved."
+  }
+}

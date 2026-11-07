@@ -1,0 +1,123 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C75B20: 83 EC 08           sub         esp,8
+  00C75B23: 8A 44 24 0C        mov         al,byte ptr [esp+0Ch]
+  00C75B27: 02 C0              add         al,al
+  00C75B29: 02 C0              add         al,al
+  00C75B2B: 02 C0              add         al,al
+  00C75B2D: 32 81 E6 00 00 00  xor         al,byte ptr [ecx+000000E6h]
+  00C75B33: 6A 01              push        1
+  00C75B35: 24 08              and         al,8
+  00C75B37: 32 81 E6 00 00 00  xor         al,byte ptr [ecx+000000E6h]
+  00C75B3D: 8D 54 24 04        lea         edx,[esp+4]
+  00C75B41: 0C 04              or          al,4
+  00C75B43: 52                 push        edx
+  00C75B44: 88 81 E6 00 00 00  mov         byte ptr [ecx+000000E6h],al
+  00C75B4A: C7 44 24 08 00 00  mov         dword ptr [esp+8],0
+            00 00
+  00C75B52: C7 44 24 0C 04 00  mov         dword ptr [esp+0Ch],4
+            00 00
+  00C75B5A: E8 F1 F9 FF FF     call        00C75550
+  00C75B5F: 83 C4 08           add         esp,8
+  00C75B62: C2 04 00           ret         4
+  00C75B65: CC                 int         3
+  00C75B66: CC                 int         3
+  00C75B67: CC                 int         3
+  00C75B68: CC                 int         3
+  00C75B69: CC                 int         3
+  00C75B6A: CC                 int         3
+  00C75B6B: CC                 int         3
+  00C75B6C: CC                 int         3
+  00C75B6D: CC                 int         3
+  00C75B6E: CC                 int         3
+  00C75B6F: CC                 int         3
+  00C75B70: 51                 push        ecx
+  00C75B71: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00C75B75: 53                 push        ebx
+  00C75B76: 57                 push        edi
+  00C75B77: 8B D9              mov         ebx,ecx
+  00C75B79: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  00C75B7D: 50                 push        eax
+  00C75B7E: 51                 push        ecx
+  00C75B7F: 8D 54 24 10        lea         edx,[esp+10h]
+  00C75B83: 52                 push        edx
+  00C75B84: 8B CB              mov         ecx,ebx
+  00C75B86: E8 15 F7 FF FF     call        00C752A0
+  00C75B8B: 8B 43 04           mov         eax,dword ptr [ebx+4]
+  00C75B8E: 8B 7C 24 08        mov         edi,dword ptr [esp+8]
+  00C75B92: 3B F8              cmp         edi,eax
+  00C75B94: 74 2A              je          00C75BC0
+  00C75B96: 8D 48 F4           lea         ecx,[eax-0Ch]
+  00C75B99: 3B F9              cmp         edi,ecx
+  00C75B9B: 73 1F              jae         00C75BBC
+  00C75B9D: 2B CF              sub         ecx,edi
+  00C75B9F: 49                 dec         ecx
+  00C75BA0: B8 AB AA AA AA     mov         eax,0AAAAAAABh
+  00C75BA5: F7 E1              mul         eax,ecx
+  00C75BA7: C1 EA 03           shr         edx,3
+  00C75BAA: 42                 inc         edx
+  00C75BAB: 8D 0C 52           lea         ecx,[edx+edx*2]
+  00C75BAE: 03 C9              add         ecx,ecx
+  00C75BB0: 56                 push        esi
+  00C75BB1: 03 C9              add         ecx,ecx
+  00C75BB3: 8D 77 0C           lea         esi,[edi+0Ch]
+  00C75BB6: C1 E9 02           shr         ecx,2
+  00C75BB9: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00C75BBB: 5E                 pop         esi
+  00C75BBC: 83 43 04 F4        add         dword ptr [ebx+4],0FFFFFFF4h
+  00C75BC0: 5F                 pop         edi
+  00C75BC1: 5B                 pop         ebx
+  00C75BC2: 59                 pop         ecx
+  00C75BC3: C2 08 00           ret         8
+  00C75BC6: CC                 int         3
+  00C75BC7: CC                 int         3
+  00C75BC8: CC                 int         3
+  00C75BC9: CC                 int         3
+  00C75BCA: CC                 int         3
+  00C75BCB: CC                 int         3
+  00C75BCC: CC                 int         3
+  00C75BCD: CC                 int         3
+  00C75BCE: CC                 int         3
+  00C75BCF: CC                 int         3
+  00C75BD0: 56                 push        esi
+  00C75BD1: 57                 push        edi
+  00C75BD2: 66 8B 7C 24 10     mov         di,word ptr [esp+10h]
+  00C75BD7: 8B F1              mov         esi,ecx
+  00C75BD9: 66 3B 7E 08        cmp         di,word ptr [esi+8]
+  00C75BDD: 74 4E              je          00C75C2D
+  00C75BDF: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00C75BE2: 85 C0              test        eax,eax
+  00C75BE4: 74 1C              je          00C75C02
+  00C75BE6: 50                 push        eax
+  00C75BE7: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C75BEC: 50                 push        eax
+  00C75BED: E8 AE 3F 02 00     call        00C99BA0
+  00C75BF2: 83 C4 08           add         esp,8
+  00C75BF5: 33 C9              xor         ecx,ecx
+  00C75BF7: C7 46 04 00 00 00  mov         dword ptr [esi+4],0
+            00
+  00C75BFE: 66 89 4E 08        mov         word ptr [esi+8],cx
+  00C75C02: 66 85 FF           test        di,di
+  00C75C05: 74 26              je          00C75C2D
+  00C75C07: 0F B7 C7           movzx       eax,di
+  00C75C0A: 8D 14 40           lea         edx,[eax+eax*2]
+  00C75C0D: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C75C12: 03 D2              add         edx,edx
+  00C75C14: 03 D2              add         edx,edx
+  00C75C16: 03 D2              add         edx,edx
+  00C75C18: 52                 push        edx
+  00C75C19: 50                 push        eax
+  00C75C1A: E8 21 3E 02 00     call        00C99A40
+  00C75C1F: 83 C4 08           add         esp,8
+  00C75C22: 89 46 04           mov         dword ptr [esi+4],eax
+  00C75C25: 85 C0              test        eax,eax
+  00C75C27: 74 2D              je          00C75C56
+  00C75C29: 66 89 7E 08        mov         word ptr [esi+8],di
+  00C75C2D: 0F B7 46 08        movzx       eax,word ptr [esi+8]
+
+  Summary
+
+      9C8000 .text

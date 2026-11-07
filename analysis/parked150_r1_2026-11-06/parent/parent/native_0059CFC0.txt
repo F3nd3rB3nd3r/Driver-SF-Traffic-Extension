@@ -1,0 +1,54 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0059CFC0: 53                 push        ebx
+  0059CFC1: 55                 push        ebp
+  0059CFC2: 8B 6C 24 0C        mov         ebp,dword ptr [esp+0Ch]
+  0059CFC6: 8B D9              mov         ebx,ecx
+  0059CFC8: 83 FD 04           cmp         ebp,4
+  0059CFCB: 75 07              jne         0059CFD4
+  0059CFCD: 5D                 pop         ebp
+  0059CFCE: 32 C0              xor         al,al
+  0059CFD0: 5B                 pop         ebx
+  0059CFD1: C2 08 00           ret         8
+  0059CFD4: 8B C5              mov         eax,ebp
+  0059CFD6: 69 C0 4C 73 00 00  imul        eax,eax,734Ch
+  0059CFDC: 56                 push        esi
+  0059CFDD: 57                 push        edi
+  0059CFDE: 8B 7C 24 18        mov         edi,dword ptr [esp+18h]
+  0059CFE2: 8D B4 18 68 AF 00  lea         esi,[eax+ebx+0000AF68h]
+            00
+  0059CFE9: 57                 push        edi
+  0059CFEA: 8B CE              mov         ecx,esi
+  0059CFEC: E8 CF 40 00 00     call        005A10C0
+  0059CFF1: 84 C0              test        al,al
+  0059CFF3: 74 29              je          0059D01E
+  0059CFF5: 57                 push        edi
+  0059CFF6: 8B CE              mov         ecx,esi
+  0059CFF8: E8 63 3F 00 00     call        005A0F60
+  0059CFFD: 84 C0              test        al,al
+  0059CFFF: 75 1D              jne         0059D01E
+  0059D001: 8B 8B 94 FD 06 00  mov         ecx,dword ptr [ebx+0006FD94h]
+  0059D007: 57                 push        edi
+  0059D008: 55                 push        ebp
+  0059D009: E8 D2 14 00 00     call        0059E4E0
+  0059D00E: 84 C0              test        al,al
+  0059D010: 75 0C              jne         0059D01E
+  0059D012: 5F                 pop         edi
+  0059D013: 5E                 pop         esi
+  0059D014: 5D                 pop         ebp
+  0059D015: B8 01 00 00 00     mov         eax,1
+  0059D01A: 5B                 pop         ebx
+  0059D01B: C2 08 00           ret         8
+  0059D01E: 5F                 pop         edi
+  0059D01F: 5E                 pop         esi
+  0059D020: 5D                 pop         ebp
+  0059D021: 33 C0              xor         eax,eax
+  0059D023: 5B                 pop         ebx
+  0059D024: C2 08 00           ret         8
+
+  Summary
+
+      9C8000 .text

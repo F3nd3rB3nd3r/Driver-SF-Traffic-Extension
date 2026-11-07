@@ -1,0 +1,298 @@
+startup guard checks passed: 29
+{
+  "checks": 29,
+  "result": "passed",
+  "architecture": "Win32",
+  "configuration": "optimized",
+  "production_checks_sha256": "07355f731c5d6a7c22b2548f8e55b49bb4418fa226fb82a0b4c5077070df84ad",
+  "startup_order_verified": true,
+  "old_self_rejection_reproduced": true,
+  "owned_hook_accepted": true,
+  "negative_cases": "Missing stock preflight; unknown handler target/opcode; trampoline bytes/return/owner; absent hook; unreadable ranges; modified PE identity/graphics constructor; wrong base/PE offset",
+  "limitations": "Production C++ startup checks executed against fake memory in a standalone test. Does not exercise full DllMain, OS patch failure paths or the game."
+}
+{
+  "binary": "E:\\_DSF Mods\\ai repos\\DriverSF_V29s_VS_LEAN_2026-11-02\\build\\v29s_replay150_r1\\DriverSF_V29s_160Capacity_150Request_REPLAY150_R1.asi",
+  "sha256": "2ab7f763f216abfaf5091308f0adb3e428512038d2f0384432faa140aae12dd9",
+  "architecture": "Win32",
+  "configuration": "Release",
+  "baseline_flags_preserved": true,
+  "additional_flags": [
+    "DSF_V29S_ARENA_REUSE=1",
+    "DSF_V29S_AUDIO_DEFAULT_64M=1",
+    "DSF_V29S_AUDIO_MODEL192=1",
+    "DSF_V29S_AUDIO_PROBE=1",
+    "DSF_V29S_AUDIO_REASON_PROBE=1",
+    "DSF_V29S_AUDIO_SLOTS_2048=1",
+    "DSF_V29S_BASELINE150=1",
+    "DSF_V29S_CALLBACK512=1",
+    "DSF_V29S_CAPACITY_TRACE=1",
+    "DSF_V29S_CHAPTERS=1",
+    "DSF_V29S_CLEANUP_262144=1",
+    "DSF_V29S_INDEXED_262144=1",
+    "DSF_V29S_NOTIFY150=1",
+    "DSF_V29S_PARKED150=1",
+    "DSF_V29S_PENDING512=1",
+    "DSF_V29S_REPLAY150=1"
+  ],
+  "bridges": [
+    {
+      "name": "Audio",
+      "address": "0x10023100",
+      "helper": "0x10023140",
+      "fx_state_preserved": true
+    },
+    {
+      "name": "Traffic",
+      "address": "0x10023220",
+      "helper": "0x10023280",
+      "fx_state_preserved": true
+    },
+    {
+      "name": "Retire",
+      "address": "0x10023180",
+      "helper": "0x100231c0",
+      "fx_state_preserved": true
+    }
+  ],
+  "native_signature_sites": [
+    "0x849870",
+    "0x83b170",
+    "0x5a7dd1"
+  ],
+  "near_branch_interior_candidates": [],
+  "limitations": "Offline checks only; runtime hook installation, behavior and performance untested"
+}
+{
+  "sha256": "2ab7f763f216abfaf5091308f0adb3e428512038d2f0384432faa140aae12dd9",
+  "bytes": 234496,
+  "startup_check_revision": 2,
+  "startup_regression_checks": 29,
+  "native_identity_verified": true,
+  "compiled_patch_rows": 13,
+  "code_pages_changed": 1,
+  "constructor_cases": [
+    {
+      "base": "0x18b0c84",
+      "slots": 131072,
+      "constructor_steps": 655364,
+      "writes": 131073,
+      "exact_free_chain": true,
+      "exhaustion_and_recycling": true
+    },
+    {
+      "base": "0x21000000",
+      "slots": 262144,
+      "constructor_steps": 1310724,
+      "writes": 262145,
+      "exact_free_chain": true,
+      "exhaustion_and_recycling": true
+    },
+    {
+      "base": "0x400000",
+      "slots": 262144,
+      "constructor_steps": 1310724,
+      "writes": 262145,
+      "exact_free_chain": true,
+      "exhaustion_and_recycling": true
+    },
+    {
+      "base": "0x90000000",
+      "slots": 262144,
+      "constructor_steps": 1310724,
+      "writes": 262145,
+      "exact_free_chain": true,
+      "exhaustion_and_recycling": true
+    }
+  ],
+  "addressing_checks": 165,
+  "unrelated_code_preserved": true,
+  "operand_restore_model": true,
+  "limitations": "Offline only. Constructor slot loop interpreted in fake RAM; OS failure paths reviewed, not fault-injected. Native startup, runtime installation, visuals/audio and performance require the user's game test."
+}
+{
+  "result": "passed",
+  "sha256": "2ab7f763f216abfaf5091308f0adb3e428512038d2f0384432faa140aae12dd9",
+  "bytes": 234496,
+  "bridges": [
+    {
+      "name": "Bank",
+      "site": "0084BE74",
+      "bytes": "c7401404000000",
+      "compiled_arguments_verified": true,
+      "helper_calls": 1
+    },
+    {
+      "name": "Emitter",
+      "site": "0084AA29",
+      "bytes": "83bea00e00005a",
+      "compiled_arguments_verified": true,
+      "helper_calls": 1
+    },
+    {
+      "name": "Malloc",
+      "site": "00C99AA5",
+      "bytes": "5e5b8bc75f",
+      "compiled_arguments_verified": true,
+      "helper_calls": 1
+    },
+    {
+      "name": "Malign",
+      "site": "00C99B04",
+      "bytes": "5e5b8bc75f",
+      "compiled_arguments_verified": true,
+      "helper_calls": 1
+    },
+    {
+      "name": "Post",
+      "site": "00C54E17",
+      "bytes": "8bc65e5f5b83c410",
+      "compiled_arguments_verified": true,
+      "helper_calls": 1
+    },
+    {
+      "name": "PostEarly",
+      "site": "00C54DD3",
+      "bytes": "5f5b83c410",
+      "compiled_arguments_verified": true,
+      "helper_calls": 1
+    }
+  ],
+  "native_branch_interior_hits": 0,
+  "byte_scan_false_positives": [],
+  "startup_regression_checks": 29,
+  "synthetic_bridge_invocations": 10,
+  "working_r2_binary_unchanged": true,
+  "limitations": "Offline and isolated harness checks. No game execution, installation, live hook validation, audible-output or performance claim. Indirect entry aliases and OS patch failure paths are not exhaustively proven."
+}
+{
+  "result": "passed",
+  "bytes": 234496,
+  "sha256": "2ab7f763f216abfaf5091308f0adb3e428512038d2f0384432faa140aae12dd9",
+  "new_hooks": 10,
+  "preserved_slot_hooks": 9,
+  "compiled_sites": [
+    {
+      "name": "ReasonLookup",
+      "site": "00C5400B",
+      "length": 7,
+      "signature": "3bc6894424205e"
+    },
+    {
+      "name": "ReasonCreate",
+      "site": "00C54057",
+      "length": 6,
+      "signature": "8b4c241c8b11"
+    },
+    {
+      "name": "ReasonGate",
+      "site": "0084CC98",
+      "length": 7,
+      "signature": "83be6c01000010"
+    },
+    {
+      "name": "ReasonResult",
+      "site": "0084CCC9",
+      "length": 5,
+      "signature": "83c41c3bc3"
+    },
+    {
+      "name": "ReasonDelivered",
+      "site": "0084C9B0",
+      "length": 6,
+      "signature": "8b0dfcd04301"
+    },
+    {
+      "name": "ReasonHandled",
+      "site": "0084C920",
+      "length": 5,
+      "signature": "83ec085355"
+    },
+    {
+      "name": "ReasonRemove",
+      "site": "0084CE5F",
+      "length": 6,
+      "signature": "ff8940010000"
+    },
+    {
+      "name": "ReasonName",
+      "site": "0084CD90",
+      "length": 5,
+      "signature": "8b44240456"
+    },
+    {
+      "name": "ReasonNameDefault",
+      "site": "0084CDE0",
+      "length": 5,
+      "signature": "8b44240456"
+    },
+    {
+      "name": "ReasonRegister",
+      "site": "0084C2F0",
+      "length": 6,
+      "signature": "568bf1568936"
+    },
+    {
+      "name": "SlotsAGate",
+      "site": "00C6B42F",
+      "length": 7,
+      "signature": "8b47042b0733f6"
+    },
+    {
+      "name": "SlotsBGate",
+      "site": "00C6B92B",
+      "length": 6,
+      "signature": "c1f9023b4f10"
+    },
+    {
+      "name": "SlotsAInsert",
+      "site": "00C6B4F4",
+      "length": 7,
+      "signature": "807c2410008930"
+    },
+    {
+      "name": "SlotsBInsert",
+      "site": "00C6B975",
+      "length": 6,
+      "signature": "89308bc65e5f"
+    },
+    {
+      "name": "SlotsAReuse",
+      "site": "00C6B4A0",
+      "length": 9,
+      "signature": "6a008bcef30f11561c"
+    },
+    {
+      "name": "SlotsEight",
+      "site": "00C6B9B5",
+      "length": 6,
+      "signature": "8b53282b5324"
+    },
+    {
+      "name": "SlotsByte",
+      "site": "00C6B589",
+      "length": 9,
+      "signature": "807f39ffbe1b000000"
+    },
+    {
+      "name": "SlotsAUpdate",
+      "site": "00C6B2B6",
+      "length": 5,
+      "signature": "8b2f3b6f04"
+    },
+    {
+      "name": "SlotsBUpdate",
+      "site": "00C6B794",
+      "length": 6,
+      "signature": "8b77043b7708"
+    }
+  ],
+  "new_capacity_changes": 0,
+  "object_event_capacity": 16,
+  "shared_default_bytes": 67108864,
+  "global_audio_max": 2048,
+  "native_branch_interior_hits": 0,
+  "baseline_startup_checks": 29,
+  "prior_slots_artifact_preserved": true,
+  "limitations": "Synthetic fixtures and offline compiled checks. No live hook installation, audible-output or FPS result until the user test."
+}

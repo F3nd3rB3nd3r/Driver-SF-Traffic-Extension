@@ -1,0 +1,122 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0054A000: E8 DB DB FF FF     call        00547BE0
+  0054A005: 81 C6 B0 82 00 00  add         esi,82B0h
+  0054A00B: 83 EF 01           sub         edi,1
+  0054A00E: 75 D0              jne         00549FE0
+  0054A010: 5F                 pop         edi
+  0054A011: 5E                 pop         esi
+  0054A012: 5D                 pop         ebp
+  0054A013: C2 04 00           ret         4
+  0054A016: CC                 int         3
+  0054A017: CC                 int         3
+  0054A018: CC                 int         3
+  0054A019: CC                 int         3
+  0054A01A: CC                 int         3
+  0054A01B: CC                 int         3
+  0054A01C: CC                 int         3
+  0054A01D: CC                 int         3
+  0054A01E: CC                 int         3
+  0054A01F: CC                 int         3
+  0054A020: 51                 push        ecx
+  0054A021: 56                 push        esi
+  0054A022: 8B F1              mov         esi,ecx
+  0054A024: 33 C9              xor         ecx,ecx
+  0054A026: 38 8E 7C 05 01 00  cmp         byte ptr [esi+0001057Ch],cl
+  0054A02C: 0F 84 D7 00 00 00  je          0054A109
+  0054A032: 38 8E B4 05 01 00  cmp         byte ptr [esi+000105B4h],cl
+  0054A038: 0F 84 A4 00 00 00  je          0054A0E2
+  0054A03E: 8B 86 B8 05 01 00  mov         eax,dword ptr [esi+000105B8h]
+  0054A044: 3B C1              cmp         eax,ecx
+  0054A046: 0F 8E 96 00 00 00  jle         0054A0E2
+  0054A04C: 38 8E 2C 05 01 00  cmp         byte ptr [esi+0001052Ch],cl
+  0054A052: 75 3A              jne         0054A08E
+  0054A054: F3 0F 2A 86 BC 05  cvtsi2ss    xmm0,dword ptr [esi+000105BCh]
+            01 00
+  0054A05C: 57                 push        edi
+  0054A05D: 50                 push        eax
+  0054A05E: 8B 86 04 05 01 00  mov         eax,dword ptr [esi+00010504h]
+  0054A064: 48                 dec         eax
+  0054A065: 50                 push        eax
+  0054A066: 51                 push        ecx
+  0054A067: 8D BE B4 82 00 00  lea         edi,[esi+000082B4h]
+  0054A06D: 8B CF              mov         ecx,edi
+  0054A06F: F3 0F 11 04 24     movss       dword ptr [esp],xmm0
+  0054A074: E8 17 FB FF FF     call        00549B90
+  0054A079: 50                 push        eax
+  0054A07A: 6A 01              push        1
+  0054A07C: 8B CF              mov         ecx,edi
+  0054A07E: E8 2D D7 FF FF     call        005477B0
+  0054A083: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  0054A08B: 5F                 pop         edi
+  0054A08C: EB 1A              jmp         0054A0A8
+  0054A08E: 38 8E 2D 05 01 00  cmp         byte ptr [esi+0001052Dh],cl
+  0054A094: 74 0A              je          0054A0A0
+  0054A096: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  0054A09E: EB 08              jmp         0054A0A8
+  0054A0A0: F3 0F 10 05 DC 22  movss       xmm0,dword ptr ds:[00DE22DCh]
+            DE 00
+  0054A0A8: 8B 8E A0 05 01 00  mov         ecx,dword ptr [esi+000105A0h]
+  0054A0AE: F3 0F 11 44 24 04  movss       dword ptr [esp+4],xmm0
+  0054A0B4: D9 44 24 04        fld         dword ptr [esp+4]
+  0054A0B8: 83 EC 0C           sub         esp,0Ch
+  0054A0BB: D9 54 24 08        fst         dword ptr [esp+8]
+  0054A0BF: D9 86 6C 05 01 00  fld         dword ptr [esi+0001056Ch]
+  0054A0C5: D9 5C 24 04        fstp        dword ptr [esp+4]
+  0054A0C9: D9 1C 24           fstp        dword ptr [esp]
+  0054A0CC: E8 DF 5F 00 00     call        005500B0
+  0054A0D1: F3 0F 10 44 24 04  movss       xmm0,dword ptr [esp+4]
+  0054A0D7: F3 0F 11 86 6C 05  movss       dword ptr [esi+0001056Ch],xmm0
+            01 00
+  0054A0DF: 5E                 pop         esi
+  0054A0E0: 59                 pop         ecx
+  0054A0E1: C3                 ret
+  0054A0E2: 38 8E 2C 05 01 00  cmp         byte ptr [esi+0001052Ch],cl
+  0054A0E8: 74 1F              je          0054A109
+  0054A0EA: 88 8E 2C 05 01 00  mov         byte ptr [esi+0001052Ch],cl
+  0054A0F0: 89 8E 30 05 01 00  mov         dword ptr [esi+00010530h],ecx
+  0054A0F6: 89 8E 34 05 01 00  mov         dword ptr [esi+00010534h],ecx
+  0054A0FC: 89 8E 38 05 01 00  mov         dword ptr [esi+00010538h],ecx
+  0054A102: C6 86 2D 05 01 00  mov         byte ptr [esi+0001052Dh],1
+            01
+  0054A109: 5E                 pop         esi
+  0054A10A: 59                 pop         ecx
+  0054A10B: C3                 ret
+  0054A10C: CC                 int         3
+  0054A10D: CC                 int         3
+  0054A10E: CC                 int         3
+  0054A10F: CC                 int         3
+  0054A110: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0054A114: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0054A118: 89 81 98 05 01 00  mov         dword ptr [ecx+00010598h],eax
+  0054A11E: 89 91 9C 05 01 00  mov         dword ptr [ecx+0001059Ch],edx
+  0054A124: E8 C7 EF FF FF     call        005490F0
+  0054A129: C2 08 00           ret         8
+  0054A12C: CC                 int         3
+  0054A12D: CC                 int         3
+  0054A12E: CC                 int         3
+  0054A12F: CC                 int         3
+  0054A130: 83 EC 08           sub         esp,8
+  0054A133: 53                 push        ebx
+  0054A134: 56                 push        esi
+  0054A135: 8B F1              mov         esi,ecx
+  0054A137: 33 DB              xor         ebx,ebx
+  0054A139: 38 9E AC 82 00 00  cmp         byte ptr [esi+000082ACh],bl
+  0054A13F: 0F 84 D9 00 00 00  je          0054A21E
+  0054A145: F3 0F 10 86 34 56  movss       xmm0,dword ptr [esi+00005634h]
+            00 00
+  0054A14D: F3 0F 59 05 7C 9E  mulss       xmm0,dword ptr ds:[00DD9E7Ch]
+            DD 00
+  0054A155: 8B 4C 24 1C        mov         ecx,dword ptr [esp+1Ch]
+  0054A159: 88 9E AC 82 00 00  mov         byte ptr [esi+000082ACh],bl
+  0054A15F: B8
+  0054A160: 80
+
+  Summary
+
+      9C8000 .text

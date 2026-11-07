@@ -1,0 +1,133 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C99B00: FC                 cld
+  00C99B01: 91                 xchg        eax,ecx
+  00C99B02: DC 00              fadd        qword ptr [eax]
+  00C99B04: 5E                 pop         esi
+  00C99B05: 5B                 pop         ebx
+  00C99B06: 8B C7              mov         eax,edi
+  00C99B08: 5F                 pop         edi
+  00C99B09: C3                 ret
+  00C99B0A: CC                 int         3
+  00C99B0B: CC                 int         3
+  00C99B0C: CC                 int         3
+  00C99B0D: CC                 int         3
+  00C99B0E: CC                 int         3
+  00C99B0F: CC                 int         3
+  00C99B10: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00C99B14: 3B 05 88 23 D7 01  cmp         eax,dword ptr ds:[01D72388h]
+  00C99B1A: 7C 06              jl          00C99B22
+  00C99B1C: B8 02 00 00 00     mov         eax,2
+  00C99B21: C3                 ret
+  00C99B22: 6B C0 4C           imul        eax,eax,4Ch
+  00C99B25: 03 05 90 23 D7 01  add         eax,dword ptr ds:[01D72390h]
+  00C99B2B: 56                 push        esi
+  00C99B2C: 57                 push        edi
+  00C99B2D: 8B F0              mov         esi,eax
+  00C99B2F: 8D 7E 24           lea         edi,[esi+24h]
+  00C99B32: 57                 push        edi
+  00C99B33: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C99B39: 8B 4E 48           mov         ecx,dword ptr [esi+48h]
+  00C99B3C: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00C99B40: 89 08              mov         dword ptr [eax],ecx
+  00C99B42: 33 C9              xor         ecx,ecx
+  00C99B44: 57                 push        edi
+  00C99B45: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  00C99B48: 89 48 10           mov         dword ptr [eax+10h],ecx
+  00C99B4B: 89 48 04           mov         dword ptr [eax+4],ecx
+  00C99B4E: 89 48 08           mov         dword ptr [eax+8],ecx
+  00C99B51: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C99B57: 5F                 pop         edi
+  00C99B58: B8 01 00 00 00     mov         eax,1
+  00C99B5D: 5E                 pop         esi
+  00C99B5E: C3                 ret
+  00C99B5F: CC                 int         3
+  00C99B60: 56                 push        esi
+  00C99B61: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  00C99B65: 6B F6 4C           imul        esi,esi,4Ch
+  00C99B68: 03 35 90 23 D7 01  add         esi,dword ptr ds:[01D72390h]
+  00C99B6E: 57                 push        edi
+  00C99B6F: 8D 7E 24           lea         edi,[esi+24h]
+  00C99B72: 57                 push        edi
+  00C99B73: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C99B79: 8B 4E 44           mov         ecx,dword ptr [esi+44h]
+  00C99B7C: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00C99B80: 89 48 04           mov         dword ptr [eax+4],ecx
+  00C99B83: 8B 56 48           mov         edx,dword ptr [esi+48h]
+  00C99B86: 57                 push        edi
+  00C99B87: 89 10              mov         dword ptr [eax],edx
+  00C99B89: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C99B8F: 5F                 pop         edi
+  00C99B90: 5E                 pop         esi
+  00C99B91: C3                 ret
+  00C99B92: CC                 int         3
+  00C99B93: CC                 int         3
+  00C99B94: CC                 int         3
+  00C99B95: CC                 int         3
+  00C99B96: CC                 int         3
+  00C99B97: CC                 int         3
+  00C99B98: CC                 int         3
+  00C99B99: CC                 int         3
+  00C99B9A: CC                 int         3
+  00C99B9B: CC                 int         3
+  00C99B9C: CC                 int         3
+  00C99B9D: CC                 int         3
+  00C99B9E: CC                 int         3
+  00C99B9F: CC                 int         3
+  00C99BA0: 53                 push        ebx
+  00C99BA1: 8B 5C 24 0C        mov         ebx,dword ptr [esp+0Ch]
+  00C99BA5: 85 DB              test        ebx,ebx
+  00C99BA7: 74 3B              je          00C99BE4
+  00C99BA9: 56                 push        esi
+  00C99BAA: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  00C99BAE: 6B F6 4C           imul        esi,esi,4Ch
+  00C99BB1: 03 35 90 23 D7 01  add         esi,dword ptr ds:[01D72390h]
+  00C99BB7: 57                 push        edi
+  00C99BB8: 8D 7E 24           lea         edi,[esi+24h]
+  00C99BBB: 57                 push        edi
+  00C99BBC: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C99BC2: 53                 push        ebx
+  00C99BC3: E8 88 07 00 00     call        00C9A350
+  00C99BC8: 83 C0 08           add         eax,8
+  00C99BCB: 29 46 44           sub         dword ptr [esi+44h],eax
+  00C99BCE: 8B 46 3C           mov         eax,dword ptr [esi+3Ch]
+  00C99BD1: 53                 push        ebx
+  00C99BD2: 50                 push        eax
+  00C99BD3: E8 68 09 00 00     call        00C9A540
+  00C99BD8: 83 C4 0C           add         esp,0Ch
+  00C99BDB: 57                 push        edi
+  00C99BDC: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C99BE2: 5F                 pop         edi
+  00C99BE3: 5E                 pop         esi
+  00C99BE4: B8 01 00 00 00     mov         eax,1
+  00C99BE9: 5B                 pop         ebx
+  00C99BEA: C3                 ret
+  00C99BEB: CC                 int         3
+  00C99BEC: CC                 int         3
+  00C99BED: CC                 int         3
+  00C99BEE: CC                 int         3
+  00C99BEF: CC                 int         3
+  00C99BF0: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  00C99BF4: 6B C9 4C           imul        ecx,ecx,4Ch
+  00C99BF7: 03 0D 90 23 D7 01  add         ecx,dword ptr ds:[01D72390h]
+  00C99BFD: 8B 41 10           mov         eax,dword ptr [ecx+10h]
+  00C99C00: 85 C0              test        eax,eax
+  00C99C02: 74 31              je          00C99C35
+  00C99C04: 8B D0              mov         edx,eax
+  00C99C06: 85 D2              test        edx,edx
+  00C99C08: 74 25              je          00C99C2F
+  00C99C0A: 83 3A 00           cmp         dword ptr [edx],0
+  00C99C0D: 75 18              jne         00C99C27
+  00C99C0F: FF 49 18           dec         dword ptr [ecx+18h]
+  00C99C12: C7 41 10 00 00 00  mov         dword ptr [ecx+10h],0
+            00
+  00C99C19: C7 41 14 00 00 00  mov         dword ptr [ecx+14h],0
+            00
+  00C99C20: 8B
+
+  Summary
+
+      9C8000 .text

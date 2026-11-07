@@ -1,0 +1,48 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C53F50: 56                 push        esi
+  00C53F51: 57                 push        edi
+  00C53F52: 8B F9              mov         edi,ecx
+  00C53F54: 57                 push        edi
+  00C53F55: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C53F5B: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00C53F5F: B8 49 09 39 15     mov         eax,15390949h
+  00C53F64: F7 E1              mul         eax,ecx
+  00C53F66: C1 EA 04           shr         edx,4
+  00C53F69: 69 D2 C1 00 00 00  imul        edx,edx,0C1h
+  00C53F6F: 8B C1              mov         eax,ecx
+  00C53F71: 2B C2              sub         eax,edx
+  00C53F73: 8B 74 87 18        mov         esi,dword ptr [edi+eax*4+18h]
+  00C53F77: 85 F6              test        esi,esi
+  00C53F79: 74 11              je          00C53F8C
+  00C53F7B: EB 03              jmp         00C53F80
+  00C53F7D: 8D 49 00           lea         ecx,[ecx]
+  00C53F80: 39 4E 0C           cmp         dword ptr [esi+0Ch],ecx
+  00C53F83: 74 15              je          00C53F9A
+  00C53F85: 8B 76 08           mov         esi,dword ptr [esi+8]
+  00C53F88: 85 F6              test        esi,esi
+  00C53F8A: 75 F4              jne         00C53F80
+  00C53F8C: 57                 push        edi
+  00C53F8D: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C53F93: 5F                 pop         edi
+  00C53F94: 33 C0              xor         eax,eax
+  00C53F96: 5E                 pop         esi
+  00C53F97: C2 04 00           ret         4
+  00C53F9A: 85 F6              test        esi,esi
+  00C53F9C: 74 EE              je          00C53F8C
+  00C53F9E: FF 46 04           inc         dword ptr [esi+4]
+  00C53FA1: 57                 push        edi
+  00C53FA2: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C53FA8: 5F                 pop         edi
+  00C53FA9: 8B C6              mov         eax,esi
+  00C53FAB: 5E                 pop         esi
+  00C53FAC: C2 04 00           ret         4
+  00C53FAF: CC                 int         3
+  00C53FB0: 83
+
+  Summary
+
+      9C8000 .text

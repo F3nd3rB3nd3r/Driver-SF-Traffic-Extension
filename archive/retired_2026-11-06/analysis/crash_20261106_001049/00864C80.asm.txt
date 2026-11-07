@@ -1,0 +1,133 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00864C80: 6C                 ins         byte ptr es:[edi],dx
+  00864C81: 46                 inc         esi
+  00864C82: 86 00              xchg        al,byte ptr [eax]
+  00864C84: EF                 out         dx,eax
+  00864C85: 46                 inc         esi
+  00864C86: 86 00              xchg        al,byte ptr [eax]
+  00864C88: E3 48              jecxz       00864CD2
+  00864C8A: 86 00              xchg        al,byte ptr [eax]
+  00864C8C: 63 49 86           arpl        word ptr [ecx-7Ah],cx
+  00864C8F: 00 E6              add         dh,ah
+  00864C91: 49                 dec         ecx
+  00864C92: 86 00              xchg        al,byte ptr [eax]
+  00864C94: 6C                 ins         byte ptr es:[edi],dx
+  00864C95: 47                 inc         edi
+  00864C96: 86 00              xchg        al,byte ptr [eax]
+  00864C98: E9 47 86 00 66     jmp         6686D2E4
+  00864C9D: 48                 dec         eax
+  00864C9E: 86 00              xchg        al,byte ptr [eax]
+  00864CA0: 69 4A 86 00 36 45  imul        ecx,dword ptr [edx-7Ah],86453600h
+            86
+  00864CA7: 00 36              add         byte ptr [esi],dh
+  00864CA9: 4B                 dec         ebx
+  00864CAA: 86 00              xchg        al,byte ptr [eax]
+  00864CAC: 00 01              add         byte ptr [ecx],al
+  00864CAE: 02 03              add         al,byte ptr [ebx]
+  00864CB0: 04 05              add         al,5
+  00864CB2: 06                 push        es
+  00864CB3: 07                 pop         es
+  00864CB4: 08 09              or          byte ptr [ecx],cl
+  00864CB6: 0A 0C 0C           or          cl,byte ptr [esp+ecx]
+  00864CB9: 0C 0C              or          al,0Ch
+  00864CBB: 0C 0C              or          al,0Ch
+  00864CBD: 0C 0C              or          al,0Ch
+  00864CBF: 0C 0C              or          al,0Ch
+  00864CC1: 0C 0C              or          al,0Ch
+  00864CC3: 0C 0C              or          al,0Ch
+  00864CC5: 0C 0C              or          al,0Ch
+  00864CC7: 0C 0C              or          al,0Ch
+  00864CC9: 0C 0C              or          al,0Ch
+  00864CCB: 0C 0C              or          al,0Ch
+  00864CCD: 0C 0C              or          al,0Ch
+  00864CCF: 0C 0C              or          al,0Ch
+  00864CD1: 0C 0C              or          al,0Ch
+  00864CD3: 0C 0C              or          al,0Ch
+  00864CD5: 0C 0C              or          al,0Ch
+  00864CD7: 0C 0C              or          al,0Ch
+  00864CD9: 0C 0C              or          al,0Ch
+  00864CDB: 0C 0C              or          al,0Ch
+  00864CDD: 0C 0B              or          al,0Bh
+  00864CDF: CC                 int         3
+  00864CE0: 55                 push        ebp
+  00864CE1: 8D 6C 24 98        lea         ebp,[esp-68h]
+  00864CE5: 81 EC EC 00 00 00  sub         esp,0ECh
+  00864CEB: 53                 push        ebx
+  00864CEC: 56                 push        esi
+  00864CED: 57                 push        edi
+  00864CEE: 68 40 36 86 00     push        863640h
+  00864CF3: E8 B7 3E 3C 00     call        00C28BAF
+  00864CF8: 68 B8 11 EE 00     push        0EE11B8h
+  00864CFD: E8 BE 59 FF FF     call        0085A6C0
+  00864D02: 68 18 75 E3 00     push        0E37518h
+  00864D07: E8 E4 59 FF FF     call        0085A6F0
+  00864D0C: 68 B8 11 EE 00     push        0EE11B8h
+  00864D11: E8 0A 5A FF FF     call        0085A720
+  00864D16: 83 C4 10           add         esp,10h
+  00864D19: 8D 45 58           lea         eax,[ebp+58h]
+  00864D1C: 50                 push        eax
+  00864D1D: FF 15 C8 92 DC 00  call        dword ptr ds:[00DC92C8h]
+  00864D23: 50                 push        eax
+  00864D24: FF 15 04 93 DC 00  call        dword ptr ds:[00DC9304h]
+  00864D2A: 8B 75 58           mov         esi,dword ptr [ebp+58h]
+  00864D2D: 8B D8              mov         ebx,eax
+  00864D2F: 8D 3C B5 00 00 00  lea         edi,[esi*4+00000000h]
+            00
+  00864D36: 8B C7              mov         eax,edi
+  00864D38: 89 5D 50           mov         dword ptr [ebp+50h],ebx
+  00864D3B: C6 45 64 00        mov         byte ptr [ebp+64h],0
+  00864D3F: E8 4C 85 3C 00     call        00C2D290
+  00864D44: 8B 4D 64           mov         ecx,dword ptr [ebp+64h]
+  00864D47: 89 65 60           mov         dword ptr [ebp+60h],esp
+  00864D4A: 51                 push        ecx
+  00864D4B: 56                 push        esi
+  00864D4C: 03 FB              add         edi,ebx
+  00864D4E: 57                 push        edi
+  00864D4F: 53                 push        ebx
+  00864D50: E8 4B 04 00 00     call        008651A0
+  00864D55: 83 C4 10           add         esp,10h
+  00864D58: E8 33 85 3C 00     call        00C2D290
+  00864D5D: 8B 5D 60           mov         ebx,dword ptr [ebp+60h]
+  00864D60: 33 FF              xor         edi,edi
+  00864D62: 8B CC              mov         ecx,esp
+  00864D64: 85 F6              test        esi,esi
+  00864D66: 74 43              je          00864DAB
+  00864D68: 8B 55 50           mov         edx,dword ptr [ebp+50h]
+  00864D6B: 89 0B              mov         dword ptr [ebx],ecx
+  00864D6D: 8B 14 BA           mov         edx,dword ptr [edx+edi*4]
+  00864D70: 8B C2              mov         eax,edx
+  00864D72: 8D 70 02           lea         esi,[eax+2]
+  00864D75: 83 C3 04           add         ebx,4
+  00864D78: 89 75 64           mov         dword ptr [ebp+64h],esi
+  00864D7B: EB 03              jmp         00864D80
+  00864D7D: 8D 49 00           lea         ecx,[ecx]
+  00864D80: 66 8B 30           mov         si,word ptr [eax]
+  00864D83: 83 C0 02           add         eax,2
+  00864D86: 66 85 F6           test        si,si
+  00864D89: 75 F5              jne         00864D80
+  00864D8B: 2B 45 64           sub         eax,dword ptr [ebp+64h]
+  00864D8E: D1 F8              sar         eax,1
+  00864D90: 74 0F              je          00864DA1
+  00864D92: 8B F0              mov         esi,eax
+  00864D94: 8A 02              mov         al,byte ptr [edx]
+  00864D96: 88 01              mov         byte ptr [ecx],al
+  00864D98: 41                 inc         ecx
+  00864D99: 83 C2 02           add         edx,2
+  00864D9C: 83 EE 01           sub         esi,1
+  00864D9F: 75 F3              jne         00864D94
+  00864DA1: C6 01 00           mov         byte ptr [ecx],0
+  00864DA4: 47                 inc         edi
+  00864DA5: 41                 inc         ecx
+  00864DA6: 3B 7D 58           cmp         edi,dword ptr [ebp+58h]
+  00864DA9: 75 BD              jne         00864D68
+  00864DAB: 8D 4D 64           lea         ecx,[ebp+64h]
+  00864DAE: 6A 07              push        7
+  00864DB0: 51                 push        ecx
+
+  Summary
+
+      9C8000 .text

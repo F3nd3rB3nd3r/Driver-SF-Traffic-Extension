@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion><Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{33B59F84-6691-4C2A-B30A-586620100016}</ProjectGuid>
+    <RootNamespace>DriverSF_V29s_AUDIO_DEFAULT16M</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v145</PlatformToolset><CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <TargetName>DriverSF_V29s_160Capacity_150Request_AUDIO_DEFAULT16M_R1</TargetName><TargetExt>.asi</TargetExt>
+    <OutDir>$(ProjectDir)build\v29s_audio_default16m_r1\</OutDir>
+    <IntDir>$(ProjectDir)build\v29s_audio_default16m_r1\vs_obj\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>DSF_CHAPTER7_ORDERED_ROSTER=1;DSF_CHAPTER7_PRELOAD_COUNT=150;DSF_GRAPHICS_ADMISSION_TARGET=160;DSF_V29S_NATIVE_TRACE=1;DSF_V29S_INCLUDE_EXPANDED=1;DSF_V29S_SPOOL0_EXPANDED=1;DSF_V29S_CLONE_EXPANDED=1;DSF_V29S_MODEL_POOL_EXPANDED=1;DSF_V29S_RESOURCE_COLLECTION_EXPANDED=1;DSF_V29S_PERF_CONTROL=1;DSF_V29S_CAPACITY_TRACE=1;DSF_V29S_INDEXED_262144=1;DSF_V29S_AUDIO_PROBE=1;DSF_V29S_AUDIO_DEFAULT_16M=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>MaxSpeed</Optimization><AdditionalOptions>/Oi- %(AdditionalOptions)</AdditionalOptions>
+      <WarningLevel>Level4</WarningLevel><LanguageStandard>stdcpp17</LanguageStandard>
+      <BufferSecurityCheck>false</BufferSecurityCheck><ExceptionHandling>false</ExceptionHandling><RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link><AdditionalDependencies>kernel32.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateMapFile>true</GenerateMapFile><MapFileName>$(OutDir)$(TargetName).map</MapFileName>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries><EntryPointSymbol>DllMain@12</EntryPointSymbol></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="src\DriverSF_V29b_NativeFastPath.cpp" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sAudioDefaultPool.inc" /><ClInclude Include="src\V29sAudioDefaultPoolPatch.inc" /><ClInclude Include="src\V29sAudioProbe.inc" /><ClInclude Include="src\V29sAudioProbeBridges.inc" /><ClInclude Include="src\V29sCapacityTrace.inc" /><ClInclude Include="src\V29sIndexedCapacity.inc" /><ClInclude Include="src\V29sStartupChecks.inc" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

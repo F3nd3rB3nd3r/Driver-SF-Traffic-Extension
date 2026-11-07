@@ -1,0 +1,102 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00545330: FE 00              inc         byte ptr [eax]
+  00545332: 68 C7 0E 60 04     push        4600EC7h
+  00545337: EB 4F              jmp         00545388
+  00545339: 80 7E 06 00        cmp         byte ptr [esi+6],0
+  0054533D: 74 11              je          00545350
+  0054533F: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00545347: C6 46 0B 00        mov         byte ptr [esi+0Bh],0
+  0054534B: F3 0F 11 46 18     movss       dword ptr [esi+18h],xmm0
+  00545350: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00545355: 85 C0              test        eax,eax
+  00545357: 75 0A              jne         00545363
+  00545359: E8 32 53 EC FF     call        0040A690
+  0054535E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00545363: 8B 88 68 02 00 00  mov         ecx,dword ptr [eax+00000268h]
+  00545369: 6A 00              push        0
+  0054536B: E8 20 95 FF FF     call        0053E890
+  00545370: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00545375: 85 C0              test        eax,eax
+  00545377: 75 0A              jne         00545383
+  00545379: E8 12 53 EC FF     call        0040A690
+  0054537E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00545383: 68 15 F8 82 B6     push        0B682F815h
+  00545388: 8B 40 50           mov         eax,dword ptr [eax+50h]
+  0054538B: 8B C8              mov         ecx,eax
+  0054538D: E8 FE 2F 30 00     call        00848390
+  00545392: 88 9E EC 00 00 00  mov         byte ptr [esi+000000ECh],bl
+  00545398: 5E                 pop         esi
+  00545399: 5B                 pop         ebx
+  0054539A: C2 04 00           ret         4
+  0054539D: CC                 int         3
+  0054539E: CC                 int         3
+  0054539F: CC                 int         3
+  005453A0: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005453A5: 83 EC 68           sub         esp,68h
+  005453A8: 53                 push        ebx
+  005453A9: 55                 push        ebp
+  005453AA: 56                 push        esi
+  005453AB: 57                 push        edi
+  005453AC: 8B F1              mov         esi,ecx
+  005453AE: 85 C0              test        eax,eax
+  005453B0: 75 0A              jne         005453BC
+  005453B2: E8 D9 52 EC FF     call        0040A690
+  005453B7: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005453BC: 8B 40 50           mov         eax,dword ptr [eax+50h]
+  005453BF: 89 86 F0 00 00 00  mov         dword ptr [esi+000000F0h],eax
+  005453C5: 8D 44 24 10        lea         eax,[esp+10h]
+  005453C9: 68 A0 00 00 00     push        0A0h
+  005453CE: 50                 push        eax
+  005453CF: E8 EC 50 32 00     call        0086A4C0
+  005453D4: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005453D9: 8B 7C 24 18        mov         edi,dword ptr [esp+18h]
+  005453DD: 83 C4 08           add         esp,8
+  005453E0: 85 C0              test        eax,eax
+  005453E2: 75 0A              jne         005453EE
+  005453E4: E8 A7 52 EC FF     call        0040A690
+  005453E9: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005453EE: 8D 4C 24 10        lea         ecx,[esp+10h]
+  005453F2: 68 99 00 00 00     push        99h
+  005453F7: 89 B8 80 02 00 00  mov         dword ptr [eax+00000280h],edi
+  005453FD: 51                 push        ecx
+  005453FE: 89 BE F4 00 00 00  mov         dword ptr [esi+000000F4h],edi
+  00545404: E8 B7 50 32 00     call        0086A4C0
+  00545409: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0054540E: 8B 7C 24 18        mov         edi,dword ptr [esp+18h]
+  00545412: 83 C4 08           add         esp,8
+  00545415: 85 C0              test        eax,eax
+  00545417: 75 0A              jne         00545423
+  00545419: E8 72 52 EC FF     call        0040A690
+  0054541E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00545423: 8D 54 24 10        lea         edx,[esp+10h]
+  00545427: 68 A5 00 00 00     push        0A5h
+  0054542C: 89 B8 64 02 00 00  mov         dword ptr [eax+00000264h],edi
+  00545432: 52                 push        edx
+  00545433: 89 BE F8 00 00 00  mov         dword ptr [esi+000000F8h],edi
+  00545439: E8 82 50 32 00     call        0086A4C0
+  0054543E: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00545443: 8B 7C 24 18        mov         edi,dword ptr [esp+18h]
+  00545447: 83 C4 08           add         esp,8
+  0054544A: 85 C0              test        eax,eax
+  0054544C: 75 0A              jne         00545458
+  0054544E: E8 3D 52 EC FF     call        0040A690
+  00545453: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00545458: 89 B8 94 02 00 00  mov         dword ptr [eax+00000294h],edi
+  0054545E: 8D 44 24 10        lea         eax,[esp+10h]
+  00545462: 68 9E 00 00 00     push        9Eh
+  00545467: 50                 push        eax
+  00545468: 89 BE FC 00 00 00  mov         dword ptr [esi+000000FCh],edi
+  0054546E: E8 4D 50 32 00     call        0086A4C0
+  00545473: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00545478: 8B 7C 24 18        mov         edi,dword ptr [esp+18h]
+  0054547C: 83 C4 08           add         esp,8
+  0054547F: 85 C0              test        eax,eax
+
+  Summary
+
+      9C8000 .text

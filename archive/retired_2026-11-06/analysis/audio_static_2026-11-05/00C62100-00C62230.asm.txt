@@ -1,0 +1,144 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C62100: 56                 push        esi
+  00C62101: 8B F1              mov         esi,ecx
+  00C62103: 83 7E 08 00        cmp         dword ptr [esi+8],0
+  00C62107: 75 22              jne         00C6212B
+  00C62109: 8B 46 14           mov         eax,dword ptr [esi+14h]
+  00C6210C: 3B 46 10           cmp         eax,dword ptr [esi+10h]
+  00C6210F: 73 5A              jae         00C6216B
+  00C62111: 8B 4E 1C           mov         ecx,dword ptr [esi+1Ch]
+  00C62114: 6A 28              push        28h
+  00C62116: 51                 push        ecx
+  00C62117: E8 24 79 03 00     call        00C99A40
+  00C6211C: 83 C4 08           add         esp,8
+  00C6211F: 85 C0              test        eax,eax
+  00C62121: 74 48              je          00C6216B
+  00C62123: 8B 56 08           mov         edx,dword ptr [esi+8]
+  00C62126: 89 10              mov         dword ptr [eax],edx
+  00C62128: 89 46 08           mov         dword ptr [esi+8],eax
+  00C6212B: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00C6212E: 85 C0              test        eax,eax
+  00C62130: 75 07              jne         00C62139
+  00C62132: 8B 46 08           mov         eax,dword ptr [esi+8]
+  00C62135: 89 06              mov         dword ptr [esi],eax
+  00C62137: EB 05              jmp         00C6213E
+  00C62139: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00C6213C: 89 08              mov         dword ptr [eax],ecx
+  00C6213E: 8B 46 08           mov         eax,dword ptr [esi+8]
+  00C62141: 89 46 04           mov         dword ptr [esi+4],eax
+  00C62144: 8B 10              mov         edx,dword ptr [eax]
+  00C62146: 89 56 08           mov         dword ptr [esi+8],edx
+  00C62149: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  00C6214F: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00C62152: FF 46 14           inc         dword ptr [esi+14h]
+  00C62155: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  00C62159: 57                 push        edi
+  00C6215A: 83 C0 04           add         eax,4
+  00C6215D: B9 09 00 00 00     mov         ecx,9
+  00C62162: 8B F8              mov         edi,eax
+  00C62164: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  00C62166: 5F                 pop         edi
+  00C62167: 5E                 pop         esi
+  00C62168: C2 04 00           ret         4
+  00C6216B: 33 C0              xor         eax,eax
+  00C6216D: 5E                 pop         esi
+  00C6216E: C2 04 00           ret         4
+  00C62171: CC                 int         3
+  00C62172: CC                 int         3
+  00C62173: CC                 int         3
+  00C62174: CC                 int         3
+  00C62175: CC                 int         3
+  00C62176: CC                 int         3
+  00C62177: CC                 int         3
+  00C62178: CC                 int         3
+  00C62179: CC                 int         3
+  00C6217A: CC                 int         3
+  00C6217B: CC                 int         3
+  00C6217C: CC                 int         3
+  00C6217D: CC                 int         3
+  00C6217E: CC                 int         3
+  00C6217F: CC                 int         3
+  00C62180: 56                 push        esi
+  00C62181: 8B F1              mov         esi,ecx
+  00C62183: 8B 06              mov         eax,dword ptr [esi]
+  00C62185: 85 C0              test        eax,eax
+  00C62187: 74 43              je          00C621CC
+  00C62189: 8B 08              mov         ecx,dword ptr [eax]
+  00C6218B: 89 0E              mov         dword ptr [esi],ecx
+  00C6218D: 3B 46 04           cmp         eax,dword ptr [esi+4]
+  00C62190: 75 07              jne         00C62199
+  00C62192: C7 46 04 00 00 00  mov         dword ptr [esi+4],0
+            00
+  00C62199: 8B 56 18           mov         edx,dword ptr [esi+18h]
+  00C6219C: 3B C2              cmp         eax,edx
+  00C6219E: 72 0D              jb          00C621AD
+  00C621A0: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  00C621A3: 8D 0C 89           lea         ecx,[ecx+ecx*4]
+  00C621A6: 8D 14 CA           lea         edx,[edx+ecx*8]
+  00C621A9: 3B C2              cmp         eax,edx
+  00C621AB: 72 12              jb          00C621BF
+  00C621AD: 50                 push        eax
+  00C621AE: 8B 46 1C           mov         eax,dword ptr [esi+1Ch]
+  00C621B1: 50                 push        eax
+  00C621B2: E8 E9 79 03 00     call        00C99BA0
+  00C621B7: 83 C4 08           add         esp,8
+  00C621BA: FF 4E 14           dec         dword ptr [esi+14h]
+  00C621BD: EB C4              jmp         00C62183
+  00C621BF: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00C621C2: 89 08              mov         dword ptr [eax],ecx
+  00C621C4: FF 4E 14           dec         dword ptr [esi+14h]
+  00C621C7: 89 46 08           mov         dword ptr [esi+8],eax
+  00C621CA: EB B7              jmp         00C62183
+  00C621CC: 5E                 pop         esi
+  00C621CD: C3                 ret
+  00C621CE: CC                 int         3
+  00C621CF: CC                 int         3
+  00C621D0: 56                 push        esi
+  00C621D1: 57                 push        edi
+  00C621D2: 8B F1              mov         esi,ecx
+  00C621D4: 8B 06              mov         eax,dword ptr [esi]
+  00C621D6: 6A 24              push        24h
+  00C621D8: 50                 push        eax
+  00C621D9: E8 62 78 03 00     call        00C99A40
+  00C621DE: 8B C8              mov         ecx,eax
+  00C621E0: 33 FF              xor         edi,edi
+  00C621E2: 83 C4 08           add         esp,8
+  00C621E5: 3B CF              cmp         ecx,edi
+  00C621E7: 75 07              jne         00C621F0
+  00C621E9: 5F                 pop         edi
+  00C621EA: 33 C0              xor         eax,eax
+  00C621EC: 5E                 pop         esi
+  00C621ED: C2 08 00           ret         8
+  00C621F0: 8B 54 24 10        mov         edx,dword ptr [esp+10h]
+  00C621F4: 8B 44 96 04        mov         eax,dword ptr [esi+edx*4+4]
+  00C621F8: 89 01              mov         dword ptr [ecx],eax
+  00C621FA: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00C621FE: 89 41 04           mov         dword ptr [ecx+4],eax
+  00C62201: 8D 41 08           lea         eax,[ecx+8]
+  00C62204: 3B C7              cmp         eax,edi
+  00C62206: 74 15              je          00C6221D
+  00C62208: 89 78 08           mov         dword ptr [eax+8],edi
+  00C6220B: 89 78 0C           mov         dword ptr [eax+0Ch],edi
+  00C6220E: 89 78 10           mov         dword ptr [eax+10h],edi
+  00C62211: C7 40 14 01 00 00  mov         dword ptr [eax+14h],1
+            00
+  00C62218: 89 38              mov         dword ptr [eax],edi
+  00C6221A: 89 78 04           mov         dword ptr [eax+4],edi
+  00C6221D: 89 4C 96 04        mov         dword ptr [esi+edx*4+4],ecx
+  00C62221: FF 86 08 03 00 00  inc         dword ptr [esi+00000308h]
+  00C62227: 5F                 pop         edi
+  00C62228: 5E                 pop         esi
+  00C62229: C2 08 00           ret         8
+  00C6222C: CC                 int         3
+  00C6222D: CC                 int         3
+  00C6222E: CC                 int         3
+  00C6222F: CC                 int         3
+  00C62230: 53                 push        ebx
+
+  Summary
+
+      9C8000 .text

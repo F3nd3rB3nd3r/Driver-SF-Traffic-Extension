@@ -1,0 +1,408 @@
+
+Dump of file E:\_DSF Mods\ai repos\DriverSF_V29s_VS_LEAN_2026-11-02\build\v29s_replay150_r1\DriverSF_V29s_160Capacity_150Request_REPLAY150_R1.asi
+
+File Type: DLL
+
+  1001A3F0: 55                 push        ebp
+  1001A3F1: 8B EC              mov         ebp,esp
+  1001A3F3: 83 EC 10           sub         esp,10h
+  1001A3F6: 53                 push        ebx
+  1001A3F7: 56                 push        esi
+  1001A3F8: 8B 35 DC D2 11 10  mov         esi,dword ptr ds:[1011D2DCh]
+  1001A3FE: 81 C6 70 4C 35 00  add         esi,354C70h
+  1001A404: 80 3D EF D2 29 10  cmp         byte ptr ds:[1029D2EFh],0
+            00
+  1001A40B: 57                 push        edi
+  1001A40C: 0F 84 4A 02 00 00  je          1001A65C
+  1001A412: E8 A9 B6 FE FF     call        10005AC0
+  1001A417: 84 C0              test        al,al
+  1001A419: 0F 84 3D 02 00 00  je          1001A65C
+  1001A41F: 83 3D B8 3E 03 10  cmp         dword ptr ds:[10033EB8h],0
+            00
+  1001A426: 0F 85 30 02 00 00  jne         1001A65C
+  1001A42C: E8 7F 6A 00 00     call        10020EB0
+  1001A431: 84 C0              test        al,al
+  1001A433: 0F 84 23 02 00 00  je          1001A65C
+  1001A439: 68 9D 00 00 00     push        9Dh
+  1001A43E: 56                 push        esi
+  1001A43F: E8 0C 35 00 00     call        1001D950
+  1001A444: 83 C4 08           add         esp,8
+  1001A447: 84 C0              test        al,al
+  1001A449: 0F 84 0D 02 00 00  je          1001A65C
+  1001A44F: 33 D2              xor         edx,edx
+  1001A451: 8A 8A 90 B2 02 10  mov         cl,byte ptr [edx+1002B290h]
+  1001A457: 8A 04 32           mov         al,byte ptr [edx+esi]
+  1001A45A: 3A C1              cmp         al,cl
+  1001A45C: 0F 85 FA 01 00 00  jne         1001A65C
+  1001A462: 42                 inc         edx
+  1001A463: 81 FA 9D 00 00 00  cmp         edx,9Dh
+  1001A469: 72 E6              jb          1001A451
+  1001A46B: 8B 1D DC D2 11 10  mov         ebx,dword ptr ds:[1011D2DCh]
+  1001A471: 8D 45 FC           lea         eax,[ebp-4]
+  1001A474: 8B 3D 04 40 44 10  mov         edi,dword ptr ds:[10444004h]
+  1001A47A: 81 C3 00 40 35 00  add         ebx,354000h
+  1001A480: 50                 push        eax
+  1001A481: 6A 40              push        40h
+  1001A483: 68 00 10 00 00     push        1000h
+  1001A488: 53                 push        ebx
+  1001A489: C7 45 FC 00 00 00  mov         dword ptr [ebp-4],0
+            00
+  1001A490: C7 45 F4 00 00 00  mov         dword ptr [ebp-0Ch],0
+            00
+  1001A497: 89 5D F8           mov         dword ptr [ebp-8],ebx
+  1001A49A: FF D7              call        edi
+  1001A49C: 85 C0              test        eax,eax
+  1001A49E: 0F 84 C6 01 00 00  je          1001A66A
+  1001A4A4: 83 3D B8 3E 03 10  cmp         dword ptr ds:[10033EB8h],0
+            00
+  1001A4AB: 0F 85 7D 01 00 00  jne         1001A62E
+  1001A4B1: 33 D2              xor         edx,edx
+  1001A4B3: 8A 8A 90 B2 02 10  mov         cl,byte ptr [edx+1002B290h]
+  1001A4B9: 8A 04 32           mov         al,byte ptr [edx+esi]
+  1001A4BC: 3A C1              cmp         al,cl
+  1001A4BE: 0F 85 6A 01 00 00  jne         1001A62E
+  1001A4C4: 42                 inc         edx
+  1001A4C5: 81 FA 9D 00 00 00  cmp         edx,9Dh
+  1001A4CB: 72 E6              jb          1001A4B3
+  1001A4CD: BF 19 10 00 10     mov         edi,10001019h
+  1001A4D2: 33 C9              xor         ecx,ecx
+  1001A4D4: 2B FE              sub         edi,esi
+  1001A4D6: 83 C7 9B           add         edi,0FFFFFF9Bh
+  1001A4D9: 0F 1F 80 00 00 00  nop         dword ptr [eax+00000000h]
+            00
+  1001A4E0: 8D 04 49           lea         eax,[ecx+ecx*2]
+  1001A4E3: 8B D7              mov         edx,edi
+  1001A4E5: 83 F9 03           cmp         ecx,3
+  1001A4E8: 74 07              je          1001A4F1
+  1001A4EA: 8B 14 85 90 A5 02  mov         edx,dword ptr [eax*4+1002A590h]
+            10
+  1001A4F1: 8B 04 85 88 A5 02  mov         eax,dword ptr [eax*4+1002A588h]
+            10
+  1001A4F8: 41                 inc         ecx
+  1001A4F9: 89 14 06           mov         dword ptr [esi+eax],edx
+  1001A4FC: 83 F9 05           cmp         ecx,5
+  1001A4FF: 72 DF              jb          1001A4E0
+  1001A501: 6A 01              push        1
+  1001A503: 68 19 10 00 10     push        10001019h
+  1001A508: 56                 push        esi
+  1001A509: E8 92 F9 FF FF     call        10019EA0
+  1001A50E: 83 C4 0C           add         esp,0Ch
+  1001A511: 8A D8              mov         bl,al
+  1001A513: 68 00 10 00 00     push        1000h
+  1001A518: FF 75 F8           push        dword ptr [ebp-8]
+  1001A51B: FF 15 30 40 44 10  call        dword ptr ds:[10444030h]
+  1001A521: 50                 push        eax
+  1001A522: FF 15 2C 40 44 10  call        dword ptr ds:[1044402Ch]
+  1001A528: 8B F8              mov         edi,eax
+  1001A52A: 8D 45 F4           lea         eax,[ebp-0Ch]
+  1001A52D: 50                 push        eax
+  1001A52E: FF 75 FC           push        dword ptr [ebp-4]
+  1001A531: 68 00 10 00 00     push        1000h
+  1001A536: FF 75 F8           push        dword ptr [ebp-8]
+  1001A539: FF 15 04 40 44 10  call        dword ptr ds:[10444004h]
+  1001A53F: 84 DB              test        bl,bl
+  1001A541: 74 26              je          1001A569
+  1001A543: 85 FF              test        edi,edi
+  1001A545: 74 22              je          1001A569
+  1001A547: 85 C0              test        eax,eax
+  1001A549: 74 1E              je          1001A569
+  1001A54B: C7 05 80 54 39 10  mov         dword ptr ds:[10395480h],1
+            01 00 00 00
+  1001A555: 68 70 07 03 10     push        10030770h
+  1001A55A: E8 41 87 FF FF     call        10012CA0
+  1001A55F: 83 C4 04           add         esp,4
+  1001A562: 5F                 pop         edi
+  1001A563: 5E                 pop         esi
+  1001A564: 5B                 pop         ebx
+  1001A565: 8B E5              mov         esp,ebp
+  1001A567: 5D                 pop         ebp
+  1001A568: C3                 ret
+  1001A569: 8B 7D F8           mov         edi,dword ptr [ebp-8]
+  1001A56C: 8D 45 F0           lea         eax,[ebp-10h]
+  1001A56F: 50                 push        eax
+  1001A570: 6A 40              push        40h
+  1001A572: 68 00 10 00 00     push        1000h
+  1001A577: 57                 push        edi
+  1001A578: C7 45 F0 00 00 00  mov         dword ptr [ebp-10h],0
+            00
+  1001A57F: FF 15 04 40 44 10  call        dword ptr ds:[10444004h]
+  1001A585: 85 C0              test        eax,eax
+  1001A587: 75 0F              jne         1001A598
+  1001A589: 50                 push        eax
+  1001A58A: 56                 push        esi
+  1001A58B: 68 CC 06 03 10     push        100306CCh
+  1001A590: E8 AB FC FF FF     call        1001A240
+  1001A595: 83 C4 0C           add         esp,0Ch
+  1001A598: 33 D2              xor         edx,edx
+  1001A59A: 66 0F 1F 44 00 00  nop         word ptr [eax+eax]
+  1001A5A0: 8D 04 52           lea         eax,[edx+edx*2]
+  1001A5A3: 42                 inc         edx
+  1001A5A4: 8B 0C 85 8C A5 02  mov         ecx,dword ptr [eax*4+1002A58Ch]
+            10
+  1001A5AB: 8B 04 85 88 A5 02  mov         eax,dword ptr [eax*4+1002A588h]
+            10
+  1001A5B2: 89 0C 06           mov         dword ptr [esi+eax],ecx
+  1001A5B5: 83 FA 05           cmp         edx,5
+  1001A5B8: 72 E6              jb          1001A5A0
+  1001A5BA: 33 D2              xor         edx,edx
+  1001A5BC: 0F 1F 40 00        nop         dword ptr [eax]
+  1001A5C0: 8A 8A 90 B2 02 10  mov         cl,byte ptr [edx+1002B290h]
+  1001A5C6: 8A 04 32           mov         al,byte ptr [edx+esi]
+  1001A5C9: 3A C1              cmp         al,cl
+  1001A5CB: 75 0D              jne         1001A5DA
+  1001A5CD: 42                 inc         edx
+  1001A5CE: 81 FA 9D 00 00 00  cmp         edx,9Dh
+  1001A5D4: 72 EA              jb          1001A5C0
+  1001A5D6: B3 01              mov         bl,1
+  1001A5D8: EB 02              jmp         1001A5DC
+  1001A5DA: 32 DB              xor         bl,bl
+  1001A5DC: 68 00 10 00 00     push        1000h
+  1001A5E1: 57                 push        edi
+  1001A5E2: FF 15 30 40 44 10  call        dword ptr ds:[10444030h]
+  1001A5E8: 50                 push        eax
+  1001A5E9: FF 15 2C 40 44 10  call        dword ptr ds:[1044402Ch]
+  1001A5EF: 8B F8              mov         edi,eax
+  1001A5F1: 8D 45 F4           lea         eax,[ebp-0Ch]
+  1001A5F4: 50                 push        eax
+  1001A5F5: FF 75 FC           push        dword ptr [ebp-4]
+  1001A5F8: 68 00 10 00 00     push        1000h
+  1001A5FD: FF 75 F8           push        dword ptr [ebp-8]
+  1001A600: FF 15 04 40 44 10  call        dword ptr ds:[10444004h]
+  1001A606: 84 DB              test        bl,bl
+  1001A608: 74 08              je          1001A612
+  1001A60A: 85 FF              test        edi,edi
+  1001A60C: 74 04              je          1001A612
+  1001A60E: 85 C0              test        eax,eax
+  1001A610: 75 10              jne         1001A622
+  1001A612: 6A 00              push        0
+  1001A614: 56                 push        esi
+  1001A615: 68 E0 06 03 10     push        100306E0h
+  1001A61A: E8 21 FC FF FF     call        1001A240
+  1001A61F: 83 C4 0C           add         esp,0Ch
+  1001A622: C7 05 80 54 39 10  mov         dword ptr ds:[10395480h],0FFFFFFFFh
+            FF FF FF FF
+  1001A62C: EB 49              jmp         1001A677
+  1001A62E: 8D 45 F4           lea         eax,[ebp-0Ch]
+  1001A631: 50                 push        eax
+  1001A632: FF 75 FC           push        dword ptr [ebp-4]
+  1001A635: 68 00 10 00 00     push        1000h
+  1001A63A: 53                 push        ebx
+  1001A63B: FF D7              call        edi
+  1001A63D: C7 05 80 54 39 10  mov         dword ptr ds:[10395480h],0FFFFFFFFh
+            FF FF FF FF
+  1001A647: 85 C0              test        eax,eax
+  1001A649: 75 2C              jne         1001A677
+  1001A64B: 50                 push        eax
+  1001A64C: 56                 push        esi
+  1001A64D: 68 B4 06 03 10     push        100306B4h
+  1001A652: E8 E9 FB FF FF     call        1001A240
+  1001A657: 83 C4 0C           add         esp,0Ch
+  1001A65A: EB 0E              jmp         1001A66A
+  1001A65C: C7 45 FC 00 00 00  mov         dword ptr [ebp-4],0
+            00
+  1001A663: C7 45 F4 00 00 00  mov         dword ptr [ebp-0Ch],0
+            00
+  1001A66A: 83 3D 80 54 39 10  cmp         dword ptr ds:[10395480h],1
+            01
+  1001A671: 0F 84 DE FE FF FF  je          1001A555
+  1001A677: 68 F8 06 03 10     push        100306F8h
+  1001A67C: E8 1F 86 FF FF     call        10012CA0
+  1001A681: 6A 00              push        0
+  1001A683: 56                 push        esi
+  1001A684: 68 54 07 03 10     push        10030754h
+  1001A689: E8 B2 FB FF FF     call        1001A240
+  1001A68E: 83 C4 10           add         esp,10h
+  1001A691: 5F                 pop         edi
+  1001A692: 5E                 pop         esi
+  1001A693: 5B                 pop         ebx
+  1001A694: 8B E5              mov         esp,ebp
+  1001A696: 5D                 pop         ebp
+  1001A697: C3                 ret
+  1001A698: CC                 int         3
+  1001A699: CC                 int         3
+  1001A69A: CC                 int         3
+  1001A69B: CC                 int         3
+  1001A69C: CC                 int         3
+  1001A69D: CC                 int         3
+  1001A69E: CC                 int         3
+  1001A69F: CC                 int         3
+  1001A6A0: CC                 int         3
+  1001A6A1: CC                 int         3
+  1001A6A2: CC                 int         3
+  1001A6A3: CC                 int         3
+  1001A6A4: CC                 int         3
+  1001A6A5: CC                 int         3
+  1001A6A6: CC                 int         3
+  1001A6A7: CC                 int         3
+  1001A6A8: CC                 int         3
+  1001A6A9: CC                 int         3
+  1001A6AA: CC                 int         3
+  1001A6AB: CC                 int         3
+  1001A6AC: CC                 int         3
+  1001A6AD: CC                 int         3
+  1001A6AE: CC                 int         3
+  1001A6AF: CC                 int         3
+  1001A6B0: CC                 int         3
+  1001A6B1: CC                 int         3
+  1001A6B2: CC                 int         3
+  1001A6B3: CC                 int         3
+  1001A6B4: CC                 int         3
+  1001A6B5: CC                 int         3
+  1001A6B6: CC                 int         3
+  1001A6B7: CC                 int         3
+  1001A6B8: CC                 int         3
+  1001A6B9: CC                 int         3
+  1001A6BA: CC                 int         3
+  1001A6BB: CC                 int         3
+  1001A6BC: CC                 int         3
+  1001A6BD: CC                 int         3
+  1001A6BE: CC                 int         3
+  1001A6BF: CC                 int         3
+  1001A6C0: CC                 int         3
+  1001A6C1: CC                 int         3
+  1001A6C2: CC                 int         3
+  1001A6C3: CC                 int         3
+  1001A6C4: CC                 int         3
+  1001A6C5: CC                 int         3
+  1001A6C6: CC                 int         3
+  1001A6C7: CC                 int         3
+  1001A6C8: CC                 int         3
+  1001A6C9: CC                 int         3
+  1001A6CA: CC                 int         3
+  1001A6CB: CC                 int         3
+  1001A6CC: CC                 int         3
+  1001A6CD: CC                 int         3
+  1001A6CE: CC                 int         3
+  1001A6CF: CC                 int         3
+  1001A6D0: CC                 int         3
+  1001A6D1: CC                 int         3
+  1001A6D2: CC                 int         3
+  1001A6D3: CC                 int         3
+  1001A6D4: CC                 int         3
+  1001A6D5: CC                 int         3
+  1001A6D6: CC                 int         3
+  1001A6D7: CC                 int         3
+  1001A6D8: CC                 int         3
+  1001A6D9: CC                 int         3
+  1001A6DA: CC                 int         3
+  1001A6DB: CC                 int         3
+  1001A6DC: CC                 int         3
+  1001A6DD: CC                 int         3
+  1001A6DE: CC                 int         3
+  1001A6DF: CC                 int         3
+  1001A6E0: CC                 int         3
+  1001A6E1: CC                 int         3
+  1001A6E2: CC                 int         3
+  1001A6E3: CC                 int         3
+  1001A6E4: CC                 int         3
+  1001A6E5: CC                 int         3
+  1001A6E6: CC                 int         3
+  1001A6E7: CC                 int         3
+  1001A6E8: CC                 int         3
+  1001A6E9: CC                 int         3
+  1001A6EA: CC                 int         3
+  1001A6EB: CC                 int         3
+  1001A6EC: CC                 int         3
+  1001A6ED: CC                 int         3
+  1001A6EE: CC                 int         3
+  1001A6EF: CC                 int         3
+  1001A6F0: CC                 int         3
+  1001A6F1: CC                 int         3
+  1001A6F2: CC                 int         3
+  1001A6F3: CC                 int         3
+  1001A6F4: CC                 int         3
+  1001A6F5: CC                 int         3
+  1001A6F6: CC                 int         3
+  1001A6F7: CC                 int         3
+  1001A6F8: CC                 int         3
+  1001A6F9: CC                 int         3
+  1001A6FA: CC                 int         3
+  1001A6FB: CC                 int         3
+  1001A6FC: CC                 int         3
+  1001A6FD: CC                 int         3
+  1001A6FE: CC                 int         3
+  1001A6FF: CC                 int         3
+  1001A700: CC                 int         3
+  1001A701: CC                 int         3
+  1001A702: CC                 int         3
+  1001A703: CC                 int         3
+  1001A704: CC                 int         3
+  1001A705: CC                 int         3
+  1001A706: CC                 int         3
+  1001A707: CC                 int         3
+  1001A708: CC                 int         3
+  1001A709: CC                 int         3
+  1001A70A: CC                 int         3
+  1001A70B: CC                 int         3
+  1001A70C: CC                 int         3
+  1001A70D: CC                 int         3
+  1001A70E: CC                 int         3
+  1001A70F: CC                 int         3
+  1001A710: CC                 int         3
+  1001A711: CC                 int         3
+  1001A712: CC                 int         3
+  1001A713: CC                 int         3
+  1001A714: CC                 int         3
+  1001A715: CC                 int         3
+  1001A716: CC                 int         3
+  1001A717: CC                 int         3
+  1001A718: CC                 int         3
+  1001A719: CC                 int         3
+  1001A71A: CC                 int         3
+  1001A71B: CC                 int         3
+  1001A71C: CC                 int         3
+  1001A71D: CC                 int         3
+  1001A71E: CC                 int         3
+  1001A71F: CC                 int         3
+  1001A720: CC                 int         3
+  1001A721: CC                 int         3
+  1001A722: CC                 int         3
+  1001A723: CC                 int         3
+  1001A724: CC                 int         3
+  1001A725: CC                 int         3
+  1001A726: CC                 int         3
+  1001A727: CC                 int         3
+  1001A728: CC                 int         3
+  1001A729: CC                 int         3
+  1001A72A: CC                 int         3
+  1001A72B: CC                 int         3
+  1001A72C: CC                 int         3
+  1001A72D: CC                 int         3
+  1001A72E: CC                 int         3
+  1001A72F: CC                 int         3
+  1001A730: CC                 int         3
+  1001A731: CC                 int         3
+  1001A732: CC                 int         3
+  1001A733: CC                 int         3
+  1001A734: CC                 int         3
+  1001A735: CC                 int         3
+  1001A736: CC                 int         3
+  1001A737: CC                 int         3
+  1001A738: CC                 int         3
+  1001A739: CC                 int         3
+  1001A73A: CC                 int         3
+  1001A73B: CC                 int         3
+  1001A73C: CC                 int         3
+  1001A73D: CC                 int         3
+  1001A73E: CC                 int         3
+  1001A73F: CC                 int         3
+  1001A740: CC                 int         3
+  1001A741: CC                 int         3
+  1001A742: CC                 int         3
+  1001A743: CC                 int         3
+  1001A744: CC                 int         3
+  1001A745: CC                 int         3
+  1001A746: CC                 int         3
+  1001A747: CC                 int         3
+  1001A748: CC                 int         3
+  1001A749: CC                 int         3
+  1001A74A: CC                 int         3
+  1001A74B: CC                 int         3
+  1001A74C: CC                 int         3
+  1001A74D: CC                 int         3
+  1001A74E: CC                 int         3
+  1001A74F: CC                 int         3
+
+  Summary
+
+       27000 .text

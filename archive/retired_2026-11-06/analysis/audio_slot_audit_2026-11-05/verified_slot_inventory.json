@@ -1,0 +1,84 @@
+{
+  "executable_sha256": "c79987b0548f7130337c3f295c8fe269e120ceddad55c1159e6f5cbc6aa26616",
+  "verified_instruction_spans": [
+    {
+      "address": "00C50F0C",
+      "signature": "b9ff000000",
+      "role": "default255"
+    },
+    {
+      "address": "00C50F17",
+      "signature": "894804",
+      "role": "settingPlus4"
+    },
+    {
+      "address": "00C50F1A",
+      "signature": "894808",
+      "role": "settingPlus8"
+    },
+    {
+      "address": "00C6B92E",
+      "signature": "3b4f10736e",
+      "role": "managerB_count_limit_branch"
+    },
+    {
+      "address": "00C6B9A1",
+      "signature": "5fc20400",
+      "role": "managerB_full_return"
+    },
+    {
+      "address": "00C6B439",
+      "signature": "3b41047326",
+      "role": "managerA_count_limit_branch"
+    },
+    {
+      "address": "00C6B464",
+      "signature": "8b070f57d2",
+      "role": "managerA_reuse_start"
+    }
+  ],
+  "manager_b": {
+    "configured_limit": 255,
+    "settings_offset": 4,
+    "global_pointer": "01D71850",
+    "initializer": "00C6B740",
+    "limit_offset": "10",
+    "begin_offset": "04",
+    "end_offset": "08",
+    "allocated_pointer_capacity_offset": "0C",
+    "allocator": "00C6B920",
+    "gate": "00C6B92E",
+    "full_branch": "00C6B931",
+    "full_return": "00C6B9A1",
+    "record_bytes": 108,
+    "full_behavior": "return null before Malloc"
+  },
+  "manager_a": {
+    "configured_limit": 255,
+    "settings_offset": 8,
+    "global_pointer": "01D7184C",
+    "initializer": "00C6B160",
+    "limit_offset": "04",
+    "lists": [
+      {
+        "begin": "08",
+        "end": "0C",
+        "capacity": "10"
+      },
+      {
+        "begin": "14",
+        "end": "18",
+        "capacity": "1C"
+      }
+    ],
+    "allocator": "00C6B420",
+    "gate": "00C6B439",
+    "full_branch": "00C6B43C",
+    "fallback": "00C6B464",
+    "record_bytes": 60,
+    "full_behavior": "select/update/remove an existing record and repurpose it; null possible when no candidate"
+  },
+  "current_probe_covers_these": false,
+  "runtime_saturation_proven": false,
+  "limitations": "Native code confirms slot ceilings independent of backing RAM. Exact stripped manager roles, relation to missing cars, live high-water and refusal/reuse counts remain unresolved. No new ASI/game execution."
+}

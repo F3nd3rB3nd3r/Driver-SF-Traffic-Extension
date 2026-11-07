@@ -1,0 +1,127 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0054B980: F3 0F 59 C5        mulss       xmm0,xmm5
+  0054B984: F3 0F 11 40 10     movss       dword ptr [eax+10h],xmm0
+  0054B989: 3B CA              cmp         ecx,edx
+  0054B98B: 0F 84 87 00 00 00  je          0054BA18
+  0054B991: 7E 39              jle         0054B9CC
+  0054B993: 0F BF 3C 5E        movsx       edi,word ptr [esi+ebx*2]
+  0054B997: F3 0F 10 40 04     movss       xmm0,dword ptr [eax+4]
+  0054B99C: F3 0F 2A CF        cvtsi2ss    xmm1,edi
+  0054B9A0: 49                 dec         ecx
+  0054B9A1: 3B CA              cmp         ecx,edx
+  0054B9A3: F3 0F 59 CC        mulss       xmm1,xmm4
+  0054B9A7: F3 0F 59 C8        mulss       xmm1,xmm0
+  0054B9AB: F3 0F 5C 40 08     subss       xmm0,dword ptr [eax+8]
+  0054B9B0: F3 0F 11 48 10     movss       dword ptr [eax+10h],xmm1
+  0054B9B5: F3 0F 11 40 04     movss       dword ptr [eax+4],xmm0
+  0054B9BA: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  0054B9BD: 7F 0D              jg          0054B9CC
+  0054B9BF: F3 0F 11 58 04     movss       dword ptr [eax+4],xmm3
+  0054B9C4: F3 0F 11 58 08     movss       dword ptr [eax+8],xmm3
+  0054B9C9: 89 50 0C           mov         dword ptr [eax+0Ch],edx
+  0054B9CC: 8B 48 2C           mov         ecx,dword ptr [eax+2Ch]
+  0054B9CF: 3B CA              cmp         ecx,edx
+  0054B9D1: 74 45              je          0054BA18
+  0054B9D3: F3 0F 10 40 10     movss       xmm0,dword ptr [eax+10h]
+  0054B9D8: 0F 2F C3           comiss      xmm0,xmm3
+  0054B9DB: F3 0F 10 48 24     movss       xmm1,dword ptr [eax+24h]
+  0054B9E0: 72 0E              jb          0054B9F0
+  0054B9E2: 0F 28 D1           movaps      xmm2,xmm1
+  0054B9E5: F3 0F 58 D0        addss       xmm2,xmm0
+  0054B9E9: F3 0F 11 50 10     movss       dword ptr [eax+10h],xmm2
+  0054B9EE: EB 09              jmp         0054B9F9
+  0054B9F0: F3 0F 5C C1        subss       xmm0,xmm1
+  0054B9F4: F3 0F 11 40 10     movss       dword ptr [eax+10h],xmm0
+  0054B9F9: F3 0F 5C 48 28     subss       xmm1,dword ptr [eax+28h]
+  0054B9FE: 49                 dec         ecx
+  0054B9FF: 3B CA              cmp         ecx,edx
+  0054BA01: F3 0F 11 48 24     movss       dword ptr [eax+24h],xmm1
+  0054BA06: 89 48 2C           mov         dword ptr [eax+2Ch],ecx
+  0054BA09: 7F 0D              jg          0054BA18
+  0054BA0B: F3 0F 11 58 24     movss       dword ptr [eax+24h],xmm3
+  0054BA10: F3 0F 11 58 28     movss       dword ptr [eax+28h],xmm3
+  0054BA15: 89 50 2C           mov         dword ptr [eax+2Ch],edx
+  0054BA18: F3 0F 10 40 10     movss       xmm0,dword ptr [eax+10h]
+  0054BA1D: 0F 2F 40 1C        comiss      xmm0,dword ptr [eax+1Ch]
+  0054BA21: 76 05              jbe         0054BA28
+  0054BA23: F3 0F 11 40 1C     movss       dword ptr [eax+1Ch],xmm0
+  0054BA28: 8B 4C 24 28        mov         ecx,dword ptr [esp+28h]
+  0054BA2C: F3 0F 11 04 99     movss       dword ptr [ecx+ebx*4],xmm0
+  0054BA31: FF 00              inc         dword ptr [eax]
+  0054BA33: 8B 78 14           mov         edi,dword ptr [eax+14h]
+  0054BA36: 8B 08              mov         ecx,dword ptr [eax]
+  0054BA38: 4F                 dec         edi
+  0054BA39: 3B CF              cmp         ecx,edi
+  0054BA3B: 89 58 18           mov         dword ptr [eax+18h],ebx
+  0054BA3E: 7D 10              jge         0054BA50
+  0054BA40: 43                 inc         ebx
+  0054BA41: 3B 5D 0C           cmp         ebx,dword ptr [ebp+0Ch]
+  0054BA44: 0F 8C FE FD FF FF  jl          0054B848
+  0054BA4A: 5F                 pop         edi
+  0054BA4B: 5E                 pop         esi
+  0054BA4C: 5D                 pop         ebp
+  0054BA4D: 5B                 pop         ebx
+  0054BA4E: 59                 pop         ecx
+  0054BA4F: C3                 ret
+  0054BA50: C7 00 FF FF FF FF  mov         dword ptr [eax],0FFFFFFFFh
+  0054BA56: 5F                 pop         edi
+  0054BA57: 5E                 pop         esi
+  0054BA58: 5D                 pop         ebp
+  0054BA59: 5B                 pop         ebx
+  0054BA5A: 59                 pop         ecx
+  0054BA5B: C3                 ret
+  0054BA5C: CC                 int         3
+  0054BA5D: CC                 int         3
+  0054BA5E: CC                 int         3
+  0054BA5F: CC                 int         3
+  0054BA60: 8B 49 2C           mov         ecx,dword ptr [ecx+2Ch]
+  0054BA63: 68 57 AB 92 82     push        8292AB57h
+  0054BA68: E8 53 13 30 00     call        0084CDC0
+  0054BA6D: C3                 ret
+  0054BA6E: CC                 int         3
+  0054BA6F: CC                 int         3
+  0054BA70: C3                 ret
+  0054BA71: CC                 int         3
+  0054BA72: CC                 int         3
+  0054BA73: CC                 int         3
+  0054BA74: CC                 int         3
+  0054BA75: CC                 int         3
+  0054BA76: CC                 int         3
+  0054BA77: CC                 int         3
+  0054BA78: CC                 int         3
+  0054BA79: CC                 int         3
+  0054BA7A: CC                 int         3
+  0054BA7B: CC                 int         3
+  0054BA7C: CC                 int         3
+  0054BA7D: CC                 int         3
+  0054BA7E: CC                 int         3
+  0054BA7F: CC                 int         3
+  0054BA80: 33 C0              xor         eax,eax
+  0054BA82: 89 41 74           mov         dword ptr [ecx+74h],eax
+  0054BA85: 89 41 78           mov         dword ptr [ecx+78h],eax
+  0054BA88: 89 41 7C           mov         dword ptr [ecx+7Ch],eax
+  0054BA8B: 89 81 80 00 00 00  mov         dword ptr [ecx+00000080h],eax
+  0054BA91: C3                 ret
+  0054BA92: CC                 int         3
+  0054BA93: CC                 int         3
+  0054BA94: CC                 int         3
+  0054BA95: CC                 int         3
+  0054BA96: CC                 int         3
+  0054BA97: CC                 int         3
+  0054BA98: CC                 int         3
+  0054BA99: CC                 int         3
+  0054BA9A: CC                 int         3
+  0054BA9B: CC                 int         3
+  0054BA9C: CC                 int         3
+  0054BA9D: CC                 int         3
+  0054BA9E: CC                 int         3
+  0054BA9F: CC                 int         3
+  0054BAA0: 8B
+
+  Summary
+
+      9C8000 .text

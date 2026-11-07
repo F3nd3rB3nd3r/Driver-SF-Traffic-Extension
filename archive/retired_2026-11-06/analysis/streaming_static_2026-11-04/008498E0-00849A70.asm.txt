@@ -1,0 +1,107 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008498E0: 0F 57 C0           xorps       xmm0,xmm0
+  008498E3: F3 0F 10 0D 10 64  movss       xmm1,dword ptr ds:[00DD6410h]
+            DD 00
+  008498EB: 53                 push        ebx
+  008498EC: 56                 push        esi
+  008498ED: 8B F1              mov         esi,ecx
+  008498EF: 8D 46 04           lea         eax,[esi+4]
+  008498F2: 89 40 04           mov         dword ptr [eax+4],eax
+  008498F5: 89 00              mov         dword ptr [eax],eax
+  008498F7: C7 46 28 EC 45 DE  mov         dword ptr [esi+28h],0DE45ECh
+            00
+  008498FE: 57                 push        edi
+  008498FF: C7 46 2C 30 4D DE  mov         dword ptr [esi+2Ch],0DE4D30h
+            00
+  00849906: C7 06 28 6C E3 00  mov         dword ptr [esi],0E36C28h
+  0084990C: C7 46 28 20 6C E3  mov         dword ptr [esi+28h],0E36C20h
+            00
+  00849913: C7 46 2C 14 6C E3  mov         dword ptr [esi+2Ch],0E36C14h
+            00
+  0084991A: 8D BE 04 01 00 00  lea         edi,[esi+00000104h]
+  00849920: 8B CF              mov         ecx,edi
+  00849922: F3 0F 11 46 7C     movss       dword ptr [esi+7Ch],xmm0
+  00849927: F3 0F 11 8E 80 00  movss       dword ptr [esi+00000080h],xmm1
+            00 00
+  0084992F: F3 0F 11 86 84 00  movss       dword ptr [esi+00000084h],xmm0
+            00 00
+  00849937: F3 0F 11 8E 88 00  movss       dword ptr [esi+00000088h],xmm1
+            00 00
+  0084993F: F3 0F 11 86 8C 00  movss       dword ptr [esi+0000008Ch],xmm0
+            00 00
+  00849947: F3 0F 11 8E 90 00  movss       dword ptr [esi+00000090h],xmm1
+            00 00
+  0084994F: F3 0F 11 86 94 00  movss       dword ptr [esi+00000094h],xmm0
+            00 00
+  00849957: F3 0F 11 8E 98 00  movss       dword ptr [esi+00000098h],xmm1
+            00 00
+  0084995F: E8 CC 45 00 00     call        0084DF30
+  00849964: 33 DB              xor         ebx,ebx
+  00849966: 8D 8E 48 09 00 00  lea         ecx,[esi+00000948h]
+  0084996C: 89 9F 38 08 00 00  mov         dword ptr [edi+00000838h],ebx
+  00849972: C7 07 08 6C E3 00  mov         dword ptr [edi],0E36C08h
+  00849978: C7 47 04 F0 6B E3  mov         dword ptr [edi+4],0E36BF0h
+            00
+  0084997F: C7 47 08 EC 6B E3  mov         dword ptr [edi+8],0E36BECh
+            00
+  00849986: E8 05 E2 FF FF     call        00847B90
+  0084998B: 89 9E 50 0A 00 00  mov         dword ptr [esi+00000A50h],ebx
+  00849991: 89 9E 54 0A 00 00  mov         dword ptr [esi+00000A54h],ebx
+  00849997: 8D 86 58 0A 00 00  lea         eax,[esi+00000A58h]
+  0084999D: 89 86 4C 0A 00 00  mov         dword ptr [esi+00000A4Ch],eax
+  008499A3: 8D 86 90 0E 00 00  lea         eax,[esi+00000E90h]
+  008499A9: 89 86 94 0E 00 00  mov         dword ptr [esi+00000E94h],eax
+  008499AF: 89 00              mov         dword ptr [eax],eax
+  008499B1: 89 9E 9C 0E 00 00  mov         dword ptr [esi+00000E9Ch],ebx
+  008499B7: 89 9E A0 0E 00 00  mov         dword ptr [esi+00000EA0h],ebx
+  008499BD: 8D 86 D4 92 00 00  lea         eax,[esi+000092D4h]
+  008499C3: 89 86 D8 92 00 00  mov         dword ptr [esi+000092D8h],eax
+  008499C9: 89 00              mov         dword ptr [eax],eax
+  008499CB: 8D 86 40 95 00 00  lea         eax,[esi+00009540h]
+  008499D1: 8D 8E A4 0E 00 00  lea         ecx,[esi+00000EA4h]
+  008499D7: 89 8E 98 0E 00 00  mov         dword ptr [esi+00000E98h],ecx
+  008499DD: 8D 96 E8 92 00 00  lea         edx,[esi+000092E8h]
+  008499E3: 89 96 DC 92 00 00  mov         dword ptr [esi+000092DCh],edx
+  008499E9: 89 9E E0 92 00 00  mov         dword ptr [esi+000092E0h],ebx
+  008499EF: 89 9E E4 92 00 00  mov         dword ptr [esi+000092E4h],ebx
+  008499F5: 89 86 44 95 00 00  mov         dword ptr [esi+00009544h],eax
+  008499FB: 89 00              mov         dword ptr [eax],eax
+  008499FD: 88 5E 30           mov         byte ptr [esi+30h],bl
+  00849A00: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00849A05: 3B C3              cmp         eax,ebx
+  00849A07: 75 0A              jne         00849A13
+  00849A09: E8 82 0C BC FF     call        0040A690
+  00849A0E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00849A13: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00849A16: 89 4E 38           mov         dword ptr [esi+38h],ecx
+  00849A19: 8B 01              mov         eax,dword ptr [ecx]
+  00849A1B: 8B 50 54           mov         edx,dword ptr [eax+54h]
+  00849A1E: FF D2              call        edx
+  00849A20: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00849A28: 89 46 3C           mov         dword ptr [esi+3Ch],eax
+  00849A2B: F3 0F 11 86 00 01  movss       dword ptr [esi+00000100h],xmm0
+            00 00
+  00849A33: 0F 57 C0           xorps       xmm0,xmm0
+  00849A36: 89 9E 44 0A 00 00  mov         dword ptr [esi+00000A44h],ebx
+  00849A3C: 89 9E 44 09 00 00  mov         dword ptr [esi+00000944h],ebx
+  00849A42: 83 C8 FF           or          eax,0FFFFFFFFh
+  00849A45: 89 86 30 0A 00 00  mov         dword ptr [esi+00000A30h],eax
+  00849A4B: 89 86 38 0A 00 00  mov         dword ptr [esi+00000A38h],eax
+  00849A51: 89 86 3C 0A 00 00  mov         dword ptr [esi+00000A3Ch],eax
+  00849A57: 89 86 2C 0A 00 00  mov         dword ptr [esi+00000A2Ch],eax
+  00849A5D: 89 86 34 0A 00 00  mov         dword ptr [esi+00000A34h],eax
+  00849A63: 89 5E 40           mov         dword ptr [esi+40h],ebx
+  00849A66: 89 5E 44           mov         dword ptr [esi+44h],ebx
+  00849A69: 89 5E 48           mov         dword ptr [esi+48h],ebx
+  00849A6C: 89 5E 4C           mov         dword ptr [esi+4Ch],ebx
+  00849A6F: F3
+  00849A70: 0F
+
+  Summary
+
+      9C8000 .text

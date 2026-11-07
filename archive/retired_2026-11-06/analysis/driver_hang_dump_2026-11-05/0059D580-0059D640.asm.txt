@@ -1,0 +1,79 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0059D580: 53                 push        ebx
+  0059D581: 8B D9              mov         ebx,ecx
+  0059D583: 8B 83 90 FD 06 00  mov         eax,dword ptr [ebx+0006FD90h]
+  0059D589: 83 E8 00           sub         eax,0
+  0059D58C: 74 3F              je          0059D5CD
+  0059D58E: 83 E8 01           sub         eax,1
+  0059D591: 74 0B              je          0059D59E
+  0059D593: 83 E8 01           sub         eax,1
+  0059D596: 75 3F              jne         0059D5D7
+  0059D598: 5B                 pop         ebx
+  0059D599: E9 82 F5 FF FF     jmp         0059CB20
+  0059D59E: 56                 push        esi
+  0059D59F: 57                 push        edi
+  0059D5A0: 8D B3 68 AF 00 00  lea         esi,[ebx+0000AF68h]
+  0059D5A6: BF 0E 00 00 00     mov         edi,0Eh
+  0059D5AB: EB 03              jmp         0059D5B0
+  0059D5AD: 8D 49 00           lea         ecx,[ecx]
+  0059D5B0: 8B CE              mov         ecx,esi
+  0059D5B2: E8 89 36 00 00     call        005A0C40
+  0059D5B7: 81 C6 4C 73 00 00  add         esi,734Ch
+  0059D5BD: 83 EF 01           sub         edi,1
+  0059D5C0: 75 EE              jne         0059D5B0
+  0059D5C2: 5F                 pop         edi
+  0059D5C3: 5E                 pop         esi
+  0059D5C4: C6 83 B8 4D 07 00  mov         byte ptr [ebx+00074DB8h],1
+            01
+  0059D5CB: 5B                 pop         ebx
+  0059D5CC: C3                 ret
+  0059D5CD: C7 83 90 FD 06 00  mov         dword ptr [ebx+0006FD90h],5
+            05 00 00 00
+  0059D5D7: 5B                 pop         ebx
+  0059D5D8: C3                 ret
+  0059D5D9: CC                 int         3
+  0059D5DA: CC                 int         3
+  0059D5DB: CC                 int         3
+  0059D5DC: CC                 int         3
+  0059D5DD: CC                 int         3
+  0059D5DE: CC                 int         3
+  0059D5DF: CC                 int         3
+  0059D5E0: 53                 push        ebx
+  0059D5E1: 55                 push        ebp
+  0059D5E2: 56                 push        esi
+  0059D5E3: 8B F1              mov         esi,ecx
+  0059D5E5: 8D 9E 68 AF 00 00  lea         ebx,[esi+0000AF68h]
+  0059D5EB: 57                 push        edi
+  0059D5EC: 8B FB              mov         edi,ebx
+  0059D5EE: BD 0E 00 00 00     mov         ebp,0Eh
+  0059D5F3: 8B CF              mov         ecx,edi
+  0059D5F5: E8 76 4E 00 00     call        005A2470
+  0059D5FA: 81 C7 4C 73 00 00  add         edi,734Ch
+  0059D600: 83 ED 01           sub         ebp,1
+  0059D603: 75 EE              jne         0059D5F3
+  0059D605: 8B 86 90 FD 06 00  mov         eax,dword ptr [esi+0006FD90h]
+  0059D60B: 48                 dec         eax
+  0059D60C: 83 F8 03           cmp         eax,3
+  0059D60F: 0F 87 14 01 00 00  ja          0059D729
+  0059D615: FF 24 85 30 D7 59  jmp         dword ptr [eax*4+0059D730h]
+            00
+  0059D61C: 33 FF              xor         edi,edi
+  0059D61E: 8B FF              mov         edi,edi
+  0059D620: 8B CB              mov         ecx,ebx
+  0059D622: E8 39 34 00 00     call        005A0A60
+  0059D627: 84 C0              test        al,al
+  0059D629: 0F 84 FA 00 00 00  je          0059D729
+  0059D62F: 47                 inc         edi
+  0059D630: 81 C3 4C 73 00 00  add         ebx,734Ch
+  0059D636: 83 FF 0E           cmp         edi,0Eh
+  0059D639: 75 E5              jne         0059D620
+  0059D63B: 80
+  0059D63C: BE B8 4D 07 00     mov         esi,74DB8h
+
+  Summary
+
+      9C8000 .text

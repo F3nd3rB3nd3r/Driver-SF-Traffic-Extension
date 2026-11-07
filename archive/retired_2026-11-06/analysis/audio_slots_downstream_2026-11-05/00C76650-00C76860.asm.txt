@@ -1,0 +1,175 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C76650: 85 B2 01 00 00 8B  test        dword ptr [edx+8B000001h],esi
+  00C76656: 4E                 dec         esi
+  00C76657: 68 8B 01 8B 56     push        568B018Bh
+  00C7665C: 70 8B              jo          00C765E9
+  00C7665E: 80 F0 00           xor         al,0
+  00C76661: 00 00              add         byte ptr [eax],al
+  00C76663: 52                 push        edx
+  00C76664: FF D0              call        eax
+  00C76666: 8A 8E E7 00 00 00  mov         cl,byte ptr [esi+000000E7h]
+  00C7666C: 8D 96 14 01 00 00  lea         edx,[esi+00000114h]
+  00C76672: 52                 push        edx
+  00C76673: 32 C8              xor         cl,al
+  00C76675: 8B 46 70           mov         eax,dword ptr [esi+70h]
+  00C76678: 6A 00              push        0
+  00C7667A: 80 E1 01           and         cl,1
+  00C7667D: 30 8E E7 00 00 00  xor         byte ptr [esi+000000E7h],cl
+  00C76683: 8B 4E 68           mov         ecx,dword ptr [esi+68h]
+  00C76686: 8D 7E 38           lea         edi,[esi+38h]
+  00C76689: 50                 push        eax
+  00C7668A: 57                 push        edi
+  00C7668B: C7 07 00 00 00 00  mov         dword ptr [edi],0
+  00C76691: E8 AA 1C 01 00     call        00C88340
+  00C76696: 8B 1F              mov         ebx,dword ptr [edi]
+  00C76698: 85 DB              test        ebx,ebx
+  00C7669A: 0F 84 EF 00 00 00  je          00C7678F
+  00C766A0: 83 7B 40 00        cmp         dword ptr [ebx+40h],0
+  00C766A4: 75 18              jne         00C766BE
+  00C766A6: 8B 4B 0C           mov         ecx,dword ptr [ebx+0Ch]
+  00C766A9: 51                 push        ecx
+  00C766AA: 8B 0D 38 18 D7 01  mov         ecx,dword ptr ds:[01D71838h]
+  00C766B0: 81 C1 C8 0F 00 00  add         ecx,0FC8h
+  00C766B6: E8 95 D8 FD FF     call        00C53F50
+  00C766BB: 89 43 40           mov         dword ptr [ebx+40h],eax
+  00C766BE: 8B 5B 40           mov         ebx,dword ptr [ebx+40h]
+  00C766C1: 85 DB              test        ebx,ebx
+  00C766C3: 0F 84 EE 00 00 00  je          00C767B7
+  00C766C9: 8B 17              mov         edx,dword ptr [edi]
+  00C766CB: D9 43 18           fld         dword ptr [ebx+18h]
+  00C766CE: D9 5A 10           fstp        dword ptr [edx+10h]
+  00C766D1: 8B 07              mov         eax,dword ptr [edi]
+  00C766D3: D9 43 1C           fld         dword ptr [ebx+1Ch]
+  00C766D6: 53                 push        ebx
+  00C766D7: 8B CE              mov         ecx,esi
+  00C766D9: D9 58 14           fstp        dword ptr [eax+14h]
+  00C766DC: E8 AF F3 FF FF     call        00C75A90
+  00C766E1: 8B E8              mov         ebp,eax
+  00C766E3: 83 FD 01           cmp         ebp,1
+  00C766E6: 0F 85 1B 01 00 00  jne         00C76807
+  00C766EC: 8B 07              mov         eax,dword ptr [edi]
+  00C766EE: 85 C0              test        eax,eax
+  00C766F0: 0F 84 99 00 00 00  je          00C7678F
+  00C766F6: 83 78 08 02        cmp         dword ptr [eax+8],2
+  00C766FA: 0F 85 8F 00 00 00  jne         00C7678F
+  00C76700: 83 78 34 00        cmp         dword ptr [eax+34h],0
+  00C76704: 0F 84 85 00 00 00  je          00C7678F
+  00C7670A: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  00C7670E: 8B 0A              mov         ecx,dword ptr [edx]
+  00C76710: 8B 58 04           mov         ebx,dword ptr [eax+4]
+  00C76713: 85 C9              test        ecx,ecx
+  00C76715: 74 14              je          00C7672B
+  00C76717: 39 5A 04           cmp         dword ptr [edx+4],ebx
+  00C7671A: 75 0F              jne         00C7672B
+  00C7671C: 89 8E 40 01 00 00  mov         dword ptr [esi+00000140h],ecx
+  00C76722: 8B 52 04           mov         edx,dword ptr [edx+4]
+  00C76725: 89 96 44 01 00 00  mov         dword ptr [esi+00000144h],edx
+  00C7672B: 83 BE 40 01 00 00  cmp         dword ptr [esi+00000140h],0
+            00
+  00C76732: 74 06              je          00C7673A
+  00C76734: F6 40 24 04        test        byte ptr [eax+24h],4
+  00C76738: 74 55              je          00C7678F
+  00C7673A: 8B 0D 50 18 D7 01  mov         ecx,dword ptr ds:[01D71850h]
+  00C76740: 6A 00              push        0
+  00C76742: E8 D9 51 FF FF     call        00C6B920
+  00C76747: 89 86 40 01 00 00  mov         dword ptr [esi+00000140h],eax
+  00C7674D: 85 C0              test        eax,eax
+  00C7674F: 74 3E              je          00C7678F
+  00C76751: 8B 4E 68           mov         ecx,dword ptr [esi+68h]
+  00C76754: E8 67 F6 00 00     call        00C85DC0
+  00C76759: 8B 0F              mov         ecx,dword ptr [edi]
+  00C7675B: 50                 push        eax
+  00C7675C: 8B 86 40 01 00 00  mov         eax,dword ptr [esi+00000140h]
+  00C76762: 50                 push        eax
+  00C76763: E8 58 B7 01 00     call        00C91EC0
+  00C76768: 8B E8              mov         ebp,eax
+  00C7676A: 83 FD 01           cmp         ebp,1
+  00C7676D: 74 1A              je          00C76789
+  00C7676F: 8B 8E 40 01 00 00  mov         ecx,dword ptr [esi+00000140h]
+  00C76775: 51                 push        ecx
+  00C76776: 8B 0D 50 18 D7 01  mov         ecx,dword ptr ds:[01D71850h]
+  00C7677C: E8 AF 50 FF FF     call        00C6B830
+  00C76781: 33 DB              xor         ebx,ebx
+  00C76783: 89 9E 40 01 00 00  mov         dword ptr [esi+00000140h],ebx
+  00C76789: 89 9E 44 01 00 00  mov         dword ptr [esi+00000144h],ebx
+  00C7678F: 8B 86 40 01 00 00  mov         eax,dword ptr [esi+00000140h]
+  00C76795: 85 C0              test        eax,eax
+  00C76797: 74 57              je          00C767F0
+  00C76799: 8B 0D 50 18 D7 01  mov         ecx,dword ptr ds:[01D71850h]
+  00C7679F: 56                 push        esi
+  00C767A0: 50                 push        eax
+  00C767A1: E8 0A 52 FF FF     call        00C6B9B0
+  00C767A6: 83 F8 02           cmp         eax,2
+  00C767A9: 75 24              jne         00C767CF
+  00C767AB: C7 86 40 01 00 00  mov         dword ptr [esi+00000140h],0
+            00 00 00 00
+  00C767B5: EB 39              jmp         00C767F0
+  00C767B7: 8B 0F              mov         ecx,dword ptr [edi]
+  00C767B9: 83 79 0C 00        cmp         dword ptr [ecx+0Ch],0
+  00C767BD: 0F 84 29 FF FF FF  je          00C766EC
+  00C767C3: 5F                 pop         edi
+  00C767C4: 5E                 pop         esi
+  00C767C5: 5D                 pop         ebp
+  00C767C6: B8 02 00 00 00     mov         eax,2
+  00C767CB: 5B                 pop         ebx
+  00C767CC: C2 04 00           ret         4
+  00C767CF: 8B 56 68           mov         edx,dword ptr [esi+68h]
+  00C767D2: 8B 42 0C           mov         eax,dword ptr [edx+0Ch]
+  00C767D5: 8B 8E 40 01 00 00  mov         ecx,dword ptr [esi+00000140h]
+  00C767DB: 50                 push        eax
+  00C767DC: E8 FF D9 02 00     call        00CA41E0
+  00C767E1: 8B 4E 50           mov         ecx,dword ptr [esi+50h]
+  00C767E4: 51                 push        ecx
+  00C767E5: 8B 8E 40 01 00 00  mov         ecx,dword ptr [esi+00000140h]
+  00C767EB: E8 D0 5F 01 00     call        00C8C7C0
+  00C767F0: 8B 4E 6C           mov         ecx,dword ptr [esi+6Ch]
+  00C767F3: 56                 push        esi
+  00C767F4: 8D 96 00 01 00 00  lea         edx,[esi+00000100h]
+  00C767FA: 52                 push        edx
+  00C767FB: 8D 86 FC 00 00 00  lea         eax,[esi+000000FCh]
+  00C76801: 50                 push        eax
+  00C76802: E8 39 2D 00 00     call        00C79540
+  00C76807: 5F                 pop         edi
+  00C76808: 5E                 pop         esi
+  00C76809: 8B C5              mov         eax,ebp
+  00C7680B: 5D                 pop         ebp
+  00C7680C: 5B                 pop         ebx
+  00C7680D: C2 04 00           ret         4
+  00C76810: 55                 push        ebp
+  00C76811: 56                 push        esi
+  00C76812: 8B F1              mov         esi,ecx
+  00C76814: 8A 86 E6 00 00 00  mov         al,byte ptr [esi+000000E6h]
+  00C7681A: 33 ED              xor         ebp,ebp
+  00C7681C: 57                 push        edi
+  00C7681D: A8 10              test        al,10h
+  00C7681F: 75 19              jne         00C7683A
+  00C76821: 8B 4E 68           mov         ecx,dword ptr [esi+68h]
+  00C76824: 8B 56 70           mov         edx,dword ptr [esi+70h]
+  00C76827: 0C 10              or          al,10h
+  00C76829: 55                 push        ebp
+  00C7682A: 88 86 E6 00 00 00  mov         byte ptr [esi+000000E6h],al
+  00C76830: 8B 01              mov         eax,dword ptr [ecx]
+  00C76832: 8B 40 78           mov         eax,dword ptr [eax+78h]
+  00C76835: 6A 03              push        3
+  00C76837: 52                 push        edx
+  00C76838: FF D0              call        eax
+  00C7683A: 8B 86 40 01 00 00  mov         eax,dword ptr [esi+00000140h]
+  00C76840: 3B C5              cmp         eax,ebp
+  00C76842: 74 36              je          00C7687A
+  00C76844: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00C76847: D1 E9              shr         ecx,1
+  00C76849: F6 C1 01           test        cl,1
+  00C7684C: 74 0D              je          00C7685B
+  00C7684E: 8B 4E 68           mov         ecx,dword ptr [esi+68h]
+  00C76851: E8 6A F5 00 00     call        00C85DC0
+  00C76856: 89 68 04           mov         dword ptr [eax+4],ebp
+  00C76859: 89 28              mov         dword ptr [eax],ebp
+  00C7685B: 8B 96 40 01 00 00  mov         edx,dword ptr [esi+00000140h]
+
+  Summary
+
+      9C8000 .text

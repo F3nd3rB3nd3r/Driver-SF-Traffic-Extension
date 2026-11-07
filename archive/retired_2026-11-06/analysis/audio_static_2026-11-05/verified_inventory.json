@@ -1,0 +1,100 @@
+{
+  "executable_sha256": "c79987b0548f7130337c3f295c8fe269e120ceddad55c1159e6f5cbc6aa26616",
+  "verified_exports": 157,
+  "monitor_is_return_4_stub": true,
+  "budgets": [
+    {
+      "name": "poolDescriptorLimit",
+      "instruction": "0084A4BC",
+      "value": 20
+    },
+    {
+      "name": "FilePackagesPoolBytes",
+      "instruction": "0084A5D5",
+      "value": 557056
+    },
+    {
+      "name": "PrepareEventPoolBytes",
+      "instruction": "0084A63F",
+      "value": 307200
+    },
+    {
+      "name": "StaticBanksPoolBytes",
+      "instruction": "0084A683",
+      "value": 4372480
+    },
+    {
+      "name": "DefaultPoolRequestedBytes",
+      "instruction": "0084A64D",
+      "value": 5872025
+    },
+    {
+      "name": "PlatformPoolRequestedBytes",
+      "instruction": "0084A646",
+      "value": 3145728
+    },
+    {
+      "name": "DefaultCommandQueueBytes",
+      "instruction": "00C50F29",
+      "value": 262144
+    }
+  ],
+  "native_emitters": 90,
+  "emitter_node_stride": 376,
+  "emitter_payload": 368,
+  "pool_record_stride": 76,
+  "pool_table_pointer": "01D72390",
+  "max_pools": "01D72388",
+  "active_pools": "01D7238C",
+  "used_offset": "44",
+  "usable_total_offset": "48",
+  "allocation_modes": {
+    "malloc_malign": "byte accounting at +44",
+    "attributes_bit_08": "fixed-block mode: count +00, size +04, free count +18; GetBlock does not update +44"
+  },
+  "bank_callback_arguments": {
+    "original_esp_plus_4": "bank ID",
+    "original_esp_plus_8": "AKRESULT",
+    "original_esp_plus_C": "pool ID",
+    "original_esp_plus_10": "cookie"
+  },
+  "old_callback_trace_captured_pool_id": true,
+  "candidate_signatures": [
+    {
+      "site": "0084BE74",
+      "signature": "c7 40 14 04 00 00 00",
+      "role": "bank callback, before unconditional completion"
+    },
+    {
+      "site": "0084AA29",
+      "signature": "83 be a0 0e 00 00 5a",
+      "role": "emitter admission compare, owner ESI"
+    },
+    {
+      "site": "00C54DA0",
+      "signature": "83 ec 10 53 57",
+      "role": "numeric PostEvent entry"
+    },
+    {
+      "site": "00C54E17",
+      "signature": "8b c6 5e 5f 5b 83 c4 10",
+      "role": "normal numeric PostEvent return, playing ID ESI"
+    },
+    {
+      "site": "00C54DD3",
+      "signature": "5f 5b 83 c4 10",
+      "role": "external-source allocation failure return"
+    },
+    {
+      "site": "00C99AA5",
+      "signature": "5e 5b 8b c7 5f",
+      "role": "nonzero-size Malloc return, pointer EDI"
+    },
+    {
+      "site": "00C99B04",
+      "signature": "5e 5b 8b c7 5f",
+      "role": "nonzero-size Malign return, pointer EDI"
+    }
+  ],
+  "limitations": "Static signatures and layout only. No live saturation, allocation failure or playback result established. Candidate hooks still require branch/bridge/integration verification before building a probe."
+}

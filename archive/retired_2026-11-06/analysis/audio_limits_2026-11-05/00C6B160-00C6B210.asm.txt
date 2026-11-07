@@ -1,0 +1,84 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C6B160: 56                 push        esi
+  00C6B161: 57                 push        edi
+  00C6B162: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  00C6B166: 8B F1              mov         esi,ecx
+  00C6B168: 85 FF              test        edi,edi
+  00C6B16A: 75 05              jne         00C6B171
+  00C6B16C: BF FF 00 00 00     mov         edi,0FFh
+  00C6B171: 89 7E 04           mov         dword ptr [esi+4],edi
+  00C6B174: 85 FF              test        edi,edi
+  00C6B176: 74 24              je          00C6B19C
+  00C6B178: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00C6B17E: 8D 04 BD 00 00 00  lea         eax,[edi*4+00000000h]
+            00
+  00C6B185: 50                 push        eax
+  00C6B186: 51                 push        ecx
+  00C6B187: E8 B4 E8 02 00     call        00C99A40
+  00C6B18C: 83 C4 08           add         esp,8
+  00C6B18F: 89 46 08           mov         dword ptr [esi+8],eax
+  00C6B192: 89 46 0C           mov         dword ptr [esi+0Ch],eax
+  00C6B195: 85 C0              test        eax,eax
+  00C6B197: 74 2A              je          00C6B1C3
+  00C6B199: 89 7E 10           mov         dword ptr [esi+10h],edi
+  00C6B19C: 8B 7E 04           mov         edi,dword ptr [esi+4]
+  00C6B19F: 85 FF              test        edi,edi
+  00C6B1A1: 74 2D              je          00C6B1D0
+  00C6B1A3: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C6B1A8: 8D 14 BD 00 00 00  lea         edx,[edi*4+00000000h]
+            00
+  00C6B1AF: 52                 push        edx
+  00C6B1B0: 50                 push        eax
+  00C6B1B1: E8 8A E8 02 00     call        00C99A40
+  00C6B1B6: 83 C4 08           add         esp,8
+  00C6B1B9: 89 46 14           mov         dword ptr [esi+14h],eax
+  00C6B1BC: 89 46 18           mov         dword ptr [esi+18h],eax
+  00C6B1BF: 85 C0              test        eax,eax
+  00C6B1C1: 75 0A              jne         00C6B1CD
+  00C6B1C3: 5F                 pop         edi
+  00C6B1C4: B8 34 00 00 00     mov         eax,34h
+  00C6B1C9: 5E                 pop         esi
+  00C6B1CA: C2 04 00           ret         4
+  00C6B1CD: 89 7E 1C           mov         dword ptr [esi+1Ch],edi
+  00C6B1D0: 5F                 pop         edi
+  00C6B1D1: B8 01 00 00 00     mov         eax,1
+  00C6B1D6: 5E                 pop         esi
+  00C6B1D7: C2 04 00           ret         4
+  00C6B1DA: CC                 int         3
+  00C6B1DB: CC                 int         3
+  00C6B1DC: CC                 int         3
+  00C6B1DD: CC                 int         3
+  00C6B1DE: CC                 int         3
+  00C6B1DF: CC                 int         3
+  00C6B1E0: 53                 push        ebx
+  00C6B1E1: 8B 5C 24 08        mov         ebx,dword ptr [esp+8]
+  00C6B1E5: 57                 push        edi
+  00C6B1E6: 8B 3B              mov         edi,dword ptr [ebx]
+  00C6B1E8: 39 7B 04           cmp         dword ptr [ebx+4],edi
+  00C6B1EB: 74 34              je          00C6B221
+  00C6B1ED: 55                 push        ebp
+  00C6B1EE: 56                 push        esi
+  00C6B1EF: 90                 nop
+  00C6B1F0: 8B 37              mov         esi,dword ptr [edi]
+  00C6B1F2: 8B CE              mov         ecx,esi
+  00C6B1F4: E8 27 13 02 00     call        00C8C520
+  00C6B1F9: 8B 2D B8 D3 FD 00  mov         ebp,dword ptr ds:[00FDD3B8h]
+  00C6B1FF: 85 F6              test        esi,esi
+  00C6B201: 74 14              je          00C6B217
+  00C6B203: 8B 06              mov         eax,dword ptr [esi]
+  00C6B205: 8B 10              mov         edx,dword ptr [eax]
+  00C6B207: 6A 00              push        0
+  00C6B209: 8B CE              mov         ecx,esi
+  00C6B20B: FF D2              call        edx
+  00C6B20D: 56                 push        esi
+  00C6B20E: 55                 push        ebp
+  00C6B20F: E8
+  00C6B210: 8C
+
+  Summary
+
+      9C8000 .text

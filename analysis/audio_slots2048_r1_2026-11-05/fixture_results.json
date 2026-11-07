@@ -1,0 +1,26 @@
+{
+  "result": "passed",
+  "architecture": "Win32",
+  "bridge_invocations": 9,
+  "production_sha256": {
+    "V29sAudioSlotsCore.inc": "57495c690866808753cf33855d13bdd66f67a2d09d3b02161992432574fa59e7",
+    "V29sAudioSlotsBridges.inc": "5d647ef58878ec404c698349d42cc92e5418595cf730cbef6ee530c1e517e0e8",
+    "V29sAudioSlotsPatch.inc": "cf4b6ed13360b7f5367c126ad17015067cf7b8293454888d61c74f3e0231edd1"
+  },
+  "checks": [
+    "cold startup and baseline prerequisites",
+    "exact signatures for all nine hooks and paired settings",
+    "trampoline bytes and return targets",
+    "all allocation/preprotect failures leave stock code",
+    "late signature/phase change refused",
+    "cache/protection commit failure rollback",
+    "rollback failure explicitly marked",
+    "counts above255 and at2048 with separate A0/A1/B lists",
+    "actual insert peaks, ceiling and selected reuse counters",
+    "native update counts falling to zero",
+    "separate8/255-user refusal counters",
+    "invalid headers rejected",
+    "nine bridge arguments, all general registers, flags/DF and defined x87/SSE image preserved"
+  ],
+  "limitations": "Fake native memory and OS fault injection; synthetic bridge frames. Does not execute Driver.exe, load an ASI or establish runtime audio benefit."
+}

@@ -1,0 +1,128 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0054A830: BF 58 9F 05 00     mov         edi,59F58h
+  0054A835: 00 75 0E           add         byte ptr [ebp+0Eh],dh
+  0054A838: C6 87 58 9F 05 00  mov         byte ptr [edi+00059F58h],1
+            01
+  0054A83F: C6 87 94 9F 05 00  mov         byte ptr [edi+00059F94h],1
+            01
+  0054A846: 5F                 pop         edi
+  0054A847: 59                 pop         ecx
+  0054A848: C3                 ret
+  0054A849: CC                 int         3
+  0054A84A: CC                 int         3
+  0054A84B: CC                 int         3
+  0054A84C: CC                 int         3
+  0054A84D: CC                 int         3
+  0054A84E: CC                 int         3
+  0054A84F: CC                 int         3
+  0054A850: 55                 push        ebp
+  0054A851: 8B EC              mov         ebp,esp
+  0054A853: 83 E4 F8           and         esp,0FFFFFFF8h
+  0054A856: 83 EC 7C           sub         esp,7Ch
+  0054A859: 53                 push        ebx
+  0054A85A: 56                 push        esi
+  0054A85B: 8B 35 FC 3B 21 01  mov         esi,dword ptr ds:[01213BFCh]
+  0054A861: 57                 push        edi
+  0054A862: 85 F6              test        esi,esi
+  0054A864: 0F 84 6F 01 00 00  je          0054A9D9
+  0054A86A: 8B 5D 08           mov         ebx,dword ptr [ebp+8]
+  0054A86D: 53                 push        ebx
+  0054A86E: 8B CE              mov         ecx,esi
+  0054A870: E8 DB E2 FF FF     call        00548B50
+  0054A875: 8B F8              mov         edi,eax
+  0054A877: 85 FF              test        edi,edi
+  0054A879: 0F 84 5A 01 00 00  je          0054A9D9
+  0054A87F: 8D 43 F4           lea         eax,[ebx-0Ch]
+  0054A882: 83 F8 01           cmp         eax,1
+  0054A885: 77 37              ja          0054A8BE
+  0054A887: 83 E3 01           and         ebx,1
+  0054A88A: 8D 0C 9B           lea         ecx,[ebx+ebx*4]
+  0054A88D: 8B 5D 0C           mov         ebx,dword ptr [ebp+0Ch]
+  0054A890: C1 E1 04           shl         ecx,4
+  0054A893: 8D 84 31 98 9F 05  lea         eax,[ecx+esi+00059F98h]
+            00
+  0054A89A: 8B 0B              mov         ecx,dword ptr [ebx]
+  0054A89C: 51                 push        ecx
+  0054A89D: 56                 push        esi
+  0054A89E: 50                 push        eax
+  0054A89F: 8B CF              mov         ecx,edi
+  0054A8A1: E8 8A F8 FF FF     call        0054A130
+  0054A8A6: 33 D2              xor         edx,edx
+  0054A8A8: 85 C0              test        eax,eax
+  0054A8AA: 0F 9F C2           setg        dl
+  0054A8AD: 66 89 43 0E        mov         word ptr [ebx+0Eh],ax
+  0054A8B1: 83 C2 2C           add         edx,2Ch
+  0054A8B4: 89 53 08           mov         dword ptr [ebx+8],edx
+  0054A8B7: 5F                 pop         edi
+  0054A8B8: 5E                 pop         esi
+  0054A8B9: 5B                 pop         ebx
+  0054A8BA: 8B E5              mov         esp,ebp
+  0054A8BC: 5D                 pop         ebp
+  0054A8BD: C3                 ret
+  0054A8BE: 53                 push        ebx
+  0054A8BF: 8B CE              mov         ecx,esi
+  0054A8C1: E8 CA CD FF FF     call        00547690
+  0054A8C6: 8B 80 A8 05 01 00  mov         eax,dword ptr [eax+000105A8h]
+  0054A8CC: 50                 push        eax
+  0054A8CD: 53                 push        ebx
+  0054A8CE: E8 BD CD FF FF     call        00547690
+  0054A8D3: 8B 88 A4 05 01 00  mov         ecx,dword ptr [eax+000105A4h]
+  0054A8D9: 51                 push        ecx
+  0054A8DA: 8B CF              mov         ecx,edi
+  0054A8DC: E8 8F EA FF FF     call        00549370
+  0054A8E1: 8B 75 0C           mov         esi,dword ptr [ebp+0Ch]
+  0054A8E4: 8B 06              mov         eax,dword ptr [esi]
+  0054A8E6: 8B 15 FC 3B 21 01  mov         edx,dword ptr ds:[01213BFCh]
+  0054A8EC: 50                 push        eax
+  0054A8ED: 52                 push        edx
+  0054A8EE: 8B CF              mov         ecx,edi
+  0054A8F0: E8 9B FA FF FF     call        0054A390
+  0054A8F5: 33 C9              xor         ecx,ecx
+  0054A8F7: 85 C0              test        eax,eax
+  0054A8F9: 0F 9F C1           setg        cl
+  0054A8FC: 66 89 46 0E        mov         word ptr [esi+0Eh],ax
+  0054A900: 83 C1 2C           add         ecx,2Ch
+  0054A903: 89 4E 08           mov         dword ptr [esi+8],ecx
+  0054A906: 83 FB 01           cmp         ebx,1
+  0054A909: 76 0C              jbe         0054A917
+  0054A90B: 8D 53 FC           lea         edx,[ebx-4]
+  0054A90E: 83 FA 07           cmp         edx,7
+  0054A911: 0F 87 C2 00 00 00  ja          0054A9D9
+  0054A917: 8B 0D FC 3B 21 01  mov         ecx,dword ptr ds:[01213BFCh]
+  0054A91D: 53                 push        ebx
+  0054A91E: E8 6D CD FF FF     call        00547690
+  0054A923: 85 C0              test        eax,eax
+  0054A925: 0F 84 AE 00 00 00  je          0054A9D9
+  0054A92B: 66 83 B8 84 05 01  cmp         word ptr [eax+00010584h],0
+            00 00
+  0054A933: 0F 8C A0 00 00 00  jl          0054A9D9
+  0054A939: 8B C3              mov         eax,ebx
+  0054A93B: 83 E0 01           and         eax,1
+  0054A93E: 53                 push        ebx
+  0054A93F: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  0054A943: E8 08 E2 FF FF     call        00548B50
+  0054A948: 8D B0 CC 81 00 00  lea         esi,[eax+000081CCh]
+  0054A94E: B9 1E 00 00 00     mov         ecx,1Eh
+  0054A953: 8D 7C 24 10        lea         edi,[esp+10h]
+  0054A957: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  0054A959: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0054A95D: 8B 0D FC 3B 21 01  mov         ecx,dword ptr ds:[01213BFCh]
+  0054A963: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  0054A967: 50                 push        eax
+  0054A968: 56                 push        esi
+  0054A969: 81 C1 98 9F 05 00  add         ecx,59F98h
+  0054A96F: E8 6C CB FF FF     call        005474E0
+  0054A974: 8B 3D FC 3B 21 01  mov         edi,dword ptr ds:[01213BFCh]
+  0054A97A: 53                 push        ebx
+  0054A97B: 8B CF              mov         ecx,edi
+  0054A97D: E8
+  0054A97E: CE                 into
+  0054A97F: E1 FF              loope       0054A980
+
+  Summary
+
+      9C8000 .text

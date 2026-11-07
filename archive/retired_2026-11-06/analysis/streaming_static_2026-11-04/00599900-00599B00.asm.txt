@@ -1,0 +1,241 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00599900: 56                 push        esi
+  00599901: 8B F1              mov         esi,ecx
+  00599903: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00599906: 83 F8 03           cmp         eax,3
+  00599909: 77 32              ja          0059993D
+  0059990B: FF 24 85 58 99 59  jmp         dword ptr [eax*4+00599958h]
+            00
+  00599912: B0 01              mov         al,1
+  00599914: 5E                 pop         esi
+  00599915: C3                 ret
+  00599916: 8B 0E              mov         ecx,dword ptr [esi]
+  00599918: 8B 01              mov         eax,dword ptr [ecx]
+  0059991A: 8B 50 24           mov         edx,dword ptr [eax+24h]
+  0059991D: FF D2              call        edx
+  0059991F: 84 C0              test        al,al
+  00599921: 74 1A              je          0059993D
+  00599923: 80 7E 19 00        cmp         byte ptr [esi+19h],0
+  00599927: 74 18              je          00599941
+  00599929: 8B 0E              mov         ecx,dword ptr [esi]
+  0059992B: 8B 01              mov         eax,dword ptr [ecx]
+  0059992D: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00599930: FF D2              call        edx
+  00599932: C6 46 19 00        mov         byte ptr [esi+19h],0
+  00599936: C7 46 04 03 00 00  mov         dword ptr [esi+4],3
+            00
+  0059993D: 32 C0              xor         al,al
+  0059993F: 5E                 pop         esi
+  00599940: C3                 ret
+  00599941: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  00599944: 56                 push        esi
+  00599945: C7 46 04 01 00 00  mov         dword ptr [esi+4],1
+            00
+  0059994C: E8 8F 07 00 00     call        0059A0E0
+  00599951: B0 01              mov         al,1
+  00599953: 5E                 pop         esi
+  00599954: C3                 ret
+  00599955: 8D 49 00           lea         ecx,[ecx]
+  00599958: 12 99 59 00 12 99  adc         bl,byte ptr [ecx+99120059h]
+  0059995E: 59                 pop         ecx
+  0059995F: 00 16              add         byte ptr [esi],dl
+  00599961: 99                 cdq
+  00599962: 59                 pop         ecx
+  00599963: 00 16              add         byte ptr [esi],dl
+  00599965: 99                 cdq
+  00599966: 59                 pop         ecx
+  00599967: 00 CC              add         ah,cl
+  00599969: CC                 int         3
+  0059996A: CC                 int         3
+  0059996B: CC                 int         3
+  0059996C: CC                 int         3
+  0059996D: CC                 int         3
+  0059996E: CC                 int         3
+  0059996F: CC                 int         3
+  00599970: 56                 push        esi
+  00599971: 8B F1              mov         esi,ecx
+  00599973: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00599976: 57                 push        edi
+  00599977: 33 FF              xor         edi,edi
+  00599979: 8B C1              mov         eax,ecx
+  0059997B: 2B C7              sub         eax,edi
+  0059997D: 74 0A              je          00599989
+  0059997F: 83 E8 02           sub         eax,2
+  00599982: 75 0C              jne         00599990
+  00599984: 8D 78 06           lea         edi,[eax+6]
+  00599987: EB 10              jmp         00599999
+  00599989: BF 07 00 00 00     mov         edi,7
+  0059998E: EB 09              jmp         00599999
+  00599990: 85 C9              test        ecx,ecx
+  00599992: 7C 7C              jl          00599A10
+  00599994: 83 F9 02           cmp         ecx,2
+  00599997: 7F 77              jg          00599A10
+  00599999: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  0059999D: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  005999A0: 50                 push        eax
+  005999A1: E8 1A 04 00 00     call        00599DC0
+  005999A6: 85 C0              test        eax,eax
+  005999A8: 74 66              je          00599A10
+  005999AA: 8B 50 04           mov         edx,dword ptr [eax+4]
+  005999AD: 83 FA FF           cmp         edx,0FFFFFFFFh
+  005999B0: 74 5E              je          00599A10
+  005999B2: 8B 46 10           mov         eax,dword ptr [esi+10h]
+  005999B5: 85 C0              test        eax,eax
+  005999B7: 74 57              je          00599A10
+  005999B9: 8B 0E              mov         ecx,dword ptr [esi]
+  005999BB: 53                 push        ebx
+  005999BC: 8B 5E 14           mov         ebx,dword ptr [esi+14h]
+  005999BF: 81 FB F0 DE BC 0A  cmp         ebx,0ABCDEF0h
+  005999C5: 75 0C              jne         005999D3
+  005999C7: 8B 19              mov         ebx,dword ptr [ecx]
+  005999C9: 57                 push        edi
+  005999CA: 52                 push        edx
+  005999CB: 8B 53 0C           mov         edx,dword ptr [ebx+0Ch]
+  005999CE: 50                 push        eax
+  005999CF: FF D2              call        edx
+  005999D1: EB 0D              jmp         005999E0
+  005999D3: 55                 push        ebp
+  005999D4: 8B 29              mov         ebp,dword ptr [ecx]
+  005999D6: 57                 push        edi
+  005999D7: 52                 push        edx
+  005999D8: 50                 push        eax
+  005999D9: 8B 45 08           mov         eax,dword ptr [ebp+8]
+  005999DC: 53                 push        ebx
+  005999DD: FF D0              call        eax
+  005999DF: 5D                 pop         ebp
+  005999E0: C7 46 04 02 00 00  mov         dword ptr [esi+4],2
+            00
+  005999E7: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  005999EC: 5B                 pop         ebx
+  005999ED: 85 C0              test        eax,eax
+  005999EF: 75 0A              jne         005999FB
+  005999F1: E8 9A 0C E7 FF     call        0040A690
+  005999F6: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  005999FB: 8B 80 08 02 00 00  mov         eax,dword ptr [eax+00000208h]
+  00599A01: 56                 push        esi
+  00599A02: 8B C8              mov         ecx,eax
+  00599A04: E8 47 05 00 00     call        00599F50
+  00599A09: 5F                 pop         edi
+  00599A0A: B0 01              mov         al,1
+  00599A0C: 5E                 pop         esi
+  00599A0D: C2 04 00           ret         4
+  00599A10: 5F                 pop         edi
+  00599A11: 32 C0              xor         al,al
+  00599A13: 5E                 pop         esi
+  00599A14: C2 04 00           ret         4
+  00599A17: CC                 int         3
+  00599A18: CC                 int         3
+  00599A19: CC                 int         3
+  00599A1A: CC                 int         3
+  00599A1B: CC                 int         3
+  00599A1C: CC                 int         3
+  00599A1D: CC                 int         3
+  00599A1E: CC                 int         3
+  00599A1F: CC                 int         3
+  00599A20: 56                 push        esi
+  00599A21: 8B F1              mov         esi,ecx
+  00599A23: 83 7E 04 01        cmp         dword ptr [esi+4],1
+  00599A27: 74 11              je          00599A3A
+  00599A29: 8B 0E              mov         ecx,dword ptr [esi]
+  00599A2B: 8B 01              mov         eax,dword ptr [ecx]
+  00599A2D: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  00599A30: FF D2              call        edx
+  00599A32: C6 46 19 01        mov         byte ptr [esi+19h],1
+  00599A36: 5E                 pop         esi
+  00599A37: C2 04 00           ret         4
+  00599A3A: 80 7E 1A 00        cmp         byte ptr [esi+1Ah],0
+  00599A3E: 74 1B              je          00599A5B
+  00599A40: 80 7C 24 08 00     cmp         byte ptr [esp+8],0
+  00599A45: 75 14              jne         00599A5B
+  00599A47: 8B 0E              mov         ecx,dword ptr [esi]
+  00599A49: C7 46 04 01 00 00  mov         dword ptr [esi+4],1
+            00
+  00599A50: 8B 01              mov         eax,dword ptr [ecx]
+  00599A52: 8B 50 34           mov         edx,dword ptr [eax+34h]
+  00599A55: FF D2              call        edx
+  00599A57: 5E                 pop         esi
+  00599A58: C2 04 00           ret         4
+  00599A5B: 8B 0E              mov         ecx,dword ptr [esi]
+  00599A5D: C7 46 04 03 00 00  mov         dword ptr [esi+4],3
+            00
+  00599A64: 8B 01              mov         eax,dword ptr [ecx]
+  00599A66: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00599A69: FF D2              call        edx
+  00599A6B: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00599A70: 85 C0              test        eax,eax
+  00599A72: 75 0A              jne         00599A7E
+  00599A74: E8 17 0C E7 FF     call        0040A690
+  00599A79: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00599A7E: 8B 80 08 02 00 00  mov         eax,dword ptr [eax+00000208h]
+  00599A84: 56                 push        esi
+  00599A85: 8B C8              mov         ecx,eax
+  00599A87: E8 C4 04 00 00     call        00599F50
+  00599A8C: 5E                 pop         esi
+  00599A8D: C2 04 00           ret         4
+  00599A90: 8B C1              mov         eax,ecx
+  00599A92: 33 C9              xor         ecx,ecx
+  00599A94: 89 08              mov         dword ptr [eax],ecx
+  00599A96: 89 48 04           mov         dword ptr [eax+4],ecx
+  00599A99: 89 48 08           mov         dword ptr [eax+8],ecx
+  00599A9C: 88 48 0C           mov         byte ptr [eax+0Ch],cl
+  00599A9F: 88 48 0D           mov         byte ptr [eax+0Dh],cl
+  00599AA2: 88 48 0E           mov         byte ptr [eax+0Eh],cl
+  00599AA5: C3                 ret
+  00599AA6: CC                 int         3
+  00599AA7: CC                 int         3
+  00599AA8: CC                 int         3
+  00599AA9: CC                 int         3
+  00599AAA: CC                 int         3
+  00599AAB: CC                 int         3
+  00599AAC: CC                 int         3
+  00599AAD: CC                 int         3
+  00599AAE: CC                 int         3
+  00599AAF: CC                 int         3
+  00599AB0: 56                 push        esi
+  00599AB1: 8B F1              mov         esi,ecx
+  00599AB3: 80 7E 0C 00        cmp         byte ptr [esi+0Ch],0
+  00599AB7: 74 19              je          00599AD2
+  00599AB9: 8B 0E              mov         ecx,dword ptr [esi]
+  00599ABB: E8 40 FE FF FF     call        00599900
+  00599AC0: 84 C0              test        al,al
+  00599AC2: 74 04              je          00599AC8
+  00599AC4: C6 46 0C 00        mov         byte ptr [esi+0Ch],0
+  00599AC8: 33 C0              xor         eax,eax
+  00599ACA: 38 46 0C           cmp         byte ptr [esi+0Ch],al
+  00599ACD: 5E                 pop         esi
+  00599ACE: 0F 94 C0           sete        al
+  00599AD1: C3                 ret
+  00599AD2: 33 C0              xor         eax,eax
+  00599AD4: 39 46 08           cmp         dword ptr [esi+8],eax
+  00599AD7: 5E                 pop         esi
+  00599AD8: 0F 94 C0           sete        al
+  00599ADB: C3                 ret
+  00599ADC: CC                 int         3
+  00599ADD: CC                 int         3
+  00599ADE: CC                 int         3
+  00599ADF: CC                 int         3
+  00599AE0: 56                 push        esi
+  00599AE1: 8B F1              mov         esi,ecx
+  00599AE3: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00599AE6: 85 C9              test        ecx,ecx
+  00599AE8: 74 28              je          00599B12
+  00599AEA: 8B 01              mov         eax,dword ptr [ecx]
+  00599AEC: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  00599AEF: FF D2              call        edx
+  00599AF1: D9 EE              fldz
+  00599AF3: D9 C9              fxch        st(1)
+  00599AF5: DF E9              fucomip     st,st(1)
+  00599AF7: DD D8              fstp        st(0)
+  00599AF9: 9F                 lahf
+  00599AFA: F6 C4 44           test        ah,44h
+  00599AFD: 7A 13              jp          00599B12
+  00599AFF: 8B
+  00599B00: 4E                 dec         esi
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,49 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BAE930: 56                 push        esi
+  00BAE931: 57                 push        edi
+  00BAE932: 8B F1              mov         esi,ecx
+  00BAE934: E8 17 05 00 00     call        00BAEE50
+  00BAE939: C7 86 90 E0 17 00  mov         dword ptr [esi+0017E090h],0
+            00 00 00 00
+  00BAE943: 33 C0              xor         eax,eax
+  00BAE945: 8D 8E CC 7A 15 00  lea         ecx,[esi+00157ACCh]
+  00BAE94B: EB 03              jmp         00BAE950
+  00BAE94D: 8D 49 00           lea         ecx,[ecx]
+  00BAE950: 8D 50 01           lea         edx,[eax+1]
+  00BAE953: 66 89 11           mov         word ptr [ecx],dx
+  00BAE956: 40                 inc         eax
+  00BAE957: 83 C1 02           add         ecx,2
+  00BAE95A: 3D DF 32 00 00     cmp         eax,32DFh
+  00BAE95F: 72 EF              jb          00BAE950
+  00BAE961: B8 FF FF 00 00     mov         eax,0FFFFh
+  00BAE966: 33 C9              xor         ecx,ecx
+  00BAE968: 8D BE 94 E0 17 00  lea         edi,[esi+0017E094h]
+  00BAE96E: 66 89 86 8A E0 15  mov         word ptr [esi+0015E08Ah],ax
+            00
+  00BAE975: 66 89 8E 8C E0 15  mov         word ptr [esi+0015E08Ch],cx
+            00
+  00BAE97C: 89 8E C8 7A 15 00  mov         dword ptr [esi+00157AC8h],ecx
+  00BAE982: 8B C7              mov         eax,edi
+  00BAE984: BA FF FF 01 00     mov         edx,1FFFFh
+  00BAE989: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00BAE990: 83 EA 01           sub         edx,1
+  00BAE993: 8D 48 08           lea         ecx,[eax+8]
+  00BAE996: 89 08              mov         dword ptr [eax],ecx
+  00BAE998: 8B C1              mov         eax,ecx
+  00BAE99A: 75 F4              jne         00BAE990
+  00BAE99C: 89 BE 94 E0 27 00  mov         dword ptr [esi+0027E094h],edi
+  00BAE9A2: 5F                 pop         edi
+  00BAE9A3: 89 96 8C E0 27 00  mov         dword ptr [esi+0027E08Ch],edx
+  00BAE9A9: 8B C6              mov         eax,esi
+  00BAE9AB: 5E                 pop         esi
+  00BAE9AC: C3                 ret
+  00BAE9AD: CC                 int         3
+
+  Summary
+
+      9C8000 .text

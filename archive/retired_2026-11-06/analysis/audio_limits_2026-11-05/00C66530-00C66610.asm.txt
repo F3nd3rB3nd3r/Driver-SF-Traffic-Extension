@@ -1,0 +1,95 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C66530: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00C66538: 83 EC 08           sub         esp,8
+  00C6653B: 0F 2F 44 24 0C     comiss      xmm0,dword ptr [esp+0Ch]
+  00C66540: 76 54              jbe         00C66596
+  00C66542: 8D 04 24           lea         eax,[esp]
+  00C66545: 50                 push        eax
+  00C66546: 51                 push        ecx
+  00C66547: E8 14 36 03 00     call        00C99B60
+  00C6654C: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  00C66550: 83 C4 08           add         esp,8
+  00C66553: 85 C0              test        eax,eax
+  00C66555: 74 3F              je          00C66596
+  00C66557: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  00C6655B: DB 44 24 04        fild        dword ptr [esp+4]
+  00C6655F: 85 D2              test        edx,edx
+  00C66561: 7D 06              jge         00C66569
+  00C66563: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  00C66569: 89 04 24           mov         dword ptr [esp],eax
+  00C6656C: DB 04 24           fild        dword ptr [esp]
+  00C6656F: 85 C0              test        eax,eax
+  00C66571: 7D 06              jge         00C66579
+  00C66573: D8 05 48 64 DD 00  fadd        dword ptr ds:[00DD6448h]
+  00C66579: DE F9              fdivp       st(1),st
+  00C6657B: D9 44 24 0C        fld         dword ptr [esp+0Ch]
+  00C6657F: D9 C9              fxch        st(1)
+  00C66581: DF F1              fcomip      st,st(1)
+  00C66583: DD D8              fstp        st(0)
+  00C66585: 76 09              jbe         00C66590
+  00C66587: B8 01 00 00 00     mov         eax,1
+  00C6658C: 83 C4 08           add         esp,8
+  00C6658F: C3                 ret
+  00C66590: 33 C0              xor         eax,eax
+  00C66592: 83 C4 08           add         esp,8
+  00C66595: C3                 ret
+  00C66596: 32 C0              xor         al,al
+  00C66598: 83 C4 08           add         esp,8
+  00C6659B: C3                 ret
+  00C6659C: CC                 int         3
+  00C6659D: CC                 int         3
+  00C6659E: CC                 int         3
+  00C6659F: CC                 int         3
+  00C665A0: 33 C0              xor         eax,eax
+  00C665A2: A3 AC 1A D7 01     mov         dword ptr ds:[01D71AACh],eax
+  00C665A7: A3 B0 1A D7 01     mov         dword ptr ds:[01D71AB0h],eax
+  00C665AC: A3 B4 1A D7 01     mov         dword ptr ds:[01D71AB4h],eax
+  00C665B1: A1 B8 D3 FD 00     mov         eax,dword ptr ds:[00FDD3B8h]
+  00C665B6: 50                 push        eax
+  00C665B7: 6A FF              push        0FFFFFFFFh
+  00C665B9: 6A 40              push        40h
+  00C665BB: B9 40 D4 FD 00     mov         ecx,0FDD440h
+  00C665C0: E8 4B 1B 04 00     call        00CA8110
+  00C665C5: 83 F8 01           cmp         eax,1
+  00C665C8: 75 1F              jne         00C665E9
+  00C665CA: 8B 0D B8 D3 FD 00  mov         ecx,dword ptr ds:[00FDD3B8h]
+  00C665D0: 51                 push        ecx
+  00C665D1: 6A FF              push        0FFFFFFFFh
+  00C665D3: 6A 40              push        40h
+  00C665D5: B9 20 D4 FD 00     mov         ecx,0FDD420h
+  00C665DA: E8 91 EB FE FF     call        00C55170
+  00C665DF: 83 F8 01           cmp         eax,1
+  00C665E2: 75 05              jne         00C665E9
+  00C665E4: E9 97 F6 FE FF     jmp         00C55C80
+  00C665E9: C3                 ret
+  00C665EA: CC                 int         3
+  00C665EB: CC                 int         3
+  00C665EC: CC                 int         3
+  00C665ED: CC                 int         3
+  00C665EE: CC                 int         3
+  00C665EF: CC                 int         3
+  00C665F0: 83 EC 10           sub         esp,10h
+  00C665F3: 0F 57 C0           xorps       xmm0,xmm0
+  00C665F6: 53                 push        ebx
+  00C665F7: 8B 5C 24 20        mov         ebx,dword ptr [esp+20h]
+  00C665FB: 55                 push        ebp
+  00C665FC: 8B 6C 24 20        mov         ebp,dword ptr [esp+20h]
+  00C66600: 56                 push        esi
+  00C66601: 57                 push        edi
+  00C66602: 8B 7C 24 30        mov         edi,dword ptr [esp+30h]
+  00C66606: 53                 push        ebx
+  00C66607: 8D 44 24 1C        lea         eax,[esp+1Ch]
+  00C6660B: 50                 push        eax
+  00C6660C: 8B CD              mov         ecx,ebp
+  00C6660E: F3
+  00C6660F: 0F
+  00C66610: 11
+
+  Summary
+
+      9C8000 .text

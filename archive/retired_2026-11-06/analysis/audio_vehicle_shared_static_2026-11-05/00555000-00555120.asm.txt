@@ -1,0 +1,93 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00555000: 2A 40 14           sub         al,byte ptr [eax+14h]
+  00555003: F3 0F 59 05 74 69  mulss       xmm0,dword ptr ds:[00DD6974h]
+            DD 00
+  0055500B: F3 0F 2C F8        cvttss2si   edi,xmm0
+  0055500F: F3 0F 10 40 04     movss       xmm0,dword ptr [eax+4]
+  00555014: 0F 2F F0           comiss      xmm6,xmm0
+  00555017: 0F 28 F8           movaps      xmm7,xmm0
+  0055501A: F3 0F 2A CF        cvtsi2ss    xmm1,edi
+  0055501E: F3 0F 5C FD        subss       xmm7,xmm5
+  00555022: F3 0F 5E F9        divss       xmm7,xmm1
+  00555026: 89 7C 24 10        mov         dword ptr [esp+10h],edi
+  0055502A: 89 78 0C           mov         dword ptr [eax+0Ch],edi
+  0055502D: F3 0F 11 78 08     movss       dword ptr [eax+8],xmm7
+  00555032: 77 0D              ja          00555041
+  00555034: 0F 2F 05 7C 9B DD  comiss      xmm0,dword ptr ds:[00DD9B7Ch]
+            00
+  0055503B: 0F 86 B0 00 00 00  jbe         005550F1
+  00555041: 33 ED              xor         ebp,ebp
+  00555043: 33 C9              xor         ecx,ecx
+  00555045: 66 39 14 5E        cmp         word ptr [esi+ebx*2],dx
+  00555049: 7E 29              jle         00555074
+  0055504B: 0F B7 16           movzx       edx,word ptr [esi]
+  0055504E: 66 85 D2           test        dx,dx
+  00555051: 7E 34              jle         00555087
+  00555053: 0F B7 D2           movzx       edx,dx
+  00555056: 33 FF              xor         edi,edi
+  00555058: 66 3B 14 37        cmp         dx,word ptr [edi+esi]
+  0055505C: 7E 05              jle         00555063
+  0055505E: 8B E9              mov         ebp,ecx
+  00555060: 8D 3C 09           lea         edi,[ecx+ecx]
+  00555063: 0F B7 54 4E 02     movzx       edx,word ptr [esi+ecx*2+2]
+  00555068: 41                 inc         ecx
+  00555069: 66 85 D2           test        dx,dx
+  0055506C: 7F EA              jg          00555058
+  0055506E: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  00555072: EB 13              jmp         00555087
+  00555074: 66 39 16           cmp         word ptr [esi],dx
+  00555077: 7D 0E              jge         00555087
+  00555079: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  00555080: 41                 inc         ecx
+  00555081: 66 39 14 4E        cmp         word ptr [esi+ecx*2],dx
+  00555085: 7C F9              jl          00555080
+  00555087: 0F 2F F0           comiss      xmm6,xmm0
+  0055508A: 76 07              jbe         00555093
+  0055508C: F3 0F 11 70 04     movss       dword ptr [eax+4],xmm6
+  00555091: EB 0D              jmp         005550A0
+  00555093: F3 0F 10 05 7C 9B  movss       xmm0,dword ptr ds:[00DD9B7Ch]
+            DD 00
+  0055509B: F3 0F 11 40 04     movss       dword ptr [eax+4],xmm0
+  005550A0: 0F BF 14 5E        movsx       edx,word ptr [esi+ebx*2]
+  005550A4: F3 0F 10 40 04     movss       xmm0,dword ptr [eax+4]
+  005550A9: F3 0F 2A FA        cvtsi2ss    xmm7,edx
+  005550AD: F3 0F 59 FC        mulss       xmm7,xmm4
+  005550B1: F3 0F 59 F8        mulss       xmm7,xmm0
+  005550B5: F3 0F 5C D7        subss       xmm2,xmm7
+  005550B9: F3 0F 11 50 24     movss       dword ptr [eax+24h],xmm2
+  005550BE: 89 48 2C           mov         dword ptr [eax+2Ch],ecx
+  005550C1: 85 ED              test        ebp,ebp
+  005550C3: 7E 03              jle         005550C8
+  005550C5: 89 68 2C           mov         dword ptr [eax+2Ch],ebp
+  005550C8: F3 0F 2A 50 2C     cvtsi2ss    xmm2,dword ptr [eax+2Ch]
+  005550CD: F3 0F 10 78 24     movss       xmm7,dword ptr [eax+24h]
+  005550D2: 8B 6C 24 1C        mov         ebp,dword ptr [esp+1Ch]
+  005550D6: F3 0F 5C C5        subss       xmm0,xmm5
+  005550DA: F3 0F 5E FA        divss       xmm7,xmm2
+  005550DE: F3 0F 5E C1        divss       xmm0,xmm1
+  005550E2: F3 0F 11 78 28     movss       dword ptr [eax+28h],xmm7
+  005550E7: 89 78 0C           mov         dword ptr [eax+0Ch],edi
+  005550EA: F3 0F 11 40 08     movss       dword ptr [eax+8],xmm0
+  005550EF: 33 D2              xor         edx,edx
+  005550F1: 0F BF 0C 5E        movsx       ecx,word ptr [esi+ebx*2]
+  005550F5: F3 0F 2A C1        cvtsi2ss    xmm0,ecx
+  005550F9: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  005550FC: F3 0F 59 C4        mulss       xmm0,xmm4
+  00555100: F3 0F 59 C5        mulss       xmm0,xmm5
+  00555104: F3 0F 11 40 10     movss       dword ptr [eax+10h],xmm0
+  00555109: 3B CA              cmp         ecx,edx
+  0055510B: 0F 84 87 00 00 00  je          00555198
+  00555111: 7E 39              jle         0055514C
+  00555113: 0F BF 3C 5E        movsx       edi,word ptr [esi+ebx*2]
+  00555117: F3 0F 10 40 04     movss       xmm0,dword ptr [eax+4]
+  0055511C: F3 0F 2A CF        cvtsi2ss    xmm1,edi
+  00555120: 49                 dec         ecx
+
+  Summary
+
+      9C8000 .text

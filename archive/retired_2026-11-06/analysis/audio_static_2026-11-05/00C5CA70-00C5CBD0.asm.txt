@@ -1,0 +1,164 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C5CA70: 00 00              add         byte ptr [eax],al
+  00C5CA72: 00 51 FF           add         byte ptr [ecx-1],dl
+  00C5CA75: 15 0C 92 DC 00     adc         eax,0DC920Ch
+  00C5CA7A: 5F                 pop         edi
+  00C5CA7B: 5E                 pop         esi
+  00C5CA7C: 5D                 pop         ebp
+  00C5CA7D: B8 01 00 00 00     mov         eax,1
+  00C5CA82: 5B                 pop         ebx
+  00C5CA83: 83 C4 5C           add         esp,5Ch
+  00C5CA86: C3                 ret
+  00C5CA87: 90                 nop
+  00C5CA88: 3C BE              cmp         al,0BEh
+  00C5CA8A: C5 00              lds         eax,fword ptr [eax]
+  00C5CA8C: 68 BE C5 00 BF     push        0BF00C5BEh
+  00C5CA91: C2 C5 00           ret         0C5h
+  00C5CA94: 3A C3              cmp         al,bl
+  00C5CA96: C5 00              lds         eax,fword ptr [eax]
+  00C5CA98: 5C                 pop         esp
+  00C5CA99: C3                 ret
+  00C5CA9A: C5 00              lds         eax,fword ptr [eax]
+  00C5CA9C: B3 C3              mov         bl,0C3h
+  00C5CA9E: C5 00              lds         eax,fword ptr [eax]
+  00C5CAA0: 20 C4              and         ah,al
+  00C5CAA2: C5 00              lds         eax,fword ptr [eax]
+  00C5CAA4: 38 C4              cmp         ah,al
+  00C5CAA6: C5 00              lds         eax,fword ptr [eax]
+  00C5CAA8: 5B                 pop         ebx
+  00C5CAA9: C4
+  00C5CAAA: C5 00              lds         eax,fword ptr [eax]
+  00C5CAAC: 9D                 popfd
+  00C5CAAD: C4
+  00C5CAAE: C5 00              lds         eax,fword ptr [eax]
+  00C5CAB0: 10 CA              adc         dl,cl
+  00C5CAB2: C5 00              lds         eax,fword ptr [eax]
+  00C5CAB4: B5 C4              mov         ch,0C4h
+  00C5CAB6: C5 00              lds         eax,fword ptr [eax]
+  00C5CAB8: CA C4 C5           retf        0C5C4h
+  00C5CABB: 00 08              add         byte ptr [eax],cl
+  00C5CABD: C5
+  00C5CABE: C5 00              lds         eax,fword ptr [eax]
+  00C5CAC0: 24 C5              and         al,0C5h
+  00C5CAC2: C5 00              lds         eax,fword ptr [eax]
+  00C5CAC4: 72 C5              jb          00C5CA8B
+  00C5CAC6: C5 00              lds         eax,fword ptr [eax]
+  00C5CAC8: 8A C5              mov         al,ch
+  00C5CACA: C5 00              lds         eax,fword ptr [eax]
+  00C5CACC: A3 C5 C5 00 10     mov         dword ptr ds:[1000C5C5h],eax
+  00C5CAD1: CA C5 00           retf        0C5h
+  00C5CAD4: 10 CA              adc         dl,cl
+  00C5CAD6: C5 00              lds         eax,fword ptr [eax]
+  00C5CAD8: CB                 retf
+  00C5CAD9: C5
+  00C5CADA: C5 00              lds         eax,fword ptr [eax]
+  00C5CADC: 10 CA              adc         dl,cl
+  00C5CADE: C5 00              lds         eax,fword ptr [eax]
+  00C5CAE0: 38 C6              cmp         dh,al
+  00C5CAE2: C5 00              lds         eax,fword ptr [eax]
+  00C5CAE4: 84 C6              test        dh,al
+  00C5CAE6: C5 00              lds         eax,fword ptr [eax]
+  00C5CAE8: 82 C8 C5           or          al,0C5h
+  00C5CAEB: 00 53 C7           add         byte ptr [ebx-39h],dl
+  00C5CAEE: C5 00              lds         eax,fword ptr [eax]
+  00C5CAF0: ED                 in          eax,dx
+  00C5CAF1: C4
+  00C5CAF2: C5 00              lds         eax,fword ptr [eax]
+  00C5CAF4: EB C8              jmp         00C5CABE
+  00C5CAF6: C5 00              lds         eax,fword ptr [eax]
+  00C5CAF8: 9B                 wait
+  00C5CAF9: C8 C5 00 38        enter       0C5h,38h
+  00C5CAFD: C9                 leave
+  00C5CAFE: C5 00              lds         eax,fword ptr [eax]
+  00C5CB00: 25 C8 C5 00 26     and         eax,2600C5C8h
+  00C5CB05: C1 C5 00           rol         ebp,0
+  00C5CB08: 3F                 aas
+  00C5CB09: C5
+  00C5CB0A: C5 00              lds         eax,fword ptr [eax]
+  00C5CB0C: 7A C4              jp          00C5CAD2
+  00C5CB0E: C5 00              lds         eax,fword ptr [eax]
+  00C5CB10: 5A                 pop         edx
+  00C5CB11: C5
+  00C5CB12: C5 00              lds         eax,fword ptr [eax]
+  00C5CB14: BD C1 C5 00 E4     mov         ebp,0E400C5C1h
+  00C5CB19: BF C5 00 97 C6     mov         edi,0C69700C5h
+  00C5CB1E: C5 00              lds         eax,fword ptr [eax]
+  00C5CB20: AE                 scas        byte ptr es:[edi]
+  00C5CB21: C6 C5 00           mov         ch,0
+  00C5CB24: C5
+  00C5CB25: C6 C5 00           mov         ch,0
+  00C5CB28: 21 C7              and         edi,eax
+  00C5CB2A: C5 00              lds         eax,fword ptr [eax]
+  00C5CB2C: F3 C6 C5 00        rep mov     ch,0
+  00C5CB30: 0A C7              or          al,bh
+  00C5CB32: C5 00              lds         eax,fword ptr [eax]
+  00C5CB34: DC C6              fadd        st(6),st
+  00C5CB36: C5 00              lds         eax,fword ptr [eax]
+  00C5CB38: CC                 int         3
+  00C5CB39: CC                 int         3
+  00C5CB3A: CC                 int         3
+  00C5CB3B: CC                 int         3
+  00C5CB3C: CC                 int         3
+  00C5CB3D: CC                 int         3
+  00C5CB3E: CC                 int         3
+  00C5CB3F: CC                 int         3
+  00C5CB40: 53                 push        ebx
+  00C5CB41: 57                 push        edi
+  00C5CB42: 68 A0 18 D7 01     push        1D718A0h
+  00C5CB47: 8B F9              mov         edi,ecx
+  00C5CB49: FF 15 00 92 DC 00  call        dword ptr ds:[00DC9200h]
+  00C5CB4F: 8B CF              mov         ecx,edi
+  00C5CB51: E8 4A F2 FF FF     call        00C5BDA0
+  00C5CB56: E8 35 87 FF FF     call        00C55290
+  00C5CB5B: 8B D8              mov         ebx,eax
+  00C5CB5D: 85 DB              test        ebx,ebx
+  00C5CB5F: 74 48              je          00C5CBA9
+  00C5CB61: 56                 push        esi
+  00C5CB62: 8B CF              mov         ecx,edi
+  00C5CB64: E8 37 D5 FF FF     call        00C5A0A0
+  00C5CB69: A1 88 18 D7 01     mov         eax,dword ptr ds:[01D71888h]
+  00C5CB6E: 85 C0              test        eax,eax
+  00C5CB70: 74 02              je          00C5CB74
+  00C5CB72: FF D0              call        eax
+  00C5CB74: 8B B7 88 00 00 00  mov         esi,dword ptr [edi+00000088h]
+  00C5CB7A: 8B 0D 4C 18 D7 01  mov         ecx,dword ptr ds:[01D7184Ch]
+  00C5CB80: 46                 inc         esi
+  00C5CB81: 56                 push        esi
+  00C5CB82: E8 39 EA 00 00     call        00C6B5C0
+  00C5CB87: 8B 0D 50 18 D7 01  mov         ecx,dword ptr ds:[01D71850h]
+  00C5CB8D: 56                 push        esi
+  00C5CB8E: E8 FD EB 00 00     call        00C6B790
+  00C5CB93: E8 48 AC FF FF     call        00C577E0
+  00C5CB98: E8 E3 A2 00 00     call        00C66E80
+  00C5CB9D: FF 87 88 00 00 00  inc         dword ptr [edi+00000088h]
+  00C5CBA3: 83 EB 01           sub         ebx,1
+  00C5CBA6: 75 BA              jne         00C5CB62
+  00C5CBA8: 5E                 pop         esi
+  00C5CBA9: 8B 0D 78 1A D7 01  mov         ecx,dword ptr ds:[01D71A78h]
+  00C5CBAF: 5F                 pop         edi
+  00C5CBB0: 5B                 pop         ebx
+  00C5CBB1: 85 C9              test        ecx,ecx
+  00C5CBB3: 74 05              je          00C5CBBA
+  00C5CBB5: E8 16 B5 FF FF     call        00C580D0
+  00C5CBBA: 68 A0 18 D7 01     push        1D718A0h
+  00C5CBBF: FF 15 FC 91 DC 00  call        dword ptr ds:[00DC91FCh]
+  00C5CBC5: C3                 ret
+  00C5CBC6: CC                 int         3
+  00C5CBC7: CC                 int         3
+  00C5CBC8: CC                 int         3
+  00C5CBC9: CC                 int         3
+  00C5CBCA: CC                 int         3
+  00C5CBCB: CC                 int         3
+  00C5CBCC: CC                 int         3
+  00C5CBCD: CC                 int         3
+  00C5CBCE: CC                 int         3
+  00C5CBCF: CC                 int         3
+  00C5CBD0: 53                 push        ebx
+
+  Summary
+
+      9C8000 .text

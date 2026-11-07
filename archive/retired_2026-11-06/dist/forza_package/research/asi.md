@@ -1,0 +1,849 @@
+# dsfforza.asi: runtime patches of Driver.exe 1.04
+
+Updated: 2026-10-29
+
+One native plugin, `plugins\dsfforza.asi`, patches the running
+`Driver.exe` 1.04 in memory to lift limits that block large car batches.
+Nothing on disk changes, and removing the file restores vanilla behaviour.
+Build and module interface: `tools/asi/README.md`. Install: `tools/install.ps1`
+copies `out\asi\dsfforza.asi` and `dsfforza.ini` into `<game>\plugins\`
+when `-Asi` is given. Evidence tags as in `dngvehicles.md`.
+
+| Module | Lifts | Section |
+| --- | --- | --- |
+| `archive` | 1100 entries per CHNK → 16384 (`dngvehicles.sp` past 365 vehicles), archive files past 2 GiB | [Archive size](#archive-size) |
+| `garage` | garage list IDs 0..303 → 0..999, 40 → 120 maker groups, 20 → any number of cars per maker group (the vehicles screen's 20 cards become a moving window), save flags for IDs 304..999 | [Garage and save](#garage-and-save) |
+| `hud` | HUD/Shift/garage-shop maker badge and model plate: one-byte glyph codes → 16-bit (`ManufacturerGlyph`/`ModelGlyph`); garage card emblem: Forza logo instead of the SF disc (`GarageEmblem`) | [HUD badges and plates](#hud-badges-and-plates) |
+| `lua` | the game's Lua heap: one fixed 10 MB block → overflows into a private heap when full | [Lua heap](#lua-heap) |
+| `hands` | the cockpit arms grip DSF's 0.177 m circle → each ported car's rim (VO3D p95/p87), arm through a two-bone IK | [Hands on the rim](#hands-on-the-rim) |
+| `dash` | digital dashboards: km/h digits for converted Forza displays (the game only fills mph digits) | [Digital dashboards](#digital-dashboards) |
+| `render` | a frame's draw queue (16384 draws): a draw past the limit is dropped instead of ending the game on an `INT3` | [Draw queue](#draw-queue) |
+
+Every module checks the original bytes of each site before patching and
+patches nothing of a feature when one site differs (another mod, another exe
+build); should a write still fail, the part already written is undone.
+`plugins\dsfforza.log` lists what was applied. `[<module>]
+enabled=0` in `dsfforza.ini` switches a module off.
+
+Crash hunts: `[dsfforza] crash_log=1` (default 0) adds a vectored exception
+handler that logs each of the first 12 faults (first chance: also ones the
+game handles itself) with registers and the Driver.exe return addresses on
+the stack. DriverNGHook's fatal-error dialog often leaves no minidump.
+
+Offline check: `tools\asi\build.ps1 -Test` maps `Driver.exe`'s image at
+0x00400000 in a test process (`tools/asi/test/offline.cpp`), runs every
+module's init against it and exercises the hooks that need no game state.
+A second test process changes one byte in four all-or-nothing sets (archive
+readers, maker groups, card emblem, draw queue) and checks that nothing of each lands.
+A third creates DSF Enhanced's marker event and checks that `[render]` leaves
+its sites vanilla ([Draw queue](#draw-queue)).
+
+## Archive size
+
+Module `archive` (`tools/asi/src/mod_archive.cpp`). The evidence, the
+reader layout and the in-game runs are in `spool-limits.md`, "Raising the
+root entry limit"; this is the patch list.
+
+**What it lifts.** The game's CHNK reader holds 1100 entries inline, so
+`dngvehicles.sp` stops at 365 vehicles (215 added), and the file layer's
+seek clamps positions of 2 GiB and more to 0, so an archive stops at about
+2 GiB (about 480 ported cars). With the module, the archive can hold a car
+for every base model ID below 1000 (849 added: `port_batch.py --id-policy
+asi` uses all of them, the default `garage` policy 757) and grow to
+4 GiB - 2 KiB.
+
+**Reader patches** (all fourteen or none; `[archive] max_entries`, default
+16384, is the largest entry count accepted). Each site gets `E9 rel32` to a
+C++ copy of the function that keeps entries 1100 and up in a side table:
+
+| VA | Function | Original bytes (checked) |
+| --- | --- | --- |
+| 0x008FB340 | tag(i) | `8B 44 24 04 C1 E0 04 8B 44 08 08 C2 04 00` |
+| 0x008FB370 | version(i) | `8B 44 24 04 40 C1 E0 04 8A 04 08 C2 04 00` |
+| 0x008FB3A0 | pointer(i) | `8B 44 24 04 8B 84 81 CC 44 00 00 C2 04 00` |
+| 0x008FB3C0 | size(i) | `8B 44 24 04 C1 E0 04 8B 44 08 14 C2 04 00` |
+| 0x008FB570 | set entry | `56 8B 74 24 14 57 8B 7C 24 0C` |
+| 0x008FB5E0 | seek | `8B 54 24 04 8B 41 04 83 E8 01` |
+| 0x008FB620 | close (and destructor) | `56 8B F1 8B 46 04 83 F8 03` |
+| 0x008FB6F0 | aligned size(i) | `8B 44 24 04 C1 E0 04 03 C1` |
+| 0x008FB720 | read size(i) | `56 8B 74 24 0C 57 8B F9` |
+| 0x008FB770 | name(i) | `53 56 57 8B 7C 24 10 8B F1` |
+| 0x008FB880 | attach payload | `53 55 8B 6C 24 18 56 57` |
+| 0x008FBE90 | read entry | `53 55 56 57 8B F9 E8 85 B7 F5 FF` |
+| 0x008FC0A0 | async open | `83 EC 1C 53 56 8B F1 8B 86 10 56 00 00` |
+| 0x008FC400 | open in memory | `83 EC 18 53 8B 5C 24 20 81 3B 43 48 4E 4B` |
+
+**File seek** (`[archive] large_files=1`): 0x0085A9B2 `7D 07` (`JGE`) →
+`EB 07` (`JMP`), checked against `83 79 30 00 7D 07` at 0x0085A9AE.
+
+**Spool item lists** (`[archive] spool_lists=1`, confirmed-static and in game):
+
+- How the vanilla code loads them: a spool package's SSIC/SPOL (u32 count,
+  count x u64 item UID) is copied by 0x0059B6D0 into an inline array of 1100
+  UIDs. The array is at +0 of the provider object (constructor 0x0059B1E0),
+  the count at +0x2260.
+- The cap: for a longer list the copy is skipped (`CMP EDX,0x44C; JA`), so the
+  list stays empty.
+- What uses it: an item's index in the list is its spool ID. 0x0059B5A0 looks
+  the UID up (linear search, 0xFFFF when absent) for the request and release
+  functions 0x0059B0B0, 0x0059B0F0, 0x0059B420 and 0x0059B4D0. Nothing else
+  reads the array (`out/ghidra/spol*`).
+- Symptom: a gui.sp with more than 1100 garage pictures (923 vanilla entries
+  plus more than 177 added) lost every picture, vanilla ones included, and
+  every card showed the lock icon:
+  - 1,098 SPOL items: pictures shown (run `vm-20261024-234833`);
+  - 1,121 items: locks (`-235436`);
+  - the full roster, 1,494 items: locks (`-224733`).
+- The patch: both functions jump to replacements. Lists longer than 1100 are
+  kept in a side table keyed by the provider object, with the first 1100
+  also inline as vanilla code sees them. The lookup searches the side list
+  when the object has one. Lists of at most 1100 items behave as before.
+- Result: the 562-car gui.sp shows its pictures again (run
+  `vm-20261025-000547`; the log line is "spool list at ... holds 1494
+  items").
+
+**In game** (confirmed-runtime): a 2,724-entry, 2.67 GB test archive loads,
+and IDs 1, 459 (straddles entry 1100), 460, 700 and 999 spool, spawn and
+drive (runs `20261022-220605`, `-220929`, `-221412`); the vanilla archive
+behaves as before with the plugin (`20261022-221150`). Without the plugin
+the same archive never reaches the menu (`20261022-221629`).
+
+**Tools.** Archives past 1100 root entries need `--root-limit N` in
+`port_batch.py`, `port_car.py` or `clone_vehicle.py` (default 1100). Such an
+archive must not be installed without the plugin.
+
+## Garage and save
+
+Module `garage` (`tools/asi/src/mod_garage.cpp`). Background in
+`batch.md` (Limits). Static analysis: `out/ghidra/garage-1..3`
+(`tools/ghidra/GarageExplore.java`) and `src/dsfforza/game/xref.py`, a capstone
+linear sweep of `.text` that lists every instruction with a given
+displacement or immediate.
+
+### What the vanilla game does (confirmed-static)
+
+**Profile.** The profile manager is `[engine+0x36C]` (engine: `[0x00FE7228]`).
+Its live save block is at +0xA4 (0x4CF8 bytes), the disk buffer at +0x4D9C.
+Per-vehicle data in the live block:
+
+| Data | Manager offset | Size | Accessors |
+| --- | --- | --- | --- |
+| `{id, flags}` list (bit 0 unlocked, 1 owned, 2 new) | +0x184 (object +0x14C, list +0x38) | 304 slots | FUN_00507CF0 find-or-insert, FUN_00507D30 test, FUN_00508990 set/clear |
+| unlocked-ever bits | +0x2088 (stats object +0x1BA8, +0x4E0) | 320 bits | FUN_0050A1A0 (`SetVehicleUnlocked`), read inline by FUN_004F9490 (IDs < 304), FUN_006FD470 |
+| driven bits | +0x20B0 (+0x508) | 320 bits | FUN_0050A120 (`SetVehicleDriven`), `GetVehicleDriven` 0x67C320 reads inline |
+| unidentified bits | +0x20D8 (+0x530) | 320 bits | only cleared |
+| take-a-ride bits | +0x2100 (+0x558) | 320 bits | FUN_0050A170, counted by 0x67C3C0 (IDs < 304), read inline by FUN_006FD470 and the garage car list FUN_007113A0 |
+| owned list | +0x2784 (+0xA9C sub-object, +0x140) | 304 IDs | FUN_0050A500 → FUN_0050A4C0 find-or-insert |
+| owned counter (byte) | +0x4D6F | 1 byte | FUN_00508990 increments it on every new owned flag |
+
+The two find-or-insert functions write through NULL when the list is full.
+The bit setters don't range-check: ID 320+ sets bits of the next array.
+
+**Save file.** `HDD:<profile>\savegames\autosave.dat` is the raw 0x4CF8-byte
+block (FUN_00853620 writes it with `fopen("wb")`, FUN_008534A0 reads it and
+accepts 0x4CF8 or 0x4CF4 bytes). The block is copied with `memcpy` at:
+
+| Site | Function | Copy |
+| --- | --- | --- |
+| 0x503D36, 0x5040D0 | FUN_00503CD0, FUN_00504090 | live → buffer (a save starts) |
+| 0x505A77 | FUN_00505A10 | buffer → live, after the guard-word and version check (load) |
+| 0x503E2C, 0x504CA0 | FUN_00503D80, FUN_00504C60 (`initialiseProfileData`) | defaults (FUN_00507500) → live |
+| 0x504053 | FUN_00503FF0 | defaults → buffer (a new save) |
+| 0x505DBC, 0x505E81 | FUN_00505D80 | live → stack copy, and back if the new profile fails |
+| 0x679F5A, 0x679FAA | `ClearProgression`, `ClearStatistics` | default progression (+0x14C, 0x1A58) and stats (+0x1BA8, 0x2C60) → live |
+
+**Garage list.** The garage object (operator new 0x3728 at 0x6C7D90, the
+`Engine+0x718` singleton, vtable 0xE189F0) builds its maker list once, in
+FUN_006C57D0 (vtable slot 0x120):
+
+- loop 1 calls vfunc 0x134 for IDs 0..0x12F and stores a sort key per ID in
+  `int[0x130]` at +0x3264;
+- loop 2 calls `getVehicleStats(id)` for IDs 0..0x12F and, for each
+  `Selectable` entry, files the ID under the first 15 characters of
+  `ManufacturerName`, upper-cased: an existing group gets the car sorted by
+  key (FUN_006C5740), a new name gets a new group, inserted sorted
+  (vfunc 0x268, FUN_006C7BB0).
+- Groups: 40 × 0x6C bytes at +0x20FC (20 IDs, count at +0x50, name at +0x54,
+  badge string at +0x64, `Manufacturer` at +0x68), group count at +0x31DC.
+  Neither insert checks capacity: a 21st car overwrites the group's count, a
+  41st group overwrites the count and what follows.
+- The maker menu (FUN_00711040, menu object built at 0x710C30) copies the
+  index of every group with a listed car into `int[40]` at menu+0x274; the car
+  list (FUN_007113A0) reads it back as `[menu+0x270 + selection*4]`.
+
+Every other user reads groups through the garage's vfuncs (count 0x148, group
+0x130 = copy of the 0x6C bytes, car 0x12C = `[table + g*0x6C + i*4]`), so only
+the sites below touch the layout. Callers of 0x130/0x12C (confirmed-static,
+every `[Engine+0x718]` vfunc call in `.text`): the maker menu FUN_00711040,
+its fill FUN_006C6940 and slot 0x128 FUN_006C6B90 (count from +0x50, cars
+through 0x12C), the take-a-ride scan FUN_006FD470, and the vehicles screen
+(below), the only one with arrays sized for 20 cars.
+
+### Patches
+
+All sites are verified byte for byte before anything is written; each group
+of patches is applied completely or not at all.
+
+**Save hooks** (`[garage] save=1`):
+
+| Site | Original | New | Why |
+| --- | --- | --- | --- |
+| 0x507CF0 | `56 57 8B 7C 24` (find-or-insert) | `jmp h_flag_slot` | vanilla list first (so entries already in a save keep working); IDs 304..999 get a slot in the plugin's table; a full list returns a scratch slot instead of NULL |
+| 0x507D30 | `8D 51 38 8B 4C` (test) | `jmp h_flag_test` | same lookup; answers the Lua detection queries (below) |
+| 0x50A500 | `81 C1 9C 0A 00 00` (owned list) | `jmp h_owned_slot` | same scheme for the owned list |
+| 0x50A1A0, 0x50A120, 0x50A170 | prologues | `jmp` to stubs | for IDs 304..999 the stub swaps `this` for a base that lands in the plugin's bit table and runs the original code (notifications included); IDs of 1000 and up are dropped |
+| 0x67C320 | `GetVehicleDriven` | C replacement | vanilla bits for IDs < 304, the plugin table above (304..319 also the vanilla bit, which older saves may hold) |
+| 0x67C3C0 | `GetNumVehiclesDrivenTakeARide` | C replacement | vanilla count (IDs < 304) plus IDs 304..999 |
+| 0x6FD51E (0x21 bytes) | inline unlocked/take-a-ride test | `jmp` + C | correct bits for listed IDs ≥ 320 |
+| 0x711759 (0x20 bytes) | inline take-a-ride test (garage car list) | `jmp` + C | same |
+| 0x5089E4 | `inc byte [eax+0x4D6F]` | `call` saturating stub | the owned-cars byte stops at 255 instead of wrapping |
+| the ten `memcpy` sites above | `call _memcpy` | `call` wrappers | follow the block: snapshot at save, apply the side file at load, clear on defaults, back up/restore around FUN_00505D80, clear on `Clear*` |
+| 0x8536E7 / 0x85354A | `call _fopen` (autosave write / read) | `call` wrappers | write / read the side file next to `autosave.dat` |
+
+**Garage list** (`[garage] list=1`, needs the save hooks):
+
+| Site | Original | New |
+| --- | --- | --- |
+| 0x6C57FB | `lea ebp,[esi+0x3264]` | `mov ebp, sortkey` (plugin `int[1000]`) |
+| 0x6C587C, 0x6C5A55 | `cmp edi,0x130` | `cmp edi,max_id` (1000) |
+| 0x6C5762 | `cmp edx,0x12F` | `cmp edx,max_id-1` |
+| 0x6C576A, 0x6C5771 | `[edi+reg*4+0x3264]` | `[reg*4+sortkey]` (same length) |
+| 0x6C5740 | group insert prologue | `jmp group_add_car`: sorted insert as vanilla; past 20 cars the IDs go to the plugin (below); `[garage] max_cars` refuses more |
+| 0x6C7BB0 | groups insert prologue | `jmp`: a full table refuses the group |
+
+**Maker groups** (`[garage] max_groups`, default 120): the table moves behind
+the object, which is allocated larger.
+
+| Sites | Original | New |
+| --- | --- | --- |
+| 0x6C7D90 | `push 0x3728` | `push 0x3728 + groups*0x6C + 4` (rounded) |
+| 0x6C54C2, 0x6C5534, 0x6C55AB, 0x6C55CD, 0x6C5989, 0x6C6995, 0x6C6BC0 | table +0x20FC | +0x3728 |
+| 0x6C57F3, 0x6C5978, 0x6C6983, 0x6C6BAB, 0x6C7A8D, 0x6C7D40 | count +0x31DC | +0x3728 + groups*0x6C |
+| 0x6C54C9, 0x6C553B, 0x6C7BE0, 0x6C7C00 | count at table+0x10E0 | table + groups*0x6C |
+| 0x7110A8 | `add eax,0x274` (menu index array) | `mov eax, makers+4` (plugin array) |
+| 0x7112DB, 0x711411 | `mov eax,[reg+edx*4+0x270]` | `mov eax,[edx*4+makers]` |
+| 0xE18B14 (garage vtable slot 0x124) | `0x006C6940` | `fill_makers`: builds the table if needed (slot 0x120), grows the four maker menu lists (below) to the group count, calls FUN_006C6940, then clamps each list's length to what it holds |
+| 0x6C6AC8, 0x6C6AE2 | `call 0x00ACE110` (string set on a list element) | `call s_menu_set_string`: a missing (NULL) element is skipped |
+
+**The maker menu lists (confirmed-runtime).** The vehicles screen
+(FUN_006DD020) looks up four menu-script lists by name and passes them to
+the garage's slot 0x124, FUN_006C6940: `ManufacturerDataList` (maker name),
+`ManufacturerLogoReferenceList` (badge string), `ManufacturerNumList` (car
+count) and `ManufacturerNew`. They are declared in `Install\menusmaster.sp`
+with 40 entries each ("dummy value" defaults). FUN_006C6940 writes entry *i*
+for the *i*-th group that has a listed car, through FUN_00ABD9F0 (element
+pointer, NULL past the list's length) and FUN_00ACE110 (no NULL check), then
+sets each list's length to the number of groups shown (FUN_00ABD2E0). The
+menu script scrolls over the list length; nothing else in the menu holds 40.
+MmDk list layout (FUN_00ABD2E0, FUN_00ABD5B0, FUN_00ABDA20): +0x08 element
+type (0x0C int, 0x0D float, 0x0E byte, others pointers to objects;
+FUN_00ABD990 tells which), +0x0C int16 length, +0x10 data. A string element
+is `{char* text, u8 external, u8 set, i16 capacity}`; with external = 0
+FUN_00ACE180 copies the text into the buffer. `fill_makers` gives a list
+that is shorter than the group table a new data array of `max_groups`
+entries (copies of the old pointers or values, new string elements with
+element 0's flags and their own 64-byte buffers) and remembers it, so later
+fills only restore the length; a list it can't grow (no element 0) keeps
+its length and the groups past it are not listed (logged).
+
+### Maker groups past 20 cars
+
+**What holds 20 (confirmed-static unless marked).**
+
+- The group struct: 20 inline IDs, then the count at +0x50; the insert
+  FUN_006C5740 (and FUN_006C7B40 under it) has no check, so a 21st car
+  overwrote the count.
+- The vehicles screen (object 0x318 bytes, vtable 0xE27394, ctor
+  FUN_00710BE0): per-card arrays of 20 at +0x30 (picture UID pairs), +0xD0
+  (model ID; FUN_00710D90 returns `[+0xD0 + index*4]` for Select, FUN_00710F70
+  for Buy), +0x120 (the `Header_Sprite_NN` resources), +0x170
+  (`vehicle_title<N>`), +0x1C0 (`vehicle_field_date<N>`), +0x218
+  (`itemState_<N>`), filled once in FUN_00711950. The car list FUN_007113A0
+  walks all the group's cars (count from vfunc 0x130) and advances the card
+  for each car it lists, with no bound: card 21 writes over the next array.
+  The picture update FUN_007112A0 walks the same arrays by the group count.
+- The menu script (`Install\menusmaster.sp`, SDF 'TakeARide'): 20 card objects
+  (`Spr3D.Spr<N>`, `Spr3D.unlocked<N>`, `Null3D1..20` ...) and the 20
+  `Header_Sprite_01..20` picture resources, in the compiled scene and bytecode
+  (16-byte instructions; not decoded). It sizes the card row by
+  `ManufacturerNumList[maker]` (the script variable `NumItemsVisible` takes that
+  value, confirmed-runtime).
+- Not a limit: the 9 pictures the car list loads at a time (it requests the
+  pictures of cards `itemBrowserIndex - 1 ..` + 8 and is run again on every
+  move), the maker menu and its lists (they count cars, not cards).
+
+**How the card browser runs (confirmed-runtime, `[garage] menu_debug=1`,
+runs `vm-20261024-193917` to `-211029`).** The maker list is the menu page
+`CategorySelect_Vehicles` (Up/Down; the card stack beside it is a preview of
+the highlighted maker); Enter opens the page `ItemBrowser`, a row of cards
+that Left/Right scroll; there Up/Down move the focus between the row and BACK,
+Esc goes back. On each Right/Left the script moves its highlight one card
+(with an animation), sets `itemBrowserIndex` (0-based card) and the car list
+runs again. The highlight is the script's own state: writing
+`itemBrowserIndex` from code, directly or through the screen controller's
+setter (`[screen+4]` vfunc 0x18, what the car list uses for
+`itemStateChanged`), or setting `sortCardsNow`, moves nothing on screen, so
+the side panel (the car at `itemBrowserIndex`) and the highlighted card part
+ways. The script variable `startPageSelected` is 2 for the vehicles (1
+abilities, 4 challenges, which share the `ItemBrowser` page).
+
+MmDk menu, for the hook (confirmed-static, checked in game): the menu object
+`[[screen+4]+8]` keeps a page stack at +0x1C0 (8-byte entries, count +0x1CC;
+FUN_00AB9440), an entry's first word is the page, the page's first word its
+name; script variables at +0x50 (FUN_00ACBE20 name → `int*`); the key table at
++0x2A8 (FUN_00ABAA30: key × 0x140 + player × 0x28), each key `{state, value,
+..., +0x14 cdecl handler(key, ctx)}`. Keys 0..3 are Up, Down, Right, Left
+(the arrow keys in FUN_00719650). States (FUN_007193B0): 0xFF the first frame
+down, 0xFE still down (the script repeats on it), 1 the release frame. The
+game's menu-input object (vtable 0xE280D0) fills them once a frame
+(FUN_00719940 polls the input actions, slot 3 FUN_00719B50 copies them into
+each menu and calls the handlers).
+
+**The patch (`[garage] max_cars`, default 1000; with 20 nothing below is
+installed).** All or nothing, after the list and group patches:
+
+| Site | Original | New |
+| --- | --- | --- |
+| 0x6C5740 | (see above) | `group_add_car`: IDs 21 and up of a group in a plugin array keyed by the group's name (+0x54; unique, and it moves with the group when FUN_006C7BB0 shifts the table); the count at +0x50 is the real one |
+| 0xE18B1C (garage vtable slot 0x12C) | `0x006C55A0` | `group_car`: inline IDs below 20, the plugin's array above; called from the car list (return address 0x711599) it adds the window's first car |
+| 0xE18B20 (slot 0x130) | `0x006C55C0` | `group_copy`: the copy as vanilla; for the car list (0x711443) the count from the window's first car on, for the picture update (0x7112FB) at most the cards the car list fills |
+| 0x7113A0 | `sub esp,0x208` | `jmp carlist_hook`: picks the window, runs the car list, then sets the "x/y OWNED" texts and `[screen+0x28]` from the whole group |
+| 0x7118C3 | `mov [esp+0x30],eax; cmp eax,[esp+0x28]` | `call loop_stub`: the loop also ends after 19 cards; records which car each card shows |
+| 0xE18B14 (slot 0x124) | `0x006C6940` | `fill_makers` (as with `max_groups`): `ManufacturerNumList` says 19 for a maker of 20 or more listed cars |
+| 0x7111D1 | `call 0x00710DA0` | `call maker_card_check`: card *i* below 20 as vanilla; from 20 on the original runs on a zeroed screen at card 0 (same answer, no text written) |
+
+**The maker menu's per-car check (confirmed-static, issue #181).** The maker
+menu FUN_00711040 walks every car *i* of every group (count from slot 0x130,
+the whole group) and, for each car the profile hasn't unlocked (flag-list bit
+0), calls FUN_00710DA0(item, *i*) on the vehicles screen. That answers
+whether the car can be had, which decides whether the maker is listed: item
+type 1 (`[item+0xA8]`, a car bought with WP) through FUN_005083B0, type 2
+(`UnlockedInGarage`, `[item+0xEC]` the garage) through FUN_00507E40, which
+looks the garage up in the progression's `{garage, bits}` × 10 at +0x9B8
+(save block offset 0xA60) and tests bit 0. When the answer is yes and card
+*i*'s `vehicle_field_date` slot (`[screen+0x1C0+i*4]`) is set, it writes the
+garage's name (table of 32-byte names at 0xF18448: 1 FISHERMANS WHARF,
+2 DOWNTOWN, ...) or the price into it through FUN_006CB160, which calls the
+element's vfuncs 0xAC/0xA8. Nothing bounds *i*: vanilla groups stop at 20.
+With 1000-car groups, car 31 of the full roster's Chevrolet group (vanilla
+ID 162, sold at Downtown) read `itemState_` slot 9 as a text element, whose
+first word is 3, and faulted reading 0xAF at 0x006CB16B. A save that has
+every vanilla car unlocked (the test VMs' save: 293 of 304) never makes the
+call, which is why the garage tests never hit it.
+
+A maker of up to 19 listed cars is shown as vanilla (window at car 0). One of
+20 or more gets 19 cards, so card 20's `Header_Sprite_20` stays free for the
+`[hud]` card emblem (`garage_card_limit()` in `shared.h` tells mod_hud). Until
+issue #66 the window started past 20, so a maker of exactly 20 used card 20
+for its last picture and every card kept the SF disc.
+The window moves when the player does, never behind the script's back: the
+menu's Right and Left handlers (keys 2 and 3, players 0 and 1) are wrapped
+when such a maker is shown. A Right press with the highlight `window_ahead`
+(8) cards or fewer before the window's last card, while the group has more
+cars, is not passed to the script; the window moves one car and the list is
+refilled, so the highlighted card shows the next car and the cards ahead stay
+full. Left within `window_back` (2) cards of the window's start does the same
+backwards. Held down (0xFE for 18 frames), the window keeps moving every 5
+frames; a hold the script was repeating is taken over once it reaches the
+edge (after 20 frames down; a tap lasts about 6) and its release is passed on.
+`itemBrowserIndex` always stays what the script shows, so the side panel and
+Select match the highlighted card. The window starts at car 0 whenever the
+car list runs for the maker list (`CategorySelect_Vehicles`) or the garage hub
+(`InGarage`); popups over the browser (the drive or buy question) keep it.
+
+In game: below, "In game", "Maker groups past 20 cars".
+
+### Save compatibility: the side file
+
+Flags of IDs 304..999 never go into the vanilla block. The plugin keeps them
+in memory and in `dsfforza-garage.dat` in the same folder as `autosave.dat`:
+`DSFG`, version 1, entry count, FNV-1a of the entries, then per ID `u16 id,
+u16 what` (bits 0..3: the four bit arrays, bit 4: flag-list slot, bit 5:
+owned list) and `u32 flags`. It is written (to `.tmp`, then moved over) when
+the game opens `autosave.dat` for writing, from the snapshot taken when the
+game copied the live block into its save buffer, and read when the game
+reads `autosave.dat`; the load copy applies it.
+
+Why a side file:
+
+- **The block can't grow.** The reader insists on 0x4CF8 (or 0x4CF4)
+  bytes; the guard words sit at fixed offsets.
+- **An unmodded game keeps working with the save.** The block holds only
+  vanilla-range data, so it loads and plays as before, without the added cars.
+  The side file is ignored (and survives an unmodded session, so the flags
+  are back when the plugin is).
+- **Old saves load unchanged.** A save without a side file simply has no
+  added-car flags. Entries for IDs 304+ that older tests wrote into the vanilla
+  list (and bits 304..319) are still found: the vanilla list is searched first.
+- **No ID is lost to the 304-slot list.** Vanilla cars use about 146 slots,
+  the 61 low garage IDs up to 61 more; added cars use none.
+
+`dsff savecheck <savegames folder> --ids 305,500` lists both files.
+
+### Telling Lua the plugin is there
+
+DriverNGHook's Lua can't call into the plugin, so the patched FUN_00507D30
+answers `ProfileSettings.GetVehicleUnlocked(8000000 + k)`. The game's Lua
+numbers are single-precision floats (a literal of 2^23 or more is a compile
+error: "number out of range (> +-8388606)", run 20261022-225111), so the magic
+range sits just below that:
+
+| k | true when |
+| --- | --- |
+| 0 | the save hooks are active |
+| 1 | the garage list walks IDs past 303 |
+| 0x1000 + n | n ≤ the maker group limit |
+| 0x2000 + id | the garage lists that ID |
+| 0x3000 + n | n ≤ the cars per maker group (`[garage] max_cars`; 20 without the card window) |
+
+An unpatched game looks the number up in the flag list and returns false.
+`register.lua` binary-searches the limits at start (`asiQuery`,
+`asiLimit`: groups, highest listed ID, cars per group) and uses them for
+`garage`, `garageGroup` and `guardProfile`.
+
+### In game
+
+Harness: `tools/asi/test/garage-tests.ps1` (four runs through
+`tools/wsb/run-series.ps1 -Asi`, test Lua in `tools/asi/test/lua`, put over the
+test bootstrap with `-LuaFiles`); `src/dsfforza/game/savecheck.py` reads the `save\`
+copy each run keeps. Offline: `tools/asi/build.ps1 -Test` (every site
+matched, hooks behave).
+
+**Run `20261022-230004` (vanilla archive, plugin; confirmed-runtime):**
+
+- `dsfforza.log`: save hooks, list (IDs 0..999) and 120 groups applied;
+  "no dsfforza-garage.dat (no added-car flags yet)", then "profile loaded, 0
+  added cars with flags" when the game loaded `autosave.dat`.
+- Lua detection: `savetest` and `register.lua` both read "save true, garage
+  true, groups 120, max listed id 999"; `guardProfile` let IDs up to 999
+  through.
+- In a car, `SetVehicleUnlocked/Owned/Driven/DrivenInTakeARide` for 305, 320,
+  500, 650 and 999: every flag read back true (unlocked, owned, new, driven),
+  `GetNumVehiclesDrivenTakeARide` went 0 → 5. `TriggerAutoSave` → "saved 5
+  added-car entries to ...\savegames\dsfforza-garage.dat".
+- `savecheck.py`: `autosave.dat` 19704 bytes, guard words and version OK; the
+  flag list and owned list hold no ID ≥ 304 (140 of 304 slots, as before);
+  the side file holds all five IDs with flags, bits and owned-list entries.
+  That build still let IDs 304..319 set their bits in the vanilla arrays (they
+  fit); the bit stubs now take 304..999 (no ID ≥ 304 in the block at all) and
+  readers OR in a vanilla bit an older save may hold.
+
+Earlier attempts: run `20261022-223030` never reached Story (the guest's
+Start menu was open and took the Enter presses; `run-test.ps1` now releases
+the Windows keys and closes it before launching). Run `20261022-225111`
+found that the game's Lua numbers are single floats ("number out of range
+(> +-8388606)" for the first magic value, 0x44534647), hence 8000000.
+
+**The garage crash with 40 added cars (fixed; confirmed-runtime).** With
+out/testdrive3 (IDs 1 to 40, many new makers) and `[garage]` on, opening the
+garage ended in DriverNGHook's fatal-error dialog without a minidump (runs
+`host-20261023-080433`, `-080858`, `-081321`). `[dsfforza] crash_log=1`
+(a vectored handler in `main.cpp` that logs faults, registers and the
+Driver.exe return addresses on the stack) caught it in run `-101840`:
+`C0000005 at 00ACE11F (read 00000000)`, called from 0x006C6ACD with edi =
+40: FUN_006C6940 writing the 41st maker into the 40-entry menu lists above.
+The 49 groups themselves (relocated table, IDs past 304, save hooks) and
+the [hud] card emblem hook were fine: the list build had finished, and the
+emblem patch sits in the car list, which runs later. A guard-only build
+(lengths clamped, no growth; run `-102604`) opened the garage and listed
+the first 40 makers (up to HONDA; the other 9 groups were unreachable).
+The final build grows the lists.
+
+**In game with the fix (confirmed-runtime), out/testdrive3 + emblem data,
+shipped ini (`max_groups=120`) plus `crash_log=1`:**
+
+- Run `host-20261023-103212`: "menu list ManufacturerDataList ... grown from
+  40 to 120 entries" (all four lists); the maker menu scrolls through all 49
+  makers to TOYOTA; Enter on TOYOTA shows its two added cars with the Forza
+  emblem (`img/garage-49-makers-run-103212.png`). No fault logged.
+- Runs `host-20261023-104805` and `-105532` (one host series, so the second
+  session loads what the first saved): test bootstrap with `savetest.lua`
+  (`out/garagefix/cfg_full.lua`: 600 fake entries 360..959 in 60 makers "DSFT
+  nn", every second one unlocked and owned, plus flags for 305, 320, 500, 650,
+  999). 109 maker groups (60 DSFT, the vanilla makers, the new ones), header
+  "480/780 OWNED"; the menu scrolls to the 109th group (TOYOTA), its car
+  browser opens with Forza emblems, leaving and re-entering VEHICLES refills
+  the menu (`img/garage-109-makers-run-104805.png`, `img/garage-run-105532.png`).
+  Save: "saved 303 added-car entries to ...\savegames\dsfforza-garage.dat";
+  the second session logs "loaded 303 added-car entries", and every flag of
+  305..999 reads back true (take-a-ride count 5). `savecheck.py` on
+  `-105532\save`: `autosave.dat` 19704 bytes, version OK, no ID ≥ 304 in the
+  vanilla block (180 of 304 slots); the side file holds 303 entries with flags,
+  bits and owned-list entries. No crash, no fault in either run.
+
+Inputs of these runs: `-Override` `Install\gui.sp=out\testdrive3\gui\gui.sp`, `media\Fonts.fchunk=out\emblem\td3\Fonts.fchunk`, `Locale\English\global.fchunk=out\testdrive3\gui\Locale\English\global.fchunk`; `-LuaFiles` with
+`out/emblem/garagetest_on.lua`, `out/emblem/td3/hud.lua`,
+`out/testdrive3/dngvehicles.lua` (and for `-104805`/`-105532` the test
+bootstrap, `savetest.lua` and `out/garagefix/cfg_full.lua`), `-MenuKeys`
+Enter, Down × 110, Enter, Right, Esc, Esc, Enter, Up × 3, Esc
+(`out/garagefix/keys-full.txt`).
+
+**Pending** (issue #197). The host runs above cover the save round trip
+with the plugin. `garage-tests.ps1 -Vm` runs in the headless VM, but the VM
+copies the host profile into the guest at the start of every series, so
+`vanilla` and `check` need a host series that keeps the save:
+
+- `vanilla`: the same save without the plugin loads and reaches Story, added
+  IDs read false.
+- `check`: with the plugin again the five IDs read back true from the side
+  file (persistence across a session, and across an unmodded one).
+
+The third, `garage` (a ported car at 304+ picked in the garage and driven
+out), was run with the card window: run `vm-20261024-222016`, model 393
+("Maker groups past 20 cars" below).
+
+**Maker groups past 20 cars (confirmed-runtime, headless VM; the VM's
+dsf_enhanced at a 350 m traffic radius without full-detail traffic, which
+made world loads crash less).** Test Lua: `tools/asi/test/lua/cfg_biggroup.lua`
+(savetest.lua `merge`: Ford and Dodge filed under Chevrolet, 39 vanilla cars in
+one group) and, for the full roster (out/final-gui of the full-roster branch,
+573 cars, `menu_debug=1`), savetest `set` with every ported ID so the garage
+lists them.
+
+- Vanilla archive, CHEVROLET with 39 cars (runs `vm-20261024-203120`,
+  `-212010`): the row scrolls through all 39 to the last card (Ford RS200;
+  the right arrow goes away), the highlighted card, the side panel and the
+  "39/39 OWNED" total agree throughout, the cards ahead stay full; Left goes
+  back the same way. Card 24 (Mustang Mach 1, model 192) selected, the garage
+  left: the player drives model 192.
+- Full roster with the plugin (runs `vm-20261024-214939`, `-220940`): FORD
+  holds all 49 cars ("49/49 OWNED"), the row reaches the 49th (Sierra
+  Cosworth RS500); added cars wear the Forza emblem (the 19-card window keeps
+  `Header_Sprite_20` free); the maker list has no "<maker> 2" groups and ends
+  at WIESMANN (`img/garage-ford-last-card-before-after.png`,
+  `img/garage-maker-list-end-before-after.png`,
+  `img/garage-window-mid-group.png`). FORD's car 31 (Ford Explorer 2010, ported,
+  model 393) selected and the garage left: the player drives it (run
+  `vm-20261024-222016`, `img/garage-ford-car31-driven.jpg`). The same build with master's plugin and
+  register.lua (run `vm-20261024-220008`): FORD 20/20, SF discs on every card
+  (a 20-card group needs card 20), NISSAN 2 ... TOYOTA 2 at the end of the list.
+- Makers of 20 or fewer cars look as before: the maker-list screenshots of
+  the two full-roster runs (menu-02..13) differ in under 0.1 % of the pixels,
+  except AUDI (36 cars, 1.2 %) and DODGE (31, 0.7 %), whose preview stacks
+  changed.
+- Pictures of the full-roster build don't show in either run: a lock icon on
+  every card, vanilla cars included. Not caused by this change: a full-roster
+  gui.sp holds 1,494 SPOL items, past the vanilla 1100 (run
+  `vm-20261024-224733`), which `[archive] spool_lists` lifted afterwards
+  (#43; "Spool item lists" above).
+- A maker of exactly 20 (issue #66; out/final-gui2 with the GUI step rebuilt
+  for #50, `menu_debug=1`, `emblem_debug=1`). Before (plugin at 976abf6, run
+  `vm2-20261026-142149`): ASTON MARTIN on 20 cards, all 1460 card decisions
+  SF, its 15 ported cars included. After (window from 20 listed cars, run
+  `vm1-20261026-144501`): 19 cards; Right to car 20 and past the end, Left
+  back past the start, the window moves at card 11 and card 3 as for a
+  longer group, "20/20 OWNED" throughout, the right arrow goes at car 20.
+  `dsff emblem_check`: 71 shots, 0 discs differ, no decision differs from
+  hud.lua. dsf_enhanced's Down (AUDI) and Up in the card row bring ASTON
+  MARTIN back at car 0. Car 20 (One-77, model 65) selected, garage left: the
+  player drives model 65, as with the vanilla 20 cards before.
+  `img/garage-20-group-emblem-before-after.jpg`. CHEVROLET (46) and GMC (8),
+  run `vm2-20261026-144633`: 68 shots, 0 differ.
+
+### Open
+
+- With `[garage] max_cars=20` (no window) a maker group of exactly 20 cars
+  still uses card 20, so its `GarageEmblem` cars keep the SF disc.
+- A group of 20 cars or more with fewer than 20 listed (cars not yet listed
+  in a save) is shown on up to 20 cards, and mod_hud's gate counts the
+  group's cars, so its cards would all keep SF although card 20 stays empty.
+  From the code only; every run above lists all cars.
+- The window after a drive: where the game restores `itemBrowserIndex` on
+  return (FUN_006CCD50 sets it from a saved value), the window starts at car 0
+  again, so in a long group the highlight would land on another car. Not run.
+- Holding Right/Left past the window's edge (the takeover of the script's own
+  key repeat) and gamepad input were not run; taps were.
+- Achievements and stats that loop over IDs 0..303 (FUN_004F9490 over the
+  unlocked-ever bits) don't see added cars; only the take-a-ride count is
+  extended.
+- The save's vanilla flag list: 146 vanilla cars + up to 61 + 92 low IDs
+  (`--id-policy asi`) = 299 of 304 slots. When it is full, vanilla-range IDs
+  spill into the plugin's table (and side file) instead of crashing; without
+  the plugin they would hit the vanilla NULL write.
+- `[garage] side_file` renames the side file; a second save profile folder
+  gets its own (it sits next to that profile's `autosave.dat`).
+
+## HUD badges and plates
+
+Module `hud` (`tools/asi/src/mod_hud.cpp`). Evidence, the full patch table
+(VA, original and new bytes) and the data side are in `gui-assets.md`,
+"Unlimited badges and plates". In short: the call at 0x006C6855 (the
+vehicle info record ctor FUN_006C40C0) goes through a stub that reads the
+optional vehicleStats fields `ManufacturerGlyph`/`ModelGlyph` while the
+entry is on the Lua stack; ten `element->SetText(record+0x90/+0x92)` call
+sites (driving HUD 0x006D4EA0/EB8, Shift HUD 0x006CFBDD/BF6, HUD panel
+0x006DBADD/AF6, garage shop 0x0070E361/E373, vehicle panel
+0x00711687/169F) call `hud_badge`/`hud_plate` instead, which copy the
+16-bit glyph's record over a per-element slot record (codes 1..8, 14..17)
+in the loaded vehicles_font and set that byte as the text. Cars
+without the fields are untouched. The ctor hook is skipped unless its bytes
+and at least one site match.
+
+The renderer treats a text of spaces and control characters as empty (the
+OR of its bytes at most 0x20, checked at 0x007216BE and 0x0072487A), which
+made every slot text empty: until 2026-10-25 no 16-bit badge or plate drew
+(gui-assets.md, "Why the 16-bit glyphs drew nothing"). Both checks
+(`80 FA 20 77 02 33 C9`) jump to stubs that keep a lone slot code; the HUD
+sites are patched only when both checks are.
+
+**Maker list logos.** The garage maker list shows a one-byte badge per group
+(`ManufacturerLogoReferenceList`). The `[garage]` module's string set for it
+(0x006C6AE2, already wrapped for the 40-entry lists) asks mod_hud for the
+group's first car: with a `ManufacturerGlyph` whose one-character localised
+string exists (ID 900000 + code, written by gui_assets.py), the element gets
+`"ID:<n>"`, which the renderer draws as that 16-bit glyph (gui-assets.md,
+"Maker list logos").
+
+**Garage card emblem** (`[hud] card_emblem=1`; details, evidence and the
+patch table in `gui-assets.md`, "Garage card emblem"). The ctor hook also
+reads vehicleStats `GarageEmblem`. The itemState write of the car list at
+0x007118A5 (`8B 91 F8 00 00 00 89 3A`) becomes a call: for a car with
+`GarageEmblem = 1` card N's `Spr3D.unlocked<N>` sprite (one per menu page:
+maker list and card browser) is pointed at `Header_Sprite_20` dressed as the
+emblem (SF UVs copied, texture `f012ef7ef05a2e2d` from gui_assets.py's
+Fonts.fchunk); other cars get the vanilla resource back. Four
+`call FUN_00ADA7F0` sites go through checks: the challenge browser's
+(0x0070D72A, 0x0070D3BF; it uses the same card objects) put every disc back
+to SF, the car list's (0x00711537, 0x00711354) give the spare its own UVs
+back if a picture needs it. Applied only with the ctor hook. In game: run
+`host-20261023-100401`.
+
+With the card window (Maker groups past 20 cars) the hook still gets the
+right car per card. At 0x007118A5, `ebp` is the card index and `[esp+0x18]`
+the model the car list just took from vtable slot 0x12C, which is
+`group_car` with the window's first car already added; the same value goes
+to the card's model array (`+0xD0`). Card N's disc sits on card N's top
+right corner, over the next card's picture, so a disc is easily read as the
+next card's; that was the "one card off" report (gui-assets.md, "Which card
+a disc belongs to").
+
+`[hud] emblem_debug=1` logs every card's decision (`hud: emblem: fill <n>
+card <N> model <id> -> Forza logo|SF`). With `[garage] menu_debug=1` and a
+`-MenuKeys` run, `uv run dsff emblem_check <run folder> [--hud <hud.lua>]`
+checks every Right/Left shot. It classifies the discs at the highlighted
+card and its neighbours (-1, +1, +2) by colour and compares them with the
+logged decisions, and with `--hud` each decision with `GarageEmblem`.
+run-test.ps1 now notes events with the guest clock (`wall`), so shots match
+log lines by time. Older runs get the offset from votes; check those by hand.
+A shot that still shows the previous step counts as "drawn late": a busy VM
+can draw a step late, and the next shot catches up. A card shift would make
+nearly every shot of a scroll late. Shifting the shot-to-log match of run
+`-120559` by one tap gave 149 of 199 shots that differ.
+
+Runs `vm-20261026-120559` and `vm1-20261026-130246` used the full roster
+(out/final-gui2, GUI step rebuilt for #50). Each scrolled CHEVROLET (46
+cars) and FORD (49) to the end, past it and back past the start, plus GMC
+(8 cars). In 428 Right/Left shots no disc differs from its card's decision.
+Four shots of the second run were drawn late; that VM took up to 15 s
+between some 2-s steps. No decision differs from hud.lua outside 20-car
+groups. The keys:
+Enter, Down × 9, Enter, Right × 48, Left × 50, Esc, Down × 4, Enter,
+Right × 51, Left × 53, Esc, Down, Enter, Right × 6, Left × 6, Esc.
+
+**In game, [garage] with 120 groups:** opening the garage with
+out/testdrive3 crashed (runs `host-20261023-080433`, `-080858`, `-081321`)
+in the maker menu fill, not in the emblem hook: the 40-entry menu-script
+lists (Garage and save, "The garage crash with 40 added cars"). Fixed; the
+emblem shows in the fixed runs `-103212`, `-104805` and `-105532`.
+
+## Lua heap
+
+Module `lua` (`tools/asi/src/mod_lua.cpp`). Issue #56; runs and symptoms in
+`in-game-tests.md`, "Lua VM after minutes of play".
+
+### What the vanilla game does (confirmed-static)
+
+- FUN_005E4BF0 creates heap 3 of the engine's heap manager (`[0x012536AC]`,
+  heap pointers by index) with `push 0xA00000` at 0x005E4C05:
+  FUN_0075A190 -> FUN_00758EE0 mallocs one 10 MB block (header at its start,
+  +4 the size) and never grows it.
+- The Lua state is `lua_newstate(FUN_005E4AB0, 0)` (`push 0x005E4AB0` at
+  0x005E7DB7, the call at 0x005E7DBC). FUN_005E4AB0 is the `lua_Alloc`:
+  allocate (FUN_0075A200), reallocate (FUN_0075A240) and free (FUN_0075A290)
+  in heap 3. When the block can't serve a request it reports "Lua heap out of
+  memory" through FUN_0086A560 (a log channel that is silent in the retail
+  game) and returns NULL.
+- Lua 5.1.2 (`$Lua: Lua 5.1.2` in the exe) raises `LUA_ERRMEM` at that
+  allocation. The game calls Lua through FUN_005E4760, a `lua_pcall` whose
+  result it ignores, so the error is never logged.
+- The collector runs with `setpause 150`, `setstepmul 1500` (0x005E6995,
+  0x005E69A8): the heap may grow to 1.5 times the live data before the next
+  cycle starts.
+
+### The patch
+
+- `arena_mb` (default 32): the size pushed at 0x005E4C05 (`68 00 00 A0 00`).
+  The game uses about 1.2 GB of address space (`in-game-tests.md`, VM
+  memory), so 22 MB more doesn't matter. Vanilla 1.04 is not large-address
+  aware (PE characteristics 0x0103), so that is 1.2 of 2 GB; the copy on the
+  test PC has the flag set by a 4 GB patch (`exe-vehicles.md`).
+- `push <dsfforza lua_Alloc>` at 0x005E7DB7 (`68 B0 4A 5E 00`). It calls
+  FUN_005E4AB0 first. With `overflow=1` (default) a request the block refuses
+  gets memory from a private `HeapCreate` heap instead; a pointer outside the
+  block's address range is such a block and is freed and reallocated there,
+  and an arena block that can't grow moves out with its contents. With
+  `overflow=0` the refusal goes to Lua as vanilla, only logged.
+- Logged: the arena size, each new MB `g->totalbytes` passes, refused
+  requests (the first four, then powers of two), overflow use per 256 KB.
+- Both patches need the state and the heap not to exist yet at plugin load
+  (they don't: the ASI loader runs first); else the module does nothing.
+- Offline (`build.ps1 -Test`): both pushes, and the allocator in front of a
+  64 KB stand-in arena (the real FUN_005E4AB0 needs the game's CRT): blocks
+  from the arena until it is full, then overflow blocks, a grown arena block
+  moves out with its bytes, frees reach the right heap, the arena serves
+  again once it has room.
+
+### In game
+
+| Run | Build | Result |
+| --- | --- | --- |
+| `vm-20261025-094432`, `-075445`, `-065422` | before the module | Lua VM fault 3 of 3 (issue #56) |
+| `vm2-20261026-122308` | `overflow=0`, 10 MB | first refused request at Lua 8538 KB (12:27:43), Lua VM fault at 12:28:48 |
+| `vm1-20261026-122537` | 10 MB + overflow | 65,536+ requests served from the overflow heap (peak 751 KB, Lua 9.3 MB); the issue's browse, no fault |
+| `vm1-20261026-150731` | `overflow=0`, 10 MB | four refused requests, register.lua's concat error; no fault in this run |
+| `vm1-20261026-143525` | 32 MB + overflow | the issue's browse (makers 1 to 19, 39 to 42): Lua peak 9 MB, nothing refused, no fault |
+| `vm1-20261026-145055` | 32 MB + overflow | 63 maker rows opened: Lua peak 9 MB, nothing refused, no fault |
+| `vm1-20261026-142558` | 32 MB + overflow, vanilla archive | the issue's browse: Lua peak 6 MB, no fault |
+| `vm1-20261026-152238` | the same, rebased on master | the issue's browse: Lua peak 9 MB, nothing refused, no fault |
+
+## Hands on the rim
+
+Module `hands` (`tools/asi/src/mod_hands.cpp`, issues #99 and #117). The arms rig, the
+pose buffer and the probe that measured them are in `cockpit.md`, "Hands on
+Forza's rim".
+
+- **Hook:** the call at 0x005676FF (`E8 BC 92 2F 00`, FUN_005676B0 -> FUN_008609C0)
+  goes to `eval_hook`, which calls the graph evaluation and then edits the pose
+  buffer 0x01214400 before FUN_00566FD0 counter-turns and draws it. It needs
+  FUN_00BC9E90 (transform compose, used for every rotation) to start with
+  `83 EC 30 56 57`; else nothing is patched.
+- **Per car:** the vehicle (arms +0x348) -> +0x53C -> +8 -> +0xAA4 is the spec
+  (FUN_008CE300). VO3D p95 is the rim radius, p87 the rim centre from the steering
+  marker along the column direction (spec + 0x37F0). Both IDs are "unused" in the
+  type table at 0x00F3E450, no code reads them, and no vanilla VO3D sets them.
+  `cockpit.grip_params` writes them; a car without p95 (every vanilla car) is left
+  alone.
+- **Per hand:** the fist is the wrist and its 15 finger joints. It moves to the
+  nearest point of the rim, by at most `max_move_mm` (120). The weight is 1 while
+  the fist is within `near_mm` (40) of the animations' grip circle or of the rim,
+  fading to 0 at `far_mm` (90): a hand over the top while turning hand over hand,
+  or one at the gear stick, stays where the animation puts it. The release
+  weights (+0x350 right, +0x34C left) scale it too.
+- **Arm:** a two-bone IK. The shoulder stays, the elbow stays in the arm's bend
+  plane, both bones keep their length, and the hand is translated (its grip keeps
+  its orientation). The joints are found by name (`RightHand`, `RightForearm`,
+  `RightArm`, `RightShoulder`, and Left), so a skeleton without them is left alone.
+- **Offline** (`build.ps1 -Test`): the call site is patched; `mod_hands_selftest`
+  checks the quaternion convention against FUN_00BC9E90 in the mapped image, moves
+  a synthetic hanging arm onto rims 13% larger and 15% smaller (fist on the rim to
+  1 mm, shoulder fixed, bone lengths kept), and leaves a hand off the wheel alone.
+  Since #117 also: the three occupant sites are patched; a hip-rooted arm in a
+  tilted seat's frame goes onto rims of 0.15 and 0.20 m with the hub on or 4 cm off
+  the animations' column (fist at its angle, model-space transforms moved alike);
+  a full-body skeleton record yields both arms by name.
+- **The chase views and AI drivers** (issue #117; `cockpit.md`, "Hands in the
+  chase views"): the full-body vehicle occupant is posed by an engine task. The
+  call at 0x005668D3 (`E8 C8 E7 FF FF`, task -> FUN_005650A0) keeps the queued
+  slot per thread (TlsAlloc), and the calls at 0x005652FB and 0x00565910
+  (`E8 .. .. 66 00`, FUN_00BCA840, the skin build) go to a wrapper that moves the
+  hands in the skin and model-space transforms. All three or none; `[hands]
+  chase=0` leaves the occupants alone. The queue carries pedestrians too: only
+  characters of the occupant pool (`[[0x00FE7228]+0x2A8] + 0x8B548`, 0x90 of
+  0x39C bytes) in seat 0 count. The rim is taken into his seat marker's frame
+  (+0x00). Each fist keeps the angle the animation gives it about the vanilla
+  steering point of that frame, (0, 0.469, 0.428), and lands 1.7 cm outside the
+  rim's centre line, as the occupant's fist sits on vanilla wheels. The IK turns a
+  hip-rooted arm about RightArm.
+- `max_move_mm` is 120 (was 100): the tour bus's flat wheel needs 116 at rest.
+- `[hands] debug=1` logs the skeleton (joint records), every 1.5 s the pose
+  buffer, the steering matrices and the car's marker and grip parameters, and each
+  hand's grip, miss and move. A joint's position is its skin transform applied
+  to its bind position, the inverse bind's inverse applied to the origin. For the
+  occupants, one every 1.5 s: the car, seat, seat and world matrices, the rim in
+  the seat frame, both fists, wrists, elbows and shoulders, and each hand's move.
+
+## Digital dashboards
+
+Module `dash` (`tools/asi/src/mod_dash.cpp`). The display conversion is in
+`cockpit.md`, "Digital displays".
+
+**Vanilla (confirmed-static, `out/ghidra/dd-*` in the digital-displays worktree).**
+`FUN_00888F30` is the vehicle manager's frame update. At 0x00888FE6
+(`E8 B5 89 00 00`) it calls `FUN_008919A0` with ECX pointing at the gauge input
+array. That array is one 0x98-byte object per player, at
+`[[[0xFE7228]+0x78C]+4] + 0x2251C`.
+
+| Offset | Holds |
+| --- | --- |
+| +0x00 | the seven needle inputs: id 1 is rpm / 5000, id 2 is clamp(mph, p606, p605) x 0.0125 |
+| +0x1C | `g_fDigiData`, 7 x vec4 |
+| +0x8C | the vehicle |
+
+The game writes `g_fDigiData` for these ids only:
+
+- id 1: the rpm bar;
+- id 2: mph digits, units to thousands, as (digit + 1) x 23/256, 0 for a leading blank;
+- ids 6 and 7: the gear.
+
+It never writes ids 3 to 5. A copy taken when the frame's draw lists are built
+(`FUN_0087A8E0`, `mov ecx,0x1C; rep movsd` at 0x0087AA7F) goes to the digital-dials vertex
+shader. The shader adds `g_fDigiData[(id - 1) x 4 + comp]` to each vertex's v.
+
+**Patch.** `patch_call` at 0x00888FE6 calls the original first. Then, for each
+player with a vehicle, it writes km/h digits into id 3, comps 0..3, in the
+game's own encoding. The speed is the clamped one the game just wrote for the
+speedometer needle (id 2's input / 0.0125 x 1.609344). Scenes that label their
+speed in km/h put their digits on id 3, so without the module those digits stay
+blank. `[dash] kmh=0` turns it off.
+
+Offline (`build.ps1 -Test`): the call site checks and patches.
+
+
+## Draw queue
+
+Module `render` (`tools/asi/src/mod_render.cpp`). The queue and the crash it
+fixes are in `spool-limits.md`, "Draw queue: 16384 entries per frame".
+
+**Patch.** The three calls that append to the frame's queue (FUN_00BB5710:
+at 0x00BB5B4C in FUN_00BB5A50, at 0x00BB5BB5 in FUN_00BB5B70, at 0x00BB7301
+in ShiftRenderCache_FinalizeEntry's replay; `E8` checked) go to a bounded
+append: the same compare-exchange on the count, but only while
+count < capacity; past that the draw is dropped. FUN_00BB5A50's trap branch
+(`0F 84 BF 00 00 00` at 0x00BB5A95, a jump to `INT3`) becomes six NOPs, so a
+full queue reaches the bounded append. All four sites are checked before any
+is written. The log gets a line on the first dropped draw, then at most one
+every 10 s with the running total, and a line each time a frame's queue first
+reaches a new multiple of 1024 entries from 8192 up, so a run shows how near
+its frames come. `[render] drop_full=0` keeps the vanilla trap. A fourth
+append into the frame's queue, inlined in the job-side draw path at
+0x006C21F0, needs no patch: it already stops at the limit (`cmp esi,0x4000;
+jae` at 0x006C21F9; confirmed-static).
+
+**With DSF Enhanced** (dsf-enhanced PR #12, `[Limits] DrawQueueEntries`; still open on
+2026-10-29, so only DSF Enhanced builds with it create the marker). DSF Enhanced owns the fix:
+it bounds FUN_00BB5710 itself, sends the `INT3` at 0x00BB5B5A to a drop, enlarges both frame
+queues (65,536 entries by default, capacity at header +4), points the inlined append's constant
+at 0x006C21F9 at the new capacity and grows the two 4 MB per-frame draw-data areas. It creates
+the named event `Local\DSFEnhanced.DrawQueue.<pid>` in DllMain once its guard is in. `[render]`
+opens that event first and, when it exists, patches nothing (log: "DSF Enhanced's draw queue
+guard is active"). When dsfforza.asi loads first (from the game root), DSF Enhanced finds the
+three call sites patched, leaves them, and still enlarges the queues; the bounded append reads
+the capacity from the queue header, so it follows ("reached 11264 of 65536" in DSF Enhanced's
+tests).
+
+Without DSF Enhanced's fix, `[render]` is the only guard, and it covers the queue only. The
+draw data of each frame goes to one of two 4 MB arenas (`mov ebx,0x400000` at 0x00BAEF1D), and
+the job-side bump FUN_00BB78A0 takes 64 bytes or more per draw with no check against the
+arena's end (confirmed-static). DSF Enhanced's PR measured that at 3440x1440 with a wide FOV,
+frames of 13,000 to 15,000 draws ran past the arena and crashed at 0x00C2A59A / 0x00C389A2
+(writes from 0x006C21B2 and 0x006C22F0) before the queue was full (its run
+`vm2-20261029-010751`, a DSF Enhanced build without the fix; not rerun here). `[render]` can't
+help with that crash. A vanilla world stays under half the queue at 16:9, so neither limit is
+reached there (spool-limits.md, "Draw queue"; issue #185).
+
+Cost: nothing until a queue is full. A frame over the limit misses the draws
+submitted after it filled, for that frame only.
+
+Offline (`build.ps1 -Test`): the four sites patch, the mismatch run leaves
+the calls vanilla, and three appends through the patched call site onto a
+two-entry queue keep two entries and count one drop.

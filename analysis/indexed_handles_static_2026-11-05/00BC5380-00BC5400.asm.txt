@@ -1,0 +1,60 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BC5380: 53                 push        ebx
+  00BC5381: 8B D9              mov         ebx,ecx
+  00BC5383: 57                 push        edi
+  00BC5384: 33 C0              xor         eax,eax
+  00BC5386: 33 FF              xor         edi,edi
+  00BC5388: C7 03 B4 86 E9 00  mov         dword ptr [ebx],0E986B4h
+  00BC538E: 66 3B 43 22        cmp         ax,word ptr [ebx+22h]
+  00BC5392: 73 60              jae         00BC53F4
+  00BC5394: 56                 push        esi
+  00BC5395: 8B 4B 24           mov         ecx,dword ptr [ebx+24h]
+  00BC5398: 8D 04 B9           lea         eax,[ecx+edi*4]
+  00BC539B: 8B 08              mov         ecx,dword ptr [eax]
+  00BC539D: 85 C9              test        ecx,ecx
+  00BC539F: 74 38              je          00BC53D9
+  00BC53A1: 83 39 00           cmp         dword ptr [ecx],0
+  00BC53A4: 74 33              je          00BC53D9
+  00BC53A6: 8B D1              mov         edx,ecx
+  00BC53A8: 8B 32              mov         esi,dword ptr [edx]
+  00BC53AA: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00BC53AD: 23 4E 0C           and         ecx,dword ptr [esi+0Ch]
+  00BC53B0: 8D 46 08           lea         eax,[esi+8]
+  00BC53B3: 83 F9 FF           cmp         ecx,0FFFFFFFFh
+  00BC53B6: 74 0B              je          00BC53C3
+  00BC53B8: 50                 push        eax
+  00BC53B9: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BC53BE: E8 BD 96 FE FF     call        00BAEA80
+  00BC53C3: 8B 16              mov         edx,dword ptr [esi]
+  00BC53C5: 8B 0A              mov         ecx,dword ptr [edx]
+  00BC53C7: E8 D4 43 FE FF     call        00BA97A0
+  00BC53CC: 8B 36              mov         esi,dword ptr [esi]
+  00BC53CE: 56                 push        esi
+  00BC53CF: B9 E0 3B 9B 01     mov         ecx,19B3BE0h
+  00BC53D4: E8 07 FB FE FF     call        00BB4EE0
+  00BC53D9: 8B 43 24           mov         eax,dword ptr [ebx+24h]
+  00BC53DC: 8B 0C B8           mov         ecx,dword ptr [eax+edi*4]
+  00BC53DF: 51                 push        ecx
+  00BC53E0: B9 E0 3B 9B 01     mov         ecx,19B3BE0h
+  00BC53E5: E8 76 FB FE FF     call        00BB4F60
+  00BC53EA: 0F B7 53 22        movzx       edx,word ptr [ebx+22h]
+  00BC53EE: 47                 inc         edi
+  00BC53EF: 3B FA              cmp         edi,edx
+  00BC53F1: 72 A2              jb          00BC5395
+  00BC53F3: 5E                 pop         esi
+  00BC53F4: 5F                 pop         edi
+  00BC53F5: C7 03 A8 80 E9 00  mov         dword ptr [ebx],0E980A8h
+  00BC53FB: 5B                 pop         ebx
+  00BC53FC: C3                 ret
+  00BC53FD: CC                 int         3
+  00BC53FE: CC                 int         3
+  00BC53FF: CC                 int         3
+  00BC5400: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

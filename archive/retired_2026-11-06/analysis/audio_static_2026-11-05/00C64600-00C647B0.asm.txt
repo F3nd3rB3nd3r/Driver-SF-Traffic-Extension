@@ -1,0 +1,142 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00C64600: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  00C64604: 83 FE 01           cmp         esi,1
+  00C64607: 0F 85 01 02 00 00  jne         00C6480E
+  00C6460D: 8D 54 24 64        lea         edx,[esp+64h]
+  00C64611: 52                 push        edx
+  00C64612: 6A 08              push        8
+  00C64614: 8D 44 24 24        lea         eax,[esp+24h]
+  00C64618: 50                 push        eax
+  00C64619: 8B CF              mov         ecx,edi
+  00C6461B: C7 44 24 70 00 00  mov         dword ptr [esp+70h],0
+            00 00
+  00C64623: E8 D8 48 FF FF     call        00C58F00
+  00C64628: 8B F0              mov         esi,eax
+  00C6462A: 83 FE 01           cmp         esi,1
+  00C6462D: 0F 85 DB 01 00 00  jne         00C6480E
+  00C64633: 8B 44 24 64        mov         eax,dword ptr [esp+64h]
+  00C64637: 83 F8 08           cmp         eax,8
+  00C6463A: 0F 85 C5 01 00 00  jne         00C64805
+  00C64640: 8B 44 24 1C        mov         eax,dword ptr [esp+1Ch]
+  00C64644: 3D 53 54 4D 47     cmp         eax,474D5453h
+  00C64649: 0F 87 04 01 00 00  ja          00C64753
+  00C6464F: 0F 84 E8 00 00 00  je          00C6473D
+  00C64655: 3D 44 41 54 41     cmp         eax,41544144h
+  00C6465A: 74 3B              je          00C64697
+  00C6465C: 3D 48 49 52 43     cmp         eax,43524948h
+  00C64661: 74 1E              je          00C64681
+  00C64663: 3D 53 54 49 44     cmp         eax,44495453h
+  00C64668: 0F 85 FE 00 00 00  jne         00C6476C
+  00C6466E: 8B 0B              mov         ecx,dword ptr [ebx]
+  00C64670: 8B 54 24 20        mov         edx,dword ptr [esp+20h]
+  00C64674: 51                 push        ecx
+  00C64675: 52                 push        edx
+  00C64676: 8B CD              mov         ecx,ebp
+  00C64678: E8 C3 D6 FF FF     call        00C61D40
+  00C6467D: 8B F0              mov         esi,eax
+  00C6467F: EB 83              jmp         00C64604
+  00C64681: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00C64685: 8B 0B              mov         ecx,dword ptr [ebx]
+  00C64687: 50                 push        eax
+  00C64688: 51                 push        ecx
+  00C64689: 8B CD              mov         ecx,ebp
+  00C6468B: E8 C0 EB FF FF     call        00C63250
+  00C64690: 8B F0              mov         esi,eax
+  00C64692: E9 6D FF FF FF     jmp         00C64604
+  00C64697: 83 7C 24 60 03     cmp         dword ptr [esp+60h],3
+  00C6469C: 0F 87 62 FF FF FF  ja          00C64604
+  00C646A2: 8B 54 24 60        mov         edx,dword ptr [esp+60h]
+  00C646A6: FF 24 95 58 48 C6  jmp         dword ptr [edx*4+00C64858h]
+            00
+  00C646AD: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  00C646B1: 8D 44 24 64        lea         eax,[esp+64h]
+  00C646B5: 50                 push        eax
+  00C646B6: 51                 push        ecx
+  00C646B7: 8B CF              mov         ecx,edi
+  00C646B9: E8 32 4A FF FF     call        00C590F0
+  00C646BE: 8B 54 24 64        mov         edx,dword ptr [esp+64h]
+  00C646C2: 3B 54 24 20        cmp         edx,dword ptr [esp+20h]
+  00C646C6: 0F 84 38 FF FF FF  je          00C64604
+  00C646CC: E9 38 01 00 00     jmp         00C64809
+  00C646D1: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00C646D5: 8B 0B              mov         ecx,dword ptr [ebx]
+  00C646D7: 50                 push        eax
+  00C646D8: 51                 push        ecx
+  00C646D9: 8B CD              mov         ecx,ebp
+  00C646DB: E8 60 FA FF FF     call        00C64140
+  00C646E0: 8B F0              mov         esi,eax
+  00C646E2: E9 1D FF FF FF     jmp         00C64604
+  00C646E7: 80 7C 24 18 00     cmp         byte ptr [esp+18h],0
+  00C646EC: 74 19              je          00C64707
+  00C646EE: 8B 54 24 20        mov         edx,dword ptr [esp+20h]
+  00C646F2: 52                 push        edx
+  00C646F3: 8B CF              mov         ecx,edi
+  00C646F5: E8 26 4E FF FF     call        00C59520
+  00C646FA: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  00C646FE: 8B F8              mov         edi,eax
+  00C64700: E8 CB 47 FF FF     call        00C58ED0
+  00C64705: EB 16              jmp         00C6471D
+  00C64707: 8B 03              mov         eax,dword ptr [ebx]
+  00C64709: 8B 4C 24 20        mov         ecx,dword ptr [esp+20h]
+  00C6470D: 50                 push        eax
+  00C6470E: 51                 push        ecx
+  00C6470F: 8B CD              mov         ecx,ebp
+  00C64711: E8 FA C7 FF FF     call        00C60F10
+  00C64716: 8B 13              mov         edx,dword ptr [ebx]
+  00C64718: 8B 7A 10           mov         edi,dword ptr [edx+10h]
+  00C6471B: 8B F0              mov         esi,eax
+  00C6471D: 83 FE 01           cmp         esi,1
+  00C64720: 0F 85 DA FE FF FF  jne         00C64600
+  00C64726: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  00C6472A: 8B 0B              mov         ecx,dword ptr [ebx]
+  00C6472C: 50                 push        eax
+  00C6472D: 51                 push        ecx
+  00C6472E: 57                 push        edi
+  00C6472F: 8B CD              mov         ecx,ebp
+  00C64731: E8 AA F8 FF FF     call        00C63FE0
+  00C64736: 8B F0              mov         esi,eax
+  00C64738: E9 C3 FE FF FF     jmp         00C64600
+  00C6473D: 8B 13              mov         edx,dword ptr [ebx]
+  00C6473F: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00C64743: 52                 push        edx
+  00C64744: 50                 push        eax
+  00C64745: 8B CD              mov         ecx,ebp
+  00C64747: E8 D4 ED FF FF     call        00C63520
+  00C6474C: 8B F0              mov         esi,eax
+  00C6474E: E9 B1 FE FF FF     jmp         00C64604
+  00C64753: 3D 46 58 50 52     cmp         eax,52505846h
+  00C64758: 0F 84 94 00 00 00  je          00C647F2
+  00C6475E: 3D 45 4E 56 53     cmp         eax,53564E45h
+  00C64763: 74 7A              je          00C647DF
+  00C64765: 3D 44 49 44 58     cmp         eax,58444944h
+  00C6476A: 74 21              je          00C6478D
+  00C6476C: 8B 54 24 20        mov         edx,dword ptr [esp+20h]
+  00C64770: 8D 4C 24 64        lea         ecx,[esp+64h]
+  00C64774: 51                 push        ecx
+  00C64775: 52                 push        edx
+  00C64776: 8B CF              mov         ecx,edi
+  00C64778: E8 73 49 FF FF     call        00C590F0
+  00C6477D: 8B 44 24 64        mov         eax,dword ptr [esp+64h]
+  00C64781: 3B 44 24 20        cmp         eax,dword ptr [esp+20h]
+  00C64785: 0F 84 79 FE FF FF  je          00C64604
+  00C6478B: EB 7C              jmp         00C64809
+  00C6478D: 83 7C 24 60 03     cmp         dword ptr [esp+60h],3
+  00C64792: 0F 87 6C FE FF FF  ja          00C64604
+  00C64798: 8B 4C 24 60        mov         ecx,dword ptr [esp+60h]
+  00C6479C: FF 24 8D 68 48 C6  jmp         dword ptr [ecx*4+00C64868h]
+            00
+  00C647A3: 8B 44 24 20        mov         eax,dword ptr [esp+20h]
+  00C647A7: 8D 54 24 64        lea         edx,[esp+64h]
+  00C647AB: 52                 push        edx
+  00C647AC: 50                 push        eax
+  00C647AD: 8B CF              mov         ecx,edi
+  00C647AF: E8
+  00C647B0: 3C
+
+  Summary
+
+      9C8000 .text

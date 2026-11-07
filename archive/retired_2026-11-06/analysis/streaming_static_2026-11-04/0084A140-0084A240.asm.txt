@@ -1,0 +1,88 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084A140: 8B 07              mov         eax,dword ptr [edi]
+  0084A142: 85 C0              test        eax,eax
+  0084A144: 74 18              je          0084A15E
+  0084A146: D9 47 F4           fld         dword ptr [edi-0Ch]
+  0084A149: 6A FF              push        0FFFFFFFFh
+  0084A14B: 51                 push        ecx
+  0084A14C: D9 1C 24           fstp        dword ptr [esp]
+  0084A14F: 50                 push        eax
+  0084A150: E8 7B 71 40 00     call        00C512D0
+  0084A155: 83 C4 0C           add         esp,0Ch
+  0084A158: C7 07 00 00 00 00  mov         dword ptr [edi],0
+  0084A15E: 83 C7 04           add         edi,4
+  0084A161: 83 EB 01           sub         ebx,1
+  0084A164: 75 DA              jne         0084A140
+  0084A166: E8 F5 6D 40 00     call        00C50F60
+  0084A16B: 8B BE 44 95 00 00  mov         edi,dword ptr [esi+00009544h]
+  0084A171: 8D 9E 40 95 00 00  lea         ebx,[esi+00009540h]
+  0084A177: 3B FB              cmp         edi,ebx
+  0084A179: 74 49              je          0084A1C4
+  0084A17B: EB 03              jmp         0084A180
+  0084A17D: 8D 49 00           lea         ecx,[ecx]
+  0084A180: 8B 4F 08           mov         ecx,dword ptr [edi+8]
+  0084A183: 8B 41 14           mov         eax,dword ptr [ecx+14h]
+  0084A186: 83 F8 04           cmp         eax,4
+  0084A189: 75 28              jne         0084A1B3
+  0084A18B: 8B 0F              mov         ecx,dword ptr [edi]
+  0084A18D: 8B 47 04           mov         eax,dword ptr [edi+4]
+  0084A190: 89 41 04           mov         dword ptr [ecx+4],eax
+  0084A193: 89 08              mov         dword ptr [eax],ecx
+  0084A195: 8B 8E DC 92 00 00  mov         ecx,dword ptr [esi+000092DCh]
+  0084A19B: 89 0F              mov         dword ptr [edi],ecx
+  0084A19D: FF 86 E0 92 00 00  inc         dword ptr [esi+000092E0h]
+  0084A1A3: FF 8E E4 92 00 00  dec         dword ptr [esi+000092E4h]
+  0084A1A9: 89 BE DC 92 00 00  mov         dword ptr [esi+000092DCh],edi
+  0084A1AF: 8B F8              mov         edi,eax
+  0084A1B1: EB 0D              jmp         0084A1C0
+  0084A1B3: 83 F8 01           cmp         eax,1
+  0084A1B6: 75 05              jne         0084A1BD
+  0084A1B8: E8 F3 1C 00 00     call        0084BEB0
+  0084A1BD: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  0084A1C0: 3B FB              cmp         edi,ebx
+  0084A1C2: 75 BC              jne         0084A180
+  0084A1C4: 8B 9E 94 0E 00 00  mov         ebx,dword ptr [esi+00000E94h]
+  0084A1CA: 8D AE 90 0E 00 00  lea         ebp,[esi+00000E90h]
+  0084A1D0: 3B DD              cmp         ebx,ebp
+  0084A1D2: 0F 84 AC 00 00 00  je          0084A284
+  0084A1D8: EB 06              jmp         0084A1E0
+  0084A1DA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  0084A1E0: 8B 53 08           mov         edx,dword ptr [ebx+8]
+  0084A1E3: 80 7A 28 00        cmp         byte ptr [edx+28h],0
+  0084A1E7: 0F 84 8C 00 00 00  je          0084A279
+  0084A1ED: 8B CA              mov         ecx,edx
+  0084A1EF: E8 2C 21 00 00     call        0084C320
+  0084A1F4: 84 C0              test        al,al
+  0084A1F6: 0F 85 7D 00 00 00  jne         0084A279
+  0084A1FC: 8B BE D8 92 00 00  mov         edi,dword ptr [esi+000092D8h]
+  0084A202: 8B 4B 08           mov         ecx,dword ptr [ebx+8]
+  0084A205: 8D 86 D4 92 00 00  lea         eax,[esi+000092D4h]
+  0084A20B: 3B F8              cmp         edi,eax
+  0084A20D: 74 42              je          0084A251
+  0084A20F: 90                 nop
+  0084A210: 8D 57 08           lea         edx,[edi+8]
+  0084A213: 3B D1              cmp         edx,ecx
+  0084A215: 74 09              je          0084A220
+  0084A217: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  0084A21A: 3B F8              cmp         edi,eax
+  0084A21C: 75 F2              jne         0084A210
+  0084A21E: EB 31              jmp         0084A251
+  0084A220: E8 5B 1F 00 00     call        0084C180
+  0084A225: 8B 4F 04           mov         ecx,dword ptr [edi+4]
+  0084A228: 8B 07              mov         eax,dword ptr [edi]
+  0084A22A: 89 48 04           mov         dword ptr [eax+4],ecx
+  0084A22D: 89 01              mov         dword ptr [ecx],eax
+  0084A22F: 8D 4F 08           lea         ecx,[edi+8]
+  0084A232: E8 A9 21 00 00     call        0084C3E0
+  0084A237: 8B 86 98 0E 00 00  mov         eax,dword ptr [esi+00000E98h]
+  0084A23D: 89 07              mov         dword ptr [edi],eax
+  0084A23F: FF
+  0084A240: 86
+
+  Summary
+
+      9C8000 .text

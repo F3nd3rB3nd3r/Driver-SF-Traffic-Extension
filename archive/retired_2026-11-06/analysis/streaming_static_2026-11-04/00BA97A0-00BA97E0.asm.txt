@@ -1,0 +1,45 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00BA97A0: 56                 push        esi
+  00BA97A1: 57                 push        edi
+  00BA97A2: 8B F1              mov         esi,ecx
+  00BA97A4: 33 FF              xor         edi,edi
+  00BA97A6: 39 7E 04           cmp         dword ptr [esi+4],edi
+  00BA97A9: 76 28              jbe         00BA97D3
+  00BA97AB: 53                 push        ebx
+  00BA97AC: 33 DB              xor         ebx,ebx
+  00BA97AE: 8B FF              mov         edi,edi
+  00BA97B0: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00BA97B3: 83 3C F8 05        cmp         dword ptr [eax+edi*8],5
+  00BA97B7: 75 10              jne         00BA97C9
+  00BA97B9: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  00BA97BC: 03 CB              add         ecx,ebx
+  00BA97BE: 51                 push        ecx
+  00BA97BF: B9 F0 2B 73 01     mov         ecx,1732BF0h
+  00BA97C4: E8 B7 52 00 00     call        00BAEA80
+  00BA97C9: 47                 inc         edi
+  00BA97CA: 83 C3 10           add         ebx,10h
+  00BA97CD: 3B 7E 04           cmp         edi,dword ptr [esi+4]
+  00BA97D0: 72 DE              jb          00BA97B0
+  00BA97D2: 5B                 pop         ebx
+  00BA97D3: 5F                 pop         edi
+  00BA97D4: 5E                 pop         esi
+  00BA97D5: C3                 ret
+  00BA97D6: CC                 int         3
+  00BA97D7: CC                 int         3
+  00BA97D8: CC                 int         3
+  00BA97D9: CC                 int         3
+  00BA97DA: CC                 int         3
+  00BA97DB: CC                 int         3
+  00BA97DC: CC                 int         3
+  00BA97DD: CC                 int         3
+  00BA97DE: CC                 int         3
+  00BA97DF: CC                 int         3
+  00BA97E0: 51                 push        ecx
+
+  Summary
+
+      9C8000 .text
