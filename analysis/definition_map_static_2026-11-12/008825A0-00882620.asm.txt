@@ -1,0 +1,44 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008825A0: E8 E8 3A 61 3A     call        3AE9608D
+  008825A5: 00 83 C8 FF B9 28  add         byte ptr [ebx+28B9FFC8h],al
+  008825AB: 00 00              add         byte ptr [eax],al
+  008825AD: 00 8D B4 24 FC 00  add         byte ptr [ebp+00FC24B4h],cl
+  008825B3: 00 00              add         byte ptr [eax],al
+  008825B5: 8D BC 24 A0 01 00  lea         edi,[esp+000001A0h]
+            00
+  008825BC: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  008825BE: 89 84 24 4C 02 00  mov         dword ptr [esp+0000024Ch],eax
+            00
+  008825C5: 89 84 24 48 02 00  mov         dword ptr [esp+00000248h],eax
+            00
+  008825CC: 8D 84 24 A0 01 00  lea         eax,[esp+000001A0h]
+            00
+  008825D3: 50                 push        eax
+  008825D4: C7 84 24 44 02 00  mov         dword ptr [esp+00000244h],1
+            00 01 00 00 00
+  008825DF: 89 AC 24 48 02 00  mov         dword ptr [esp+00000248h],ebp
+            00
+  008825E6: C6 84 24 54 02 00  mov         byte ptr [esp+00000254h],0
+            00 00
+  008825EE: E8 7D 6B C1 FF     call        00499170
+  008825F3: 83 C4 0C           add         esp,0Ch
+  008825F6: D9 05 88 65 DD 00  fld         dword ptr ds:[00DD6588h]
+  008825FC: 8D 4C 24 44        lea         ecx,[esp+44h]
+  00882600: D9 1C 24           fstp        dword ptr [esp]
+  00882603: 6A 14              push        14h
+  00882605: 51                 push        ecx
+  00882606: 8D 8B C0 12 00 00  lea         ecx,[ebx+000012C0h]
+  0088260C: E8 7F AB FE FF     call        0086D190
+  00882611: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  00882619: F3 0F 11 44 24 24  movss       dword ptr [esp+24h],xmm0
+  0088261F: 8B
+  00882620: 44                 inc         esp
+
+  Summary
+
+      9C8000 .text

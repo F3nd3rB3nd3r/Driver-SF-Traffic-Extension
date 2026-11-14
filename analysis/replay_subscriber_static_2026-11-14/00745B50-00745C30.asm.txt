@@ -1,0 +1,101 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00745B50: 8B C1              mov         eax,ecx
+  00745B52: 56                 push        esi
+  00745B53: 8D 50 15           lea         edx,[eax+15h]
+  00745B56: BE 08 00 00 00     mov         esi,8
+  00745B5B: EB 03              jmp         00745B60
+  00745B5D: 8D 49 00           lea         ecx,[ecx]
+  00745B60: C6 42 FF 00        mov         byte ptr [edx-1],0
+  00745B64: C7 42 EB FF FF FF  mov         dword ptr [edx-15h],0FFFFFFFFh
+            FF
+  00745B6B: C6 02 00           mov         byte ptr [edx],0
+  00745B6E: 83 C2 40           add         edx,40h
+  00745B71: 83 EE 01           sub         esi,1
+  00745B74: 75 EA              jne         00745B60
+  00745B76: 5E                 pop         esi
+  00745B77: C3                 ret
+  00745B78: CC                 int         3
+  00745B79: CC                 int         3
+  00745B7A: CC                 int         3
+  00745B7B: CC                 int         3
+  00745B7C: CC                 int         3
+  00745B7D: CC                 int         3
+  00745B7E: CC                 int         3
+  00745B7F: CC                 int         3
+  00745B80: 83 EC 10           sub         esp,10h
+  00745B83: 53                 push        ebx
+  00745B84: 8B 5C 24 18        mov         ebx,dword ptr [esp+18h]
+  00745B88: 55                 push        ebp
+  00745B89: 56                 push        esi
+  00745B8A: 57                 push        edi
+  00745B8B: 8D 7B 0C           lea         edi,[ebx+0Ch]
+  00745B8E: 8D 71 14           lea         esi,[ecx+14h]
+  00745B91: BD 08 00 00 00     mov         ebp,8
+  00745B96: 8B 03              mov         eax,dword ptr [ebx]
+  00745B98: 89 46 EC           mov         dword ptr [esi-14h],eax
+  00745B9B: F3 0F 10 47 F8     movss       xmm0,dword ptr [edi-8]
+  00745BA0: F3 0F 11 44 24 10  movss       dword ptr [esp+10h],xmm0
+  00745BA6: F3 0F 10 47 FC     movss       xmm0,dword ptr [edi-4]
+  00745BAB: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  00745BAF: F3 0F 11 44 24 14  movss       dword ptr [esp+14h],xmm0
+  00745BB5: F3 0F 10 07        movss       xmm0,dword ptr [edi]
+  00745BB9: 8B 54 24 14        mov         edx,dword ptr [esp+14h]
+  00745BBD: F3 0F 11 44 24 18  movss       dword ptr [esp+18h],xmm0
+  00745BC3: F3 0F 10 47 04     movss       xmm0,dword ptr [edi+4]
+  00745BC8: 8B 44 24 18        mov         eax,dword ptr [esp+18h]
+  00745BCC: 89 4E F0           mov         dword ptr [esi-10h],ecx
+  00745BCF: 89 56 F4           mov         dword ptr [esi-0Ch],edx
+  00745BD2: 89 46 F8           mov         dword ptr [esi-8],eax
+  00745BD5: F3 0F 11 44 24 1C  movss       dword ptr [esp+1Ch],xmm0
+  00745BDB: 8B 4C 24 1C        mov         ecx,dword ptr [esp+1Ch]
+  00745BDF: 89 4E FC           mov         dword ptr [esi-4],ecx
+  00745BE2: 80 7F 08 00        cmp         byte ptr [edi+8],0
+  00745BE6: 8D 47 09           lea         eax,[edi+9]
+  00745BE9: 50                 push        eax
+  00745BEA: 8D 4E 01           lea         ecx,[esi+1]
+  00745BED: 0F 95 C2           setne       dl
+  00745BF0: 6A 28              push        28h
+  00745BF2: 51                 push        ecx
+  00745BF3: 88 16              mov         byte ptr [esi],dl
+  00745BF5: E8 76 DF 1B 00     call        00903B70
+  00745BFA: 83 C4 0C           add         esp,0Ch
+  00745BFD: 83 C3 40           add         ebx,40h
+  00745C00: 83 C7 40           add         edi,40h
+  00745C03: 83 C6 40           add         esi,40h
+  00745C06: 83 ED 01           sub         ebp,1
+  00745C09: 75 8B              jne         00745B96
+  00745C0B: 5F                 pop         edi
+  00745C0C: 5E                 pop         esi
+  00745C0D: 5D                 pop         ebp
+  00745C0E: 5B                 pop         ebx
+  00745C0F: 83 C4 10           add         esp,10h
+  00745C12: C2 04 00           ret         4
+  00745C15: CC                 int         3
+  00745C16: CC                 int         3
+  00745C17: CC                 int         3
+  00745C18: CC                 int         3
+  00745C19: CC                 int         3
+  00745C1A: CC                 int         3
+  00745C1B: CC                 int         3
+  00745C1C: CC                 int         3
+  00745C1D: CC                 int         3
+  00745C1E: CC                 int         3
+  00745C1F: CC                 int         3
+  00745C20: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00745C25: 53                 push        ebx
+  00745C26: 55                 push        ebp
+  00745C27: 56                 push        esi
+  00745C28: 8B D9              mov         ebx,ecx
+  00745C2A: 85 C0              test        eax,eax
+  00745C2C: 75 0A              jne         00745C38
+  00745C2E: E8
+  00745C2F: 5D                 pop         ebp
+  00745C30: 4A                 dec         edx
+
+  Summary
+
+      9C8000 .text

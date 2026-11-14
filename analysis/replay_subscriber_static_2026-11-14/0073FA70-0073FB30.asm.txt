@@ -1,0 +1,95 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0073FA70: C0 75 ED C7        sal         byte ptr [ebp-13h],0C7h
+  0073FA74: 86 A4 89 00 00 00  xchg        ah,byte ptr [ecx+ecx*4+00000000h]
+            00
+  0073FA7B: 40                 inc         eax
+  0073FA7C: 06                 push        es
+  0073FA7D: B0 01              mov         al,1
+  0073FA7F: 5E                 pop         esi
+  0073FA80: C3                 ret
+  0073FA81: 6A 00              push        0
+  0073FA83: 50                 push        eax
+  0073FA84: E8 E7 78 11 00     call        00857370
+  0073FA89: 83 C4 08           add         esp,8
+  0073FA8C: 89 86 A0 89 00 00  mov         dword ptr [esi+000089A0h],eax
+  0073FA92: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  0073FA95: 74 13              je          0073FAAA
+  0073FA97: 50                 push        eax
+  0073FA98: E8 B3 79 11 00     call        00857450
+  0073FA9D: 83 C4 04           add         esp,4
+  0073FAA0: 89 86 A4 89 00 00  mov         dword ptr [esi+000089A4h],eax
+  0073FAA6: B0 01              mov         al,1
+  0073FAA8: 5E                 pop         esi
+  0073FAA9: C3                 ret
+  0073FAAA: 32 C0              xor         al,al
+  0073FAAC: 5E                 pop         esi
+  0073FAAD: C3                 ret
+  0073FAAE: CC                 int         3
+  0073FAAF: CC                 int         3
+  0073FAB0: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  0073FAB4: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0073FAB8: 53                 push        ebx
+  0073FAB9: 56                 push        esi
+  0073FABA: 57                 push        edi
+  0073FABB: 8B F1              mov         esi,ecx
+  0073FABD: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  0073FAC1: 50                 push        eax
+  0073FAC2: 51                 push        ecx
+  0073FAC3: 52                 push        edx
+  0073FAC4: 8B CE              mov         ecx,esi
+  0073FAC6: E8 05 6A 00 00     call        007464D0
+  0073FACB: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  0073FACF: 8B C7              mov         eax,edi
+  0073FAD1: C7 06 88 A0 E2 00  mov         dword ptr [esi],0E2A088h
+  0073FAD7: 8D 8E 98 85 00 00  lea         ecx,[esi+00008598h]
+  0073FADD: 8D 58 01           lea         ebx,[eax+1]
+  0073FAE0: 8A 10              mov         dl,byte ptr [eax]
+  0073FAE2: 40                 inc         eax
+  0073FAE3: 84 D2              test        dl,dl
+  0073FAE5: 75 F9              jne         0073FAE0
+  0073FAE7: 2B C3              sub         eax,ebx
+  0073FAE9: 50                 push        eax
+  0073FAEA: 57                 push        edi
+  0073FAEB: 50                 push        eax
+  0073FAEC: 51                 push        ecx
+  0073FAED: 89 81 04 04 00 00  mov         dword ptr [ecx+00000404h],eax
+  0073FAF3: E8 DE 90 4E 00     call        00C28BD6
+  0073FAF8: 83 C4 10           add         esp,10h
+  0073FAFB: 5F                 pop         edi
+  0073FAFC: C7 86 A0 89 00 00  mov         dword ptr [esi+000089A0h],0FFFFFFFFh
+            FF FF FF FF
+  0073FB06: C7 86 A4 89 00 00  mov         dword ptr [esi+000089A4h],0
+            00 00 00 00
+  0073FB10: 8B C6              mov         eax,esi
+  0073FB12: 5E                 pop         esi
+  0073FB13: 5B                 pop         ebx
+  0073FB14: C2 10 00           ret         10h
+  0073FB17: CC                 int         3
+  0073FB18: CC                 int         3
+  0073FB19: CC                 int         3
+  0073FB1A: CC                 int         3
+  0073FB1B: CC                 int         3
+  0073FB1C: CC                 int         3
+  0073FB1D: CC                 int         3
+  0073FB1E: CC                 int         3
+  0073FB1F: CC                 int         3
+  0073FB20: 8B 81 A4 89 00 00  mov         eax,dword ptr [ecx+000089A4h]
+  0073FB26: C3                 ret
+  0073FB27: CC                 int         3
+  0073FB28: CC                 int         3
+  0073FB29: CC                 int         3
+  0073FB2A: CC                 int         3
+  0073FB2B: CC                 int         3
+  0073FB2C: CC                 int         3
+  0073FB2D: CC                 int         3
+  0073FB2E: CC                 int         3
+  0073FB2F: CC                 int         3
+  0073FB30: 8B
+
+  Summary
+
+      9C8000 .text

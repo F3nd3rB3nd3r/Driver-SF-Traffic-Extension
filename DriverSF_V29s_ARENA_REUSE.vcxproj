@@ -14,13 +14,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <PropertyGroup>
-    <TargetName>DriverSF_V29s_160Capacity_150Request_REPLAY150_R1</TargetName><TargetExt>.asi</TargetExt>
-    <OutDir>$(ProjectDir)build\v29s_replay150_r1\</OutDir>
-    <IntDir>$(ProjectDir)build\v29s_replay150_r1\vs_obj\</IntDir>
+    <TargetName>DriverSF_V29s_160Capacity_150Request_REPLAY_READ1M_R1</TargetName><TargetExt>.asi</TargetExt>
+    <OutDir>$(ProjectDir)build\v29s_replay_read1m_r1\</OutDir>
+    <IntDir>$(ProjectDir)build\v29s_replay_read1m_r1\vs_obj\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>DSF_V29S_REPLAY150=1;DSF_V29S_PARKED150=1;DSF_V29S_NOTIFY150=1;DSF_V29S_BASELINE150=1;DSF_V29S_ARENA_REUSE=1;DSF_V29S_CALLBACK512=1;DSF_V29S_CHAPTERS=1;DSF_CHAPTER7_ORDERED_ROSTER=1;DSF_CHAPTER7_PRELOAD_COUNT=150;DSF_GRAPHICS_ADMISSION_TARGET=160;DSF_V29S_NATIVE_TRACE=1;DSF_V29S_INCLUDE_EXPANDED=1;DSF_V29S_SPOOL0_EXPANDED=1;DSF_V29S_CLONE_EXPANDED=1;DSF_V29S_MODEL_POOL_EXPANDED=1;DSF_V29S_RESOURCE_COLLECTION_EXPANDED=1;DSF_V29S_PERF_CONTROL=1;DSF_V29S_CAPACITY_TRACE=1;DSF_V29S_INDEXED_262144=1;DSF_V29S_AUDIO_PROBE=1;DSF_V29S_AUDIO_DEFAULT_64M=1;DSF_V29S_AUDIO_SLOTS_2048=1;DSF_V29S_AUDIO_REASON_PROBE=1;DSF_V29S_AUDIO_MODEL192=1;DSF_V29S_CLEANUP_262144=1;DSF_V29S_PENDING512=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DSF_V29S_REPLAY_READ1M=1;DSF_V29S_REPLAY_CLIENT=1;DSF_V29S_REGMAP_REUSE=1;DSF_V29S_REPLAY_PAUSE=1;DSF_V29S_REPLAY150=1;DSF_V29S_PARKED150=1;DSF_V29S_NOTIFY150=1;DSF_V29S_BASELINE150=1;DSF_V29S_ARENA_REUSE=1;DSF_V29S_CALLBACK512=1;DSF_V29S_CHAPTERS=1;DSF_CHAPTER7_ORDERED_ROSTER=1;DSF_CHAPTER7_PRELOAD_COUNT=150;DSF_GRAPHICS_ADMISSION_TARGET=160;DSF_V29S_NATIVE_TRACE=1;DSF_V29S_INCLUDE_EXPANDED=1;DSF_V29S_SPOOL0_EXPANDED=1;DSF_V29S_CLONE_EXPANDED=1;DSF_V29S_MODEL_POOL_EXPANDED=1;DSF_V29S_RESOURCE_COLLECTION_EXPANDED=1;DSF_V29S_PERF_CONTROL=1;DSF_V29S_CAPACITY_TRACE=1;DSF_V29S_INDEXED_262144=1;DSF_V29S_AUDIO_PROBE=1;DSF_V29S_AUDIO_DEFAULT_64M=1;DSF_V29S_AUDIO_SLOTS_2048=1;DSF_V29S_AUDIO_REASON_PROBE=1;DSF_V29S_AUDIO_MODEL192=1;DSF_V29S_CLEANUP_262144=1;DSF_V29S_PENDING512=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>MaxSpeed</Optimization><AdditionalOptions>/Oi- %(AdditionalOptions)</AdditionalOptions>
       <WarningLevel>Level4</WarningLevel><LanguageStandard>stdcpp17</LanguageStandard>
       <BufferSecurityCheck>false</BufferSecurityCheck><ExceptionHandling>false</ExceptionHandling><RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -35,5 +35,10 @@
   <ItemGroup><ClInclude Include="src\V29sBaseline150.inc" /><ClInclude Include="src\V29sNotify150.inc" /><ClInclude Include="src\V29sNotify150Core.inc" /><ClInclude Include="src\V29sNotify150Layout.inc" /><ClInclude Include="src\V29sNotify150Native.inc" /></ItemGroup>
   <ItemGroup><ClInclude Include="src\V29sParked150.inc" /><ClInclude Include="src\V29sParked150Core.inc" /><ClInclude Include="src\V29sParked150Layout.inc" /><ClInclude Include="src\V29sParked150Native.inc" /></ItemGroup>
   <ItemGroup><ClInclude Include="src\V29sReplay150.inc" /><ClInclude Include="src\V29sReplay150Core.inc" /><ClInclude Include="src\V29sReplay150Native.inc" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sReplay150Layout.inc" /><ClInclude Include="src\V29sReplayPause.inc" /><ClInclude Include="src\V29sReplayPauseBridge.inc" /><ClInclude Include="src\V29sReplayPauseCore.inc" /><ClInclude Include="src\V29sReplayPauseLayout.inc" /><ClInclude Include="src\V29sReplayPauseNative.inc" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sRegMap.inc" /><ClInclude Include="src\V29sRegMapCore.inc" /><ClInclude Include="src\V29sRegMapLayout.inc" /><ClInclude Include="src\V29sRegMapNative.inc" /><ClInclude Include="src\V29sRegMapBridges.inc" /><ClInclude Include="src\V29sRegMapRuntime.inc" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sReplayHitchCore.inc" /><ClInclude Include="src\V29sReplayHitch.inc" /><ClInclude Include="src\V29sReplayHitchBridges.inc" /><ClInclude Include="src\V29sReplayHitchNative.inc" /><ClInclude Include="src\V29sReplayHitchLayout.inc" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sReplayClient.inc" /><ClInclude Include="src\V29sReplayClientCore.inc" /><ClInclude Include="src\V29sReplayClientData.inc" /><ClInclude Include="src\V29sReplayClientNative.inc" /><ClInclude Include="src\V29sReplayClientBridges.inc" /><ClInclude Include="src\V29sReplayClientLayout.inc" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sReplayRead.inc" /><ClInclude Include="src\V29sReplayReadCore.inc" /><ClInclude Include="src\V29sReplayReadBridges.inc" /><ClInclude Include="src\V29sReplayReadNative.inc" /><ClInclude Include="src\V29sReplayReadLayout.inc" /></ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

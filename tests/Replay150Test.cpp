@@ -29,6 +29,10 @@ static void ReplayReference(UPtr p,U32,bool retain){Check(p==testSpooler);if(ret
 static void ReplayExtra(UPtr p,U32 value){Check(p==testSpooler);lastExtra=value;callOrder=4u;}
 static void ReplayAppend(UPtr,const void* source,U32 n){Check(wireBytes+n<=sizeof(wire));memcpy(wire+wireBytes,source,n);wireBytes+=n;}
 #include "../src/V29sReplay150Native.inc"
+#if defined(DSF_V29S_REPLAY_PAUSE)
+static U32 observedPauseImports=0;
+extern "C" void __cdecl PauseOnImport(UPtr snapshot){Check(snapshot==testOwner);++observedPauseImports;}
+#endif
 #include "../src/V29sReplay150Core.inc"
 #include "../src/Chapter7Preload.h"
 static UPtr patchPage=0;static UPtr Address(U32 p){return patchPage+p-0x74B000u;}
@@ -164,5 +168,9 @@ extern "C" void __stdcall ReplayTestMain(){
     ReplayTemp* held=ReplayBegin(0x123456u,1u);Check(held);ReplayCapture(reinterpret_cast<void*>(testOwner),nullptr,guarded);Check(fatals==oldFatals+2u);ReplayFinish(held);allocationFailure=false;threadId=oldThread;
     ReplayLock();ReplaySlot* slot=ReplayFindSlot(testOwner,false);slot->guardB^=1u;ReplayUnlock();Write32(testOwner+8u,2u);ReplayCapture(reinterpret_cast<void*>(testOwner),nullptr,guarded);Check(fatals==oldFatals+3u && !g_replayActive);slot->guardB^=1u;
     Say("oversize input, allocation failure and stale cache guard refused\n");
-    Check(!g_replayActive);Say("replay150 checks passed\n");ExitProcess(0);
+    Check(!g_replayActive);
+#if defined(DSF_V29S_REPLAY_PAUSE)
+    Check(observedPauseImports==static_cast<U32>(g_replayImports));Say("additive pause import observer matches all imports\n");
+#endif
+    Say("replay150 checks passed\n");ExitProcess(0);
 }

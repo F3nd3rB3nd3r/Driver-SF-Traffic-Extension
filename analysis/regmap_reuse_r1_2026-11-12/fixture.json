@@ -1,0 +1,52 @@
+{
+  "result": "passed",
+  "source_sha256": {
+    "src/V29sRegMap.inc": "ea1e7ae375fb2d250ba04d5b311dfd176ae7c907804f9d216e0b2a58dba7c39a",
+    "src/V29sRegMapCore.inc": "23b5ee8a93ce5c0752df49f59de8725687826e78b0441feec7de09b4808e5dc4",
+    "src/V29sRegMapLayout.inc": "784ae4cd3de35d8f40e9e9d05653b0a82e83efabd0836ebee81368977b1363d4",
+    "src/V29sRegMapBridges.inc": "460340329ef751e3b2ef89d198668b3b8aec6322e9ea3a74756ce74ecd25300e",
+    "src/V29sRegMapNative.inc": "f896a41311ea602c90846d9e1c9df28dccaae903f871f73033e3607355bfd343",
+    "src/V29sRegMapRuntime.inc": "b45bddcf89081a37af3387b248ee9a5307585a28d0a14818f741a68d2c04968d",
+    "tests/RegMapReuseTest.cpp": "bdfa9980c7289a3361aeb80e247d747774dbfea6b8874cba16983c212eff311e"
+  },
+  "checks": [
+    "real two-site installer signatures, allocation/protection/flush rejection and exact restore passed",
+    "actual native constructor/insert/lookup/allocator execute for eight distinct150-ID owners",
+    "duplicates, mixed inline/external recycling and100 actual destroy/reconstruct generations passed",
+    "real external-end bound, recycling at capacity and corruption diagnostics passed",
+    "cold attach, allocation fault, actual diagnostic fields, GP/stack/x87/SSE preservation passed",
+    "regmap reuse checks passed"
+  ],
+  "native_spans": [
+    [
+      "Ctor",
+      8830880,
+      113
+    ],
+    [
+      "Insert",
+      8830480,
+      116
+    ],
+    [
+      "Lookup",
+      8830400,
+      73
+    ],
+    [
+      "Remove",
+      8830608,
+      76
+    ],
+    [
+      "Allocate",
+      9226912,
+      101
+    ],
+    [
+      "Destructor",
+      8831040,
+      42
+    ]
+  ]
+}

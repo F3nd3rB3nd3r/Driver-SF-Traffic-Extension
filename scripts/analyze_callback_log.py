@@ -4,9 +4,24 @@ from pathlib import Path
 from compare_audio_slots_logs import rows
 from compare_chapter_logs import summarize
 
+def early_startup(records,path):
+    fatal=[r for r in records if 'FATAL' in r['type']]
+    if any(r['type']=='DSFV29s_CALLBACK_STATUS' for r in records) or not fatal:return None
+    starts=[r for r in records if r['type'].endswith('_START')]
+    return dict(log=str(path),checks=dict(startup=False,no_fatal=False,has_status=False),recorded_integrity_pass=False,
+        startup_only=True,startup_markers=starts,fatals=fatal,final_status=None,groups={},extension_exercised=False,
+        baseline_status=next((int(r['baselineStatus']) for r in records if 'baselineStatus' in r),None),
+        inherited=None,audio_setup_failures=None,chapter_events=sum(r['type']=='DSFV29s_CHAPTER_EVENT' for r in records),
+        limitations=['Fatal startup log has no periodic samples; runtime inherited analysis is unavailable.',
+            'A downstream baselineStartupRefused fatal does not itself identify the original preflight predicate.'])
+
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('log',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    records=rows(a.log);base=summarize(a.log)
+    records=rows(a.log);early=early_startup(records,a.log)
+    if early is not None:
+        a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(early,indent=2)+'\n')
+        print(json.dumps(early,indent=2));return
+    base=summarize(a.log)
     start=[r for r in records if r['type']=='DSFV29s_CALLBACK_START']
     status=[r for r in records if r['type']=='DSFV29s_CALLBACK_STATUS']
     groups=[r for r in records if r['type']=='DSFV29s_CALLBACK_GROUP']

@@ -1,0 +1,177 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0059F1C0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0059F1C4: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F1CB: 2B D0              sub         edx,eax
+  0059F1CD: 33 C0              xor         eax,eax
+  0059F1CF: 39 44 91 10        cmp         dword ptr [ecx+edx*4+10h],eax
+  0059F1D3: 0F 95 C0           setne       al
+  0059F1D6: C2 04 00           ret         4
+  0059F1D9: CC                 int         3
+  0059F1DA: CC                 int         3
+  0059F1DB: CC                 int         3
+  0059F1DC: CC                 int         3
+  0059F1DD: CC                 int         3
+  0059F1DE: CC                 int         3
+  0059F1DF: CC                 int         3
+  0059F1E0: 55                 push        ebp
+  0059F1E1: 8B EC              mov         ebp,esp
+  0059F1E3: 83 E4 F8           and         esp,0FFFFFFF8h
+  0059F1E6: 83 EC 10           sub         esp,10h
+  0059F1E9: 8B 45 14           mov         eax,dword ptr [ebp+14h]
+  0059F1EC: F3 0F 10 45 08     movss       xmm0,dword ptr [ebp+8]
+  0059F1F1: F3 0F 10 4D 0C     movss       xmm1,dword ptr [ebp+0Ch]
+  0059F1F6: F3 0F 10 15 14 64  movss       xmm2,dword ptr ds:[00DD6414h]
+            DD 00
+  0059F1FE: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F205: 2B D0              sub         edx,eax
+  0059F207: 8D 04 91           lea         eax,[ecx+edx*4]
+  0059F20A: F3 0F 11 04 24     movss       dword ptr [esp],xmm0
+  0059F20F: 8B 0C 24           mov         ecx,dword ptr [esp]
+  0059F212: 89 08              mov         dword ptr [eax],ecx
+  0059F214: F3 0F 11 4C 24 04  movss       dword ptr [esp+4],xmm1
+  0059F21A: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0059F21E: F3 0F 10 4D 10     movss       xmm1,dword ptr [ebp+10h]
+  0059F223: 89 50 04           mov         dword ptr [eax+4],edx
+  0059F226: F3 0F 11 4C 24 08  movss       dword ptr [esp+8],xmm1
+  0059F22C: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  0059F230: 89 48 08           mov         dword ptr [eax+8],ecx
+  0059F233: F3 0F 11 54 24 0C  movss       dword ptr [esp+0Ch],xmm2
+  0059F239: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  0059F23D: 89 50 0C           mov         dword ptr [eax+0Ch],edx
+  0059F240: 8B 40 10           mov         eax,dword ptr [eax+10h]
+  0059F243: F3 0F 11 04 24     movss       dword ptr [esp],xmm0
+  0059F248: 8B 0C 24           mov         ecx,dword ptr [esp]
+  0059F24B: F3 0F 11 4C 24 04  movss       dword ptr [esp+4],xmm1
+  0059F251: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0059F255: 89 48 08           mov         dword ptr [eax+8],ecx
+  0059F258: 89 50 0C           mov         dword ptr [eax+0Ch],edx
+  0059F25B: 8B E5              mov         esp,ebp
+  0059F25D: 5D                 pop         ebp
+  0059F25E: C2 10 00           ret         10h
+  0059F261: CC                 int         3
+  0059F262: CC                 int         3
+  0059F263: CC                 int         3
+  0059F264: CC                 int         3
+  0059F265: CC                 int         3
+  0059F266: CC                 int         3
+  0059F267: CC                 int         3
+  0059F268: CC                 int         3
+  0059F269: CC                 int         3
+  0059F26A: CC                 int         3
+  0059F26B: CC                 int         3
+  0059F26C: CC                 int         3
+  0059F26D: CC                 int         3
+  0059F26E: CC                 int         3
+  0059F26F: CC                 int         3
+  0059F270: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0059F274: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F27B: 2B D0              sub         edx,eax
+  0059F27D: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0059F281: 8D 0C 91           lea         ecx,[ecx+edx*4]
+  0059F284: 8B 11              mov         edx,dword ptr [ecx]
+  0059F286: 89 10              mov         dword ptr [eax],edx
+  0059F288: 8B 51 04           mov         edx,dword ptr [ecx+4]
+  0059F28B: 89 50 04           mov         dword ptr [eax+4],edx
+  0059F28E: 8B 51 08           mov         edx,dword ptr [ecx+8]
+  0059F291: 8B 49 0C           mov         ecx,dword ptr [ecx+0Ch]
+  0059F294: 89 50 08           mov         dword ptr [eax+8],edx
+  0059F297: 89 48 0C           mov         dword ptr [eax+0Ch],ecx
+  0059F29A: C2 08 00           ret         8
+  0059F29D: CC                 int         3
+  0059F29E: CC                 int         3
+  0059F29F: CC                 int         3
+  0059F2A0: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0059F2A4: F3 0F 10 44 24 04  movss       xmm0,dword ptr [esp+4]
+  0059F2AA: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F2B1: 2B D0              sub         edx,eax
+  0059F2B3: 8B 44 91 10        mov         eax,dword ptr [ecx+edx*4+10h]
+  0059F2B7: F3 0F 11 40 24     movss       dword ptr [eax+24h],xmm0
+  0059F2BC: C2 08 00           ret         8
+  0059F2BF: CC                 int         3
+  0059F2C0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0059F2C4: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F2CB: 2B D0              sub         edx,eax
+  0059F2CD: 8B 44 91 10        mov         eax,dword ptr [ecx+edx*4+10h]
+  0059F2D1: D9 40 24           fld         dword ptr [eax+24h]
+  0059F2D4: C2 04 00           ret         4
+  0059F2D7: CC                 int         3
+  0059F2D8: CC                 int         3
+  0059F2D9: CC                 int         3
+  0059F2DA: CC                 int         3
+  0059F2DB: CC                 int         3
+  0059F2DC: CC                 int         3
+  0059F2DD: CC                 int         3
+  0059F2DE: CC                 int         3
+  0059F2DF: CC                 int         3
+  0059F2E0: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0059F2E4: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F2EB: 2B D0              sub         edx,eax
+  0059F2ED: 8D 04 91           lea         eax,[ecx+edx*4]
+  0059F2F0: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  0059F2F4: 89 48 14           mov         dword ptr [eax+14h],ecx
+  0059F2F7: C6 40 18 00        mov         byte ptr [eax+18h],0
+  0059F2FB: C2 08 00           ret         8
+  0059F2FE: CC                 int         3
+  0059F2FF: CC                 int         3
+  0059F300: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0059F304: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F30B: 2B D0              sub         edx,eax
+  0059F30D: 8B 4C 91 14        mov         ecx,dword ptr [ecx+edx*4+14h]
+  0059F311: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0059F315: 89 08              mov         dword ptr [eax],ecx
+  0059F317: C2 08 00           ret         8
+  0059F31A: CC                 int         3
+  0059F31B: CC                 int         3
+  0059F31C: CC                 int         3
+  0059F31D: CC                 int         3
+  0059F31E: CC                 int         3
+  0059F31F: CC                 int         3
+  0059F320: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0059F324: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F32B: 2B D0              sub         edx,eax
+  0059F32D: 8A 44 24 04        mov         al,byte ptr [esp+4]
+  0059F331: 88 44 91 18        mov         byte ptr [ecx+edx*4+18h],al
+  0059F335: C2 08 00           ret         8
+  0059F338: CC                 int         3
+  0059F339: CC                 int         3
+  0059F33A: CC                 int         3
+  0059F33B: CC                 int         3
+  0059F33C: CC                 int         3
+  0059F33D: CC                 int         3
+  0059F33E: CC                 int         3
+  0059F33F: CC                 int         3
+  0059F340: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0059F344: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F34B: 2B D0              sub         edx,eax
+  0059F34D: 8A 44 91 18        mov         al,byte ptr [ecx+edx*4+18h]
+  0059F351: C2 04 00           ret         4
+  0059F354: CC                 int         3
+  0059F355: CC                 int         3
+  0059F356: CC                 int         3
+  0059F357: CC                 int         3
+  0059F358: CC                 int         3
+  0059F359: CC                 int         3
+  0059F35A: CC                 int         3
+  0059F35B: CC                 int         3
+  0059F35C: CC                 int         3
+  0059F35D: CC                 int         3
+  0059F35E: CC                 int         3
+  0059F35F: CC                 int         3
+  0059F360: 8B
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,59 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0073A9D0: 00 00              add         byte ptr [eax],al
+  0073A9D2: 00 00              add         byte ptr [eax],al
+  0073A9D4: 5F                 pop         edi
+  0073A9D5: 85 C0              test        eax,eax
+  0073A9D7: 74 05              je          0073A9DE
+  0073A9D9: 8D 48 10           lea         ecx,[eax+10h]
+  0073A9DC: EB 02              jmp         0073A9E0
+  0073A9DE: 33 C9              xor         ecx,ecx
+  0073A9E0: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  0073A9E3: 49                 dec         ecx
+  0073A9E4: 80 BE 59 E3 04 00  cmp         byte ptr [esi+0004E359h],0
+            00
+  0073A9EB: 89 8E 0C EA 04 00  mov         dword ptr [esi+0004EA0Ch],ecx
+  0073A9F1: 75 3D              jne         0073AA30
+  0073A9F3: 85 C0              test        eax,eax
+  0073A9F5: 74 0C              je          0073AA03
+  0073A9F7: 83 C1 01           add         ecx,1
+  0073A9FA: 74 07              je          0073AA03
+  0073A9FC: F3 0F 10 40 28     movss       xmm0,dword ptr [eax+28h]
+  0073AA01: EB 03              jmp         0073AA06
+  0073AA03: 0F 57 C0           xorps       xmm0,xmm0
+  0073AA06: F3 0F 11 44 24 04  movss       dword ptr [esp+4],xmm0
+  0073AA0C: 85 C0              test        eax,eax
+  0073AA0E: 74 05              je          0073AA15
+  0073AA10: 83 C0 10           add         eax,10h
+  0073AA13: EB 02              jmp         0073AA17
+  0073AA15: 33 C0              xor         eax,eax
+  0073AA17: D9 44 24 04        fld         dword ptr [esp+4]
+  0073AA1B: 51                 push        ecx
+  0073AA1C: 05 18 02 00 00     add         eax,218h
+  0073AA21: D9 1C 24           fstp        dword ptr [esp]
+  0073AA24: 50                 push        eax
+  0073AA25: 8D 8E 18 3D 04 00  lea         ecx,[esi+00043D18h]
+  0073AA2B: E8 20 46 00 00     call        0073F050
+  0073AA30: D9 EE              fldz
+  0073AA32: 6A 01              push        1
+  0073AA34: 51                 push        ecx
+  0073AA35: D9 1C 24           fstp        dword ptr [esp]
+  0073AA38: 8B CE              mov         ecx,esi
+  0073AA3A: E8 21 F5 FF FF     call        00739F60
+  0073AA3F: 8B 96 F8 E9 04 00  mov         edx,dword ptr [esi+0004E9F8h]
+  0073AA45: 8B 42 04           mov         eax,dword ptr [edx+4]
+  0073AA48: 8B 8E 8C E5 04 00  mov         ecx,dword ptr [esi+0004E58Ch]
+  0073AA4E: 50                 push        eax
+  0073AA4F: E8 AC B5 00 00     call        00746000
+  0073AA54: 80 BE EC E9 04 00  cmp         byte ptr [esi+0004E9ECh],0
+            00
+  0073AA5B: 75 2B              jne         0073AA88
+  0073AA5D: A1
+  0073AA5E: 28 72 FE           sub         byte ptr [edx-2],dh
+
+  Summary
+
+      9C8000 .text

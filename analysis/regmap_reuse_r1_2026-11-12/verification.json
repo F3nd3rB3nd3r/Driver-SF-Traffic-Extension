@@ -1,0 +1,52 @@
+{
+  "result": "passed",
+  "name": "DriverSF_V29s_160Capacity_150Request_REGMAP_REUSE_R1",
+  "bytes": 252928,
+  "sha256": "7bec339a6bc22d3ba599fd8533863604d20da23a4ed82add357e59e724b93f9b",
+  "source_sha256": {
+    "src/V29sRegMap.inc": "ea1e7ae375fb2d250ba04d5b311dfd176ae7c907804f9d216e0b2a58dba7c39a",
+    "src/V29sRegMapCore.inc": "23b5ee8a93ce5c0752df49f59de8725687826e78b0441feec7de09b4808e5dc4",
+    "src/V29sRegMapLayout.inc": "784ae4cd3de35d8f40e9e9d05653b0a82e83efabd0836ebee81368977b1363d4",
+    "src/V29sRegMapBridges.inc": "460340329ef751e3b2ef89d198668b3b8aec6322e9ea3a74756ce74ecd25300e",
+    "src/V29sRegMapNative.inc": "f896a41311ea602c90846d9e1c9df28dccaae903f871f73033e3607355bfd343",
+    "src/V29sRegMapRuntime.inc": "b45bddcf89081a37af3387b248ee9a5307585a28d0a14818f741a68d2c04968d",
+    "tests/RegMapReuseTest.cpp": "bdfa9980c7289a3361aeb80e247d747774dbfea6b8874cba16983c212eff311e"
+  },
+  "requests": 150,
+  "graphics": 160,
+  "inline_nodes": 45,
+  "external_nodes": 512,
+  "fixed_owner_limit": 0,
+  "constructor_generation": true,
+  "insertion_hook_preserved": "0086BE5F",
+  "new_constructor_hook": "0086BFA0",
+  "fixture_checks": [
+    "real two-site installer signatures, allocation/protection/flush rejection and exact restore passed",
+    "actual native constructor/insert/lookup/allocator execute for eight distinct150-ID owners",
+    "duplicates, mixed inline/external recycling and100 actual destroy/reconstruct generations passed",
+    "real external-end bound, recycling at capacity and corruption diagnostics passed",
+    "cold attach, allocation fault, actual diagnostic fields, GP/stack/x87/SSE preservation passed",
+    "regmap reuse checks passed"
+  ],
+  "inherited_replay_pause_and_capacities_verified": true,
+  "game_run": false,
+  "installed": false,
+  "limitations": [
+    "External constructor/destructor allocation services are stubbed in native fixture.",
+    "Stable storage is process-lived per distinct address; memory remains finite.",
+    "Exact run19868 fault branch remains unknown; live repeated transitions need validation."
+  ],
+  "parser_checks": {
+    "result": "passed",
+    "checks": [
+      "startup and observed owner/reconstruction/reattachment parsing",
+      "bad startup/count/state/fatal rejection",
+      "no lifecycle certification or unexercised paths inferred"
+    ]
+  },
+  "tools_sha256": {
+    "scripts/verify_regmap_reuse.py": "b12cd40035d9fa18072f9b04407172547f11448e8643f62222b3941f60b6aecd",
+    "scripts/verify_replay_pause.py": "77cc0136aa9d82fce30037ccc503b82bdca38c9389e93109fca1672fdf029508",
+    "scripts/analyze_baseline150_log.py": "b796e58c72f89ec748be5dee720914f49e26c8386b29451222ff18a0c298a753"
+  }
+}

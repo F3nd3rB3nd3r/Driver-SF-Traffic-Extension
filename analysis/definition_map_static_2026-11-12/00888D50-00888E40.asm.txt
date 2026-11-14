@@ -1,0 +1,94 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00888D50: 8B 0D FC BC 44 01  mov         ecx,dword ptr ds:[0144BCFCh]
+  00888D56: 85 C9              test        ecx,ecx
+  00888D58: 74 1C              je          00888D76
+  00888D5A: 56                 push        esi
+  00888D5B: 8B F1              mov         esi,ecx
+  00888D5D: E8 AE 17 00 00     call        0088A510
+  00888D62: 56                 push        esi
+  00888D63: E8 F2 F9 39 00     call        00C2875A
+  00888D68: 83 C4 04           add         esp,4
+  00888D6B: C7 05 FC BC 44 01  mov         dword ptr ds:[0144BCFCh],0
+            00 00 00 00
+  00888D75: 5E                 pop         esi
+  00888D76: C3                 ret
+  00888D77: CC                 int         3
+  00888D78: CC                 int         3
+  00888D79: CC                 int         3
+  00888D7A: CC                 int         3
+  00888D7B: CC                 int         3
+  00888D7C: CC                 int         3
+  00888D7D: CC                 int         3
+  00888D7E: CC                 int         3
+  00888D7F: CC                 int         3
+  00888D80: 51                 push        ecx
+  00888D81: 53                 push        ebx
+  00888D82: 55                 push        ebp
+  00888D83: 8B E9              mov         ebp,ecx
+  00888D85: 56                 push        esi
+  00888D86: 57                 push        edi
+  00888D87: C7 45 00 F4 9B E3  mov         dword ptr [ebp],0E39BF4h
+            00
+  00888D8E: C7 45 04 F0 9B E3  mov         dword ptr [ebp+4],0E39BF0h
+            00
+  00888D95: 8D 5D 18           lea         ebx,[ebp+18h]
+  00888D98: C7 44 24 10 04 00  mov         dword ptr [esp+10h],4
+            00 00
+  00888DA0: 8B 83 C0 00 00 00  mov         eax,dword ptr [ebx+000000C0h]
+  00888DA6: 8D 04 40           lea         eax,[eax+eax*2]
+  00888DA9: 8D 0C 83           lea         ecx,[ebx+eax*4]
+  00888DAC: 8B FB              mov         edi,ebx
+  00888DAE: 3B D9              cmp         ebx,ecx
+  00888DB0: 74 5D              je          00888E0F
+  00888DB2: 8B 4F 04           mov         ecx,dword ptr [edi+4]
+  00888DB5: 85 C9              test        ecx,ecx
+  00888DB7: 74 05              je          00888DBE
+  00888DB9: E8 12 52 02 00     call        008ADFD0
+  00888DBE: 8B 37              mov         esi,dword ptr [edi]
+  00888DC0: 85 F6              test        esi,esi
+  00888DC2: 74 1A              je          00888DDE
+  00888DC4: 8B 16              mov         edx,dword ptr [esi]
+  00888DC6: 8B 02              mov         eax,dword ptr [edx]
+  00888DC8: 6A 00              push        0
+  00888DCA: 8B CE              mov         ecx,esi
+  00888DCC: FF D0              call        eax
+  00888DCE: 8B 0D FC BC 44 01  mov         ecx,dword ptr ds:[0144BCFCh]
+  00888DD4: 85 C9              test        ecx,ecx
+  00888DD6: 74 06              je          00888DDE
+  00888DD8: 56                 push        esi
+  00888DD9: E8 12 EC FF FF     call        008879F0
+  00888DDE: 8B 77 04           mov         esi,dword ptr [edi+4]
+  00888DE1: 85 F6              test        esi,esi
+  00888DE3: 74 17              je          00888DFC
+  00888DE5: 8B CE              mov         ecx,esi
+  00888DE7: E8 64 36 02 00     call        008AC450
+  00888DEC: 8B 0D FC BC 44 01  mov         ecx,dword ptr ds:[0144BCFCh]
+  00888DF2: 85 C9              test        ecx,ecx
+  00888DF4: 74 06              je          00888DFC
+  00888DF6: 56                 push        esi
+  00888DF7: E8 F4 EB FF FF     call        008879F0
+  00888DFC: 8B 83 C0 00 00 00  mov         eax,dword ptr [ebx+000000C0h]
+  00888E02: 8D 0C 40           lea         ecx,[eax+eax*2]
+  00888E05: 83 C7 0C           add         edi,0Ch
+  00888E08: 8D 14 8B           lea         edx,[ebx+ecx*4]
+  00888E0B: 3B FA              cmp         edi,edx
+  00888E0D: 75 A3              jne         00888DB2
+  00888E0F: 81 C3 C4 00 00 00  add         ebx,0C4h
+  00888E15: 83 6C 24 10 01     sub         dword ptr [esp+10h],1
+  00888E1A: 75 84              jne         00888DA0
+  00888E1C: 8B 8D 18 25 02 00  mov         ecx,dword ptr [ebp+00022518h]
+  00888E22: E8 F9 FC 33 00     call        00BC8B20
+  00888E27: 8B 8D 18 25 02 00  mov         ecx,dword ptr [ebp+00022518h]
+  00888E2D: E8 1E FA 33 00     call        00BC8850
+  00888E32: 8D B5 F0 78 00 00  lea         esi,[ebp+000078F0h]
+  00888E38: BF FF 00 00 00     mov         edi,0FFh
+  00888E3D: 8D 49 00           lea         ecx,[ecx]
+  00888E40: 83
+
+  Summary
+
+      9C8000 .text

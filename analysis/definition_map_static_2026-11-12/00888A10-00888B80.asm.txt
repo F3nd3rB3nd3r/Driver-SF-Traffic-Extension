@@ -1,0 +1,137 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00888A10: 83 3D FC BC 44 01  cmp         dword ptr ds:[0144BCFCh],0
+            00
+  00888A17: 75 4D              jne         00888A66
+  00888A19: 6A 70              push        70h
+  00888A1B: E8 60 FD 39 00     call        00C28780
+  00888A20: 83 C4 04           add         esp,4
+  00888A23: 85 C0              test        eax,eax
+  00888A25: 74 09              je          00888A30
+  00888A27: 8B C8              mov         ecx,eax
+  00888A29: E8 92 1A 00 00     call        0088A4C0
+  00888A2E: EB 02              jmp         00888A32
+  00888A30: 33 C0              xor         eax,eax
+  00888A32: 8B 0D F8 CF F3 00  mov         ecx,dword ptr ds:[00F3CFF8h]
+  00888A38: 56                 push        esi
+  00888A39: 51                 push        ecx
+  00888A3A: 8B C8              mov         ecx,eax
+  00888A3C: A3 FC BC 44 01     mov         dword ptr ds:[0144BCFCh],eax
+  00888A41: 8B F0              mov         esi,eax
+  00888A43: E8 B8 19 00 00     call        0088A400
+  00888A48: 8B 15 54 F2 F3 00  mov         edx,dword ptr ds:[00F3F254h]
+  00888A4E: 52                 push        edx
+  00888A4F: 8D 4E 1C           lea         ecx,[esi+1Ch]
+  00888A52: E8 A9 19 00 00     call        0088A400
+  00888A57: A1 34 EE F3 00     mov         eax,dword ptr ds:[00F3EE34h]
+  00888A5C: 50                 push        eax
+  00888A5D: 8D 4E 38           lea         ecx,[esi+38h]
+  00888A60: E8 9B 19 00 00     call        0088A400
+  00888A65: 5E                 pop         esi
+  00888A66: C3                 ret
+  00888A67: CC                 int         3
+  00888A68: CC                 int         3
+  00888A69: CC                 int         3
+  00888A6A: CC                 int         3
+  00888A6B: CC                 int         3
+  00888A6C: CC                 int         3
+  00888A6D: CC                 int         3
+  00888A6E: CC                 int         3
+  00888A6F: CC                 int         3
+  00888A70: 33 C0              xor         eax,eax
+  00888A72: 89 81 B8 03 00 00  mov         dword ptr [ecx+000003B8h],eax
+  00888A78: 89 81 64 03 00 00  mov         dword ptr [ecx+00000364h],eax
+  00888A7E: 88 81 6C 03 00 00  mov         byte ptr [ecx+0000036Ch],al
+  00888A84: 88 81 14 25 02 00  mov         byte ptr [ecx+00022514h],al
+  00888A8A: 50                 push        eax
+  00888A8B: 81 C1 70 03 00 00  add         ecx,370h
+  00888A91: E8 DA D8 FD FF     call        00866370
+  00888A96: C3                 ret
+  00888A97: CC                 int         3
+  00888A98: CC                 int         3
+  00888A99: CC                 int         3
+  00888A9A: CC                 int         3
+  00888A9B: CC                 int         3
+  00888A9C: CC                 int         3
+  00888A9D: CC                 int         3
+  00888A9E: CC                 int         3
+  00888A9F: CC                 int         3
+  00888AA0: 53                 push        ebx
+  00888AA1: 33 DB              xor         ebx,ebx
+  00888AA3: 56                 push        esi
+  00888AA4: 8B F1              mov         esi,ecx
+  00888AA6: 89 9E B8 03 00 00  mov         dword ptr [esi+000003B8h],ebx
+  00888AAC: 89 9E 64 03 00 00  mov         dword ptr [esi+00000364h],ebx
+  00888AB2: 53                 push        ebx
+  00888AB3: 8D 8E 70 03 00 00  lea         ecx,[esi+00000370h]
+  00888AB9: 88 9E 6C 03 00 00  mov         byte ptr [esi+0000036Ch],bl
+  00888ABF: 88 9E 14 25 02 00  mov         byte ptr [esi+00022514h],bl
+  00888AC5: E8 A6 D8 FD FF     call        00866370
+  00888ACA: A1 EC CF F3 00     mov         eax,dword ptr ds:[00F3CFECh]
+  00888ACF: 50                 push        eax
+  00888AD0: 8D 8E BC 03 00 00  lea         ecx,[esi+000003BCh]
+  00888AD6: E8 25 19 00 00     call        0088A400
+  00888ADB: 8B 0D F0 CF F3 00  mov         ecx,dword ptr ds:[00F3CFF0h]
+  00888AE1: 51                 push        ecx
+  00888AE2: 8D 8E D8 03 00 00  lea         ecx,[esi+000003D8h]
+  00888AE8: E8 13 19 00 00     call        0088A400
+  00888AED: 8B 15 F4 CF F3 00  mov         edx,dword ptr ds:[00F3CFF4h]
+  00888AF3: 52                 push        edx
+  00888AF4: 8D 8E F4 03 00 00  lea         ecx,[esi+000003F4h]
+  00888AFA: E8 01 19 00 00     call        0088A400
+  00888AFF: E8 7C 46 FE FF     call        0086D180
+  00888B04: 8B C8              mov         ecx,eax
+  00888B06: E8 45 ED FF FF     call        00887850
+  00888B0B: E8 C0 2F 03 00     call        008BBAD0
+  00888B10: 5E                 pop         esi
+  00888B11: 88 1D F8 BC 44 01  mov         byte ptr ds:[0144BCF8h],bl
+  00888B17: 5B                 pop         ebx
+  00888B18: C3                 ret
+  00888B19: CC                 int         3
+  00888B1A: CC                 int         3
+  00888B1B: CC                 int         3
+  00888B1C: CC                 int         3
+  00888B1D: CC                 int         3
+  00888B1E: CC                 int         3
+  00888B1F: CC                 int         3
+  00888B20: 56                 push        esi
+  00888B21: 57                 push        edi
+  00888B22: 32 D2              xor         dl,dl
+  00888B24: B0 01              mov         al,1
+  00888B26: 8D B1 84 01 00 00  lea         esi,[ecx+00000184h]
+  00888B2C: 53                 push        ebx
+  00888B2D: 8D 49 00           lea         ecx,[ecx]
+  00888B30: 8B 1E              mov         ebx,dword ptr [esi]
+  00888B32: 0F B6 FA           movzx       edi,dl
+  00888B35: 69 FF C4 00 00 00  imul        edi,edi,0C4h
+  00888B3B: 3B 9C 0F C0 00 00  cmp         ebx,dword ptr [edi+ecx+000000C0h]
+            00
+  00888B42: 73 02              jae         00888B46
+  00888B44: 8A D0              mov         dl,al
+  00888B46: FE C0              inc         al
+  00888B48: 81 C6 C4 00 00 00  add         esi,0C4h
+  00888B4E: 3C 04              cmp         al,4
+  00888B50: 72 DE              jb          00888B30
+  00888B52: 0F B6 C2           movzx       eax,dl
+  00888B55: 69 C0 C4 00 00 00  imul        eax,eax,0C4h
+  00888B5B: 8B B4 08 C0 00 00  mov         esi,dword ptr [eax+ecx+000000C0h]
+            00
+  00888B62: 03 C1              add         eax,ecx
+  00888B64: 8D 34 76           lea         esi,[esi+esi*2]
+  00888B67: 8D 34 B0           lea         esi,[eax+esi*4]
+  00888B6A: 5B                 pop         ebx
+  00888B6B: 85 F6              test        esi,esi
+  00888B6D: 74 14              je          00888B83
+  00888B6F: 8B 7C 24 0C        mov         edi,dword ptr [esp+0Ch]
+  00888B73: 89 3E              mov         dword ptr [esi],edi
+  00888B75: 8B 7C 24 10        mov         edi,dword ptr [esp+10h]
+  00888B79: 89 7E 04           mov         dword ptr [esi+4],edi
+  00888B7C: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  00888B80: 89
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,116 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00747000: 51                 push        ecx
+  00747001: 56                 push        esi
+  00747002: 8B F1              mov         esi,ecx
+  00747004: 80 BE 95 85 00 00  cmp         byte ptr [esi+00008595h],0
+            00
+  0074700B: 74 3A              je          00747047
+  0074700D: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00747012: 85 C0              test        eax,eax
+  00747014: 75 0A              jne         00747020
+  00747016: E8 75 36 CC FF     call        0040A690
+  0074701B: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00747020: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00747023: 8B 01              mov         eax,dword ptr [ecx]
+  00747025: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00747028: FF D2              call        edx
+  0074702A: 84 C0              test        al,al
+  0074702C: 74 12              je          00747040
+  0074702E: 68 E0 A4 E2 00     push        0E2A4E0h
+  00747033: 68 B8 11 EE 00     push        0EE11B8h
+  00747038: E8 73 48 FF FF     call        0073B8B0
+  0074703D: 83 C4 08           add         esp,8
+  00747040: 8B CE              mov         ecx,esi
+  00747042: E8 B9 FD FF FF     call        00746E00
+  00747047: 8B 06              mov         eax,dword ptr [esi]
+  00747049: 8B 50 1C           mov         edx,dword ptr [eax+1Ch]
+  0074704C: 8B CE              mov         ecx,esi
+  0074704E: FF D2              call        edx
+  00747050: 84 C0              test        al,al
+  00747052: 75 03              jne         00747057
+  00747054: 5E                 pop         esi
+  00747055: 59                 pop         ecx
+  00747056: C3                 ret
+  00747057: 83 7E 04 01        cmp         dword ptr [esi+4],1
+  0074705B: 57                 push        edi
+  0074705C: 75 22              jne         00747080
+  0074705E: 68 00 80 00 00     push        8000h
+  00747063: 8D 7E 08           lea         edi,[esi+8]
+  00747066: 6A 00              push        0
+  00747068: 57                 push        edi
+  00747069: E8 72 16 4E 00     call        00C286E0
+  0074706E: 83 C4 0C           add         esp,0Ch
+  00747071: C7 07 00 00 00 00  mov         dword ptr [edi],0
+  00747077: E9 7E 00 00 00     jmp         007470FA
+  0074707C: 8D 64 24 00        lea         esp,[esp]
+  00747080: 8B 06              mov         eax,dword ptr [esi]
+  00747082: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  00747085: 8B CE              mov         ecx,esi
+  00747087: FF D2              call        edx
+  00747089: 84 C0              test        al,al
+  0074708B: 75 F3              jne         00747080
+  0074708D: 8B 06              mov         eax,dword ptr [esi]
+  0074708F: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00747092: 6A 00              push        0
+  00747094: 8B CE              mov         ecx,esi
+  00747096: FF D2              call        edx
+  00747098: 8B 06              mov         eax,dword ptr [esi]
+  0074709A: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  0074709D: 68 00 80 00 00     push        8000h
+  007470A2: 8D 7E 08           lea         edi,[esi+8]
+  007470A5: 57                 push        edi
+  007470A6: 8B CE              mov         ecx,esi
+  007470A8: FF D2              call        edx
+  007470AA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  007470B0: 8B 06              mov         eax,dword ptr [esi]
+  007470B2: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  007470B5: 8B CE              mov         ecx,esi
+  007470B7: FF D2              call        edx
+  007470B9: 84 C0              test        al,al
+  007470BB: 75 F3              jne         007470B0
+  007470BD: 83 3F 00           cmp         dword ptr [edi],0
+  007470C0: 74 19              je          007470DB
+  007470C2: 6A 01              push        1
+  007470C4: 68 B4 98 E2 00     push        0E298B4h
+  007470C9: 6A 00              push        0
+  007470CB: 57                 push        edi
+  007470CC: C6 86 94 85 00 00  mov         byte ptr [esi+00008594h],1
+            01
+  007470D3: E8 68 25 11 00     call        00859640
+  007470D8: 83 C4 10           add         esp,10h
+  007470DB: 8B 06              mov         eax,dword ptr [esi]
+  007470DD: 8B 50 24           mov         edx,dword ptr [eax+24h]
+  007470E0: 8B CE              mov         ecx,esi
+  007470E2: FF D2              call        edx
+  007470E4: 3B 46 0C           cmp         eax,dword ptr [esi+0Ch]
+  007470E7: 8D 4E 0C           lea         ecx,[esi+0Ch]
+  007470EA: 89 44 24 08        mov         dword ptr [esp+8],eax
+  007470EE: 8D 44 24 08        lea         eax,[esp+8]
+  007470F2: 72 02              jb          007470F6
+  007470F4: 8B C1              mov         eax,ecx
+  007470F6: 8B 00              mov         eax,dword ptr [eax]
+  007470F8: 89 01              mov         dword ptr [ecx],eax
+  007470FA: 8B 16              mov         edx,dword ptr [esi]
+  007470FC: 8B 42 10           mov         eax,dword ptr [edx+10h]
+  007470FF: 68 00 80 00 00     push        8000h
+  00747104: 8B CE              mov         ecx,esi
+  00747106: FF D0              call        eax
+  00747108: 5F                 pop         edi
+  00747109: C7 86 80 85 00 00  mov         dword ptr [esi+00008580h],8000h
+            00 80 00 00
+  00747113: C6 86 95 85 00 00  mov         byte ptr [esi+00008595h],1
+            01
+  0074711A: B0 01              mov         al,1
+  0074711C: 5E                 pop         esi
+  0074711D: 59                 pop         ecx
+  0074711E: C3                 ret
+  0074711F: CC                 int         3
+  00747120: F6
+
+  Summary
+
+      9C8000 .text

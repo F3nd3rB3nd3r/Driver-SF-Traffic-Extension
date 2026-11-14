@@ -1,0 +1,106 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007399E0: 0F 57 C0           xorps       xmm0,xmm0
+  007399E3: 81 EC 04 08 00 00  sub         esp,804h
+  007399E9: 56                 push        esi
+  007399EA: 57                 push        edi
+  007399EB: 8B F9              mov         edi,ecx
+  007399ED: F3 0F 11 87 E8 E9  movss       dword ptr [edi+0004E9E8h],xmm0
+            04 00
+  007399F5: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  007399FA: 85 C0              test        eax,eax
+  007399FC: 75 0A              jne         00739A08
+  007399FE: E8 8D 0C CD FF     call        0040A690
+  00739A03: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00739A08: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00739A0B: 8B 01              mov         eax,dword ptr [ecx]
+  00739A0D: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  00739A10: FF D2              call        edx
+  00739A12: 8B F0              mov         esi,eax
+  00739A14: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00739A19: 85 C0              test        eax,eax
+  00739A1B: 75 0A              jne         00739A27
+  00739A1D: E8 6E 0C CD FF     call        0040A690
+  00739A22: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00739A27: 8B 88 6C 03 00 00  mov         ecx,dword ptr [eax+0000036Ch]
+  00739A2D: E8 2E A2 DC FF     call        00503C60
+  00739A32: 8B 48 44           mov         ecx,dword ptr [eax+44h]
+  00739A35: 50                 push        eax
+  00739A36: 8D 94 24 10 04 00  lea         edx,[esp+00000410h]
+            00
+  00739A3D: 68 00 04 00 00     push        400h
+  00739A42: 52                 push        edx
+  00739A43: C6 04 08 00        mov         byte ptr [eax+ecx],0
+  00739A47: E8 64 A1 DC FF     call        00503BB0
+  00739A4C: 8B 0D A4 8A F2 00  mov         ecx,dword ptr ds:[00F28AA4h]
+  00739A52: 8D 84 24 18 04 00  lea         eax,[esp+00000418h]
+            00
+  00739A59: 50                 push        eax
+  00739A5A: 51                 push        ecx
+  00739A5B: 8D 54 24 20        lea         edx,[esp+20h]
+  00739A5F: 68 00 04 00 00     push        400h
+  00739A64: 52                 push        edx
+  00739A65: E8 26 A4 1C 00     call        00903E90
+  00739A6A: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00739A6F: 83 C4 1C           add         esp,1Ch
+  00739A72: 85 C0              test        eax,eax
+  00739A74: 75 0A              jne         00739A80
+  00739A76: E8 15 0C CD FF     call        0040A690
+  00739A7B: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00739A80: 8D 4C 24 0C        lea         ecx,[esp+0Ch]
+  00739A84: 51                 push        ecx
+  00739A85: 8B 08              mov         ecx,dword ptr [eax]
+  00739A87: E8 04 1C 12 00     call        0085B690
+  00739A8C: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00739A91: 85 C0              test        eax,eax
+  00739A93: 75 0A              jne         00739A9F
+  00739A95: E8 F6 0B CD FF     call        0040A690
+  00739A9A: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00739A9F: 8B 88 30 02 00 00  mov         ecx,dword ptr [eax+00000230h]
+  00739AA5: 6A 01              push        1
+  00739AA7: 68 00 00 08 00     push        80000h
+  00739AAC: E8 4F D1 FF FF     call        00736C00
+  00739AB1: 50                 push        eax
+  00739AB2: 8D 54 24 18        lea         edx,[esp+18h]
+  00739AB6: 52                 push        edx
+  00739AB7: 8B CF              mov         ecx,edi
+  00739AB9: E8 F2 5F 00 00     call        0073FAB0
+  00739ABE: 8B C8              mov         ecx,eax
+  00739AC0: 89 87 8C E5 04 00  mov         dword ptr [edi+0004E58Ch],eax
+  00739AC6: E8 35 D5 00 00     call        00747000
+  00739ACB: 84 C0              test        al,al
+  00739ACD: 75 42              jne         00739B11
+  00739ACF: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00739AD4: 85 C0              test        eax,eax
+  00739AD6: 75 0A              jne         00739AE2
+  00739AD8: E8 B3 0B CD FF     call        0040A690
+  00739ADD: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00739AE2: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00739AE5: 8B 01              mov         eax,dword ptr [ecx]
+  00739AE7: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00739AEA: FF D2              call        edx
+  00739AEC: 84 C0              test        al,al
+  00739AEE: 74 0E              je          00739AFE
+  00739AF0: 68 C4 9C E2 00     push        0E29CC4h
+  00739AF5: 56                 push        esi
+  00739AF6: E8 B5 1D 00 00     call        0073B8B0
+  00739AFB: 83 C4 08           add         esp,8
+  00739AFE: C7 87 88 E5 04 00  mov         dword ptr [edi+0004E588h],0
+            00 00 00 00
+  00739B08: 5F                 pop         edi
+  00739B09: 5E                 pop         esi
+  00739B0A: 81 C4 04 08 00 00  add         esp,804h
+  00739B10: C3                 ret
+  00739B11: 8B 87 8C E5 04 00  mov         eax,dword ptr [edi+0004E58Ch]
+  00739B17: 85 C0              test        eax,eax
+  00739B19: 74 05              je          00739B20
+  00739B1B: 83 C0 10           add         eax,10h
+  00739B1E: EB 02              jmp         00739B22
+  00739B20: 33
+
+  Summary
+
+      9C8000 .text

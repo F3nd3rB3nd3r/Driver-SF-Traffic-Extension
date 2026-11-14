@@ -1,0 +1,61 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007C5020: FF A3 28 72 FE 00  jmp         dword ptr [ebx+00FE7228h]
+  007C5026: 8B 80 84 02 00 00  mov         eax,dword ptr [eax+00000284h]
+  007C502C: 57                 push        edi
+  007C502D: 6A 00              push        0
+  007C502F: 8B C8              mov         ecx,eax
+  007C5031: E8 DA 76 D8 FF     call        0054C710
+  007C5036: 8B 46 08           mov         eax,dword ptr [esi+8]
+  007C5039: 8D 88 A8 05 00 00  lea         ecx,[eax+000005A8h]
+  007C503F: 8B 01              mov         eax,dword ptr [ecx]
+  007C5041: 8B 50 08           mov         edx,dword ptr [eax+8]
+  007C5044: 6A 00              push        0
+  007C5046: FF D2              call        edx
+  007C5048: 8B 46 08           mov         eax,dword ptr [esi+8]
+  007C504B: 8D 88 D8 05 00 00  lea         ecx,[eax+000005D8h]
+  007C5051: 8B 01              mov         eax,dword ptr [ecx]
+  007C5053: 8B 50 08           mov         edx,dword ptr [eax+8]
+  007C5056: 6A 00              push        0
+  007C5058: FF D2              call        edx
+  007C505A: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  007C505D: 81 C1 38 03 00 00  add         ecx,338h
+  007C5063: E8 88 DB FF FF     call        007C2BF0
+  007C5068: 8B 46 08           mov         eax,dword ptr [esi+8]
+  007C506B: 8D 88 38 03 00 00  lea         ecx,[eax+00000338h]
+  007C5071: 8B 01              mov         eax,dword ptr [ecx]
+  007C5073: 8B 50 08           mov         edx,dword ptr [eax+8]
+  007C5076: 6A 00              push        0
+  007C5078: FF D2              call        edx
+  007C507A: 8B 46 08           mov         eax,dword ptr [esi+8]
+  007C507D: 83 B8 DC 0E 00 00  cmp         dword ptr [eax+00000EDCh],0
+            00
+  007C5084: 74 0D              je          007C5093
+  007C5086: 8B 80 DC 0E 00 00  mov         eax,dword ptr [eax+00000EDCh]
+  007C508C: C6 80 E5 04 00 00  mov         byte ptr [eax+000004E5h],0
+            00
+  007C5093: 6A 01              push        1
+  007C5095: 51                 push        ecx
+  007C5096: 8B C4              mov         eax,esp
+  007C5098: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  007C509E: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  007C50A1: 81 C1 38 03 00 00  add         ecx,338h
+  007C50A7: E8 A4 D7 FF FF     call        007C2850
+  007C50AC: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  007C50B1: 85 C0              test        eax,eax
+  007C50B3: 75 0A              jne         007C50BF
+  007C50B5: E8 D6 55 C4 FF     call        0040A690
+  007C50BA: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  007C50BF: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  007C50C2: 8B 80 DC 06 00 00  mov         eax,dword ptr [eax+000006DCh]
+  007C50C8: 51                 push        ecx
+  007C50C9: 8B C8              mov         ecx,eax
+  007C50CB: E8 50 81 02 00     call        007ED220
+  007C50D0: A1
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,70 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00745820: 24 20              and         al,20h
+  00745822: 80 00 00           add         byte ptr [eax],0
+  00745825: 57                 push        edi
+  00745826: 50                 push        eax
+  00745827: 51                 push        ecx
+  00745828: E8 F3 2F 4E 00     call        00C28820
+  0074582D: 83 C4 0C           add         esp,0Ch
+  00745830: 01 BE A4 95 00 00  add         dword ptr [esi+000095A4h],edi
+  00745836: 5F                 pop         edi
+  00745837: 5E                 pop         esi
+  00745838: 81 C4 14 80 00 00  add         esp,8014h
+  0074583E: C2 08 00           ret         8
+  00745841: CC                 int         3
+  00745842: CC                 int         3
+  00745843: CC                 int         3
+  00745844: CC                 int         3
+  00745845: CC                 int         3
+  00745846: CC                 int         3
+  00745847: CC                 int         3
+  00745848: CC                 int         3
+  00745849: CC                 int         3
+  0074584A: CC                 int         3
+  0074584B: CC                 int         3
+  0074584C: CC                 int         3
+  0074584D: CC                 int         3
+  0074584E: CC                 int         3
+  0074584F: CC                 int         3
+  00745850: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00745854: 56                 push        esi
+  00745855: 57                 push        edi
+  00745856: 8B 7C 24 1C        mov         edi,dword ptr [esp+1Ch]
+  0074585A: 57                 push        edi
+  0074585B: 8B F1              mov         esi,ecx
+  0074585D: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  00745861: 50                 push        eax
+  00745862: 51                 push        ecx
+  00745863: 8B CE              mov         ecx,esi
+  00745865: E8 66 0C 00 00     call        007464D0
+  0074586A: 8A 4C 24 20        mov         cl,byte ptr [esp+20h]
+  0074586E: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  00745872: 8B 44 24 10        mov         eax,dword ptr [esp+10h]
+  00745876: C7 06 3C A3 E2 00  mov         dword ptr [esi],0E2A33Ch
+  0074587C: C7 86 98 95 00 00  mov         dword ptr [esi+00009598h],0
+            00 00 00 00
+  00745886: 89 96 9C 95 00 00  mov         dword ptr [esi+0000959Ch],edx
+  0074588C: 89 86 A0 95 00 00  mov         dword ptr [esi+000095A0h],eax
+  00745892: C7 86 A4 95 00 00  mov         dword ptr [esi+000095A4h],0
+            00 00 00 00
+  0074589C: C7 86 A8 95 00 00  mov         dword ptr [esi+000095A8h],0
+            00 00 00 00
+  007458A6: 88 8E B0 95 00 00  mov         byte ptr [esi+000095B0h],cl
+  007458AC: 84 C9              test        cl,cl
+  007458AE: 0F 84 AE 00 00 00  je          00745962
+  007458B4: 85 FF              test        edi,edi
+  007458B6: 0F 85 95 00 00 00  jne         00745951
+  007458BC: 39 3A              cmp         dword ptr [edx],edi
+  007458BE: BF 00 80 00 00     mov         edi,8000h
+  007458C3: 0F 95 C2           setne       dl
+  007458C6: 88 54 24 20        mov         byte ptr [esp+20h],dl
+  007458CA: 89 BE AC 95 00 00  mov         dword ptr [esi+000095ACh],edi
+  007458D0: 3B
+
+  Summary
+
+      9C8000 .text

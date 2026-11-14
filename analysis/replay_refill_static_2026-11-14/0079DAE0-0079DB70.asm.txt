@@ -1,0 +1,78 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0079DAE0: F3 0F 10 44 24 04  movss       xmm0,dword ptr [esp+4]
+  0079DAE6: F3 0F 10 0D EC D3  movss       xmm1,dword ptr ds:[00F2D3ECh]
+            F2 00
+  0079DAEE: 51                 push        ecx
+  0079DAEF: F3 0F 59 C8        mulss       xmm1,xmm0
+  0079DAF3: F3 0F 11 05 F0 D3  movss       dword ptr ds:[00F2D3F0h],xmm0
+            F2 00
+  0079DAFB: F3 0F 11 0C 24     movss       dword ptr [esp],xmm1
+  0079DB00: E8 DB 9A FF FF     call        007975E0
+  0079DB05: 59                 pop         ecx
+  0079DB06: C3                 ret
+  0079DB07: CC                 int         3
+  0079DB08: CC                 int         3
+  0079DB09: CC                 int         3
+  0079DB0A: CC                 int         3
+  0079DB0B: CC                 int         3
+  0079DB0C: CC                 int         3
+  0079DB0D: CC                 int         3
+  0079DB0E: CC                 int         3
+  0079DB0F: CC                 int         3
+  0079DB10: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  0079DB13: 8B 01              mov         eax,dword ptr [ecx]
+  0079DB15: 8B 50 24           mov         edx,dword ptr [eax+24h]
+  0079DB18: FF E2              jmp         edx
+  0079DB1A: CC                 int         3
+  0079DB1B: CC                 int         3
+  0079DB1C: CC                 int         3
+  0079DB1D: CC                 int         3
+  0079DB1E: CC                 int         3
+  0079DB1F: CC                 int         3
+  0079DB20: 6A 08              push        8
+  0079DB22: E8 59 AC 48 00     call        00C28780
+  0079DB27: 83 C4 04           add         esp,4
+  0079DB2A: 85 C0              test        eax,eax
+  0079DB2C: 74 0F              je          0079DB3D
+  0079DB2E: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  0079DB32: C7 00 FC D0 E2 00  mov         dword ptr [eax],0E2D0FCh
+  0079DB38: 89 01              mov         dword ptr [ecx],eax
+  0079DB3A: 8B C1              mov         eax,ecx
+  0079DB3C: C3                 ret
+  0079DB3D: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0079DB41: 33 C9              xor         ecx,ecx
+  0079DB43: 89 08              mov         dword ptr [eax],ecx
+  0079DB45: C3                 ret
+  0079DB46: CC                 int         3
+  0079DB47: CC                 int         3
+  0079DB48: CC                 int         3
+  0079DB49: CC                 int         3
+  0079DB4A: CC                 int         3
+  0079DB4B: CC                 int         3
+  0079DB4C: CC                 int         3
+  0079DB4D: CC                 int         3
+  0079DB4E: CC                 int         3
+  0079DB4F: CC                 int         3
+  0079DB50: 8B C1              mov         eax,ecx
+  0079DB52: 56                 push        esi
+  0079DB53: 8D 50 02           lea         edx,[eax+2]
+  0079DB56: BE 02 00 00 00     mov         esi,2
+  0079DB5B: 32 C9              xor         cl,cl
+  0079DB5D: 8D 49 00           lea         ecx,[ecx]
+  0079DB60: 88 4A FE           mov         byte ptr [edx-2],cl
+  0079DB63: 88 0A              mov         byte ptr [edx],cl
+  0079DB65: 42                 inc         edx
+  0079DB66: 83 EE 01           sub         esi,1
+  0079DB69: 75 F5              jne         0079DB60
+  0079DB6B: 88 48 04           mov         byte ptr [eax+4],cl
+  0079DB6E: 5E                 pop         esi
+  0079DB6F: C3                 ret
+  0079DB70: 83
+
+  Summary
+
+      9C8000 .text

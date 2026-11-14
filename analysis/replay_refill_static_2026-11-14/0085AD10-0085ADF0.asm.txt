@@ -1,0 +1,86 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0085AD10: 80 79 38 00        cmp         byte ptr [ecx+38h],0
+  0085AD14: 74 0C              je          0085AD22
+  0085AD16: 83 79 34 01        cmp         dword ptr [ecx+34h],1
+  0085AD1A: 74 06              je          0085AD22
+  0085AD1C: 80 79 39 00        cmp         byte ptr [ecx+39h],0
+  0085AD20: 74 05              je          0085AD27
+  0085AD22: 32 C0              xor         al,al
+  0085AD24: C2 08 00           ret         8
+  0085AD27: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0085AD2B: 81 C2 FF 07 00 00  add         edx,7FFh
+  0085AD31: 81 E2 00 F8 FF FF  and         edx,0FFFFF800h
+  0085AD37: 75 05              jne         0085AD3E
+  0085AD39: B0 01              mov         al,1
+  0085AD3B: C2 08 00           ret         8
+  0085AD3E: 8B 41 30           mov         eax,dword ptr [ecx+30h]
+  0085AD41: 56                 push        esi
+  0085AD42: 8D 34 10           lea         esi,[eax+edx]
+  0085AD45: 3B 71 28           cmp         esi,dword ptr [ecx+28h]
+  0085AD48: 76 06              jbe         0085AD50
+  0085AD4A: 32 C0              xor         al,al
+  0085AD4C: 5E                 pop         esi
+  0085AD4D: C2 08 00           ret         8
+  0085AD50: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  0085AD54: 25 00 F8 FF FF     and         eax,0FFFFF800h
+  0085AD59: C7 41 04 00 00 00  mov         dword ptr [ecx+4],0
+            00
+  0085AD60: 89 71 08           mov         dword ptr [ecx+8],esi
+  0085AD63: 89 41 14           mov         dword ptr [ecx+14h],eax
+  0085AD66: C7 41 18 00 00 00  mov         dword ptr [ecx+18h],0
+            00
+  0085AD6D: 89 51 20           mov         dword ptr [ecx+20h],edx
+  0085AD70: E8 BB FD FF FF     call        0085AB30
+  0085AD75: B0 01              mov         al,1
+  0085AD77: 5E                 pop         esi
+  0085AD78: C2 08 00           ret         8
+  0085AD7B: CC                 int         3
+  0085AD7C: CC                 int         3
+  0085AD7D: CC                 int         3
+  0085AD7E: CC                 int         3
+  0085AD7F: CC                 int         3
+  0085AD80: 80 79 38 00        cmp         byte ptr [ecx+38h],0
+  0085AD84: 74 55              je          0085ADDB
+  0085AD86: 83 79 34 00        cmp         dword ptr [ecx+34h],0
+  0085AD8A: 74 4F              je          0085ADDB
+  0085AD8C: 80 79 39 00        cmp         byte ptr [ecx+39h],0
+  0085AD90: 75 49              jne         0085ADDB
+  0085AD92: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0085AD96: 05 FF 07 00 00     add         eax,7FFh
+  0085AD9B: 25 00 F8 FF FF     and         eax,0FFFFF800h
+  0085ADA0: 74 34              je          0085ADD6
+  0085ADA2: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0085ADA6: 89 51 08           mov         dword ptr [ecx+8],edx
+  0085ADA9: 8B 51 30           mov         edx,dword ptr [ecx+30h]
+  0085ADAC: 81 E2 00 F8 FF FF  and         edx,0FFFFF800h
+  0085ADB2: C7 41 04 01 00 00  mov         dword ptr [ecx+4],1
+            00
+  0085ADB9: 89 51 14           mov         dword ptr [ecx+14h],edx
+  0085ADBC: C7 41 18 00 00 00  mov         dword ptr [ecx+18h],0
+            00
+  0085ADC3: 89 41 20           mov         dword ptr [ecx+20h],eax
+  0085ADC6: C6 41 3A 01        mov         byte ptr [ecx+3Ah],1
+  0085ADCA: C6 41 39 01        mov         byte ptr [ecx+39h],1
+  0085ADCE: 51                 push        ecx
+  0085ADCF: 8B 09              mov         ecx,dword ptr [ecx]
+  0085ADD1: E8 0A 0A 00 00     call        0085B7E0
+  0085ADD6: B0 01              mov         al,1
+  0085ADD8: C2 08 00           ret         8
+  0085ADDB: 32 C0              xor         al,al
+  0085ADDD: C2 08 00           ret         8
+  0085ADE0: 56                 push        esi
+  0085ADE1: 8B F1              mov         esi,ecx
+  0085ADE3: 80 7E 38 00        cmp         byte ptr [esi+38h],0
+  0085ADE7: 75 04              jne         0085ADED
+  0085ADE9: 32 C0              xor         al,al
+  0085ADEB: 5E                 pop         esi
+  0085ADEC: C3                 ret
+  0085ADED: 80 7E 39 00        cmp         byte ptr [esi+39h],0
+
+  Summary
+
+      9C8000 .text

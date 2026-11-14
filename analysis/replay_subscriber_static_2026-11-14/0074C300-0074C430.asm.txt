@@ -1,0 +1,116 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0074C300: 55                 push        ebp
+  0074C301: 8B EC              mov         ebp,esp
+  0074C303: 8B 45 08           mov         eax,dword ptr [ebp+8]
+  0074C306: 33 C9              xor         ecx,ecx
+  0074C308: 83 78 10 01        cmp         dword ptr [eax+10h],1
+  0074C30C: 0F 94 C1           sete        cl
+  0074C30F: 8A C1              mov         al,cl
+  0074C311: 5D                 pop         ebp
+  0074C312: C3                 ret
+  0074C313: CC                 int         3
+  0074C314: CC                 int         3
+  0074C315: CC                 int         3
+  0074C316: CC                 int         3
+  0074C317: CC                 int         3
+  0074C318: CC                 int         3
+  0074C319: CC                 int         3
+  0074C31A: CC                 int         3
+  0074C31B: CC                 int         3
+  0074C31C: CC                 int         3
+  0074C31D: CC                 int         3
+  0074C31E: CC                 int         3
+  0074C31F: CC                 int         3
+  0074C320: 53                 push        ebx
+  0074C321: 8B DC              mov         ebx,esp
+  0074C323: 83 EC 08           sub         esp,8
+  0074C326: 83 E4 F8           and         esp,0FFFFFFF8h
+  0074C329: 83 C4 04           add         esp,4
+  0074C32C: 55                 push        ebp
+  0074C32D: 8B 6B 04           mov         ebp,dword ptr [ebx+4]
+  0074C330: 89 6C 24 04        mov         dword ptr [esp+4],ebp
+  0074C334: 8B EC              mov         ebp,esp
+  0074C336: B8 18 26 00 00     mov         eax,2618h
+  0074C33B: E8 B0 C4 4D 00     call        00C287F0
+  0074C340: 56                 push        esi
+  0074C341: 57                 push        edi
+  0074C342: 89 4D FC           mov         dword ptr [ebp-4],ecx
+  0074C345: 68 8B 00 00 00     push        8Bh
+  0074C34A: B9 4C 98 44 01     mov         ecx,144984Ch
+  0074C34F: E8 CC E3 CB FF     call        0040A720
+  0074C354: 89 45 F8           mov         dword ptr [ebp-8],eax
+  0074C357: 8B 45 F8           mov         eax,dword ptr [ebp-8]
+  0074C35A: 8B 08              mov         ecx,dword ptr [eax]
+  0074C35C: 89 4D F4           mov         dword ptr [ebp-0Ch],ecx
+  0074C35F: 8B 55 F4           mov         edx,dword ptr [ebp-0Ch]
+  0074C362: 89 55 F0           mov         dword ptr [ebp-10h],edx
+  0074C365: 8B 4D F0           mov         ecx,dword ptr [ebp-10h]
+  0074C368: E8 73 C9 FE FF     call        00738CE0
+  0074C36D: D9 5D EC           fstp        dword ptr [ebp-14h]
+  0074C370: 8B 45 F4           mov         eax,dword ptr [ebp-0Ch]
+  0074C373: 89 45 E8           mov         dword ptr [ebp-18h],eax
+  0074C376: 8B 4D E8           mov         ecx,dword ptr [ebp-18h]
+  0074C379: E8 82 FB FF FF     call        0074BF00
+  0074C37E: 89 45 E4           mov         dword ptr [ebp-1Ch],eax
+  0074C381: 8D 4D 98           lea         ecx,[ebp-68h]
+  0074C384: E8 67 FA FF FF     call        0074BDF0
+  0074C389: 8B 4D F4           mov         ecx,dword ptr [ebp-0Ch]
+  0074C38C: E8 9F CA FE FF     call        00738E30
+  0074C391: 51                 push        ecx
+  0074C392: D9 45 EC           fld         dword ptr [ebp-14h]
+  0074C395: D9 1C 24           fstp        dword ptr [esp]
+  0074C398: 6A 01              push        1
+  0074C39A: 6A 00              push        0
+  0074C39C: 8B 4D E4           mov         ecx,dword ptr [ebp-1Ch]
+  0074C39F: E8 8C A4 FF FF     call        00746830
+  0074C3A4: C7 45 94 00 00 00  mov         dword ptr [ebp-6Ch],0
+            00
+  0074C3AB: 6A 04              push        4
+  0074C3AD: 8D 4D 94           lea         ecx,[ebp-6Ch]
+  0074C3B0: 51                 push        ecx
+  0074C3B1: 8B 4D E4           mov         ecx,dword ptr [ebp-1Ch]
+  0074C3B4: E8 E7 A4 FF FF     call        007468A0
+  0074C3B9: 68 B2 00 00 00     push        0B2h
+  0074C3BE: B9 4C 98 44 01     mov         ecx,144984Ch
+  0074C3C3: E8 58 E3 CB FF     call        0040A720
+  0074C3C8: 89 45 90           mov         dword ptr [ebp-70h],eax
+  0074C3CB: 8B 55 90           mov         edx,dword ptr [ebp-70h]
+  0074C3CE: 8B 02              mov         eax,dword ptr [edx]
+  0074C3D0: 89 45 8C           mov         dword ptr [ebp-74h],eax
+  0074C3D3: 8B 4D 8C           mov         ecx,dword ptr [ebp-74h]
+  0074C3D6: 89 4D 88           mov         dword ptr [ebp-78h],ecx
+  0074C3D9: 8D 55 84           lea         edx,[ebp-7Ch]
+  0074C3DC: 52                 push        edx
+  0074C3DD: 8B 4D 88           mov         ecx,dword ptr [ebp-78h]
+  0074C3E0: E8 4B FB FF FF     call        0074BF30
+  0074C3E5: 8B 00              mov         eax,dword ptr [eax]
+  0074C3E7: 89 45 CC           mov         dword ptr [ebp-34h],eax
+  0074C3EA: 68 A1 01 00 00     push        1A1h
+  0074C3EF: B9 4C 98 44 01     mov         ecx,144984Ch
+  0074C3F4: E8 27 E3 CB FF     call        0040A720
+  0074C3F9: 89 45 80           mov         dword ptr [ebp-80h],eax
+  0074C3FC: 8B 4D 80           mov         ecx,dword ptr [ebp-80h]
+  0074C3FF: 8B 11              mov         edx,dword ptr [ecx]
+  0074C401: 89 95 7C FF FF FF  mov         dword ptr [ebp+FFFFFF7Ch],edx
+  0074C407: 6A 00              push        0
+  0074C409: 8D 85 78 FF FF FF  lea         eax,[ebp+FFFFFF78h]
+  0074C40F: 50                 push        eax
+  0074C410: 8B 8D 7C FF FF FF  mov         ecx,dword ptr [ebp+FFFFFF7Ch]
+  0074C416: E8 35 B2 05 00     call        007A7650
+  0074C41B: 8B 8D 78 FF FF FF  mov         ecx,dword ptr [ebp+FFFFFF78h]
+  0074C421: F7 D9              neg         ecx
+  0074C423: 1B C9              sbb         ecx,ecx
+  0074C425: F7 D9              neg         ecx
+  0074C427: 83 E9 01           sub         ecx,1
+  0074C42A: 83 F9 FF           cmp         ecx,0FFFFFFFFh
+  0074C42D: 74 36              je          0074C465
+  0074C42F: 8B
+  0074C430: 95                 xchg        eax,ebp
+
+  Summary
+
+      9C8000 .text

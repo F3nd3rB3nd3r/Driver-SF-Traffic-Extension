@@ -1,0 +1,70 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0073D690: 83 C4 2C           add         esp,2Ch
+  0073D693: C2 08 00           ret         8
+  0073D696: CC                 int         3
+  0073D697: CC                 int         3
+  0073D698: CC                 int         3
+  0073D699: CC                 int         3
+  0073D69A: CC                 int         3
+  0073D69B: CC                 int         3
+  0073D69C: CC                 int         3
+  0073D69D: CC                 int         3
+  0073D69E: CC                 int         3
+  0073D69F: CC                 int         3
+  0073D6A0: 33 C0              xor         eax,eax
+  0073D6A2: 89 81 2C A6 00 00  mov         dword ptr [ecx+0000A62Ch],eax
+  0073D6A8: 89 81 30 A6 00 00  mov         dword ptr [ecx+0000A630h],eax
+  0073D6AE: 88 81 38 A6 00 00  mov         byte ptr [ecx+0000A638h],al
+  0073D6B4: C3                 ret
+  0073D6B5: CC                 int         3
+  0073D6B6: CC                 int         3
+  0073D6B7: CC                 int         3
+  0073D6B8: CC                 int         3
+  0073D6B9: CC                 int         3
+  0073D6BA: CC                 int         3
+  0073D6BB: CC                 int         3
+  0073D6BC: CC                 int         3
+  0073D6BD: CC                 int         3
+  0073D6BE: CC                 int         3
+  0073D6BF: CC                 int         3
+  0073D6C0: 83 79 08 00        cmp         dword ptr [ecx+8],0
+  0073D6C4: 75 0F              jne         0073D6D5
+  0073D6C6: 81 C1 0C A0 00 00  add         ecx,0A00Ch
+  0073D6CC: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0073D6D0: 89 08              mov         dword ptr [eax],ecx
+  0073D6D2: C2 08 00           ret         8
+  0073D6D5: 8B 81 10 A0 00 00  mov         eax,dword ptr [ecx+0000A010h]
+  0073D6DB: F3 0F 10 48 08     movss       xmm1,dword ptr [eax+8]
+  0073D6E0: F3 0F 10 44 24 08  movss       xmm0,dword ptr [esp+8]
+  0073D6E6: 81 C1 0C A0 00 00  add         ecx,0A00Ch
+  0073D6EC: 0F 2F C8           comiss      xmm1,xmm0
+  0073D6EF: 77 DB              ja          0073D6CC
+  0073D6F1: 3B C1              cmp         eax,ecx
+  0073D6F3: 74 11              je          0073D706
+  0073D6F5: F3 0F 10 48 08     movss       xmm1,dword ptr [eax+8]
+  0073D6FA: 0F 2F C8           comiss      xmm1,xmm0
+  0073D6FD: 77 12              ja          0073D711
+  0073D6FF: 8B 40 04           mov         eax,dword ptr [eax+4]
+  0073D702: 3B C1              cmp         eax,ecx
+  0073D704: 75 EF              jne         0073D6F5
+  0073D706: 8B 11              mov         edx,dword ptr [ecx]
+  0073D708: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0073D70C: 89 10              mov         dword ptr [eax],edx
+  0073D70E: C2 08 00           ret         8
+  0073D711: 8B 08              mov         ecx,dword ptr [eax]
+  0073D713: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0073D717: 89 08              mov         dword ptr [eax],ecx
+  0073D719: C2 08 00           ret         8
+  0073D71C: CC                 int         3
+  0073D71D: CC                 int         3
+  0073D71E: CC                 int         3
+  0073D71F: CC                 int         3
+  0073D720: 83
+
+  Summary
+
+      9C8000 .text

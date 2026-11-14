@@ -1,0 +1,101 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00750530: 56                 push        esi
+  00750531: 8B F1              mov         esi,ecx
+  00750533: F3 0F 10 46 3C     movss       xmm0,dword ptr [esi+3Ch]
+  00750538: 0F 2E 05 9C 94 E9  ucomiss     xmm0,dword ptr ds:[00E9949Ch]
+            00
+  0075053F: 9F                 lahf
+  00750540: F6 C4 44           test        ah,44h
+  00750543: 7A 14              jp          00750559
+  00750545: 8D 4E 08           lea         ecx,[esi+8]
+  00750548: E8 23 59 0E 00     call        00835E70
+  0075054D: 84 C0              test        al,al
+  0075054F: 74 08              je          00750559
+  00750551: 8B CE              mov         ecx,esi
+  00750553: 5E                 pop         esi
+  00750554: E9 77 FB FF FF     jmp         007500D0
+  00750559: 5E                 pop         esi
+  0075055A: C3                 ret
+  0075055B: CC                 int         3
+  0075055C: CC                 int         3
+  0075055D: CC                 int         3
+  0075055E: CC                 int         3
+  0075055F: CC                 int         3
+  00750560: 56                 push        esi
+  00750561: 8B F1              mov         esi,ecx
+  00750563: F3 0F 10 46 3C     movss       xmm0,dword ptr [esi+3Ch]
+  00750568: 0F 2E 05 9C 94 E9  ucomiss     xmm0,dword ptr ds:[00E9949Ch]
+            00
+  0075056F: 9F                 lahf
+  00750570: F6 C4 44           test        ah,44h
+  00750573: 7A 11              jp          00750586
+  00750575: E8 56 FB FF FF     call        007500D0
+  0075057A: 6A 00              push        0
+  0075057C: 8D 4E 08           lea         ecx,[esi+8]
+  0075057F: E8 AC 59 0E 00     call        00835F30
+  00750584: 5E                 pop         esi
+  00750585: C3                 ret
+  00750586: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0075058B: 85 C0              test        eax,eax
+  0075058D: 75 0A              jne         00750599
+  0075058F: E8 FC A0 CB FF     call        0040A690
+  00750594: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00750599: 8B 88 2C 02 00 00  mov         ecx,dword ptr [eax+0000022Ch]
+  0075059F: 57                 push        edi
+  007505A0: 8B B9 8C E5 04 00  mov         edi,dword ptr [ecx+0004E58Ch]
+  007505A6: 6A 1C              push        1Ch
+  007505A8: 8D 46 20           lea         eax,[esi+20h]
+  007505AB: 50                 push        eax
+  007505AC: E8 2F 87 FE FF     call        00738CE0
+  007505B1: 51                 push        ecx
+  007505B2: D9 1C 24           fstp        dword ptr [esp]
+  007505B5: 6A 00              push        0
+  007505B7: 6A 07              push        7
+  007505B9: 8B CF              mov         ecx,edi
+  007505BB: E8 10 62 FF FF     call        007467D0
+  007505C0: 5F                 pop         edi
+  007505C1: 6A 00              push        0
+  007505C3: 8D 4E 08           lea         ecx,[esi+8]
+  007505C6: E8 65 59 0E 00     call        00835F30
+  007505CB: 5E                 pop         esi
+  007505CC: C3                 ret
+  007505CD: CC                 int         3
+  007505CE: CC                 int         3
+  007505CF: CC                 int         3
+  007505D0: 51                 push        ecx
+  007505D1: 56                 push        esi
+  007505D2: 8B F1              mov         esi,ecx
+  007505D4: 6A 00              push        0
+  007505D6: 8D 4E 08           lea         ecx,[esi+8]
+  007505D9: E8 52 59 0E 00     call        00835F30
+  007505DE: 0F 57 C0           xorps       xmm0,xmm0
+  007505E1: F3 0F 11 46 3C     movss       dword ptr [esi+3Ch],xmm0
+  007505E6: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  007505EB: 5E                 pop         esi
+  007505EC: 85 C0              test        eax,eax
+  007505EE: 75 0A              jne         007505FA
+  007505F0: E8 9B A0 CB FF     call        0040A690
+  007505F5: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  007505FA: 8B 88 48 03 00 00  mov         ecx,dword ptr [eax+00000348h]
+  00750600: 6A 08              push        8
+  00750602: 8D 44 24 04        lea         eax,[esp+4]
+  00750606: 50                 push        eax
+  00750607: E8 A4 A6 E5 FF     call        005AACB0
+  0075060C: 8B 00              mov         eax,dword ptr [eax]
+  0075060E: 85 C0              test        eax,eax
+  00750610: 74 0A              je          0075061C
+  00750612: C7 80 54 40 00 00  mov         dword ptr [eax+00004054h],750250h
+            50 02 75 00
+  0075061C: 59                 pop         ecx
+  0075061D: C3                 ret
+  0075061E: CC                 int         3
+  0075061F: CC                 int         3
+  00750620: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

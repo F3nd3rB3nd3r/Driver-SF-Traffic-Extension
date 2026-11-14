@@ -1,0 +1,51 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00746770: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00746774: 85 C0              test        eax,eax
+  00746776: 74 46              je          007467BE
+  00746778: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  0074677C: 8D 64 24 00        lea         esp,[esp]
+  00746780: 3B C1              cmp         eax,ecx
+  00746782: 74 3A              je          007467BE
+  00746784: 8B 40 0C           mov         eax,dword ptr [eax+0Ch]
+  00746787: 85 C0              test        eax,eax
+  00746789: 75 F5              jne         00746780
+  0074678B: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00746790: 85 C0              test        eax,eax
+  00746792: 75 0A              jne         0074679E
+  00746794: E8 F7 3E CC FF     call        0040A690
+  00746799: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0074679E: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  007467A1: 8B 01              mov         eax,dword ptr [ecx]
+  007467A3: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  007467A6: FF D2              call        edx
+  007467A8: 84 C0              test        al,al
+  007467AA: 74 12              je          007467BE
+  007467AC: 68 08 A4 E2 00     push        0E2A408h
+  007467B1: 68 B8 11 EE 00     push        0EE11B8h
+  007467B6: E8 F5 50 FF FF     call        0073B8B0
+  007467BB: 83 C4 08           add         esp,8
+  007467BE: C2 08 00           ret         8
+  007467C1: CC                 int         3
+  007467C2: CC                 int         3
+  007467C3: CC                 int         3
+  007467C4: CC                 int         3
+  007467C5: CC                 int         3
+  007467C6: CC                 int         3
+  007467C7: CC                 int         3
+  007467C8: CC                 int         3
+  007467C9: CC                 int         3
+  007467CA: CC                 int         3
+  007467CB: CC                 int         3
+  007467CC: CC                 int         3
+  007467CD: CC                 int         3
+  007467CE: CC                 int         3
+  007467CF: CC                 int         3
+  007467D0: 83
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,70 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00736AD0: 8B C1              mov         eax,ecx
+  00736AD2: 33 C9              xor         ecx,ecx
+  00736AD4: 89 88 00 60 0C 00  mov         dword ptr [eax+000C6000h],ecx
+  00736ADA: 88 88 04 60 0C 00  mov         byte ptr [eax+000C6004h],cl
+  00736AE0: 88 88 05 60 0C 00  mov         byte ptr [eax+000C6005h],cl
+  00736AE6: 88 88 06 60 0C 00  mov         byte ptr [eax+000C6006h],cl
+  00736AEC: 88 88 07 60 0C 00  mov         byte ptr [eax+000C6007h],cl
+  00736AF2: C3                 ret
+  00736AF3: CC                 int         3
+  00736AF4: CC                 int         3
+  00736AF5: CC                 int         3
+  00736AF6: CC                 int         3
+  00736AF7: CC                 int         3
+  00736AF8: CC                 int         3
+  00736AF9: CC                 int         3
+  00736AFA: CC                 int         3
+  00736AFB: CC                 int         3
+  00736AFC: CC                 int         3
+  00736AFD: CC                 int         3
+  00736AFE: CC                 int         3
+  00736AFF: CC                 int         3
+  00736B00: 56                 push        esi
+  00736B01: 8B F1              mov         esi,ecx
+  00736B03: 8B 86 00 60 0C 00  mov         eax,dword ptr [esi+000C6000h]
+  00736B09: 8B 0D AC 36 25 01  mov         ecx,dword ptr ds:[012536ACh]
+  00736B0F: 6A 04              push        4
+  00736B11: 50                 push        eax
+  00736B12: E8 79 37 02 00     call        0075A290
+  00736B17: C7 86 00 60 0C 00  mov         dword ptr [esi+000C6000h],0
+            00 00 00 00
+  00736B21: 5E                 pop         esi
+  00736B22: C3                 ret
+  00736B23: CC                 int         3
+  00736B24: CC                 int         3
+  00736B25: CC                 int         3
+  00736B26: CC                 int         3
+  00736B27: CC                 int         3
+  00736B28: CC                 int         3
+  00736B29: CC                 int         3
+  00736B2A: CC                 int         3
+  00736B2B: CC                 int         3
+  00736B2C: CC                 int         3
+  00736B2D: CC                 int         3
+  00736B2E: CC                 int         3
+  00736B2F: CC                 int         3
+  00736B30: 56                 push        esi
+  00736B31: 6A 04              push        4
+  00736B33: 8B F1              mov         esi,ecx
+  00736B35: 8B 0D AC 36 25 01  mov         ecx,dword ptr ds:[012536ACh]
+  00736B3B: 68 04 00 28 00     push        280004h
+  00736B40: E8 BB 36 02 00     call        0075A200
+  00736B45: 85 C0              test        eax,eax
+  00736B47: 74 0E              je          00736B57
+  00736B49: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  00736B4F: 89 86 00 60 0C 00  mov         dword ptr [esi+000C6000h],eax
+  00736B55: 5E                 pop         esi
+  00736B56: C3                 ret
+  00736B57: 33 C0              xor         eax,eax
+  00736B59: 89 86 00 60 0C 00  mov         dword ptr [esi+000C6000h],eax
+  00736B5F: 5E                 pop         esi
+  00736B60: C3                 ret
+
+  Summary
+
+      9C8000 .text

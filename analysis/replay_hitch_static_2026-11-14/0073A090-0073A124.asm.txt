@@ -1,0 +1,51 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0073A090: 83 EC 44           sub         esp,44h
+  0073A093: 56                 push        esi
+  0073A094: 8B F1              mov         esi,ecx
+  0073A096: 8B 86 88 E5 04 00  mov         eax,dword ptr [esi+0004E588h]
+  0073A09C: 83 F8 02           cmp         eax,2
+  0073A09F: 0F 85 29 06 00 00  jne         0073A6CE
+  0073A0A5: 8B 86 F4 E9 04 00  mov         eax,dword ptr [esi+0004E9F4h]
+  0073A0AB: 83 E8 01           sub         eax,1
+  0073A0AE: 0F 57 C0           xorps       xmm0,xmm0
+  0073A0B1: 53                 push        ebx
+  0073A0B2: 55                 push        ebp
+  0073A0B3: 57                 push        edi
+  0073A0B4: 0F 84 60 02 00 00  je          0073A31A
+  0073A0BA: 83 E8 01           sub         eax,1
+  0073A0BD: 0F 84 25 01 00 00  je          0073A1E8
+  0073A0C3: 83 E8 01           sub         eax,1
+  0073A0C6: 0F 85 1F 03 00 00  jne         0073A3EB
+  0073A0CC: 39 86 80 E3 04 00  cmp         dword ptr [esi+0004E380h],eax
+  0073A0D2: 0F 85 F5 00 00 00  jne         0073A1CD
+  0073A0D8: 8B BE 00 EA 04 00  mov         edi,dword ptr [esi+0004EA00h]
+  0073A0DE: 8B 9E 04 EA 04 00  mov         ebx,dword ptr [esi+0004EA04h]
+  0073A0E4: 8D 44 24 1C        lea         eax,[esp+1Ch]
+  0073A0E8: 50                 push        eax
+  0073A0E9: E8 72 9B D1 FF     call        00453C60
+  0073A0EE: 8B 08              mov         ecx,dword ptr [eax]
+  0073A0F0: 8B 15 BC A9 24 01  mov         edx,dword ptr ds:[0124A9BCh]
+  0073A0F6: 8B 40 04           mov         eax,dword ptr [eax+4]
+  0073A0F9: 52                 push        edx
+  0073A0FA: 8B 15 B8 A9 24 01  mov         edx,dword ptr ds:[0124A9B8h]
+  0073A100: 2B CF              sub         ecx,edi
+  0073A102: 52                 push        edx
+  0073A103: 1B C3              sbb         eax,ebx
+  0073A105: 50                 push        eax
+  0073A106: 51                 push        ecx
+  0073A107: E8 B4 0F E8 FF     call        005BB0C0
+  0073A10C: 83 C4 14           add         esp,14h
+  0073A10F: 84 C0              test        al,al
+  0073A111: 0F 85 B6 00 00 00  jne         0073A1CD
+  0073A117: 83 BE F0 E9 04 00  cmp         dword ptr [esi+0004E9F0h],0
+            00
+  0073A11E: 0F 87 A9 00 00 00  ja          0073A1CD
+  0073A124: 8D
+
+  Summary
+
+      9C8000 .text

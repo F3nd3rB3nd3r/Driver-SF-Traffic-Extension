@@ -1,0 +1,221 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00746940: 56                 push        esi
+  00746941: 8B F1              mov         esi,ecx
+  00746943: 8B 06              mov         eax,dword ptr [esi]
+  00746945: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  00746948: FF D2              call        edx
+  0074694A: 84 C0              test        al,al
+  0074694C: 0F 85 93 02 00 00  jne         00746BE5
+  00746952: 55                 push        ebp
+  00746953: 33 ED              xor         ebp,ebp
+  00746955: 57                 push        edi
+  00746956: 39 AE 84 85 00 00  cmp         dword ptr [esi+00008584h],ebp
+  0074695C: 76 5E              jbe         007469BC
+  0074695E: 8B CE              mov         ecx,esi
+  00746960: E8 5B FF FF FF     call        007468C0
+  00746965: 8B 86 84 85 00 00  mov         eax,dword ptr [esi+00008584h]
+  0074696B: 8B BE 5C 85 00 00  mov         edi,dword ptr [esi+0000855Ch]
+  00746971: 8B 8E 60 85 00 00  mov         ecx,dword ptr [esi+00008560h]
+  00746977: 03 86 68 85 00 00  add         eax,dword ptr [esi+00008568h]
+  0074697D: 8D 14 39           lea         edx,[ecx+edi]
+  00746980: 3B C2              cmp         eax,edx
+  00746982: 72 02              jb          00746986
+  00746984: 2B C7              sub         eax,edi
+  00746986: 8B 8E 88 85 00 00  mov         ecx,dword ptr [esi+00008588h]
+  0074698C: 89 86 68 85 00 00  mov         dword ptr [esi+00008568h],eax
+  00746992: 89 AE 84 85 00 00  mov         dword ptr [esi+00008584h],ebp
+  00746998: 3B CD              cmp         ecx,ebp
+  0074699A: 74 20              je          007469BC
+  0074699C: 8B 86 64 85 00 00  mov         eax,dword ptr [esi+00008564h]
+  007469A2: 03 C1              add         eax,ecx
+  007469A4: 3B C2              cmp         eax,edx
+  007469A6: 72 02              jb          007469AA
+  007469A8: 2B C7              sub         eax,edi
+  007469AA: 89 86 64 85 00 00  mov         dword ptr [esi+00008564h],eax
+  007469B0: 89 86 6C 85 00 00  mov         dword ptr [esi+0000856Ch],eax
+  007469B6: 89 AE 88 85 00 00  mov         dword ptr [esi+00008588h],ebp
+  007469BC: 8B 86 68 85 00 00  mov         eax,dword ptr [esi+00008568h]
+  007469C2: 8B 8E 6C 85 00 00  mov         ecx,dword ptr [esi+0000856Ch]
+  007469C8: 3B C1              cmp         eax,ecx
+  007469CA: 72 06              jb          007469D2
+  007469CC: 2B C1              sub         eax,ecx
+  007469CE: 8B F8              mov         edi,eax
+  007469D0: EB 0A              jmp         007469DC
+  007469D2: 8B BE 5C 85 00 00  mov         edi,dword ptr [esi+0000855Ch]
+  007469D8: 2B F9              sub         edi,ecx
+  007469DA: 03 F8              add         edi,eax
+  007469DC: 83 FF 10           cmp         edi,10h
+  007469DF: 0F 82 94 00 00 00  jb          00746A79
+  007469E5: EB 09              jmp         007469F0
+  007469E7: 8D A4 24 00 00 00  lea         esp,[esp+00000000h]
+            00
+  007469EE: 8B FF              mov         edi,edi
+  007469F0: 80 BE 94 85 00 00  cmp         byte ptr [esi+00008594h],0
+            00
+  007469F7: 8B 86 6C 85 00 00  mov         eax,dword ptr [esi+0000856Ch]
+  007469FD: 8B 40 08           mov         eax,dword ptr [eax+8]
+  00746A00: 74 09              je          00746A0B
+  00746A02: 50                 push        eax
+  00746A03: E8 58 2B 11 00     call        00859560
+  00746A08: 83 C4 04           add         esp,4
+  00746A0B: 83 C0 10           add         eax,10h
+  00746A0E: 3B F8              cmp         edi,eax
+  00746A10: 72 67              jb          00746A79
+  00746A12: 80 BE 94 85 00 00  cmp         byte ptr [esi+00008594h],0
+            00
+  00746A19: 74 17              je          00746A32
+  00746A1B: 8B 96 6C 85 00 00  mov         edx,dword ptr [esi+0000856Ch]
+  00746A21: 6A 01              push        1
+  00746A23: 68 A8 A3 E2 00     push        0E2A3A8h
+  00746A28: 55                 push        ebp
+  00746A29: 52                 push        edx
+  00746A2A: E8 11 2C 11 00     call        00859640
+  00746A2F: 83 C4 10           add         esp,10h
+  00746A32: 8B 86 6C 85 00 00  mov         eax,dword ptr [esi+0000856Ch]
+  00746A38: 50                 push        eax
+  00746A39: 8B CE              mov         ecx,esi
+  00746A3B: E8 C0 F9 FF FF     call        00746400
+  00746A40: 8B 86 6C 85 00 00  mov         eax,dword ptr [esi+0000856Ch]
+  00746A46: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  00746A49: BA F0 FF FF FF     mov         edx,0FFFFFFF0h
+  00746A4E: 2B D1              sub         edx,ecx
+  00746A50: 03 FA              add         edi,edx
+  00746A52: 8B 96 60 85 00 00  mov         edx,dword ptr [esi+00008560h]
+  00746A58: 8D 44 01 10        lea         eax,[ecx+eax+10h]
+  00746A5C: 8B 8E 5C 85 00 00  mov         ecx,dword ptr [esi+0000855Ch]
+  00746A62: 03 D1              add         edx,ecx
+  00746A64: 3B C2              cmp         eax,edx
+  00746A66: 72 02              jb          00746A6A
+  00746A68: 2B C1              sub         eax,ecx
+  00746A6A: 89 86 6C 85 00 00  mov         dword ptr [esi+0000856Ch],eax
+  00746A70: 83 FF 10           cmp         edi,10h
+  00746A73: 0F 83 77 FF FF FF  jae         007469F0
+  00746A79: 3B FD              cmp         edi,ebp
+  00746A7B: 0F 86 AA 00 00 00  jbe         00746B2B
+  00746A81: 8B 86 6C 85 00 00  mov         eax,dword ptr [esi+0000856Ch]
+  00746A87: 8B AE 5C 85 00 00  mov         ebp,dword ptr [esi+0000855Ch]
+  00746A8D: 2B E8              sub         ebp,eax
+  00746A8F: 03 AE 60 85 00 00  add         ebp,dword ptr [esi+00008560h]
+  00746A95: 83 FF 10           cmp         edi,10h
+  00746A98: 73 07              jae         00746AA1
+  00746A9A: B8 10 00 00 00     mov         eax,10h
+  00746A9F: EB 18              jmp         00746AB9
+  00746AA1: 80 BE 94 85 00 00  cmp         byte ptr [esi+00008594h],0
+            00
+  00746AA8: 8B 40 08           mov         eax,dword ptr [eax+8]
+  00746AAB: 74 09              je          00746AB6
+  00746AAD: 50                 push        eax
+  00746AAE: E8 AD 2A 11 00     call        00859560
+  00746AB3: 83 C4 04           add         esp,4
+  00746AB6: 83 C0 10           add         eax,10h
+  00746AB9: 3B E8              cmp         ebp,eax
+  00746ABB: 73 6E              jae         00746B2B
+  00746ABD: 8B C8              mov         ecx,eax
+  00746ABF: 81 E1 FF 7F 00 00  and         ecx,7FFFh
+  00746AC5: 8B E8              mov         ebp,eax
+  00746AC7: 74 09              je          00746AD2
+  00746AC9: 2B C1              sub         eax,ecx
+  00746ACB: 05 00 80 00 00     add         eax,8000h
+  00746AD0: 8B E8              mov         ebp,eax
+  00746AD2: 8B CE              mov         ecx,esi
+  00746AD4: E8 47 F4 FF FF     call        00745F20
+  00746AD9: 3B C5              cmp         eax,ebp
+  00746ADB: 0F 82 02 01 00 00  jb          00746BE3
+  00746AE1: 8B CF              mov         ecx,edi
+  00746AE3: 81 E1 FF 7F 00 00  and         ecx,7FFFh
+  00746AE9: 8B C7              mov         eax,edi
+  00746AEB: 74 07              je          00746AF4
+  00746AED: 2B C1              sub         eax,ecx
+  00746AEF: 05 00 80 00 00     add         eax,8000h
+  00746AF4: 8B AE 60 85 00 00  mov         ebp,dword ptr [esi+00008560h]
+  00746AFA: 2B EF              sub         ebp,edi
+  00746AFC: 03 E8              add         ebp,eax
+  00746AFE: 8B 86 6C 85 00 00  mov         eax,dword ptr [esi+0000856Ch]
+  00746B04: 57                 push        edi
+  00746B05: 50                 push        eax
+  00746B06: 55                 push        ebp
+  00746B07: E8 34 3A 4E 00     call        00C2A540
+  00746B0C: 83 C4 0C           add         esp,0Ch
+  00746B0F: 57                 push        edi
+  00746B10: 55                 push        ebp
+  00746B11: 8B CE              mov         ecx,esi
+  00746B13: 89 AE 6C 85 00 00  mov         dword ptr [esi+0000856Ch],ebp
+  00746B19: E8 82 F3 FF FF     call        00745EA0
+  00746B1E: 8B CE              mov         ecx,esi
+  00746B20: 89 86 68 85 00 00  mov         dword ptr [esi+00008568h],eax
+  00746B26: E8 95 FD FF FF     call        007468C0
+  00746B2B: 80 BE 8C 85 00 00  cmp         byte ptr [esi+0000858Ch],0
+            00
+  00746B32: 0F 85 AB 00 00 00  jne         00746BE3
+  00746B38: 8B 96 68 85 00 00  mov         edx,dword ptr [esi+00008568h]
+  00746B3E: 8B 8E 64 85 00 00  mov         ecx,dword ptr [esi+00008564h]
+  00746B44: 3B CA              cmp         ecx,edx
+  00746B46: 75 08              jne         00746B50
+  00746B48: 8B 86 5C 85 00 00  mov         eax,dword ptr [esi+0000855Ch]
+  00746B4E: EB 12              jmp         00746B62
+  00746B50: 72 06              jb          00746B58
+  00746B52: 2B CA              sub         ecx,edx
+  00746B54: 8B C1              mov         eax,ecx
+  00746B56: EB 0A              jmp         00746B62
+  00746B58: 8B 86 5C 85 00 00  mov         eax,dword ptr [esi+0000855Ch]
+  00746B5E: 2B C2              sub         eax,edx
+  00746B60: 03 C1              add         eax,ecx
+  00746B62: 3D 00 80 00 00     cmp         eax,8000h
+  00746B67: 76 7A              jbe         00746BE3
+  00746B69: 8B 16              mov         edx,dword ptr [esi]
+  00746B6B: 8B 42 24           mov         eax,dword ptr [edx+24h]
+  00746B6E: 8B CE              mov         ecx,esi
+  00746B70: FF D0              call        eax
+  00746B72: 39 86 80 85 00 00  cmp         dword ptr [esi+00008580h],eax
+  00746B78: 72 18              jb          00746B92
+  00746B7A: 8B 16              mov         edx,dword ptr [esi]
+  00746B7C: 8B 42 10           mov         eax,dword ptr [edx+10h]
+  00746B7F: 68 00 80 00 00     push        8000h
+  00746B84: 8B CE              mov         ecx,esi
+  00746B86: C7 86 80 85 00 00  mov         dword ptr [esi+00008580h],8000h
+            00 80 00 00
+  00746B90: FF D0              call        eax
+  00746B92: 8B 8E 80 85 00 00  mov         ecx,dword ptr [esi+00008580h]
+  00746B98: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  00746B9B: C7 86 84 85 00 00  mov         dword ptr [esi+00008584h],8000h
+            00 80 00 00
+  00746BA5: 3B C8              cmp         ecx,eax
+  00746BA7: 73 19              jae         00746BC2
+  00746BA9: 8D 91 00 80 00 00  lea         edx,[ecx+00008000h]
+  00746BAF: 3B D0              cmp         edx,eax
+  00746BB1: 72 0F              jb          00746BC2
+  00746BB3: 2B C1              sub         eax,ecx
+  00746BB5: 89 86 84 85 00 00  mov         dword ptr [esi+00008584h],eax
+  00746BBB: C6 86 8C 85 00 00  mov         byte ptr [esi+0000858Ch],1
+            01
+  00746BC2: 8B 8E 68 85 00 00  mov         ecx,dword ptr [esi+00008568h]
+  00746BC8: 8B 06              mov         eax,dword ptr [esi]
+  00746BCA: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  00746BCD: 68 00 80 00 00     push        8000h
+  00746BD2: 51                 push        ecx
+  00746BD3: 8B CE              mov         ecx,esi
+  00746BD5: FF D2              call        edx
+  00746BD7: 8B 86 84 85 00 00  mov         eax,dword ptr [esi+00008584h]
+  00746BDD: 01 86 80 85 00 00  add         dword ptr [esi+00008580h],eax
+  00746BE3: 5F                 pop         edi
+  00746BE4: 5D                 pop         ebp
+  00746BE5: 5E                 pop         esi
+  00746BE6: C3                 ret
+  00746BE7: CC                 int         3
+  00746BE8: CC                 int         3
+  00746BE9: CC                 int         3
+  00746BEA: CC                 int         3
+  00746BEB: CC                 int         3
+  00746BEC: CC                 int         3
+  00746BED: CC                 int         3
+  00746BEE: CC                 int         3
+  00746BEF: CC                 int         3
+  00746BF0: 53                 push        ebx
+
+  Summary
+
+      9C8000 .text

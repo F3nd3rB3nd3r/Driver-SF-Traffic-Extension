@@ -1,0 +1,64 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  004A61E0: 83 EC 08           sub         esp,8
+  004A61E3: B8 01 00 00 00     mov         eax,1
+  004A61E8: 56                 push        esi
+  004A61E9: 8B F1              mov         esi,ecx
+  004A61EB: 84 05 54 A7 FE 00  test        byte ptr ds:[00FEA754h],al
+  004A61F1: 75 1B              jne         004A620E
+  004A61F3: 09 05 54 A7 FE 00  or          dword ptr ds:[00FEA754h],eax
+  004A61F9: 8D 44 24 04        lea         eax,[esp+4]
+  004A61FD: 50                 push        eax
+  004A61FE: FF 15 D4 91 DC 00  call        dword ptr ds:[00DC91D4h]
+  004A6204: DF 6C 24 04        fild        qword ptr [esp+4]
+  004A6208: D9 1D 50 A7 FE 00  fstp        dword ptr ds:[00FEA750h]
+  004A620E: D9 05 50 A7 FE 00  fld         dword ptr ds:[00FEA750h]
+  004A6214: D8 4C 24 10        fmul        dword ptr [esp+10h]
+  004A6218: E8 49 24 78 00     call        00C28666
+  004A621D: 6A 00              push        0
+  004A621F: 8B CE              mov         ecx,esi
+  004A6221: 89 06              mov         dword ptr [esi],eax
+  004A6223: 89 56 04           mov         dword ptr [esi+4],edx
+  004A6226: E8 05 FD 38 00     call        00835F30
+  004A622B: 8B C6              mov         eax,esi
+  004A622D: 5E                 pop         esi
+  004A622E: 83 C4 08           add         esp,8
+  004A6231: C2 04 00           ret         4
+  004A6234: CC                 int         3
+  004A6235: CC                 int         3
+  004A6236: CC                 int         3
+  004A6237: CC                 int         3
+  004A6238: CC                 int         3
+  004A6239: CC                 int         3
+  004A623A: CC                 int         3
+  004A623B: CC                 int         3
+  004A623C: CC                 int         3
+  004A623D: CC                 int         3
+  004A623E: CC                 int         3
+  004A623F: CC                 int         3
+  004A6240: 83 EC 08           sub         esp,8
+  004A6243: 53                 push        ebx
+  004A6244: 56                 push        esi
+  004A6245: 57                 push        edi
+  004A6246: 8B F1              mov         esi,ecx
+  004A6248: E8 33 B6 38 00     call        00831880
+  004A624D: 8B D8              mov         ebx,eax
+  004A624F: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  004A6253: 50                 push        eax
+  004A6254: FF 15 D8 91 DC 00  call        dword ptr ds:[00DC91D8h]
+  004A625A: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  004A625E: 8D BE A0 07 00 00  lea         edi,[esi+000007A0h]
+  004A6264: 51                 push        ecx
+  004A6265: 8B CF              mov         ecx,edi
+  004A6267: E8 04 01 3C 00     call        00866370
+  004A626C: 8B CF              mov         ecx,edi
+  004A626E: E8
+  004A626F: ED                 in          eax,dx
+  004A6270: FF
+
+  Summary
+
+      9C8000 .text

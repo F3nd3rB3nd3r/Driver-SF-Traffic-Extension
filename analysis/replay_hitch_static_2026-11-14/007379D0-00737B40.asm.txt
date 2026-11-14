@@ -1,0 +1,144 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007379D0: 56                 push        esi
+  007379D1: 57                 push        edi
+  007379D2: 8B F9              mov         edi,ecx
+  007379D4: 83 BF 88 E5 04 00  cmp         dword ptr [edi+0004E588h],2
+            02
+  007379DB: 75 1F              jne         007379FC
+  007379DD: 8B B7 80 E5 04 00  mov         esi,dword ptr [edi+0004E580h]
+  007379E3: 85 F6              test        esi,esi
+  007379E5: 74 15              je          007379FC
+  007379E7: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  007379EA: 8B 01              mov         eax,dword ptr [ecx]
+  007379EC: 8B 50 20           mov         edx,dword ptr [eax+20h]
+  007379EF: FF D2              call        edx
+  007379F1: 84 C0              test        al,al
+  007379F3: 75 14              jne         00737A09
+  007379F5: 8B 76 04           mov         esi,dword ptr [esi+4]
+  007379F8: 85 F6              test        esi,esi
+  007379FA: 75 EB              jne         007379E7
+  007379FC: 8D 8F E4 38 04 00  lea         ecx,[edi+000438E4h]
+  00737A02: 5F                 pop         edi
+  00737A03: 5E                 pop         esi
+  00737A04: E9 57 3D 01 00     jmp         0074B760
+  00737A09: 5F                 pop         edi
+  00737A0A: B0 01              mov         al,1
+  00737A0C: 5E                 pop         esi
+  00737A0D: C3                 ret
+  00737A0E: CC                 int         3
+  00737A0F: CC                 int         3
+  00737A10: 56                 push        esi
+  00737A11: 57                 push        edi
+  00737A12: 8B F9              mov         edi,ecx
+  00737A14: 83 BF 88 E5 04 00  cmp         dword ptr [edi+0004E588h],2
+            02
+  00737A1B: 75 1F              jne         00737A3C
+  00737A1D: 8B B7 80 E5 04 00  mov         esi,dword ptr [edi+0004E580h]
+  00737A23: 85 F6              test        esi,esi
+  00737A25: 74 15              je          00737A3C
+  00737A27: 8B 4E 0C           mov         ecx,dword ptr [esi+0Ch]
+  00737A2A: 8B 01              mov         eax,dword ptr [ecx]
+  00737A2C: 8B 50 24           mov         edx,dword ptr [eax+24h]
+  00737A2F: FF D2              call        edx
+  00737A31: 84 C0              test        al,al
+  00737A33: 75 14              jne         00737A49
+  00737A35: 8B 76 04           mov         esi,dword ptr [esi+4]
+  00737A38: 85 F6              test        esi,esi
+  00737A3A: 75 EB              jne         00737A27
+  00737A3C: 8D 8F E4 38 04 00  lea         ecx,[edi+000438E4h]
+  00737A42: 5F                 pop         edi
+  00737A43: 5E                 pop         esi
+  00737A44: E9 17 3D 01 00     jmp         0074B760
+  00737A49: 5F                 pop         edi
+  00737A4A: B0 01              mov         al,1
+  00737A4C: 5E                 pop         esi
+  00737A4D: C3                 ret
+  00737A4E: CC                 int         3
+  00737A4F: CC                 int         3
+  00737A50: 83 EC 44           sub         esp,44h
+  00737A53: 57                 push        edi
+  00737A54: 8B F9              mov         edi,ecx
+  00737A56: 8B 87 F4 E9 04 00  mov         eax,dword ptr [edi+0004E9F4h]
+  00737A5C: 85 C0              test        eax,eax
+  00737A5E: 74 09              je          00737A69
+  00737A60: 83 F8 03           cmp         eax,3
+  00737A63: 0F 85 DF 00 00 00  jne         00737B48
+  00737A69: 83 BF 54 3B 04 00  cmp         dword ptr [edi+00043B54h],7
+            07
+  00737A70: 56                 push        esi
+  00737A71: 8D B7 54 3B 04 00  lea         esi,[edi+00043B54h]
+  00737A77: 0F 84 CA 00 00 00  je          00737B47
+  00737A7D: D9 87 A0 E9 04 00  fld         dword ptr [edi+0004E9A0h]
+  00737A83: 53                 push        ebx
+  00737A84: 51                 push        ecx
+  00737A85: 8D 44 24 10        lea         eax,[esp+10h]
+  00737A89: D9 1C 24           fstp        dword ptr [esp]
+  00737A8C: 8D 9F 18 3D 04 00  lea         ebx,[edi+00043D18h]
+  00737A92: 50                 push        eax
+  00737A93: 8B CB              mov         ecx,ebx
+  00737A95: E8 C6 5F 00 00     call        0073DA60
+  00737A9A: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00737A9E: 85 C0              test        eax,eax
+  00737AA0: 74 7D              je          00737B1F
+  00737AA2: 83 BB 30 A6 00 00  cmp         dword ptr [ebx+0000A630h],0
+            00
+  00737AA9: 74 0C              je          00737AB7
+  00737AAB: 81 BB 34 A6 00 00  cmp         dword ptr [ebx+0000A634h],0A0h
+            A0 00 00 00
+  00737AB5: 7D 68              jge         00737B1F
+  00737AB7: 8B 5C 24 54        mov         ebx,dword ptr [esp+54h]
+  00737ABB: 8B 48 08           mov         ecx,dword ptr [eax+8]
+  00737ABE: 53                 push        ebx
+  00737ABF: 51                 push        ecx
+  00737AC0: 8B CE              mov         ecx,esi
+  00737AC2: E8 C9 53 00 00     call        0073CE90
+  00737AC7: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  00737ACB: 0F B6 42 35        movzx       eax,byte ptr [edx+35h]
+  00737ACF: 50                 push        eax
+  00737AD0: 8B CE              mov         ecx,esi
+  00737AD2: E8 49 49 00 00     call        0073C420
+  00737AD7: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00737ADB: 83 79 08 0A        cmp         dword ptr [ecx+8],0Ah
+  00737ADF: 75 65              jne         00737B46
+  00737AE1: 8D 54 24 10        lea         edx,[esp+10h]
+  00737AE5: 52                 push        edx
+  00737AE6: E8 05 19 01 00     call        007493F0
+  00737AEB: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00737AEF: D9 40 30           fld         dword ptr [eax+30h]
+  00737AF2: 51                 push        ecx
+  00737AF3: 8D 4C 24 14        lea         ecx,[esp+14h]
+  00737AF7: D9 1C 24           fstp        dword ptr [esp]
+  00737AFA: 51                 push        ecx
+  00737AFB: 8B CE              mov         ecx,esi
+  00737AFD: E8 0E 4A 00 00     call        0073C510
+  00737B02: 84 DB              test        bl,bl
+  00737B04: 74 40              je          00737B46
+  00737B06: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  00737B0A: D9 42 30           fld         dword ptr [edx+30h]
+  00737B0D: 51                 push        ecx
+  00737B0E: 8D 44 24 14        lea         eax,[esp+14h]
+  00737B12: D9 1C 24           fstp        dword ptr [esp]
+  00737B15: 50                 push        eax
+  00737B16: 8B CE              mov         ecx,esi
+  00737B18: E8 F3 49 00 00     call        0073C510
+  00737B1D: EB 27              jmp         00737B46
+  00737B1F: 8B 4C 24 54        mov         ecx,dword ptr [esp+54h]
+  00737B23: D9 87 A0 E9 04 00  fld         dword ptr [edi+0004E9A0h]
+  00737B29: 51                 push        ecx
+  00737B2A: 51                 push        ecx
+  00737B2B: 8B CB              mov         ecx,ebx
+  00737B2D: D9 1C 24           fstp        dword ptr [esp]
+  00737B30: E8 2B 5E 00 00     call        0073D960
+  00737B35: 50                 push        eax
+  00737B36: 8B CE              mov         ecx,esi
+  00737B38: E8 53 53 00 00     call        0073CE90
+  00737B3D: 6A 00              push        0
+  00737B3F: 8B CE              mov         ecx,esi
+
+  Summary
+
+      9C8000 .text

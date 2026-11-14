@@ -1,0 +1,86 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0073B6C0: 8A 08              mov         cl,byte ptr [eax]
+  0073B6C2: 40                 inc         eax
+  0073B6C3: 84 C9              test        cl,cl
+  0073B6C5: 75 F9              jne         0073B6C0
+  0073B6C7: 2B C6              sub         eax,esi
+  0073B6C9: 8B F0              mov         esi,eax
+  0073B6CB: 56                 push        esi
+  0073B6CC: 52                 push        edx
+  0073B6CD: 56                 push        esi
+  0073B6CE: 57                 push        edi
+  0073B6CF: E8 02 D5 4E 00     call        00C28BD6
+  0073B6D4: 83 C4 10           add         esp,10h
+  0073B6D7: 89 B7 04 04 00 00  mov         dword ptr [edi+00000404h],esi
+  0073B6DD: 8B C7              mov         eax,edi
+  0073B6DF: 5F                 pop         edi
+  0073B6E0: 5E                 pop         esi
+  0073B6E1: C2 04 00           ret         4
+  0073B6E4: CC                 int         3
+  0073B6E5: CC                 int         3
+  0073B6E6: CC                 int         3
+  0073B6E7: CC                 int         3
+  0073B6E8: CC                 int         3
+  0073B6E9: CC                 int         3
+  0073B6EA: CC                 int         3
+  0073B6EB: CC                 int         3
+  0073B6EC: CC                 int         3
+  0073B6ED: CC                 int         3
+  0073B6EE: CC                 int         3
+  0073B6EF: CC                 int         3
+  0073B6F0: 68 68 31 05 00     push        53168h
+  0073B6F5: E8 86 D0 4E 00     call        00C28780
+  0073B6FA: 83 C4 04           add         esp,4
+  0073B6FD: 85 C0              test        eax,eax
+  0073B6FF: 74 10              je          0073B711
+  0073B701: 8B C8              mov         ecx,eax
+  0073B703: E8 C8 CC FF FF     call        007383D0
+  0073B708: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  0073B70C: 89 01              mov         dword ptr [ecx],eax
+  0073B70E: 8B C1              mov         eax,ecx
+  0073B710: C3                 ret
+  0073B711: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0073B715: 33 C9              xor         ecx,ecx
+  0073B717: 89 08              mov         dword ptr [eax],ecx
+  0073B719: C3                 ret
+  0073B71A: CC                 int         3
+  0073B71B: CC                 int         3
+  0073B71C: CC                 int         3
+  0073B71D: CC                 int         3
+  0073B71E: CC                 int         3
+  0073B71F: CC                 int         3
+  0073B720: 8B 54 24 0C        mov         edx,dword ptr [esp+0Ch]
+  0073B724: 53                 push        ebx
+  0073B725: 55                 push        ebp
+  0073B726: 56                 push        esi
+  0073B727: 57                 push        edi
+  0073B728: 8B D9              mov         ebx,ecx
+  0073B72A: 85 D2              test        edx,edx
+  0073B72C: 0F 86 82 00 00 00  jbe         0073B7B4
+  0073B732: 8B 43 14           mov         eax,dword ptr [ebx+14h]
+  0073B735: 85 C0              test        eax,eax
+  0073B737: 76 7B              jbe         0073B7B4
+  0073B739: 8B 4C 24 18        mov         ecx,dword ptr [esp+18h]
+  0073B73D: 3B C8              cmp         ecx,eax
+  0073B73F: 72 03              jb          0073B744
+  0073B741: 8D 48 FF           lea         ecx,[eax-1]
+  0073B744: 83 7B 18 10        cmp         dword ptr [ebx+18h],10h
+  0073B748: 8D 6B 04           lea         ebp,[ebx+4]
+  0073B74B: 72 05              jb          0073B752
+  0073B74D: 8B 45 00           mov         eax,dword ptr [ebp]
+  0073B750: EB 02              jmp         0073B754
+  0073B752: 8B C5              mov         eax,ebp
+  0073B754: 8B 7C 24 14        mov         edi,dword ptr [esp+14h]
+  0073B758: 8D 34 08           lea         esi,[eax+ecx]
+  0073B75B: 0F BE 06           movsx       eax,byte ptr [esi]
+  0073B75E: 52                 push        edx
+  0073B75F: 50                 push        eax
+  0073B760: 57                 push        edi
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,38 @@
+{
+  "result": "passed",
+  "name": "DriverSF_V29s_160Capacity_150Request_REPLAY_READ1M_R1",
+  "bytes": 276480,
+  "sha256": "fa34ef9c10015bbebd065af8a5e0be8f322688f0c0c395e6aa44a10bdec894db",
+  "requests": 150,
+  "graphics_slots": 160,
+  "parked_candidates": 150,
+  "categories": 25,
+  "parked_per_category": 150,
+  "parked_frame_bytes": 15732,
+  "game_entry_hooks": 2,
+  "parked_population_changed": false,
+  "refresh_interval_changed": false,
+  "weights_changed": false,
+  "parent_notify150_preserved": true,
+  "source_sha256": {
+    "src/V29sParked150.inc": "0193ad57fda779a7d98ed42eed4ce4639ae4d2aadd4742a1780bac9cbb23c094",
+    "src/V29sParked150Core.inc": "3c6550d84e8a9a2fb8e9fa4d8adbfaad4cdd16945a9fef221182f35f03a7dfa9",
+    "src/V29sParked150Layout.inc": "9458f2ec9a17b067bfea08d74d88d614e2092ca55d05e2e1255d10c29505bd77",
+    "src/V29sParked150Native.inc": "e03e201cd5a84a1e935a7b295d8efbaea0ee61db57ba9fe317b589af43fb7fe4",
+    "tests/Parked150Test.cpp": "66e9b89a35598ec340e5fc5144f9efd9aab65c0230e789b5a7aeccf10b096294"
+  },
+  "fixture_checks": [
+    "native stock51 candidate-count overwrite reproduced",
+    "bucket-only expansion retains candidate-cache overwrite",
+    "all counts0..150 native builder and category/general picker passed",
+    "same-owner rebuild and41 private owners passed",
+    "bounds/category/guard/allocation refusals passed",
+    "parked150 native checks passed"
+  ],
+  "limitations": [
+    "Native clone/descriptor/root services and stack probing are stubbed in the isolated fixture; complete native builder/copy/picker bytes execute.",
+    "No game run or installation. Live parked identity/fallback and visual outcome await user testing.",
+    "Private cache storage persists per distinct manager address until process exit; no fixed owner limit.",
+    "Separate full traffic snapshots and global audio-return interpretation remain outside this correction."
+  ]
+}

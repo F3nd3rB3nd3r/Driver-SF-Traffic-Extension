@@ -1,0 +1,29 @@
+{
+  "result": "passed",
+  "checks": [
+    "installer verifies native bytes/vtables and restores RX pages after refusal/partial unlock/flush rollback",
+    "1MiB aligned private backing/guards, 100 same-address generations, writer passthrough and more than4 owners passed",
+    "six reader bridges preserve stack/GPRs/flags/DF/x87/SSE and native branch outcomes",
+    "actual native reader with 1MiB ring passes async-busy, 3-block wrapped payload, commit, space/wrap/end stops and single32KiB issue cadence",
+    "allocation fallback remains native, and deleting destructor never dereferences the freed object",
+    "replay read checks passed"
+  ],
+  "source_sha256": {
+    "src/V29sReplayClient.inc": "d8dbf95fa2fa715f30995fbce2634e9a58b275166d4f86a4d7a98016f2513962",
+    "src/V29sReplayClientCore.inc": "33ee063a08aa36e7b990984b3dd75488d63a4325d622a9be817490c2295e2979",
+    "src/V29sReplayClientData.inc": "879d71c79444905e70598044ab0239226da0bb0d718ccfd8ac8722a0047639e7",
+    "src/V29sReplayClientNative.inc": "e2f20ea0a2d7e763d3cd327994b6900f941a02222780ba8996cbea411d54121f",
+    "src/V29sReplayClientBridges.inc": "52c9c5175e3515768d715d3121376b2627f4e5d6a2442d7f2cc47360c2f5d386",
+    "src/V29sReplayClientLayout.inc": "f29e23d3a18c72144d8c0b27510eb632642ea8da14025cacc74c0f741c1d4070",
+    "tests/ReplayClientTest.cpp": "d73229461e654a399af869241473119ee191f251323ff36bc8d1e97ab944f478",
+    "src/DriverSF_V29b_NativeFastPath.cpp": "ddb1405a326ad8b51bb0cb47bd79f2e9cb306f417da9ba9f55b9971aeeac690a",
+    "src/V29sCapacityTrace.inc": "2c49e25c2c9aa2c7277a8ffaca163ae4b309bd748785955a5c6b101180485d36",
+    "DriverSF_V29s_ARENA_REUSE.vcxproj": "cd04faf5a421952c05f1a226a64aec8dd17529963c6b5d6b1bb4d2fa1f85f30b",
+    "src/V29sReplayRead.inc": "2bebcff07b21343158dabea94db7ba165210411a17b2d2b547ca03a0f1942dae",
+    "src/V29sReplayReadCore.inc": "7fa7352228dad41ce9a5550888d6269bd75d2824eb54439ab35d888b278217e4",
+    "src/V29sReplayReadBridges.inc": "63bcf5c2f7d8ae7a5fd0549181aecb3efdffc709df2a9078c2df27e4bfa452c3",
+    "src/V29sReplayReadNative.inc": "2b39fad6425135e7a25937b37161bfd68a9b2d468edd04db962664840f4e87ca",
+    "src/V29sReplayReadLayout.inc": "cd0a179661f946c048c7ced5252ad4ef1349f4f0e1eb5671a53910beca88ede1",
+    "tests/ReplayReadTest.cpp": "c907c9ba320d6c787dce34291e658f224987fc0e73ea98ad2b66b4737b96773f"
+  }
+}

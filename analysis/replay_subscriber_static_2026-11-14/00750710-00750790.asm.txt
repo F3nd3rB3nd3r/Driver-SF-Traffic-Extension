@@ -1,0 +1,45 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00750710: 56                 push        esi
+  00750711: 8B F1              mov         esi,ecx
+  00750713: E8 78 63 FE FF     call        00736A90
+  00750718: C7 06 3C A9 E2 00  mov         dword ptr [esi],0E2A93Ch
+  0075071E: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00750723: 85 C0              test        eax,eax
+  00750725: 75 0A              jne         00750731
+  00750727: E8 64 9F CB FF     call        0040A690
+  0075072C: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00750731: 8B 80 C8 03 00 00  mov         eax,dword ptr [eax+000003C8h]
+  00750737: 89 B0 CC 57 00 00  mov         dword ptr [eax+000057CCh],esi
+  0075073D: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00750742: 85 C0              test        eax,eax
+  00750744: 75 0A              jne         00750750
+  00750746: E8 45 9F CB FF     call        0040A690
+  0075074B: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00750750: 8B 88 C8 02 00 00  mov         ecx,dword ptr [eax+000002C8h]
+  00750756: 89 71 44           mov         dword ptr [ecx+44h],esi
+  00750759: 8B C6              mov         eax,esi
+  0075075B: 5E                 pop         esi
+  0075075C: C3                 ret
+  0075075D: CC                 int         3
+  0075075E: CC                 int         3
+  0075075F: CC                 int         3
+  00750760: 56                 push        esi
+  00750761: 8B F1              mov         esi,ecx
+  00750763: C7 06 3C A9 E2 00  mov         dword ptr [esi],0E2A93Ch
+  00750769: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0075076E: 85 C0              test        eax,eax
+  00750770: 75 0A              jne         0075077C
+  00750772: E8 19 9F CB FF     call        0040A690
+  00750777: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0075077C: 8B 80 C8 03 00 00  mov         eax,dword ptr [eax+000003C8h]
+  00750782: C7 80 CC 57 00 00  mov         dword ptr [eax+000057CCh],0
+            00 00 00 00
+  0075078C: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+
+  Summary
+
+      9C8000 .text

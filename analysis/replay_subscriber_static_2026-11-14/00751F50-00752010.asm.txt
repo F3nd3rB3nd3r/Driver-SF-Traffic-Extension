@@ -1,0 +1,88 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00751F50: 51                 push        ecx
+  00751F51: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00751F56: 55                 push        ebp
+  00751F57: 8B E9              mov         ebp,ecx
+  00751F59: 85 C0              test        eax,eax
+  00751F5B: 75 0A              jne         00751F67
+  00751F5D: E8 2E 87 CB FF     call        0040A690
+  00751F62: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00751F67: 56                 push        esi
+  00751F68: 57                 push        edi
+  00751F69: 8B B8 2C 02 00 00  mov         edi,dword ptr [eax+0000022Ch]
+  00751F6F: 8B 80 84 06 00 00  mov         eax,dword ptr [eax+00000684h]
+  00751F75: 6A 00              push        0
+  00751F77: 8D 4C 24 10        lea         ecx,[esp+10h]
+  00751F7B: 51                 push        ecx
+  00751F7C: 8B C8              mov         ecx,eax
+  00751F7E: 83 CE FF           or          esi,0FFFFFFFFh
+  00751F81: E8 CA 56 05 00     call        007A7650
+  00751F86: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00751F8A: 85 C0              test        eax,eax
+  00751F8C: 74 14              je          00751FA2
+  00751F8E: 8B 80 B0 05 00 00  mov         eax,dword ptr [eax+000005B0h]
+  00751F94: 50                 push        eax
+  00751F95: 8D 8F 68 2D 01 00  lea         ecx,[edi+00012D68h]
+  00751F9B: E8 F0 78 FF FF     call        00749890
+  00751FA0: 8B F0              mov         esi,eax
+  00751FA2: 3B 75 08           cmp         esi,dword ptr [ebp+8]
+  00751FA5: 74 2C              je          00751FD3
+  00751FA7: 53                 push        ebx
+  00751FA8: 8B 9F 8C E5 04 00  mov         ebx,dword ptr [edi+0004E58Ch]
+  00751FAE: 6A 04              push        4
+  00751FB0: 8D 54 24 14        lea         edx,[esp+14h]
+  00751FB4: 52                 push        edx
+  00751FB5: 8B CF              mov         ecx,edi
+  00751FB7: 89 74 24 18        mov         dword ptr [esp+18h],esi
+  00751FBB: E8 20 6D FE FF     call        00738CE0
+  00751FC0: 51                 push        ecx
+  00751FC1: D9 1C 24           fstp        dword ptr [esp]
+  00751FC4: 6A 01              push        1
+  00751FC6: 6A 02              push        2
+  00751FC8: 8B CB              mov         ecx,ebx
+  00751FCA: E8 01 48 FF FF     call        007467D0
+  00751FCF: 89 75 08           mov         dword ptr [ebp+8],esi
+  00751FD2: 5B                 pop         ebx
+  00751FD3: 8D 4D 10           lea         ecx,[ebp+10h]
+  00751FD6: E8 95 3E 0E 00     call        00835E70
+  00751FDB: 5F                 pop         edi
+  00751FDC: 5E                 pop         esi
+  00751FDD: 84 C0              test        al,al
+  00751FDF: 74 0B              je          00751FEC
+  00751FE1: 8B CD              mov         ecx,ebp
+  00751FE3: 5D                 pop         ebp
+  00751FE4: 83 C4 04           add         esp,4
+  00751FE7: E9 54 FA FF FF     jmp         00751A40
+  00751FEC: 5D                 pop         ebp
+  00751FED: 59                 pop         ecx
+  00751FEE: C3                 ret
+  00751FEF: CC                 int         3
+  00751FF0: 56                 push        esi
+  00751FF1: 8B F1              mov         esi,ecx
+  00751FF3: E8 48 FA FF FF     call        00751A40
+  00751FF8: 6A 00              push        0
+  00751FFA: 8D 4E 10           lea         ecx,[esi+10h]
+  00751FFD: E8 2E 3F 0E 00     call        00835F30
+  00752002: 5E                 pop         esi
+  00752003: C3                 ret
+  00752004: CC                 int         3
+  00752005: CC                 int         3
+  00752006: CC                 int         3
+  00752007: CC                 int         3
+  00752008: CC                 int         3
+  00752009: CC                 int         3
+  0075200A: CC                 int         3
+  0075200B: CC                 int         3
+  0075200C: CC                 int         3
+  0075200D: CC                 int         3
+  0075200E: CC                 int         3
+  0075200F: CC                 int         3
+  00752010: 83
+
+  Summary
+
+      9C8000 .text

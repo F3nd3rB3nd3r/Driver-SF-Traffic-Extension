@@ -1,0 +1,45 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00754A20: 56                 push        esi
+  00754A21: 8B F1              mov         esi,ecx
+  00754A23: E8 68 20 FE FF     call        00736A90
+  00754A28: C7 46 08 38 79 DD  mov         dword ptr [esi+8],0DD7938h
+            00
+  00754A2F: C7 06 2C AE E2 00  mov         dword ptr [esi],0E2AE2Ch
+  00754A35: C7 46 08 18 AE E2  mov         dword ptr [esi+8],0E2AE18h
+            00
+  00754A3C: 8B C6              mov         eax,esi
+  00754A3E: 5E                 pop         esi
+  00754A3F: C3                 ret
+  00754A40: 56                 push        esi
+  00754A41: 57                 push        edi
+  00754A42: 8B F9              mov         edi,ecx
+  00754A44: 8D 77 08           lea         esi,[edi+8]
+  00754A47: C7 07 2C AE E2 00  mov         dword ptr [edi],0E2AE2Ch
+  00754A4D: C7 06 18 AE E2 00  mov         dword ptr [esi],0E2AE18h
+  00754A53: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00754A58: 85 C0              test        eax,eax
+  00754A5A: 75 0A              jne         00754A66
+  00754A5C: E8 2F 5C CB FF     call        0040A690
+  00754A61: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00754A66: 8B 80 2C 02 00 00  mov         eax,dword ptr [eax+0000022Ch]
+  00754A6C: 39 B0 E8 38 04 00  cmp         dword ptr [eax+000438E8h],esi
+  00754A72: 75 0A              jne         00754A7E
+  00754A74: C7 80 E8 38 04 00  mov         dword ptr [eax+000438E8h],0
+            00 00 00 00
+  00754A7E: 8B CF              mov         ecx,edi
+  00754A80: 5F                 pop         edi
+  00754A81: C7 06 30 5C EA 00  mov         dword ptr [esi],0EA5C30h
+  00754A87: 5E                 pop         esi
+  00754A88: E9 13 20 FE FF     jmp         00736AA0
+  00754A8D: CC                 int         3
+  00754A8E: CC                 int         3
+  00754A8F: CC                 int         3
+  00754A90: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,59 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00753730: 56                 push        esi
+  00753731: 8B F1              mov         esi,ecx
+  00753733: E8 58 33 FE FF     call        00736A90
+  00753738: C7 06 18 AD E2 00  mov         dword ptr [esi],0E2AD18h
+  0075373E: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00753743: 85 C0              test        eax,eax
+  00753745: 75 0A              jne         00753751
+  00753747: E8 44 6F CB FF     call        0040A690
+  0075374C: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00753751: 8B 80 20 03 00 00  mov         eax,dword ptr [eax+00000320h]
+  00753757: 89 B0 A0 00 00 00  mov         dword ptr [eax+000000A0h],esi
+  0075375D: 8B C6              mov         eax,esi
+  0075375F: 5E                 pop         esi
+  00753760: C3                 ret
+  00753761: CC                 int         3
+  00753762: CC                 int         3
+  00753763: CC                 int         3
+  00753764: CC                 int         3
+  00753765: CC                 int         3
+  00753766: CC                 int         3
+  00753767: CC                 int         3
+  00753768: CC                 int         3
+  00753769: CC                 int         3
+  0075376A: CC                 int         3
+  0075376B: CC                 int         3
+  0075376C: CC                 int         3
+  0075376D: CC                 int         3
+  0075376E: CC                 int         3
+  0075376F: CC                 int         3
+  00753770: 56                 push        esi
+  00753771: 8B F1              mov         esi,ecx
+  00753773: C7 06 18 AD E2 00  mov         dword ptr [esi],0E2AD18h
+  00753779: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0075377E: 85 C0              test        eax,eax
+  00753780: 75 0A              jne         0075378C
+  00753782: E8 09 6F CB FF     call        0040A690
+  00753787: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0075378C: 8B 80 20 03 00 00  mov         eax,dword ptr [eax+00000320h]
+  00753792: 39 B0 A0 00 00 00  cmp         dword ptr [eax+000000A0h],esi
+  00753798: 75 0A              jne         007537A4
+  0075379A: C7 80 A0 00 00 00  mov         dword ptr [eax+000000A0h],0
+            00 00 00 00
+  007537A4: 8B CE              mov         ecx,esi
+  007537A6: 5E                 pop         esi
+  007537A7: E9 F4 32 FE FF     jmp         00736AA0
+  007537AC: CC                 int         3
+  007537AD: CC                 int         3
+  007537AE: CC                 int         3
+  007537AF: CC                 int         3
+  007537B0: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

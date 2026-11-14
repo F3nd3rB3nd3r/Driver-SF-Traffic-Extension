@@ -1,0 +1,86 @@
+{
+  "result": "passed",
+  "source_sha256": {
+    "src/V29sReplay150.inc": "dbc030b38801648ba5a862979298bf139170112dc86e5dc3f49f1334502a4a91",
+    "src/V29sReplay150Core.inc": "2d8d84355f3582606195a1512e80ed7b4c87bc07d22aa9bb7dfb2e6b03b89dcb",
+    "src/V29sReplay150Layout.inc": "6d342180512bc46e39adc1c52bd27e5df76b651634ec6d7d9b311d1d90cda07c",
+    "src/V29sReplay150Native.inc": "575a3d479326bf2144de1a43ad8837e0704c8322a4562234fd00b9df13044435",
+    "tests/Replay150Test.cpp": "ad5d8cdb43d1372b7c2ad09d0be09a16139783569cecb27bf01c97354a77d7be"
+  },
+  "checks": [
+    "native retained-list filters, order and special model match",
+    "all seven patch boundaries, signature rejection and exact rollback passed",
+    "complete native producer reproduces ID181 overwrite",
+    "native save/load instruction slices: counts0..150, retained0/3/50/51/150/256, cached snapshots, guards and ABI passed",
+    "native phase tick: deferred1, restore2, completed0 and extra state passed",
+    "temporary storage recycled across threads, stack reuse and repeated transitions",
+    "oversize input, allocation failure and stale cache guard refused",
+    "additive pause import observer matches all imports",
+    "replay150 checks passed"
+  ],
+  "spans": [
+    [
+      "ReplayCapture",
+      7649184,
+      368
+    ],
+    [
+      "ReplayRestore",
+      7649824,
+      288
+    ],
+    [
+      "ReplayImport",
+      7650176,
+      112
+    ],
+    [
+      "ReplaySaveTraffic",
+      7652733,
+      5
+    ],
+    [
+      "ReplaySaveRetained",
+      7652767,
+      5
+    ],
+    [
+      "ReplayLoadTraffic",
+      7659273,
+      5
+    ],
+    [
+      "ReplayLoadRetained",
+      7659338,
+      5
+    ],
+    [
+      "ReplaySaveSlice",
+      7652670,
+      102
+    ],
+    [
+      "ReplayLoadSlice",
+      7659228,
+      173
+    ],
+    [
+      "ReplayRetainedClone",
+      5925296,
+      322
+    ],
+    [
+      "ReplayNativeRefs",
+      5925632,
+      128
+    ],
+    [
+      "ReplayTick",
+      7650112,
+      51
+    ]
+  ],
+  "extra_flags": [
+    "DSF_V29S_REPLAY_PAUSE=1"
+  ]
+}

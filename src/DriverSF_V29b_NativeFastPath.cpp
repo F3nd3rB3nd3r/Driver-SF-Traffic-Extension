@@ -2546,6 +2546,9 @@ static void EfDrainEvents() {
 #include "V29sIndexedCapacity.inc"
 #endif
 #include "V29sCapacityTrace.inc"
+#if defined(DSF_V29S_REGMAP_REUSE)
+#include "V29sRegMapRuntime.inc"
+#endif
 #if defined(DSF_V29S_AUDIO_DEFAULT_16M) || defined(DSF_V29S_AUDIO_DEFAULT_64M)
 #include "V29sAudioDefaultPoolPatch.inc"
 #endif
@@ -2590,7 +2593,25 @@ static void EfDrainEvents() {
 #if defined(DSF_V29S_PARKED150)
 #include "V29sParked150.inc"
 #if defined(DSF_V29S_REPLAY150)
+#if defined(DSF_V29S_REPLAY_HITCH)
+#include "V29sReplayHitchCore.inc"
+#endif
+#if defined(DSF_V29S_REPLAY_PAUSE)
+extern "C" void __cdecl PauseOnImport(UPtr snapshot);
+#endif
 #include "V29sReplay150.inc"
+#if defined(DSF_V29S_REPLAY_PAUSE)
+#include "V29sReplayPause.inc"
+#if defined(DSF_V29S_REPLAY_READ1M)
+#include "V29sReplayRead.inc"
+#endif
+#if defined(DSF_V29S_REPLAY_CLIENT)
+#include "V29sReplayClient.inc"
+#endif
+#if defined(DSF_V29S_REPLAY_HITCH)
+#include "V29sReplayHitch.inc"
+#endif
+#endif
 #endif
 #endif
 #endif
@@ -2647,6 +2668,21 @@ DWORD __stdcall Monitor(void*) {
         ParkPoll();
 #if defined(DSF_V29S_REPLAY150)
         ReplayPoll();
+#if defined(DSF_V29S_REPLAY_PAUSE)
+        PausePoll();
+#if defined(DSF_V29S_REPLAY_CLIENT)
+        SCPoll();
+#if defined(DSF_V29S_REPLAY_READ1M)
+        RFPoll();
+#endif
+#endif
+#if defined(DSF_V29S_REPLAY_HITCH)
+        RHPoll();
+#endif
+#if defined(DSF_V29S_REGMAP_REUSE)
+        RegMapPoll();
+#endif
+#endif
 #endif
 #endif
 #endif
@@ -3234,6 +3270,21 @@ extern "C" __declspec(dllexport) BOOL __stdcall DllMain(HMODULE module, DWORD re
             ParkInstall();
 #if defined(DSF_V29S_REPLAY150)
             ReplayInstall();
+#if defined(DSF_V29S_REPLAY_PAUSE)
+            PauseInstall();
+#if defined(DSF_V29S_REPLAY_CLIENT)
+            SCInstall();
+#if defined(DSF_V29S_REPLAY_READ1M)
+            RFInstall(g_scStatus==1);
+#endif
+#endif
+#if defined(DSF_V29S_REPLAY_HITCH)
+            RHInstall();
+#endif
+#if defined(DSF_V29S_REGMAP_REUSE)
+            RegMapStartLine();
+#endif
+#endif
 #endif
 #endif
 #endif

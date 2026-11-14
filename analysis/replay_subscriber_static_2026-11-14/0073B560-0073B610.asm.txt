@@ -1,0 +1,84 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0073B560: 53                 push        ebx
+  0073B561: 55                 push        ebp
+  0073B562: 8B 6C 24 10        mov         ebp,dword ptr [esp+10h]
+  0073B566: 8B 5D 00           mov         ebx,dword ptr [ebp]
+  0073B569: B8 4F EC C4 4E     mov         eax,4EC4EC4Fh
+  0073B56E: F7 E3              mul         eax,ebx
+  0073B570: C1 EA 02           shr         edx,2
+  0073B573: 6B D2 0D           imul        edx,edx,0Dh
+  0073B576: 56                 push        esi
+  0073B577: 8B C3              mov         eax,ebx
+  0073B579: 57                 push        edi
+  0073B57A: 8B F9              mov         edi,ecx
+  0073B57C: 2B C2              sub         eax,edx
+  0073B57E: 8B 8C 87 CC 00 00  mov         ecx,dword ptr [edi+eax*4+000000CCh]
+            00
+  0073B585: 8D B4 87 CC 00 00  lea         esi,[edi+eax*4+000000CCh]
+            00
+  0073B58C: 85 C9              test        ecx,ecx
+  0073B58E: 74 0B              je          0073B59B
+  0073B590: 39 59 08           cmp         dword ptr [ecx+8],ebx
+  0073B593: 74 3C              je          0073B5D1
+  0073B595: 8B 09              mov         ecx,dword ptr [ecx]
+  0073B597: 85 C9              test        ecx,ecx
+  0073B599: 75 F5              jne         0073B590
+  0073B59B: 55                 push        ebp
+  0073B59C: 8B CF              mov         ecx,edi
+  0073B59E: E8 FD FE FF FF     call        0073B4A0
+  0073B5A3: 8B 0E              mov         ecx,dword ptr [esi]
+  0073B5A5: 85 C9              test        ecx,ecx
+  0073B5A7: 74 39              je          0073B5E2
+  0073B5A9: 8B 49 04           mov         ecx,dword ptr [ecx+4]
+  0073B5AC: 89 48 04           mov         dword ptr [eax+4],ecx
+  0073B5AF: 8B 16              mov         edx,dword ptr [esi]
+  0073B5B1: 8B 0A              mov         ecx,dword ptr [edx]
+  0073B5B3: 89 08              mov         dword ptr [eax],ecx
+  0073B5B5: 8B 16              mov         edx,dword ptr [esi]
+  0073B5B7: 89 42 04           mov         dword ptr [edx+4],eax
+  0073B5BA: 8B 0E              mov         ecx,dword ptr [esi]
+  0073B5BC: 5F                 pop         edi
+  0073B5BD: 89 01              mov         dword ptr [ecx],eax
+  0073B5BF: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  0073B5C3: 5E                 pop         esi
+  0073B5C4: 5D                 pop         ebp
+  0073B5C5: 89 01              mov         dword ptr [ecx],eax
+  0073B5C7: C6 41 04 01        mov         byte ptr [ecx+4],1
+  0073B5CB: 8B C1              mov         eax,ecx
+  0073B5CD: 5B                 pop         ebx
+  0073B5CE: C2 08 00           ret         8
+  0073B5D1: 8B 44 24 14        mov         eax,dword ptr [esp+14h]
+  0073B5D5: 5F                 pop         edi
+  0073B5D6: 5E                 pop         esi
+  0073B5D7: 5D                 pop         ebp
+  0073B5D8: 89 08              mov         dword ptr [eax],ecx
+  0073B5DA: C6 40 04 00        mov         byte ptr [eax+4],0
+  0073B5DE: 5B                 pop         ebx
+  0073B5DF: C2 08 00           ret         8
+  0073B5E2: 8B 97 00 01 00 00  mov         edx,dword ptr [edi+00000100h]
+  0073B5E8: 8B 4C 24 14        mov         ecx,dword ptr [esp+14h]
+  0073B5EC: 89 50 04           mov         dword ptr [eax+4],edx
+  0073B5EF: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  0073B5F5: 89 06              mov         dword ptr [esi],eax
+  0073B5F7: 89 87 00 01 00 00  mov         dword ptr [edi+00000100h],eax
+  0073B5FD: 5F                 pop         edi
+  0073B5FE: 5E                 pop         esi
+  0073B5FF: 5D                 pop         ebp
+  0073B600: 89 01              mov         dword ptr [ecx],eax
+  0073B602: C6 41 04 01        mov         byte ptr [ecx+4],1
+  0073B606: 8B C1              mov         eax,ecx
+  0073B608: 5B                 pop         ebx
+  0073B609: C2 08 00           ret         8
+  0073B60C: CC                 int         3
+  0073B60D: CC                 int         3
+  0073B60E: CC                 int         3
+  0073B60F: CC                 int         3
+  0073B610: 8B
+
+  Summary
+
+      9C8000 .text

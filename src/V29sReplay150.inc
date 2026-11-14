@@ -18,7 +18,12 @@ static UPtr ReplaySpooler() {
 }
 static bool ReplayIdle(UPtr spooler){return Read32(spooler+0xDACu)==0u && Read32(spooler+0x9A8u)==0u && Read32(spooler+0xC8u)==0u;}
 static U32 ReplayRefs(UPtr owner,U32 id){typedef U32 (__thiscall* Fn)(void*,U32);return reinterpret_cast<Fn>(Address(0x005A6B00u))(reinterpret_cast<void*>(owner),id);}
-static void ReplayRequest(UPtr owner,const U32* ids,U32 count){typedef void (__thiscall* Fn)(void*,const U32*,U32);reinterpret_cast<Fn>(Address(0x005A79F0u))(reinterpret_cast<void*>(owner),ids,count);}
+static void ReplayRequest(UPtr owner,const U32* ids,U32 count){
+#if defined(DSF_REPLAY_HITCH_RUNTIME)
+    RHScope timing(RHRequest,owner,0u,count);
+#endif
+    typedef void (__thiscall* Fn)(void*,const U32*,U32);reinterpret_cast<Fn>(Address(0x005A79F0u))(reinterpret_cast<void*>(owner),ids,count);
+}
 static void ReplayReference(UPtr owner,U32 id,bool retain){typedef void (__thiscall* Fn)(void*,U32);reinterpret_cast<Fn>(Address(retain?0x005A7860u:0x005A78D0u))(reinterpret_cast<void*>(owner),id);}
 static void ReplayExtra(UPtr owner,U32 value){typedef void (__thiscall* Fn)(void*,U32);reinterpret_cast<Fn>(Address(0x005A6250u))(reinterpret_cast<void*>(owner),value);}
 static void ReplayAppend(UPtr stream,const void* source,U32 bytes){typedef void (__thiscall* Fn)(void*,const void*,U32);reinterpret_cast<Fn>(Address(0x007468A0u))(reinterpret_cast<void*>(stream),source,bytes);}

@@ -1,0 +1,19 @@
+{
+  "result": "passed",
+  "source_sha256": {
+    "src/V29sReplayPause.inc": "92f64fc243d39f0048b77f6c187e128199c200d5d27dc52aea2f11a432bf65e1",
+    "src/V29sReplayPauseCore.inc": "d5cdd643f149352f39e0ef071047db52635ef3afd762f04f93ad180e712456b2",
+    "src/V29sReplayPauseBridge.inc": "b3e3fec3b61464d03dcb4230c9167722a86317df5a9a595ed4a0c4189ef02e45",
+    "src/V29sReplayPauseLayout.inc": "ed5cd840427e42a0505e2154f311c51144c83168b3bbc0985669b1c5fcb32fcb",
+    "src/V29sReplayPauseNative.inc": "f753b776cc12bcf01c8979fc8e33138616e41feaaa3789975d6063a7467f0943",
+    "tests/ReplayPauseTest.cpp": "79be770149c55299d693ca7c5c71718605fb355624e13a090a15889f5af1262c"
+  },
+  "checks": [
+    "full update signature, one-site patch and exact rollback passed",
+    "captured paused/loading state completes once; native notifications, lifecycle, pause and clock preserved",
+    "actual native readiness code holds loading for busy subscribers/world and completes on retry",
+    "mode/loading/lifecycle/transition/phase/countdown/rate/import/thread/cache/lifetime guards passed",
+    "import-during-update, native debug branch, reentrancy, repeated loads and x86/x87 ABI passed",
+    "replay pause checks passed"
+  ]
+}

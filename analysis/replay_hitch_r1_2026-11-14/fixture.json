@@ -1,0 +1,31 @@
+{
+  "result": "passed",
+  "checks": [
+    "real RX installation, adjacent RX/RWX signature recheck and rollback checks passed",
+    "all five bridges preserve native calls, stack arguments, GPRs, flags/DF, x87 and SSE state",
+    "clock hold/recovery, independent busy predicates and replay exit tracking checks passed",
+    "bounded depth/thread/ring pressure drops telemetry without blocking native work",
+    "replay hitch checks passed"
+  ],
+  "source_sha256": {
+    "src/V29sReplayHitch.inc": "926de195d2dd89342659d94b661582d35cc9f3f01be5de588cd7e6224c89e3b1",
+    "src/V29sReplayHitchCore.inc": "8a69889e39402e2ae4fa030dec4e10bcea1ae6a797ca584a748367a972eb3ae1",
+    "src/V29sReplayHitchLayout.inc": "c1a37c19b933a3ef76e22ab0200bfd2802d8562f395726f44d90605f985cafcc",
+    "src/V29sReplayHitchBridges.inc": "51fd5f2c7bc64530a00cf02e19aac385aac340f8d7597535ca2cdb2b509c5bd8",
+    "src/V29sReplayHitchNative.inc": "23e354ffc93babb27b2785b795c97ae86ff7b6a562d49c1562053a9a318ca316",
+    "tests/ReplayHitchTest.cpp": "95dd6921f4ade09693560f4d110cf2fa4b8f3404d0fe0c57a115f29bd535a505",
+    "src/V29sReplay150.inc": "a848575f85254a10f9cecbc309f45961e61f57a9e5939e33c040f274885eeb22",
+    "src/V29sReplay150Core.inc": "ae1a9dbb554373d222e037bf6cee0d0988f975bc2dce132cf677eb7a6f85e34a",
+    "src/V29sReplayPause.inc": "92f64fc243d39f0048b77f6c187e128199c200d5d27dc52aea2f11a432bf65e1",
+    "src/V29sCapacityTrace.inc": "44d49d7e2542a2a4e9549d0e0d1caeef5b5bb047fa8db8405ff5762db7400513",
+    "src/DriverSF_V29b_NativeFastPath.cpp": "d53dd4936b2b69c8232ca804ed21599bab18a00cb005a3bb5d753a01311ecb11",
+    "DriverSF_V29s_ARENA_REUSE.vcxproj": "58902aca349ca4eeafa46849ff59da475b7335eb0482ab8eb52a938102df82c1"
+  },
+  "parser": {
+    "result": "passed",
+    "checks": [
+      "duration units and incomplete/bad/drop/startup rejection",
+      "no smoothness certification from structural checks"
+    ]
+  }
+}

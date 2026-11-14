@@ -1,0 +1,42 @@
+{
+  "result": "passed",
+  "name": "DriverSF_V29s_160Capacity_150Request_REGMAP_REUSE_R2",
+  "bytes": 253440,
+  "sha256": "8d180487ca129e0bc88f880265427858cab9e48e9730bbba112c077d38b5bdaa",
+  "requests": 150,
+  "graphics_slots": 160,
+  "notification_payload_ids": 150,
+  "notification_frame_bytes": 608,
+  "patches": 5,
+  "all_other_capacity_settings_preserved": true,
+  "full_native_blocks": [
+    "Notify",
+    "Record",
+    "Ring",
+    "Replay"
+  ],
+  "fixture_checks": [
+    "native stock51/150 overflow return value reproduced with test-harness return repair",
+    "frame-only fix produces wrong ID51",
+    "all counts0..150 through complete native callback/writer/ring",
+    "original event header/type/timestamp/byte length",
+    "contiguous and wrapping native ring writes with guards",
+    "150 IDs round-trip through native replay dispatcher",
+    "replay readiness gate refusal",
+    "both callback gates retain native behavior",
+    "callee-saved registers,RET8 stack and x87 stack balance",
+    "oversize/missing/stale/mismatched-prefix sources refused before writes"
+  ],
+  "source_sha256": {
+    "src/V29sNotify150.inc": "e29a111ee496486e81394b500b71240d24caffac50d05b7827f553a6fce0a947",
+    "src/V29sNotify150Core.inc": "f57fd65642825a8c7673ee844524c230be162bf784d9de2d504418ceadda8260",
+    "src/V29sNotify150Layout.inc": "3a745b775c79e2fbc6124eabeec2fe3f76ea5c31f926aade1ead270185a2985c",
+    "src/V29sNotify150Native.inc": "3e169301e8e096438aa93653128c4fe4f24570ed157658605ebc14b58d90e46d",
+    "tests/Notify150Test.cpp": "014e32502701d796523d4c69da33ea673baa95fccac4f18c6cf066b7cecd59cb"
+  },
+  "limitations": [
+    "External factory/timestamp and replay request service are stubbed; actual native callback/writer/ring/dispatcher bytes execute.",
+    "Recorded traffic events tested; separate fixed-size full traffic snapshot format is not expanded.",
+    "No game run or installation; no universal pool/readiness/rendering/audio guarantee."
+  ]
+}

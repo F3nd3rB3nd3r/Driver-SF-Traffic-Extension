@@ -1,0 +1,99 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0086BFA0: 56                 push        esi
+  0086BFA1: 8B F1              mov         esi,ecx
+  0086BFA3: 33 C9              xor         ecx,ecx
+  0086BFA5: 89 4E 14           mov         dword ptr [esi+14h],ecx
+  0086BFA8: 89 4E 1C           mov         dword ptr [esi+1Ch],ecx
+  0086BFAB: 89 4E 20           mov         dword ptr [esi+20h],ecx
+  0086BFAE: 8D 46 24           lea         eax,[esi+24h]
+  0086BFB1: 89 46 18           mov         dword ptr [esi+18h],eax
+  0086BFB4: 8D 86 40 02 00 00  lea         eax,[esi+00000240h]
+  0086BFBA: 89 86 44 02 00 00  mov         dword ptr [esi+00000244h],eax
+  0086BFC0: 89 00              mov         dword ptr [eax],eax
+  0086BFC2: C7 86 48 02 00 00  mov         dword ptr [esi+00000248h],0ECh
+            EC 00 00 00
+  0086BFCC: C7 86 4C 02 00 00  mov         dword ptr [esi+0000024Ch],3
+            03 00 00 00
+  0086BFD6: C7 06 D0 95 E3 00  mov         dword ptr [esi],0E395D0h
+  0086BFDC: 89 8E 50 02 00 00  mov         dword ptr [esi+00000250h],ecx
+  0086BFE2: 8D 86 98 06 00 00  lea         eax,[esi+00000698h]
+  0086BFE8: 8D 96 60 02 00 00  lea         edx,[esi+00000260h]
+  0086BFEE: 89 96 54 02 00 00  mov         dword ptr [esi+00000254h],edx
+  0086BFF4: 89 8E 58 02 00 00  mov         dword ptr [esi+00000258h],ecx
+  0086BFFA: 89 8E 5C 02 00 00  mov         dword ptr [esi+0000025Ch],ecx
+  0086C000: 89 86 9C 06 00 00  mov         dword ptr [esi+0000069Ch],eax
+  0086C006: 89 00              mov         dword ptr [eax],eax
+  0086C008: E8 03 CA 01 00     call        00888A10
+  0086C00D: 8B C6              mov         eax,esi
+  0086C00F: 5E                 pop         esi
+  0086C010: C3                 ret
+  0086C011: CC                 int         3
+  0086C012: CC                 int         3
+  0086C013: CC                 int         3
+  0086C014: CC                 int         3
+  0086C015: CC                 int         3
+  0086C016: CC                 int         3
+  0086C017: CC                 int         3
+  0086C018: CC                 int         3
+  0086C019: CC                 int         3
+  0086C01A: CC                 int         3
+  0086C01B: CC                 int         3
+  0086C01C: CC                 int         3
+  0086C01D: CC                 int         3
+  0086C01E: CC                 int         3
+  0086C01F: CC                 int         3
+  0086C020: 8B 01              mov         eax,dword ptr [ecx]
+  0086C022: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0086C026: 8B 40 20           mov         eax,dword ptr [eax+20h]
+  0086C029: 52                 push        edx
+  0086C02A: FF D0              call        eax
+  0086C02C: 33 C9              xor         ecx,ecx
+  0086C02E: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  0086C031: 0F 95 C1           setne       cl
+  0086C034: 8A C1              mov         al,cl
+  0086C036: C2 04 00           ret         4
+  0086C039: CC                 int         3
+  0086C03A: CC                 int         3
+  0086C03B: CC                 int         3
+  0086C03C: CC                 int         3
+  0086C03D: CC                 int         3
+  0086C03E: CC                 int         3
+  0086C03F: CC                 int         3
+  0086C040: 56                 push        esi
+  0086C041: 8B F1              mov         esi,ecx
+  0086C043: C7 06 D0 95 E3 00  mov         dword ptr [esi],0E395D0h
+  0086C049: E8 02 CD 01 00     call        00888D50
+  0086C04E: F6 44 24 08 01     test        byte ptr [esp+8],1
+  0086C053: C7 06 30 5C EA 00  mov         dword ptr [esi],0EA5C30h
+  0086C059: 74 09              je          0086C064
+  0086C05B: 56                 push        esi
+  0086C05C: E8 F9 C6 3B 00     call        00C2875A
+  0086C061: 83 C4 04           add         esp,4
+  0086C064: 8B C6              mov         eax,esi
+  0086C066: 5E                 pop         esi
+  0086C067: C2 04 00           ret         4
+  0086C06A: CC                 int         3
+  0086C06B: CC                 int         3
+  0086C06C: CC                 int         3
+  0086C06D: CC                 int         3
+  0086C06E: CC                 int         3
+  0086C06F: CC                 int         3
+  0086C070: 68 A4 06 00 00     push        6A4h
+  0086C075: E8 06 C7 3B 00     call        00C28780
+  0086C07A: 83 C4 04           add         esp,4
+  0086C07D: 85 C0              test        eax,eax
+  0086C07F: 74 10              je          0086C091
+  0086C081: 8B C8              mov         ecx,eax
+  0086C083: E8 18 FF FF FF     call        0086BFA0
+  0086C088: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  0086C08C: 89 01              mov         dword ptr [ecx],eax
+  0086C08E: 8B C1              mov         eax,ecx
+  0086C090: C3                 ret
+
+  Summary
+
+      9C8000 .text

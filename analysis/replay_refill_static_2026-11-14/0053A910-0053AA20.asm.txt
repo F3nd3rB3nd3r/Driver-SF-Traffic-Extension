@@ -1,0 +1,123 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0053A910: F3 0F 10 44 24 04  movss       xmm0,dword ptr [esp+4]
+  0053A916: F3 0F 10 49 2C     movss       xmm1,dword ptr [ecx+2Ch]
+  0053A91B: 51                 push        ecx
+  0053A91C: F3 0F 59 C8        mulss       xmm1,xmm0
+  0053A920: F3 0F 11 41 28     movss       dword ptr [ecx+28h],xmm0
+  0053A925: F3 0F 11 0C 24     movss       dword ptr [esp],xmm1
+  0053A92A: E8 B1 FE FF FF     call        0053A7E0
+  0053A92F: C2 04 00           ret         4
+  0053A932: CC                 int         3
+  0053A933: CC                 int         3
+  0053A934: CC                 int         3
+  0053A935: CC                 int         3
+  0053A936: CC                 int         3
+  0053A937: CC                 int         3
+  0053A938: CC                 int         3
+  0053A939: CC                 int         3
+  0053A93A: CC                 int         3
+  0053A93B: CC                 int         3
+  0053A93C: CC                 int         3
+  0053A93D: CC                 int         3
+  0053A93E: CC                 int         3
+  0053A93F: CC                 int         3
+  0053A940: 57                 push        edi
+  0053A941: 8B F9              mov         edi,ecx
+  0053A943: 80 7F 20 00        cmp         byte ptr [edi+20h],0
+  0053A947: 75 22              jne         0053A96B
+  0053A949: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053A94E: 85 C0              test        eax,eax
+  0053A950: 75 0A              jne         0053A95C
+  0053A952: E8 39 FD EC FF     call        0040A690
+  0053A957: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053A95C: 56                 push        esi
+  0053A95D: 8B 70 7C           mov         esi,dword ptr [eax+7Ch]
+  0053A960: 8B CF              mov         ecx,edi
+  0053A962: E8 D9 FD FF FF     call        0053A740
+  0053A967: D9 5E 04           fstp        dword ptr [esi+4]
+  0053A96A: 5E                 pop         esi
+  0053A96B: 5F                 pop         edi
+  0053A96C: C2 08 00           ret         8
+  0053A96F: CC                 int         3
+  0053A970: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053A975: 56                 push        esi
+  0053A976: 8B F1              mov         esi,ecx
+  0053A978: 85 C0              test        eax,eax
+  0053A97A: 75 0A              jne         0053A986
+  0053A97C: E8 0F FD EC FF     call        0040A690
+  0053A981: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053A986: 8B 48 2C           mov         ecx,dword ptr [eax+2Ch]
+  0053A989: D9 46 2C           fld         dword ptr [esi+2Ch]
+  0053A98C: 51                 push        ecx
+  0053A98D: D9 1C 24           fstp        dword ptr [esp]
+  0053A990: 56                 push        esi
+  0053A991: E8 0A 2E 32 00     call        0085D7A0
+  0053A996: F3 0F 10 46 28     movss       xmm0,dword ptr [esi+28h]
+  0053A99B: F3 0F 59 46 2C     mulss       xmm0,dword ptr [esi+2Ch]
+  0053A9A0: 51                 push        ecx
+  0053A9A1: 8B CE              mov         ecx,esi
+  0053A9A3: F3 0F 11 04 24     movss       dword ptr [esp],xmm0
+  0053A9A8: E8 33 FE FF FF     call        0053A7E0
+  0053A9AD: 5E                 pop         esi
+  0053A9AE: C3                 ret
+  0053A9AF: CC                 int         3
+  0053A9B0: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053A9B5: 56                 push        esi
+  0053A9B6: 8B F1              mov         esi,ecx
+  0053A9B8: 85 C0              test        eax,eax
+  0053A9BA: 75 0A              jne         0053A9C6
+  0053A9BC: E8 CF FC EC FF     call        0040A690
+  0053A9C1: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053A9C6: 8B 48 2C           mov         ecx,dword ptr [eax+2Ch]
+  0053A9C9: 56                 push        esi
+  0053A9CA: E8 E1 2F 32 00     call        0085D9B0
+  0053A9CF: 5E                 pop         esi
+  0053A9D0: C3                 ret
+  0053A9D1: CC                 int         3
+  0053A9D2: CC                 int         3
+  0053A9D3: CC                 int         3
+  0053A9D4: CC                 int         3
+  0053A9D5: CC                 int         3
+  0053A9D6: CC                 int         3
+  0053A9D7: CC                 int         3
+  0053A9D8: CC                 int         3
+  0053A9D9: CC                 int         3
+  0053A9DA: CC                 int         3
+  0053A9DB: CC                 int         3
+  0053A9DC: CC                 int         3
+  0053A9DD: CC                 int         3
+  0053A9DE: CC                 int         3
+  0053A9DF: CC                 int         3
+  0053A9E0: 51                 push        ecx
+  0053A9E1: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053A9E6: 85 C0              test        eax,eax
+  0053A9E8: 75 0A              jne         0053A9F4
+  0053A9EA: E8 A1 FC EC FF     call        0040A690
+  0053A9EF: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053A9F4: 8D 0C 24           lea         ecx,[esp]
+  0053A9F7: 51                 push        ecx
+  0053A9F8: 8B 88 78 06 00 00  mov         ecx,dword ptr [eax+00000678h]
+  0053A9FE: 81 C1 9C 03 00 00  add         ecx,39Ch
+  0053AA04: E8 77 00 28 00     call        007BAA80
+  0053AA09: 8B 14 24           mov         edx,dword ptr [esp]
+  0053AA0C: 33 C0              xor         eax,eax
+  0053AA0E: 3B 15 80 DD F2 00  cmp         edx,dword ptr ds:[00F2DD80h]
+  0053AA14: 0F 94 C0           sete        al
+  0053AA17: 59                 pop         ecx
+  0053AA18: C3                 ret
+  0053AA19: CC                 int         3
+  0053AA1A: CC                 int         3
+  0053AA1B: CC                 int         3
+  0053AA1C: CC                 int         3
+  0053AA1D: CC                 int         3
+  0053AA1E: CC                 int         3
+  0053AA1F: CC                 int         3
+  0053AA20: 51                 push        ecx
+
+  Summary
+
+      9C8000 .text

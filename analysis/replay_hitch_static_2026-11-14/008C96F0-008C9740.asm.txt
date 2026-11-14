@@ -1,0 +1,33 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  008C96F0: 80 7C 24 04 00     cmp         byte ptr [esp+4],0
+  008C96F5: 56                 push        esi
+  008C96F6: 8B F1              mov         esi,ecx
+  008C96F8: 0F 84 B9 00 00 00  je          008C97B7
+  008C96FE: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  008C9703: 85 C0              test        eax,eax
+  008C9705: 75 0A              jne         008C9711
+  008C9707: E8 84 0F B4 FF     call        0040A690
+  008C970C: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  008C9711: 8B 80 84 05 00 00  mov         eax,dword ptr [eax+00000584h]
+  008C9717: F3 0F 10 40 0C     movss       xmm0,dword ptr [eax+0Ch]
+  008C971C: 57                 push        edi
+  008C971D: 8B BE A0 71 00 00  mov         edi,dword ptr [esi+000071A0h]
+  008C9723: F3 0F 11 44 24 0C  movss       dword ptr [esp+0Ch],xmm0
+  008C9729: 85 FF              test        edi,edi
+  008C972B: 74 12              je          008C973F
+  008C972D: 8D 49 00           lea         ecx,[ecx]
+  008C9730: 8B 4F 0C           mov         ecx,dword ptr [edi+0Ch]
+  008C9733: E8 78 61 00 00     call        008CF8B0
+  008C9738: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  008C973B: 85 FF              test        edi,edi
+  008C973D: 75 F1              jne         008C9730
+  008C973F: 8B
+  008C9740: 8E
+
+  Summary
+
+      9C8000 .text

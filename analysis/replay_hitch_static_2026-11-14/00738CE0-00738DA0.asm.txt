@@ -1,0 +1,79 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00738CE0: 56                 push        esi
+  00738CE1: 8B F1              mov         esi,ecx
+  00738CE3: 83 BE 88 E5 04 00  cmp         dword ptr [esi+0004E588h],2
+            02
+  00738CEA: 75 08              jne         00738CF4
+  00738CEC: D9 86 A0 E9 04 00  fld         dword ptr [esi+0004E9A0h]
+  00738CF2: 5E                 pop         esi
+  00738CF3: C3                 ret
+  00738CF4: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00738CF9: 85 C0              test        eax,eax
+  00738CFB: 75 0A              jne         00738D07
+  00738CFD: E8 8E 19 CD FF     call        0040A690
+  00738D02: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00738D07: 8B 40 7C           mov         eax,dword ptr [eax+7Ch]
+  00738D0A: DB 40 08           fild        dword ptr [eax+8]
+  00738D0D: D8 0D 80 6D DD 00  fmul        dword ptr ds:[00DD6D80h]
+  00738D13: D8 A6 E8 E9 04 00  fsub        dword ptr [esi+0004E9E8h]
+  00738D19: 5E                 pop         esi
+  00738D1A: C3                 ret
+  00738D1B: CC                 int         3
+  00738D1C: CC                 int         3
+  00738D1D: CC                 int         3
+  00738D1E: CC                 int         3
+  00738D1F: CC                 int         3
+  00738D20: 56                 push        esi
+  00738D21: 8B F1              mov         esi,ecx
+  00738D23: 83 BE 88 E5 04 00  cmp         dword ptr [esi+0004E588h],0
+            00
+  00738D2A: 74 6F              je          00738D9B
+  00738D2C: 83 BE 8C E5 04 00  cmp         dword ptr [esi+0004E58Ch],0
+            00
+  00738D33: 74 5F              je          00738D94
+  00738D35: E8 96 EC FF FF     call        007379D0
+  00738D3A: 84 C0              test        al,al
+  00738D3C: 74 18              je          00738D56
+  00738D3E: 8B 86 8C E5 04 00  mov         eax,dword ptr [esi+0004E58Ch]
+  00738D44: 80 B8 8C 85 00 00  cmp         byte ptr [eax+0000858Ch],0
+            00
+  00738D4B: 74 47              je          00738D94
+  00738D4D: 83 B8 84 85 00 00  cmp         dword ptr [eax+00008584h],0
+            00
+  00738D54: 75 3E              jne         00738D94
+  00738D56: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00738D5B: 85 C0              test        eax,eax
+  00738D5D: 75 0A              jne         00738D69
+  00738D5F: E8 2C 19 CD FF     call        0040A690
+  00738D64: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00738D69: 8B 88 04 02 00 00  mov         ecx,dword ptr [eax+00000204h]
+  00738D6F: E8 1C 39 E6 FF     call        0059C690
+  00738D74: 85 C0              test        eax,eax
+  00738D76: 74 1C              je          00738D94
+  00738D78: 8B 86 F4 E9 04 00  mov         eax,dword ptr [esi+0004E9F4h]
+  00738D7E: 85 C0              test        eax,eax
+  00738D80: 74 0E              je          00738D90
+  00738D82: 83 F8 03           cmp         eax,3
+  00738D85: 75 0D              jne         00738D94
+  00738D87: 83 BE 80 E3 04 00  cmp         dword ptr [esi+0004E380h],0
+            00
+  00738D8E: 75 04              jne         00738D94
+  00738D90: 33 C0              xor         eax,eax
+  00738D92: 5E                 pop         esi
+  00738D93: C3                 ret
+  00738D94: B8 01 00 00 00     mov         eax,1
+  00738D99: 5E                 pop         esi
+  00738D9A: C3                 ret
+  00738D9B: 32 C0              xor         al,al
+  00738D9D: 5E                 pop         esi
+  00738D9E: C3                 ret
+  00738D9F: CC                 int         3
+  00738DA0: 51                 push        ecx
+
+  Summary
+
+      9C8000 .text

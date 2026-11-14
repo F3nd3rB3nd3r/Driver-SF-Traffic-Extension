@@ -40,7 +40,23 @@ static void CapacityOpen() {
 #if defined(DSF_V29S_NOTIFY150)
 #if defined(DSF_V29S_PARKED150)
 #if defined(DSF_V29S_REPLAY150)
+#if defined(DSF_V29S_REPLAY_PAUSE)
+#if defined(DSF_V29S_REGMAP_REUSE)
+#if defined(DSF_V29S_REPLAY_READ1M)
+    AppendText(p,"DSFV29s_replay_read1m_",end);
+#elif defined(DSF_V29S_REPLAY_CLIENT)
+    AppendText(p,"DSFV29s_replay_client_",end);
+#elif defined(DSF_V29S_REPLAY_HITCH)
+    AppendText(p,"DSFV29s_replay_hitch_",end);
+#else
+    AppendText(p,"DSFV29s_regmap_reuse_",end);
+#endif
+#else
+    AppendText(p,"DSFV29s_replay_pause_",end);
+#endif
+#else
     AppendText(p,"DSFV29s_replay150_",end);
+#endif
 #else
     AppendText(p,"DSFV29s_parked150_",end);
 #endif

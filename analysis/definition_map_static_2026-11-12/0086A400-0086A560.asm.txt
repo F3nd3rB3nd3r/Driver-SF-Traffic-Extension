@@ -1,0 +1,170 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0086A400: B8 B8 11 EE 00     mov         eax,0EE11B8h
+  0086A405: C3                 ret
+  0086A406: CC                 int         3
+  0086A407: CC                 int         3
+  0086A408: CC                 int         3
+  0086A409: CC                 int         3
+  0086A40A: CC                 int         3
+  0086A40B: CC                 int         3
+  0086A40C: CC                 int         3
+  0086A40D: CC                 int         3
+  0086A40E: CC                 int         3
+  0086A40F: CC                 int         3
+  0086A410: B8 B8 11 EE 00     mov         eax,0EE11B8h
+  0086A415: C3                 ret
+  0086A416: CC                 int         3
+  0086A417: CC                 int         3
+  0086A418: CC                 int         3
+  0086A419: CC                 int         3
+  0086A41A: CC                 int         3
+  0086A41B: CC                 int         3
+  0086A41C: CC                 int         3
+  0086A41D: CC                 int         3
+  0086A41E: CC                 int         3
+  0086A41F: CC                 int         3
+  0086A420: 53                 push        ebx
+  0086A421: 57                 push        edi
+  0086A422: 33 C0              xor         eax,eax
+  0086A424: B9 FB 01 00 00     mov         ecx,1FBh
+  0086A429: BF 5C 90 44 01     mov         edi,144905Ch
+  0086A42E: BB 01 00 00 00     mov         ebx,1
+  0086A433: F3 AB              rep stos    dword ptr es:[edi]
+  0086A435: C7 05 54 90 44 01  mov         dword ptr ds:[01449054h],86A4A0h
+            A0 A4 86 00
+  0086A43F: 84 1D 24 72 FE 00  test        byte ptr ds:[00FE7224h],bl
+  0086A445: 75 1D              jne         0086A464
+  0086A447: 09 1D 24 72 FE 00  or          dword ptr ds:[00FE7224h],ebx
+  0086A44D: 68 90 83 40 00     push        408390h
+  0086A452: E8 39 E1 3B 00     call        00C28590
+  0086A457: 83 C4 04           add         esp,4
+  0086A45A: C7 05 20 72 FE 00  mov         dword ptr ds:[00FE7220h],0
+            00 00 00 00
+  0086A464: A1 20 72 FE 00     mov         eax,dword ptr ds:[00FE7220h]
+  0086A469: A3 58 90 44 01     mov         dword ptr ds:[01449058h],eax
+  0086A46E: 84 1D 24 72 FE 00  test        byte ptr ds:[00FE7224h],bl
+  0086A474: 75 13              jne         0086A489
+  0086A476: 09 1D 24 72 FE 00  or          dword ptr ds:[00FE7224h],ebx
+  0086A47C: 68 90 83 40 00     push        408390h
+  0086A481: E8 0A E1 3B 00     call        00C28590
+  0086A486: 83 C4 04           add         esp,4
+  0086A489: 5F                 pop         edi
+  0086A48A: B8 5C 90 44 01     mov         eax,144905Ch
+  0086A48F: C7 05 20 72 FE 00  mov         dword ptr ds:[00FE7220h],1449054h
+            54 90 44 01
+  0086A499: 5B                 pop         ebx
+  0086A49A: C3                 ret
+  0086A49B: CC                 int         3
+  0086A49C: CC                 int         3
+  0086A49D: CC                 int         3
+  0086A49E: CC                 int         3
+  0086A49F: CC                 int         3
+  0086A4A0: 83 3D 48 98 44 01  cmp         dword ptr ds:[01449848h],0
+            00
+  0086A4A7: 75 0A              jne         0086A4B3
+  0086A4A9: E8 72 FF FF FF     call        0086A420
+  0086A4AE: A3 48 98 44 01     mov         dword ptr ds:[01449848h],eax
+  0086A4B3: C3                 ret
+  0086A4B4: CC                 int         3
+  0086A4B5: CC                 int         3
+  0086A4B6: CC                 int         3
+  0086A4B7: CC                 int         3
+  0086A4B8: CC                 int         3
+  0086A4B9: CC                 int         3
+  0086A4BA: CC                 int         3
+  0086A4BB: CC                 int         3
+  0086A4BC: CC                 int         3
+  0086A4BD: CC                 int         3
+  0086A4BE: CC                 int         3
+  0086A4BF: CC                 int         3
+  0086A4C0: A1 48 98 44 01     mov         eax,dword ptr ds:[01449848h]
+  0086A4C5: 85 C0              test        eax,eax
+  0086A4C7: 75 0A              jne         0086A4D3
+  0086A4C9: E8 52 FF FF FF     call        0086A420
+  0086A4CE: A3 48 98 44 01     mov         dword ptr ds:[01449848h],eax
+  0086A4D3: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  0086A4D7: 56                 push        esi
+  0086A4D8: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  0086A4DC: 51                 push        ecx
+  0086A4DD: 50                 push        eax
+  0086A4DE: 56                 push        esi
+  0086A4DF: E8 BC FD FF FF     call        0086A2A0
+  0086A4E4: 83 C4 0C           add         esp,0Ch
+  0086A4E7: 8B C6              mov         eax,esi
+  0086A4E9: 5E                 pop         esi
+  0086A4EA: C3                 ret
+  0086A4EB: CC                 int         3
+  0086A4EC: CC                 int         3
+  0086A4ED: CC                 int         3
+  0086A4EE: CC                 int         3
+  0086A4EF: CC                 int         3
+  0086A4F0: A1 48 98 44 01     mov         eax,dword ptr ds:[01449848h]
+  0086A4F5: 85 C0              test        eax,eax
+  0086A4F7: 75 0A              jne         0086A503
+  0086A4F9: E8 22 FF FF FF     call        0086A420
+  0086A4FE: A3 48 98 44 01     mov         dword ptr ds:[01449848h],eax
+  0086A503: 8B 4C 24 08        mov         ecx,dword ptr [esp+8]
+  0086A507: 8B 54 24 04        mov         edx,dword ptr [esp+4]
+  0086A50B: 51                 push        ecx
+  0086A50C: 52                 push        edx
+  0086A50D: 50                 push        eax
+  0086A50E: E8 6D FD FF FF     call        0086A280
+  0086A513: 83 C4 0C           add         esp,0Ch
+  0086A516: C3                 ret
+  0086A517: CC                 int         3
+  0086A518: CC                 int         3
+  0086A519: CC                 int         3
+  0086A51A: CC                 int         3
+  0086A51B: CC                 int         3
+  0086A51C: CC                 int         3
+  0086A51D: CC                 int         3
+  0086A51E: CC                 int         3
+  0086A51F: CC                 int         3
+  0086A520: A1 48 98 44 01     mov         eax,dword ptr ds:[01449848h]
+  0086A525: 85 C0              test        eax,eax
+  0086A527: 75 0A              jne         0086A533
+  0086A529: E8 F2 FE FF FF     call        0086A420
+  0086A52E: A3 48 98 44 01     mov         dword ptr ds:[01449848h],eax
+  0086A533: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  0086A537: 51                 push        ecx
+  0086A538: 50                 push        eax
+  0086A539: E8 52 FD FF FF     call        0086A290
+  0086A53E: 83 C4 08           add         esp,8
+  0086A541: C3                 ret
+  0086A542: CC                 int         3
+  0086A543: CC                 int         3
+  0086A544: CC                 int         3
+  0086A545: CC                 int         3
+  0086A546: CC                 int         3
+  0086A547: CC                 int         3
+  0086A548: CC                 int         3
+  0086A549: CC                 int         3
+  0086A54A: CC                 int         3
+  0086A54B: CC                 int         3
+  0086A54C: CC                 int         3
+  0086A54D: CC                 int         3
+  0086A54E: CC                 int         3
+  0086A54F: CC                 int         3
+  0086A550: 8A 41 08           mov         al,byte ptr [ecx+8]
+  0086A553: C3                 ret
+  0086A554: CC                 int         3
+  0086A555: CC                 int         3
+  0086A556: CC                 int         3
+  0086A557: CC                 int         3
+  0086A558: CC                 int         3
+  0086A559: CC                 int         3
+  0086A55A: CC                 int         3
+  0086A55B: CC                 int         3
+  0086A55C: CC                 int         3
+  0086A55D: CC                 int         3
+  0086A55E: CC                 int         3
+  0086A55F: CC                 int         3
+  0086A560: 8B
+
+  Summary
+
+      9C8000 .text

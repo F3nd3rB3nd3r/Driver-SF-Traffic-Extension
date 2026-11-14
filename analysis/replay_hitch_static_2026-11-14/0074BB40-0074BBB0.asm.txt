@@ -1,0 +1,60 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0074BB40: 56                 push        esi
+  0074BB41: 8B F1              mov         esi,ecx
+  0074BB43: 8B 46 08           mov         eax,dword ptr [esi+8]
+  0074BB46: 83 E8 01           sub         eax,1
+  0074BB49: 74 17              je          0074BB62
+  0074BB4B: 83 E8 01           sub         eax,1
+  0074BB4E: 75 10              jne         0074BB60
+  0074BB50: E8 7B FE FF FF     call        0074B9D0
+  0074BB55: 84 C0              test        al,al
+  0074BB57: 74 07              je          0074BB60
+  0074BB59: C7 46 08 00 00 00  mov         dword ptr [esi+8],0
+            00
+  0074BB60: 5E                 pop         esi
+  0074BB61: C3                 ret
+  0074BB62: E8 69 FE FF FF     call        0074B9D0
+  0074BB67: 84 C0              test        al,al
+  0074BB69: 74 F5              je          0074BB60
+  0074BB6B: 8B CE              mov         ecx,esi
+  0074BB6D: 5E                 pop         esi
+  0074BB6E: E9 AD FE FF FF     jmp         0074BA20
+  0074BB73: CC                 int         3
+  0074BB74: CC                 int         3
+  0074BB75: CC                 int         3
+  0074BB76: CC                 int         3
+  0074BB77: CC                 int         3
+  0074BB78: CC                 int         3
+  0074BB79: CC                 int         3
+  0074BB7A: CC                 int         3
+  0074BB7B: CC                 int         3
+  0074BB7C: CC                 int         3
+  0074BB7D: CC                 int         3
+  0074BB7E: CC                 int         3
+  0074BB7F: CC                 int         3
+  0074BB80: 53                 push        ebx
+  0074BB81: 56                 push        esi
+  0074BB82: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  0074BB86: 8B D9              mov         ebx,ecx
+  0074BB88: 57                 push        edi
+  0074BB89: 8D 7B 0C           lea         edi,[ebx+0Ch]
+  0074BB8C: B9 99 00 00 00     mov         ecx,99h
+  0074BB91: F3 A5              rep movs    dword ptr es:[edi],dword ptr [esi]
+  0074BB93: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0074BB98: 85 C0              test        eax,eax
+  0074BB9A: 75 0A              jne         0074BBA6
+  0074BB9C: E8 EF EA CB FF     call        0040A690
+  0074BBA1: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0074BBA6: 8B B0 14 02 00 00  mov         esi,dword ptr [eax+00000214h]
+  0074BBAC: 8B CE              mov         ecx,esi
+  0074BBAE: E8
+  0074BBAF: FD                 std
+  0074BBB0: A7                 cmps        dword ptr [esi],dword ptr es:[edi]
+
+  Summary
+
+      9C8000 .text

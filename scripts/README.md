@@ -2,7 +2,45 @@
 
 Use these entry points for the current build, only when the corresponding task is requested:
 
-- `verify_replay150.py`: active snapshot verifier; native save/load slices,
+- `verify_replay_read1m.py`: current combined capacity/counter verifier;
+  `--fixture-only`, `--verify-build`, `--package`. Native reader/bridge/
+  installer, guarded private backing, reuse/failure/destructor handling,
+  parser and inherited client/R2 checks. Output
+  `analysis/replay_read1m_r1_2026-11-14/`, `build/v29s_replay_read1m_r1/`.
+- `analyze_replay_read1m_log.py <log> [--output <json>]`: validates private
+  capacity/backing, native wait/progress counters and embedded CLIENT data.
+  Stops alone do not prove a hitch; retained process-lifetime backing is
+  expected. Explicit fallbacks/faults/rejected reads invalidate the test.
+- `verify_replay_client.py`: current narrow replay probe verifier;
+  `--fixture-only`, `--verify-build`, `--package`. Real native predicates,
+  fast path, ECX scratch/input-self identity, ABI, boundary data/ring math,
+  installer/parser checks and inherited R2 verification. Output
+  `analysis/replay_client_r1_2026-11-14/`, `build/v29s_replay_client_r1/`.
+- `analyze_replay_client_log.py <log> [--output <json>]`: client busy
+  intervals, post-return sample conditions and raw recording ring/I/O state;
+  rejects missing counters/pairs/drops and does not certify root cause.
+- `verify_replay_hitch.py`: preceding broad timing probe verifier, `--fixture-only`,
+  `--verify-build`, `--package`. Executes production observer/bridges/installer
+  with bounded pressure/ABI/RX/rollback checks, parser checks and inherited R2
+  verification. Output `analysis/replay_hitch_r1_2026-11-14/` and
+  `build/v29s_replay_hitch_r1/`; no game installation/run.
+- `analyze_replay_hitch_log.py <log> [--output <json>]`: passive replay timing,
+  QPC conversion, wait/call/clock/rate and telemetry-integrity summary. Does
+  not certify visible smoothness or independently identify a busy subscriber.
+- `verify_regmap_reuse.py`: inherited definition-map lifecycle verifier.
+  R2 adds production-identical Readable/real VirtualQuery, RX/RWX boundary
+  regression, no-access/guard/corruption rejection and RX restoration checks;
+  current output is `regmap_reuse_r2_2026-11-14`/`v29s_regmap_reuse_r2`.
+  The fixture also covers actual native
+  constructor/destructor/map operations, the production two-site installer,
+  eight owners/100 generations, bounds/recycling/ABI/failure/rollback,
+  compiled targets, parser and the inherited verifier chain. Focused options:
+  `--fixture-only`, `--verify-build`, `--parser-only`, `--resume`, `--package`.
+- `verify_replay_pause.py`: inherited paused-completion verifier; original native
+  readiness/completion code and production bridge, guard/retry/ABI/rollback,
+  compiled observer/targets, parser and inherited snapshot/capacity checks.
+  `--fixture-only`, `--verify-build` and `--parser-only` support focused phases.
+- `verify_replay150.py`: inherited snapshot verifier; native save/load slices,
   original overwrite reproduction, reference-list parity, cached/deferred restores,
   bounds/ABI/rollback, compiled targets, parser and inherited checks.
   `--fixture-only` checks the isolated fixture; `--verify-build` checks an already

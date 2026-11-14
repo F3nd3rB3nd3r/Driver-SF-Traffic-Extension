@@ -1,0 +1,182 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0053AA20: 51                 push        ecx
+  0053AA21: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AA26: 53                 push        ebx
+  0053AA27: 56                 push        esi
+  0053AA28: 85 C0              test        eax,eax
+  0053AA2A: 75 0A              jne         0053AA36
+  0053AA2C: E8 5F FC EC FF     call        0040A690
+  0053AA31: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053AA36: 8B 88 2C 02 00 00  mov         ecx,dword ptr [eax+0000022Ch]
+  0053AA3C: 89 4C 24 08        mov         dword ptr [esp+8],ecx
+  0053AA40: 85 C9              test        ecx,ecx
+  0053AA42: 75 08              jne         0053AA4C
+  0053AA44: C7 44 24 08 00 00  mov         dword ptr [esp+8],0
+            00 00
+  0053AA4C: 8D 4C 24 08        lea         ecx,[esp+8]
+  0053AA50: 8B 31              mov         esi,dword ptr [ecx]
+  0053AA52: 85 F6              test        esi,esi
+  0053AA54: 74 0C              je          0053AA62
+  0053AA56: 83 BE 88 E5 04 00  cmp         dword ptr [esi+0004E588h],2
+            02
+  0053AA5D: 0F 94 C3           sete        bl
+  0053AA60: EB 02              jmp         0053AA64
+  0053AA62: 32 DB              xor         bl,bl
+  0053AA64: 8B 40 7C           mov         eax,dword ptr [eax+7Ch]
+  0053AA67: 0F 57 C0           xorps       xmm0,xmm0
+  0053AA6A: F3 0F 11 40 04     movss       dword ptr [eax+4],xmm0
+  0053AA6F: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AA74: 8B 88 04 02 00 00  mov         ecx,dword ptr [eax+00000204h]
+  0053AA7A: E8 11 1C 06 00     call        0059C690
+  0053AA7F: 85 C0              test        eax,eax
+  0053AA81: 0F 94 C0           sete        al
+  0053AA84: 84 C0              test        al,al
+  0053AA86: 0F 84 91 00 00 00  je          0053AB1D
+  0053AA8C: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AA91: 85 C0              test        eax,eax
+  0053AA93: 75 0A              jne         0053AA9F
+  0053AA95: E8 F6 FB EC FF     call        0040A690
+  0053AA9A: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053AA9F: 8B 80 78 06 00 00  mov         eax,dword ptr [eax+00000678h]
+  0053AAA5: 8D 4C 24 08        lea         ecx,[esp+8]
+  0053AAA9: 51                 push        ecx
+  0053AAAA: 8D 88 9C 03 00 00  lea         ecx,[eax+0000039Ch]
+  0053AAB0: E8 CB FF 27 00     call        007BAA80
+  0053AAB5: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  0053AAB9: 3B 15 80 DD F2 00  cmp         edx,dword ptr ds:[00F2DD80h]
+  0053AABF: 74 5C              je          0053AB1D
+  0053AAC1: 84 DB              test        bl,bl
+  0053AAC3: 75 2D              jne         0053AAF2
+  0053AAC5: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AACA: 85 C0              test        eax,eax
+  0053AACC: 75 0A              jne         0053AAD8
+  0053AACE: E8 BD FB EC FF     call        0040A690
+  0053AAD3: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053AAD8: 8B 48 30           mov         ecx,dword ptr [eax+30h]
+  0053AADB: 51                 push        ecx
+  0053AADC: 8B C4              mov         eax,esp
+  0053AADE: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  0053AAE4: 8B 01              mov         eax,dword ptr [ecx]
+  0053AAE6: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  0053AAE9: 68 B8 11 EE 00     push        0EE11B8h
+  0053AAEE: 6A 15              push        15h
+  0053AAF0: FF D2              call        edx
+  0053AAF2: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AAF7: 85 C0              test        eax,eax
+  0053AAF9: 75 0A              jne         0053AB05
+  0053AAFB: E8 90 FB EC FF     call        0040A690
+  0053AB00: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053AB05: 8B 88 54 07 00 00  mov         ecx,dword ptr [eax+00000754h]
+  0053AB0B: 85 C9              test        ecx,ecx
+  0053AB0D: 0F 84 F5 00 00 00  je          0053AC08
+  0053AB13: 5E                 pop         esi
+  0053AB14: 5B                 pop         ebx
+  0053AB15: 83 C4 04           add         esp,4
+  0053AB18: E9 63 93 2E 00     jmp         00823E80
+  0053AB1D: 84 DB              test        bl,bl
+  0053AB1F: 74 0F              je          0053AB30
+  0053AB21: 8B CE              mov         ecx,esi
+  0053AB23: E8 A8 CE 1F 00     call        007379D0
+  0053AB28: 84 C0              test        al,al
+  0053AB2A: 0F 85 C8 00 00 00  jne         0053ABF8
+  0053AB30: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AB35: 85 C0              test        eax,eax
+  0053AB37: 75 0A              jne         0053AB43
+  0053AB39: E8 52 FB EC FF     call        0040A690
+  0053AB3E: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053AB43: 8B 88 54 07 00 00  mov         ecx,dword ptr [eax+00000754h]
+  0053AB49: 85 C9              test        ecx,ecx
+  0053AB4B: 74 12              je          0053AB5F
+  0053AB4D: E8 EE 92 2E 00     call        00823E40
+  0053AB52: 84 C0              test        al,al
+  0053AB54: 0F 84 AE 00 00 00  je          0053AC08
+  0053AB5A: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AB5F: 85 C0              test        eax,eax
+  0053AB61: 75 0A              jne         0053AB6D
+  0053AB63: E8 28 FB EC FF     call        0040A690
+  0053AB68: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053AB6D: 8B 88 C0 07 00 00  mov         ecx,dword ptr [eax+000007C0h]
+  0053AB73: E8 C8 BA 3B 00     call        008F6640
+  0053AB78: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AB7D: 85 C0              test        eax,eax
+  0053AB7F: 75 0A              jne         0053AB8B
+  0053AB81: E8 0A FB EC FF     call        0040A690
+  0053AB86: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053AB8B: 8B 88 B4 03 00 00  mov         ecx,dword ptr [eax+000003B4h]
+  0053AB91: E8 BA F5 F5 FF     call        0049A150
+  0053AB96: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053AB9B: 85 C0              test        eax,eax
+  0053AB9D: 75 0A              jne         0053ABA9
+  0053AB9F: E8 EC FA EC FF     call        0040A690
+  0053ABA4: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053ABA9: 8B 80 54 03 00 00  mov         eax,dword ptr [eax+00000354h]
+  0053ABAF: 6A 01              push        1
+  0053ABB1: 8B C8              mov         ecx,eax
+  0053ABB3: E8 68 5D 0A 00     call        005E0920
+  0053ABB8: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053ABBD: 85 C0              test        eax,eax
+  0053ABBF: 75 0A              jne         0053ABCB
+  0053ABC1: E8 CA FA EC FF     call        0040A690
+  0053ABC6: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053ABCB: 8B 88 54 07 00 00  mov         ecx,dword ptr [eax+00000754h]
+  0053ABD1: 85 C9              test        ecx,ecx
+  0053ABD3: 74 0A              je          0053ABDF
+  0053ABD5: E8 86 92 2E 00     call        00823E60
+  0053ABDA: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0053ABDF: 85 C0              test        eax,eax
+  0053ABE1: 75 0A              jne         0053ABED
+  0053ABE3: E8 A8 FA EC FF     call        0040A690
+  0053ABE8: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0053ABED: 8B 88 C0 07 00 00  mov         ecx,dword ptr [eax+000007C0h]
+  0053ABF3: E8 38 BB 3B 00     call        008F6730
+  0053ABF8: 85 F6              test        esi,esi
+  0053ABFA: 74 0C              je          0053AC08
+  0053ABFC: 8B CE              mov         ecx,esi
+  0053ABFE: 5E                 pop         esi
+  0053ABFF: 5B                 pop         ebx
+  0053AC00: 83 C4 04           add         esp,4
+  0053AC03: E9 68 F4 1F 00     jmp         0073A070
+  0053AC08: 5E                 pop         esi
+  0053AC09: 5B                 pop         ebx
+  0053AC0A: 59                 pop         ecx
+  0053AC0B: C3                 ret
+  0053AC0C: CC                 int         3
+  0053AC0D: CC                 int         3
+  0053AC0E: CC                 int         3
+  0053AC0F: CC                 int         3
+  0053AC10: 8B C1              mov         eax,ecx
+  0053AC12: C3                 ret
+  0053AC13: CC                 int         3
+  0053AC14: CC                 int         3
+  0053AC15: CC                 int         3
+  0053AC16: CC                 int         3
+  0053AC17: CC                 int         3
+  0053AC18: CC                 int         3
+  0053AC19: CC                 int         3
+  0053AC1A: CC                 int         3
+  0053AC1B: CC                 int         3
+  0053AC1C: CC                 int         3
+  0053AC1D: CC                 int         3
+  0053AC1E: CC                 int         3
+  0053AC1F: CC                 int         3
+  0053AC20: 8B 41 08           mov         eax,dword ptr [ecx+8]
+  0053AC23: 8B 51 0C           mov         edx,dword ptr [ecx+0Ch]
+  0053AC26: C3                 ret
+  0053AC27: CC                 int         3
+  0053AC28: CC                 int         3
+  0053AC29: CC                 int         3
+  0053AC2A: CC                 int         3
+  0053AC2B: CC                 int         3
+  0053AC2C: CC                 int         3
+  0053AC2D: CC                 int         3
+  0053AC2E: CC                 int         3
+  0053AC2F: CC                 int         3
+  0053AC30: C3                 ret
+
+  Summary
+
+      9C8000 .text

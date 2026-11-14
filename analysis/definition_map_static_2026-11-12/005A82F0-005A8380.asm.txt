@@ -1,0 +1,66 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  005A82F0: B0 01              mov         al,1
+  005A82F2: 5E                 pop         esi
+  005A82F3: C3                 ret
+  005A82F4: 32 C0              xor         al,al
+  005A82F6: 5E                 pop         esi
+  005A82F7: C3                 ret
+  005A82F8: CC                 int         3
+  005A82F9: CC                 int         3
+  005A82FA: CC                 int         3
+  005A82FB: CC                 int         3
+  005A82FC: CC                 int         3
+  005A82FD: CC                 int         3
+  005A82FE: CC                 int         3
+  005A82FF: CC                 int         3
+  005A8300: 51                 push        ecx
+  005A8301: 56                 push        esi
+  005A8302: 8B F1              mov         esi,ecx
+  005A8304: 8B 46 18           mov         eax,dword ptr [esi+18h]
+  005A8307: 3D FF FF FF 7F     cmp         eax,7FFFFFFFh
+  005A830C: 7D 04              jge         005A8312
+  005A830E: 40                 inc         eax
+  005A830F: 89 46 18           mov         dword ptr [esi+18h],eax
+  005A8312: 8B 06              mov         eax,dword ptr [esi]
+  005A8314: 48                 dec         eax
+  005A8315: 83 F8 03           cmp         eax,3
+  005A8318: 0F 87 CB 00 00 00  ja          005A83E9
+  005A831E: FF 24 85 EC 83 5A  jmp         dword ptr [eax*4+005A83ECh]
+            00
+  005A8325: 8B 46 04           mov         eax,dword ptr [esi+4]
+  005A8328: 3B 46 08           cmp         eax,dword ptr [esi+8]
+  005A832B: 0F 84 B8 00 00 00  je          005A83E9
+  005A8331: 8D 4C 24 04        lea         ecx,[esp+4]
+  005A8335: 68 DE 01 00 00     push        1DEh
+  005A833A: 51                 push        ecx
+  005A833B: E8 D0 95 F2 FF     call        004D1910
+  005A8340: 8B 46 08           mov         eax,dword ptr [esi+8]
+  005A8343: 83 C4 08           add         esp,8
+  005A8346: 83 F8 FF           cmp         eax,0FFFFFFFFh
+  005A8349: 74 14              je          005A835F
+  005A834B: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  005A834F: 8B 11              mov         edx,dword ptr [ecx]
+  005A8351: 50                 push        eax
+  005A8352: 8B 42 0C           mov         eax,dword ptr [edx+0Ch]
+  005A8355: FF D0              call        eax
+  005A8357: 84 C0              test        al,al
+  005A8359: 0F 84 8A 00 00 00  je          005A83E9
+  005A835F: 8B CE              mov         ecx,esi
+  005A8361: E8 CA FC FF FF     call        005A8030
+  005A8366: 8B CE              mov         ecx,esi
+  005A8368: E8 C3 FD FF FF     call        005A8130
+  005A836D: 8B 4E 08           mov         ecx,dword ptr [esi+8]
+  005A8370: 89 4E 04           mov         dword ptr [esi+4],ecx
+  005A8373: C7 06 02 00 00 00  mov         dword ptr [esi],2
+  005A8379: 5E                 pop         esi
+  005A837A: 59                 pop         ecx
+  005A837B: C3                 ret
+  005A837C: E8 1F FF FF FF     call        005A82A0
+
+  Summary
+
+      9C8000 .text

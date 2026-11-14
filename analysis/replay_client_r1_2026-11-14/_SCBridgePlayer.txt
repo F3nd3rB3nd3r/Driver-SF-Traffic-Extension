@@ -1,0 +1,69 @@
+
+Dump of file E:\_DSF Mods\ai repos\DriverSF_V29s_VS_LEAN_2026-11-02\build\v29s_replay_client_r1\DriverSF_V29s_160Capacity_150Request_REPLAY_CLIENT_R1.asi
+
+File Type: DLL
+
+  10005230: 51                 push        ecx
+  10005231: FF 15 C0 52 12 10  call        dword ptr ds:[101252C0h]
+  10005237: 9C                 pushfd
+  10005238: 50                 push        eax
+  10005239: A1 C4 52 12 10     mov         eax,dword ptr ds:[101252C4h]
+  1000523E: 39 44 24 0C        cmp         dword ptr [esp+0Ch],eax
+  10005242: 58                 pop         eax
+  10005243: 75 39              jne         1000527E
+  10005245: 84 C0              test        al,al
+  10005247: 75 12              jne         1000525B
+  10005249: 83 3D FC F2 3A 10  cmp         dword ptr ds:[103AF2FCh],0
+            00
+  10005250: 75 09              jne         1000525B
+  10005252: F0 FF 05 04 F3 3A  lock inc    dword ptr ds:[103AF304h]
+            10
+  10005259: EB 23              jmp         1000527E
+  1000525B: 60                 pushad
+  1000525C: 8B EC              mov         ebp,esp
+  1000525E: 83 E4 F0           and         esp,0FFFFFFF0h
+  10005261: 81 EC 00 02 00 00  sub         esp,200h
+  10005267: 0F AE 04 24        fxsave      [esp]
+  1000526B: FC                 cld
+  1000526C: 6A 02              push        2
+  1000526E: 55                 push        ebp
+  1000526F: E8 17 BF FF FF     call        1000118B
+  10005274: 83 C4 08           add         esp,8
+  10005277: 0F AE 0C 24        fxrstor     [esp]
+  1000527B: 8B E5              mov         esp,ebp
+  1000527D: 61                 popad
+  1000527E: 9D                 popfd
+  1000527F: 8D 64 24 04        lea         esp,[esp+4]
+  10005283: C3                 ret
+  10005284: CC                 int         3
+  10005285: CC                 int         3
+  10005286: CC                 int         3
+  10005287: CC                 int         3
+  10005288: CC                 int         3
+  10005289: CC                 int         3
+  1000528A: CC                 int         3
+  1000528B: CC                 int         3
+  1000528C: CC                 int         3
+  1000528D: CC                 int         3
+  1000528E: CC                 int         3
+  1000528F: CC                 int         3
+  10005290: CC                 int         3
+  10005291: CC                 int         3
+  10005292: CC                 int         3
+  10005293: CC                 int         3
+  10005294: CC                 int         3
+  10005295: CC                 int         3
+  10005296: CC                 int         3
+  10005297: CC                 int         3
+  10005298: CC                 int         3
+  10005299: CC                 int         3
+  1000529A: CC                 int         3
+  1000529B: CC                 int         3
+  1000529C: CC                 int         3
+  1000529D: CC                 int         3
+  1000529E: CC                 int         3
+  1000529F: CC                 int         3
+
+  Summary
+
+       2D000 .text

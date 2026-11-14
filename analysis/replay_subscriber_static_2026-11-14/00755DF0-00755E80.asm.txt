@@ -1,0 +1,65 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00755DF0: 51                 push        ecx
+  00755DF1: 56                 push        esi
+  00755DF2: 8B F1              mov         esi,ecx
+  00755DF4: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00755DF7: 85 C0              test        eax,eax
+  00755DF9: 74 48              je          00755E43
+  00755DFB: 8B 40 0C           mov         eax,dword ptr [eax+0Ch]
+  00755DFE: 85 C0              test        eax,eax
+  00755E00: 74 41              je          00755E43
+  00755E02: 83 78 0C 00        cmp         dword ptr [eax+0Ch],0
+  00755E06: 75 35              jne         00755E3D
+  00755E08: F3 0F 10 40 04     movss       xmm0,dword ptr [eax+4]
+  00755E0D: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00755E12: F3 0F 11 44 24 04  movss       dword ptr [esp+4],xmm0
+  00755E18: 85 C0              test        eax,eax
+  00755E1A: 75 0A              jne         00755E26
+  00755E1C: E8 6F 48 CB FF     call        0040A690
+  00755E21: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00755E26: 8B 88 2C 02 00 00  mov         ecx,dword ptr [eax+0000022Ch]
+  00755E2C: E8 AF 2E FE FF     call        00738CE0
+  00755E31: D9 44 24 04        fld         dword ptr [esp+4]
+  00755E35: D9 C9              fxch        st(1)
+  00755E37: DF F1              fcomip      st,st(1)
+  00755E39: DD D8              fstp        st(0)
+  00755E3B: 77 06              ja          00755E43
+  00755E3D: 8A 46 34           mov         al,byte ptr [esi+34h]
+  00755E40: 5E                 pop         esi
+  00755E41: 59                 pop         ecx
+  00755E42: C3                 ret
+  00755E43: B0 01              mov         al,1
+  00755E45: 5E                 pop         esi
+  00755E46: 59                 pop         ecx
+  00755E47: C3                 ret
+  00755E48: CC                 int         3
+  00755E49: CC                 int         3
+  00755E4A: CC                 int         3
+  00755E4B: CC                 int         3
+  00755E4C: CC                 int         3
+  00755E4D: CC                 int         3
+  00755E4E: CC                 int         3
+  00755E4F: CC                 int         3
+  00755E50: 57                 push        edi
+  00755E51: 8B 7C 24 08        mov         edi,dword ptr [esp+8]
+  00755E55: 66 83 7F 02 00     cmp         word ptr [edi+2],0
+  00755E5A: 0F 84 9F 02 00 00  je          007560FF
+  00755E60: 8B 47 10           mov         eax,dword ptr [edi+10h]
+  00755E63: 56                 push        esi
+  00755E64: 8D 77 10           lea         esi,[edi+10h]
+  00755E67: 50                 push        eax
+  00755E68: E8 F3 36 10 00     call        00859560
+  00755E6D: 83 C4 04           add         esp,4
+  00755E70: 83 F8 1C           cmp         eax,1Ch
+  00755E73: 0F 87 35 02 00 00  ja          007560AE
+  00755E79: 0F B6 88 70 61 75  movzx       ecx,byte ptr [eax+00756170h]
+            00
+  00755E80: FF
+
+  Summary
+
+      9C8000 .text

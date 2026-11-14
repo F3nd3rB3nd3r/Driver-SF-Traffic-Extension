@@ -1,0 +1,36 @@
+{
+  "result": "passed",
+  "name": "DriverSF_V29s_160Capacity_150Request_REPLAY_HITCH_R1",
+  "bytes": 270848,
+  "sha256": "758805067a6b08ef0e01bbc191d92b35809f37a0264fb49265c6a70b3e3da6c8",
+  "new_hooks": 2,
+  "requests": 150,
+  "graphics": 160,
+  "capacity_changes": 0,
+  "fixture_checks": [
+    "150-ID roster and exact original/effective storage",
+    "all150 READY in one checkpoint",
+    "readiness loss/recovery",
+    "direct3-ID request preserved",
+    "rejection retains epoch",
+    "duplicates reported",
+    "queue overflow explicitly counted",
+    "contention skips explicitly counted",
+    "original/resolved draw identities",
+    "per-phase sampled peak",
+    "both bridges preserve GP/flags/DF/x87/SSE and original stack"
+  ],
+  "source_sha256": {
+    "src/V29sBaseline150.inc": "295833e56cc18123e9c4ac7f398ce129d5c04a5f0c2b539163e5a461cef9c570",
+    "tests/Baseline150Test.cpp": "c867a8ba42e02ca8eb26ee8e2017671a6322eb1582c5bd3cb8d2a75c7f553f02",
+    "src/DriverSF_V29b_NativeFastPath.cpp": "d53dd4936b2b69c8232ca804ed21599bab18a00cb005a3bb5d753a01311ecb11",
+    "src/V29sCapacityTrace.inc": "44d49d7e2542a2a4e9549d0e0d1caeef5b5bb047fa8db8405ff5762db7400513"
+  },
+  "limitations": [
+    "Native readiness service is stubbed in isolated fixture; real bytes/ABI reviewed statically.",
+    "Draw call is not visible pixels; zero coverage can mean a model was never exercised.",
+    "Audio counters are cumulative observations, not decoded failure reasons or audible success.",
+    "Metrics are sampled; geometry/texture/GPU budgets remain unmeasured.",
+    "Not game-tested or installed."
+  ]
+}

@@ -1,0 +1,86 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00746BF0: 53                 push        ebx
+  00746BF1: 8B 99 6C 85 00 00  mov         ebx,dword ptr [ecx+0000856Ch]
+  00746BF7: 55                 push        ebp
+  00746BF8: 8B A9 4C 85 00 00  mov         ebp,dword ptr [ecx+0000854Ch]
+  00746BFE: 56                 push        esi
+  00746BFF: 57                 push        edi
+  00746C00: 85 ED              test        ebp,ebp
+  00746C02: 74 42              je          00746C46
+  00746C04: 8B 7D 0C           mov         edi,dword ptr [ebp+0Ch]
+  00746C07: 85 FF              test        edi,edi
+  00746C09: 74 34              je          00746C3F
+  00746C0B: 8B B1 64 85 00 00  mov         esi,dword ptr [ecx+00008564h]
+  00746C11: 3B FE              cmp         edi,esi
+  00746C13: 72 06              jb          00746C1B
+  00746C15: 8B D7              mov         edx,edi
+  00746C17: 2B D6              sub         edx,esi
+  00746C19: EB 0A              jmp         00746C25
+  00746C1B: 8B 91 5C 85 00 00  mov         edx,dword ptr [ecx+0000855Ch]
+  00746C21: 2B D6              sub         edx,esi
+  00746C23: 03 D7              add         edx,edi
+  00746C25: 3B DE              cmp         ebx,esi
+  00746C27: 72 06              jb          00746C2F
+  00746C29: 8B C3              mov         eax,ebx
+  00746C2B: 2B C6              sub         eax,esi
+  00746C2D: EB 0A              jmp         00746C39
+  00746C2F: 8B 81 5C 85 00 00  mov         eax,dword ptr [ecx+0000855Ch]
+  00746C35: 2B C6              sub         eax,esi
+  00746C37: 03 C3              add         eax,ebx
+  00746C39: 3B D0              cmp         edx,eax
+  00746C3B: 7D 02              jge         00746C3F
+  00746C3D: 8B DF              mov         ebx,edi
+  00746C3F: 8B 6D 04           mov         ebp,dword ptr [ebp+4]
+  00746C42: 85 ED              test        ebp,ebp
+  00746C44: 75 BE              jne         00746C04
+  00746C46: 8B B9 54 85 00 00  mov         edi,dword ptr [ecx+00008554h]
+  00746C4C: 85 FF              test        edi,edi
+  00746C4E: 74 34              je          00746C84
+  00746C50: 8B B1 64 85 00 00  mov         esi,dword ptr [ecx+00008564h]
+  00746C56: 3B FE              cmp         edi,esi
+  00746C58: 72 06              jb          00746C60
+  00746C5A: 8B D7              mov         edx,edi
+  00746C5C: 2B D6              sub         edx,esi
+  00746C5E: EB 0A              jmp         00746C6A
+  00746C60: 8B 91 5C 85 00 00  mov         edx,dword ptr [ecx+0000855Ch]
+  00746C66: 2B D6              sub         edx,esi
+  00746C68: 03 D7              add         edx,edi
+  00746C6A: 3B DE              cmp         ebx,esi
+  00746C6C: 72 06              jb          00746C74
+  00746C6E: 8B C3              mov         eax,ebx
+  00746C70: 2B C6              sub         eax,esi
+  00746C72: EB 0A              jmp         00746C7E
+  00746C74: 8B 81 5C 85 00 00  mov         eax,dword ptr [ecx+0000855Ch]
+  00746C7A: 2B C6              sub         eax,esi
+  00746C7C: 03 C3              add         eax,ebx
+  00746C7E: 3B D0              cmp         edx,eax
+  00746C80: 7D 02              jge         00746C84
+  00746C82: 8B DF              mov         ebx,edi
+  00746C84: 5F                 pop         edi
+  00746C85: 5E                 pop         esi
+  00746C86: 5D                 pop         ebp
+  00746C87: 89 99 64 85 00 00  mov         dword ptr [ecx+00008564h],ebx
+  00746C8D: 5B                 pop         ebx
+  00746C8E: E9 2D FC FF FF     jmp         007468C0
+  00746C93: CC                 int         3
+  00746C94: CC                 int         3
+  00746C95: CC                 int         3
+  00746C96: CC                 int         3
+  00746C97: CC                 int         3
+  00746C98: CC                 int         3
+  00746C99: CC                 int         3
+  00746C9A: CC                 int         3
+  00746C9B: CC                 int         3
+  00746C9C: CC                 int         3
+  00746C9D: CC                 int         3
+  00746C9E: CC                 int         3
+  00746C9F: CC                 int         3
+  00746CA0: 80
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,122 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007434E0: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  007434E5: 83 EC 20           sub         esp,20h
+  007434E8: 57                 push        edi
+  007434E9: 8B F9              mov         edi,ecx
+  007434EB: 85 C0              test        eax,eax
+  007434ED: 75 0A              jne         007434F9
+  007434EF: E8 9C 71 CC FF     call        0040A690
+  007434F4: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  007434F9: 56                 push        esi
+  007434FA: 8B B0 2C 02 00 00  mov         esi,dword ptr [eax+0000022Ch]
+  00743500: 8B CE              mov         ecx,esi
+  00743502: E8 29 44 FF FF     call        00737930
+  00743507: D9 9F 3C 47 00 00  fstp        dword ptr [edi+0000473Ch]
+  0074350D: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00743512: 85 C0              test        eax,eax
+  00743514: 75 0A              jne         00743520
+  00743516: E8 75 71 CC FF     call        0040A690
+  0074351B: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00743520: 8B 88 2C 02 00 00  mov         ecx,dword ptr [eax+0000022Ch]
+  00743526: E8 35 44 FF FF     call        00737960
+  0074352B: D9 9F 40 47 00 00  fstp        dword ptr [edi+00004740h]
+  00743531: 8B 44 24 2C        mov         eax,dword ptr [esp+2Ch]
+  00743535: 50                 push        eax
+  00743536: 8B CE              mov         ecx,esi
+  00743538: C6 86 59 E3 04 00  mov         byte ptr [esi+0004E359h],1
+            01
+  0074353F: E8 BC 78 FF FF     call        0073AE00
+  00743544: 5E                 pop         esi
+  00743545: 84 C0              test        al,al
+  00743547: 75 10              jne         00743559
+  00743549: 6A 01              push        1
+  0074354B: 8B CF              mov         ecx,edi
+  0074354D: E8 FE EF FF FF     call        00742550
+  00743552: C7 47 04 03 00 00  mov         dword ptr [edi+4],3
+            00
+  00743559: 0F 57 C0           xorps       xmm0,xmm0
+  0074355C: F3 0F 11 44 24 0C  movss       dword ptr [esp+0Ch],xmm0
+  00743562: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00743566: F3 0F 11 44 24 04  movss       dword ptr [esp+4],xmm0
+  0074356C: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  00743570: F3 0F 11 44 24 08  movss       dword ptr [esp+8],xmm0
+  00743576: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  0074357E: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  00743582: 89 44 24 1C        mov         dword ptr [esp+1Ch],eax
+  00743586: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0074358B: F3 0F 11 44 24 10  movss       dword ptr [esp+10h],xmm0
+  00743591: 89 4C 24 14        mov         dword ptr [esp+14h],ecx
+  00743595: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  00743599: 89 54 24 18        mov         dword ptr [esp+18h],edx
+  0074359D: 89 4C 24 20        mov         dword ptr [esp+20h],ecx
+  007435A1: 5F                 pop         edi
+  007435A2: 85 C0              test        eax,eax
+  007435A4: 75 0A              jne         007435B0
+  007435A6: E8 E5 70 CC FF     call        0040A690
+  007435AB: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  007435B0: D9 EE              fldz
+  007435B2: 8B 88 54 03 00 00  mov         ecx,dword ptr [eax+00000354h]
+  007435B8: 6A 00              push        0
+  007435BA: 6A FF              push        0FFFFFFFFh
+  007435BC: 6A FF              push        0FFFFFFFFh
+  007435BE: 6A 00              push        0
+  007435C0: 6A 00              push        0
+  007435C2: 83 EC 08           sub         esp,8
+  007435C5: D9 5C 24 04        fstp        dword ptr [esp+4]
+  007435C9: 8D 54 24 2C        lea         edx,[esp+2Ch]
+  007435CD: D9 05 10 64 DD 00  fld         dword ptr ds:[00DD6410h]
+  007435D3: D9 1C 24           fstp        dword ptr [esp]
+  007435D6: 6A 03              push        3
+  007435D8: 52                 push        edx
+  007435D9: 6A 00              push        0
+  007435DB: E8 D0 D4 E9 FF     call        005E0AB0
+  007435E0: 83 C4 20           add         esp,20h
+  007435E3: C2 04 00           ret         4
+  007435E6: CC                 int         3
+  007435E7: CC                 int         3
+  007435E8: CC                 int         3
+  007435E9: CC                 int         3
+  007435EA: CC                 int         3
+  007435EB: CC                 int         3
+  007435EC: CC                 int         3
+  007435ED: CC                 int         3
+  007435EE: CC                 int         3
+  007435EF: CC                 int         3
+  007435F0: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  007435F5: 56                 push        esi
+  007435F6: 8B F1              mov         esi,ecx
+  007435F8: 85 C0              test        eax,eax
+  007435FA: 75 0A              jne         00743606
+  007435FC: E8 8F 70 CC FF     call        0040A690
+  00743601: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00743606: 8B 80 1C 07 00 00  mov         eax,dword ptr [eax+0000071Ch]
+  0074360C: 85 C0              test        eax,eax
+  0074360E: 0F 84 85 00 00 00  je          00743699
+  00743614: 8D 48 04           lea         ecx,[eax+4]
+  00743617: 85 C9              test        ecx,ecx
+  00743619: 74 7E              je          00743699
+  0074361B: 8B 44 24 08        mov         eax,dword ptr [esp+8]
+  0074361F: 89 86 50 47 00 00  mov         dword ptr [esi+00004750h],eax
+  00743625: 8B 15 58 91 E2 00  mov         edx,dword ptr ds:[00E29158h]
+  0074362B: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  0074362F: 52                 push        edx
+  00743630: 8B 15 54 91 E2 00  mov         edx,dword ptr ds:[00E29154h]
+  00743636: 6A 00              push        0
+  00743638: 52                 push        edx
+  00743639: 8B 15 68 91 E2 00  mov         edx,dword ptr ds:[00E29168h]
+  0074363F: 52                 push        edx
+  00743640: 8B 15 64 91 E2 00  mov         edx,dword ptr ds:[00E29164h]
+  00743646: 52                 push        edx
+  00743647: 8B 14 85 A0 8E F2  mov         edx,dword ptr [eax*4+00F28EA0h]
+            00
+  0074364E: 8B
+  0074364F: 04 85              add         al,85h
+
+  Summary
+
+      9C8000 .text

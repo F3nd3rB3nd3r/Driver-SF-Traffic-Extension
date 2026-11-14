@@ -1,0 +1,52 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007510F0: 56                 push        esi
+  007510F1: 8B F1              mov         esi,ecx
+  007510F3: E8 98 59 FE FF     call        00736A90
+  007510F8: C7 06 78 AA E2 00  mov         dword ptr [esi],0E2AA78h
+  007510FE: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00751103: 85 C0              test        eax,eax
+  00751105: 75 0A              jne         00751111
+  00751107: E8 84 95 CB FF     call        0040A690
+  0075110C: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00751111: 8B 88 A8 02 00 00  mov         ecx,dword ptr [eax+000002A8h]
+  00751117: E8 04 91 E0 FF     call        0055A220
+  0075111C: 89 B0 24 24 02 00  mov         dword ptr [eax+00022424h],esi
+  00751122: 8B C6              mov         eax,esi
+  00751124: 5E                 pop         esi
+  00751125: C3                 ret
+  00751126: CC                 int         3
+  00751127: CC                 int         3
+  00751128: CC                 int         3
+  00751129: CC                 int         3
+  0075112A: CC                 int         3
+  0075112B: CC                 int         3
+  0075112C: CC                 int         3
+  0075112D: CC                 int         3
+  0075112E: CC                 int         3
+  0075112F: CC                 int         3
+  00751130: 56                 push        esi
+  00751131: 8B F1              mov         esi,ecx
+  00751133: C7 06 78 AA E2 00  mov         dword ptr [esi],0E2AA78h
+  00751139: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0075113E: 85 C0              test        eax,eax
+  00751140: 75 0A              jne         0075114C
+  00751142: E8 49 95 CB FF     call        0040A690
+  00751147: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0075114C: 8B 88 A8 02 00 00  mov         ecx,dword ptr [eax+000002A8h]
+  00751152: E8 C9 90 E0 FF     call        0055A220
+  00751157: 39 B0 24 24 02 00  cmp         dword ptr [eax+00022424h],esi
+  0075115D: 75 28              jne         00751187
+  0075115F: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00751164: 85 C0              test        eax,eax
+  00751166: 75 0A              jne         00751172
+  00751168: E8 23 95 CB FF     call        0040A690
+  0075116D: A3
+  0075116E: 28 72 FE           sub         byte ptr [edx-2],dh
+
+  Summary
+
+      9C8000 .text

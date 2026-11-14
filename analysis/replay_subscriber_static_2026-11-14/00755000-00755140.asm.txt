@@ -1,0 +1,114 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00755000: 51                 push        ecx
+  00755001: 56                 push        esi
+  00755002: 8B F1              mov         esi,ecx
+  00755004: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00755007: 85 C0              test        eax,eax
+  00755009: 0F 84 2C 01 00 00  je          0075513B
+  0075500F: 83 78 0C 00        cmp         dword ptr [eax+0Ch],0
+  00755013: 0F 84 22 01 00 00  je          0075513B
+  00755019: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0075501E: 85 C0              test        eax,eax
+  00755020: 75 0A              jne         0075502C
+  00755022: E8 69 56 CB FF     call        0040A690
+  00755027: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0075502C: 8B 88 2C 02 00 00  mov         ecx,dword ptr [eax+0000022Ch]
+  00755032: 57                 push        edi
+  00755033: 8D B9 68 2D 01 00  lea         edi,[ecx+00012D68h]
+  00755039: E8 A2 3C FE FF     call        00738CE0
+  0075503E: D9 5C 24 08        fstp        dword ptr [esp+8]
+  00755042: 8B 46 30           mov         eax,dword ptr [esi+30h]
+  00755045: 83 F8 02           cmp         eax,2
+  00755048: 76 35              jbe         0075507F
+  0075504A: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0075504F: 85 C0              test        eax,eax
+  00755051: 75 0A              jne         0075505D
+  00755053: E8 38 56 CB FF     call        0040A690
+  00755058: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0075505D: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00755060: 8B 01              mov         eax,dword ptr [ecx]
+  00755062: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00755065: FF D2              call        edx
+  00755067: 84 C0              test        al,al
+  00755069: 74 37              je          007550A2
+  0075506B: 68 B8 AF E2 00     push        0E2AFB8h
+  00755070: 68 B8 11 EE 00     push        0EE11B8h
+  00755075: E8 36 68 FE FF     call        0073B8B0
+  0075507A: 83 C4 08           add         esp,8
+  0075507D: EB 23              jmp         007550A2
+  0075507F: 75 21              jne         007550A2
+  00755081: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00755084: B8 A3 8B 2E BA     mov         eax,0BA2E8BA3h
+  00755089: F7 61 08           mul         eax,dword ptr [ecx+8]
+  0075508C: C1 EA 05           shr         edx,5
+  0075508F: 83 C1 10           add         ecx,10h
+  00755092: 52                 push        edx
+  00755093: 51                 push        ecx
+  00755094: 8B CF              mov         ecx,edi
+  00755096: E8 85 54 FF FF     call        0074A520
+  0075509B: C7 46 30 01 00 00  mov         dword ptr [esi+30h],1
+            00
+  007550A2: 83 7E 30 01        cmp         dword ptr [esi+30h],1
+  007550A6: 75 30              jne         007550D8
+  007550A8: 8B 46 04           mov         eax,dword ptr [esi+4]
+  007550AB: F3 0F 10 44 24 08  movss       xmm0,dword ptr [esp+8]
+  007550B1: 0F 2F 40 04        comiss      xmm0,dword ptr [eax+4]
+  007550B5: 72 21              jb          007550D8
+  007550B7: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  007550BA: B8 A3 8B 2E BA     mov         eax,0BA2E8BA3h
+  007550BF: F7 61 08           mul         eax,dword ptr [ecx+8]
+  007550C2: C1 EA 05           shr         edx,5
+  007550C5: 83 C1 10           add         ecx,10h
+  007550C8: 52                 push        edx
+  007550C9: 51                 push        ecx
+  007550CA: 8B CF              mov         ecx,edi
+  007550CC: E8 4F 54 FF FF     call        0074A520
+  007550D1: C7 46 30 00 00 00  mov         dword ptr [esi+30h],0
+            00
+  007550D8: 8B 46 04           mov         eax,dword ptr [esi+4]
+  007550DB: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  007550DE: 83 79 0C 00        cmp         dword ptr [ecx+0Ch],0
+  007550E2: 74 3E              je          00755122
+  007550E4: 8B 56 04           mov         edx,dword ptr [esi+4]
+  007550E7: 8B 4A 0C           mov         ecx,dword ptr [edx+0Ch]
+  007550EA: F3 0F 10 44 24 08  movss       xmm0,dword ptr [esp+8]
+  007550F0: 0F 2F 41 04        comiss      xmm0,dword ptr [ecx+4]
+  007550F4: 72 2C              jb          00755122
+  007550F6: 89 4E 04           mov         dword ptr [esi+4],ecx
+  007550F9: 8B 51 0C           mov         edx,dword ptr [ecx+0Ch]
+  007550FC: B8 A3 8B 2E BA     mov         eax,0BA2E8BA3h
+  00755101: F7 62 08           mul         eax,dword ptr [edx+8]
+  00755104: 8B 41 0C           mov         eax,dword ptr [ecx+0Ch]
+  00755107: C1 EA 05           shr         edx,5
+  0075510A: 52                 push        edx
+  0075510B: 83 C0 10           add         eax,10h
+  0075510E: 50                 push        eax
+  0075510F: 8B CF              mov         ecx,edi
+  00755111: E8 0A 54 FF FF     call        0074A520
+  00755116: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00755119: 8B 51 0C           mov         edx,dword ptr [ecx+0Ch]
+  0075511C: 83 7A 0C 00        cmp         dword ptr [edx+0Ch],0
+  00755120: 75 C2              jne         007550E4
+  00755122: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00755125: 83 78 0C 00        cmp         dword ptr [eax+0Ch],0
+  00755129: 74 0F              je          0075513A
+  0075512B: D9 44 24 08        fld         dword ptr [esp+8]
+  0075512F: 51                 push        ecx
+  00755130: 8B CF              mov         ecx,edi
+  00755132: D9 1C 24           fstp        dword ptr [esp]
+  00755135: E8 B6 53 FF FF     call        0074A4F0
+  0075513A: 5F                 pop         edi
+  0075513B: 5E                 pop         esi
+  0075513C: 59                 pop         ecx
+  0075513D: C3                 ret
+  0075513E: CC                 int         3
+  0075513F: CC                 int         3
+  00755140: 55                 push        ebp
+
+  Summary
+
+      9C8000 .text

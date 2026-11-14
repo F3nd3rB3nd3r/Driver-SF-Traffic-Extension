@@ -237,6 +237,9 @@ fail0:
 }
 #endif
 #if defined(DSF_V29S_MODEL_POOL_EXPANDED)
+#if defined(DSF_V29S_REGMAP_REUSE)
+#include "V29sRegMap.inc"
+#else
 // 0086BE10 inserts a fresh key into the vehicle-definition registry map.
 // Its 45 inline 24-byte nodes end at map+444, which is the next object's
 // sentinel. Redirect only that exact fresh cursor before 008CCAA0 writes.
@@ -301,6 +304,7 @@ static void DiagSRegMapRestore() {
     if(g_sRegMapHook==1)DiagFRestoreDetour(g_sRegMapDetour,g_sRegMapTramp);
     g_sRegMapHook=0;
 }
+#endif
 #endif
 // Samples for the two IDs that remained at the wait failure sites in the
 // matched 150 run. These queries execute on the game's own checking thread.
@@ -1762,6 +1766,7 @@ static void DiagSPrintModelPool(U32 loops) {
     DiagFAppendKeyU(p," fault=",initialized &&
         (capacity!=160u || endCapacity!=160u || freeCount>160u)?1u:0u,end);
     AppendText(p,"\n",end);*p=0;DiagPrint(line);
+#if !defined(DSF_V29S_REGMAP_REUSE)
     for(U32 i=0;i<kSRegMapArenas;++i) {
         const UPtr map=g_sRegMapArenas[i].map;
         if(!map)continue;
@@ -1779,6 +1784,7 @@ static void DiagSPrintModelPool(U32 loops) {
         DiagFAppendKeyU(q," fault=",static_cast<U32>(g_sRegMapFault),limit);
         AppendText(q,"\n",limit);*q=0;DiagPrint(row);
     }
+#endif
 }
 #endif
 

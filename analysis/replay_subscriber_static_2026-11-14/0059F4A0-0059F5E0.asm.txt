@@ -1,0 +1,136 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0059F4A0: 55                 push        ebp
+  0059F4A1: 8B EC              mov         ebp,esp
+  0059F4A3: 83 E4 F8           and         esp,0FFFFFFF8h
+  0059F4A6: 83 EC 0C           sub         esp,0Ch
+  0059F4A9: 53                 push        ebx
+  0059F4AA: 56                 push        esi
+  0059F4AB: 57                 push        edi
+  0059F4AC: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  0059F4B0: 68 81 00 00 00     push        81h
+  0059F4B5: 50                 push        eax
+  0059F4B6: 8B D9              mov         ebx,ecx
+  0059F4B8: E8 A3 AE 2C 00     call        0086A360
+  0059F4BD: 8B 74 24 14        mov         esi,dword ptr [esp+14h]
+  0059F4C1: 68 81 00 00 00     push        81h
+  0059F4C6: E8 35 AF 2C 00     call        0086A400
+  0059F4CB: D9 05 68 85 F0 00  fld         dword ptr ds:[00F08568h]
+  0059F4D1: 8B 7D 18           mov         edi,dword ptr [ebp+18h]
+  0059F4D4: F3 0F 10 45 08     movss       xmm0,dword ptr [ebp+8]
+  0059F4D9: 83 C4 0C           add         esp,0Ch
+  0059F4DC: 85 FF              test        edi,edi
+  0059F4DE: 0F 94 C1           sete        cl
+  0059F4E1: 0F B6 D1           movzx       edx,cl
+  0059F4E4: 52                 push        edx
+  0059F4E5: 8D 44 24 14        lea         eax,[esp+14h]
+  0059F4E9: F3 0F 11 44 24 14  movss       dword ptr [esp+14h],xmm0
+  0059F4EF: F3 0F 10 45 10     movss       xmm0,dword ptr [ebp+10h]
+  0059F4F4: F3 0F 11 44 24 18  movss       dword ptr [esp+18h],xmm0
+  0059F4FA: 51                 push        ecx
+  0059F4FB: D9 1C 24           fstp        dword ptr [esp]
+  0059F4FE: 50                 push        eax
+  0059F4FF: 8B CE              mov         ecx,esi
+  0059F501: E8 9A FB FF FF     call        0059F0A0
+  0059F506: 8D 0C FD 00 00 00  lea         ecx,[edi*8+00000000h]
+            00
+  0059F50D: 2B CF              sub         ecx,edi
+  0059F50F: 5F                 pop         edi
+  0059F510: 89 74 8B 10        mov         dword ptr [ebx+ecx*4+10h],esi
+  0059F514: 5E                 pop         esi
+  0059F515: 5B                 pop         ebx
+  0059F516: 8B E5              mov         esp,ebp
+  0059F518: 5D                 pop         ebp
+  0059F519: C2 14 00           ret         14h
+  0059F51C: CC                 int         3
+  0059F51D: CC                 int         3
+  0059F51E: CC                 int         3
+  0059F51F: CC                 int         3
+  0059F520: 8B 41 38           mov         eax,dword ptr [ecx+38h]
+  0059F523: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F52A: 2B D0              sub         edx,eax
+  0059F52C: 55                 push        ebp
+  0059F52D: 8D 2C 91           lea         ebp,[ecx+edx*4]
+  0059F530: 3B CD              cmp         ecx,ebp
+  0059F532: 74 63              je          0059F597
+  0059F534: 53                 push        ebx
+  0059F535: 56                 push        esi
+  0059F536: 57                 push        edi
+  0059F537: 8D 79 10           lea         edi,[ecx+10h]
+  0059F53A: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  0059F540: 8B 0F              mov         ecx,dword ptr [edi]
+  0059F542: 85 C9              test        ecx,ecx
+  0059F544: 74 44              je          0059F58A
+  0059F546: E8 35 F1 FF FF     call        0059E680
+  0059F54B: 8B 37              mov         esi,dword ptr [edi]
+  0059F54D: 56                 push        esi
+  0059F54E: E8 DD A8 2C 00     call        00869E30
+  0059F553: 8B D8              mov         ebx,eax
+  0059F555: 83 C4 04           add         esp,4
+  0059F558: 83 FB 5B           cmp         ebx,5Bh
+  0059F55B: 74 13              je          0059F570
+  0059F55D: 8B CE              mov         ecx,esi
+  0059F55F: E8 CC F0 FF FF     call        0059E630
+  0059F564: 56                 push        esi
+  0059F565: 53                 push        ebx
+  0059F566: E8 35 A8 2C 00     call        00869DA0
+  0059F56B: 83 C4 08           add         esp,8
+  0059F56E: EB 14              jmp         0059F584
+  0059F570: 85 F6              test        esi,esi
+  0059F572: 74 10              je          0059F584
+  0059F574: 8B CE              mov         ecx,esi
+  0059F576: E8 B5 F0 FF FF     call        0059E630
+  0059F57B: 56                 push        esi
+  0059F57C: E8 D9 91 68 00     call        00C2875A
+  0059F581: 83 C4 04           add         esp,4
+  0059F584: C7 07 00 00 00 00  mov         dword ptr [edi],0
+  0059F58A: 83 C7 1C           add         edi,1Ch
+  0059F58D: 8D 47 F0           lea         eax,[edi-10h]
+  0059F590: 3B C5              cmp         eax,ebp
+  0059F592: 75 AC              jne         0059F540
+  0059F594: 5F                 pop         edi
+  0059F595: 5E                 pop         esi
+  0059F596: 5B                 pop         ebx
+  0059F597: 5D                 pop         ebp
+  0059F598: C3                 ret
+  0059F599: CC                 int         3
+  0059F59A: CC                 int         3
+  0059F59B: CC                 int         3
+  0059F59C: CC                 int         3
+  0059F59D: CC                 int         3
+  0059F59E: CC                 int         3
+  0059F59F: CC                 int         3
+  0059F5A0: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  0059F5A4: 8D 14 C5 00 00 00  lea         edx,[eax*8+00000000h]
+            00
+  0059F5AB: 2B D0              sub         edx,eax
+  0059F5AD: 57                 push        edi
+  0059F5AE: 8D 7C 91 10        lea         edi,[ecx+edx*4+10h]
+  0059F5B2: 8B 0F              mov         ecx,dword ptr [edi]
+  0059F5B4: 85 C9              test        ecx,ecx
+  0059F5B6: 74 52              je          0059F60A
+  0059F5B8: 53                 push        ebx
+  0059F5B9: 56                 push        esi
+  0059F5BA: E8 C1 F0 FF FF     call        0059E680
+  0059F5BF: 8B 37              mov         esi,dword ptr [edi]
+  0059F5C1: 56                 push        esi
+  0059F5C2: E8 69 A8 2C 00     call        00869E30
+  0059F5C7: 8B D8              mov         ebx,eax
+  0059F5C9: 83 C4 04           add         esp,4
+  0059F5CC: 83 FB 5B           cmp         ebx,5Bh
+  0059F5CF: 74 1D              je          0059F5EE
+  0059F5D1: 8B CE              mov         ecx,esi
+  0059F5D3: E8 58 F0 FF FF     call        0059E630
+  0059F5D8: 56                 push        esi
+  0059F5D9: 53                 push        ebx
+  0059F5DA: E8 C1 A7 2C 00     call        00869DA0
+  0059F5DF: 83
+  0059F5E0: C4
+
+  Summary
+
+      9C8000 .text

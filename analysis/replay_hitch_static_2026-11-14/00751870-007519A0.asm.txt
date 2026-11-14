@@ -1,0 +1,111 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00751870: 83 EC 0C           sub         esp,0Ch
+  00751873: 56                 push        esi
+  00751874: 8B F1              mov         esi,ecx
+  00751876: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00751879: 85 C9              test        ecx,ecx
+  0075187B: 0F 84 D8 00 00 00  je          00751959
+  00751881: 8B C1              mov         eax,ecx
+  00751883: 83 78 0C 00        cmp         dword ptr [eax+0Ch],0
+  00751887: 53                 push        ebx
+  00751888: 57                 push        edi
+  00751889: 8D 58 10           lea         ebx,[eax+10h]
+  0075188C: 74 08              je          00751896
+  0075188E: 8B 79 0C           mov         edi,dword ptr [ecx+0Ch]
+  00751891: 83 C7 10           add         edi,10h
+  00751894: EB 02              jmp         00751898
+  00751896: 8B FB              mov         edi,ebx
+  00751898: 83 79 0C 00        cmp         dword ptr [ecx+0Ch],0
+  0075189C: 0F 84 9C 00 00 00  je          0075193E
+  007518A2: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  007518A7: 85 C0              test        eax,eax
+  007518A9: 75 0A              jne         007518B5
+  007518AB: E8 E0 8D CB FF     call        0040A690
+  007518B0: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  007518B5: 8B 88 2C 02 00 00  mov         ecx,dword ptr [eax+0000022Ch]
+  007518BB: 8B 46 04           mov         eax,dword ptr [esi+4]
+  007518BE: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  007518C1: F3 0F 10 42 04     movss       xmm0,dword ptr [edx+4]
+  007518C6: F3 0F 11 44 24 0C  movss       dword ptr [esp+0Ch],xmm0
+  007518CC: F3 0F 10 40 04     movss       xmm0,dword ptr [eax+4]
+  007518D1: F3 0F 11 44 24 10  movss       dword ptr [esp+10h],xmm0
+  007518D7: E8 04 74 FE FF     call        00738CE0
+  007518DC: D9 5C 24 14        fstp        dword ptr [esp+14h]
+  007518E0: F3 0F 10 4C 24 0C  movss       xmm1,dword ptr [esp+0Ch]
+  007518E6: F3 0F 10 54 24 10  movss       xmm2,dword ptr [esp+10h]
+  007518EC: 0F 57 DB           xorps       xmm3,xmm3
+  007518EF: 0F 2E CA           ucomiss     xmm1,xmm2
+  007518F2: 9F                 lahf
+  007518F3: F6 C4 44           test        ah,44h
+  007518F6: 7A 05              jp          007518FD
+  007518F8: 0F 28 C3           movaps      xmm0,xmm3
+  007518FB: EB 1B              jmp         00751918
+  007518FD: F3 0F 10 44 24 14  movss       xmm0,dword ptr [esp+14h]
+  00751903: F3 0F 5C C2        subss       xmm0,xmm2
+  00751907: F3 0F 5C CA        subss       xmm1,xmm2
+  0075190B: F3 0F 5E C1        divss       xmm0,xmm1
+  0075190F: 0F 2F 05 14 64 DD  comiss      xmm0,dword ptr ds:[00DD6414h]
+            00
+  00751916: 77 0E              ja          00751926
+  00751918: 0F 2F D8           comiss      xmm3,xmm0
+  0075191B: 77 21              ja          0075193E
+  0075191D: 0F 2F 05 38 86 EC  comiss      xmm0,dword ptr ds:[00EC8638h]
+            00
+  00751924: 76 18              jbe         0075193E
+  00751926: A1 F8 73 43 01     mov         eax,dword ptr ds:[014373F8h]
+  0075192B: 39 47 28           cmp         dword ptr [edi+28h],eax
+  0075192E: 75 1D              jne         0075194D
+  00751930: 39 47 2C           cmp         dword ptr [edi+2Ch],eax
+  00751933: 75 18              jne         0075194D
+  00751935: 5F                 pop         edi
+  00751936: 5B                 pop         ebx
+  00751937: 33 C0              xor         eax,eax
+  00751939: 5E                 pop         esi
+  0075193A: 83 C4 0C           add         esp,0Ch
+  0075193D: C3                 ret
+  0075193E: A1 F8 73 43 01     mov         eax,dword ptr ds:[014373F8h]
+  00751943: 39 43 28           cmp         dword ptr [ebx+28h],eax
+  00751946: 75 05              jne         0075194D
+  00751948: 39 43 2C           cmp         dword ptr [ebx+2Ch],eax
+  0075194B: EB E6              jmp         00751933
+  0075194D: 5F                 pop         edi
+  0075194E: 5B                 pop         ebx
+  0075194F: B8 01 00 00 00     mov         eax,1
+  00751954: 5E                 pop         esi
+  00751955: 83 C4 0C           add         esp,0Ch
+  00751958: C3                 ret
+  00751959: 32 C0              xor         al,al
+  0075195B: 5E                 pop         esi
+  0075195C: 83 C4 0C           add         esp,0Ch
+  0075195F: C3                 ret
+  00751960: 83 EC 0C           sub         esp,0Ch
+  00751963: 56                 push        esi
+  00751964: 8B F1              mov         esi,ecx
+  00751966: 8B 4E 04           mov         ecx,dword ptr [esi+4]
+  00751969: 85 C9              test        ecx,ecx
+  0075196B: 0F 84 B9 00 00 00  je          00751A2A
+  00751971: 8B C1              mov         eax,ecx
+  00751973: 83 78 0C 00        cmp         dword ptr [eax+0Ch],0
+  00751977: 53                 push        ebx
+  00751978: 57                 push        edi
+  00751979: 8D 58 10           lea         ebx,[eax+10h]
+  0075197C: 74 08              je          00751986
+  0075197E: 8B 79 0C           mov         edi,dword ptr [ecx+0Ch]
+  00751981: 83 C7 10           add         edi,10h
+  00751984: EB 02              jmp         00751988
+  00751986: 8B FB              mov         edi,ebx
+  00751988: 83 79 0C 00        cmp         dword ptr [ecx+0Ch],0
+  0075198C: 0F 84 8E 00 00 00  je          00751A20
+  00751992: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00751997: 85 C0              test        eax,eax
+  00751999: 75 0A              jne         007519A5
+  0075199B: E8 F0 8C CB FF     call        0040A690
+  007519A0: A3
+
+  Summary
+
+      9C8000 .text

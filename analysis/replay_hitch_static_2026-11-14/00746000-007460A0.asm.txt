@@ -1,0 +1,61 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00746000: 53                 push        ebx
+  00746001: 56                 push        esi
+  00746002: 8B F1              mov         esi,ecx
+  00746004: 8B 06              mov         eax,dword ptr [esi]
+  00746006: 8B 50 0C           mov         edx,dword ptr [eax+0Ch]
+  00746009: 8B CE              mov         ecx,esi
+  0074600B: FF D2              call        edx
+  0074600D: 84 C0              test        al,al
+  0074600F: 75 F3              jne         00746004
+  00746011: 8B 4C 24 0C        mov         ecx,dword ptr [esp+0Ch]
+  00746015: 8B C1              mov         eax,ecx
+  00746017: 25 FF 7F 00 00     and         eax,7FFFh
+  0074601C: 2B C8              sub         ecx,eax
+  0074601E: 89 86 88 85 00 00  mov         dword ptr [esi+00008588h],eax
+  00746024: 8B 06              mov         eax,dword ptr [esi]
+  00746026: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  00746029: 89 8E 80 85 00 00  mov         dword ptr [esi+00008580h],ecx
+  0074602F: 51                 push        ecx
+  00746030: 8B CE              mov         ecx,esi
+  00746032: FF D2              call        edx
+  00746034: 8D 86 28 84 00 00  lea         eax,[esi+00008428h]
+  0074603A: 33 DB              xor         ebx,ebx
+  0074603C: 89 86 1C 84 00 00  mov         dword ptr [esi+0000841Ch],eax
+  00746042: 8D 86 18 85 00 00  lea         eax,[esi+00008518h]
+  00746048: 89 9E 20 84 00 00  mov         dword ptr [esi+00008420h],ebx
+  0074604E: 89 9E 24 84 00 00  mov         dword ptr [esi+00008424h],ebx
+  00746054: 3B C3              cmp         eax,ebx
+  00746056: 74 0C              je          00746064
+  00746058: 6A 38              push        38h
+  0074605A: 53                 push        ebx
+  0074605B: 50                 push        eax
+  0074605C: E8 7F 26 4E 00     call        00C286E0
+  00746061: 83 C4 0C           add         esp,0Ch
+  00746064: 8B 86 60 85 00 00  mov         eax,dword ptr [esi+00008560h]
+  0074606A: 89 9E 54 85 00 00  mov         dword ptr [esi+00008554h],ebx
+  00746070: 89 9E 58 85 00 00  mov         dword ptr [esi+00008558h],ebx
+  00746076: 89 9E 84 85 00 00  mov         dword ptr [esi+00008584h],ebx
+  0074607C: 88 9E 8C 85 00 00  mov         byte ptr [esi+0000858Ch],bl
+  00746082: 89 86 6C 85 00 00  mov         dword ptr [esi+0000856Ch],eax
+  00746088: 89 86 68 85 00 00  mov         dword ptr [esi+00008568h],eax
+  0074608E: 89 86 64 85 00 00  mov         dword ptr [esi+00008564h],eax
+  00746094: 5E                 pop         esi
+  00746095: 5B                 pop         ebx
+  00746096: C2 04 00           ret         4
+  00746099: CC                 int         3
+  0074609A: CC                 int         3
+  0074609B: CC                 int         3
+  0074609C: CC                 int         3
+  0074609D: CC                 int         3
+  0074609E: CC                 int         3
+  0074609F: CC                 int         3
+  007460A0: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

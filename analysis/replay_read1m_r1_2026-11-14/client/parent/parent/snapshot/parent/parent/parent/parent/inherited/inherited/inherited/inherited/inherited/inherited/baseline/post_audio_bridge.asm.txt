@@ -1,0 +1,49 @@
+
+Dump of file E:\_DSF Mods\ai repos\DriverSF_V29s_VS_LEAN_2026-11-02\build\v29s_replay_read1m_r1\DriverSF_V29s_160Capacity_150Request_REPLAY_READ1M_R1.asi
+
+File Type: DLL
+
+  10001750: 9C                 pushfd
+  10001751: F0 FF 05 E8 ED 03  lock inc    dword ptr ds:[1003EDE8h]
+            10
+  10001758: 85 F6              test        esi,esi
+  1000175A: 75 2B              jne         10001787
+  1000175C: 60                 pushad
+  1000175D: 8B EC              mov         ebp,esp
+  1000175F: 81 EC 10 02 00 00  sub         esp,210h
+  10001765: 83 E4 F0           and         esp,0FFFFFFF0h
+  10001768: 0F AE 04 24        fxsave      [esp]
+  1000176C: FC                 cld
+  1000176D: FF 75 40           push        dword ptr [ebp+40h]
+  10001770: FF 75 48           push        dword ptr [ebp+48h]
+  10001773: FF 75 44           push        dword ptr [ebp+44h]
+  10001776: 6A 00              push        0
+  10001778: E8 21 FB FF FF     call        1000129E
+  1000177D: 83 C4 10           add         esp,10h
+  10001780: 0F AE 0C 24        fxrstor     [esp]
+  10001784: 8B E5              mov         esp,ebp
+  10001786: 61                 popad
+  10001787: 9D                 popfd
+  10001788: FF 25 FC ED 03 10  jmp         dword ptr ds:[1003EDFCh]
+  1000178E: CC                 int         3
+  1000178F: CC                 int         3
+  10001790: CC                 int         3
+  10001791: CC                 int         3
+  10001792: CC                 int         3
+  10001793: CC                 int         3
+  10001794: CC                 int         3
+  10001795: CC                 int         3
+  10001796: CC                 int         3
+  10001797: CC                 int         3
+  10001798: CC                 int         3
+  10001799: CC                 int         3
+  1000179A: CC                 int         3
+  1000179B: CC                 int         3
+  1000179C: CC                 int         3
+  1000179D: CC                 int         3
+  1000179E: CC                 int         3
+  1000179F: CC                 int         3
+
+  Summary
+
+       2F000 .text

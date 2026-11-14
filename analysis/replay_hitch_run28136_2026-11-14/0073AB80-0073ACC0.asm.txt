@@ -1,0 +1,98 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0073AB80: 04 00              add         al,0
+  0073AB82: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0073AB87: 3B C3              cmp         eax,ebx
+  0073AB89: 75 0A              jne         0073AB95
+  0073AB8B: E8 00 FB CC FF     call        0040A690
+  0073AB90: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0073AB95: 8B 88 30 02 00 00  mov         ecx,dword ptr [eax+00000230h]
+  0073AB9B: E8 20 C2 FF FF     call        00736DC0
+  0073ABA0: 8B 8E B8 E9 04 00  mov         ecx,dword ptr [esi+0004E9B8h]
+  0073ABA6: 3B CB              cmp         ecx,ebx
+  0073ABA8: 0F 84 C4 00 00 00  je          0073AC72
+  0073ABAE: E8 5D C3 FF FF     call        00736F10
+  0073ABB3: 89 9E B8 E9 04 00  mov         dword ptr [esi+0004E9B8h],ebx
+  0073ABB9: E9 B4 00 00 00     jmp         0073AC72
+  0073ABBE: 8B BE 80 E5 04 00  mov         edi,dword ptr [esi+0004E580h]
+  0073ABC4: 3B FB              cmp         edi,ebx
+  0073ABC6: 74 12              je          0073ABDA
+  0073ABC8: 8B 4F 0C           mov         ecx,dword ptr [edi+0Ch]
+  0073ABCB: 8B 01              mov         eax,dword ptr [ecx]
+  0073ABCD: 8B 50 1C           mov         edx,dword ptr [eax+1Ch]
+  0073ABD0: 53                 push        ebx
+  0073ABD1: FF D2              call        edx
+  0073ABD3: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  0073ABD6: 3B FB              cmp         edi,ebx
+  0073ABD8: 75 EE              jne         0073ABC8
+  0073ABDA: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0073ABDF: 3B C3              cmp         eax,ebx
+  0073ABE1: 75 0A              jne         0073ABED
+  0073ABE3: E8 A8 FA CC FF     call        0040A690
+  0073ABE8: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0073ABED: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  0073ABF0: 8B 01              mov         eax,dword ptr [ecx]
+  0073ABF2: 8B 50 10           mov         edx,dword ptr [eax+10h]
+  0073ABF5: FF D2              call        edx
+  0073ABF7: 84 C0              test        al,al
+  0073ABF9: 74 1D              je          0073AC18
+  0073ABFB: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0073AC00: 3B C3              cmp         eax,ebx
+  0073AC02: 75 0A              jne         0073AC0E
+  0073AC04: E8 87 FA CC FF     call        0040A690
+  0073AC09: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0073AC0E: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  0073AC11: E8 0A 04 47 00     call        00BAB020
+  0073AC16: EB 5A              jmp         0073AC72
+  0073AC18: 53                 push        ebx
+  0073AC19: 8D 8E 10 EA 04 00  lea         ecx,[esi+0004EA10h]
+  0073AC1F: 89 9E 14 EA 04 00  mov         dword ptr [esi+0004EA14h],ebx
+  0073AC25: E8 96 66 00 00     call        007412C0
+  0073AC2A: 39 9E F4 E9 04 00  cmp         dword ptr [esi+0004E9F4h],ebx
+  0073AC30: 74 22              je          0073AC54
+  0073AC32: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0073AC37: 3B C3              cmp         eax,ebx
+  0073AC39: 75 0A              jne         0073AC45
+  0073AC3B: E8 50 FA CC FF     call        0040A690
+  0073AC40: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0073AC45: 8B 40 50           mov         eax,dword ptr [eax+50h]
+  0073AC48: 68 E0 DE B3 02     push        2B3DEE0h
+  0073AC4D: 8B C8              mov         ecx,eax
+  0073AC4F: E8 3C D7 10 00     call        00848390
+  0073AC54: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0073AC59: 3B C3              cmp         eax,ebx
+  0073AC5B: 75 0A              jne         0073AC67
+  0073AC5D: E8 2E FA CC FF     call        0040A690
+  0073AC62: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0073AC67: 8B 88 5C 02 00 00  mov         ecx,dword ptr [eax+0000025Ch]
+  0073AC6D: E8 9E 99 E0 FF     call        00544610
+  0073AC72: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0073AC77: 3B C3              cmp         eax,ebx
+  0073AC79: 75 0A              jne         0073AC85
+  0073AC7B: E8 10 FA CC FF     call        0040A690
+  0073AC80: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0073AC85: 8B 88 5C 02 00 00  mov         ecx,dword ptr [eax+0000025Ch]
+  0073AC8B: E8 80 99 E0 FF     call        00544610
+  0073AC90: EB 72              jmp         0073AD04
+  0073AC92: 8D 8E 60 E3 04 00  lea         ecx,[esi+0004E360h]
+  0073AC98: E8 83 16 01 00     call        0074C320
+  0073AC9D: 8B CE              mov         ecx,esi
+  0073AC9F: E8 7C CF FF FF     call        00737C20
+  0073ACA4: 8B CE              mov         ecx,esi
+  0073ACA6: E8 75 CF FF FF     call        00737C20
+  0073ACAB: 8B CE              mov         ecx,esi
+  0073ACAD: E8 FE E1 FF FF     call        00738EB0
+  0073ACB2: 8B 86 8C E5 04 00  mov         eax,dword ptr [esi+0004E58Ch]
+  0073ACB8: 3B C3              cmp         eax,ebx
+  0073ACBA: 74 1B              je          0073ACD7
+  0073ACBC: 8B
+  0073ACBD: 8E 08              mov         cs,word ptr [eax]
+  0073ACBF: EA
+  0073ACC0: 04
+
+  Summary
+
+      9C8000 .text

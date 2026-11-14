@@ -1,0 +1,158 @@
+{
+  "result": "passed",
+  "executable": "E:\\Games\\Driver San Francisco Save Bug Test\\Driver.exe",
+  "exe_sha256": "c79987b0548f7130337c3f295c8fe269e120ceddad55c1159e6f5cbc6aa26616",
+  "checks": [
+    {
+      "address": "00746940",
+      "check": "reader polls native backend before commit/parse",
+      "bytes": "56 8b f1 8b 06 8b 50 0c ff d2 84 c0"
+    },
+    {
+      "address": "00746A0B",
+      "check": "parser waits for entire header plus payload",
+      "bytes": "83 c0 10 3b f8 72 67"
+    },
+    {
+      "address": "00746ADB",
+      "check": "insufficient wrap assembly space returns before issuing read",
+      "bytes": "0f 82 02 01 00 00"
+    },
+    {
+      "address": "00746B62",
+      "check": "ordinary refill requires more than32KiB free",
+      "bytes": "3d 00 80 00 00 76 7a"
+    },
+    {
+      "address": "00746BCD",
+      "check": "ordinary I/O request is32KiB",
+      "bytes": "68 00 80 00 00 51 8b ce ff d2"
+    },
+    {
+      "address": "00746BF1",
+      "check": "retention walk starts from parse cursor",
+      "bytes": "8b 99 6c 85 00 00"
+    },
+    {
+      "address": "00746C87",
+      "check": "retention walk updates oldest retained pointer",
+      "bytes": "89 99 64 85 00 00"
+    },
+    {
+      "address": "00746DE2",
+      "check": "per-client dequeue advances chain head",
+      "bytes": "8b 40 0c 89 46 0c"
+    },
+    {
+      "address": "0073A453",
+      "check": "updater reconciles per-client chains before tail refill",
+      "bytes": "e8 18 c9 00 00"
+    },
+    {
+      "address": "0073A714",
+      "check": "updater tail dispatches recording service",
+      "bytes": "e9 87 c5 00 00"
+    },
+    {
+      "address": "007546E0",
+      "check": "client3 advances its current sample before requiring successor",
+      "bytes": "8b d0 89 46 04 83 7a 0c 00"
+    },
+    {
+      "address": "007549D0",
+      "check": "client3 busy tests current and successor presence",
+      "bytes": "8b 41 04 85 c0 74 09 83 78 0c 00 74 03"
+    },
+    {
+      "address": "00745EA0",
+      "check": "cursor helper uses capacity field, not256KiB mask",
+      "bytes": "8b 91 5c 85 00 00"
+    },
+    {
+      "address": "0073F941",
+      "check": "file reader delegates to8573B0",
+      "bytes": "e8 6a 7a 11 00"
+    },
+    {
+      "address": "0073FB37",
+      "check": "file busy virtual delegates to8574E0",
+      "bytes": "e8 a4 79 11 00"
+    },
+    {
+      "address": "008573F0",
+      "check": "file read delegates to85AD10",
+      "bytes": "e8 1b 39 00 00"
+    },
+    {
+      "address": "0085AD70",
+      "check": "read schedules native I/O through85AB30",
+      "bytes": "e8 bb fd ff ff"
+    },
+    {
+      "address": "00736D79",
+      "check": "shared second buffer starts at service+40000",
+      "bytes": "8d 81 00 00 04 00"
+    },
+    {
+      "address": "00736E56",
+      "check": "independent next region starts at service+80000",
+      "bytes": "8d 81 00 00 08 00"
+    },
+    {
+      "address": "0073991D",
+      "check": "failure path drains recording before destructor/provider release",
+      "bytes": "e8 de d4 00 00"
+    },
+    {
+      "address": "0073935A",
+      "check": "background completion drains recording before destructor/provider release",
+      "bytes": "e8 a1 da 00 00"
+    },
+    {
+      "address": "0073AD4C",
+      "check": "mode teardown drains recording before destructor/provider release",
+      "bytes": "e8 af c0 00 00"
+    }
+  ],
+  "file_constructor_paths": [
+    {
+      "call": "00739705",
+      "mode": 0,
+      "capacity": 262144,
+      "provider": "00736CB0"
+    },
+    {
+      "call": "00739770",
+      "mode": 0,
+      "capacity": 262144,
+      "provider": "00736C00"
+    },
+    {
+      "call": "007397AC",
+      "mode": 0,
+      "capacity": 262144,
+      "provider": "00736C00"
+    },
+    {
+      "call": "00739AB9",
+      "mode": 1,
+      "capacity": 524288,
+      "provider": "00736C00"
+    },
+    {
+      "call": "0073B048",
+      "mode": 1,
+      "capacity": 262144,
+      "provider": "00736D60"
+    }
+  ],
+  "staged_artifact_sha256": {
+    "dist\\MAIN_150\\DriverSF_V29s_160Capacity_150Request_REGMAP_REUSE_R2.asi": "8d180487ca129e0bc88f880265427858cab9e48e9730bbba112c077d38b5bdaa",
+    "dist\\MAIN_150\\DriverSF_V29s_160Capacity_150Request_REPLAY_HITCH_R1.asi": "758805067a6b08ef0e01bbc191d92b35809f37a0264fb49265c6a70b3e3da6c8",
+    "dist\\MAIN_150\\DriverSF_V29s_160Capacity_150Request_REPLAY_CLIENT_R1.asi": "d7c234b55a115acc825d14741b32649a8a92879688b531132f264a946f1491b3"
+  },
+  "boundary_span_checks": "passed",
+  "build": false,
+  "game_run": false,
+  "debugger": false
+}

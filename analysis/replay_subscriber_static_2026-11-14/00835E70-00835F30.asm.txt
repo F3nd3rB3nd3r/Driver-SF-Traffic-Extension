@@ -1,0 +1,94 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00835E70: 83 EC 08           sub         esp,8
+  00835E73: 53                 push        ebx
+  00835E74: 56                 push        esi
+  00835E75: 57                 push        edi
+  00835E76: 8D 44 24 0C        lea         eax,[esp+0Ch]
+  00835E7A: 50                 push        eax
+  00835E7B: 8B F1              mov         esi,ecx
+  00835E7D: FF 15 D8 91 DC 00  call        dword ptr ds:[00DC91D8h]
+  00835E83: 8B 44 24 0C        mov         eax,dword ptr [esp+0Ch]
+  00835E87: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  00835E8B: 8B D0              mov         edx,eax
+  00835E8D: 2B 56 10           sub         edx,dword ptr [esi+10h]
+  00835E90: 8B F9              mov         edi,ecx
+  00835E92: 1B 7E 14           sbb         edi,dword ptr [esi+14h]
+  00835E95: 89 7C 24 10        mov         dword ptr [esp+10h],edi
+  00835E99: 78 2A              js          00835EC5
+  00835E9B: 7F 04              jg          00835EA1
+  00835E9D: 85 D2              test        edx,edx
+  00835E9F: 72 24              jb          00835EC5
+  00835EA1: 8B 56 10           mov         edx,dword ptr [esi+10h]
+  00835EA4: 8B 5E 14           mov         ebx,dword ptr [esi+14h]
+  00835EA7: 8B F8              mov         edi,eax
+  00835EA9: 2B FA              sub         edi,edx
+  00835EAB: 8B D1              mov         edx,ecx
+  00835EAD: 1B D3              sbb         edx,ebx
+  00835EAF: 8B 1D 5C C9 43 01  mov         ebx,dword ptr ds:[0143C95Ch]
+  00835EB5: 3B DA              cmp         ebx,edx
+  00835EB7: 7F 20              jg          00835ED9
+  00835EB9: 7C 0A              jl          00835EC5
+  00835EBB: 8B 15 58 C9 43 01  mov         edx,dword ptr ds:[0143C958h]
+  00835EC1: 3B D7              cmp         edx,edi
+  00835EC3: 73 14              jae         00835ED9
+  00835EC5: 8B 7E 10           mov         edi,dword ptr [esi+10h]
+  00835EC8: 8B 5E 14           mov         ebx,dword ptr [esi+14h]
+  00835ECB: 8B D0              mov         edx,eax
+  00835ECD: 2B D7              sub         edx,edi
+  00835ECF: 8B F9              mov         edi,ecx
+  00835ED1: 1B FB              sbb         edi,ebx
+  00835ED3: 01 56 08           add         dword ptr [esi+8],edx
+  00835ED6: 11 7E 0C           adc         dword ptr [esi+0Ch],edi
+  00835ED9: 8B D0              mov         edx,eax
+  00835EDB: 2B 56 08           sub         edx,dword ptr [esi+8]
+  00835EDE: 8B F9              mov         edi,ecx
+  00835EE0: 1B 7E 0C           sbb         edi,dword ptr [esi+0Ch]
+  00835EE3: 89 46 10           mov         dword ptr [esi+10h],eax
+  00835EE6: 89 4E 14           mov         dword ptr [esi+14h],ecx
+  00835EE9: 89 7C 24 10        mov         dword ptr [esp+10h],edi
+  00835EED: 78 2C              js          00835F1B
+  00835EEF: 7F 04              jg          00835EF5
+  00835EF1: 85 D2              test        edx,edx
+  00835EF3: 72 26              jb          00835F1B
+  00835EF5: 8B 56 08           mov         edx,dword ptr [esi+8]
+  00835EF8: 8B 5E 0C           mov         ebx,dword ptr [esi+0Ch]
+  00835EFB: 8B F8              mov         edi,eax
+  00835EFD: 2B FA              sub         edi,edx
+  00835EFF: 8B D1              mov         edx,ecx
+  00835F01: 1B D3              sbb         edx,ebx
+  00835F03: 8B 5E 04           mov         ebx,dword ptr [esi+4]
+  00835F06: 3B DA              cmp         ebx,edx
+  00835F08: 7C 11              jl          00835F1B
+  00835F0A: 7F 06              jg          00835F12
+  00835F0C: 8B 16              mov         edx,dword ptr [esi]
+  00835F0E: 3B D7              cmp         edx,edi
+  00835F10: 72 09              jb          00835F1B
+  00835F12: 5F                 pop         edi
+  00835F13: 5E                 pop         esi
+  00835F14: 32 C0              xor         al,al
+  00835F16: 5B                 pop         ebx
+  00835F17: 83 C4 08           add         esp,8
+  00835F1A: C3                 ret
+  00835F1B: 5F                 pop         edi
+  00835F1C: 89 46 08           mov         dword ptr [esi+8],eax
+  00835F1F: 89 4E 0C           mov         dword ptr [esi+0Ch],ecx
+  00835F22: 5E                 pop         esi
+  00835F23: B0 01              mov         al,1
+  00835F25: 5B                 pop         ebx
+  00835F26: 83 C4 08           add         esp,8
+  00835F29: C3                 ret
+  00835F2A: CC                 int         3
+  00835F2B: CC                 int         3
+  00835F2C: CC                 int         3
+  00835F2D: CC                 int         3
+  00835F2E: CC                 int         3
+  00835F2F: CC                 int         3
+  00835F30: 83
+
+  Summary
+
+      9C8000 .text

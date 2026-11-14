@@ -158,6 +158,9 @@ extern "C" __declspec(noinline) void* __cdecl ReplayLoadRetained(void* destinati
     ReplayLock();t->stage=4u;ReplayUnlock();InterlockedIncrement(&g_replayLoads);return destination;
 }
 extern "C" __declspec(noinline) void __fastcall ReplayRestore(void* self,void*) {
+#if defined(DSF_REPLAY_HITCH_RUNTIME)
+    RHScope timing(RHRestore,reinterpret_cast<UPtr>(self));
+#endif
     const UPtr owner=reinterpret_cast<UPtr>(self);ReplayData d={};ReplayLock();ReplaySlot* s=ReplayFindSlot(owner,false);
     const bool ok=ReplaySlotOkay(s) && ReplayMirrorMatches(owner+0xCu,s->data);if(ok)d=s->data;ReplayUnlock();
     if(!ok){ReplayFail("restoreCache",owner,0u);return;}const UPtr spooler=ReplaySpooler();
@@ -173,6 +176,9 @@ extern "C" __declspec(noinline) void __fastcall ReplayRestore(void* self,void*) 
     Write32(owner+8u,2u);InterlockedIncrement(&g_replayRestores);ReplayEvent("restore",owner,d);
 }
 extern "C" __declspec(noinline) void __fastcall ReplayImport(void* self,void*,const void* input) {
+#if defined(DSF_REPLAY_HITCH_RUNTIME)
+    RHScope timing(RHImport,reinterpret_cast<UPtr>(self));
+#endif
     const UPtr owner=reinterpret_cast<UPtr>(self),base=reinterpret_cast<UPtr>(input);ReplayTemp* t=ReplayTempAt(base,4u);if(!t)return;
     t->data.extra=Read32(base+0x260u);
     if(!ReplayValid(t->data) || !ReplayMirrorMatches(base,t->data) || !Readable(owner,0x270u)){ReplayFail("importData",base,0u);return;}
@@ -183,4 +189,7 @@ extern "C" __declspec(noinline) void __fastcall ReplayImport(void* self,void*,co
     InterlockedIncrement(&g_replayImports);ReplayFinish(t);
     if(ReplayIdle(ReplaySpooler()))ReplayRestore(self,nullptr);
     else{Write32(owner+8u,1u);InterlockedIncrement(&g_replayDeferred);}
+#if defined(DSF_V29S_REPLAY_PAUSE)
+    PauseOnImport(owner);
+#endif
 }

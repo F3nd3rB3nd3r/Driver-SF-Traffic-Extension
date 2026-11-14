@@ -1,0 +1,126 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00744A90: 83 EC 08           sub         esp,8
+  00744A93: 53                 push        ebx
+  00744A94: 55                 push        ebp
+  00744A95: 56                 push        esi
+  00744A96: 6A 08              push        8
+  00744A98: 8B F1              mov         esi,ecx
+  00744A9A: E8 01 53 F8 FF     call        006C9DA0
+  00744A9F: 8B E8              mov         ebp,eax
+  00744AA1: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00744AA6: 83 C4 04           add         esp,4
+  00744AA9: 89 6C 24 0C        mov         dword ptr [esp+0Ch],ebp
+  00744AAD: 85 C0              test        eax,eax
+  00744AAF: 75 0A              jne         00744ABB
+  00744AB1: E8 DA 5B CC FF     call        0040A690
+  00744AB6: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00744ABB: 80 BE 49 47 00 00  cmp         byte ptr [esi+00004749h],0
+            00
+  00744AC2: 8B 98 2C 02 00 00  mov         ebx,dword ptr [eax+0000022Ch]
+  00744AC8: 0F 85 B9 02 00 00  jne         00744D87
+  00744ACE: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00744AD1: 3B 06              cmp         eax,dword ptr [esi]
+  00744AD3: 0F 84 43 01 00 00  je          00744C1C
+  00744AD9: 57                 push        edi
+  00744ADA: 8D 9B 00 00 00 00  lea         ebx,[ebx+00000000h]
+  00744AE0: 83 3E 00           cmp         dword ptr [esi],0
+  00744AE3: 75 07              jne         00744AEC
+  00744AE5: 8B CE              mov         ecx,esi
+  00744AE7: E8 D4 DB FF FF     call        007426C0
+  00744AEC: 83 7E 04 00        cmp         dword ptr [esi+4],0
+  00744AF0: 75 49              jne         00744B3B
+  00744AF2: 8B 7E 08           mov         edi,dword ptr [esi+8]
+  00744AF5: 85 FF              test        edi,edi
+  00744AF7: 74 42              je          00744B3B
+  00744AF9: 57                 push        edi
+  00744AFA: E8 31 53 12 00     call        00869E30
+  00744AFF: 8B E8              mov         ebp,eax
+  00744B01: 83 C4 04           add         esp,4
+  00744B04: 83 FD 5B           cmp         ebp,5Bh
+  00744B07: 74 13              je          00744B1C
+  00744B09: 8B CF              mov         ecx,edi
+  00744B0B: E8 C0 CD 11 00     call        008618D0
+  00744B10: 57                 push        edi
+  00744B11: 55                 push        ebp
+  00744B12: E8 89 52 12 00     call        00869DA0
+  00744B17: 83 C4 08           add         esp,8
+  00744B1A: EB 14              jmp         00744B30
+  00744B1C: 85 FF              test        edi,edi
+  00744B1E: 74 10              je          00744B30
+  00744B20: 8B CF              mov         ecx,edi
+  00744B22: E8 A9 CD 11 00     call        008618D0
+  00744B27: 57                 push        edi
+  00744B28: E8 2D 3C 4E 00     call        00C2875A
+  00744B2D: 83 C4 04           add         esp,4
+  00744B30: 8B 6C 24 10        mov         ebp,dword ptr [esp+10h]
+  00744B34: C7 46 08 00 00 00  mov         dword ptr [esi+8],0
+            00
+  00744B3B: 8B 46 04           mov         eax,dword ptr [esi+4]
+  00744B3E: 89 06              mov         dword ptr [esi],eax
+  00744B40: 48                 dec         eax
+  00744B41: 83 F8 10           cmp         eax,10h
+  00744B44: 0F 87 C6 00 00 00  ja          00744C10
+  00744B4A: FF 24 85 90 4D 74  jmp         dword ptr [eax*4+00744D90h]
+            00
+  00744B51: 8B CE              mov         ecx,esi
+  00744B53: E8 08 CB FF FF     call        00741660
+  00744B58: E9 B3 00 00 00     jmp         00744C10
+  00744B5D: 8B CE              mov         ecx,esi
+  00744B5F: E8 FC CB FF FF     call        00741760
+  00744B64: E9 A7 00 00 00     jmp         00744C10
+  00744B69: 8B CE              mov         ecx,esi
+  00744B6B: E8 D0 DF FF FF     call        00742B40
+  00744B70: E9 9B 00 00 00     jmp         00744C10
+  00744B75: 6A 04              push        4
+  00744B77: 8B CE              mov         ecx,esi
+  00744B79: E8 62 E9 FF FF     call        007434E0
+  00744B7E: E9 8D 00 00 00     jmp         00744C10
+  00744B83: 83 3D 28 72 FE 00  cmp         dword ptr ds:[00FE7228h],0
+            00
+  00744B8A: 75 0A              jne         00744B96
+  00744B8C: E8 FF 5A CC FF     call        0040A690
+  00744B91: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00744B96: 6A 01              push        1
+  00744B98: 8B CE              mov         ecx,esi
+  00744B9A: E8 41 E9 FF FF     call        007434E0
+  00744B9F: EB 6F              jmp         00744C10
+  00744BA1: 8B CE              mov         ecx,esi
+  00744BA3: E8 18 D1 FF FF     call        00741CC0
+  00744BA8: EB 66              jmp         00744C10
+  00744BAA: 6A 0A              push        0Ah
+  00744BAC: 8B CE              mov         ecx,esi
+  00744BAE: E8 FD DE FF FF     call        00742AB0
+  00744BB3: 8B 8E 44 47 00 00  mov         ecx,dword ptr [esi+00004744h]
+  00744BB9: 51                 push        ecx
+  00744BBA: 8B CE              mov         ecx,esi
+  00744BBC: E8 1F E9 FF FF     call        007434E0
+  00744BC1: EB 4D              jmp         00744C10
+  00744BC3: 8B 96 44 47 00 00  mov         edx,dword ptr [esi+00004744h]
+  00744BC9: 52                 push        edx
+  00744BCA: 8B CE              mov         ecx,esi
+  00744BCC: E8 0F E9 FF FF     call        007434E0
+  00744BD1: EB 3D              jmp         00744C10
+  00744BD3: 8B CE              mov         ecx,esi
+  00744BD5: E8 26 D2 FF FF     call        00741E00
+  00744BDA: EB 34              jmp         00744C10
+  00744BDC: 8B CE              mov         ecx,esi
+  00744BDE: E8 FD D3 FF FF     call        00741FE0
+  00744BE3: EB 2B              jmp         00744C10
+  00744BE5: 8B CE              mov         ecx,esi
+  00744BE7: E8 F4 D4 FF FF     call        007420E0
+  00744BEC: EB 22              jmp         00744C10
+  00744BEE: 8B CE              mov         ecx,esi
+  00744BF0: E8 6B D7 FF FF     call        00742360
+  00744BF5: EB 19              jmp         00744C10
+  00744BF7: 8B CE              mov         ecx,esi
+  00744BF9: E8 12 D8 FF FF     call        00742410
+  00744BFE: EB 10              jmp         00744C10
+  00744C00: 8B
+
+  Summary
+
+      9C8000 .text

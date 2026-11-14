@@ -1,0 +1,58 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00797410: E8 7B 32 C7 FF     call        0040A690
+  00797415: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0079741A: 8B 88 78 06 00 00  mov         ecx,dword ptr [eax+00000678h]
+  00797420: E8 0B 7A 01 00     call        007AEE30
+  00797425: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0079742A: 85 C0              test        eax,eax
+  0079742C: 75 0A              jne         00797438
+  0079742E: E8 5D 32 C7 FF     call        0040A690
+  00797433: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00797438: 8B 88 48 03 00 00  mov         ecx,dword ptr [eax+00000348h]
+  0079743E: 6A 08              push        8
+  00797440: 8D 54 24 04        lea         edx,[esp+4]
+  00797444: 52                 push        edx
+  00797445: E8 66 38 E1 FF     call        005AACB0
+  0079744A: 8B 08              mov         ecx,dword ptr [eax]
+  0079744C: 85 C9              test        ecx,ecx
+  0079744E: 74 05              je          00797455
+  00797450: E8 5B 72 E2 FF     call        005BE6B0
+  00797455: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  0079745A: 85 C0              test        eax,eax
+  0079745C: 75 0A              jne         00797468
+  0079745E: E8 2D 32 C7 FF     call        0040A690
+  00797463: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00797468: 8B 88 2C 02 00 00  mov         ecx,dword ptr [eax+0000022Ch]
+  0079746E: 85 C9              test        ecx,ecx
+  00797470: 74 05              je          00797477
+  00797472: E8 19 2C FA FF     call        0073A090
+  00797477: 83 C4 04           add         esp,4
+  0079747A: E9 71 1F 00 00     jmp         007993F0
+  0079747F: CC                 int         3
+  00797480: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00797484: 83 F8 0F           cmp         eax,0Fh
+  00797487: 7C 2B              jl          007974B4
+  00797489: 83 F8 10           cmp         eax,10h
+  0079748C: 7E 29              jle         007974B7
+  0079748E: 83 F8 15           cmp         eax,15h
+  00797491: 75 21              jne         007974B4
+  00797493: 56                 push        esi
+  00797494: 8B B1 A4 FE FF FF  mov         esi,dword ptr [ecx+FFFFFEA4h]
+  0079749A: 8B 06              mov         eax,dword ptr [esi]
+  0079749C: 8B 50 1C           mov         edx,dword ptr [eax+1Ch]
+  0079749F: 8B CE              mov         ecx,esi
+  007974A1: FF D2              call        edx
+  007974A3: 83 F8 33           cmp         eax,33h
+  007974A6: 75 0B              jne         007974B3
+  007974A8: 8B 06              mov         eax,dword ptr [esi]
+  007974AA: 8B 50 2C           mov         edx,dword ptr [eax+2Ch]
+  007974AD: 6A 41              push        41h
+  007974AF: 8B CE              mov         ecx,esi
+
+  Summary
+
+      9C8000 .text

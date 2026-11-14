@@ -1,0 +1,148 @@
+
+Dump of file E:\_DSF Mods\ai repos\DriverSF_V29s_VS_LEAN_2026-11-02\build\v29s_regmap_reuse_r1\DriverSF_V29s_160Capacity_150Request_REGMAP_REUSE_R1.asi
+
+File Type: DLL
+
+  100049E0: 55                 push        ebp
+  100049E1: 8B EC              mov         ebp,esp
+  100049E3: 53                 push        ebx
+  100049E4: 8B 5D 10           mov         ebx,dword ptr [ebp+10h]
+  100049E7: 56                 push        esi
+  100049E8: 8B 75 08           mov         esi,dword ptr [ebp+8]
+  100049EB: 57                 push        edi
+  100049EC: 8D 46 FC           lea         eax,[esi-4]
+  100049EF: 81 FB 58 02 00 00  cmp         ebx,258h
+  100049F5: 0F 87 94 00 00 00  ja          10004A8F
+  100049FB: F6 C3 03           test        bl,3
+  100049FE: 0F 85 8B 00 00 00  jne         10004A8F
+  10004A04: 68 64 02 00 00     push        264h
+  10004A09: 50                 push        eax
+  10004A0A: E8 F1 A7 01 00     call        1001F200
+  10004A0F: 83 C4 08           add         esp,8
+  10004A12: 84 C0              test        al,al
+  10004A14: 74 79              je          10004A8F
+  10004A16: 8B 46 FC           mov         eax,dword ptr [esi-4]
+  10004A19: 8B FB              mov         edi,ebx
+  10004A1B: C1 EF 02           shr         edi,2
+  10004A1E: 3B C7              cmp         eax,edi
+  10004A20: 75 6D              jne         10004A8F
+  10004A22: 85 DB              test        ebx,ebx
+  10004A24: 74 10              je          10004A36
+  10004A26: 53                 push        ebx
+  10004A27: FF 75 0C           push        dword ptr [ebp+0Ch]
+  10004A2A: E8 D1 A7 01 00     call        1001F200
+  10004A2F: 83 C4 08           add         esp,8
+  10004A32: 84 C0              test        al,al
+  10004A34: 74 59              je          10004A8F
+  10004A36: 8D 46 FC           lea         eax,[esi-4]
+  10004A39: 6A 03              push        3
+  10004A3B: 50                 push        eax
+  10004A3C: E8 EF C1 01 00     call        10020C30
+  10004A41: 8B D0              mov         edx,eax
+  10004A43: 83 C4 08           add         esp,8
+  10004A46: 85 D2              test        edx,edx
+  10004A48: 74 62              je          10004AAC
+  10004A4A: 33 C9              xor         ecx,ecx
+  10004A4C: 89 7A 14           mov         dword ptr [edx+14h],edi
+  10004A4F: C7 82 70 02 00 00  mov         dword ptr [edx+00000270h],0
+            00 00 00 00
+  10004A59: C7 82 74 0A 00 00  mov         dword ptr [edx+00000A74h],0FFFFFFFFh
+            FF FF FF FF
+  10004A63: 85 FF              test        edi,edi
+  10004A65: 74 45              je          10004AAC
+  10004A67: 8B 5D 0C           mov         ebx,dword ptr [ebp+0Ch]
+  10004A6A: 66 0F 1F 44 00 00  nop         word ptr [eax+eax]
+  10004A70: 8B 04 8B           mov         eax,dword ptr [ebx+ecx*4]
+  10004A73: 89 44 8A 18        mov         dword ptr [edx+ecx*4+18h],eax
+  10004A77: 83 F9 32           cmp         ecx,32h
+  10004A7A: 73 06              jae         10004A82
+  10004A7C: 8B 04 8B           mov         eax,dword ptr [ebx+ecx*4]
+  10004A7F: 89 04 8E           mov         dword ptr [esi+ecx*4],eax
+  10004A82: 41                 inc         ecx
+  10004A83: 3B 4A 14           cmp         ecx,dword ptr [edx+14h]
+  10004A86: 72 E8              jb          10004A70
+  10004A88: 5F                 pop         edi
+  10004A89: 8B C6              mov         eax,esi
+  10004A8B: 5E                 pop         esi
+  10004A8C: 5B                 pop         ebx
+  10004A8D: 5D                 pop         ebp
+  10004A8E: C3                 ret
+  10004A8F: 68 38 F5 38 10     push        1038F538h
+  10004A94: FF 15 38 C0 43 10  call        dword ptr ds:[1043C038h]
+  10004A9A: 53                 push        ebx
+  10004A9B: 8D 46 FC           lea         eax,[esi-4]
+  10004A9E: 50                 push        eax
+  10004A9F: 68 6C 5B 03 10     push        10035B6Ch
+  10004AA4: E8 A7 CD 01 00     call        10021850
+  10004AA9: 83 C4 0C           add         esp,0Ch
+  10004AAC: 5F                 pop         edi
+  10004AAD: 8B C6              mov         eax,esi
+  10004AAF: 5E                 pop         esi
+  10004AB0: 5B                 pop         ebx
+  10004AB1: 5D                 pop         ebp
+  10004AB2: C3                 ret
+  10004AB3: CC                 int         3
+  10004AB4: CC                 int         3
+  10004AB5: CC                 int         3
+  10004AB6: CC                 int         3
+  10004AB7: CC                 int         3
+  10004AB8: CC                 int         3
+  10004AB9: CC                 int         3
+  10004ABA: CC                 int         3
+  10004ABB: CC                 int         3
+  10004ABC: CC                 int         3
+  10004ABD: CC                 int         3
+  10004ABE: CC                 int         3
+  10004ABF: CC                 int         3
+  10004AC0: CC                 int         3
+  10004AC1: CC                 int         3
+  10004AC2: CC                 int         3
+  10004AC3: CC                 int         3
+  10004AC4: CC                 int         3
+  10004AC5: CC                 int         3
+  10004AC6: CC                 int         3
+  10004AC7: CC                 int         3
+  10004AC8: CC                 int         3
+  10004AC9: CC                 int         3
+  10004ACA: CC                 int         3
+  10004ACB: CC                 int         3
+  10004ACC: CC                 int         3
+  10004ACD: CC                 int         3
+  10004ACE: CC                 int         3
+  10004ACF: CC                 int         3
+  10004AD0: CC                 int         3
+  10004AD1: CC                 int         3
+  10004AD2: CC                 int         3
+  10004AD3: CC                 int         3
+  10004AD4: CC                 int         3
+  10004AD5: CC                 int         3
+  10004AD6: CC                 int         3
+  10004AD7: CC                 int         3
+  10004AD8: CC                 int         3
+  10004AD9: CC                 int         3
+  10004ADA: CC                 int         3
+  10004ADB: CC                 int         3
+  10004ADC: CC                 int         3
+  10004ADD: CC                 int         3
+  10004ADE: CC                 int         3
+  10004ADF: CC                 int         3
+  10004AE0: CC                 int         3
+  10004AE1: CC                 int         3
+  10004AE2: CC                 int         3
+  10004AE3: CC                 int         3
+  10004AE4: CC                 int         3
+  10004AE5: CC                 int         3
+  10004AE6: CC                 int         3
+  10004AE7: CC                 int         3
+  10004AE8: CC                 int         3
+  10004AE9: CC                 int         3
+  10004AEA: CC                 int         3
+  10004AEB: CC                 int         3
+  10004AEC: CC                 int         3
+  10004AED: CC                 int         3
+  10004AEE: CC                 int         3
+  10004AEF: CC                 int         3
+
+  Summary
+
+       2B000 .text

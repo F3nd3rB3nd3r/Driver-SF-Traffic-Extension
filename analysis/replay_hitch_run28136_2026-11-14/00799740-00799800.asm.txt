@@ -1,0 +1,82 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00799740: E8 4B 0F C7 FF     call        0040A690
+  00799745: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0079974A: 83 B8 C4 07 00 00  cmp         dword ptr [eax+000007C4h],0
+            00
+  00799751: 74 23              je          00799776
+  00799753: 8B 88 84 05 00 00  mov         ecx,dword ptr [eax+00000584h]
+  00799759: F3 0F 10 41 0C     movss       xmm0,dword ptr [ecx+0Ch]
+  0079975E: F3 0F 11 44 24 10  movss       dword ptr [esp+10h],xmm0
+  00799764: 8B 80 C4 07 00 00  mov         eax,dword ptr [eax+000007C4h]
+  0079976A: 8D 4C 24 10        lea         ecx,[esp+10h]
+  0079976E: 51                 push        ecx
+  0079976F: 8B C8              mov         ecx,eax
+  00799771: E8 DA 9F EF FF     call        00693750
+  00799776: 6A 00              push        0
+  00799778: 8B CE              mov         ecx,esi
+  0079977A: E8 61 3E E0 FF     call        0059D5E0
+  0079977F: 8B CF              mov         ecx,edi
+  00799781: E8 0A 09 FA FF     call        0073A090
+  00799786: 8B CE              mov         ecx,esi
+  00799788: E8 03 2F E0 FF     call        0059C690
+  0079978D: 85 C0              test        eax,eax
+  0079978F: 8B CF              mov         ecx,edi
+  00799791: 0F 94 C3           sete        bl
+  00799794: E8 37 E2 F9 FF     call        007379D0
+  00799799: 5F                 pop         edi
+  0079979A: 5E                 pop         esi
+  0079979B: 84 DB              test        bl,bl
+  0079979D: 5B                 pop         ebx
+  0079979E: 75 12              jne         007997B2
+  007997A0: 84 C0              test        al,al
+  007997A2: 75 0E              jne         007997B2
+  007997A4: 8B 4D 04           mov         ecx,dword ptr [ebp+4]
+  007997A7: 8B 11              mov         edx,dword ptr [ecx]
+  007997A9: 8B 42 28           mov         eax,dword ptr [edx+28h]
+  007997AC: 5D                 pop         ebp
+  007997AD: 83 C4 04           add         esp,4
+  007997B0: FF E0              jmp         eax
+  007997B2: 5D                 pop         ebp
+  007997B3: 59                 pop         ecx
+  007997B4: C3                 ret
+  007997B5: CC                 int         3
+  007997B6: CC                 int         3
+  007997B7: CC                 int         3
+  007997B8: CC                 int         3
+  007997B9: CC                 int         3
+  007997BA: CC                 int         3
+  007997BB: CC                 int         3
+  007997BC: CC                 int         3
+  007997BD: CC                 int         3
+  007997BE: CC                 int         3
+  007997BF: CC                 int         3
+  007997C0: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  007997C5: 85 C0              test        eax,eax
+  007997C7: 75 0A              jne         007997D3
+  007997C9: E8 C2 0E C7 FF     call        0040A690
+  007997CE: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  007997D3: 8B 48 0C           mov         ecx,dword ptr [eax+0Ch]
+  007997D6: 6A 00              push        0
+  007997D8: E8 D3 14 41 00     call        00BAACB0
+  007997DD: C3                 ret
+  007997DE: CC                 int         3
+  007997DF: CC                 int         3
+  007997E0: 6A 08              push        8
+  007997E2: E8 99 EF 48 00     call        00C28780
+  007997E7: 83 C4 04           add         esp,4
+  007997EA: 85 C0              test        eax,eax
+  007997EC: 74 0F              je          007997FD
+  007997EE: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  007997F2: C7 00 48 CD E2 00  mov         dword ptr [eax],0E2CD48h
+  007997F8: 89 01              mov         dword ptr [ecx],eax
+  007997FA: 8B C1              mov         eax,ecx
+  007997FC: C3                 ret
+  007997FD: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+
+  Summary
+
+      9C8000 .text

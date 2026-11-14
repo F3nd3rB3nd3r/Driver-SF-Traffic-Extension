@@ -1,0 +1,48 @@
+{
+  "result": "passed",
+  "name": "DriverSF_V29s_160Capacity_150Request_REPLAY_READ1M_R1",
+  "bytes": 276480,
+  "sha256": "fa34ef9c10015bbebd065af8a5e0be8f322688f0c0c395e6aa44a10bdec894db",
+  "source_sha256": {
+    "src/V29sRegMap.inc": "150b08a2ee49f7cafc6e12dd33c6a3d3b3cd65c03cd11640be40ad29eb6ca983",
+    "src/V29sRegMapCore.inc": "23b5ee8a93ce5c0752df49f59de8725687826e78b0441feec7de09b4808e5dc4",
+    "src/V29sRegMapLayout.inc": "1d2ab435ab20d0335e488dc36ebc7c4d2ff1df4ff143eb132e9aad311bf3c231",
+    "src/V29sRegMapBridges.inc": "460340329ef751e3b2ef89d198668b3b8aec6322e9ea3a74756ce74ecd25300e",
+    "src/V29sRegMapNative.inc": "f896a41311ea602c90846d9e1c9df28dccaae903f871f73033e3607355bfd343",
+    "src/V29sRegMapRuntime.inc": "c60a37a708dfe6af08a4214693abeb131d81e1fecf5ce3c938aa6dd5890a2627",
+    "tests/RegMapReuseTest.cpp": "612566869619d30dc45e27bb58ff3262e76dc1a66ffd23ce7d149907b57b6706"
+  },
+  "requests": 150,
+  "graphics": 160,
+  "inline_nodes": 45,
+  "external_nodes": 512,
+  "fixed_owner_limit": 0,
+  "constructor_generation": true,
+  "insertion_hook_preserved": "0086BE5F",
+  "new_constructor_hook": "0086BFA0",
+  "fixture_checks": [
+    "real VirtualQuery reproduces R1 split-region rejection; R2 accepts RX/RWX signatures and rejects no-access/guard/second-page corruption",
+    "real two-site installer signatures, allocation/protection/flush rejection and exact restore passed",
+    "actual native constructor/insert/lookup/allocator execute for eight distinct150-ID owners",
+    "duplicates, mixed inline/external recycling and100 actual destroy/reconstruct generations passed",
+    "real external-end bound, recycling at capacity and corruption diagnostics passed",
+    "cold attach, allocation fault, actual diagnostic fields, GP/stack/x87/SSE preservation passed",
+    "regmap reuse checks passed"
+  ],
+  "inherited_replay_pause_and_capacities_verified": true,
+  "parser_checks": {
+    "result": "passed",
+    "checks": [
+      "startup and observed owner/reconstruction/reattachment parsing",
+      "bad startup/count/state/fatal rejection",
+      "no lifecycle certification or unexercised paths inferred"
+    ]
+  },
+  "game_run": false,
+  "installed": false,
+  "limitations": [
+    "External constructor/destructor allocation services are stubbed in native fixture.",
+    "Stable storage is process-lived per distinct address; memory remains finite.",
+    "Exact run19868 fault branch remains unknown; live repeated transitions need validation."
+  ]
+}

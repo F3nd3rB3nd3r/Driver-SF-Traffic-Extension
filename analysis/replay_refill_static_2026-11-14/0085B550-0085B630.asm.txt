@@ -1,0 +1,91 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0085B550: 53                 push        ebx
+  0085B551: 56                 push        esi
+  0085B552: 8B F1              mov         esi,ecx
+  0085B554: 57                 push        edi
+  0085B555: 8B BE 90 21 00 00  mov         edi,dword ptr [esi+00002190h]
+  0085B55B: 8D 9E 8C 21 00 00  lea         ebx,[esi+0000218Ch]
+  0085B561: 3B FB              cmp         edi,ebx
+  0085B563: 74 36              je          0085B59B
+  0085B565: 8B 4F 08           mov         ecx,dword ptr [edi+8]
+  0085B568: E8 E3 F8 FF FF     call        0085AE50
+  0085B56D: 84 C0              test        al,al
+  0085B56F: 74 2A              je          0085B59B
+  0085B571: 8B 0F              mov         ecx,dword ptr [edi]
+  0085B573: 8B 47 04           mov         eax,dword ptr [edi+4]
+  0085B576: 89 41 04           mov         dword ptr [ecx+4],eax
+  0085B579: 89 08              mov         dword ptr [eax],ecx
+  0085B57B: 8B 8E 00 20 00 00  mov         ecx,dword ptr [esi+00002000h]
+  0085B581: 89 0F              mov         dword ptr [edi],ecx
+  0085B583: FF 86 04 20 00 00  inc         dword ptr [esi+00002004h]
+  0085B589: FF 8E 08 20 00 00  dec         dword ptr [esi+00002008h]
+  0085B58F: 89 BE 00 20 00 00  mov         dword ptr [esi+00002000h],edi
+  0085B595: 8B F8              mov         edi,eax
+  0085B597: 3B C3              cmp         eax,ebx
+  0085B599: 75 CA              jne         0085B565
+  0085B59B: 83 BE 08 20 00 00  cmp         dword ptr [esi+00002008h],0
+            00
+  0085B5A2: 5F                 pop         edi
+  0085B5A3: 0F 95 C2           setne       dl
+  0085B5A6: 88 96 95 21 00 00  mov         byte ptr [esi+00002195h],dl
+  0085B5AC: 5E                 pop         esi
+  0085B5AD: 5B                 pop         ebx
+  0085B5AE: C3                 ret
+  0085B5AF: CC                 int         3
+  0085B5B0: 53                 push        ebx
+  0085B5B1: 56                 push        esi
+  0085B5B2: 8B F1              mov         esi,ecx
+  0085B5B4: 57                 push        edi
+  0085B5B5: 8B BE 90 21 00 00  mov         edi,dword ptr [esi+00002190h]
+  0085B5BB: 8D 86 8C 21 00 00  lea         eax,[esi+0000218Ch]
+  0085B5C1: 32 DB              xor         bl,bl
+  0085B5C3: 3B F8              cmp         edi,eax
+  0085B5C5: 74 49              je          0085B610
+  0085B5C7: 8B 4C 24 10        mov         ecx,dword ptr [esp+10h]
+  0085B5CB: EB 03              jmp         0085B5D0
+  0085B5CD: 8D 49 00           lea         ecx,[ecx]
+  0085B5D0: 39 4F 08           cmp         dword ptr [edi+8],ecx
+  0085B5D3: 74 09              je          0085B5DE
+  0085B5D5: 8B 7F 04           mov         edi,dword ptr [edi+4]
+  0085B5D8: 3B F8              cmp         edi,eax
+  0085B5DA: 75 F4              jne         0085B5D0
+  0085B5DC: EB 32              jmp         0085B610
+  0085B5DE: E8 2D F9 FF FF     call        0085AF10
+  0085B5E3: 84 C0              test        al,al
+  0085B5E5: 74 29              je          0085B610
+  0085B5E7: 8B 07              mov         eax,dword ptr [edi]
+  0085B5E9: 8B 4F 04           mov         ecx,dword ptr [edi+4]
+  0085B5EC: 89 48 04           mov         dword ptr [eax+4],ecx
+  0085B5EF: 89 01              mov         dword ptr [ecx],eax
+  0085B5F1: 8B 86 00 20 00 00  mov         eax,dword ptr [esi+00002000h]
+  0085B5F7: 89 07              mov         dword ptr [edi],eax
+  0085B5F9: BB 01 00 00 00     mov         ebx,1
+  0085B5FE: 01 9E 04 20 00 00  add         dword ptr [esi+00002004h],ebx
+  0085B604: FF 8E 08 20 00 00  dec         dword ptr [esi+00002008h]
+  0085B60A: 89 BE 00 20 00 00  mov         dword ptr [esi+00002000h],edi
+  0085B610: 83 BE 08 20 00 00  cmp         dword ptr [esi+00002008h],0
+            00
+  0085B617: 5F                 pop         edi
+  0085B618: 0F 95 C1           setne       cl
+  0085B61B: 88 8E 95 21 00 00  mov         byte ptr [esi+00002195h],cl
+  0085B621: 5E                 pop         esi
+  0085B622: 8A C3              mov         al,bl
+  0085B624: 5B                 pop         ebx
+  0085B625: C2 04 00           ret         4
+  0085B628: CC                 int         3
+  0085B629: CC                 int         3
+  0085B62A: CC                 int         3
+  0085B62B: CC                 int         3
+  0085B62C: CC                 int         3
+  0085B62D: CC                 int         3
+  0085B62E: CC                 int         3
+  0085B62F: CC                 int         3
+  0085B630: 81
+
+  Summary
+
+      9C8000 .text

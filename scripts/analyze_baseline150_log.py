@@ -82,6 +82,37 @@ def analyze(path):
         checks['replay_capacity_bounds']=all(0<=int(r.get('count',-1))<=150 and 0<=int(r.get('retained',-1))<=256 and
             (int(r.get('count',0))<=50 or 0<int(r.get('id50',0))<=65535) for r in replay_events) and all(
             0<=int(r.get('peakTraffic',0))<=150 and 0<=int(r.get('peakRetained',0))<=256 for r in replay_status)
+    pause_start=[r for r in records if r['type']=='DSFV29s_REPLAY_PAUSE_START']
+    pause_status=[r for r in records if r['type']=='DSFV29s_REPLAY_PAUSE_STATUS']
+    pause_events=[r for r in records if r['type']=='DSFV29s_REPLAY_PAUSE_EVENT']
+    pause_fatals=[r for r in records if r['type']=='DSFV29s_REPLAY_PAUSE_FATAL']
+    if pause_start or pause_status or pause_events or pause_fatals:
+        checks['replay_pause_startup']=len(pause_start)==1 and all(pause_start[0].get(k)==v for k,v in
+            {'status':'1','hooks':'1','site':'0073A090','completion':'007390BE','importTag':'1','sameThread':'1',
+             'nativeReadyGate':'1','forceUnpause':'0','monitorEngineCalls':'0','requests':'150','graphics':'160'}.items())
+        checks['replay_pause_status_present']=bool(pause_status)
+        checks['replay_pause_no_fatal']=not pause_fatals and all(r.get('status')=='1' for r in pause_status)
+        checks['replay_pause_event_guards']=all(r.get('kind') in ('completed','nativeHeld','ownerChanged') and
+            r.get('loadingBefore')=='1' and r.get('pausedBefore')=='1' and r.get('phase')=='0' and
+            not (int(r.get('rateBefore','FFFFFFFF'),16)&0x7fffffff) and int(r.get('importEpoch',0))>0 and
+            (r.get('kind')!='completed' or r.get('loadingAfter')=='0') and
+            (r.get('kind')!='nativeHeld' or r.get('loadingAfter')=='1') for r in pause_events)
+    reg_start=[r for r in records if r['type']=='DSFV29s_REGMAP_START']
+    reg_status=[r for r in records if r['type']=='DSFV29s_REGMAP_STATUS']
+    reg_events=[r for r in records if r['type']=='DSFV29s_REGMAP_EVENT']
+    reg_install_fail=[r for r in records if r['type']=='DSFV29s_REGMAP_INSTALL_FAIL']
+    reg_fatals=[r for r in records if r['type']=='DSFV29s_REGMAP_FATAL' or (r['type']=='DSFV29s_LEGACY_FATAL' and r.get('reason')=='vehicleDefinitionMap')]
+    if reg_start or reg_status or reg_events or reg_install_fail or any(r['type']=='DSFV29s_REGMAP_FATAL' for r in reg_fatals):
+        checks['regmap_startup']=len(reg_start)==1 and all(reg_start[0].get(k)==v for k,v in
+            {'revision':'1','status':'1','hooks':'2','insert':'0086BE5F','constructor':'0086BFA0','fixedOwnerLimit':'0',
+             'inlineNodes':'45','externalNodes':'512','nodeBytes':'24','processLifetime':'1','constructorGeneration':'1','requests':'150','graphics':'160'}.items())
+        checks['regmap_status_present']=bool(reg_status)
+        checks['regmap_no_fatal_or_fault']=not reg_fatals and not reg_install_fail and all(r.get('status')=='1' and r.get('faults')=='0' and r.get('allocationFailed')=='0' for r in reg_status)
+        checks['regmap_bounds']=all(0<=int(r.get('externalHigh',-1))<=512 for r in reg_status) and all(
+            r.get('kind') in ('constructed','redirect') and int(r.get('generation',0))>0 and
+            0<=int(r.get('inlineIssued',-1))<=45 and 0<=int(r.get('externalIssued',-1))<=512 and
+            (r.get('kind')!='constructed' or (r.get('active')=='0' and r.get('recycled')=='0' and r.get('inlineIssued')=='0' and r.get('externalIssued')=='0' and r.get('attached')=='0')) and
+            (r.get('kind')!='redirect' or (r.get('inlineIssued')=='45' and r.get('externalIssued')=='1' and r.get('attached')=='1')) for r in reg_events)
     return dict(log=str(path),checks=checks,telemetry_checks_pass=all(checks.values()),phases=summaries,
         lock_skips=peak('lockSkips'),obsolete_checks=peak('obsoleteChecks'),unmapped_body_calls=peak('bodyUnmapped'),
         rejected_requests=[r for r in phases if r.get('kind') not in ('accepted','sample','superseded')],
@@ -96,6 +127,15 @@ def analyze(path):
             observed_canonical150_restore=any(r.get('kind')=='restore' and canonical_snapshot(r) for r in replay_events),
             loading_samples=[r for r in replay_status if int(r.get('loading',0))],
             softlock_resolved=False),
+        replay_pause=dict(start=pause_start,final=pause_status[-1] if pause_status else None,events=pause_events,fatals=pause_fatals,
+            completion_service_exercised=any(r.get('kind')=='completed' for r in pause_events),
+            native_readiness_held_observed=any(r.get('kind')=='nativeHeld' for r in pause_events),
+            completed_events_with_clock_unchanged=sum(r.get('kind')=='completed' and r.get('clockBefore')==r.get('clockAfter') for r in pause_events),
+            user_playback_controls_verified=False),
+        regmap=dict(start=reg_start,final=reg_status[-1] if reg_status else None,events=reg_events,fatals=reg_fatals,install_failures=reg_install_fail,
+            beyond_four_owners_observed=any(int(r.get('owners',0))>4 for r in reg_status),
+            reconstruction_observed=any(int(r.get('reconstructs',0))>0 for r in reg_status),
+            reattachment_observed=any(int(r.get('reattaches',0))>0 for r in reg_status),lifecycle_stability_certified=False),
         has_150_ready_sweep=any(s['matches_vanilla150'] and s['exact_roster_recorded'] and s['all_ready_in_recorded_sweep'] for s in summaries),
         baseline_certified=False,
         limitations=['Run analyze_callback_log.py separately for inherited queue/arena/audio checks.',

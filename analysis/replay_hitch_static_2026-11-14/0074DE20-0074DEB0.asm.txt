@@ -1,0 +1,57 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0074DE20: 89 45 F8           mov         dword ptr [ebp-8],eax
+  0074DE23: 8B 45 F8           mov         eax,dword ptr [ebp-8]
+  0074DE26: 8B 08              mov         ecx,dword ptr [eax]
+  0074DE28: 89 4D F4           mov         dword ptr [ebp-0Ch],ecx
+  0074DE2B: 8B 53 08           mov         edx,dword ptr [ebx+8]
+  0074DE2E: 83 C2 10           add         edx,10h
+  0074DE31: 89 55 F0           mov         dword ptr [ebp-10h],edx
+  0074DE34: 8B 45 F0           mov         eax,dword ptr [ebp-10h]
+  0074DE37: 83 38 01           cmp         dword ptr [eax],1
+  0074DE3A: 75 4C              jne         0074DE88
+  0074DE3C: 8B 4D F4           mov         ecx,dword ptr [ebp-0Ch]
+  0074DE3F: 89 4D EC           mov         dword ptr [ebp-14h],ecx
+  0074DE42: 8B 4D EC           mov         ecx,dword ptr [ebp-14h]
+  0074DE45: E8 F6 D2 DF FF     call        0054B140
+  0074DE4A: 0F B6 D0           movzx       edx,al
+  0074DE4D: 85 D2              test        edx,edx
+  0074DE4F: 75 30              jne         0074DE81
+  0074DE51: 8B 45 F4           mov         eax,dword ptr [ebp-0Ch]
+  0074DE54: 89 45 E8           mov         dword ptr [ebp-18h],eax
+  0074DE57: 8B 4D F4           mov         ecx,dword ptr [ebp-0Ch]
+  0074DE5A: 89 4D E4           mov         dword ptr [ebp-1Ch],ecx
+  0074DE5D: 6A 00              push        0
+  0074DE5F: 6A 01              push        1
+  0074DE61: 8B 4B 08           mov         ecx,dword ptr [ebx+8]
+  0074DE64: E8 17 92 FE FF     call        00737080
+  0074DE69: 51                 push        ecx
+  0074DE6A: D9 1C 24           fstp        dword ptr [esp]
+  0074DE6D: 8B 4D E8           mov         ecx,dword ptr [ebp-18h]
+  0074DE70: E8 9B AD FE FF     call        00738C10
+  0074DE75: 51                 push        ecx
+  0074DE76: D9 1C 24           fstp        dword ptr [esp]
+  0074DE79: 8B 4D E4           mov         ecx,dword ptr [ebp-1Ch]
+  0074DE7C: E8 DF C0 FE FF     call        00739F60
+  0074DE81: 32 C0              xor         al,al
+  0074DE83: E9 86 16 00 00     jmp         0074F50E
+  0074DE88: C6 45 E3 01        mov         byte ptr [ebp-1Dh],1
+  0074DE8C: 8B 55 F0           mov         edx,dword ptr [ebp-10h]
+  0074DE8F: 83 C2 04           add         edx,4
+  0074DE92: 89 55 DC           mov         dword ptr [ebp-24h],edx
+  0074DE95: 8B 4B 08           mov         ecx,dword ptr [ebx+8]
+  0074DE98: E8 13 3D FB FF     call        00701BB0
+  0074DE9D: 8B 4B 08           mov         ecx,dword ptr [ebx+8]
+  0074DEA0: 8D 54 01 CC        lea         edx,[ecx+eax-34h]
+  0074DEA4: 89 55 D8           mov         dword ptr [ebp-28h],edx
+  0074DEA7: 8B 45 FC           mov         eax,dword ptr [ebp-4]
+  0074DEAA: 8B 48 20           mov         ecx,dword ptr [eax+20h]
+  0074DEAD: 89 4D D4           mov         dword ptr [ebp-2Ch],ecx
+  0074DEB0: 83
+
+  Summary
+
+      9C8000 .text

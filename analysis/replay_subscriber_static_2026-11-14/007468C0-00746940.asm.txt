@@ -1,0 +1,60 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007468C0: 56                 push        esi
+  007468C1: 8B F1              mov         esi,ecx
+  007468C3: 8B 86 58 85 00 00  mov         eax,dword ptr [esi+00008558h]
+  007468C9: 8B 8E 54 85 00 00  mov         ecx,dword ptr [esi+00008554h]
+  007468CF: 50                 push        eax
+  007468D0: 51                 push        ecx
+  007468D1: 8B CE              mov         ecx,esi
+  007468D3: E8 98 FE FF FF     call        00746770
+  007468D8: 8B B6 4C 85 00 00  mov         esi,dword ptr [esi+0000854Ch]
+  007468DE: 85 F6              test        esi,esi
+  007468E0: 74 53              je          00746935
+  007468E2: 8B 46 0C           mov         eax,dword ptr [esi+0Ch]
+  007468E5: 8B 4E 10           mov         ecx,dword ptr [esi+10h]
+  007468E8: 85 C0              test        eax,eax
+  007468EA: 74 42              je          0074692E
+  007468EC: 8D 64 24 00        lea         esp,[esp]
+  007468F0: 3B C1              cmp         eax,ecx
+  007468F2: 74 3A              je          0074692E
+  007468F4: 8B 40 0C           mov         eax,dword ptr [eax+0Ch]
+  007468F7: 85 C0              test        eax,eax
+  007468F9: 75 F5              jne         007468F0
+  007468FB: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00746900: 85 C0              test        eax,eax
+  00746902: 75 0A              jne         0074690E
+  00746904: E8 87 3D CC FF     call        0040A690
+  00746909: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  0074690E: 8B 48 1C           mov         ecx,dword ptr [eax+1Ch]
+  00746911: 8B 11              mov         edx,dword ptr [ecx]
+  00746913: 8B 42 10           mov         eax,dword ptr [edx+10h]
+  00746916: FF D0              call        eax
+  00746918: 84 C0              test        al,al
+  0074691A: 74 12              je          0074692E
+  0074691C: 68 08 A4 E2 00     push        0E2A408h
+  00746921: 68 B8 11 EE 00     push        0EE11B8h
+  00746926: E8 85 4F FF FF     call        0073B8B0
+  0074692B: 83 C4 08           add         esp,8
+  0074692E: 8B 76 04           mov         esi,dword ptr [esi+4]
+  00746931: 85 F6              test        esi,esi
+  00746933: 75 AD              jne         007468E2
+  00746935: 5E                 pop         esi
+  00746936: C3                 ret
+  00746937: CC                 int         3
+  00746938: CC                 int         3
+  00746939: CC                 int         3
+  0074693A: CC                 int         3
+  0074693B: CC                 int         3
+  0074693C: CC                 int         3
+  0074693D: CC                 int         3
+  0074693E: CC                 int         3
+  0074693F: CC                 int         3
+  00746940: 56                 push        esi
+
+  Summary
+
+      9C8000 .text

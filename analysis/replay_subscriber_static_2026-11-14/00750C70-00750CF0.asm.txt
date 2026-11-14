@@ -1,0 +1,46 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00750C70: 56                 push        esi
+  00750C71: 8B F1              mov         esi,ecx
+  00750C73: E8 18 5E FE FF     call        00736A90
+  00750C78: C7 06 DC A9 E2 00  mov         dword ptr [esi],0E2A9DCh
+  00750C7E: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00750C83: 85 C0              test        eax,eax
+  00750C85: 75 0A              jne         00750C91
+  00750C87: E8 04 9A CB FF     call        0040A690
+  00750C8C: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00750C91: 8B 80 38 07 00 00  mov         eax,dword ptr [eax+00000738h]
+  00750C97: 89 B0 D8 00 00 00  mov         dword ptr [eax+000000D8h],esi
+  00750C9D: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00750CA2: 85 C0              test        eax,eax
+  00750CA4: 75 0A              jne         00750CB0
+  00750CA6: E8 E5 99 CB FF     call        0040A690
+  00750CAB: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00750CB0: 8B 88 60 06 00 00  mov         ecx,dword ptr [eax+00000660h]
+  00750CB6: 89 71 20           mov         dword ptr [ecx+20h],esi
+  00750CB9: 8B C6              mov         eax,esi
+  00750CBB: 5E                 pop         esi
+  00750CBC: C3                 ret
+  00750CBD: CC                 int         3
+  00750CBE: CC                 int         3
+  00750CBF: CC                 int         3
+  00750CC0: 56                 push        esi
+  00750CC1: 8B F1              mov         esi,ecx
+  00750CC3: C7 06 DC A9 E2 00  mov         dword ptr [esi],0E2A9DCh
+  00750CC9: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00750CCE: 85 C0              test        eax,eax
+  00750CD0: 75 0A              jne         00750CDC
+  00750CD2: E8 B9 99 CB FF     call        0040A690
+  00750CD7: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00750CDC: 8B 88 38 07 00 00  mov         ecx,dword ptr [eax+00000738h]
+  00750CE2: 39 B1 D8 00 00 00  cmp         dword ptr [ecx+000000D8h],esi
+  00750CE8: 75 0F              jne         00750CF9
+  00750CEA: C7
+  00750CEB: 81 D8 00 00 00 00  sbb         eax,0
+
+  Summary
+
+      9C8000 .text

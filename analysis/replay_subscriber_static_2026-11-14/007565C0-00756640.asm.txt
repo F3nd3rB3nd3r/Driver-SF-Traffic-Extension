@@ -1,0 +1,48 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007565C0: 53                 push        ebx
+  007565C1: 55                 push        ebp
+  007565C2: 56                 push        esi
+  007565C3: 57                 push        edi
+  007565C4: 8B F1              mov         esi,ecx
+  007565C6: E8 C5 04 FE FF     call        00736A90
+  007565CB: D9 05 30 82 EC 00  fld         dword ptr ds:[00EC8230h]
+  007565D1: C7 46 08 EC 45 DE  mov         dword ptr [esi+8],0DE45ECh
+            00
+  007565D8: C7 46 0C EC 45 DE  mov         dword ptr [esi+0Ch],0DE45ECh
+            00
+  007565DF: C7 46 10 48 AF E2  mov         dword ptr [esi+10h],0E2AF48h
+            00
+  007565E6: 8D 7E 08           lea         edi,[esi+8]
+  007565E9: 8D 6E 0C           lea         ebp,[esi+0Ch]
+  007565EC: C7 46 14 EC 45 DE  mov         dword ptr [esi+14h],0DE45ECh
+            00
+  007565F3: 8D 5E 10           lea         ebx,[esi+10h]
+  007565F6: 51                 push        ecx
+  007565F7: 8D 4E 18           lea         ecx,[esi+18h]
+  007565FA: D9 1C 24           fstp        dword ptr [esp]
+  007565FD: C7 06 CC B0 E2 00  mov         dword ptr [esi],0E2B0CCh
+  00756603: C7 07 C4 B0 E2 00  mov         dword ptr [edi],0E2B0C4h
+  00756609: C7 45 00 BC B0 E2  mov         dword ptr [ebp],0E2B0BCh
+            00
+  00756610: C7 03 50 B0 E2 00  mov         dword ptr [ebx],0E2B050h
+  00756616: C7 46 14 44 B0 E2  mov         dword ptr [esi+14h],0E2B044h
+            00
+  0075661D: E8 BE FB D4 FF     call        004A61E0
+  00756622: C7 46 30 00 00 00  mov         dword ptr [esi+30h],0
+            00
+  00756629: C6 46 34 00        mov         byte ptr [esi+34h],0
+  0075662D: C6 46 35 00        mov         byte ptr [esi+35h],0
+  00756631: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00756636: 85 C0              test        eax,eax
+  00756638: 75 0A              jne         00756644
+  0075663A: E8 51 40 CB FF     call        0040A690
+  0075663F: A3
+  00756640: 28
+
+  Summary
+
+      9C8000 .text

@@ -1,0 +1,114 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00745E80: 83 C0 10           add         eax,10h
+  00745E83: C2 08 00           ret         8
+  00745E86: 8B 4C 24 04        mov         ecx,dword ptr [esp+4]
+  00745E8A: 8B 41 08           mov         eax,dword ptr [ecx+8]
+  00745E8D: 83 C0 10           add         eax,10h
+  00745E90: C2 08 00           ret         8
+  00745E93: CC                 int         3
+  00745E94: CC                 int         3
+  00745E95: CC                 int         3
+  00745E96: CC                 int         3
+  00745E97: CC                 int         3
+  00745E98: CC                 int         3
+  00745E99: CC                 int         3
+  00745E9A: CC                 int         3
+  00745E9B: CC                 int         3
+  00745E9C: CC                 int         3
+  00745E9D: CC                 int         3
+  00745E9E: CC                 int         3
+  00745E9F: CC                 int         3
+  00745EA0: 8B 91 5C 85 00 00  mov         edx,dword ptr [ecx+0000855Ch]
+  00745EA6: 8B 44 24 04        mov         eax,dword ptr [esp+4]
+  00745EAA: 8B 89 60 85 00 00  mov         ecx,dword ptr [ecx+00008560h]
+  00745EB0: 03 44 24 08        add         eax,dword ptr [esp+8]
+  00745EB4: 03 CA              add         ecx,edx
+  00745EB6: 3B C1              cmp         eax,ecx
+  00745EB8: 72 02              jb          00745EBC
+  00745EBA: 2B C2              sub         eax,edx
+  00745EBC: C2 08 00           ret         8
+  00745EBF: CC                 int         3
+  00745EC0: 8B 54 24 08        mov         edx,dword ptr [esp+8]
+  00745EC4: 56                 push        esi
+  00745EC5: 8B 74 24 08        mov         esi,dword ptr [esp+8]
+  00745EC9: 3B D6              cmp         edx,esi
+  00745ECB: 72 08              jb          00745ED5
+  00745ECD: 8B C2              mov         eax,edx
+  00745ECF: 2B C6              sub         eax,esi
+  00745ED1: 5E                 pop         esi
+  00745ED2: C2 08 00           ret         8
+  00745ED5: 8B 81 5C 85 00 00  mov         eax,dword ptr [ecx+0000855Ch]
+  00745EDB: 2B C6              sub         eax,esi
+  00745EDD: 03 C2              add         eax,edx
+  00745EDF: 5E                 pop         esi
+  00745EE0: C2 08 00           ret         8
+  00745EE3: CC                 int         3
+  00745EE4: CC                 int         3
+  00745EE5: CC                 int         3
+  00745EE6: CC                 int         3
+  00745EE7: CC                 int         3
+  00745EE8: CC                 int         3
+  00745EE9: CC                 int         3
+  00745EEA: CC                 int         3
+  00745EEB: CC                 int         3
+  00745EEC: CC                 int         3
+  00745EED: CC                 int         3
+  00745EEE: CC                 int         3
+  00745EEF: CC                 int         3
+  00745EF0: 8B 91 68 85 00 00  mov         edx,dword ptr [ecx+00008568h]
+  00745EF6: 56                 push        esi
+  00745EF7: 8B B1 64 85 00 00  mov         esi,dword ptr [ecx+00008564h]
+  00745EFD: 3B D6              cmp         edx,esi
+  00745EFF: 72 06              jb          00745F07
+  00745F01: 2B D6              sub         edx,esi
+  00745F03: 8B C2              mov         eax,edx
+  00745F05: 5E                 pop         esi
+  00745F06: C3                 ret
+  00745F07: 8B 81 5C 85 00 00  mov         eax,dword ptr [ecx+0000855Ch]
+  00745F0D: 2B C6              sub         eax,esi
+  00745F0F: 03 C2              add         eax,edx
+  00745F11: 5E                 pop         esi
+  00745F12: C3                 ret
+  00745F13: CC                 int         3
+  00745F14: CC                 int         3
+  00745F15: CC                 int         3
+  00745F16: CC                 int         3
+  00745F17: CC                 int         3
+  00745F18: CC                 int         3
+  00745F19: CC                 int         3
+  00745F1A: CC                 int         3
+  00745F1B: CC                 int         3
+  00745F1C: CC                 int         3
+  00745F1D: CC                 int         3
+  00745F1E: CC                 int         3
+  00745F1F: CC                 int         3
+  00745F20: 8B 91 64 85 00 00  mov         edx,dword ptr [ecx+00008564h]
+  00745F26: 56                 push        esi
+  00745F27: 8B B1 68 85 00 00  mov         esi,dword ptr [ecx+00008568h]
+  00745F2D: 3B D6              cmp         edx,esi
+  00745F2F: 75 08              jne         00745F39
+  00745F31: 8B 81 5C 85 00 00  mov         eax,dword ptr [ecx+0000855Ch]
+  00745F37: 5E                 pop         esi
+  00745F38: C3                 ret
+  00745F39: 72 06              jb          00745F41
+  00745F3B: 2B D6              sub         edx,esi
+  00745F3D: 8B C2              mov         eax,edx
+  00745F3F: 5E                 pop         esi
+  00745F40: C3                 ret
+  00745F41: 8B 81 5C 85 00 00  mov         eax,dword ptr [ecx+0000855Ch]
+  00745F47: 2B C6              sub         eax,esi
+  00745F49: 03 C2              add         eax,edx
+  00745F4B: 5E                 pop         esi
+  00745F4C: C3                 ret
+  00745F4D: CC                 int         3
+  00745F4E: CC                 int         3
+  00745F4F: CC                 int         3
+  00745F50: 8B
+
+  Summary
+
+      9C8000 .text

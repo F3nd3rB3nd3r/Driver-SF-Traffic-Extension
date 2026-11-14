@@ -1,0 +1,57 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  0084AA20: 81 EC 70 01 00 00  sub         esp,170h
+  0084AA26: 56                 push        esi
+  0084AA27: 8B F1              mov         esi,ecx
+  0084AA29: 83 BE A0 0E 00 00  cmp         dword ptr [esi+00000EA0h],5Ah
+            5A
+  0084AA30: 0F 83 82 00 00 00  jae         0084AAB8
+  0084AA36: 8D 4C 24 04        lea         ecx,[esp+4]
+  0084AA3A: E8 D1 1D 00 00     call        0084C810
+  0084AA3F: 50                 push        eax
+  0084AA40: 8D 8E 98 0E 00 00  lea         ecx,[esi+00000E98h]
+  0084AA46: E8 95 05 00 00     call        0084AFE0
+  0084AA4B: 8D 4C 24 04        lea         ecx,[esp+4]
+  0084AA4F: E8 8C 19 00 00     call        0084C3E0
+  0084AA54: 8B 84 24 7C 01 00  mov         eax,dword ptr [esp+0000017Ch]
+            00
+  0084AA5B: 8B 8E D4 92 00 00  mov         ecx,dword ptr [esi+000092D4h]
+  0084AA61: 50                 push        eax
+  0084AA62: 83 C1 08           add         ecx,8
+  0084AA65: E8 86 18 00 00     call        0084C2F0
+  0084AA6A: 8B 86 44 0A 00 00  mov         eax,dword ptr [esi+00000A44h]
+  0084AA70: 85 C0              test        eax,eax
+  0084AA72: 74 16              je          0084AA8A
+  0084AA74: 8B 8E 48 0A 00 00  mov         ecx,dword ptr [esi+00000A48h]
+  0084AA7A: 51                 push        ecx
+  0084AA7B: 8B 8E D4 92 00 00  mov         ecx,dword ptr [esi+000092D4h]
+  0084AA81: 50                 push        eax
+  0084AA82: 83 C1 08           add         ecx,8
+  0084AA85: E8 26 19 00 00     call        0084C3B0
+  0084AA8A: 8B 56 34           mov         edx,dword ptr [esi+34h]
+  0084AA8D: 8B 8E D4 92 00 00  mov         ecx,dword ptr [esi+000092D4h]
+  0084AA93: 52                 push        edx
+  0084AA94: 83 C1 08           add         ecx,8
+  0084AA97: E8 94 17 00 00     call        0084C230
+  0084AA9C: 8B 8E D4 92 00 00  mov         ecx,dword ptr [esi+000092D4h]
+  0084AAA2: 8B 84 24 78 01 00  mov         eax,dword ptr [esp+00000178h]
+            00
+  0084AAA9: 83 C1 08           add         ecx,8
+  0084AAAC: 89 08              mov         dword ptr [eax],ecx
+  0084AAAE: 5E                 pop         esi
+  0084AAAF: 81 C4 70 01 00 00  add         esp,170h
+  0084AAB5: C2 08 00           ret         8
+  0084AAB8: 8B 84 24 78 01 00  mov         eax,dword ptr [esp+00000178h]
+            00
+  0084AABF: C7 00 00 00 00 00  mov         dword ptr [eax],0
+  0084AAC5: 5E                 pop         esi
+  0084AAC6: 81
+  0084AAC7: C4
+  0084AAC8: 70
+
+  Summary
+
+      9C8000 .text

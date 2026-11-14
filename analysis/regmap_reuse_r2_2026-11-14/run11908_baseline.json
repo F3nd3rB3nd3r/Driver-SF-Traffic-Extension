@@ -1,0 +1,74 @@
+{
+  "log": "analysis\\regmap_reuse_r2_2026-11-14\\run11908_startup.log",
+  "checks": {
+    "startup": false,
+    "has_status": false,
+    "no_event_drops": true,
+    "no_memory_snapshot_failures": true,
+    "accepted_rosters_complete": false
+  },
+  "telemetry_checks_pass": false,
+  "phases": [],
+  "lock_skips": 0,
+  "obsolete_checks": 0,
+  "unmapped_body_calls": 0,
+  "rejected_requests": [],
+  "notification": {
+    "start": [],
+    "final": null,
+    "copies": [],
+    "fatals": [],
+    "observed_150_sidecar_copy": false
+  },
+  "parked": {
+    "start": [],
+    "final": null,
+    "builds": [],
+    "fatals": [],
+    "observed_150_candidate_build": false,
+    "observed_extended_picker_use": false,
+    "visible_fallback_resolved": false
+  },
+  "replay": {
+    "start": [],
+    "final": null,
+    "events": [],
+    "fatals": [],
+    "observed_canonical150_save": false,
+    "observed_canonical150_restore": false,
+    "loading_samples": [],
+    "softlock_resolved": false
+  },
+  "replay_pause": {
+    "start": [],
+    "final": null,
+    "events": [],
+    "fatals": [],
+    "completion_service_exercised": false,
+    "native_readiness_held_observed": false,
+    "completed_events_with_clock_unchanged": 0,
+    "user_playback_controls_verified": false
+  },
+  "regmap": {
+    "start": [],
+    "final": null,
+    "events": [],
+    "fatals": [],
+    "install_failures": [],
+    "beyond_four_owners_observed": false,
+    "reconstruction_observed": false,
+    "reattachment_observed": false,
+    "lifecycle_stability_certified": false
+  },
+  "has_150_ready_sweep": false,
+  "baseline_certified": false,
+  "limitations": [
+    "Run analyze_callback_log.py separately for inherited queue/arena/audio checks.",
+    "READY is a sequential native-predicate sweep, not an atomic worker-thread or drawable snapshot.",
+    "Body-call coverage is not visible pixels. Missing coverage can mean an unexercised model.",
+    "Audio counters are cumulative observations; compare audioAtStart for phase deltas.",
+    "Trailer/special models do not necessarily have engine/horn audio.",
+    "Lock skips can omit observations; memory/queue peaks are sampled. No final-exit snapshot.",
+    "A 150-model preset still needs user-visible/audible results and lifecycle coverage."
+  ]
+}

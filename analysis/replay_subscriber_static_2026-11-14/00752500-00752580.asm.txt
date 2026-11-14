@@ -1,0 +1,57 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  00752500: 56                 push        esi
+  00752501: 57                 push        edi
+  00752502: 8B F1              mov         esi,ecx
+  00752504: E8 87 45 FE FF     call        00736A90
+  00752509: 8D 7E 08           lea         edi,[esi+8]
+  0075250C: C7 07 FC AB E2 00  mov         dword ptr [edi],0E2ABFCh
+  00752512: C7 06 64 AC E2 00  mov         dword ptr [esi],0E2AC64h
+  00752518: C7 07 30 AC E2 00  mov         dword ptr [edi],0E2AC30h
+  0075251E: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00752523: 85 C0              test        eax,eax
+  00752525: 75 0A              jne         00752531
+  00752527: E8 64 81 CB FF     call        0040A690
+  0075252C: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00752531: 8B 80 44 02 00 00  mov         eax,dword ptr [eax+00000244h]
+  00752537: 89 B8 28 7B 00 00  mov         dword ptr [eax+00007B28h],edi
+  0075253D: 5F                 pop         edi
+  0075253E: 8B C6              mov         eax,esi
+  00752540: 5E                 pop         esi
+  00752541: C3                 ret
+  00752542: CC                 int         3
+  00752543: CC                 int         3
+  00752544: CC                 int         3
+  00752545: CC                 int         3
+  00752546: CC                 int         3
+  00752547: CC                 int         3
+  00752548: CC                 int         3
+  00752549: CC                 int         3
+  0075254A: CC                 int         3
+  0075254B: CC                 int         3
+  0075254C: CC                 int         3
+  0075254D: CC                 int         3
+  0075254E: CC                 int         3
+  0075254F: CC                 int         3
+  00752550: 56                 push        esi
+  00752551: 57                 push        edi
+  00752552: 8B F9              mov         edi,ecx
+  00752554: 8D 77 08           lea         esi,[edi+8]
+  00752557: C7 07 64 AC E2 00  mov         dword ptr [edi],0E2AC64h
+  0075255D: C7 06 30 AC E2 00  mov         dword ptr [esi],0E2AC30h
+  00752563: A1 28 72 FE 00     mov         eax,dword ptr ds:[00FE7228h]
+  00752568: 85 C0              test        eax,eax
+  0075256A: 75 0A              jne         00752576
+  0075256C: E8 1F 81 CB FF     call        0040A690
+  00752571: A3 28 72 FE 00     mov         dword ptr ds:[00FE7228h],eax
+  00752576: 8B 80 44 02 00 00  mov         eax,dword ptr [eax+00000244h]
+  0075257C: 39
+  0075257D: B0 28              mov         al,28h
+  0075257F: 7B 00              jnp         00752581
+
+  Summary
+
+      9C8000 .text

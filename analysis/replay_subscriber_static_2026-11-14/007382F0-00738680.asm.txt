@@ -1,0 +1,263 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007382F0: 51                 push        ecx
+  007382F1: 51                 push        ecx
+  007382F2: 0F B7 4D 00        movzx       ecx,word ptr [ebp]
+  007382F6: D9 1C 24           fstp        dword ptr [esp]
+  007382F9: 0F 95 C2           setne       dl
+  007382FC: 0F B6 C2           movzx       eax,dl
+  007382FF: 50                 push        eax
+  00738300: 51                 push        ecx
+  00738301: 8B 8F A4 E9 04 00  mov         ecx,dword ptr [edi+0004E9A4h]
+  00738307: E8 C4 E4 00 00     call        007467D0
+  0073830C: 5B                 pop         ebx
+  0073830D: 5F                 pop         edi
+  0073830E: 5D                 pop         ebp
+  0073830F: C3                 ret
+  00738310: 83 EC 10           sub         esp,10h
+  00738313: 56                 push        esi
+  00738314: 8B 74 24 18        mov         esi,dword ptr [esp+18h]
+  00738318: 8B 06              mov         eax,dword ptr [esi]
+  0073831A: 8B 50 04           mov         edx,dword ptr [eax+4]
+  0073831D: 57                 push        edi
+  0073831E: 8B F9              mov         edi,ecx
+  00738320: 8B CE              mov         ecx,esi
+  00738322: FF D2              call        edx
+  00738324: 89 44 24 08        mov         dword ptr [esp+8],eax
+  00738328: 8D 44 24 08        lea         eax,[esp+8]
+  0073832C: 50                 push        eax
+  0073832D: 8D 4C 24 14        lea         ecx,[esp+14h]
+  00738331: 51                 push        ecx
+  00738332: 8D 8F 80 E4 04 00  lea         ecx,[edi+0004E480h]
+  00738338: 89 74 24 14        mov         dword ptr [esp+14h],esi
+  0073833C: E8 1F 32 00 00     call        0073B560
+  00738341: 5F                 pop         edi
+  00738342: 5E                 pop         esi
+  00738343: 83 C4 10           add         esp,10h
+  00738346: C2 04 00           ret         4
+  00738349: CC                 int         3
+  0073834A: CC                 int         3
+  0073834B: CC                 int         3
+  0073834C: CC                 int         3
+  0073834D: CC                 int         3
+  0073834E: CC                 int         3
+  0073834F: CC                 int         3
+  00738350: 56                 push        esi
+  00738351: 57                 push        edi
+  00738352: 8B F9              mov         edi,ecx
+  00738354: 80 BF DE E9 04 00  cmp         byte ptr [edi+0004E9DEh],0
+            00
+  0073835B: 75 1C              jne         00738379
+  0073835D: 8B 74 24 0C        mov         esi,dword ptr [esp+0Ch]
+  00738361: 8B 0E              mov         ecx,dword ptr [esi]
+  00738363: 85 C9              test        ecx,ecx
+  00738365: 74 0B              je          00738372
+  00738367: E8 A4 EB FF FF     call        00736F10
+  0073836C: C7 06 00 00 00 00  mov         dword ptr [esi],0
+  00738372: 5F                 pop         edi
+  00738373: 32 C0              xor         al,al
+  00738375: 5E                 pop         esi
+  00738376: C2 04 00           ret         4
+  00738379: 8B B7 B8 E9 04 00  mov         esi,dword ptr [edi+0004E9B8h]
+  0073837F: 55                 push        ebp
+  00738380: 8B 6C 24 10        mov         ebp,dword ptr [esp+10h]
+  00738384: 8B 4D 00           mov         ecx,dword ptr [ebp]
+  00738387: 3B CE              cmp         ecx,esi
+  00738389: 74 12              je          0073839D
+  0073838B: 85 C9              test        ecx,ecx
+  0073838D: 74 05              je          00738394
+  0073838F: E8 7C EB FF FF     call        00736F10
+  00738394: 89 75 00           mov         dword ptr [ebp],esi
+  00738397: 85 F6              test        esi,esi
+  00738399: 74 02              je          0073839D
+  0073839B: FF 06              inc         dword ptr [esi]
+  0073839D: C6 87 DE E9 04 00  mov         byte ptr [edi+0004E9DEh],0
+            00
+  007383A4: 8B 8F B8 E9 04 00  mov         ecx,dword ptr [edi+0004E9B8h]
+  007383AA: 5D                 pop         ebp
+  007383AB: 85 C9              test        ecx,ecx
+  007383AD: 74 0F              je          007383BE
+  007383AF: E8 5C EB FF FF     call        00736F10
+  007383B4: C7 87 B8 E9 04 00  mov         dword ptr [edi+0004E9B8h],0
+            00 00 00 00
+  007383BE: C7 87 BC E9 04 00  mov         dword ptr [edi+0004E9BCh],0FFFFFFFFh
+            FF FF FF FF
+  007383C8: 5F                 pop         edi
+  007383C9: B0 01              mov         al,1
+  007383CB: 5E                 pop         esi
+  007383CC: C2 04 00           ret         4
+  007383CF: CC                 int         3
+  007383D0: 53                 push        ebx
+  007383D1: 56                 push        esi
+  007383D2: 8B F1              mov         esi,ecx
+  007383D4: 8D 8E 68 2B 01 00  lea         ecx,[esi+00012B68h]
+  007383DA: E8 71 D7 00 00     call        00745B50
+  007383DF: 8D 8E 68 2D 01 00  lea         ecx,[esi+00012D68h]
+  007383E5: E8 36 23 01 00     call        0074A720
+  007383EA: 8D 8E E4 38 04 00  lea         ecx,[esi+000438E4h]
+  007383F0: E8 EB 32 01 00     call        0074B6E0
+  007383F5: 8D 8E 54 3B 04 00  lea         ecx,[esi+00043B54h]
+  007383FB: E8 E0 42 00 00     call        0073C6E0
+  00738400: 8D 8E 18 3D 04 00  lea         ecx,[esi+00043D18h]
+  00738406: E8 55 5F 00 00     call        0073E360
+  0073840B: 8D 8E 60 E3 04 00  lea         ecx,[esi+0004E360h]
+  00738411: E8 2A 3B 01 00     call        0074BF40
+  00738416: 8D 8E 88 E3 04 00  lea         ecx,[esi+0004E388h]
+  0073841C: E8 DF C1 01 00     call        00754600
+  00738421: 8D 8E A8 E3 04 00  lea         ecx,[esi+0004E3A8h]
+  00738427: E8 94 E1 01 00     call        007565C0
+  0073842C: 8D 8E E0 E3 04 00  lea         ecx,[esi+0004E3E0h]
+  00738432: E8 59 91 01 00     call        00751590
+  00738437: 8D 8E 08 E4 04 00  lea         ecx,[esi+0004E408h]
+  0073843D: E8 BE A0 01 00     call        00752500
+  00738442: 8D 8E 14 E4 04 00  lea         ecx,[esi+0004E414h]
+  00738448: E8 D3 C5 01 00     call        00754A20
+  0073844D: 8D 8E 20 E4 04 00  lea         ecx,[esi+0004E420h]
+  00738453: E8 B8 82 01 00     call        00750710
+  00738458: 8D 8E 28 E4 04 00  lea         ecx,[esi+0004E428h]
+  0073845E: E8 BD 79 01 00     call        0074FE20
+  00738463: 8D 8E 68 E4 04 00  lea         ecx,[esi+0004E468h]
+  00738469: E8 82 8C 01 00     call        007510F0
+  0073846E: 8D 8E 70 E4 04 00  lea         ecx,[esi+0004E470h]
+  00738474: E8 B7 B2 01 00     call        00753730
+  00738479: 8D 8E 78 E4 04 00  lea         ecx,[esi+0004E478h]
+  0073847F: E8 EC 87 01 00     call        00750C70
+  00738484: 33 DB              xor         ebx,ebx
+  00738486: 6A 38              push        38h
+  00738488: 8D 8E 4C E5 04 00  lea         ecx,[esi+0004E54Ch]
+  0073848E: 8D 86 8C E4 04 00  lea         eax,[esi+0004E48Ch]
+  00738494: 53                 push        ebx
+  00738495: 51                 push        ecx
+  00738496: 89 86 80 E4 04 00  mov         dword ptr [esi+0004E480h],eax
+  0073849C: 89 9E 84 E4 04 00  mov         dword ptr [esi+0004E484h],ebx
+  007384A2: 89 9E 88 E4 04 00  mov         dword ptr [esi+0004E488h],ebx
+  007384A8: E8 33 02 4F 00     call        00C286E0
+  007384AD: F3 0F 10 05 14 64  movss       xmm0,dword ptr ds:[00DD6414h]
+            DD 00
+  007384B5: 89 9E 88 E5 04 00  mov         dword ptr [esi+0004E588h],ebx
+  007384BB: 89 9E 8C E5 04 00  mov         dword ptr [esi+0004E58Ch],ebx
+  007384C1: C7 86 90 E5 04 00  mov         dword ptr [esi+0004E590h],2
+            02 00 00 00
+  007384CB: 89 9E 98 E9 04 00  mov         dword ptr [esi+0004E998h],ebx
+  007384D1: F3 0F 11 86 9C E9  movss       dword ptr [esi+0004E99Ch],xmm0
+            04 00
+  007384D9: 0F 57 C0           xorps       xmm0,xmm0
+  007384DC: F3 0F 11 86 A0 E9  movss       dword ptr [esi+0004E9A0h],xmm0
+            04 00
+  007384E4: 89 9E A4 E9 04 00  mov         dword ptr [esi+0004E9A4h],ebx
+  007384EA: F3 0F 11 86 A8 E9  movss       dword ptr [esi+0004E9A8h],xmm0
+            04 00
+  007384F2: 89 9E AC E9 04 00  mov         dword ptr [esi+0004E9ACh],ebx
+  007384F8: F3 0F 11 86 B0 E9  movss       dword ptr [esi+0004E9B0h],xmm0
+            04 00
+  00738500: 89 9E B4 E9 04 00  mov         dword ptr [esi+0004E9B4h],ebx
+  00738506: 89 9E B8 E9 04 00  mov         dword ptr [esi+0004E9B8h],ebx
+  0073850C: 83 C4 0C           add         esp,0Ch
+  0073850F: 8D 8E 10 EA 04 00  lea         ecx,[esi+0004EA10h]
+  00738515: C7 86 BC E9 04 00  mov         dword ptr [esi+0004E9BCh],0FFFFFFFFh
+            FF FF FF FF
+  0073851F: F3 0F 11 86 D4 E9  movss       dword ptr [esi+0004E9D4h],xmm0
+            04 00
+  00738527: F3 0F 11 86 D8 E9  movss       dword ptr [esi+0004E9D8h],xmm0
+            04 00
+  0073852F: 88 9E DC E9 04 00  mov         byte ptr [esi+0004E9DCh],bl
+  00738535: 88 9E DD E9 04 00  mov         byte ptr [esi+0004E9DDh],bl
+  0073853B: 88 9E DE E9 04 00  mov         byte ptr [esi+0004E9DEh],bl
+  00738541: 89 9E E0 E9 04 00  mov         dword ptr [esi+0004E9E0h],ebx
+  00738547: F3 0F 11 86 E4 E9  movss       dword ptr [esi+0004E9E4h],xmm0
+            04 00
+  0073854F: F3 0F 11 86 E8 E9  movss       dword ptr [esi+0004E9E8h],xmm0
+            04 00
+  00738557: 88 9E EC E9 04 00  mov         byte ptr [esi+0004E9ECh],bl
+  0073855D: 88 9E ED E9 04 00  mov         byte ptr [esi+0004E9EDh],bl
+  00738563: 89 9E F0 E9 04 00  mov         dword ptr [esi+0004E9F0h],ebx
+  00738569: 89 9E F4 E9 04 00  mov         dword ptr [esi+0004E9F4h],ebx
+  0073856F: 89 9E F8 E9 04 00  mov         dword ptr [esi+0004E9F8h],ebx
+  00738575: 89 9E 08 EA 04 00  mov         dword ptr [esi+0004EA08h],ebx
+  0073857B: 89 9E 0C EA 04 00  mov         dword ptr [esi+0004EA0Ch],ebx
+  00738581: E8 8A 8A 00 00     call        00741010
+  00738586: 68 80 00 00 00     push        80h
+  0073858B: 6A 1A              push        1Ah
+  0073858D: E8 DE 1A 13 00     call        0086A070
+  00738592: 89 35 10 A9 24 01  mov         dword ptr ds:[0124A910h],esi
+  00738598: 83 C4 08           add         esp,8
+  0073859B: 89 9E C0 E9 04 00  mov         dword ptr [esi+0004E9C0h],ebx
+  007385A1: 89 9E C4 E9 04 00  mov         dword ptr [esi+0004E9C4h],ebx
+  007385A7: 89 9E C8 E9 04 00  mov         dword ptr [esi+0004E9C8h],ebx
+  007385AD: 89 9E CC E9 04 00  mov         dword ptr [esi+0004E9CCh],ebx
+  007385B3: 89 9E D0 E9 04 00  mov         dword ptr [esi+0004E9D0h],ebx
+  007385B9: 8B C6              mov         eax,esi
+  007385BB: 5E                 pop         esi
+  007385BC: 5B                 pop         ebx
+  007385BD: C3                 ret
+  007385BE: CC                 int         3
+  007385BF: CC                 int         3
+  007385C0: 55                 push        ebp
+  007385C1: 8B EC              mov         ebp,esp
+  007385C3: 83 E4 F8           and         esp,0FFFFFFF8h
+  007385C6: 83 EC 10           sub         esp,10h
+  007385C9: 53                 push        ebx
+  007385CA: 55                 push        ebp
+  007385CB: 56                 push        esi
+  007385CC: 8B F1              mov         esi,ecx
+  007385CE: 8D 9E 14 E4 04 00  lea         ebx,[esi+0004E414h]
+  007385D4: 57                 push        edi
+  007385D5: 8B CB              mov         ecx,ebx
+  007385D7: E8 B4 C4 01 00     call        00754A90
+  007385DC: 8B 86 60 E3 04 00  mov         eax,dword ptr [esi+0004E360h]
+  007385E2: 8B 50 04           mov         edx,dword ptr [eax+4]
+  007385E5: 8D BE 60 E3 04 00  lea         edi,[esi+0004E360h]
+  007385EB: 8B CF              mov         ecx,edi
+  007385ED: FF D2              call        edx
+  007385EF: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  007385F3: 8D 44 24 10        lea         eax,[esp+10h]
+  007385F7: 89 7C 24 14        mov         dword ptr [esp+14h],edi
+  007385FB: 50                 push        eax
+  007385FC: 8D 4C 24 1C        lea         ecx,[esp+1Ch]
+  00738600: 8D BE 80 E4 04 00  lea         edi,[esi+0004E480h]
+  00738606: 51                 push        ecx
+  00738607: 8B CF              mov         ecx,edi
+  00738609: E8 52 2F 00 00     call        0073B560
+  0073860E: 8B 96 88 E3 04 00  mov         edx,dword ptr [esi+0004E388h]
+  00738614: 8B 42 04           mov         eax,dword ptr [edx+4]
+  00738617: 8D AE 88 E3 04 00  lea         ebp,[esi+0004E388h]
+  0073861D: 8B CD              mov         ecx,ebp
+  0073861F: FF D0              call        eax
+  00738621: 8D 4C 24 10        lea         ecx,[esp+10h]
+  00738625: 51                 push        ecx
+  00738626: 8D 54 24 1C        lea         edx,[esp+1Ch]
+  0073862A: 52                 push        edx
+  0073862B: 8B CF              mov         ecx,edi
+  0073862D: 89 44 24 18        mov         dword ptr [esp+18h],eax
+  00738631: 89 6C 24 1C        mov         dword ptr [esp+1Ch],ebp
+  00738635: E8 26 2F 00 00     call        0073B560
+  0073863A: 8B 86 A8 E3 04 00  mov         eax,dword ptr [esi+0004E3A8h]
+  00738640: 8B 50 04           mov         edx,dword ptr [eax+4]
+  00738643: 8D AE A8 E3 04 00  lea         ebp,[esi+0004E3A8h]
+  00738649: 8B CD              mov         ecx,ebp
+  0073864B: FF D2              call        edx
+  0073864D: 89 44 24 10        mov         dword ptr [esp+10h],eax
+  00738651: 8D 44 24 10        lea         eax,[esp+10h]
+  00738655: 50                 push        eax
+  00738656: 8D 4C 24 1C        lea         ecx,[esp+1Ch]
+  0073865A: 51                 push        ecx
+  0073865B: 8B CF              mov         ecx,edi
+  0073865D: 89 6C 24 1C        mov         dword ptr [esp+1Ch],ebp
+  00738661: E8 FA 2E 00 00     call        0073B560
+  00738666: 8B 96 E0 E3 04 00  mov         edx,dword ptr [esi+0004E3E0h]
+  0073866C: 8B 42 04           mov         eax,dword ptr [edx+4]
+  0073866F: 8D AE E0 E3 04 00  lea         ebp,[esi+0004E3E0h]
+  00738675: 8B CD              mov         ecx,ebp
+  00738677: FF D0              call        eax
+  00738679: 8D 4C 24 10        lea         ecx,[esp+10h]
+  0073867D: 51                 push        ecx
+  0073867E: 8D
+  0073867F: 54                 push        esp
+  00738680: 24
+
+  Summary
+
+      9C8000 .text

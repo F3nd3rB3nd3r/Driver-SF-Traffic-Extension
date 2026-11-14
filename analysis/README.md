@@ -2,6 +2,83 @@
 
 ## Current conclusions
 
+- [READ1M run10556](REPLAY_READ1M_RUN10556_RESULTS_2026-11-14.md): first
+  live pass; private1 MiB buffers active and client3 busy0 across two full
+  viewings covering the earlier problem range. User does not recall bursts
+  and reports normal exit. Ten constructions/destructions balance with
+  eight reuses; all integrity checks pass. Keep1 MiB; no new patch/build.
+
+- [REPLAY_READ1M_R1 build](REPLAY_READ1M_R1_BUILD_2026-11-14.md): combined
+  1 MiB file-reader backing/capacity and targeted stop/progress counters,
+  with narrow CLIENT boundary counter views. Native/ABI/guard/ownership/
+  parser/compiled/inherited checks pass; staged only, live log pending.
+  Native 32 KiB transfers, format, gates/order and traffic fixes retained.
+
+- [Replay refill static audit](REPLAY_REFILL_STATIC_2026-11-14.md): shared
+  256 KiB ring retention can limit lookahead before space is released.
+  Adjacent captured sample-layout spans exceed capacity; not direct proof
+  of a past space stop. Next requested experiment: 1 MiB reader-only owned
+  backing/capacity plus bounded stop/progress counters, retaining native
+  32 KiB transfers and gates/order. No new ASI/source/build; checks pass.
+
+- [REPLAY_CLIENT run30212](REPLAY_CLIENT_RUN30212_RESULTS_2026-11-14.md):
+  client3 current-valid/next-absent causes five15–23ms waits at135–137s,
+  matching the user's brief indicator episode; no recurrence and normal quit.
+  File-reader ring still has105–168KiB free. Audit lookahead/refill/record
+  assembly next; no simple full-pool or slow-disk finding. All checks pass.
+
+- [REPLAY_CLIENT_R1 build](REPLAY_CLIENT_R1_BUILD_2026-11-14.md): narrow
+  client/sample/ring probe staged and native/compiled/inherited verified;
+  broad HITCH hooks removed from this build. Normal clear path bypasses C++/
+  QPC/readability/FXSAVE. New live identity capture pending; all limits retained.
+
+- [Replay subscriber static trace](REPLAY_SUBSCRIBER_STATIC_2026-11-14.md):
+  four of11 native clients can produce +20 busy, with recorded-data/horizon
+  conditions. One has0.25s sampling; identity still needs narrow live data.
+  Fixed replay-buffer partitions make a size-only increase unsafe. No build.
+
+- [REPLAY_HITCH run28136](REPLAY_HITCH_RUN28136_RESULTS_2026-11-14.md): late
+  +20 subscriber-readiness intervals recur at~250ms while clock gate+24
+  stays clear. No restore/request during first viewing. Native caller can
+  withhold service updates yet advance replay time. Subscriber identity is
+  the next target; broad probe overhead is significant. No new ASI.
+
+- [REPLAY_HITCH_R1 build](REPLAY_HITCH_R1_BUILD_2026-11-14.md): user-authorized
+  passive timing probe staged; native bridge/installer/observer/parser and
+  compiled/inherited R2 checks pass. Normal playback timing capture pending;
+  no capacities or readiness decisions changed.
+- [Replay hitch static trace](REPLAY_HITCH_STATIC_2026-11-14.md): distinct
+  clock-advance gates, snapshot phases, recording reposition and simulation
+  rate paths identified; the actual live blocker remains unknown.
+
+- [R2 run24888](REGMAP_REUSE_RUN24888_RESULTS_2026-11-14.md): both old map
+  failure paths exercised live,150 roster and repeated transitions/normal exit
+  pass. User reports loading-related replay-motion hitches at steady render
+  FPS; short-wait timing remains open. No new ASI for this analysis.
+
+- [Dump21280 Forza roster mismatch](REGMAP_REUSE_DUMP21280_FORZA_MISMATCH_2026-11-14.md):
+  active SS Test AI differs from vanilla fingerprints; none of its weighted
+  IDs is registered, so native lookup falls back to key15. No map exhaustion;
+  next comparison is R2 in the vanilla Save Bug Test installation.
+
+- [REGMAP_REUSE_R2 startup fix](REGMAP_REUSE_R2_STARTUP_FIX_2026-11-14.md):
+  R1 refused startup; reproduced with actual Readable/VirtualQuery and RX
+  pages. R2 handles readable protection-region boundaries without weakening
+  byte checks. Native/compiled/inherited checks pass; live startup pending.
+
+- [REGMAP_REUSE_R1 build](REGMAP_REUSE_R1_BUILD_2026-11-12.md): dynamic
+  stable definition-map owner records and explicit constructor generations;
+  eight owners/100 reconstructions and inherited checks pass. Staged;
+  repeated Story/Replay/menu live transitions pending.
+- [Definition-map static audit](DEFINITION_MAP_STATIC_2026-11-12.md): native
+  create/destroy and linked-node consumers; two independent ASI lifetime defects.
+- [REPLAY_PAUSE run19868](REPLAY_PAUSE_RUN19868_RESULTS_2026-11-12.md): two
+  live paused completions, then explicit older vehicleDefinitionMap exit0x31.
+
+- [REPLAY_PAUSE_R1 build](REPLAY_PAUSE_R1_BUILD_2026-11-11.md): guarded native
+  loading completion while paused, one game-thread updater hook and import
+  observer. Fixture/compiled/inherited checks pass; staged for live testing.
+
 - [REPLAY150 run8944 softlock](REPLAY150_RUN8944_SOFTLOCK_2026-11-07.md): intact150-ID
   snapshot and ready native gates, but zero-rate simulation clock skips the
   callback that clears replay loading. Initial pause caller/order unproven;

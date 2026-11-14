@@ -1,0 +1,61 @@
+
+Dump of file E:\Games\Driver San Francisco Save Bug Test\Driver.exe
+
+File Type: EXECUTABLE IMAGE
+
+  007BF350: 2C 89              sub         al,89h
+  007BF352: 50                 push        eax
+  007BF353: 08 8B 54 24 30 89  or          byte ptr [ebx+89302454h],cl
+  007BF359: 50                 push        eax
+  007BF35A: 0C E8              or          al,0E8h
+  007BF35C: 30 1D FF FF 3C 01  xor         byte ptr ds:[013CFFFFh],bl
+  007BF362: 0F 85 D0 04 00 00  jne         007BF838
+  007BF368: 8B 45 00           mov         eax,dword ptr [ebp]
+  007BF36B: 8B 50 14           mov         edx,dword ptr [eax+14h]
+  007BF36E: 8B CD              mov         ecx,ebp
+  007BF370: FF D2              call        edx
+  007BF372: 84 C0              test        al,al
+  007BF374: 0F 84 BE 04 00 00  je          007BF838
+  007BF37A: 8D 44 24 24        lea         eax,[esp+24h]
+  007BF37E: 6A 54              push        54h
+  007BF380: 50                 push        eax
+  007BF381: E8 8A 25 D1 FF     call        004D1910
+  007BF386: 83 C4 08           add         esp,8
+  007BF389: 8D 4C 24 2C        lea         ecx,[esp+2Ch]
+  007BF38D: 51                 push        ecx
+  007BF38E: 8B 4C 24 28        mov         ecx,dword ptr [esp+28h]
+  007BF392: E8 E9 D7 EC FF     call        0068CB80
+  007BF397: 8D 54 24 24        lea         edx,[esp+24h]
+  007BF39B: 68 DE 01 00 00     push        1DEh
+  007BF3A0: 52                 push        edx
+  007BF3A1: E8 6A 25 D1 FF     call        004D1910
+  007BF3A6: 8B 54 24 34        mov         edx,dword ptr [esp+34h]
+  007BF3AA: 8B 08              mov         ecx,dword ptr [eax]
+  007BF3AC: 8B 01              mov         eax,dword ptr [ecx]
+  007BF3AE: 8B 40 14           mov         eax,dword ptr [eax+14h]
+  007BF3B1: 83 C4 08           add         esp,8
+  007BF3B4: 52                 push        edx
+  007BF3B5: 8D 54 24 50        lea         edx,[esp+50h]
+  007BF3B9: 52                 push        edx
+  007BF3BA: FF D0              call        eax
+  007BF3BC: 8B 30              mov         esi,dword ptr [eax]
+  007BF3BE: 8D 4C 24 78        lea         ecx,[esp+78h]
+  007BF3C2: 51                 push        ecx
+  007BF3C3: 8D 8E 10 03 00 00  lea         ecx,[esi+00000310h]
+  007BF3C9: C7 84 24 80 00 00  mov         dword ptr [esp+00000080h],0
+            00 00 00 00 00
+  007BF3D4: E8 C7 CD 0C 00     call        0088C1A0
+  007BF3D9: 8D 54 24 3C        lea         edx,[esp+3Ch]
+  007BF3DD: 52                 push        edx
+  007BF3DE: E8 4D C2 C4 FF     call        0040B630
+  007BF3E3: 8D 44 24 28        lea         eax,[esp+28h]
+  007BF3E7: 68 D2 00 00 00     push        0D2h
+  007BF3EC: 50                 push        eax
+  007BF3ED: E8
+  007BF3EE: 1E                 push        ds
+  007BF3EF: 25
+  007BF3F0: D1
+
+  Summary
+
+      9C8000 .text
