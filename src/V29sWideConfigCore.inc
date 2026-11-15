@@ -37,6 +37,12 @@ static GenericLimits GenericValidate(GenericLimits v){
     if(v.audioMiB<16u || !WideSize(v.audioMiB,1048576u,65536u))return GenericReject(v,"defaultAudioByteOverflow");
     if(!v.replayMiB || (v.replayMiB&(v.replayMiB-1u)) || !WideSize(v.replayMiB,1048576u,0x20000u))return GenericReject(v,"readerGeometryOrByteOverflow");
     if(v.retained<50u || v.retained<v.requests || !WideSize(v.retained,24u,65536u+v.requests*12u+v.models*12u))return GenericReject(v,"retainedLayoutOrRequestDependency");
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+    if(!WideSize(WideMax(512u,v.models+v.retained),20u,64u))return GenericReject(v,"trafficQueueLayout");
+#if defined(DSF_V29S_STREAM_HANDLERS)
+    if(!WideSize(WideMax(512u,v.models+v.retained),184u,560u))return GenericReject(v,"streamHandlerSchedulerLayout");
+#endif
+#endif
     if(v.objects<512u || !WideSize(v.objects,12u,24u))return GenericReject(v,"objectPoolLayout");
     if(v.definitions<45u || !WideSize(v.definitions,24u,65536u))return GenericReject(v,"definitionMapLayout");
     if(v.pending<64u || !WideSize(v.pending,16u,65536u))return GenericReject(v,"pendingMapLayout");

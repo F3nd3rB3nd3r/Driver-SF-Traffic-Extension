@@ -1,3 +1,22 @@
+# Current USER CAP R7 checks
+
+`verify_mission_capacity.py`, `verify_wide_limits.py`,
+`verify_traffic_queues.py` and `verify_stream_handlers.py` exercise 46 expected
+offline outcomes using fixture-owned state and copied retail native routines.
+They never invoke the game entry point. Their matching `*_build.py` scripts
+verify the compiled ASI, fixture/source hashes, signatures, startup records and
+retained fallback artifacts. Use the current Release/Win32 project only.
+
+These checks require the supported local Driver.exe, MSVC/Windows SDK, and the
+historical local artifacts named by inherited fallback-preservation checks.
+The repository publication omits full user logs/dumps, backup archives and
+generated asset/build fixtures; restore those prerequisites separately when
+reproducing the complete local verification chain. `analyze_generic_limits_log.py`
+validates a supplied R7 log against recorded INI capacities, including the
+full-width capacity query. An integrity pass is not a rendering/audio guarantee.
+
+The entries below describe earlier checks and their original scope.
+
 Current USER CAP verifier output is `analysis/wide_limits_r3_2026-11-15/` and its isolated build directory is `build/wide_limits_r3_fixtures/`. R2 evidence is preserved. The verifier now includes completed-map insertion in both allocation orders and three invalid fresh-cursor cases.
 
 `verify_wide_limits.py` runs the USER CAP R2 isolated Win32/native fixtures; `verify_wide_limits_build.py` checks the compiled PE, preserved fallback and recorded fixture hashes. `analyze_generic_limits_log.py` accepts both R1 and R2 schemas and recorded capacities. Older150-only verifiers remain historical; do not use them to reject the R2 geometry.

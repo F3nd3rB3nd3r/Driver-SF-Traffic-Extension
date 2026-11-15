@@ -246,6 +246,12 @@ static void FullStartup(){
     DSFV29s_Hooks=DiagSInstall()?5:-1;g_sMutationHooks=DiagSMutationInstall()?3:-1;g_sGuardHook=DiagSGuardInstall()?1:-1;g_sScratchHook=DiagSScratchInstall()?2:-1;g_sCloneHook=DiagSCloneInstall()?1:-1;
     CHECK(DSFV29s_Hooks==5 && g_sMutationHooks==3 && g_sGuardHook==1 && g_sScratchHook==2 && g_sCloneHook==1);
     g_capacityHooks=CapacityInstall()?3:-1;CHECK(g_capacityHooks==3 && IndexedInstall());IndexedStartLine();
+#if defined(DSF_V29S_STREAM_HANDLERS)
+    CHECK(StreamInstall());
+#endif
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+    CapacityStartLine();
+#endif
     CHECK(AudioProbeInstall());AudioDefaultPoolInstall();AudioDefaultPoolStartLine();CHECK(g_audioDefaultStatus==1);
     AudioSlotsInstall();AudioSlotsStartLine();CHECK(g_audioSlotsStatus==1);AudioReasonInstall();AudioReasonStartLine();CHECK(g_audioReasonStatus==1);
     AudioModelInstall();AudioModelStartLine();CHECK(g_audioModelStatus==1);CleanupInstall();CleanupStartLine();CHECK(g_cleanupStatus==1);

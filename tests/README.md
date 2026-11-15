@@ -1,3 +1,17 @@
+# Current USER CAP R7 fixtures
+
+`MissionCapacityTest.cpp` reproduces the 280-traffic-plus-one-mission rejection
+against metadata byte255 and verifies full-width configured ModelSlots admission,
+native fallback/invalid-ID/budget behavior, ABI and rollback. `TrafficQueueTest.cpp`
+covers replacement queues, and `StreamHandlerTest.cpp` covers guarded native
+handler allocation and all four scheduler vectors. `WideLimitsTest.cpp` supplies
+shared fixture support, configured storage and combined cold startup coverage.
+See `scripts/README.md` for current entry points and local prerequisites.
+
+Offline native slices do not certify 700/1000-car gameplay. The current live
+coverage is the supplied280-car Story/activity/pursuit and menu/Replay workload.
+The retained entries below describe preceding fixtures and their original scope.
+
 R3 adds completed-map tests to `WideLimitsTest.cpp`: real native insertion with backing below/above the package, exact capacity, recycling and in-place reconstruction. The original R2 guard fails insertion0 in the retained reproduction; the fixed guard passes the expanded matrix.
 
 `WideLimitsTest.cpp` exercises USER CAP R2 through selected native routines and production helpers. It never invokes the game entry point or game loop. It maps a private copy of Driver.exe at a fixture address; the fixture-only identity branch and specifically relocated operands/vtable entries are excluded from the ASI. See the R2 report for scope.

@@ -1,4 +1,223 @@
+## Current R7 run11636:280-car Replay/Story/menu lifecycle verified in this run
+
+Read `analysis/USERCAP_R7_RUN11636_RESULTS_2026-11-15.md`.
+User completed menu->full Replay->menu->Story/driving->Replay->menu->normal
+quit; both replays smooth, no indicator/audio/render issues. All42 generic
+checks pass. Nine18/280 phases all native READY; capacity override27 times.
+Reader2MiB actually exercised:2 owners,10construct/10destroy/8reuse; no read/
+allocation/guard failures. Audio704/704 setup succeeds,0 failures (21688's
+transition failures do not recur). Handler peak551/802, hash54749/180000.
+R7 is supported for this280-car lifecycle plus21688 Story/activity/pursuits.
+Keep same ASI/INI/AI; no capacity increase or new ASI indicated. Larger rosters,
+all activities/chapters and indefinite lifetime remain unverified. Analysis/
+handoff only; no production/game/build/deploy/INI/asset/save changes.
+
+## Previous R7 run21688: Story/activity/pursuits successful
+
+Read `analysis/USERCAP_R7_RUN21688_RESULTS_2026-11-15.md`.
+~12m27s log records18->280->18->280, all native READY; both280 phases use
+same roster. Widened capacity query overridden28 times, ModelSlots290 vs
+metadata255. No fatal/guard/pool-full evidence. Handler peak551/802,
+hash extra55032/180000, audio registry284/384; no capacity raise indicated.
+Generic analyzer fails only strict audio_setup:48 failures across six models
+at431-432s after280->18 transition; all six subsequently succeed, no further
+failure increments through747s. This is not a wholly clean analyzer pass.
+User confirms Story loaded, speed trap/free-roam pursuits worked, no missing
+audio/rendering/FPS issues; recalls normal quit. No menu/Replay transitions.
+Replay reader constructs0. Next: same R7/INI/280 AI, Story->menu->Replay->
+menu->Story then quit normally. No further ASI/capacity increase indicated.
+Analysis/handoff only; no source/build/deploy/game/INI/asset changes this review.
+
+## R7 candidate: mission capacity getter corrected
+
+Read `analysis/USERCAP_R7_MISSION_CAPACITY_FIX_2026-11-15.md`.
+User authorized implementation. New `dist/USERCAP_R7/` contains Release/Win32
+ASI, same active HASH180K INI values and R7_TEST.md. Keep280 AI and same save.
+005A0AD0 now returns full-width ModelSlots for recognized vehicle package/
+subtype0; other packages/subtypes and native admission/loaded checks remain.
+The280 native fixture reproduces255 rejection then queues the mission request
+against290, without fabricating READY. All46 offline outcomes and compiled
+checks pass. This is not a live gameplay pass; retry Story loading first.
+Log prefix DSFV29s_usercap_r7_; CAPACITY_QUERY_START/STATUS report hook/query
+usage only. R6 evidence/artifacts unchanged. No deployment/game/debugger run,
+installed INI/AI/save changes, commit or push. Project now targets USER CAP R7.
+Exact scoped pre-task bytes/diff: analysis/mission_capacity_r7_2026-11-15/.
+
+## Previous R6 softlock36080: remaining255 mission capacity query
+
+Read `analysis/USERCAP_R6_SOFTLOCK36080_MISSION_CAPACITY_2026-11-15.md`.
+HASH180K applied. All280 native READY by34984ms and remain READY ~94s;
+dump's completed list exactly matches280 roster. Hash extra52793/180000,
+handler286/802, no integrity/fatal failures. This is not a gameplay pass.
+
+Full1.47GB Task Manager dump PID36080 is decoded read-only via memory mapping
+and WOW64 CPU contexts. Captured Lua callback waits on mission vehicle123
+(Free Drive); spoolingBusy=false, traffic stagewaitingForTrafficSet, stepFunction
+active, native AllTrafficVehiclesLoaded=true.123 is present in catalog but
+absent from completed traffic/mission lists. Native mission admission needs
+281 entries but0059C5C0 ->005A0AD0 still reads metadata byteFF, returning255,
+although290 slots were initialized and10 remain free. Thus request is rejected.
+This is another downstream byte-reader omission, not more hash/audio demand.
+
+Next proposed correction: scoped full-width configured ModelSlots getter for
+vehicle package/subtype0, preserving other packages/subtypes and real budget/
+catalog/readiness checks; add native mission-admission regression and focused
+telemetry. Dump supplies enough evidence; no new live probe needed first.
+Keep280 AI/HASH180K INI. This analysis made no production source/ASI/INI change,
+no build/deploy/game/debugger run, commit or push. Await implementation direction.
+Evidence and reusable analysis-only dump/Lua readers:
+`analysis/usercap_r6_softlock36080_2026-11-15/`. Do not reparse its generic
+Driver.DMP filename later without checking the saved SHA256 manifest.
+
+## Current R6 result19636: configured hash arena exhaustion; INI-only retry
+
+Read `analysis/USERCAP_R6_EXIT19636_HASH_LIMIT_2026-11-15.md`. Supplied R6 log
+ends in LEGACY_FATAL hashExternalExhausted/ExitProcess0x29 at99953ms. This is
+an explicit capacity refusal. Native cursor equals hash end; configured extra
+45000 nodes are exhausted. R6 progressed to286 active handlers and last READY
+checkpoint226/280; fourth queue peak37, no stream integrity failures. Full280
+and broader lifecycle remain unverified; do not call the session a pass.
+
+No new ASI/build needed: compiled R6 allocation and comparison both read the
+runtime HashExtraEntries field. Staged `dist/USERCAP_R6/HASH180K/DriverSF_Unlimiter.ini`
+sets only HashExtraEntries180000 (native45000+extra180000), adding about3.09MiB.
+Keep the same R6 ASI and280 AI. Next user retry must report180000 at startup;
+collect the new R6 log in `dist/USERCAP_R6`. Headroom is not a proven minimum
+or guaranteed budget. Existing packaged/installed INI, ASIs and source remain
+unchanged; only separate alternative config, report/evidence and handoffs added.
+No game/debugger run, build, deployment, commit or push. Earlier R6 retry notes
+remain relevant after this one-setting correction; R5 stays superseded.
+
+## Current candidate: USER CAP R6 fixes the R5 fourth-queue regression
+
+Read `analysis/STREAM_HANDLERS_R6_FOURTH_QUEUE_FIX_2026-11-15.md` and
+`dist/USERCAP_R6/USER_CAPACITY_R6_TEST.md`. New dump211728 is PID19620/R5,
+crashing005A55D7 via005A4D78 before any traffic roster request (GENERIC calls0).
+The exact Temp R5 log was read and preserved in
+`analysis/usercap_r5_crash211728_2026-11-15/`. R5 missed a fourth512-pointer
+scheduler vector at15D5C/count1655C. Its relocated count and legacy base/helper
+were inconsistent. This is an R5 implementation error, not a280 roster budget
+finding. Do not retryR5; earlier R5 readiness notes are superseded.
+
+R6 coordinates all four vectors, adds7 operands/eighth guard hook, and uses
+correct scheduler bytes184H+544 (H802 ->148112). H stays802 for the same INI.
+Revision2 telemetry includes queue3. The real failing native caller/search/
+insertion path is now fixture-tested: restoring legacy routing reproduces
+C0000005; corrected routing fills/drains through capacity and guards full.
+11 focused +25 inherited process outcomes and compiled/cold-start checks pass.
+Release/Win32 ASI304128 bytes, SHA256
+`851f22dddc3ff314b148ac7bde61a1046f670da085b5de94689b45a465f4aec5`.
+
+Next: user runs onlyR6 with the same280 AI and effective INI; first menu/Story,
+then activity/menu/Story/Replay/normal exit if successful. Collect
+`%TEMP%\DSFV29s_usercap_r6_<PID>.log` in `dist/USERCAP_R6` plus a new dump if
+needed. Live280 verification remains pending. Existing R4/R5 artifacts and
+pre-edit bytes retained. No game/debugger run, game deployment/file/save
+change, commit or push. R5 offline passes did not cover this fourth queue.
+
+## Current candidate: USER CAP R5 handler/scheduler extension; await280 retry
+
+Read `analysis/STREAM_HANDLERS_R5_FIX_2026-11-15.md` and the guide in
+`dist/USERCAP_R5/`. User authorized static implementation and a280-entry retry.
+R5 extends the native256 dispatch pool and coupled scheduler (three pointer
+vectors, fourteen membership lists, runtime tail), preserving stable handler
+slabs and native lifecycle. Capacity=max(512,ModelSlots+retained), hence802
+for the user's unchanged280/290/512 configuration. Seven hooks, eleven base
+selectors, two initialization calls and355 signed instruction operands.
+Release/Win32 build,9 focused plus25 inherited offline processes, compiled
+and startup/analyzer checks pass. Candidate303616 bytes, SHA256
+`9e617bddcf3fb5732f54c66b04212f05c27a0f8fb5a7f01f5aeededd44c9d332`.
+Next: user runs onlyR5 with the same280 AI/effective INI; first Story load,
+then activity/menu/Story/Replay/normal exit. Collect
+`%TEMP%\DSFV29s_usercap_r5_<PID>.log` in `dist/USERCAP_R5`, plus a new dump
+if needed. Occupancy sampled, queue/membership insertion peaks projected;
+no280/700/1000 gameplay certification yet. R4 artifacts/pre-task edits retained.
+No game/debugger run, deployment, game file/save change, commit or push.
+Earlier analysis-only/await-authorization notes below are superseded.
+
+## Current crash28316: separate native256 streaming-handler pool
+
+Read `analysis/USERCAP_R4_CRASH28316_STREAM_HANDLERS_2026-11-15.md`.
+Matching280-ID log/config/AI audits pass, but initial Chapter7 loading crashes
+at0059DA4A reading a null handler. Native scan has no free candidate; setup
+still constructs256 shared80-byte records. Existing INI/R4 queues do not
+extend this array. Exact pool occupancy is absent from the small dump.
+Next authorized implementation would need coordinated stable backing,
+all base/count/lifetime consumers, exhaustion handling and telemetry; merely
+raising the initializer corrupts adjacent fields. No source/ASI/INI/asset
+change, build/game/debugger launch or commit/push. Analysis complete; await
+user direction before a new patch. Prior152-model R4 success remains valid;
+280-model support is not verified. Evidence: `analysis/usercap_r4_crash28316_2026-11-15/`.
+
 # DriverSF V29s ? current baseline
+
+## TrafficEditor 0.3: selected-table bulk weights and Lua ID import delivered
+
+See `analysis/TRAFFIC_EDITOR_BULK_WEIGHTS_2026-11-15.md`. v0.2 Add missing IDs
+preserved existing weights; v0.3 now offers Set weights across selected/all
+tables, optional missing-row insertion and non-executing vehicleStats ID import.
+89 core checks and WPF Release publish pass. Sibling source/build are updated
+with hash-verified backup; ready app is `publish/bulk-weights-v0.3/` and workspace
+packages are `dist/TrafficEditor_v0.3/`. The extracted Lua sample has146 IDs;
+applying them to the19 expanded tables on a scratch copy yields280 requested
+IDs, beyond the current160 configuration. Actual game AI/Lua/INI/ASI and R4
+source are unchanged. No game/GUI launch, commit or push occurred.
+
+## R4 run36472: Story/menu/Replay/Story/menu lifecycle passes at152 models
+
+Read `analysis/USERCAP_R4_RUN36472_RESULTS_2026-11-15.md`. User reports completing
+the requested sequence including in-game quit; timeline supports Story -> menu
+-> Replay -> menu -> Story -> final frontend.13 complete18/152-ID phases all
+reach READY.Three distinct traffic owners, retirement peak147/512 with three
+redirects,0 queue failures/guards; pending/cleanup end0. Four replay restores
+include6/7/12 retained pairs; reader5 constructions/4 reuses,0 faults and no open
+waits.84 audio setup failures across12 models all show later successful setups,
+without measured exhaustion; strict generic audio_setup remains false. Keep R4
+and current160-request/170-model configuration. Basic requested R4 lifecycle
+coverage is complete; no new patch/increase indicated. No production changes,
+build/deploy or push. Evidence in `analysis/usercap_r4_run36472_2026-11-15/`.
+
+## R4 run20408: Activity2/large-small traffic replacement succeeds live
+
+Read `analysis/USERCAP_R4_RUN20408_RESULTS_2026-11-15.md`. User confirms Race
+Takedown Activity2 completed normally and overall behaviour looked fine; ended
+withAlt+F4.160 request/170 model slots, five152-ID phases plus five18-ID phases,
+all READY; four152->18->152 cycles. Retirement peak147/512, external redirect1,
+recycled insertions499, failures/guard damage0 across all three new queues.
+Keep R4/current INI; no new patch/increase indicated.165 audio setup failures
+across12 models all show later successful setups, without measured exhaustion;
+strict generic audio_setup check remains false. Replay recording249 saves is
+exercised, playback/menu re-entry/normal teardown are not. Evidence in
+`analysis/usercap_r4_run20408_2026-11-15/`. No production changes/build/deploy.
+
+## USER CAP R4 candidate: traffic replacement queue overflow fixed offline
+
+Read `analysis/TRAFFIC_QUEUES_R4_FIX_2026-11-15.md`. SS Test dump31908/Driver.log
+show retirement-list overflow while Activity2 switches Chapter7 -> Chapter3.
+The supplied AI predicts152 ->18 IDs and146 removals;62 overflowed12-byte nodes
+are captured beyond the native50-node list, corrupting the adjacent work header.
+R4 extends all three traffic lists through the existing hooks with guarded,
+generation-owned storage derived from max(512,ModelSlots+ReplayRetainedReferences).
+The active one-project solution builds R4 Release/Win32.19 inherited processes,
+six focused queue processes and compiled checks pass. Candidate and instructions:
+`dist/USERCAP_R4/`. R3 distribution/INI and existing editor work are preserved.
+Reuse the user's current INI; the152-ID AI needsRequestCapacity>=152 (160 previously
+suggested). R4 logs use `DSFV29s_usercap_r4_<pid>.log`. No game deployment/run,
+game-asset/config/save change or commit/push occurred; live retry is pending.
+
+## TrafficEditor 0.2 implemented and copied to its source folder
+
+User requested expanding existing traffic probability tables. Read
+`analysis/TRAFFIC_EDITOR_EXTENSION_IMPLEMENTED_2026-11-15.md` for the implementation,
+57 passing core checks, independent validation, backup and deployment manifest.
+Sibling `DriverSF_TrafficEditor_Source` now has variable-row parsing/serialization,
+bulk add/remove IDs and an R3 routed-capacity report. Build is at its
+`publish/expandable-tables-v0.2/`; workspace packages are in `dist/TrafficEditor_v0.2/`.
+All21 listed source/package file hashes were verified after copy. No editor Git
+commit/push, game/debugger/GUI launch, ASI/INI or game-asset/save change occurred.
+Expanded files still need a user game test with matching assets/capacities.
+Native spool groups remain replacement-only; R3 AssetWeights requests added
+positive probability IDs. The Unlimiter baseline remains R3/default150.
 
 ## R3 run34672: Replay -> Story -> menu/quit passes at150 defaults
 

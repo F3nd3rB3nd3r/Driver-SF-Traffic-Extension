@@ -66,9 +66,45 @@ def analyze(path):
     checks['registry_capacity']=bool(of('AUDIO_MODEL_REGISTRY')) and all(n(r,'capacity')==n(cfg,'audioModelEntries') and n(r,'peak')<=n(cfg,'audioModelEntries') for r in of('AUDIO_MODEL_REGISTRY'))
     checks['parked_bounds']=all(n(r,'peakCandidates')<=capacity and n(r,'peakBucket')<=capacity for r in of('PARKED150_STATUS'))
     checks['replay_bounds']=all(n(r,'peakTraffic')<=capacity and n(r,'peakRetained')<=retained for r in of('REPLAY150_STATUS'))
+    traffic_starts=of('TRAFFIC_QUEUE_START');traffic_status=of('TRAFFIC_QUEUE_STATUS')
+    if traffic_starts or path.name.lower().startswith(('dsfv29s_usercap_r4_','dsfv29s_usercap_r5_','dsfv29s_usercap_r6_','dsfv29s_usercap_r7_')):
+        required={'retireIds':12,'retainedVehicles':20,'vehicleOperations':20}
+        expected_capacity=max(512,n(cfg,'modelSlots')+retained)
+        checks['traffic_queue_start']=len(traffic_starts)==3 and {r.get('queue') for r in traffic_starts}==set(required) and all(
+            n(r,'status')==1 and n(r,'revision')==1 and n(r,'capacity')==expected_capacity and n(r,'stride')==required.get(r.get('queue')) and n(r,'beforeNativeWrite')==1 for r in traffic_starts)
+        checks['traffic_queue_status']=bool(traffic_status) and {r.get('queue') for r in traffic_status}==set(required) and all(
+            n(r,'capacity')==expected_capacity and n(r,'failures')==0 and n(r,'guardBad')==0 and n(r,'projectedPeak')<=expected_capacity for r in traffic_status)
+    stream_starts=of('STREAM_HANDLER_START');stream_status=of('STREAM_HANDLER_STATUS')
+    if stream_starts or 'streamingHandlers' in cfg or path.name.lower().startswith(('dsfv29s_usercap_r5_','dsfv29s_usercap_r6_','dsfv29s_usercap_r7_')):
+        expected_capacity=max(512,n(cfg,'modelSlots')+retained)
+        revision=n(stream_starts[0],'revision',1) if stream_starts else 1
+        fourth=revision>=2
+        stream_values=dict(status=1,capacity=expected_capacity,schedulerQueueCapacity=expected_capacity,
+            membershipCapacityPerKind=expected_capacity,schedulerBytes=(184 if fourth else 180)*expected_capacity+544,
+            hooks=8 if fourth else 7,basePatches=11,initializationCalls=2,nativeCapacity=256,stride=80,coldOnly=1,activeMigration=0,stableGenerationSlabs=1)
+        if fourth:stream_values.update(queueCount=4,nativeFourthQueueCapacity=512)
+        checks['stream_handler_start']=len(stream_starts)==1 and n(cfg,'streamingHandlers')==expected_capacity and all(
+            n(stream_starts[0],k)==v for k,v in stream_values.items())
+        if path.name.lower().startswith(('dsfv29s_usercap_r6_','dsfv29s_usercap_r7_')):checks['stream_handler_start'] &= revision==2
+        checks['stream_handler_status']=bool(stream_status) and all(
+            all(n(r,k)==v for k,v in stream_values.items()) and n(r,'failures')==0 and n(r,'guardBad')==0 and
+            0<=n(r,'currentSampled')<=expected_capacity*n(r,'alive') and
+            0<=n(r,'membershipPeak')<=expected_capacity and all(
+                0<=n(r,'queue'+str(i))<=expected_capacity*n(r,'schedulerAlive') and
+                0<=n(r,'queue'+str(i)+'Peak')<=expected_capacity for i in range(4 if fourth else 3)) for r in stream_status)
+    capacity_starts=of('CAPACITY_QUERY_START');capacity_status=of('CAPACITY_QUERY_STATUS')
+    if capacity_starts or capacity_status or path.name.lower().startswith('dsfv29s_usercap_r7_'):
+        def capacity_valid(r):
+            return n(r,'status')==1 and n(r,'modelSlots')==n(cfg,'modelSlots') and n(r,'vehicleSubtype')==0 and all(
+                r.get(k)=='native' for k in ('otherPackages','otherSubtypes','managerStateGate','admissionCompare')) and n(r,'noLoadedInference')==1
+        checks['capacity_query_start']=len(capacity_starts)==1 and n(capacity_starts[0],'revision')==1 and capacity_valid(capacity_starts[0])
+        checks['capacity_query_status']=bool(capacity_status) and all(capacity_valid(r) for r in capacity_status)
+        # An override counter is evidence of a query, never mission completion.
     return dict(log=str(path),configuration=cfg,checks=checks,recorded_integrity_pass=all(checks.values()),phases=phases,
+        capacity_query_final=capacity_status[-1] if capacity_status else None,
         events=of('GENERIC_EVENT'),reader_exercised=any(n(r,'constructs',0)>0 for r in of('REPLAY_READ_STATUS')),
         audio_final=of('AUDIO_MODEL_STATUS')[-1] if of('AUDIO_MODEL_STATUS') else None,
+        stream_final=stream_status[-1] if stream_status else None,
         limitations=['READY checks are sequential and do not certify drawable residency.',
             'No reader exercise does not certify replay playback.', 'No fatal record is not proof of normal exit.'])
 if __name__=='__main__':

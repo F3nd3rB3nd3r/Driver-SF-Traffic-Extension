@@ -1,11 +1,11 @@
-"""Offline USER CAP R3 fixtures. Never starts the game or its entry point."""
+"""Offline USER CAP R7 fixtures. Never starts the game or its entry point."""
 import hashlib,json,re,subprocess,xml.etree.ElementTree as ET
 from pathlib import Path
 from static_streaming_audit import DUMPBIN
 from verify_replay_read1m import sdk_lib
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'analysis/wide_limits_r3_2026-11-15'
-BUILD=ROOT/'build/wide_limits_r3_fixtures'
+OUT=ROOT/'analysis/wide_limits_r7_2026-11-15'
+BUILD=ROOT/'build/wide_limits_r7_fixtures'
 def main():
     OUT.mkdir(exist_ok=True);BUILD.mkdir(exist_ok=True)
     project=ET.parse(ROOT/'DriverSF_V29s_ARENA_REUSE.vcxproj')

@@ -16,6 +16,9 @@ static void GenericConfigLine(){
     const char* more[]={" objectEntries="," definitionEntries="," pendingEntries="," callbackEntriesPerGroup="," cleanupEntries="," resourceCollectionEntries="," indexedReferenceEntries="," hashExtraEntries="};
     const U32 sizes[]={g_limits.objects,g_limits.definitions,g_limits.pending,g_limits.callbacks,g_limits.cleanup,g_limits.collection,g_limits.indexed,g_limits.hashExtra};
     for(U32 i=0;i<8u;++i)DiagFAppendKeyU(p,more[i],sizes[i],end);
+#if defined(DSF_V29S_STREAM_HANDLERS)
+    DiagFAppendKeyU(p," streamingHandlers=",StreamCapacity(),end);
+#endif
     AppendText(p," userCapacities=1 testedDefaultRequests=150 higherConfigurationsUntested=1 compiledCarLists=0 liveReload=0 file=DriverSF_Unlimiter.ini location=asiDirectory\n",end);
 #else
     AppendText(p," modelSlots=160 auditedRequestCeiling=150 requestFramePhysicalCapacity=150 compiledCarLists=0 liveReload=0 file=DriverSF_Unlimiter.ini location=asiDirectory\n",end);

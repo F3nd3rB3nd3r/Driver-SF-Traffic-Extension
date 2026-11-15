@@ -1,0 +1,32 @@
+{
+  "build": "USERCAP_R7",
+  "files": [
+    {
+      "path": "dist\\USERCAP_R7\\DriverSF_Unlimiter_USERCAP_R7.asi",
+      "bytes": 306176,
+      "sha256": "248d4c3b1a1fdc7ec0fb9ad38cb90ec6292b51a3412b3e59c00c6ba3b075079f"
+    },
+    {
+      "path": "dist\\USERCAP_R7\\DriverSF_Unlimiter.ini",
+      "bytes": 976,
+      "sha256": "d07cf1433f3c46a37881033ab0df96fade0c020a038c075ac4958987adbde08b"
+    },
+    {
+      "path": "dist\\USERCAP_R7\\R7_TEST.md",
+      "bytes": 2069,
+      "sha256": "d2783be41642d75e63ffb9d59abc4713d37e9eace764abc4b060cd92ed3e846d"
+    }
+  ],
+  "verification": "analysis\\mission_capacity_r7_2026-11-15\\build_verification.json",
+  "test_settings_identical_to": "dist\\USERCAP_R6\\HASH180K\\DriverSF_Unlimiter.ini",
+  "live_test": {
+    "configuration": "280-request/290-model HASH180K example",
+    "runs": [
+      21688,
+      11636
+    ],
+    "latest_checks_passed": 42,
+    "coverage": "Story loading, speed trap, pursuits, main-menu/Story/Replay transitions, uninterrupted playback, user-reported normal exit",
+    "limitations": "Run21688 had recovered transient audio setup failures; run11636 had none. Larger rosters and exhaustive chapter/activity/lifetime coverage unverified."
+  }
+}

@@ -1,4 +1,13 @@
-Current crash/fix report: `USER_CAPACITY_R3_STORY_FIX_2026-11-15.md`. Supplied dump decoding, old-code reproduction and retained R2 inputs are in `usercap_r2_story_crashes_2026-11-15/`; R3 fixtures/build checks are in `wide_limits_r3_2026-11-15/`. R2 is superseded after its Story-load crash.
+Current candidate: [USER CAP R7](USERCAP_R7_MISSION_CAPACITY_FIX_2026-11-15.md).
+[Run11636](USERCAP_R7_RUN11636_RESULTS_2026-11-15.md) supplies successful
+280-car Story/menu/Replay lifecycle coverage, all42 logged checks passing.
+[Run21688](USERCAP_R7_RUN21688_RESULTS_2026-11-15.md) covers Story/activity/
+pursuits with recovered transient audio setup failures. Source/fixture hashes,
+build summaries and selected static scheduler inputs are published; full user
+logs/dumps, native disassembly, generated preprocessed source and backup archives
+remain local. Historical paragraphs below retain their original scope.
+
+Previous crash/fix report: `USER_CAPACITY_R3_STORY_FIX_2026-11-15.md`. Supplied dump decoding, old-code reproduction and retained R2 inputs are in `usercap_r2_story_crashes_2026-11-15/`; R3 fixtures/build checks are in `wide_limits_r3_2026-11-15/`. R2 is superseded after its Story-load crash.
 
 Current implementation report: `USER_CAPACITY_R2_BUILD_2026-11-15.md`. Evidence and hash-verified pre-change fallback snapshot: `wide_limits_r2_2026-11-15/`. The feasibility-only report is superseded by this implementation, not deleted.
 

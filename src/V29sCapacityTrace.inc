@@ -51,7 +51,15 @@ static void CapacityOpen() {
 #if defined(DSF_V29S_REPLAY_READ1M)
 #if defined(DSF_V29S_GENERIC_LIMITS)
 #if defined(DSF_V29S_WIDE_LIMITS)
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+#if defined(DSF_V29S_STREAM_HANDLERS)
+    AppendText(p,"DSFV29s_usercap_r7_",end);
+#else
+    AppendText(p,"DSFV29s_usercap_r4_",end);
+#endif
+#else
     AppendText(p,"DSFV29s_usercap_r3_",end);
+#endif
 #else
     AppendText(p,"DSFV29s_generic_limits_",end);
 #endif
@@ -150,6 +158,12 @@ static void CapacityMax(volatile long& destination,U32 value) {
         previous=observed;
     }
 }
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+#include "V29sTrafficQueuesRuntime.inc"
+#endif
+#if defined(DSF_V29S_STREAM_HANDLERS)
+#include "V29sStreamHandlers.inc"
+#endif
 static void CapacityFirstLine(U32 kind) {
     CapacityQueue& q=g_capacityQueues[kind];
     if(InterlockedCompareExchange(&q.firstReady,2,2)!=2 ||
@@ -173,8 +187,15 @@ static void CapacityObserve(U32 kind,UPtr owner,UPtr header,UPtr begin,UPtr end,
     if(previous && static_cast<UPtr>(previous)!=owner)InterlockedIncrement(&q.ownerChanges);
     if(active<0x7FFFFFFFu)CapacityMax(q.projectedPeak,active+1u);
     else InterlockedIncrement(&q.invalidCounts);
-    const bool badFresh=!recycled && (cursor<begin || cursor>=end || ((cursor-begin)%stride)!=0u);
-    if(!badFresh && active<50u)return;
+    bool badFresh=!recycled && (cursor<begin || cursor>=end || ((cursor-begin)%stride)!=0u);
+    U32 capacity=50u;
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+    if(kind){
+        capacity=TrafficQueueCapacity();const TrafficQueueArena* a=TrafficQueueFind(kind-1u,owner);
+        if(badFresh && a && a->nodes && cursor>=a->nodes && cursor-a->nodes<(capacity-50u)*stride && (cursor-a->nodes)%stride==0u)badFresh=false;
+    }
+#endif
+    if(!badFresh && active<capacity)return;
     InterlockedIncrement(&q.boundaryAttempts);
     if(InterlockedCompareExchange(&q.firstReady,1,0)!=0)return;
     q.tick=GetTickCount()-g_capacityStart;q.owner=owner;q.header=header;
@@ -190,17 +211,28 @@ extern "C" __declspec(noinline) void __cdecl CapacityTrafficEntry(UPtr header,U3
     if(!root)return;
     const UPtr owner=Read32(root+0x214u);
     if(!owner)return;
-    if(header==owner+0x5A4u)
+    if(header==owner+0x5A4u){
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+        TrafficQueueRequire(1u,owner);
+#endif
         CapacityObserve(2u,owner,header,owner+0x5B0u,owner+0x998u,20u,caller);
-    else if(header==owner+0x9A0u)
+    }else if(header==owner+0x9A0u){
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+        TrafficQueueRequire(2u,owner);
+#endif
         CapacityObserve(3u,owner,header,owner+0x9ACu,owner+0xD94u,20u,caller);
+    }
 }
 extern "C" __declspec(noinline) void __cdecl CapacityRetireEntry(UPtr header) {
     const UPtr root=Read32(Address(kRootPtr));
     if(!root)return;
     const UPtr owner=Read32(root+0x214u);
-    if(owner && header==owner+0x338u)
+    if(owner && header==owner+0x338u){
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+        TrafficQueueRequire(0u,owner);
+#endif
         CapacityObserve(1u,owner,header,owner+0x344u,owner+0x59Cu,12u,0x005A7DD1u);
+    }
 }
 
 // Preserve flags, all integer registers and the complete x87/SSE state.
@@ -298,6 +330,20 @@ static bool CapacityInstall() {
     }
     return true;
 }
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideCapacityLog(bool startup,U32 tick){
+    char line[640]={};char* p=line;const char* end=line+sizeof(line)-1u;
+    AppendText(p,startup?"DSFV29s_CAPACITY_QUERY_START revision=1":"DSFV29s_CAPACITY_QUERY_STATUS",end);
+    DiagFAppendKeyU(p," tick=",tick,end);DiagFAppendKeyU(p," status=",g_wideCapacityInstalled?1u:0u,end);
+    DiagFAppendKeyU(p," modelSlots=",g_limits.models,end);
+    DiagFAppendKeyU(p," overrides=",static_cast<U32>(g_wideCapacityOverrides),end);
+    DiagFAppendKeyU(p," fallbacks=",static_cast<U32>(g_wideCapacityFallbacks),end);
+    DiagFAppendKeyHex(p," lastVehiclePackage=",g_wideCapacityLastPackage,end);
+    DiagFAppendKeyU(p," lastNativeByte=",g_wideCapacityNativeByte,end);
+    AppendText(p," vehicleSubtype=0 otherPackages=native otherSubtypes=native managerStateGate=native admissionCompare=native noLoadedInference=1\n",end);
+    *p=0;CapacityWrite(line);
+}
+#endif
 static void CapacityPoll() {
     static U32 previousStatus=0u,previousQueues=0u;
     static U32 samples=0u,emptySamples=0u,emptyTransitions=0u,pendingPeak=0u,emptySince=0u,emptyMsPeak=0u;
@@ -371,6 +417,15 @@ static void CapacityPoll() {
     }
     if(tick-previousQueues<5000u && previousQueues)return;
     previousQueues=tick?tick:1u;
+#if defined(DSF_V29S_WIDE_LIMITS)
+    WideCapacityLog(false,tick);
+#endif
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+    TrafficQueuesLog(false,tick);
+#if defined(DSF_V29S_STREAM_HANDLERS)
+    StreamLog(false,tick);
+#endif
+#endif
     for(U32 i=0u;i<4u;++i) {
         const CapacityQueue& q=g_capacityQueues[i];
         char line[520]={};char* p=line;const char* end=line+sizeof(line)-1;
@@ -385,7 +440,11 @@ static void CapacityPoll() {
         DiagFAppendKeyU(p," boundaryAttempts=",static_cast<U32>(q.boundaryAttempts),end);
         DiagFAppendKeyU(p," invalidCounts=",static_cast<U32>(q.invalidCounts),end);
         DiagFAppendKeyU(p," ownerChanges=",static_cast<U32>(q.ownerChanges),end);
-        AppendText(p," nativeCapacity=50\n",end);*p=0;CapacityWrite(line);
+        AppendText(p," nativeCapacity=50",end);
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+        if(i)DiagFAppendKeyU(p," configuredCapacity=",TrafficQueueCapacity(),end);
+#endif
+        AppendText(p,"\n",end);*p=0;CapacityWrite(line);
     }
 }
 static void CapacityStartLine() {
@@ -399,5 +458,16 @@ static void CapacityStartLine() {
 #endif
     AppendText(p," sampleMs=200 statusMs=1000 queueMs=5000 emergencyMax=4 hotHandleHooks=0 preserveFX=1\n",end);
     *p=0;CapacityWrite(line);
+#if defined(DSF_V29S_WIDE_LIMITS)
+    WideCapacityLog(true,0u);
+#endif
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+    CapacityWrite("DSFV29s_CAP_SCOPE peaksAfterInsert=projected nativeHandleExhaustion=sampled flagsAndReturnValues=preserved trafficBoundaryWrites=guarded audioBankBoundaryWrites=notPrevented noREADYorDrawableInference=1\n");
+    TrafficQueuesLog(true,0u);
+#if defined(DSF_V29S_STREAM_HANDLERS)
+    StreamLog(true,0u);
+#endif
+#else
     CapacityWrite("DSFV29s_CAP_SCOPE peaksAfterInsert=projected nativeHandleExhaustion=sampled flagsAndReturnValues=preserved boundaryWrites=notPrevented noREADYorDrawableInference=1\n");
+#endif
 }

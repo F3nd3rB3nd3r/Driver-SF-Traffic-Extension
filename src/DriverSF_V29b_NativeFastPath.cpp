@@ -2220,6 +2220,7 @@ extern "C" __declspec(naked) void WideAdmissionBridge(){__asm{pushfd
     popfd
     jmp dword ptr [g_wideAdmissionResume]}}
 static const U8 kWideAdmissionSig[]={0x0F,0xB6,0x54,0x10,0x18};
+#include "V29sWideCapacityQuery.inc"
 #endif
 struct PatchSite { UPtr original; const U8* expected; U32 size; void* bridge;
                    UPtr* resume; void** trampoline; U8 saved[12]; bool installed; };
@@ -2258,6 +2259,7 @@ static const U8 kSigClass16A[] = {0x6A, 0x2E, 0x6A, 0x16, 0x89, 0x86, 0x3C, 0x02
 static const U8 kSigClass16B[] = {0x6A, 0x2E, 0x6A, 0x16, 0x89, 0x4E, 0x08, 0x89, 0x4E, 0x0C};
 static PatchSite g_sites[] = {
 #if defined(DSF_V29S_WIDE_LIMITS)
+  {0x5A0AD0u,kWideCapacitySig,6u,reinterpret_cast<void*>(&WideCapacityQuery),nullptr,reinterpret_cast<void**>(&g_wideCapacityOriginal),{},false},
   {0x5A14EAu,kWideAdmissionSig,5u,reinterpret_cast<void*>(&WideAdmissionBridge),&g_wideAdmissionResume,nullptr,{},false},
 #endif
   {0x5A79F0u,kSigRequestWrite,5u,reinterpret_cast<void*>(&RequestWriteBridge),nullptr,nullptr,{},false},
@@ -2296,6 +2298,9 @@ static PatchSite g_sites[] = {
 static U8* g_codeStubs=nullptr;
 static unsigned g_stubUsed=0;
 void RestoreExtendedSites(){
+#if defined(DSF_V29S_WIDE_LIMITS)
+    g_wideCapacityInstalled=false;
+#endif
     for(unsigned j=sizeof(g_sites)/sizeof(g_sites[0]);j>0;--j){
         PatchSite& p=g_sites[j-1];
         if(!p.installed)continue;
@@ -2484,6 +2489,13 @@ bool InstallRequestFramePatches() {
 }
 
 bool InstallExtendedSites(){
+#if defined(DSF_V29S_WIDE_LIMITS)
+    // Validate the entire getter, including its stack cleanup, before any
+    // site is changed. The stolen six bytes are one non-relative instruction.
+    const UPtr capacity=Address(0x5A0AD0u);
+    if(!Readable(capacity,sizeof(kWideCapacitySig)))return false;
+    for(U32 i=0;i<sizeof(kWideCapacitySig);++i)if(Read8(capacity+i)!=kWideCapacitySig[i])return false;
+#endif
     for(auto& p:g_sites){
         UPtr at=Address(p.original);
         if(!Readable(at,p.size))return false;
@@ -2521,6 +2533,9 @@ bool InstallExtendedSites(){
         if(!ok){RestoreExtendedSites();return false;}
     }
     DSFV27B_NativeHooks=sizeof(g_sites)/sizeof(g_sites[0]);
+#if defined(DSF_V29S_WIDE_LIMITS)
+    g_wideCapacityInstalled=true;
+#endif
     Log("DSFV29b: native handler/map/selector/class16 hooks installed (experimental).\n");
     return true;
 }
@@ -3550,6 +3565,12 @@ extern "C" __declspec(dllexport) BOOL __stdcall DllMain(HMODULE module, DWORD re
 #endif
             g_capacityHooks=DSFV29s_Hooks==5 && g_sGuardHook==1 &&
                 g_sScratchHook==2 && g_sCloneHook==1 && CapacityInstall()?3:-1;
+#if defined(DSF_V29S_TRAFFIC_QUEUES)
+            if(g_capacityHooks!=3)WideAllocationFailure("Unlimiter: traffic queue hooks unavailable; refusing unprotected startup.\n");
+#if defined(DSF_V29S_STREAM_HANDLERS)
+            if(!StreamInstall()){StreamLog(true,0u);WideAllocationFailure("Unlimiter: streaming handler hooks unavailable; refusing unprotected startup.\n");}
+#endif
+#endif
 #if defined(DSF_V29S_INDEXED_262144)
             if(g_capacityHooks==3) IndexedInstall();
             else {g_indexedStatus=-8;g_indexedReason="baselineHooksUnavailable";}
