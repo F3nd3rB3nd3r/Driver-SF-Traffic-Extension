@@ -50,5 +50,6 @@ static void RFInstall(bool clientOkay) {
     g_rfStatus=okay?1:-1;
     char line[700]={};char* p=line;const char* end=line+sizeof(line)-1;
     AppendText(p,"DSFV29s_REPLAY_READ_START revision=1 status=",end);AppendNumber(p,g_rfStatus,end);AppendText(p," reason=",end);AppendText(p,okay?"okay":reason,end);
-    AppendText(p," hooks=8 readerBytes=1048576 blockBytes=32768 readerOnly=1 writerChanged=0 separateBacking=1 guardBytes=65536 processLifetime=1 reusable=1 fixedOwnerLimit=0 extraEngineCalls=0 gameThreadFileWrites=0 requests=150 graphics=160\n",end);*p=0;CapacityWrite(line);
+    AppendText(p," hooks=8",end);DiagFAppendKeyU(p," readerBytes=",kRFBytes,end);
+    AppendText(p," blockBytes=32768 readerOnly=1 writerChanged=0 separateBacking=1 guardBytes=65536 processLifetime=1 reusable=1 fixedOwnerLimit=0 extraEngineCalls=0 gameThreadFileWrites=0 requests=150 graphics=160\n",end);*p=0;CapacityWrite(line);
 }

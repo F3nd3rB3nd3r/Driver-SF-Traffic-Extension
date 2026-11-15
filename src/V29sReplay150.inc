@@ -62,7 +62,14 @@ static void ReplayInstall() {
     }
     if(!ok){g_replayStatus=-1;CapacityWrite("DSFV29s_REPLAY150_START revision=1 status=-1\n");ReplayFatal("startupPatchRefused",page,0u);return;}
     g_replayStatus=1;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    char line[650]={};char* p=line;const char* end=line+sizeof(line)-1;
+    AppendText(p,"DSFV29s_REPLAY150_START revision=1 status=1 hooks=7",end);DiagFAppendKeyU(p," trafficCapacity=",g_limits.requests,end);
+    DiagFAppendKeyU(p," retainedCapacity=",g_limits.retained,end);DiagFAppendKeyU(p," payloadBytes=",GenericReplayBytes(),end);
+    AppendText(p," nativeViewBytes=612 nativeObjectBytes=624 nativeRecordFormat=1 tempReuse=1 fixedOwnerLimit=0 requests=150 graphics=160\n",end);*p=0;CapacityWrite(line);
+#else
     CapacityWrite("DSFV29s_REPLAY150_START revision=1 status=1 hooks=7 trafficCapacity=150 retainedCapacity=256 payloadBytes=2660 nativeViewBytes=612 nativeObjectBytes=624 nativeRecordFormat=1 tempReuse=1 fixedOwnerLimit=0 requests=150 graphics=160\n");
+#endif
 }
 static void ReplayPoll() {
     static U32 last=0;const U32 tick=GetTickCount()-g_capacityStart;if(tick-last<1000u)return;last=tick;

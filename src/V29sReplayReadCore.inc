@@ -1,6 +1,12 @@
 // Private, process-lifetime backing per native file-wrapper address. Metadata
 // and payload are never freed while hooks can observe them; reuse needs teardown.
-static const U32 kRFBytes=0x100000u,kRFReserve=0x120000u,kRFGuard=0x10000u;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#define kRFBytes (g_limits.replayMiB*1048576u)
+#define kRFReserve (kRFBytes+0x20000u)
+#else
+static const U32 kRFBytes=0x100000u,kRFReserve=0x120000u;
+#endif
+static const U32 kRFGuard=0x10000u;
 enum RFKind {RFPollResult,RFCommit,RFWrap,RFSpace,RFIssue,RFEnd};
 struct RFCounts {volatile long polls,backendBusy,commits,committedBytes,wrapChecks,wrapStops,spaceChecks,spaceStops,issues,issueBytes,issueRejected,endChecks,endStops;};
 struct RFOwner {

@@ -23,7 +23,12 @@ static SCView SCCapture(UPtr owner,UPtr self,U32 index) {
     v.filled=Read32(r+0x8568u);v.parse=Read32(r+0x856Cu);v.filePosition=Read32(r+0x8580u);
     v.inFlightBytes=Read32(r+0x8584u);v.endOfData=Read8(r+0x858Cu);v.active=Read8(r+0x8595u);v.eventHead=Read32(r+0x8554u);
     const U32 limit=v.base+v.capacity;
-    if(v.base && v.capacity && v.capacity<=0x10000000u && limit>v.base &&
+#if defined(DSF_V29S_GENERIC_LIMITS) && defined(DSF_V29S_REPLAY_READ1M)
+    const U32 observerCapacity=kRFBytes;
+#else
+    const U32 observerCapacity=0x100000u;
+#endif
+    if(v.base && v.capacity && v.capacity<=observerCapacity && limit>v.base &&
        v.retained>=v.base && v.retained<limit && v.filled>=v.base && v.filled<limit && v.parse>=v.base && v.parse<limit) {
         v.ringValid=1u;v.freeBytes=v.retained==v.filled?v.capacity:
             (v.retained>v.filled?v.retained-v.filled:v.capacity-(v.filled-v.retained));

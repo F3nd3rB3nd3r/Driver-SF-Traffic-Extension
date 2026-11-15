@@ -1,18 +1,39 @@
 // Diagnostic extension only. No capacity, request selection, release policy or
 // native result changes. Native pointers are inspected only on their own paths.
+#if defined(DSF_V29S_WIDE_LIMITS)
+static const U32 kBaselineEvents=8u,kBaselineMetrics=12u;
+#define kBaselineModels (g_limits.requests)
+#else
 static const U32 kBaselineModels=150u,kBaselineEvents=8u,kBaselineMetrics=12u;
+#endif
 struct BaselineModel {
     U32 id,ready,firstReady,readyChecks,readyLosses,drawOriginal,drawResolved;
     U32 drawFallback,lastResolved,audioStart[8],audioSample[8];
 };
 struct BaselineState {
     U32 seq,tick,owner,caller,count,originalValid,duplicates,hash;
-    int originalCount;U32 original[150];
+    int originalCount;
+#if defined(DSF_V29S_WIDE_LIMITS)
+U32* original;
+#else
+U32 original[150];
+#endif
     U32 checkpointTick,checkpointDuration,checkpoints,readyCount,allReadyTick,drawMismatch,audioSampleTick;
     U32 metricStart[12],metricPeak[12],metricLast[12],metricSamples;
-    BaselineModel models[150];
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+BaselineModel* models;
+#else
+BaselineModel models[150];
+#endif
 };
 struct BaselineEvent {const char* kind;BaselineState state;};
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideBaselineInit(BaselineState& s){if(!s.original)s.original=static_cast<U32*>(WideAllocate(g_limits.requests*4u));if(!s.models)s.models=static_cast<BaselineModel*>(WideAllocate(g_limits.requests*sizeof(BaselineModel)));}
+static void WideBaselineReset(BaselineState& s){WideBaselineInit(s);U32* ids=s.original;BaselineModel* models=s.models;memset(&s,0,sizeof(s));s.original=ids;s.models=models;memset(ids,0,g_limits.requests*4u);memset(models,0,g_limits.requests*sizeof(BaselineModel));}
+static void WideBaselineCopy(BaselineState& to,const BaselineState& from){WideBaselineInit(to);U32* ids=to.original;BaselineModel* models=to.models;memcpy(&to,&from,sizeof(to));to.original=ids;to.models=models;memcpy(models,from.models,from.count*sizeof(BaselineModel));if(from.originalValid && from.originalCount>0)memcpy(ids,from.original,static_cast<U32>(from.originalCount)*4u);}
+static void WideBaselineEventCopy(BaselineEvent& to,const BaselineEvent& from){to.kind=from.kind;WideBaselineCopy(to.state,from.state);}
+#endif
 static BaselineState g_baseline={},g_baselinePrint={};
 static BaselineEvent g_baselineEvents[8]={},g_baselineEventPrint={};
 static volatile long g_baselineLock=0,g_baselineDrops=0,g_baselineLockSkips=0,g_baselineObsolete=0;
@@ -26,8 +47,17 @@ static bool BaselineLock(){if(!InterlockedCompareExchange(&g_baselineLock,1,0))r
 static void BaselineUnlock(){InterlockedExchange(&g_baselineLock,0);}
 static void BaselineAudio(U32 id,U32* out) {
     for(U32 n=0;n<8u;++n)out[n]=0u;
+#if defined(DSF_V29S_WIDE_LIMITS)
+    while(InterlockedExchange(&g_wideAudioKeyLock,1)){}AudioModelKey* found=g_wideAudioBuckets[id&65535u];while(found && static_cast<U32>(found->key)!=id)found=found->hashNext;InterlockedExchange(&g_wideAudioKeyLock,0);
+    if(found) {
+#else
     for(U32 n=0;n<512u;++n)if(static_cast<U32>(g_audioModelKeys[n].key)==id) {
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+        const AudioModelKey& k=*found;
+#else
         const AudioModelKey& k=g_audioModelKeys[n];
+#endif
         const long values[8]={k.stores,k.removes,k.hits,k.misses,k.bankReady,k.bankNotReady,k.setupOk,k.setupFail};
         for(U32 j=0;j<8u;++j)out[j]=static_cast<U32>(values[j]);return;
     }
@@ -51,7 +81,13 @@ static void BaselineQueue(const char* kind) {
     if(g_baselineWrite-g_baselineRead>=kBaselineEvents){InterlockedIncrement(&g_baselineDrops);return;}
     BaselineCaptureAudio(g_baseline);
     BaselineEvent& e=g_baselineEvents[g_baselineWrite%kBaselineEvents];e.kind=kind;
-    memcpy(&e.state,&g_baseline,sizeof(g_baseline));++g_baselineWrite;
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideBaselineCopy(e.state,g_baseline);
+#else
+memcpy(&e.state,&g_baseline,sizeof(g_baseline));
+#endif
+++g_baselineWrite;
 }
 static void BaselineRequest(UPtr owner,UPtr caller,const U32* original,int originalCount,const U32* effective,U32 count,const char* result) {
     if(!g_baselineInstalled || !BaselineLock())return;
@@ -61,14 +97,26 @@ static void BaselineRequest(UPtr owner,UPtr caller,const U32* original,int origi
     if(!accepted) {
         if(g_baselineWrite-g_baselineRead>=kBaselineEvents){InterlockedIncrement(&g_baselineDrops);BaselineUnlock();return;}
         BaselineEvent& e=g_baselineEvents[g_baselineWrite%kBaselineEvents];e.kind=result;
-        memset(&e.state,0,sizeof(e.state));e.state.seq=++g_baselineSequence;e.state.tick=GetTickCount()-g_capacityStart;
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideBaselineReset(e.state);
+#else
+memset(&e.state,0,sizeof(e.state));
+#endif
+e.state.seq=++g_baselineSequence;e.state.tick=GetTickCount()-g_capacityStart;
         e.state.owner=owner;e.state.caller=caller;e.state.originalCount=originalCount;++g_baselineWrite;
         BaselineUnlock();return;
     }
-    memset(&g_baseline,0,sizeof(g_baseline));g_baseline.seq=++g_baselineSequence;
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideBaselineReset(g_baseline);
+#else
+memset(&g_baseline,0,sizeof(g_baseline));
+#endif
+g_baseline.seq=++g_baselineSequence;
     g_baseline.tick=GetTickCount()-g_capacityStart;g_baseline.owner=owner;g_baseline.caller=caller;
     g_baseline.count=count;g_baseline.originalCount=originalCount;
-    g_baseline.originalValid=originalCount>=0 && originalCount<=150 &&
+    g_baseline.originalValid=originalCount>=0 && originalCount<=static_cast<int>(kBaselineModels) &&
         (!originalCount || (original && Readable(reinterpret_cast<UPtr>(original),static_cast<U32>(originalCount)*4u)));
     if(g_baseline.originalValid)for(int i=0;i<originalCount;++i)g_baseline.original[i]=original[i];
     U32 hash=2166136261u;
@@ -85,7 +133,12 @@ extern "C" __declspec(noinline) void __cdecl BaselineReadyEntry(UPtr owner) {
     if(!g_baselineInstalled || InterlockedCompareExchange(&g_baselineReadyBusy,1,0))return;
     const U32 now=GetTickCount()-g_capacityStart;
     if(now-g_baselineLastCheck<1000u){InterlockedExchange(&g_baselineReadyBusy,0);return;}
-    U32 ids[150]={},ready[150]={},count=0,seq=0;
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideScratchLease readyLease(g_limits.requests*8u);U32* ids=static_cast<U32*>(readyLease.data);U32* ready=ids+g_limits.requests;U32 count=0,seq=0;
+#else
+U32 ids[150]={},ready[150]={},count=0,seq=0;
+#endif
     if(BaselineLock()) {
         if(g_baseline.owner==owner){count=g_baseline.count;seq=g_baseline.seq;for(U32 i=0;i<count;++i)ids[i]=g_baseline.models[i].id;}
         BaselineUnlock();
@@ -181,7 +234,11 @@ static void BaselineInstall() {
         "DSFV29s_BASELINE_START revision=1 status=-1 reason=parentSignatureOrHookInstall\n");
 }
 static void BaselinePrint(const BaselineState& s,const char* kind,bool models) {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    const U32 lineBytes=g_limits.requests*7u+2300u;WideScratchLease lineLease(lineBytes);char* line=static_cast<char*>(lineLease.data);char* p=line;const char* end=line+lineBytes-1u;
+#else
     char line[2300]={};char* p=line;const char* end=line+sizeof(line)-1;
+#endif
     AppendText(p,"DSFV29s_BASELINE_PHASE kind=",end);AppendText(p,kind,end);
     DiagFAppendKeyU(p," seq=",s.seq,end);DiagFAppendKeyU(p," tick=",GetTickCount()-g_capacityStart,end);
     DiagFAppendKeyU(p," started=",s.tick,end);DiagFAppendKeyHex(p," owner=",s.owner,end);DiagFAppendKeyHex(p," caller=",s.caller,end);
@@ -233,14 +290,26 @@ static void BaselinePoll() {
     }
     for(U32 n=0;n<8u;++n) {
         bool have=false;if(BaselineLock()) {
-            if(g_baselineRead<g_baselineWrite){memcpy(&g_baselineEventPrint,&g_baselineEvents[g_baselineRead%8u],sizeof(g_baselineEventPrint));++g_baselineRead;have=true;}
+            if(g_baselineRead<g_baselineWrite){
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideBaselineEventCopy(g_baselineEventPrint,g_baselineEvents[g_baselineRead%8u]);
+#else
+memcpy(&g_baselineEventPrint,&g_baselineEvents[g_baselineRead%8u],sizeof(g_baselineEventPrint));
+#endif
+++g_baselineRead;have=true;}
             BaselineUnlock();
         }
         if(!have)break;BaselinePrint(g_baselineEventPrint.state,g_baselineEventPrint.kind,true);
     }
     static U32 last=0,lastModels=0;const U32 now=GetTickCount()-g_capacityStart;
     if(now-last<1000u)return;last=now;
-    if(!BaselineLock())return;BaselineCaptureAudio(g_baseline);memcpy(&g_baselinePrint,&g_baseline,sizeof(g_baselinePrint));BaselineUnlock();
+    if(!BaselineLock())return;BaselineCaptureAudio(g_baseline);
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideBaselineCopy(g_baselinePrint,g_baseline);
+#else
+memcpy(&g_baselinePrint,&g_baseline,sizeof(g_baselinePrint));
+#endif
+BaselineUnlock();
     const bool models=now-lastModels>=5000u;if(models)lastModels=now;
     if(g_baselinePrint.seq)BaselinePrint(g_baselinePrint,"sample",models);
     char line[500]={};char* p=line;const char* end=line+sizeof(line)-1;AppendText(p,"DSFV29s_BASELINE_STATUS",end);

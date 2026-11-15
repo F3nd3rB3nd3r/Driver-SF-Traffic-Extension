@@ -1,5 +1,10 @@
 // Only queue storage changes; native count, resource ownership and timing remain.
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kCleanupCapacity (g_limits.cleanup)
+static const U32 kCleanupGuard=0x51473236u;
+#else
 static const U32 kCleanupCapacity=262144u,kCleanupGuard=0x51473236u;
+#endif
 static UPtr g_cleanupAllocation=0,g_cleanupBase=0;
 static volatile long g_cleanupAttempts[3]={},g_cleanupPeak=0,g_cleanupCurrent=0;
 static volatile long g_cleanupBeyondStock=0,g_cleanupOldCrossings=0,g_cleanupFull=0,g_cleanupGuardBad=0,g_cleanupInvalid=0;

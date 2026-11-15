@@ -1,8 +1,36 @@
+Current USER CAP verifier output is `analysis/wide_limits_r3_2026-11-15/` and its isolated build directory is `build/wide_limits_r3_fixtures/`. R2 evidence is preserved. The verifier now includes completed-map insertion in both allocation orders and three invalid fresh-cursor cases.
+
+`verify_wide_limits.py` runs the USER CAP R2 isolated Win32/native fixtures; `verify_wide_limits_build.py` checks the compiled PE, preserved fallback and recorded fixture hashes. `analyze_generic_limits_log.py` accepts both R1 and R2 schemas and recorded capacities. Older150-only verifiers remain historical; do not use them to reject the R2 geometry.
+
 # Current tooling
 
 Use these entry points for the current build, only when the corresponding task is requested:
 
-- `verify_replay_read1m.py`: current combined capacity/counter verifier;
+- `verify_generic_limits.py --fixtures / --verify-build / --package`: current
+  GENERIC_R1 offline suite, compiled geometry/ABI/hook checks and workspace-only
+  staging.12 isolated fixtures; cached runs require exact dependency/command/
+  binary hashes. No game or installed ASI execution.
+- `audit_generic_traffic_asset.py <asset> --output <json>`: read-only actual
+  preload/positive-weight union audit; default file AI offset0x1080 is optional
+  via `--ai-offset`. No source fingerprint/model allowlist required.
+- `analyze_generic_limits_log.py <log> --output <json>`: validates recorded
+  INI dimensions, requests/readiness and resource error counters. Test its
+  nondefault/malformed cases with `test_generic_limits_log.py`.
+
+- `verify_traffic_policy.py --static-only`: current source/project/inherited
+  hash checks; no compiler or game access. `--fixture-only` compiles/runs the
+  isolated Win32 policy/config/request tests. `--verify-build` inspects the
+  current PE32/ABI/retained hook tables and geometry; `--package` stages the
+  verified ASI without installing it. Build/fixture options were authorized
+  for TRAFFIC_POLICY_R1 and pass. Old compiled verifiers
+  remain locked to their earlier candidates; do not use their configuration/
+  packaging modes blindly on the new TRAFFIC_POLICY_R1 project.
+- `test_traffic_policy_logs.py`: synthetic Python log-parser regression cases.
+- `analyze_traffic_policy_log.py <log> --output <json>`: Native preservation
+  or explicit Preset150 validation. Run inherited baseline/callback/READ1M
+  integrity checks separately; it does not certify rendering/audio.
+
+- `verify_replay_read1m.py`: retained READ1M baseline capacity/counter verifier;
   `--fixture-only`, `--verify-build`, `--package`. Native reader/bridge/
   installer, guarded private backing, reuse/failure/destructor handling,
   parser and inherited client/R2 checks. Output

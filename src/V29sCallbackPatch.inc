@@ -22,6 +22,9 @@ static bool CallbackInstall() {
     g_callbackReason="storageAllocation";
     g_callbackGroups=reinterpret_cast<CallbackGroup*>(VirtualAlloc(nullptr,sizeof(CallbackGroup)*kCallbackGroups,kMemCommitReserve,kPageReadWrite));
     if(!g_callbackGroups)return false;
+#if defined(DSF_V29S_WIDE_LIMITS)
+    for(U32 i=0;i<kCallbackGroups;++i){auto& g=g_callbackGroups[i];g.nodes=static_cast<CallbackNode*>(WideAllocate(kCallbackExtra*12u+16u));g.after=reinterpret_cast<U32*>(g.nodes+kCallbackExtra);}
+#endif
     for(U32 i=0;i<kCallbackGroups;++i)for(U32 n=0;n<4u;++n)g_callbackGroups[i].before[n]=g_callbackGroups[i].after[n]=kCallbackGuard;
     g_callbackReason="trampolineAllocation";
     for(U32 i=0;i<3u;++i) {

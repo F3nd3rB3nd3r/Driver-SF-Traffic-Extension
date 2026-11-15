@@ -1,8 +1,18 @@
 // Native map nodes stay stable for the process lifetime. No fixed owner directory.
+#if defined(DSF_V29S_WIDE_LIMITS)
+static const U32 kRegMapInline=45u,kRegMapGuard=0x29DE51ACu;
+#define kRegMapNodes (g_limits.definitions)
+#else
 static const U32 kRegMapInline=45u,kRegMapNodes=512u,kRegMapGuard=0x29DE51ACu;
+#endif
 struct RegMapArena {
     RegMapArena* next;UPtr map;U32 generation,inlineIssued,externalIssued,attached;
-    U32 guard0;U32 nodes[kRegMapNodes][6];U32 guard1;
+    U32 guard0;
+#if defined(DSF_V29S_WIDE_LIMITS)
+U32 (*nodes)[6];U32* guard1;
+#else
+U32 nodes[kRegMapNodes][6];U32 guard1;
+#endif
 };
 struct RegMapDetail {const char* reason;UPtr map,cursor,start,end;U32 active,recycled,generation,inlineIssued,externalIssued,attached,redirected;};
 static RegMapArena* g_regMapHead=nullptr;
@@ -14,13 +24,26 @@ static void* RegMapAllocate(U32);
 static RegMapArena* RegMapFind(UPtr map){for(RegMapArena* a=g_regMapHead;a;a=a->next)if(a->map==map)return a;return nullptr;}
 static UPtr RegMapStart(const RegMapArena* a){return reinterpret_cast<UPtr>(&a->nodes[0]);}
 static UPtr RegMapFrontier(const RegMapArena* a){return a->attached?RegMapStart(a)+a->externalIssued*24u:a->map+12u+a->inlineIssued*24u;}
-static bool RegMapGuards(const RegMapArena* a){return a && a->guard0==kRegMapGuard && a->guard1==kRegMapGuard;}
+static U32 WideRegMapTail(const RegMapArena* a){
+#if defined(DSF_V29S_WIDE_LIMITS)
+return *a->guard1;
+#else
+return a->guard1;
+#endif
+}
+static bool RegMapGuards(const RegMapArena* a){return a && a->guard0==kRegMapGuard && WideRegMapTail(a)==kRegMapGuard;}
 static RegMapArena* RegMapCreate(UPtr map){
     RegMapArena* a=reinterpret_cast<RegMapArena*>(RegMapAllocate(sizeof(RegMapArena)));
     if(!a){InterlockedIncrement(&g_regMapAllocFailed);return nullptr;}
     // VirtualAlloc supplies zeroed pages; explicitly initialize every metadata field.
     a->map=map;a->generation=1u;a->inlineIssued=a->externalIssued=a->attached=0u;
-    a->guard0=a->guard1=kRegMapGuard;a->next=g_regMapHead;g_regMapHead=a;
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+a->nodes=static_cast<U32(*)[6]>(WideAllocate(kRegMapNodes*24u+4u));a->guard1=reinterpret_cast<U32*>(a->nodes+kRegMapNodes);a->guard0=*a->guard1=kRegMapGuard;
+#else
+a->guard0=a->guard1=kRegMapGuard;
+#endif
+a->next=g_regMapHead;g_regMapHead=a;
     InterlockedIncrement(&g_regMapOwners);return a;
 }
 static bool RegMapView(UPtr map){return map>=0x254u && Readable(map-0x254u,0x6A4u) && Read32(map-0x254u)==RegMapAddress(0xE395D0u);}

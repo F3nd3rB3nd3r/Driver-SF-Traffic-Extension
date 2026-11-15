@@ -1,14 +1,17 @@
-// Driver: San Francisco V29: Admission150 + 512-record native object-pool expansion (EXPERIMENTAL)
-// Pre-init graphics descriptor allocation is 150; PACKAGE ZERO resource
-// admission metadata target is 150, with first-pass handler and map redirection.
-// This attempts first-pass redirects for handler arrays and the completed map. expanded 150-ID request writer/reader/stack frame,
-// and 150 drawable residents remain UNVERIFIED. HIGH-RISK EXPERIMENT.
+// Driver: San Francisco V29s: expanded resource capacities and lifetime fixes.
+// Active project: configured capacities, with a150-request/160-model default.
+// Traffic selection follows the active asset; no compiled vehicle roster;
+// counts alone do not certify150 simultaneous drawable residents.
 // Unverified executable / late initialization -> no admission patch.
 //
 // Intentionally no Windows SDK or C runtime dependency: this file is also
 // cross-built with clang-cl + lld-link for PE32 using generated COFF import
 // objects. MSVC Win32 works with kernel32.lib normally.
+#if !defined(DSF_V29S_GENERIC_LIMITS)
 #include "Chapter7Preload.h"
+#if defined(DSF_V29S_TRAFFIC_POLICY) && !defined(DSF_V29S_CHAPTERS)
+#error Configurable traffic policy requires CHAPTERS; do not activate the legacy preload fallback
+#endif
 #ifndef DSF_CHAPTER7_PRELOAD_COUNT
 #define DSF_CHAPTER7_PRELOAD_COUNT 150
 #endif
@@ -78,6 +81,7 @@ constexpr const unsigned* kChapter7Active150Ids = kChapter7OrderedRoster.ids;
 #else
 constexpr const unsigned* kChapter7Active150Ids = kChapter7AllPositiveIds;
 #endif
+#endif // Legacy roster data is absent from the generic build.
 
 typedef unsigned char  U8;
 typedef unsigned short U16;
@@ -116,7 +120,19 @@ __declspec(dllimport) BOOL __stdcall WriteFile(HANDLE, const void*, U32, U32*, v
 __declspec(dllimport) U32 __stdcall GetCurrentProcessId();
 __declspec(dllimport) U32 __stdcall GetCurrentThreadId();
 __declspec(dllimport) DWORD __stdcall GetTickCount();
+#if defined(DSF_V29S_TRAFFIC_POLICY) || defined(DSF_V29S_GENERIC_LIMITS)
+__declspec(dllimport) U32 __stdcall GetModuleFileNameW(HMODULE,wchar_t*,U32);
+__declspec(dllimport) U32 __stdcall GetLastError();
+__declspec(dllimport) HANDLE __stdcall CreateFileW(LPCWSTR,U32,U32,void*,U32,U32,HANDLE);
+__declspec(dllimport) BOOL __stdcall ReadFile(HANDLE,void*,U32,U32*,void*);
+#endif
 }
+
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#include "V29sGenericConfig.inc"
+#elif defined(DSF_V29S_TRAFFIC_POLICY)
+#include "V29sTrafficPolicyConfig.inc"
+#endif
 
 extern "C" void* _ReturnAddress();
 #pragma intrinsic(_ReturnAddress)
@@ -136,6 +152,10 @@ extern "C" __declspec(noinline) void* __cdecl memcpy(void* dst, const void* src,
     for (unsigned i=0;i<n;++i) d[i]=s[i];
     return dst;
 }
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+#include "V29sWideSupport.inc"
+#endif
 
 struct MemoryBasicInformation32 {
     void* base;
@@ -226,15 +246,31 @@ constexpr UPtr kGraphicsManager = 0x019B3BE0u;
 constexpr UPtr kRootPtr = 0x00FE7228u;
 constexpr UPtr kHandlerInit = 0x005A1420u;
 constexpr U32 kOldAdmission = 35u;
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kAdmissionStep (g_limits.models)
+#else
 constexpr U32 kAdmissionStep = DSF_GRAPHICS_ADMISSION_TARGET;
+#endif
 constexpr U32 kPageExecuteReadWrite = 0x40u;
 constexpr U32 kMemCommitReserve = 0x3000u;
 constexpr U32 kMemRelease = 0x8000u;
 constexpr U32 kOldSlots = 35u;
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kNewSlots (g_limits.models)
+#else
 constexpr U32 kNewSlots = DSF_GRAPHICS_ADMISSION_TARGET;
+#endif
 // These preserve at least the original per-descriptor budget and align to 0x400.
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kNewBudgetA (WideBudget(g_limits.models,8192u))
+#else
 constexpr U32 kNewBudgetA = DSF_GRAPHICS_ADMISSION_TARGET == 160 ? 0x9400u : 0x8C00u;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kNewBudgetB (WideBudget(g_limits.models,65536u))
+#else
 constexpr U32 kNewBudgetB = DSF_GRAPHICS_ADMISSION_TARGET == 160 ? 0x49400u : 0x44C00u;
+#endif
 constexpr U32 kPageReadWrite = 4u;
 constexpr U32 kCommitted = 0x1000u;
 constexpr U32 kPageGuard = 0x100u;
@@ -249,10 +285,16 @@ constexpr U32 kHashMetadataOffset = 0x127AC0u;
 constexpr U32 kHashCursorOffset = 0x127AC4u;
 constexpr U32 kHashNodeStride = 0x18u;
 constexpr U32 kHashStockNodes = 45000u;
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kHashExtraNodes (g_limits.hashExtra)
+#else
 constexpr U32 kHashExtraNodes = 45000u;
+#endif
 static_assert(kHashStartOffset + kHashStockNodes*kHashNodeStride == kHashMetadataOffset,
               "Unexpected native hash-node arena geometry");
+#if !defined(DSF_V29S_WIDE_LIMITS)
 static_assert(kHashExtraNodes*kHashNodeStride == 1080000u, "Unexpected extra memory size");
+#endif
 U8* g_hashExternal = nullptr;  // lifetime: game process, never free while engine references nodes
 volatile UPtr g_hashFirstOwner = 0;
 bool g_hashPatchInstalled = false;
@@ -543,12 +585,17 @@ static bool InstallModelPoolCapacity() {
         if(*reinterpret_cast<const U8*>(Address(0x0088A506u)+i)!=secondWrite[i])return false;
     DWORD old=0;
     if(!VirtualProtect(reinterpret_cast<void*>(entry+1u),4u,kPageExecuteReadWrite,&old))return false;
-    Write32(entry+1u,160u);
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+Write32(entry+1u,g_limits.models);
+#else
+Write32(entry+1u,160u);
+#endif
     g_sModelPoolPatched=true;
     const BOOL flushed=FlushInstructionCache(GetCurrentProcess(),reinterpret_cast<void*>(entry),8u);
     DWORD discarded=0;
     const BOOL protectedAgain=VirtualProtect(reinterpret_cast<void*>(entry+1u),4u,old,&discarded);
-    if(!flushed || !protectedAgain || Read32(entry+1u)!=160u) {
+    if(!flushed || !protectedAgain || Read32(entry+1u)!=kNewSlots) {
         RestoreModelPoolCapacity();return false;
     }
     Log("DSFV29s: vehicle-definition pool source capacity 45 -> 160 before allocator initialization.\n");
@@ -562,9 +609,24 @@ static bool InstallModelPoolCapacity() {
 // The append at 006A594F writes through the count at index 16384. Keep the
 // native count and redirect BOTH arrays, including the manager-relative
 // traversal/compaction accesses, to one larger pair of backing arrays.
+#if defined(DSF_V29S_WIDE_LIMITS)
+static bool WideInstallCollectionGuard();static void WideRestoreCollectionGuard();
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kResourceCollectionCapacity (g_limits.collection)
+#else
 static const U32 kResourceCollectionCapacity=131072u;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+static U32* g_sResourcePointers=nullptr;
+#else
 static U32 g_sResourcePointers[kResourceCollectionCapacity]={};
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+static U32* g_sResourcePairs=nullptr;
+#else
 static U32 g_sResourcePairs[kResourceCollectionCapacity*2u]={};
+#endif
 struct ResourceArrayPatch { UPtr site; U8 offset; U32 stock; U8 target; bool relative; bool done; };
 // target: 0=pointer array, 1=pair first word, 2=pair second word.
 static ResourceArrayPatch g_sResourceArrayPatches[]={
@@ -608,6 +670,9 @@ static U32 ResourceArrayReplacement(const ResourceArrayPatch& patch) {
     return static_cast<U32>(target-(patch.relative?Address(0x01732BF0u):0u));
 }
 static bool RestoreResourceCollection() {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    WideRestoreCollectionGuard();
+#endif
     bool okay=true;
     for(U32 i=static_cast<U32>(sizeof(g_sResourceArrayPatches)/sizeof(g_sResourceArrayPatches[0]));i>0u;--i) {
         ResourceArrayPatch& patch=g_sResourceArrayPatches[i-1u];
@@ -649,6 +714,9 @@ static bool InstallResourceCollection() {
         }
     }
     Log("DSFV29s: resource collection pointer/pair arrays redirected together, capacity 16384 -> 131072.\n");
+#if defined(DSF_V29S_WIDE_LIMITS)
+    if(!WideInstallCollectionGuard()){RestoreResourceCollection();return false;}
+#endif
     return true;
 }
 #endif
@@ -690,6 +758,11 @@ bool GraphicsPoolReady() {
 // normal saves. All entry patch bytes are verified against exact Driver.exe.
 // ---------------------------------------------------------------------------
 // Derived solely from the SHA256-verified Driver.exe. Exact instruction boundaries verified.
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kObjectPoolEntries (g_limits.objects)
+#else
+#define kObjectPoolEntries 512u
+#endif
 // Pool 512: obj size 0x1818; records 0x10..0x100F; count +0x1010;
 // free pointer slots +0x1014..+0x1813; free count +0x1814.
 struct PoolPatch { UPtr va; U8 len; U8 immOffset; U8 stock[8]; U32 replace; bool done; };
@@ -741,7 +814,17 @@ void RestorePoolPatches() {
     DSFV27B_PoolStatus=0;
 }
 
+#if defined(DSF_V29S_WIDE_LIMITS)
+static U32 WidePoolOperand(const PoolPatch& p){
+    switch(*reinterpret_cast<const U32*>(p.stock+p.immOffset)){case 0x774u:return 12u*g_limits.objects+24u;case 0x9Du:return g_limits.objects;
+    case 0x4F8u:return 8u*g_limits.objects+16u;case 0x770u:return 12u*g_limits.objects+20u;
+    case 0x4E8u:return 8u*g_limits.objects;case 0x4FCu:return 8u*g_limits.objects+20u;}return p.replace;
+}
+#endif
 bool InstallPool512Patches() {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    for(auto& p:g_poolPatches)p.replace=WidePoolOperand(p);
+#endif
     // Verify ALL bytes before touching any instruction.
     for(auto& patch:g_poolPatches) {
         UPtr va=Address(patch.va);
@@ -759,7 +842,7 @@ bool InstallPool512Patches() {
         Write32(va+patch.immOffset,patch.replace);
         bool exact=true;
         for(unsigned j=0;j<patch.len;++j) {
-            const U8 desired=(j>=patch.immOffset && j<patch.immOffset+4)
+            const U8 desired=(j>=patch.immOffset && j<static_cast<U32>(patch.immOffset)+4u)
                 ? static_cast<U8>(patch.replace>>(8*(j-patch.immOffset)))
                 : patch.stock[j];
             if(*reinterpret_cast<volatile const U8*>(va+j)!=desired) exact=false;
@@ -775,10 +858,26 @@ bool InstallPool512Patches() {
     return true;
 }
 
-constexpr U32 kHandlerArraySidecar = 256u; // 154 handlers plus guard headroom
-constexpr U32 kMapExtraNodes = 256u;       // node count can exceed 150 transiently
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kHandlerArraySidecar (WideSidecarNodes())
+#else
+constexpr U32 kHandlerArraySidecar = 256u;
+#endif // 154 handlers plus guard headroom
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kMapExtraNodes (WideSidecarNodes())
+#else
+constexpr U32 kMapExtraNodes = 256u;
+#endif       // node count can exceed 150 transiently
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSelectorExtraNodes (g_limits.models)
+#else
 constexpr U32 kSelectorExtraNodes = 160u;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kThirdExtraNodes (g_limits.models)
+#else
 constexpr U32 kThirdExtraNodes = 160u;
+#endif
 extern "C" __declspec(dllexport) volatile long DSFV27B_NativeHooks = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_MapExternal = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_MapMaxActive = 0;
@@ -788,22 +887,48 @@ extern "C" __declspec(dllexport) volatile long DSFV27B_ThirdOverflow = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_UnsafeBoundary = 0;
 
 static volatile UPtr g_pkg0 = 0;
+#if defined(DSF_V29S_WIDE_LIMITS)
+static U32* g_globalHandlers=nullptr;
+#else
 static U32 g_globalHandlers[kHandlerArraySidecar] = {};
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+static U32* g_kind0Handlers=nullptr;
+#else
 static U32 g_kind0Handlers[kHandlerArraySidecar] = {};
+#endif
 struct Node16 { U32 next, prev, key, handler; };
 struct Node12 { U32 next, prev, value; };
+#if defined(DSF_V29S_WIDE_LIMITS)
+static Node16* g_mapExtra=nullptr;
+#else
 static Node16 g_mapExtra[kMapExtraNodes] = {};
+#endif
 
 // ED and EF owners have independent 45-node maps at owner+0x23C. Both use
 // the same exact-build vtable and native insertion/removal routines.
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kResourceMap16ExtraNodes (WideSidecarNodes())
+#else
 constexpr U32 kResourceMap16ExtraNodes = 256u;
+#endif
 constexpr U32 kResourceMap16Owners = 96u;
 struct ResourceMap16Sidecar {
     UPtr owner;
     U32 used;
-    Node16 nodes[kResourceMap16ExtraNodes];
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+Node16* nodes;
+#else
+Node16 nodes[kResourceMap16ExtraNodes];
+#endif
 };
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(ResourceMap16Sidecar& s){s.nodes=static_cast<Node16*>(WideAllocate(kResourceMap16ExtraNodes*sizeof(Node16)));}
+static WideDirectory<ResourceMap16Sidecar> g_resourceMap16={};
+#else
 static ResourceMap16Sidecar g_resourceMap16[kResourceMap16Owners] = {};
+#endif
 static volatile long g_resourceMap16Lock = 0;
 extern "C" __declspec(dllexport) volatile long DSFV29i_Map16ExtraInserts = 0;
 extern "C" __declspec(dllexport) volatile long DSFV29i_Map16ActiveHighWater = 0;
@@ -826,10 +951,32 @@ extern "C" __declspec(dllexport) volatile long DSFV29k_EFRelease = 0;
 // receiver can be watched through its lifetime. Debugger can opt into hold.
 extern "C" __declspec(dllexport) volatile long DSFV29l_EFHoldEnabled = 0;
 
-struct SelectorSidecar { UPtr owner; U32 used; Node12 nodes[kSelectorExtraNodes]; };
-struct ThirdSidecar { UPtr owner; U32 used; Node12 nodes[kThirdExtraNodes]; };
+struct SelectorSidecar { UPtr owner; U32 used;
+#if defined(DSF_V29S_WIDE_LIMITS)
+Node12* nodes;
+#else
+Node12 nodes[kSelectorExtraNodes];
+#endif
+};
+struct ThirdSidecar { UPtr owner; U32 used;
+#if defined(DSF_V29S_WIDE_LIMITS)
+Node12* nodes;
+#else
+Node12 nodes[kThirdExtraNodes];
+#endif
+};
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(SelectorSidecar& s){s.nodes=static_cast<Node12*>(WideAllocate(kSelectorExtraNodes*sizeof(Node12)));}
+static WideDirectory<SelectorSidecar> g_selSidecars={};
+#else
 static SelectorSidecar g_selSidecars[64] = {};
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(ThirdSidecar& s){s.nodes=static_cast<Node12*>(WideAllocate(kThirdExtraNodes*sizeof(Node12)));}
+static WideDirectory<ThirdSidecar> g_thirdSidecars={};
+#else
 static ThirdSidecar g_thirdSidecars[64] = {};
+#endif
 static volatile long g_selLock=0;
 static volatile long g_thirdLock=0;
 void SelectorLock(){while(InterlockedExchange(&g_selLock,1u)){} }
@@ -860,12 +1007,18 @@ extern "C" __declspec(dllexport) volatile long DSFV27B_InstructionRedirectCalls 
 // accepted if we cannot retain every item. The native linked-list scratch
 // frame at 0x005A7490 is separately expanded to 150 * 12-byte nodes.
 constexpr U32 kReqInline = 50u;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#define kReqCapacity (g_limits.requests)
+struct RequestSidecar {UPtr owner;U32 count;U32* ids;RequestSidecar* next;};
+static RequestSidecar* g_reqSidecars=nullptr;
+#else
 constexpr U32 kReqCapacity = 150u;
 struct RequestSidecar { UPtr owner; U32 count; U32 ids[kReqCapacity]; };
+static RequestSidecar g_reqSidecars[16] = {};
+#endif
 #if defined(DSF_V29S_BASELINE150)
 static void BaselineRequest(UPtr owner,UPtr caller,const U32* original,int originalCount,const U32* effective,U32 count,const char* result);
 #endif
-static RequestSidecar g_reqSidecars[16] = {};
 static volatile long g_reqLock = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_RequestLastCount = 0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_RequestHighWater = 0;
@@ -878,6 +1031,7 @@ extern "C" __declspec(dllexport) volatile long DSFV27B_RequestFault = 0;
 static const U32 kRequestProbeIndex[10]={0u,44u,49u,50u,51u,52u,100u,101u,102u,149u};
 static volatile long g_requestProbeCalls[10]={};
 static volatile long g_requestProbeId[10]={};
+static volatile long g_requestProbeExpected[10]={};
 static volatile long g_requestProbeFound[10]={};
 static volatile long g_requestProbeBad[10]={};
 extern "C" __declspec(dllexport) volatile long DSFV29s_RequestBoundaryBad=0;
@@ -893,6 +1047,7 @@ extern "C" __declspec(dllexport) volatile long DSF_Chapter7PreloadSeen18 = 0;
 extern "C" __declspec(dllexport) volatile long DSF_Chapter7PreloadExact18Matches = 0;
 extern "C" __declspec(dllexport) volatile long DSF_Chapter7PreloadGate = 0;
 
+#if !defined(DSF_V29S_GENERIC_LIMITS)
 U32 CurrentTrafficHashForPreload() {
     const UPtr rootLocation=Address(kRootPtr);
     if (!Readable(rootLocation,4u)) return 0u;
@@ -909,6 +1064,7 @@ bool IsExactChapter7StockRequest(const U32* list, U32 count) {
         if (list[i]!=kChapter7StockIds[i]) return false;
     return true;
 }
+#endif
 
 #if defined(DSF_V29S_CHAPTERS)
 static_assert(DSF_CHAPTER7_PRELOAD_COUNT==150 && DSF_GRAPHICS_ADMISSION_TARGET==160,
@@ -916,12 +1072,22 @@ static_assert(DSF_CHAPTER7_PRELOAD_COUNT==150 && DSF_GRAPHICS_ADMISSION_TARGET==
 #if !defined(DSF_V29S_PENDING512)
 #error Chapter-independent selection requires the validated pending512 baseline
 #endif
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#include "V29sGenericRosterCore.inc"
+#else
 #include "V29sChapterCore.inc"
+#endif
 #endif
 
 void RequestLock() { while (InterlockedExchange(&g_reqLock, 1u)) {} }
 void RequestUnlock() { InterlockedExchange(&g_reqLock,0); }
 RequestSidecar* RequestSlot(UPtr ctx, bool create) {
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    for(RequestSidecar* s=g_reqSidecars;s;s=s->next)if(s->owner==ctx)return s;
+    if(!create)return nullptr;
+    RequestSidecar* s=static_cast<RequestSidecar*>(VirtualAlloc(nullptr,sizeof(RequestSidecar)+kReqCapacity*4u,kMemCommitReserve,kPageReadWrite));
+    if(s){s->owner=ctx;s->ids=reinterpret_cast<U32*>(s+1);s->next=g_reqSidecars;g_reqSidecars=s;}return s;
+#else
     RequestSidecar* empty = nullptr;
     for (auto& slot : g_reqSidecars) {
         if (slot.owner == ctx) return &slot;
@@ -929,6 +1095,7 @@ RequestSidecar* RequestSlot(UPtr ctx, bool create) {
     }
     if (create && empty) { empty->owner=ctx; return empty; }
     return nullptr;
+#endif
 }
 
 #if defined(DSF_V29S_REG_SOURCE_DIAG)
@@ -974,6 +1141,11 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
 #if defined(DSF_V29S_REG_SOURCE_DIAG)
     const U32* const originalList=list;
     const int originalRequested=requested;
+#endif
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    if(requested>static_cast<int>(kReqCapacity)){
+        ++DSFV27B_RequestRejected;GenericFatal("nativeRosterExceedsConfiguredCapacity",ctx,static_cast<U32>(requested));return;
+    }
 #endif
     if (!Readable(ctx, 0xDB0u) || requested > static_cast<int>(kReqCapacity) ||
         (requested > 0 && (!list || !Readable(reinterpret_cast<UPtr>(list),
@@ -1035,6 +1207,9 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
     RequestSidecar* slot=RequestSlot(ctx, true);
     if (!slot) {
         RequestUnlock();
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        GenericRelease(ctx);
+#endif
         ++DSFV27B_RequestRejected;
         Log("DSFV29b: REJECT request: no free request sidecar.\n");
 #if defined(DSF_V29S_BASELINE150)
@@ -1046,6 +1221,9 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
         const U32 id=list[i];
         if (id > 0xFFFFu) {
             RequestUnlock();
+#if defined(DSF_V29S_GENERIC_LIMITS)
+            GenericRelease(ctx);
+#endif
             ++DSFV27B_RequestRejected;
             Log("DSFV29b: REJECT request: vehicle ID exceeds 16 bits.\n");
 #if defined(DSF_V29S_BASELINE150)
@@ -1063,6 +1241,9 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
 #if defined(DSF_V29S_BASELINE150)
     BaselineRequest(ctx,baselineCaller,baselineOriginal,baselineCount,list,count,"accepted");
 #endif
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    GenericRelease(ctx);
+#endif
     DSFV27B_RequestLastCount=static_cast<long>(count);
     if (static_cast<long>(count)>DSFV27B_RequestHighWater)
         DSFV27B_RequestHighWater=static_cast<long>(count);
@@ -1076,16 +1257,21 @@ extern "C" void __fastcall RequestWriteBridge(void* self, void*, const U32* list
 
 #if defined(DSF_V29S_NATIVE_TRACE)
 static void RecordRequestProbe(UPtr ctx,U32 index,U32 id,bool found) {
-    if(Read32(ctx+0xC8u)!=static_cast<U32>(DSF_CHAPTER7_PRELOAD_COUNT))return;
+    const U32 count=Read32(ctx+0xC8u);
+    if(!count || count>kReqCapacity || index>=count)return;
     for(U32 i=0;i<10u;++i) {
         if(index!=kRequestProbeIndex[i])continue;
-        const U32 expected=DSF_CHAPTER7_PRELOAD_COUNT==45 ?
-            (index<45u?kChapter7Trial45Ids[index]:0xFFFFu) :
-            kChapter7Active150Ids[index];
+        U32 expected=0xFFFFFFFFu;bool expectedFound=false;
+        RequestLock();
+        const RequestSidecar* slot=RequestSlot(ctx,false);
+        if(slot && slot->count==count && index<slot->count){expected=slot->ids[index];expectedFound=true;}
+        else if(!slot && count<=kReqInline){expected=Read32(ctx+index*4u);expectedFound=true;}
+        RequestUnlock();
         InterlockedIncrement(&g_requestProbeCalls[i]);
         g_requestProbeId[i]=static_cast<long>(id);
+        g_requestProbeExpected[i]=static_cast<long>(expected);
         g_requestProbeFound[i]=found?1:0;
-        if(!found || id!=expected) {
+        if(!found || !expectedFound || id!=expected) {
             InterlockedIncrement(&g_requestProbeBad[i]);
             InterlockedIncrement(&DSFV29s_RequestBoundaryBad);
         }
@@ -1144,6 +1330,9 @@ static UPtr SelectGlobalPointer(UPtr pkg, U32 index) {
     if (IsPkg(pkg) && index >= 64u) {
         if(index < kHandlerArraySidecar) return reinterpret_cast<UPtr>(&g_globalHandlers[index]);
         DSFV27B_ArrayGuard = 1;
+#if defined(DSF_V29S_WIDE_LIMITS)
+        WideAllocationFailure("Unlimiter: global handler index exceeds configured storage.\n");
+#endif
         return reinterpret_cast<UPtr>(&g_globalHandlers[kHandlerArraySidecar-1u]);
     }
     return pkg + 0x5630u + 4u*index;
@@ -1152,6 +1341,9 @@ static UPtr SelectKindPointer(UPtr base, U32 index) {
     if (g_pkg0 && base == g_pkg0+0x5734u && index >= 64u) {
         if(index < kHandlerArraySidecar) return reinterpret_cast<UPtr>(&g_kind0Handlers[index]);
         DSFV27B_ArrayGuard = 2;
+#if defined(DSF_V29S_WIDE_LIMITS)
+        WideAllocationFailure("Unlimiter: kind handler index exceeds configured storage.\n");
+#endif
         return reinterpret_cast<UPtr>(&g_kind0Handlers[kHandlerArraySidecar-1u]);
     }
     return base + 4u*index;
@@ -1568,6 +1760,12 @@ static bool IsResourceMap16(UPtr map) {
            IsResourceMap16Variant(map, 0xEFu);
 }
 
+#if defined(DSF_V29S_WIDE_LIMITS)
+ResourceMap16Sidecar* FindResourceMap16(UPtr map){
+    ResourceMap16Sidecar* vacant=nullptr;for(auto& slot:g_resourceMap16){if(slot.owner==map)return &slot;if(!slot.owner && !vacant)vacant=&slot;}
+    if(!vacant)vacant=&g_resourceMap16.Append();vacant->owner=map;vacant->used=0;++DSFV29i_Map16OwnersSeen;return vacant;
+}
+#else
 static ResourceMap16Sidecar* FindResourceMap16(UPtr map) {
     ResourceMap16Sidecar* vacant = nullptr;
     for (auto& slot : g_resourceMap16) {
@@ -1581,6 +1779,7 @@ static ResourceMap16Sidecar* FindResourceMap16(UPtr map) {
     }
     return vacant;
 }
+#endif
 
 UPtr __fastcall MapInsertBridge(void* self,void*,UPtr a,UPtr b,UPtr c) {
     const UPtr map=reinterpret_cast<UPtr>(self);
@@ -1693,6 +1892,25 @@ UPtr __fastcall MapInsertBridge(void* self,void*,UPtr a,UPtr b,UPtr c) {
         const UPtr boundary=g_pkg0+0x5F50u;
         const UPtr lo=reinterpret_cast<UPtr>(&g_mapExtra[0]);
         const UPtr hi=reinterpret_cast<UPtr>(&g_mapExtra[kMapExtraNodes]);
+#if defined(DSF_V29S_WIDE_LIMITS)
+        if(free==0u) {
+            // The external allocation can be on either side of the package.
+            // Establish provenance before interpreting a cursor as exhaustion.
+            const UPtr first=map+12u;
+            const bool nativeCursor=cursor>=first && cursor<boundary &&
+                (cursor-first)%sizeof(Node16)==0u;
+            const bool externalCursor=cursor>=lo && cursor<hi &&
+                (cursor-lo)%sizeof(Node16)==0u;
+            if(cursor==boundary) {
+                Write32(map,static_cast<U32>(lo));
+                DSFV27B_MapExternal=1;
+                Log("DSFV29s: type0 completed-map allocator entered external node arena.\n");
+            } else if(!nativeCursor && !externalCursor) {
+                DSFV27B_UnsafeBoundary=1;
+                WideAllocationFailure("Unlimiter: completed-map capacity exhausted or invalid fresh cursor.\n");
+            }
+        }
+#else
         if(free==0 && cursor==boundary) {
             Write32(map, static_cast<U32>(lo));
             DSFV27B_MapExternal=1;
@@ -1702,6 +1920,7 @@ UPtr __fastcall MapInsertBridge(void* self,void*,UPtr a,UPtr b,UPtr c) {
             Log("DSFV29b: FATAL completed-map sidecar exhausted; stop process.\n");
             return 0;
         }
+#endif
     }
     const UPtr result=g_origMapInsert(self,a,b,c);
     if(ef)EfRecord(kEfInsertAfter,efOwner,efGen,efCaller,result,a,b,c);
@@ -1710,6 +1929,12 @@ UPtr __fastcall MapInsertBridge(void* self,void*,UPtr a,UPtr b,UPtr c) {
 
 // Selector node sidecar, same first-45-inline-node algorithm as V20, but
 // enlarged to 160 extra 12-byte nodes per owner and with pointer provenance.
+#if defined(DSF_V29S_WIDE_LIMITS)
+SelectorSidecar* SelectorSlot(UPtr list){
+    SelectorSidecar* vacant=nullptr;for(auto& slot:g_selSidecars){if(slot.owner==list)return &slot;if(!slot.owner && !vacant)vacant=&slot;}
+    if(!vacant)vacant=&g_selSidecars.Append();vacant->owner=list;vacant->used=0;return vacant;
+}
+#else
 SelectorSidecar* SelectorSlot(UPtr list) {
     SelectorSidecar* empty=nullptr;
     for(auto& slot:g_selSidecars){
@@ -1719,6 +1944,13 @@ SelectorSidecar* SelectorSlot(UPtr list) {
     if(empty){ empty->owner=list; empty->used=0; }
     return empty;
 }
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+ThirdSidecar* ThirdSlot(UPtr owner){
+    ThirdSidecar* vacant=nullptr;for(auto& slot:g_thirdSidecars){if(slot.owner==owner)return &slot;if(!slot.owner && !vacant)vacant=&slot;}
+    if(!vacant)vacant=&g_thirdSidecars.Append();vacant->owner=owner;vacant->used=0;return vacant;
+}
+#else
 ThirdSidecar* ThirdSlot(UPtr owner) {
     ThirdSidecar* empty=nullptr;
     for(auto& slot:g_thirdSidecars){
@@ -1728,6 +1960,7 @@ ThirdSidecar* ThirdSlot(UPtr owner) {
     if(empty){ empty->owner=owner; empty->used=0; }
     return empty;
 }
+#endif
 UPtr __fastcall NodeInsertBridge(void* self,void*,void** item) {
     const UPtr list=reinterpret_cast<UPtr>(self);
     const bool owner1=list>0x18u && Readable(list-0x18u,4u) &&
@@ -1791,15 +2024,36 @@ UPtr __fastcall ThirdInsertBridge(void* self,void*,void** item) {
 // into sidecar while preserving the stock in-object count at exactly 45.
 // The matching find/remove/reset/ctor/dtor all participate in the lifecycle.
 constexpr U32 kStockSelectorSlots=45u;
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kExtraSelectorSlots (g_limits.models)
+#else
 constexpr U32 kExtraSelectorSlots=160u;
-struct SelectorArraySidecar { UPtr owner; U32 count; UPtr overflow[kExtraSelectorSlots]; };
+#endif
+struct SelectorArraySidecar { UPtr owner; U32 count;
+#if defined(DSF_V29S_WIDE_LIMITS)
+UPtr* overflow;
+#else
+UPtr overflow[kExtraSelectorSlots];
+#endif
+};
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(SelectorArraySidecar& s){s.overflow=static_cast<UPtr*>(WideAllocate(kExtraSelectorSlots*sizeof(UPtr)));}
+static WideDirectory<SelectorArraySidecar> g_arrSidecars={};
+#else
 static SelectorArraySidecar g_arrSidecars[96] = {};
+#endif
 static volatile long g_arrLock=0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_ArrayOverflowInsert=0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_ArrayOverflowFind=0;
 extern "C" __declspec(dllexport) volatile long DSFV27B_ArrayOverflowRemove=0;
 void ArrayLock(){while(InterlockedExchange(&g_arrLock,1u)){} }
 void ArrayUnlock(){InterlockedExchange(&g_arrLock,0);}
+#if defined(DSF_V29S_WIDE_LIMITS)
+SelectorArraySidecar* ArraySlot(UPtr owner,bool create){
+    SelectorArraySidecar* vacant=nullptr;for(auto& slot:g_arrSidecars){if(slot.owner==owner)return &slot;if(!slot.owner && !vacant)vacant=&slot;}
+    if(!create)return nullptr;if(!vacant)vacant=&g_arrSidecars.Append();vacant->owner=owner;vacant->count=0;return vacant;
+}
+#else
 SelectorArraySidecar* ArraySlot(UPtr owner,bool create){
     SelectorArraySidecar* empty=nullptr;
     for(auto& slot:g_arrSidecars){
@@ -1809,6 +2063,7 @@ SelectorArraySidecar* ArraySlot(UPtr owner,bool create){
     if(create && empty){empty->owner=owner;empty->count=0;}
     return create ? empty:nullptr;
 }
+#endif
 void ArrayClear(UPtr owner){
     ArrayLock();
     if(auto* slot=ArraySlot(owner,false)){slot->count=0;slot->owner=0;}
@@ -1858,7 +2113,12 @@ void* __fastcall ArrayFindBridge(void* self,void*,void** out,U32 k1,U32 k2){
     void* ret=g_origArrayFind(self,out,k1,k2);
     if(!out||*out)return ret;
     const UPtr obj=reinterpret_cast<UPtr>(self);
-    UPtr saved[kExtraSelectorSlots]={};U32 count=0;
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideScratchLease savedLease(kExtraSelectorSlots*4u);UPtr* saved=static_cast<UPtr*>(savedLease.data);U32 count=0;
+#else
+UPtr saved[kExtraSelectorSlots]={};U32 count=0;
+#endif
     ArrayLock();
     if(auto* slot=ArraySlot(obj,false)){
         count=slot->count;
@@ -1918,11 +2178,16 @@ UPtr __fastcall ArrayRemoveBridge(void* self,void*,void** item){
 // Replace the full original sequences with a JMP to these two code stubs;
 // each uses push imm32 192 and reproduces the overwritten instructions.
 // Class-0x16 allocator capacity: 192 (expected handler count: 154).
+extern "C" U32 g_wideClass16=192u;
 extern "C" UPtr g_retClass16A=0;
 extern "C" UPtr g_retClass16B=0;
 extern "C" __declspec(naked) void HookClass16A(){
   __asm {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    push dword ptr [g_wideClass16]
+#else
     push 192
+#endif
     push 0x16
     mov dword ptr [esi+0x23c], eax
     jmp dword ptr [g_retClass16A]
@@ -1930,7 +2195,11 @@ extern "C" __declspec(naked) void HookClass16A(){
 }
 extern "C" __declspec(naked) void HookClass16B(){
   __asm {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    push dword ptr [g_wideClass16]
+#else
     push 192
+#endif
     push 0x16
     mov dword ptr [esi+0x8], ecx
     mov dword ptr [esi+0xC], ecx
@@ -1938,6 +2207,20 @@ extern "C" __declspec(naked) void HookClass16B(){
   }
 }
 
+#if defined(DSF_V29S_WIDE_LIMITS)
+extern "C" UPtr g_wideAdmissionResume=0;
+extern "C" void __cdecl WideAdmissionEntry(CpuRegs* r){r->edx=IsPkg(r->esi) && r->edx==0u?g_limits.models:Read8(r->eax+r->edx+0x18u);}
+extern "C" __declspec(naked) void WideAdmissionBridge(){__asm{pushfd
+    pushad
+    mov eax,esp
+    push eax
+    call WideAdmissionEntry
+    add esp,4
+    popad
+    popfd
+    jmp dword ptr [g_wideAdmissionResume]}}
+static const U8 kWideAdmissionSig[]={0x0F,0xB6,0x54,0x10,0x18};
+#endif
 struct PatchSite { UPtr original; const U8* expected; U32 size; void* bridge;
                    UPtr* resume; void** trampoline; U8 saved[12]; bool installed; };
 // Offline-generated stock signatures from the SHA-verified game executable.
@@ -1974,6 +2257,9 @@ static const U8 kSigArrayFind[] = {0x8B, 0x81, 0xB8, 0x00, 0x00, 0x00};
 static const U8 kSigClass16A[] = {0x6A, 0x2E, 0x6A, 0x16, 0x89, 0x86, 0x3C, 0x02, 0x00, 0x00};
 static const U8 kSigClass16B[] = {0x6A, 0x2E, 0x6A, 0x16, 0x89, 0x4E, 0x08, 0x89, 0x4E, 0x0C};
 static PatchSite g_sites[] = {
+#if defined(DSF_V29S_WIDE_LIMITS)
+  {0x5A14EAu,kWideAdmissionSig,5u,reinterpret_cast<void*>(&WideAdmissionBridge),&g_wideAdmissionResume,nullptr,{},false},
+#endif
   {0x5A79F0u,kSigRequestWrite,5u,reinterpret_cast<void*>(&RequestWriteBridge),nullptr,nullptr,{},false},
   {0x5A7520u,kSigRequestRead,10u,reinterpret_cast<void*>(&HookRequestRead),&g_retRequestRead,nullptr,{},false},
   {0x5A14A1u,kSigGlobalCreate,7u,reinterpret_cast<void*>(&HookGlobalCreate),&g_retGlobalCreate,nullptr,{},false},
@@ -2029,6 +2315,11 @@ void RestoreExtendedSites(){
 // 50 to 150 elements. Original frame 0x270 and sentinel at ESP+0x278;
 // new frame 0x720 and sentinel at ESP+0x728. The sentinel+4 is at 0x72C.
 // Exact sites extracted from the SHA-matched 0x005A7490..0x005A785E routine.
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kWideRequestNodes (GenericRequestStorage())
+#else
+#define kWideRequestNodes 150u
+#endif
 struct RequestFramePatch {
     UPtr at; U8 length; U8 immOffset; U8 stock[7]; U32 replacement; bool done;
 };
@@ -2047,7 +2338,13 @@ static RequestFramePatch g_requestFramePatches[] = {
   {0x5A769Bu,7u,3u,{0x89,0x8C,0x24,0x78,0x02,0x00,0x00},0x728u,false},
   {0x5A7858u,6u,2u,{0x81,0xC4,0x70,0x02,0x00,0x00},0x720u,false},
 };
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideRestoreRequestProbe();static bool WideInstallRequestProbe();
+#endif
 void RestoreRequestFramePatches() {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    WideRestoreRequestProbe();
+#endif
     for (unsigned i=sizeof(g_requestFramePatches)/sizeof(g_requestFramePatches[0]);i>0;--i) {
         RequestFramePatch& p=g_requestFramePatches[i-1];
         if(!p.done)continue;
@@ -2072,6 +2369,10 @@ void RestoreRequestFramePatches() {
 // Clone the helper unchanged except for the two SOURCE offsets, and point
 // only the 0x005A7769 CALL at the clone.  No relative branches leave the
 // helper (verified against target exe); thus whole-function copy is valid.
+#if defined(DSF_V29S_WIDE_LIMITS)
+#include "V29sWideNativeFrames.inc"
+#endif
+
 constexpr UPtr kMergeHelperVA = 0x005A7D50u;
 constexpr U32 kMergeHelperLength = 0xDFu; // includes RET 4 at 0x005A7E2C
 constexpr UPtr kMergeSecondCallVA = 0x005A7769u;
@@ -2121,8 +2422,8 @@ bool InstallMerge150Fix() {
     for (U32 i=0;i<kMergeHelperLength;++i)
         clone[i]=*reinterpret_cast<volatile const U8*>(helper+i);
     // Only SOURCE displacements, NOT the destination+0x264/+0x268 fields.
-    *reinterpret_cast<U32*>(clone+(0x005A7D60u-kMergeHelperVA))=0x718u;
-    *reinterpret_cast<U32*>(clone+(0x005A7D66u-kMergeHelperVA))=0x714u;
+    *reinterpret_cast<U32*>(clone+(0x005A7D60u-kMergeHelperVA))=12u*kWideRequestNodes+16u;
+    *reinterpret_cast<U32*>(clone+(0x005A7D66u-kMergeHelperVA))=12u*kWideRequestNodes+12u;
     if (!FlushInstructionCache(GetCurrentProcess(),clone,kMergeHelperLength)) {
         VirtualFree(clone,0,kMemRelease);
         return false;
@@ -2147,6 +2448,9 @@ bool InstallMerge150Fix() {
 }
 
 bool InstallRequestFramePatches() {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    const U32 f=12u*GenericRequestStorage()+24u;for(auto& p:g_requestFramePatches)p.replacement=(p.at==0x5A7495u || p.at==0x5A7858u)?f:p.at==0x5A74F9u?f+12u:f+8u;
+#endif
     for(auto& p:g_requestFramePatches){
         UPtr at=Address(p.at);
         if(!Readable(at,p.length))return false;
@@ -2172,6 +2476,9 @@ bool InstallRequestFramePatches() {
         if(!exact||!flushed||!restored){RestoreRequestFramePatches();return false;}
         ++DSFV27B_RequestFramePatchCount;
     }
+#if defined(DSF_V29S_WIDE_LIMITS)
+    if(!WideInstallRequestProbe()){RestoreRequestFramePatches();return false;}
+#endif
     Log("DSFV29b: request frame 50 -> 150 nodes, 13 exact instruction patches applied.\n");
     return true;
 }
@@ -2258,7 +2565,7 @@ UPtr __fastcall HandlerInitBridge(void* self, void*) {
         SetAdmissionError(-2, "DSFV29b: handler initialized before graphics pool 150 ready; admission unchanged.\n");
         return g_originalHandlerInit(self);
     }
-    if (!WriteMetadataByte(config + 0x18u, static_cast<U8>(kAdmissionStep))) {
+    if (!WriteMetadataByte(config + 0x18u, static_cast<U8>(kAdmissionStep>255u?255u:kAdmissionStep))) {
         SetAdmissionError(-3, "DSFV29b: metadata protection/write failed; admission unchanged.\n");
         return g_originalHandlerInit(self);
     }
@@ -2276,7 +2583,7 @@ UPtr __fastcall HandlerInitBridge(void* self, void*) {
     DSFV27B_AdmissionAfter = *reinterpret_cast<const U8*>(config + 0x18u);
     DSFV27B_InitHandlerCount = static_cast<long>(Read32(package + 0x5730u));
     DSFV27B_InitKind0Count = static_cast<long>(Read32(package + 0x5834u));
-    if (DSFV27B_AdmissionAfter == static_cast<long>(kAdmissionStep) &&
+    if (DSFV27B_AdmissionAfter == static_cast<long>(kAdmissionStep>255u?255u:kAdmissionStep) &&
         DSFV27B_InitHandlerCount == static_cast<long>(kAdmissionStep + 4u) &&
         DSFV27B_InitKind0Count == static_cast<long>(kAdmissionStep) && Read32(package + 0x5938u) == 2u &&
         Read32(package + 0x5A3Cu) == 2u) {
@@ -2573,7 +2880,11 @@ static void EfDrainEvents() {
 #include "V29sPendingMap.inc"
 #endif
 #if defined(DSF_V29S_CHAPTERS)
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#include "V29sGenericRuntime.inc"
+#else
 #include "V29sChapterRuntime.inc"
+#endif
 #endif
 #if defined(DSF_V29S_CALLBACK512)
 #if !defined(DSF_V29S_CHAPTERS)
@@ -2646,12 +2957,12 @@ DWORD __stdcall Monitor(void*) {
             const UPtr root = Read32(rootLocation);
             if (Readable(root + 0x194u, 4u)) {
                 const UPtr pool = Read32(root + 0x194u);
-                if (Readable(pool + 0x1814u, 4u) && Read32(pool) == Address(0x00DDA2C8u)) {
-                    const U32 count = Read32(pool + 0x1010u);
-                    const U32 free = Read32(pool + 0x1814u);
-                    if (DSFV27B_PoolStatus == 1 && count == 512u && free <= 512u)
+                if (Readable(pool + 12u*kObjectPoolEntries+20u, 4u) && Read32(pool) == Address(0x00DDA2C8u)) {
+                    const U32 count = Read32(pool + 8u*kObjectPoolEntries+16u);
+                    const U32 free = Read32(pool + 12u*kObjectPoolEntries+20u);
+                    if (DSFV27B_PoolStatus == 1 && count == kObjectPoolEntries && free <= kObjectPoolEntries)
                         DSFV27B_PoolStatus = 2;
-                    if ((count != 0u && count != 512u) || free > 512u) {
+                    if ((count != 0u && count != kObjectPoolEntries) || free > kObjectPoolEntries) {
                         DSFV27B_PoolStatus = -1;
                         DSFV27B_UnsafeBoundary = 20;
                     }
@@ -2967,22 +3278,22 @@ DWORD __stdcall Monitor(void*) {
             UPtr root = Read32(rootLocation);
             if (Readable(root+0x194u,4u)) {
                 const UPtr pool=Read32(root+0x194u);
-                if (Readable(pool+0x1818u-4u,4u) && Read32(pool)==Address(0x00DDA2C8u)) {
-                    const U32 count=Read32(pool+0x1010u);
-                    const U32 free=Read32(pool+0x1814u);
+                if (Readable(pool+12u*kObjectPoolEntries+20u,4u) && Read32(pool)==Address(0x00DDA2C8u)) {
+                    const U32 count=Read32(pool+8u*kObjectPoolEntries+16u);
+                    const U32 free=Read32(pool+12u*kObjectPoolEntries+20u);
                     DSFV27B_PoolLiveRecordCount=static_cast<long>(count);
                     DSFV27B_PoolFreeCount=static_cast<long>(free);
-                    if (count == 512u && free <= 512u &&
+                    if (count == kObjectPoolEntries && free <= kObjectPoolEntries &&
                         (DSFV27B_PoolMinFreeObserved < 0 ||
                          static_cast<long>(free) < DSFV27B_PoolMinFreeObserved))
                         DSFV27B_PoolMinFreeObserved = static_cast<long>(free);
-                    if(DSFV27B_PoolStatus==1 && count==512u && free<=512u) {
+                    if(DSFV27B_PoolStatus==1 && count==kObjectPoolEntries && free<=kObjectPoolEntries) {
                         DSFV27B_PoolStatus=2;
-                        Log("DSFV29b: object pool runtime verified: count=512 and free counter <=512.\n");
+                        Log("DSFV29b: object pool runtime verified: configured count and free counter verified.\n");
                     }
                     // A newly constructed pool has count=0 until its initializer
                     // runs, so don't misclassify that brief startup state.
-                    if ((count!=0u && count!=512u) || free>512u) {
+                    if ((count!=0u && count!=kObjectPoolEntries) || free>kObjectPoolEntries) {
                         DSFV27B_PoolStatus=-1;
                         DSFV27B_UnsafeBoundary=20;
                         Log("DSFV29b: FATAL object pool metadata/counter mismatch; STOP.\n");
@@ -3065,15 +3376,31 @@ DWORD __stdcall Monitor(void*) {
 #endif
 } // namespace
 
+#if defined(DSF_V29S_WIDE_LIMITS)
+#include "V29sWideBootstrap.inc"
+#endif
+
 extern "C" __declspec(dllexport) BOOL __stdcall DllMain(HMODULE module, DWORD reason, void*) {
     if (reason == 1u) { // DLL_PROCESS_ATTACH
         DisableThreadLibraryCalls(module);
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        GenericLoadConfig(module);
+#elif defined(DSF_V29S_TRAFFIC_POLICY)
+        TrafficLoadPolicy(module);
+#endif
         g_base = reinterpret_cast<UPtr>(GetModuleHandleW(nullptr));
 #if defined(DSF_V29S_INDEXED_262144)
         CapacityOpen(); // Also record baseline/startup refusal before Monitor exists.
 #endif
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        if(!g_limits.valid){GenericConfigLine();ExitProcess(0x29F2u);return 0;}
+        DSF_Chapter7PreloadConfiguredCount=static_cast<long>(g_limits.requests);
+#endif
 #if defined(DSF_V29S_CHAPTERS)
         if(!ChapterPreflight()){ChapterStartLine();ExitProcess(0x29F1u);return 0;}
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+        if(!WideStartupStorage())return 0;
 #endif
         ApplyPreinitGraphicsExpansion();
         if (DSF150_Status == 1 && !InstallPool512Patches()) {

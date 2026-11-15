@@ -2,9 +2,10 @@
 // allocation, release suppression or monitor traversal of live game arrays.
 #include "V29sChapterProfiles.h"
 enum ChapterReason {ChapterExpand,ChapterOtherCaller,ChapterEmpty,ChapterContext,
-    ChapterUnknown,ChapterExcluded,ChapterOwner,ChapterSource,ChapterData,ChapterGraphics,ChapterAdmission};
+    ChapterUnknown,ChapterExcluded,ChapterOwner,ChapterSource,ChapterData,ChapterGraphics,ChapterAdmission,ChapterNative};
 static volatile long g_chapterStatus=0,g_chapterCalls=0,g_chapterExpanded=0,g_chapterOther=0;
 static volatile long g_chapterEmpty=0,g_chapterUnknown=0,g_chapterExcluded=0,g_chapterRefused=0;
+static volatile long g_chapterNative=0;
 struct ChapterCounter {volatile long calls,expanded,refused;};
 static ChapterCounter g_chapterCounters[80]={};
 static void ChapterEvent(ChapterReason reason,UPtr caller,UPtr owner,U32 hash,U32 frequency,int nativeCount,U32 profile);
@@ -57,7 +58,13 @@ static __declspec(noinline) ChapterReason ChapterDecide(UPtr caller,UPtr owner,c
     hash=0u;frequency=0u;index=kChapterProfileCount;
     if(caller!=Address(0x0076FE9Au))return ChapterOtherCaller;
     if(count<=0)return ChapterEmpty;
-    if(g_chapterStatus!=1 || !Readable(Address(kRootPtr),4u))return ChapterContext;
+    if(g_chapterStatus!=1)return ChapterContext;
+#if defined(DSF_V29S_TRAFFIC_POLICY)
+    // No asset/profile lookup is needed when no list substitution is requested.
+    // RequestWriteBridge still validates context, capacity, source and ID width.
+    if(g_trafficPolicy.mode==TrafficNative)return ChapterNative;
+#endif
+    if(!Readable(Address(kRootPtr),4u))return ChapterContext;
     const UPtr root=Read32(Address(kRootPtr));
     if(!Readable(root+0x758u,4u) || !Readable(root+0x214u,4u))return ChapterContext;
     if(Read32(root+0x214u)!=owner)return ChapterOwner;
@@ -89,6 +96,7 @@ static void ChapterSelectRequest(UPtr caller,UPtr owner,const U32*& list,int& co
     else if(reason==ChapterEmpty)InterlockedIncrement(&g_chapterEmpty);
     else if(reason==ChapterUnknown)InterlockedIncrement(&g_chapterUnknown);
     else if(reason==ChapterExcluded)InterlockedIncrement(&g_chapterExcluded);
+    else if(reason==ChapterNative)InterlockedIncrement(&g_chapterNative);
     else {
         InterlockedIncrement(&g_chapterRefused);
         if(index<kChapterProfileCount)InterlockedIncrement(&g_chapterCounters[index].refused);

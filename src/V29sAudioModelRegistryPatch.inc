@@ -39,9 +39,15 @@ static bool AudioModelInstall() {
     g_audioModelReason="audioAlreadyInitialized";if(!AudioSlotsCold())return false;
     g_audioModelReason="signature";if(!AudioModelSignature(false) || !AudioModelLayoutSignature())return false;
     g_audioModelReason="nodeStorageAllocation";
+#if defined(DSF_V29S_WIDE_LIMITS)
+    g_wideAudioBuckets=static_cast<AudioModelKey**>(WideAllocate(65536u*4u));
+    // Nonzero armed marker; each stable manager owns its own guarded nodes.
+    g_audioModelStorage=reinterpret_cast<UPtr>(g_wideAudioBuckets);
+#else
     g_audioModelStorage=reinterpret_cast<UPtr>(VirtualAlloc(nullptr,kAudioModelInstances*kAudioModelStride,kMemCommitReserve,0x04u));
     if(!g_audioModelStorage)return false;
-    for(U32 i=0;i<8u;++i)for(U32 n=0;n<4u;++n)Write32(g_audioModelStorage+i*kAudioModelStride+192u*16u+n*4u,kAudioModelGuard);
+    for(U32 i=0;i<8u;++i)for(U32 n=0;n<4u;++n)Write32(g_audioModelStorage+i*kAudioModelStride+kAudioModelCapacity*16u+n*4u,kAudioModelGuard);
+#endif
     g_audioModelReason="trampolineAllocation";
     for(U32 i=0;i<8u;++i) {
         if(i==0u || i==5u)continue; // Explicit CMP/TEST branch bridges.

@@ -1,10 +1,23 @@
 // Pending map:64 native16-byte nodes +448 private nodes per constructor lifetime.
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kPendingCapacity (g_limits.pending)
+#define kPendingExtra (g_limits.pending-64u)
+static const U32 kPendingGuard=0x504D3531u;
+#else
 static const U32 kPendingCapacity=512u,kPendingExtra=448u,kPendingGuard=0x504D3531u;
+#endif
 struct PendingArena {
     UPtr older,owner;U32 generation,inlineUsed,extraUsed,reserved[3];
-    U32 before[4];Node16 nodes[kPendingExtra];U32 after[4];
+    U32 before[4];
+#if defined(DSF_V29S_WIDE_LIMITS)
+Node16* nodes;U32* after;
+#else
+Node16 nodes[kPendingExtra];U32 after[4];
+#endif
 };
+#if !defined(DSF_V29S_WIDE_LIMITS)
 static_assert(sizeof(PendingArena)==7232u,"Pending arena geometry");
+#endif
 static PendingArena* volatile g_pendingHead=nullptr;
 static volatile long g_pendingLock=0,g_pendingGeneration=0,g_pendingAttempts=0,g_pendingStores=0;
 static volatile long g_pendingRedirects=0,g_pendingReuses=0,g_pendingPeak=0,g_pendingIssuedPeak=0;
@@ -39,7 +52,13 @@ static bool PendingValidate(const PendingArena* p) {
     if(p->inlineUsed>64u || p->extraUsed>kPendingExtra || !Readable(p->owner,0x41Cu))return PendingReject(1u);
     const UPtr map=p->owner,end=map+0x40Cu;const U32 active=Read32(map+8u),free=Read32(map+4u),issued=p->inlineUsed+p->extraUsed;
     if(active>kPendingCapacity || free>kPendingCapacity || active+free!=issued)return PendingReject(1u);
-    U32 seen[16]={},count=0,priorKey=0,index=0;UPtr previous=end,node=Read32(end+4u);
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideScratchLease seenLease(((kPendingCapacity+31u)/32u)*4u);U32* seen=static_cast<U32*>(seenLease.data);U32 count=0,priorKey=0,index=0;
+#else
+U32 seen[16]={},count=0,priorKey=0,index=0;
+#endif
+UPtr previous=end,node=Read32(end+4u);
     while(node!=end) {
         if(count>=active || !PendingIndex(p,node,index) || (seen[index/32u]&(1u<<(index%32u))))return PendingReject(2u);
         seen[index/32u]|=1u<<(index%32u);
@@ -64,6 +83,9 @@ static PendingArena* PendingPrepare(UPtr map) {
         if(old && PendingGuards(old)){InterlockedIncrement(&g_pendingGuardBad);g_pendingReason="arenaGuard";return nullptr;}
         PendingArena* p=reinterpret_cast<PendingArena*>(VirtualAlloc(nullptr,sizeof(PendingArena),kMemCommitReserve,kPageReadWrite));
         if(!p){InterlockedIncrement(&g_pendingAllocFailed);g_pendingReason="arenaAllocation";return nullptr;}
+#if defined(DSF_V29S_WIDE_LIMITS)
+        p->nodes=static_cast<Node16*>(WideAllocate(kPendingExtra*16u+16u));p->after=reinterpret_cast<U32*>(p->nodes+kPendingExtra);
+#endif
         p->owner=map;p->generation=static_cast<U32>(InterlockedIncrement(&g_pendingGeneration));
         p->older=reinterpret_cast<UPtr>(g_pendingHead);
         for(U32 n=0;n<4u;++n)p->before[n]=p->after[n]=kPendingGuard;
@@ -99,7 +121,11 @@ static UPtr PendingInsert(UPtr map,UPtr a,UPtr b,UPtr c) {
 }
 static bool PendingIncludeValid(UPtr section) {
     const UPtr end=section+0x6998u;const U32 active=Read32(section+0x6694u);
+#if defined(DSF_V29S_WIDE_LIMITS)
+    if(active>WideSidecarNodes())return PendingReject(2u);
+#else
     if(active>256u)return PendingReject(2u);
+#endif
     UPtr previous=end,node=Read32(end+4u);U32 count=0,priorKey=0;
     while(node!=end) {
         if(count>=active || !Readable(node,12u) || Read32(node)!=previous)return PendingReject(2u);

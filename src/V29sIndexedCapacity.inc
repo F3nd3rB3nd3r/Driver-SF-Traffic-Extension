@@ -8,7 +8,12 @@
 #endif
 static_assert(DSF_CHAPTER7_PRELOAD_COUNT==150 && DSF_GRAPHICS_ADMISSION_TARGET==160,
               "Preserve the 150 request / 160 vehicle-slot comparison");
+#if defined(DSF_V29S_WIDE_LIMITS)
+static const U32 kIndexedNativeCount=131072u;
+#define kIndexedTestCount (g_limits.indexed)
+#else
 static const U32 kIndexedNativeCount=131072u,kIndexedTestCount=262144u;
+#endif
 static UPtr g_indexedBase=0u;
 // 0=not attempted, 1=armed before native constructor, 2=external head observed.
 // Negative values mean refusal/rollback, not a successful capacity run.
@@ -75,8 +80,11 @@ static bool IndexedCold() {
 }
 static bool IndexedPendingRedirectIntact() {
     if(g_sResourcePatchCount!=31u)return false;
-    for(const ResourceArrayPatch& p:g_sResourceArrayPatches)
-        if(!p.done || Read32(Address(p.site)+p.offset)!=ResourceArrayReplacement(p))return false;
+    for(const ResourceArrayPatch& p:g_sResourceArrayPatches){
+#if defined(DSF_V29S_WIDE_LIMITS)
+        if(p.site==0x6A593Fu){if(!g_wideCollectionGuardInstalled || Read8(Address(p.site))!=0xE9u)return false;continue;}
+#endif
+        if(!p.done || Read32(Address(p.site)+p.offset)!=ResourceArrayReplacement(p))return false;}
     return true;
 }
 static bool IndexedRefuse(long status,const char* reason,UPtr allocation=0u) {

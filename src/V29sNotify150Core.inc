@@ -4,7 +4,11 @@ static void NotifyFatal(const char* reason,UPtr source,U32 bytes);
 static void NotifyEvent(UPtr source,U32 count,U32 hash,U32 first,U32 last,bool sidecar);
 extern "C" __declspec(noinline) void* __cdecl NotifyCopy(void* destination,const void* source,U32 bytes) {
     const UPtr owner=reinterpret_cast<UPtr>(source);const U32 count=bytes/4u;
-    if((bytes&3u) || count>150u || (bytes && (!destination || !source))) {
+    U32 capacity=150u;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    capacity=g_limits.requests;
+#endif
+    if((bytes&3u) || count>capacity || (bytes && (!destination || !source))) {
         InterlockedIncrement(&g_notifyInvalid);NotifyFatal("copyBounds",owner,bytes);return nullptr;
     }
     InterlockedIncrement(&g_notifyCopies);U32 hash=2166136261u,first=0u,last=0u;

@@ -1,6 +1,61 @@
+Current crash/fix report: `USER_CAPACITY_R3_STORY_FIX_2026-11-15.md`. Supplied dump decoding, old-code reproduction and retained R2 inputs are in `usercap_r2_story_crashes_2026-11-15/`; R3 fixtures/build checks are in `wide_limits_r3_2026-11-15/`. R2 is superseded after its Story-load crash.
+
+Current implementation report: `USER_CAPACITY_R2_BUILD_2026-11-15.md`. Evidence and hash-verified pre-change fallback snapshot: `wide_limits_r2_2026-11-15/`. The feasibility-only report is superseded by this implementation, not deleted.
+
 # Analysis index
 
 ## Current conclusions
+
+- [Generic34904/12180](GENERIC_PAIR_34904_12180_RESULTS_2026-11-14.md): same
+  default config derives150 for modified AI and keeps18 for original. Active
+  rosters all READY, audio setup failures0, structural checks clean. Story/chase
+  reported; visible/FPS/exit confirmation pending.150 parked cache built but
+  picks unexercised, no replay playback. Offline legacy parser guard fixed.
+
+- [GENERIC_R1 configured-storage build](GENERIC_LIMITS_R1_BUILD_2026-11-14.md):
+  staged274944-byte candidate, no compiled car/profile lists, asset-derived
+  rosters and real INI-backed request/audio/replay settings.12 isolated fixtures,
+  all160 real asset profiles and new compiled checks pass. Original data stays
+  native; modified55 profiles expand from their weights. Request ceiling150,
+  graphics160/remaining pools still fixed; no700 support or live result yet.
+
+- [Configurable limits path](CONFIGURABLE_LIMITS_PATH_2026-11-14.md): user
+  direction is INI capacities and asset-owned rosters without compiled car
+  lists. Native byte bound005A14EA identified; DWORD loop/ordinal path offers
+  a possible widening route, but provider consumers remain unverified.700
+  scratch nodes require8424 bytes and safe stack handling. Initial research/
+  config contract only; current ASI/numeric-key support unchanged.
+
+- [Native28428 / Preset1502760](TRAFFIC_POLICY_PAIR_28428_2760_RESULTS_2026-11-14.md):
+  first intended-pair live pass. Original AI +Native preserves18; modified AI
+  +Preset150 requests150; active lists all READY, audio setups275/626 allok.
+  Structural checks clean and both normal exits confirmed. Expanded parked/
+  audio/pending/cleanup paths exercised; no replay playback/reconstruction.
+  Keep candidate; no new patch/build needed.
+
+- [Native run15256](TRAFFIC_POLICY_RUN15256_RESULTS_2026-11-14.md): two18-ID
+  requests preserved, all requested models READY; structural checks and audio
+  setup clean. Current game AI is modified: Chapter7 preload18 versus150
+  positive candidates. Strong explanation for reported fallback traffic;
+  use Preset150 for this file, Native with original/consistent assets. No patch.
+
+- [TRAFFIC_POLICY_R1 build](TRAFFIC_POLICY_R1_BUILD_2026-11-14.md): user
+  authorized compilation/staging; fixture, parser and new compiled checks
+  pass.279040-byte PE32 candidate with Native default/optional Preset150.
+  Current capacities/lifetime fixes and old ASI retained. No installation or
+  game run; test original AI +Native versus adjusted AI +Preset150 next.
+
+- [TRAFFIC_POLICY_R1 source](TRAFFIC_POLICY_R1_SOURCE_2026-11-14.md): Native
+  default plus explicit checked Preset150, ASI-local INI and actual-roster
+  diagnostics. Initial source handoff; the build follow-up above supersedes
+  its compilation-pending status. READ1M_R1 remains the last live-tested binary.
+  Original AI and adjusted AI need separate tests.
+
+- [Active unlimiter static audit](UNLIMITER_STATIC_AUDIT_2026-11-14.md): maps
+  active limits and units, separates canonical150 preloading from capacity,
+  and finds byte-sized graphics admission in the current path. Arbitrary700
+  settings require structural work. Native-roster pass-through within tested
+  capacities is the recommended next implementation; no source/ASI/build change.
 
 - [READ1M run10556](REPLAY_READ1M_RUN10556_RESULTS_2026-11-14.md): first
   live pass; private1 MiB buffers active and client3 busy0 across two full

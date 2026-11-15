@@ -11,9 +11,13 @@ static void LegacyExit(U32 code,const char* reason,UPtr owner,UPtr cursor,U32 ac
 static bool ArenaReuseStartup() {
     // Validate the actual installed150 frame and source-offset merge clone.
     if(g_callbackStatus!=1 || g_sScratchHook!=2 || DSFV27B_RequestFramePatchCount!=13 || DSFV27B_Merge150Fix!=1 || !g_merge150Clone)return false;
-    for(const RequestFramePatch& patch:g_requestFramePatches)if(!patch.done || Read32(Address(patch.at)+patch.immOffset)!=patch.replacement)return false;
+    for(const RequestFramePatch& patch:g_requestFramePatches){
+#if defined(DSF_V29S_WIDE_LIMITS)
+        if(patch.at==0x5A7495u){if(!g_wideRequestProbeInstalled || Read8(Address(patch.at))!=0xE9u)return false;continue;}
+#endif
+        if(!patch.done || Read32(Address(patch.at)+patch.immOffset)!=patch.replacement)return false;}
     const UPtr clone=reinterpret_cast<UPtr>(g_merge150Clone);
-    return Read32(clone+0x10u)==0x718u && Read32(clone+0x16u)==0x714u;
+    return Read32(clone+0x10u)==12u*kWideRequestNodes+16u && Read32(clone+0x16u)==12u*kWideRequestNodes+12u;
 }
 static void ArenaReuseStartLine() {
     const bool ready=ArenaReuseStartup();

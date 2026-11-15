@@ -1,7 +1,12 @@
 // Shared by production and the isolated Win32 startup-check regression test.
 // Image identity is stable across our patches; stock handler bytes are not.
 static bool VerifyExecutableIdentity() {
+#if defined(DSF_V29S_NATIVE_FIXTURE)
+    // Offline harness maps the image away from its own loader heaps.
+    if(g_base!=0x20000000u || !Readable(g_base,0x1000u))return false;
+#else
     if (g_base != kPreferredBase || !Readable(g_base, 0x1000u)) return false;
+#endif
     if (Read8(g_base) != 'M' || Read8(g_base+1u) != 'Z') return false;
     const U32 peOffset = Read32(g_base + 0x3cu);
     if (peOffset < 0x40u || peOffset > 0x800u) return false;

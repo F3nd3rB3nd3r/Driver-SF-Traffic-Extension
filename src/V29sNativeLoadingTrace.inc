@@ -393,9 +393,25 @@ static bool DiagSBucketInstall() {
 // 005A6920 copies the spooler's +330 list into a stack-local 50-node list.
 // The caller at 008093D1 later walks that copy at 00809420. Redirect its
 // fresh cursor at the exact +264 sentinel boundary, preserving native links.
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSCloneNodes (WideCloneNodes())
+#define kSCloneArenas 0x7FFFFFFFu
+#else
 static const U32 kSCloneNodes=256u,kSCloneArenas=32u;
-struct DiagSCloneArena { UPtr header; U32 nodes[kSCloneNodes][3]; };
+#endif
+struct DiagSCloneArena { UPtr header;
+#if defined(DSF_V29S_WIDE_LIMITS)
+U32 (*nodes)[3];
+#else
+U32 nodes[kSCloneNodes][3];
+#endif
+};
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(DiagSCloneArena& a){a.nodes=static_cast<U32(*)[3]>(WideAllocate(kSCloneNodes*12u));}
+static WideDirectory<DiagSCloneArena> g_sCloneArenas={};
+#else
 static DiagSCloneArena g_sCloneArenas[kSCloneArenas]={};
+#endif
 static volatile long g_sCloneLock=0,g_sCloneUsed=0,g_sCloneHook=0;
 static volatile long g_sCloneCalls=0,g_sCloneRedirects=0,g_sCloneReuses=0,g_sCloneFault=0;
 static DiagFDetour g_sCloneDetour={};
@@ -725,11 +741,35 @@ static bool DiagSPoolInstall() {
 #if defined(DSF_V29S_LISTA_EXPANDED)
 // The list at +330 owns 50 inline 12-byte nodes at +344..+59C.
 // 005A7DD1 inserts without checking its cursor against the next list.
+#if defined(DSF_V29S_WIDE_LIMITS)
+static const U32 kSListAInline=50u;
+#define kSListACapacity (WideWorkNodes())
+#else
 static const U32 kSListAInline=50u,kSListACapacity=512u;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSListAExtra (kSListACapacity-kSListAInline)
+#else
 static const U32 kSListAExtra=kSListACapacity-kSListAInline;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSListAArenaCount 0x7FFFFFFFu
+#else
 static const U32 kSListAArenaCount=4u;
-struct DiagSListAArena { UPtr owner; U32 nodes[kSListAExtra][3]; };
+#endif
+struct DiagSListAArena { UPtr owner;
+#if defined(DSF_V29S_WIDE_LIMITS)
+U32 (*nodes)[3];
+#else
+U32 nodes[kSListAExtra][3];
+#endif
+};
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(DiagSListAArena& a){a.nodes=static_cast<U32(*)[3]>(WideAllocate(kSListAExtra*12u));}
+static WideDirectory<DiagSListAArena> g_sListAArenas={};
+#else
 static DiagSListAArena g_sListAArenas[kSListAArenaCount]={};
+#endif
 static volatile long g_sListALock=0,g_sListAArenasUsed=0,g_sListAHook=0;
 static volatile long g_sListARedirects=0,g_sListAFault=0,g_sListAHigh=0;
 static DiagFDetour g_sListADetour={};
@@ -800,11 +840,35 @@ static bool DiagSListAInstall() {
 // The pool shared by the lists at +59C and +998 has 50 inline 20-byte
 // nodes (+5B0..+998). 0083B170 has no capacity check before its fresh
 // cursor advances. Redirect that cursor at the exact inline boundary.
+#if defined(DSF_V29S_WIDE_LIMITS)
+static const U32 kSListBInline=50u;
+#define kSListBCapacity (WideWorkNodes())
+#else
 static const U32 kSListBInline=50u,kSListBCapacity=512u;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSListBExtra (kSListBCapacity-kSListBInline)
+#else
 static const U32 kSListBExtra=kSListBCapacity-kSListBInline;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSListBArenaCount 0x7FFFFFFFu
+#else
 static const U32 kSListBArenaCount=4u;
-struct DiagSListBArena { UPtr owner; U32 nodes[kSListBExtra][5]; };
+#endif
+struct DiagSListBArena { UPtr owner;
+#if defined(DSF_V29S_WIDE_LIMITS)
+U32 (*nodes)[5];
+#else
+U32 nodes[kSListBExtra][5];
+#endif
+};
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(DiagSListBArena& a){a.nodes=static_cast<U32(*)[5]>(WideAllocate(kSListBExtra*20u));}
+static WideDirectory<DiagSListBArena> g_sListBArenas={};
+#else
 static DiagSListBArena g_sListBArenas[kSListBArenaCount]={};
+#endif
 static volatile long g_sListBLock=0,g_sListBArenasUsed=0,g_sListBHook=0;
 static volatile long g_sListBRedirects=0,g_sListBFault=0,g_sListBHigh=0;
 static DiagFDetour g_sListBDetour={};
@@ -878,11 +942,34 @@ static bool DiagSListBInstall() {
 // chains freed nodes through that same field. Keep all existing native links;
 // only redirect the fresh cursor once it reaches the inline boundary.
 static const U32 kSIncludeInline=64u;
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSIncludeCapacity (WideSidecarNodes())
+#else
 static const U32 kSIncludeCapacity=256u;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSIncludeExtra (kSIncludeCapacity-kSIncludeInline)
+#else
 static const U32 kSIncludeExtra=kSIncludeCapacity-kSIncludeInline;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+#define kSIncludeArenaCount 0x7FFFFFFFu
+#else
 static const U32 kSIncludeArenaCount=16u;
-struct DiagSIncludeArena { UPtr section; Node12 nodes[kSIncludeExtra]; };
+#endif
+struct DiagSIncludeArena { UPtr section;
+#if defined(DSF_V29S_WIDE_LIMITS)
+Node12* nodes;
+#else
+Node12 nodes[kSIncludeExtra];
+#endif
+};
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(DiagSIncludeArena& a){a.nodes=static_cast<Node12*>(WideAllocate(kSIncludeExtra*12u));}
+static WideDirectory<DiagSIncludeArena> g_sIncludeArenas={};
+#else
 static DiagSIncludeArena g_sIncludeArenas[kSIncludeArenaCount]={};
+#endif
 static volatile long g_sIncludeLock=0,g_sIncludeArenasUsed=0;
 extern "C" __declspec(dllexport) volatile long DSFV29s_IncludeRedirects=0;
 extern "C" __declspec(dllexport) volatile long DSFV29s_IncludeFault=0;
@@ -1764,7 +1851,7 @@ static void DiagSPrintModelPool(U32 loops) {
     DiagFAppendKeyU(p," endCapacity=",endCapacity,end);
     DiagFAppendKeyHex(p," freeHead=",freeHead,end);
     DiagFAppendKeyU(p," fault=",initialized &&
-        (capacity!=160u || endCapacity!=160u || freeCount>160u)?1u:0u,end);
+        (capacity!=kNewSlots || endCapacity!=kNewSlots || freeCount>kNewSlots)?1u:0u,end);
     AppendText(p,"\n",end);*p=0;DiagPrint(line);
 #if !defined(DSF_V29S_REGMAP_REUSE)
     for(U32 i=0;i<kSRegMapArenas;++i) {
@@ -2821,9 +2908,7 @@ static void DiagSPrintRequestProbe(U32 loops) {
         const U32 calls=static_cast<U32>(g_requestProbeCalls[i]);
         if(!calls)continue;
         const U32 index=kRequestProbeIndex[i];
-        const U32 expected=DSF_CHAPTER7_PRELOAD_COUNT==45 ?
-            (index<45u?kChapter7Trial45Ids[index]:0xFFFFu) :
-            kChapter7Active150Ids[index];
+        const U32 expected=static_cast<U32>(g_requestProbeExpected[i]);
         char row[230]={};char* c=row;const char* end=row+sizeof(row)-1;
         AppendText(c,"DSFV29s_REQ_ID tick=",end);DiagFAppendU(c,tick,end);
         DiagFAppendKeyU(c," index=",index,end);

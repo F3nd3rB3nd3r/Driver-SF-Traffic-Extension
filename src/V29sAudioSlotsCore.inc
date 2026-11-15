@@ -7,7 +7,11 @@ struct AudioSlotsList {
 static AudioSlotsList g_audioSlotsLists[3]={};
 static volatile long g_audioSlotsUserAttempts[2]={},g_audioSlotsUserFull[2]={},g_audioSlotsUserPeak[2]={};
 static volatile long g_audioSlotsInvalid=0;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#define kAudioSlotsCount (g_limits.audioSlots)
+#else
 static const U32 kAudioSlotsCount=2048u;
+#endif
 static U32 AudioSlotsCount(UPtr header,bool& valid) {
     const U32 begin=Read32(header),end=Read32(header+4u);
     valid=end>=begin && ((end-begin)&3u)==0u;
@@ -36,7 +40,7 @@ extern "C" __declspec(noinline) void __cdecl AudioSlotsEntry(U32 kind,UPtr point
     AudioSlotsList& s=g_audioSlotsLists[index];
     const U32 max=Read32(owner+(managerB?0x10u:4u)),capacity=Read32(header+8u);
     bool valid=false;const U32 count=AudioSlotsCount(header,valid);
-    if(!valid || count>capacity || capacity>0x100000u || max>0x100000u) {
+    if(!valid || count>capacity || capacity>kAudioSlotsCount || max>kAudioSlotsCount) {
         InterlockedIncrement(&s.invalid);return;
     }
     InterlockedExchange(&s.owner,static_cast<long>(owner));

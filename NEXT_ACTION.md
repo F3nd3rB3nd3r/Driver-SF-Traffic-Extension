@@ -1,5 +1,238 @@
 # Next action ? work only on the next concrete request
 
+## Default150 lifecycle coverage complete for these two runs; retain R3
+
+Latest `analysis/USERCAP_R3_RUN34672_RESULTS_2026-11-15.md`: saved Replay -> menu -> Story/chase -> menu -> user-reported normal quit passes tracked integrity.550 audio setups/0fail; no capacity/guard/allocation faults. Combined36508/34672 cover Story-to-Replay and Replay-to-Story. Keep R3/default settings; no patch or increase indicated. User can choose next scope: nondefault capacities with matching assets, original-AI behavior, or targeted remaining lifetime cases. No need to repeat the same basic sequence automatically. Broader/exhaustive missions and larger configurations remain unverified. Await the next concrete task/log.
+
+## R3 run36508 analyzed: retain candidate; await observations or next test
+
+See `analysis/USERCAP_R3_RUN36508_RESULTS_2026-11-15.md` and evidence directory. Story load plus chase/activities/dares/Replay/menu completes without recorded fatal/guard/allocation faults.150 READY phases verified, cleanup/pending drain, playback waits clear.12 native setup failures recover for all6 affected IDs; no audio exhaustion supports an increase. Optional user visual/audio/FPS/replay/exit question remains pending. No new ASI or capacity change indicated. Remaining scopes include Replay->Story re-entry, same-address reconstruction, nonzero retained restore and non-default matching rosters. Analyze the next supplied observation/log before changing code.
+
+## Next: retry Story with USER CAP R3 at unchanged150 defaults
+
+Use `dist/USERCAP_R3/DriverSF_Unlimiter_USERCAP_R3.asi` as the only traffic ASI and keep the same INI values/AI. Both R2 dumps match a completed-map guard regression reproduced offline and corrected in R3. Read `analysis/USER_CAPACITY_R3_STORY_FIX_2026-11-15.md`.19 offline processes pass, including both allocation orders, full/recycle/reconstruction and invalid-cursor checks. Await the specific `DSFV29s_usercap_r3_<pid>.log` and user Story-load result before claiming live resolution or increasing capacities. No game/asset/save changes or deployment; no new live session needed for diagnosis. Earlier R2 next steps are superseded.
+
+## Next: user live regression of USER CAP R2
+
+Implementation and offline verification are complete for the user-capacity migration; see `analysis/USER_CAPACITY_R2_BUILD_2026-11-15.md`. Candidate/default INI/test guide are in `dist/USERCAP_R2/`. Preserve exact GENERIC_R1 fallback and enable exactly one traffic ASI. No deployment/game run occurred. First test the supplied150 configuration against the known AI through Story/Challenge/activity/menu/Replay/Story re-entry/normal exit. Analyze the resulting `DSFV29s_usercap_r2_<pid>.log` before proposing changes. Larger configurations require matching installed model assets/AI and remain live-untested. Do not claim all native game limits are absent. Earlier next steps below are historical.
+
+## User-controlled capacity plan: feasibility review only this turn
+
+Report `analysis/USER_CAPACITY_FEASIBILITY_2026-11-15.md`. Available source and
+Driver.exe allow static migration work without a new live probe first, but
+native indirect provider/index consumers are unresolved; wider-capacity path
+not yet fully established. Actual150 bounds remain in arenas/scratch/diagnostic
+arrays; model/graphics and other sidecars remain fixed. No parser-ceiling
+removal, source/INI/ASI change, build, game/debugger or deployment occurred.
+
+Next native dependency: resolve/trace target methods reached by0059FA85 and
+0059FAA0; then coordinate configured storage, all bounds and stack probing.
+Preserve tested150 fallback/default. New code needs offline build/fixtures,
+then user live regression; literal absence of all machine/format bounds must
+not be claimed. Follow the user's next concrete instruction.
+
+## Capacity sizing clarified by static audit; no configuration applied
+
+Report `analysis/CAPACITY_COST_AUDIT_2026-11-15.md`. Model ID arrays4 bytes/
+entry, model registry16/node/manager, global audio pointer slots4/list/entry,
+retained pair8 bytes; actual pointed-to resource data is extra. Coupled parked/
+notification/replay formulas documented. Shared audio and replay read-ahead
+need workload-based sizing, not a fixed MiB/car multiplier. Original18 roster
+run had audio registry peak26; keep headroom for other models/transitions.
+
+User need not calculate exact per-car minimums: statically safe coherent
+bounds plus tested defaults/overrides and measured demand are the intended
+approach. Higher reader capacity only helps relevant reader starvation.
+500 remains unsupported; no source/ASI/INI/asset changes or build. Keep current
+candidate and await the next concrete task; do not automatically tune pools.
+
+##10556 checked: same-process lifecycle pass, preserve candidate
+
+Read `analysis/GENERIC_LIFECYCLE10556_RESULTS_2026-11-15.md`. User's menu ->
+Story -> menu -> Replay -> menu -> quit matches telemetry. All analyzer groups
+pass,348 audio setups/0fail, no playback busy interval. Replay ready-completion
+branch holds seven times then completes once without changing pause/rate/clock.
+Two world/registry owners, one150-ID import/restore, reader four reuses;
+pending/cleanup drain without faults. Keep GENERIC_R1/default limits.
+
+This supplies same-process Story-to-Replay coverage missing from24080. It
+does not test Story re-entry after Replay, same-address registry reconstruction,
+nonzero retained refs or non-default INI dimensions. Next planned milestone:
+a non-default supported config with an asset roster that fits. Current150-
+positive asset requires RequestCapacity>=150; do not propose simply lowering
+that value against it. Await concrete authorization/task before config/asset
+changes, widening, another ASI or build. No failure indicating a new patch.
+
+##24080 checked: saved-replay playback pass; await next task
+
+Read `analysis/GENERIC_REPLAY24080_RESULTS_2026-11-15.md`. Fresh-process menu
+Replay uses22828's recording, controls untouched; user recalls no choppiness/
+bursting indicator and confirms normal quit. Eight150-ID imports/restores,
+reader four reuses, all analyzer groups pass;665 audio setups/0fail.
+Eight short playback waits clear (max78.48ms), no unresolved interval.
+
+Keep GENERIC_R1/default INI. This covers saved-replay loading/playback, not
+same-process Story -> Replay -> Story/menu cycling (user explicitly did none),
+nonzero retained-reference restoration, or non-default INI geometry. Those
+are remaining validation scopes before larger-capacity widening. No automatic
+ASI, probe, build or capacity increase; wait for the user's next concrete task.
+
+##22828 checked: retain current candidate, await next task
+
+Report `analysis/GENERIC_RUN22828_RESULTS_2026-11-14.md`, evidence
+`analysis/generic_run22828_2026-11-14/`. User confirms valid garage car resolves
+Activity5, correct sound/rendering/FPS and normal quit. Driver.log confirms212
+selection and four completed mission/activity/end-loading flows.150 READY
+phases2..8,11,800 parked picks, extended pending/cleanup paths drain cleanly.
+
+Keep GENERIC_R1/default limits.123 audio setup failures have later successes
+for all19 affected models and no audible problem reported; not a zero-failure
+telemetry pass, and no audio-limit increase indicated. Separate startup Lua
+nil setRegionArtStatus has no established causal link. Replay playback/import/
+restore and registry reconstruction remain uncovered. No automatic patch,
+probe, build or capacity change. This supersedes awaiting the garage retry.
+
+## Latest24048: await retry with a valid garage car
+
+Report `analysis/GENERIC_ACTIVITY24048_SOFTLOCK_2026-11-14.md`; evidence
+`analysis/generic_activity24048_2026-11-14/`. Activity5 is waiting for player
+model122, absent from the captured available-resource catalog. All150 traffic
+models are READY. Loader selects saved garage model when no activity vehicle
+exists; user suspects old Forza selection and will pick another garage car.
+Keep GENERIC_R1 unchanged. No ASI/build/capacity increase needed for that test.
+Await result; do not claim fixed yet.18 audio setup failures remain a separate
+observation. No production/INI/asset/save changes or debugger/game launch.
+
+This supersedes treating24048 as an unexplained generic capacity regression.
+
+## Generic34904/12180 analyzed: initial default telemetry pass
+
+Report `analysis/GENERIC_PAIR_34904_12180_RESULTS_2026-11-14.md`; evidence
+`analysis/generic_pair_34904_12180_2026-11-14/`. Same default INI derives150
+for modified asset and preserves18 for original. Active lists all READY;
+audio setups62/104 allok, structural/queue/guard checks clean. No new ASI.
+User reports Story/chase; optional rendering/audio/FPS/exit question pending.
+
+Replay reading/import/restore/reconstruction remains unexercised.150 parked
+cache builds but selection is unexercised in34904; original picks133 times.
+Do not interpret absent activity as a demonstrated bug. Legacy callback tool
+needed a missing-CHAPTER_STATUS guard; offline parser only fixed. Await user
+results/next concrete request; no further probe, capacity change or rebuild
+is warranted automatically. This supersedes the initial-await-log instruction.
+
+## GENERIC_R1 built/staged: analyze supplied live comparison next
+
+Report `analysis/GENERIC_LIMITS_R1_BUILD_2026-11-14.md`; evidence
+`analysis/generic_limits_r1_2026-11-14/`. New ASI274944 bytes, SHA256
+`a8c2915aad6c3791410891be78d9066f68d35b5ab8e5a32185b2bf055c05722b`.
+Default new INI AssetWeights reads real file settings/weights, no compiled IDs
+or chapter allowlist.12 native fixtures including actual160 asset profiles pass;
+PE/import/RET8/79 retained-site checks pass. No game installation/launch yet.
+
+Keep default150/192/2048/64MiB/1MiB/256 for first original-vs-modified150 runs,
+same INI in both. Guide `dist/MAIN_150/GENERIC_LIMITS_R1_TEST_2026-11-14.md`.
+Log `%TEMP%/DSFV29s_generic_limits_<PID>.log`; analyze with
+`scripts/analyze_generic_limits_log.py`. Old Native/Preset150 policy analyzer
+is not this binary's acceptance rule. Record rendering/audio/parked/FPS plus
+Story/Challenge/menu/Replay/normal-exit coverage. Previous tested ASI retained.
+
+RequestCapacity ceiling150 is deliberate for this milestone. Graphics160 and
+request scratch150 remain fixed, as do other resource queues/maps. Larger
+requests are rejected explicitly. Native provider/index audit and safe scratch
+handling plus remaining coupled pools are still needed before700. No automatic
+widening or rebuild until current generic code has user data/new authorization.
+Above supersedes the implementation-pending research instructions below.
+
+## Current work: configurable-capacity architecture and native width audit
+
+User direction is INI limits +asset-specified vehicle lists/weights, supporting
+18/150/eventual700 without compiled presets. Report
+`analysis/CONFIGURABLE_LIMITS_PATH_2026-11-14.md`; native evidence
+`analysis/configurable_limits_static_2026-11-14/`.
+
+Next structural dependency: inspect provider/index consumers beyond factory
+0059F9C0 before implementing package0/kind0 widened count at005A14EA. Preserve
+zero gate005A1469 and all other metadata consumers. Also plan runtime storage/
+frames across requests, notification, parked, snapshots, handlers/definitions,
+audio and independent queues.700 request nodes imply8424-byte frame; native
+SUB ESP lacks a probe at005A7495, so merely changing constants is unsafe.
+
+No new source/build yet. Current TRAFFIC_POLICY_R1 remains the verified test
+candidate; its parser does not implement proposed numeric limit keys. Generic
+150 configured backing should be the first regression milestone before larger
+counts, with arbitrary-ID fixtures and normal transition/teardown coverage.
+No need to rebuild the unchanged baseline or run the game during this research.
+
+## Paired logs28428/2760 pass; retain candidate, await next request
+
+Report `analysis/TRAFFIC_POLICY_PAIR_28428_2760_RESULTS_2026-11-14.md`;
+evidence `analysis/traffic_policy_pair_28428_2760_2026-11-14/`.
+Native28428 +original AI preserves18; Preset1502760 expands18->150 with
+matching asset checks. Active rosters reach all READY. All policy/baseline/
+callback/READ1M checks pass; audio setup failures0, queue/guard/fatal errors0,
+pending/cleanup drain. User confirms both fine and normal exits.
+
+No patch/rebuild/increase needed. TRAFFIC_POLICY_R1 now has an initial paired
+live pass. Replay reading/import/reconstruction and callback extra nodes were
+not exercised; broader Story/Challenge/menu/Replay cycling remains useful
+future coverage, not a reason to build another ASI automatically. Preserve
+150/160/ED/EF. User confirmation of original AI is the Native asset evidence;
+the log itself does not fingerprint Native assets. No exact FPS supplied.
+
+## Run15256 analyzed: use the appropriate mode/asset pairing
+
+Report `analysis/TRAFFIC_POLICY_RUN15256_RESULTS_2026-11-14.md`. Current
+Save Bug Test/media AI is the exact modified uniform150 asset; actual
+Chapter7/f0 preload18 but positive weights150. Native run15256 preserves
+two18-ID rosters, both all READY, with structural checks/audio setup clean.
+User sees fallback Challengers; mismatch strongly explains it. No direct
+native fallback-branch capture or replay-reader exercise in this run.
+
+Use Preset150 with the current modified AI; test Native with original AI or
+an asset with consistent preload/probability lists. Do not enlarge pools or
+build another probe from these symptoms. Generic asset-derived preloading
+or correcting asset preload lists would be separate authorized work, not
+something Native currently does. No source/ASI/INI/asset changes this turn.
+
+## TRAFFIC_POLICY_R1 built/staged; await supplied logs
+
+Report `analysis/TRAFFIC_POLICY_R1_BUILD_2026-11-14.md`; evidence
+`analysis/traffic_policy_r1_2026-11-14/`. User authorized build/staging; isolated
+Win32 fixture, parser/static and new compiled checks pass. Staged
+`DriverSF_V29s_160Capacity_150Request_TRAFFIC_POLICY_R1.asi`,279040 bytes, SHA256
+`bb7411bad4e1532c11789ba6966ec01e27e197ddd6a68b870895526bdc292a2d`.
+Previous READ1M_R1 bytes/live result retained. No installation/game run.
+
+Test original AI +Native separately from adjusted uniform150 AI +Preset150.
+Exactly one traffic ASI; INI beside it, restart after mode changes. New logs
+`%TEMP%/DSFV29s_traffic_policy_<PID>.log`. Analyze policy/baseline/callback/
+READ1M integrity before any patch. Check actual lists/order and preset reason,
+then rendering/audio/parked variety/FPS and Story/Challenge/menu/Replay/quit.
+Do not expect the150-weight adjusted asset to work in Native if its actual
+preload list is18. No automatic derivation/arbitrary INI capacities yet.
+
+The source-only handoff and build-await instructions below are superseded.
+No further compilation needed absent a source change/failure. Keep150/160/
+ED/EF; request/readiness counts do not prove drawable residency. The old ASI
+ignores the INI. Current guide `dist/MAIN_150/TRAFFIC_POLICY_R1_TEST_2026-11-14.md`.
+
+## Static unlimiter audit complete; no new ASI or source change
+
+Report `analysis/UNLIMITER_STATIC_AUDIT_2026-11-14.md`; focused source/artifact
+hash inventory `analysis/unlimiter_static_2026-11-14/source_inventory.json`.
+Maps active capacities, units, policy, coupling and remaining owner bounds.
+Byte-sized graphics admission prevents a simple700-target INI;255 is not a
+verified safe maximum. Preserve150/160/ED/EF and READ1M_R1.
+
+Next implementation, if authorized: preserve native request rosters within
+current capacities and make the existing canonical150 preload policy optional.
+Do not simply remove CHAPTERS: its else branch retains a Chapter7 replacement.
+Keep native safety/lifetime checks and fix canonical-only request diagnostics.
+Original AI and modified positive-weight/request-list consistency need distinct
+tests. Arbitrary entry counts require coherent frames/backing/loops/consumers;
+MiB applies to byte pools only. No build/run or larger-capacity test is implied
+by this audit. Await concrete implementation request or supplied log.
+
 ## READ1M run10556 analyzed: retain candidate, await concrete next request/log
 
 Report `analysis/REPLAY_READ1M_RUN10556_RESULTS_2026-11-14.md`; evidence

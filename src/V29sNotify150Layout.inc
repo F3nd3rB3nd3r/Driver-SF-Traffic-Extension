@@ -9,7 +9,11 @@ static const NotifyOperand kNotifyOperands[5]={
     {150u,0xD0u,0x260u}     // matching stack restoration
 };
 static U32 NotifyOperandValue(U32 index,UPtr callback,UPtr copy) {
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    return index==3u?copy-(callback+101u):GenericNotifyFrame()+(index==1u?20u:index==2u?16u:0u);
+#else
     return index==3u?copy-(callback+101u):kNotifyOperands[index].replacement;
+#endif
 }
 static void NotifyApply(UPtr callback,UPtr copy,bool patched) {
     for(U32 i=0;i<5u;++i)Write32(callback+kNotifyOperands[i].offset,

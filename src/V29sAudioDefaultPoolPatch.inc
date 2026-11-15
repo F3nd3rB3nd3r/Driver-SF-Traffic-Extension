@@ -2,7 +2,9 @@
 // operand changes; the native pressure policy and all fixed object pools remain.
 static const UPtr kAudioDefaultSizeSite=0x0084A64Du;
 static const U32 kAudioDefaultStockBytes=0x00599999u;
-#if defined(DSF_V29S_AUDIO_DEFAULT_64M)
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#define kAudioDefaultTestBytes (g_limits.audioMiB*1048576u)
+#elif defined(DSF_V29S_AUDIO_DEFAULT_64M)
 static const U32 kAudioDefaultTestBytes=0x04000000u;
 #else
 static const U32 kAudioDefaultTestBytes=0x01000000u;

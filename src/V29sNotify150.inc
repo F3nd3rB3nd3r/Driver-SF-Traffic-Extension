@@ -42,11 +42,21 @@ static void NotifyInstall() {
             }
         }
     }
+#if defined(DSF_V29S_WIDE_LIMITS)
+    if(g_notifyStatus==1 && !WideInstallNotifyProbe(callback))g_notifyStatus=-1;
+#endif
     if(g_notifyStatus!=1) {
         CapacityWrite("DSFV29s_NOTIFY150_START revision=1 status=-1 reason=parentSignatureOrCommit\n");
         NotifyFatal("startupPatchRefused",callback,0u);return;
     }
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    char line[600]={};char* p=line;const char* end=line+sizeof(line)-1;
+    AppendText(p,"DSFV29s_NOTIFY150_START revision=1 status=1 patches=5 nativeCapacity=50",end);
+    DiagFAppendKeyU(p," capacity=",g_limits.requests,end);DiagFAppendKeyU(p," frameBytes=",GenericNotifyFrame(),end);
+    AppendText(p," source=matchedRequestSidecar memcpyScope=00754CD0 requests=150 graphics=160 otherCapacityChanges=0\n",end);*p=0;CapacityWrite(line);
+#else
     CapacityWrite("DSFV29s_NOTIFY150_START revision=1 status=1 patches=5 nativeCapacity=50 capacity=150 frameBytes=608 source=matchedRequestSidecar memcpyScope=00754CD0 requests=150 graphics=160 otherCapacityChanges=0\n");
+#endif
 }
 static void NotifyPoll() {
     static U32 last=0;const U32 now=GetTickCount()-g_capacityStart;if(now-last<1000u)return;last=now;

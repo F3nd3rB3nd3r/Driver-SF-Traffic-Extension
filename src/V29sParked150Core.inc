@@ -1,7 +1,17 @@
-static const U32 kParkCapacity=150u,kParkGuard=0x29FA150Du;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#define kParkCapacity (g_limits.requests)
+#else
+static const U32 kParkCapacity=150u;
+#endif
+static const U32 kParkGuard=0x29FA150Du;
 struct ParkSlot {
     UPtr owner;ParkSlot* next;U32 guardA,count,generation,busy,unique;
-    U32 ids[150],picks[150],guardB;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    U32* ids;U32* picks;U32* tail;
+#else
+    U32 ids[150],picks[150];
+#endif
+    U32 guardB;
 };
 static ParkSlot* g_parkSlots=nullptr;
 static volatile long g_parkLock=0,g_parkOwners=0,g_parkBuilds=0,g_parkPeak=0;
@@ -24,12 +34,23 @@ static void ParkPeak(volatile long* value,U32 n) {
 static ParkSlot* ParkFind(UPtr owner,bool create) {
     for(ParkSlot* s=g_parkSlots;s;s=s->next)if(s->owner==owner)return s;
     if(!create)return nullptr;
-    ParkSlot* s=static_cast<ParkSlot*>(ParkAllocate(sizeof(ParkSlot)));if(!s)return nullptr;
+    U32 bytes=sizeof(ParkSlot);
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    bytes+=kParkCapacity*8u+16u;
+#endif
+    ParkSlot* s=static_cast<ParkSlot*>(ParkAllocate(bytes));if(!s)return nullptr;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    s->ids=reinterpret_cast<U32*>(s+1);s->picks=s->ids+kParkCapacity;s->tail=s->picks+kParkCapacity;
+    for(U32 i=0;i<4u;++i)s->tail[i]=kParkGuard;
+#endif
     // Allocator supplies zeroed storage; entries persist until process exit.
     s->owner=owner;s->guardA=s->guardB=kParkGuard;s->next=g_parkSlots;g_parkSlots=s;
     InterlockedIncrement(&g_parkOwners);return s;
 }
 static bool ParkSlotGuard(ParkSlot* s) {
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    if(!s || !s->tail)return false;for(U32 i=0;i<4u;++i)if(s->tail[i]!=kParkGuard)return false;
+#endif
     return s && s->guardA==kParkGuard && s->guardB==kParkGuard && s->count<=kParkCapacity;
 }
 extern "C" __declspec(noinline) UPtr __fastcall ParkDescribe(void* self,void*,U32 id) {
@@ -41,7 +62,11 @@ extern "C" __declspec(noinline) UPtr __fastcall ParkDescribe(void* self,void*,U3
 }
 extern "C" __declspec(noinline) void __cdecl ParkBucketCheck(CpuRegs* r) {
     const UPtr first=r->savedEsp+4u+0x288u,base=r->eax;
-    if(base<first || base-first>=25u*0x25Cu || (base-first)%0x25Cu || r->ecx>=kParkCapacity) {
+    U32 stride=0x25Cu;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    stride=GenericParkStride();
+#endif
+    if(base<first || base-first>=25u*stride || (base-first)%stride || r->ecx>=kParkCapacity) {
         InterlockedIncrement(&g_parkInvalid);ParkFatal("categoryWriteBounds",base,r->ecx);return;
     }
     ParkPeak(&g_parkBucketPeak,r->ecx+1u);
@@ -49,7 +74,7 @@ extern "C" __declspec(noinline) void __cdecl ParkBucketCheck(CpuRegs* r) {
 extern "C" __declspec(noinline) void* __cdecl ParkAppend(void* result,const U32* first,const U32* last,
     UPtr destination,U32,U32,U32) {
     const UPtr lo=reinterpret_cast<UPtr>(first),hi=reinterpret_cast<UPtr>(last),owner=destination-0x2408u;
-    if(destination<0x2408u || hi<lo || ((hi-lo)&3u) || hi-lo>600u) {
+    if(destination<0x2408u || hi<lo || ((hi-lo)&3u) || hi-lo>kParkCapacity*4u) {
         InterlockedIncrement(&g_parkInvalid);ParkFatal("appendRange",owner,hi-lo);return nullptr;
     }
     const U32 n=(hi-lo)/4u;ParkLock();ParkSlot* s=ParkFind(owner,false);
@@ -67,9 +92,14 @@ extern "C" __declspec(noinline) void __fastcall ParkRebuild(void* self,void*) {
         ParkUnlock();InterlockedIncrement(&g_parkInvalid);ParkFatal("buildOwnerOrAllocation",owner,0);return;
     }
     s->busy=1u;s->count=s->unique=0u;++s->generation;
-    for(U32 i=0;i<150u;++i)s->ids[i]=s->picks[i]=0u;
+    for(U32 i=0;i<kParkCapacity;++i)s->ids[i]=s->picks[i]=0u;
     ParkUnlock();ParkRunBuilder(owner);
-    U32 ids[150]={},count=0,generation=0,hash=2166136261u;ParkLock();
+#if defined(DSF_V29S_WIDE_LIMITS)
+    WideScratchLease idsLease(kParkCapacity*4u);U32* ids=static_cast<U32*>(idsLease.data);U32 count=0,generation=0,hash=2166136261u;
+#else
+    U32 ids[150]={},count=0,generation=0,hash=2166136261u;
+#endif
+    ParkLock();
     bool ok=ParkSlotGuard(s) && Read32(owner+0x24D0u)==s->count;U32 end=0u;
     for(U32 c=0;c<25u && ok;++c) {
         const U32 start=Read32(owner+0x24D4u+c*8u),n=Read32(owner+0x24D8u+c*8u);

@@ -15,10 +15,17 @@ static UPtr ParkNativeDescribe(UPtr owner,U32 id) {
     return reinterpret_cast<Fn>(Address(0x0086C5B0u))(reinterpret_cast<void*>(owner),id);
 }
 static void ParkRunBuilder(UPtr owner) {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    U32 stackPointer=0;__asm {mov stackPointer,esp} WideCheckStack(stackPointer,GenericParkFrame());
+#endif
     typedef void (__thiscall* Fn)(void*);reinterpret_cast<Fn>(g_parkBuilder)(reinterpret_cast<void*>(owner));
 }
 static void ParkBuildEvent(UPtr owner,U32 count,U32 generation,U32 hash,const U32* ids) {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    WideScratchLease text(count*7u+512u);char* line=static_cast<char*>(text.data);char* p=line;const char* end=line+count*7u+511u;
+#else
     char line[2000]={};char* p=line;const char* end=line+sizeof(line)-1;
+#endif
     AppendText(p,"DSFV29s_PARKED150_BUILD",end);DiagFAppendKeyU(p," tick=",GetTickCount()-g_capacityStart,end);
     DiagFAppendKeyHex(p," owner=",owner,end);DiagFAppendKeyU(p," generation=",generation,end);
     DiagFAppendKeyU(p," count=",count,end);DiagFAppendKeyHex(p," rosterHash=",hash,end);
@@ -96,7 +103,15 @@ static void ParkInstall() {
     }
     if(!ok){g_parkStatus=-1;CapacityWrite("DSFV29s_PARKED150_START revision=1 status=-1\n");ParkFatal("startupPatchRefused",b,0);return;}
     g_parkStatus=1;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    char line[700]={};char* p=line;const char* end=line+sizeof(line)-1;
+    AppendText(p,"DSFV29s_PARKED150_START revision=1 status=1 hooks=2 nativeCapacity=50",end);
+    DiagFAppendKeyU(p," capacity=",g_limits.requests,end);AppendText(p," categories=25",end);DiagFAppendKeyU(p," perCategory=",g_limits.requests,end);
+    DiagFAppendKeyU(p," frameBytes=",GenericParkFrame(),end);
+    AppendText(p," inlineMirror=50 privatePerOwner=1 processLifetime=1 fixedOwnerLimit=0 parkedPopulationChanged=0 refreshTimingChanged=0 weightsChanged=0 requests=150 graphics=160\n",end);*p=0;CapacityWrite(line);
+#else
     CapacityWrite("DSFV29s_PARKED150_START revision=1 status=1 hooks=2 nativeCapacity=50 capacity=150 categories=25 perCategory=150 frameBytes=15732 inlineMirror=50 privatePerOwner=1 processLifetime=1 fixedOwnerLimit=0 parkedPopulationChanged=0 refreshTimingChanged=0 weightsChanged=0 requests=150 graphics=160\n");
+#endif
 }
 static void ParkPoll() {
     static U32 last=0;const U32 now=GetTickCount()-g_capacityStart;if(now-last<1000u)return;last=now;

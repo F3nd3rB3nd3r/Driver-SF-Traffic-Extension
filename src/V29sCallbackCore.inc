@@ -1,9 +1,20 @@
 // Process-lived callback storage. Preserve all native headers/sentinels and ABI.
+#if defined(DSF_V29S_WIDE_LIMITS)
+static const U32 kCallbackGroups=21u;
+#define kCallbackCapacity (g_limits.callbacks)
+#define kCallbackExtra (g_limits.callbacks-64u)
+#else
 static const U32 kCallbackGroups=21u,kCallbackCapacity=512u,kCallbackExtra=448u;
+#endif
 static const U32 kCallbackGuard=0x43423531u;
 struct CallbackNode {UPtr previous,next,payload;};
 struct CallbackGroup {
-    U32 before[4];CallbackNode nodes[kCallbackExtra];U32 after[4];
+    U32 before[4];
+#if defined(DSF_V29S_WIDE_LIMITS)
+CallbackNode* nodes;U32* after;
+#else
+CallbackNode nodes[kCallbackExtra];U32 after[4];
+#endif
     U32 inlineUsed,extraUsed;
     volatile long thread,depth,pollDepth,attempts,stores,redirects,reuses,peak,issuedPeak;
     volatile long active,free,polls,removed,lastHandler,lastPayload;
@@ -43,9 +54,15 @@ static bool CallbackValidate(U32 slot) {
     for(U32 n=0;n<4u;++n)if(g.before[n]!=kCallbackGuard || g.after[n]!=kCallbackGuard){
         InterlockedIncrement(&g_callbackGuardBad);g_callbackReason="arenaGuard";return false;}
     const U32 active=Read32(h+8u),free=Read32(h+4u),issued=g.inlineUsed+g.extraUsed;
-    if(g.inlineUsed>64u || g.extraUsed>kCallbackExtra || active>512u || free>512u || active+free!=issued)
+    if(g.inlineUsed>64u || g.extraUsed>kCallbackExtra || active>kCallbackCapacity || free>kCallbackCapacity || active+free!=issued)
         return CallbackBad("countsOrReset");
-    U32 seen[16]={},count=0,index=0;UPtr previous=end,node=Read32(end+4u);
+
+#if defined(DSF_V29S_WIDE_LIMITS)
+WideScratchLease seenLease(((kCallbackCapacity+31u)/32u)*4u);U32* seen=static_cast<U32*>(seenLease.data);U32 count=0,index=0;
+#else
+U32 seen[16]={},count=0,index=0;
+#endif
+UPtr previous=end,node=Read32(end+4u);
     while(node!=end) {
         if(count>=active || !CallbackIndex(slot,g,node,index) || (seen[index/32u]&(1u<<(index%32u))))return CallbackBad("activeChain");
         seen[index/32u]|=1u<<(index%32u);

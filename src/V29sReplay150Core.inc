@@ -1,9 +1,31 @@
 // The native object and both caller frames remain 0x264-byte legacy views.
 // Only these seven audited boundaries access the complete, separate payload.
-static const U32 kReplayTraffic=150u,kReplayRetained=256u,kReplayGuard=0x29150ACDu;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#define kReplayTraffic (g_limits.requests)
+#define kReplayRetained (g_limits.retained)
+#else
+static const U32 kReplayTraffic=150u,kReplayRetained=256u;
+#endif
+static const U32 kReplayGuard=0x29150ACDu;
 struct ReplayPair {U32 id,refs;};
+#if defined(DSF_V29S_GENERIC_LIMITS)
+struct ReplayData {U32 count;U32* ids;U32 retained;ReplayPair* pairs;U32 extra;U32* guard;};
+static U32 ReplayStorageBytes(){return kReplayTraffic*4u+kReplayRetained*8u+16u;}
+static void ReplayStorageInit(ReplayData& d,void* storage){d.ids=static_cast<U32*>(storage);
+    d.pairs=reinterpret_cast<ReplayPair*>(d.ids+kReplayTraffic);d.guard=reinterpret_cast<U32*>(d.pairs+kReplayRetained);
+    for(U32 i=0;i<4u;++i)d.guard[i]=kReplayGuard;}
+#else
 struct ReplayData {U32 count,ids[150],retained;ReplayPair pairs[256];U32 extra;};
 static_assert(sizeof(ReplayData)==2660u,"snapshot payload layout");
+#endif
+static void ReplayCopy(ReplayData& to,const ReplayData& from){
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    to.count=from.count;to.retained=from.retained;to.extra=from.extra;
+    for(U32 i=0;i<from.count;++i)to.ids[i]=from.ids[i];for(U32 i=0;i<from.retained;++i)to.pairs[i]=from.pairs[i];
+#else
+    to=from;
+#endif
+}
 struct ReplaySlot {ReplaySlot* next;UPtr owner;U32 guardA,valid;ReplayData data;U32 guardB;};
 struct ReplayTemp {ReplayTemp* next;UPtr base;U32 thread,stage,guardA;ReplayData data;U32 guardB;};
 static ReplaySlot* g_replaySlots=nullptr;
@@ -27,6 +49,9 @@ static void ReplayLock(){while(InterlockedExchange(&g_replayLock,1)){} }
 static void ReplayUnlock(){InterlockedExchange(&g_replayLock,0);}
 static void ReplayFail(const char* reason,UPtr p,U32 n){InterlockedIncrement(&g_replayInvalid);ReplayFatal(reason,p,n);}
 static bool ReplayValid(const ReplayData& d) {
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    if(!d.ids || !d.pairs || !d.guard)return false;for(U32 i=0;i<4u;++i)if(d.guard[i]!=kReplayGuard)return false;
+#endif
     if(d.count>kReplayTraffic || d.retained>kReplayRetained)return false;
     for(U32 i=0;i<d.count;++i)if(!d.ids[i] || d.ids[i]>65535u)return false;
     for(U32 i=0;i<d.retained;++i)if(!d.pairs[i].id || d.pairs[i].id>65535u)return false;
@@ -37,7 +62,14 @@ static void ReplayPeak(const ReplayData& d){ParkPeak(&g_replayPeakTraffic,d.coun
 static ReplaySlot* ReplayFindSlot(UPtr owner,bool create) {
     for(ReplaySlot* s=g_replaySlots;s;s=s->next)if(s->owner==owner)return s;
     if(!create)return nullptr;
-    ReplaySlot* s=static_cast<ReplaySlot*>(ReplayAllocate(sizeof(ReplaySlot)));if(!s)return nullptr;
+    U32 bytes=sizeof(ReplaySlot);
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    bytes+=ReplayStorageBytes();
+#endif
+    ReplaySlot* s=static_cast<ReplaySlot*>(ReplayAllocate(bytes));if(!s)return nullptr;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    ReplayStorageInit(s->data,s+1);
+#endif
     s->owner=owner;s->guardA=s->guardB=kReplayGuard;s->next=g_replaySlots;g_replaySlots=s;
     InterlockedIncrement(&g_replayOwners);return s;
 }
@@ -47,11 +79,22 @@ static bool ReplaySlotOkay(ReplaySlot* s){return s && s->guardA==kReplayGuard &&
 static ReplayTemp* ReplayBegin(UPtr base,U32 stage) {
     const U32 thread=ReplayThread();ReplayLock();ReplayTemp* free=nullptr;
     for(ReplayTemp* t=g_replayTemps;t;t=t->next) {
-        if(t->stage && t->thread==thread && t->base==base){ReplayUnlock();ReplayFail("tempAlreadyActive",base,t->stage);return nullptr;}
+        bool collision=t->stage && t->thread==thread && t->base==base;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        if((t->stage==5u && stage==6u) || (t->stage==6u && stage==5u))collision=false;
+#endif
+        if(collision){ReplayUnlock();ReplayFail("tempAlreadyActive",base,t->stage);return nullptr;}
         if(!t->stage)free=t;
     }
     if(!free) {
-        free=static_cast<ReplayTemp*>(ReplayAllocate(sizeof(ReplayTemp)));
+        U32 bytes=sizeof(ReplayTemp);
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        bytes+=ReplayStorageBytes();
+#endif
+        free=static_cast<ReplayTemp*>(ReplayAllocate(bytes));
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        if(free)ReplayStorageInit(free->data,free+1);
+#endif
         if(free){free->next=g_replayTemps;g_replayTemps=free;InterlockedIncrement(&g_replayTempsAllocated);}
     }
     if(!free){ReplayUnlock();ReplayFail("tempAllocation",base,stage);return nullptr;}
@@ -79,8 +122,15 @@ static bool ReplayMirrorMatches(UPtr base,const ReplayData& d) {
     for(U32 i=0;i<d.retained && i<50u;++i)if(Read32(base+0xD0u+i*8u)!=d.pairs[i].id || Read32(base+0xD4u+i*8u)!=d.pairs[i].refs)return false;
     return true;
 }
+static U32 WideReplayWalkBound(){
+#if defined(DSF_V29S_WIDE_LIMITS)
+return WideWorkNodes();
+#else
+return 4096u;
+#endif
+}
 static bool ReplayNode(UPtr node,U32 bytes,U32 walks,UPtr head) {
-    if(walks>=4096u || !Readable(node,bytes)){ReplayFail("listNodeOrCycle",head,walks);return false;}return true;
+    if(walks>=WideReplayWalkBound() || !Readable(node,bytes)){ReplayFail("listNodeOrCycle",head,walks);return false;}return true;
 }
 static bool ReplayAddRetained(ReplayData& d,U32 id,UPtr owner) {
     if(d.retained>=kReplayRetained){ReplayFail("retainedCapacity",owner,d.retained+1u);return false;}
@@ -121,7 +171,7 @@ extern "C" __declspec(noinline) void __fastcall ReplayCapture(void* self,void*,v
     if(Read32(owner+8u)) {
         ReplayLock();ReplaySlot* s=ReplayFindSlot(owner,false);
         const bool ok=ReplaySlotOkay(s) && ReplayMirrorMatches(owner+0xCu,s->data);
-        if(ok)t->data=s->data;ReplayUnlock();
+        if(ok)ReplayCopy(t->data,s->data);ReplayUnlock();
         if(!ok){ReplayFinish(t);ReplayFail("captureCache",owner,0u);return;}InterlockedIncrement(&g_replayCached);
     }else if(!ReplayCollect(ReplaySpooler(),t->data)){ReplayFinish(t);return;}
     if(!ReplayValid(t->data)){ReplayFinish(t);ReplayFail("captureData",owner,0u);return;}
@@ -161,19 +211,40 @@ extern "C" __declspec(noinline) void __fastcall ReplayRestore(void* self,void*) 
 #if defined(DSF_REPLAY_HITCH_RUNTIME)
     RHScope timing(RHRestore,reinterpret_cast<UPtr>(self));
 #endif
-    const UPtr owner=reinterpret_cast<UPtr>(self);ReplayData d={};ReplayLock();ReplaySlot* s=ReplayFindSlot(owner,false);
-    const bool ok=ReplaySlotOkay(s) && ReplayMirrorMatches(owner+0xCu,s->data);if(ok)d=s->data;ReplayUnlock();
-    if(!ok){ReplayFail("restoreCache",owner,0u);return;}const UPtr spooler=ReplaySpooler();
+    const UPtr owner=reinterpret_cast<UPtr>(self);
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    ReplayTemp* saved=ReplayBegin(owner,6u);if(!saved)return;ReplayData& d=saved->data;
+#else
+    ReplayData d={};
+#endif
+    ReplayLock();ReplaySlot* s=ReplayFindSlot(owner,false);
+    const bool ok=ReplaySlotOkay(s) && ReplayMirrorMatches(owner+0xCu,s->data);if(ok)ReplayCopy(d,s->data);ReplayUnlock();
+    if(!ok){
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        ReplayFinish(saved);
+#endif
+        ReplayFail("restoreCache",owner,0u);return;}const UPtr spooler=ReplaySpooler();
     // Match native order: request traffic, enumerate current retained IDs,
     // release current references, restore recorded references, extra state.
-    ReplayTemp* scratch=ReplayBegin(owner,5u);if(!scratch)return;
+    ReplayTemp* scratch=ReplayBegin(owner,5u);if(!scratch){
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        ReplayFinish(saved);
+#endif
+        return;}
     if(d.count)ReplayRequest(spooler,d.ids,d.count);
-    if(!ReplayCollectRetained(spooler,scratch->data)){ReplayFinish(scratch);return;}
+    if(!ReplayCollectRetained(spooler,scratch->data)){ReplayFinish(scratch);
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        ReplayFinish(saved);
+#endif
+        return;}
     for(U32 i=0;i<scratch->data.retained;++i){const U32 id=scratch->data.pairs[i].id,n=ReplayRefs(spooler,id);for(U32 j=0;j<n;++j)ReplayReference(spooler,id,false);}
     ReplayFinish(scratch);
     for(U32 i=0;i<d.retained;++i)for(U32 j=0;j<d.pairs[i].refs;++j)ReplayReference(spooler,d.pairs[i].id,true);
     if(d.extra!=0xFFFFFFFFu)ReplayExtra(spooler,d.extra);
     Write32(owner+8u,2u);InterlockedIncrement(&g_replayRestores);ReplayEvent("restore",owner,d);
+#if defined(DSF_V29S_GENERIC_LIMITS)
+    ReplayFinish(saved);
+#endif
 }
 extern "C" __declspec(noinline) void __fastcall ReplayImport(void* self,void*,const void* input) {
 #if defined(DSF_REPLAY_HITCH_RUNTIME)
@@ -183,7 +254,7 @@ extern "C" __declspec(noinline) void __fastcall ReplayImport(void* self,void*,co
     t->data.extra=Read32(base+0x260u);
     if(!ReplayValid(t->data) || !ReplayMirrorMatches(base,t->data) || !Readable(owner,0x270u)){ReplayFail("importData",base,0u);return;}
     ReplayLock();ReplaySlot* s=ReplayFindSlot(owner,true);const bool okay=s && s->guardA==kReplayGuard && s->guardB==kReplayGuard;
-    if(okay){s->data=t->data;s->valid=1u;}ReplayUnlock();
+    if(okay){ReplayCopy(s->data,t->data);s->valid=1u;}ReplayUnlock();
     if(!okay){ReplayFail("cacheAllocationOrGuard",owner,0u);return;}
     ReplayMirror(owner+0xCu,t->data);ReplayPeak(t->data);ReplayEvent("import",owner,t->data);
     InterlockedIncrement(&g_replayImports);ReplayFinish(t);

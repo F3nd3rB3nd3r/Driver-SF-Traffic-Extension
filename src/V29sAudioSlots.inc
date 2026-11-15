@@ -11,7 +11,9 @@ static void AudioSlotsStartLine() {
     AppendText(p," reason=",end);AppendText(p,g_audioSlotsReason,end);
     DiagFAppendKeyU(p," patches=",g_audioSlotsPatched?1u:0u,end);
     DiagFAppendKeyU(p," hooks=",g_audioSlotsInstalled,end);
-    AppendText(p," expectedHooks=9 stockMax=255 testMax=2048 managers=2 globalLists=3 perRecordLimits=8,255 defaultBytes=67108864\n",end);
+    AppendText(p," expectedHooks=9 stockMax=255",end);DiagFAppendKeyU(p," testMax=",kAudioSlotsCount,end);
+    AppendText(p," managers=2 globalLists=3 perRecordLimits=8,255",end);DiagFAppendKeyU(p," defaultBytes=",kAudioDefaultTestBytes,end);
+    AppendText(p,"\n",end);
     *p=0;CapacityWrite(line);
 }
 static void AudioSlotsPoll() {

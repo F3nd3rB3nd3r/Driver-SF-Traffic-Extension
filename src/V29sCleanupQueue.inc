@@ -27,7 +27,12 @@ static void CleanupStartLine() {
     AppendText(p,"DSFV29s_CLEANUP_START revision=1 status=",end);AppendNumber(p,g_cleanupStatus,end);
     AppendText(p," reason=",end);AppendText(p,g_cleanupReason,end);
     DiagFAppendKeyU(p," hooks=",g_cleanupInstalled,end);DiagFAppendKeyHex(p," base=",g_cleanupBase,end);
+#if defined(DSF_V29S_WIDE_LIMITS)
+    AppendText(p," expectedHooks=6 stockCapacity=32768",end);DiagFAppendKeyU(p," testCapacity=",kCleanupCapacity,end);DiagFAppendKeyU(p," storageBytes=",kCleanupCapacity*4u+32u,end);
+    AppendText(p," nativeCountPreserved=1 nativeOrderPreserved=1 activeMigration=0\n",end);*p=0;CapacityWrite(line);
+#else
     AppendText(p," expectedHooks=6 stockCapacity=32768 testCapacity=262144 storageBytes=1048608 nativeCountPreserved=1 nativeOrderPreserved=1 activeMigration=0\n",end);*p=0;CapacityWrite(line);
+#endif
 }
 static void CleanupPoll() {
     if(g_cleanupStatus!=1)return;static U32 last=0;const U32 now=GetTickCount()-g_capacityStart;if(last && now-last<1000u)return;last=now;

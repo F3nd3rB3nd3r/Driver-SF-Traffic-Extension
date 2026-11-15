@@ -1,22 +1,60 @@
 //192 external nodes, retaining the native provider/sentinel/default layout.
-static const U32 kAudioModelCapacity=192u,kAudioModelInstances=8u,kAudioModelNodeBytes=16u;
-static const U32 kAudioModelStride=193u*16u,kAudioModelGuard=0x4D313932u;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#define kAudioModelCapacity (g_limits.audioModels)
+#define kAudioModelStride ((g_limits.audioModels+1u)*16u)
+#else
+static const U32 kAudioModelCapacity=192u,kAudioModelStride=193u*16u;
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+static const U32 kAudioModelNodeBytes=16u,kAudioModelGuard=0x4D313932u;
+#define kAudioModelInstances (g_audioModelInstances.count)
+#else
+static const U32 kAudioModelInstances=8u,kAudioModelNodeBytes=16u,kAudioModelGuard=0x4D313932u;
+#endif
 static UPtr g_audioModelStorage=0;
 struct AudioModelInstance {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    UPtr storage;
+#endif
     volatile long owner,state,generations,attempts,stores,full,wouldStockFull,removes,hits,misses,peak,current;
 };
 struct AudioModelKey {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    AudioModelKey* hashNext;U32 reportedVersion;
+#endif
     volatile long key,attempts,stores,full,wouldStockFull,removes,hits,misses,fallbackHit,fallbackMiss;
     volatile long setup,disabled,bankReady,bankNotReady,setupOk,setupFail,lastProfile,lastSelected;
 };
 struct AudioModelDetail { volatile long ready;U32 tick,kind,owner,model,a,b,c,d; };
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(AudioModelInstance& r){r.storage=reinterpret_cast<UPtr>(WideAllocate(kAudioModelStride));for(U32 n=0;n<4u;++n)*reinterpret_cast<U32*>(r.storage+kAudioModelCapacity*16u+n*4u)=kAudioModelGuard;}
+static WideDirectory<AudioModelInstance> g_audioModelInstances={};
+static volatile long g_wideAudioInstanceLock=0;
+#else
 static AudioModelInstance g_audioModelInstances[8]={};
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+static void WideInitialize(AudioModelKey&){}
+static WideDirectory<AudioModelKey> g_audioModelKeys={};
+static AudioModelKey g_audioModelZeroKey={};
+static AudioModelKey** g_wideAudioBuckets=nullptr;
+static volatile long g_wideAudioKeyLock=0;
+#else
 static AudioModelKey g_audioModelKeys[512]={},g_audioModelZeroKey={};
+#endif
 static AudioModelDetail g_audioModelDetails[7][256]={};
 static const U32 kAudioModelBounds[7]={256u,256u,64u,128u,128u,128u,128u};
 static volatile long g_audioModelDetailCounts[7]={},g_audioModelCalls[8]={};
 static volatile long g_audioModelInvalid=0,g_audioModelInstanceOverflow=0,g_audioModelKeyOverflow=0;
 static volatile long g_audioModelAttachments=0,g_audioModelAttachRefused=0,g_audioModelFallbackHit=0,g_audioModelFallbackMiss=0;
+#if defined(DSF_V29S_WIDE_LIMITS)
+static AudioModelKey* AudioModelFindKey(U32 key){
+    if(!key)return &g_audioModelZeroKey;while(InterlockedExchange(&g_wideAudioKeyLock,1)){}
+    const U32 bucket=key&65535u;AudioModelKey* p=g_wideAudioBuckets[bucket];while(p && static_cast<U32>(p->key)!=key)p=p->hashNext;
+    if(!p){p=&g_audioModelKeys.Append();p->key=static_cast<long>(key);p->hashNext=g_wideAudioBuckets[bucket];g_wideAudioBuckets[bucket]=p;}
+    InterlockedExchange(&g_wideAudioKeyLock,0);return p;
+}
+#else
 static AudioModelKey* AudioModelFindKey(U32 key) {
     if(!key)return &g_audioModelZeroKey;
     for(U32 n=0;n<512u;++n) {
@@ -27,6 +65,15 @@ static AudioModelKey* AudioModelFindKey(U32 key) {
     }
     InterlockedIncrement(&g_audioModelKeyOverflow);return nullptr;
 }
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+static AudioModelInstance* AudioModelFindInstance(UPtr owner,bool create){
+    while(InterlockedExchange(&g_wideAudioInstanceLock,1)){}AudioModelInstance* result=nullptr;
+    for(auto& r:g_audioModelInstances)if(static_cast<UPtr>(r.owner)==owner){result=&r;break;}
+    if(!result && create){result=&g_audioModelInstances.Append();result->owner=static_cast<long>(owner);}
+    InterlockedExchange(&g_wideAudioInstanceLock,0);return result;
+}
+#else
 static AudioModelInstance* AudioModelFindInstance(UPtr owner,bool create) {
     for(U32 i=0;i<8u;++i) {
         AudioModelInstance& r=g_audioModelInstances[i];long seen=InterlockedCompareExchange(&r.owner,0,0);
@@ -35,9 +82,14 @@ static AudioModelInstance* AudioModelFindInstance(UPtr owner,bool create) {
     }
     if(create)InterlockedIncrement(&g_audioModelInstanceOverflow);return nullptr;
 }
+#endif
+#if defined(DSF_V29S_WIDE_LIMITS)
+static UPtr AudioModelBuffer(const AudioModelInstance* r){return r->storage;}
+#else
 static UPtr AudioModelBuffer(const AudioModelInstance* r) {
     return g_audioModelStorage+static_cast<U32>(r-g_audioModelInstances)*kAudioModelStride;
 }
+#endif
 static void AudioModelRecord(U32 kind,UPtr owner,U32 model,U32 a,U32 b,U32 c=0u,U32 d=0u) {
     const long n=InterlockedIncrement(&g_audioModelDetailCounts[kind]);
     if(n<=0 || static_cast<U32>(n)>kAudioModelBounds[kind])return;
@@ -57,12 +109,12 @@ static U32 AudioModelPrepare(AudioModelInstance* r,UPtr owner) {
         Write32(owner+4u,AudioModelBuffer(r));
         InterlockedIncrement(&r->generations);InterlockedExchange(&r->state,1);
         InterlockedIncrement(&g_audioModelAttachments);
-        AudioModelRecord(2u,owner,0u,192u,AudioModelBuffer(r),Read32(owner+0x2ECu));
+        AudioModelRecord(2u,owner,0u,kAudioModelCapacity,AudioModelBuffer(r),Read32(owner+0x2ECu));
     } else if(!r->state) {
         InterlockedExchange(&r->state,-1);InterlockedIncrement(&g_audioModelAttachRefused);
         AudioModelRecord(2u,owner,0u,45u,Read32(owner+4u),Read32(owner+12u));
     }
-    return r->state==1?192u:45u;
+    return r->state==1?kAudioModelCapacity:45u;
 }
 static U32 AudioModelCompareFlags(U32 count,U32 cap,U32 previous) {
     U32 flags=0;
@@ -82,11 +134,11 @@ static U32 AudioModelTestFlags(U32 value,U32 previous) {
 }
 static void AudioModelObserve(AudioModelInstance* r,UPtr owner,U32 count) {
     if(!r)return;InterlockedExchange(&r->current,static_cast<long>(count));CapacityMax(r->peak,count);
-    if(count>(r->state==1?192u:45u))InterlockedIncrement(&g_audioModelInvalid);
+    if(count>(r->state==1?kAudioModelCapacity:45u))InterlockedIncrement(&g_audioModelInvalid);
     if(r->state==1) {
         const U32 cursor=Read32(owner+4u),base=AudioModelBuffer(r);
-        if(cursor<base || cursor>base+192u*16u || ((cursor-base)&15u))InterlockedIncrement(&g_audioModelInvalid);
-        for(U32 i=0;i<4u;++i)if(Read32(base+192u*16u+i*4u)!=kAudioModelGuard)InterlockedIncrement(&g_audioModelInvalid);
+        if(cursor<base || cursor>base+kAudioModelCapacity*16u || ((cursor-base)&15u))InterlockedIncrement(&g_audioModelInvalid);
+        for(U32 i=0;i<4u;++i)if(Read32(base+kAudioModelCapacity*16u+i*4u)!=kAudioModelGuard)InterlockedIncrement(&g_audioModelInvalid);
     }
 }
 extern "C" __declspec(noinline) void __cdecl AudioModelEntry(U32 kind,U32* frame) {
@@ -111,7 +163,7 @@ extern "C" __declspec(noinline) void __cdecl AudioModelEntry(U32 kind,U32* frame
         for(U32 i=0;i<8u;++i) {
             AudioModelInstance& s=g_audioModelInstances[i];if(!s.owner)continue;
             const U32 base=s.state==1?AudioModelBuffer(&s):static_cast<U32>(s.owner)+0x10u;
-            const U32 cap=s.state==1?192u:45u;
+            const U32 cap=s.state==1?kAudioModelCapacity:45u;
             if(value>=base+12u && value<base+cap*16u && ((value-base)&15u)==12u){r=&s;break;}
         }
         if(!r){InterlockedIncrement(&g_audioModelInvalid);return;}
@@ -119,7 +171,7 @@ extern "C" __declspec(noinline) void __cdecl AudioModelEntry(U32 kind,U32* frame
         if(Read32(value-4u)!=model)InterlockedIncrement(&g_audioModelInvalid);
         InterlockedIncrement(&r->stores);AudioModelObserve(r,owner,count);
         AudioModelKey* k=AudioModelFindKey(model);if(k)InterlockedIncrement(&k->stores);
-        AudioModelRecord(1u,owner,model,data,count,r->state==1?192u:45u);return;
+        AudioModelRecord(1u,owner,model,data,count,r->state==1?kAudioModelCapacity:45u);return;
     }
     if(kind==2u) {
         const UPtr owner=Read32(f+4u)-4u,node=Read32(f+28u);const U32 model=Read32(node+8u),count=Read32(owner+12u);

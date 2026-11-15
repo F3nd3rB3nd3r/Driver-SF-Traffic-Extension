@@ -19,7 +19,13 @@ static long g_capacityHooks=0;
 static HANDLE g_capacityFile=nullptr;
 static U32 g_capacityStart=0,g_capacityFileStatus=0;
 
+#if defined(DSF_V29S_WIDE_LIMITS)
+#include "V29sWideTelemetry.inc"
+#endif
 static void CapacityWrite(const char* line) {
+#if defined(DSF_V29S_WIDE_LIMITS)
+    char startup[2400]={};line=WideStartupLine(line,startup,sizeof(startup));
+#endif
     if(g_capacityFile) {
         U32 written=0;
         const U32 length=DiagLength(line);
@@ -43,7 +49,17 @@ static void CapacityOpen() {
 #if defined(DSF_V29S_REPLAY_PAUSE)
 #if defined(DSF_V29S_REGMAP_REUSE)
 #if defined(DSF_V29S_REPLAY_READ1M)
+#if defined(DSF_V29S_GENERIC_LIMITS)
+#if defined(DSF_V29S_WIDE_LIMITS)
+    AppendText(p,"DSFV29s_usercap_r3_",end);
+#else
+    AppendText(p,"DSFV29s_generic_limits_",end);
+#endif
+#elif defined(DSF_V29S_TRAFFIC_POLICY)
+    AppendText(p,"DSFV29s_traffic_policy_",end);
+#else
     AppendText(p,"DSFV29s_replay_read1m_",end);
+#endif
 #elif defined(DSF_V29S_REPLAY_CLIENT)
     AppendText(p,"DSFV29s_replay_client_",end);
 #elif defined(DSF_V29S_REPLAY_HITCH)

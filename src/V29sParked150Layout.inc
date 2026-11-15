@@ -30,8 +30,14 @@ static void ParkFillImage(UPtr output,UPtr logical,UPtr root,UPtr probe,UPtr fac
     UPtr clone,UPtr describe,UPtr append,UPtr guard,bool expanded) {
     for(U32 i=0;i<0x400u;++i)*reinterpret_cast<U8*>(output+i)=0u;
     for(U32 i=0;i<sizeof(kParkBuildNative);++i)*reinterpret_cast<U8*>(output+i)=kParkBuildNative[i];
-    if(expanded)for(U32 i=0;i<sizeof(kParkOperands)/sizeof(kParkOperands[0]);++i)
-        Write32(output+kParkOperands[i].offset,kParkOperands[i].replacement);
+    if(expanded)for(U32 i=0;i<sizeof(kParkOperands)/sizeof(kParkOperands[0]);++i){
+        U32 value=kParkOperands[i].replacement;
+#if defined(DSF_V29S_GENERIC_LIMITS)
+        value=(i==0u || i==8u)?GenericParkFrame():(i==1u || i==4u)?0x288u+GenericRequestStorage()*4u:
+            (i==5u || i==6u)?GenericRequestStorage()*4u:GenericParkStride();
+#endif
+        Write32(output+kParkOperands[i].offset,value);
+    }
     const UPtr targets[]={probe,factory,clone,factory,describe,append};
     for(U32 i=0;i<6u;++i)Write32(output+kParkCalls[i][0]+1u,targets[i]-(logical+kParkCalls[i][0]+5u));
     for(U32 i=0;i<2u;++i)Write32(output+kParkRoots[i],root);

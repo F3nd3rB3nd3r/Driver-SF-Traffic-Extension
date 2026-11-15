@@ -1,7 +1,7 @@
 static const char* ChapterReasonName(ChapterReason reason) {
     static const char* names[]={"expanded","otherCaller","empty","contextUnavailable","unknownProfile",
-        "nativeProfile","ownerMismatch","sourceMismatch","assetMismatch","graphicsNotReady","admissionMismatch"};
-    return reason<=ChapterAdmission?names[reason]:"invalidReason";
+        "nativeProfile","ownerMismatch","sourceMismatch","assetMismatch","graphicsNotReady","admissionMismatch","nativeRoster"};
+    return reason<=ChapterNative?names[reason]:"invalidReason";
 }
 static void ChapterEvent(ChapterReason reason,UPtr caller,UPtr owner,U32 hash,U32 frequency,int nativeCount,U32 profile) {
     // Low-frequency request boundary only. Bound benign non-setter diagnostics.
@@ -18,8 +18,20 @@ static void ChapterEvent(ChapterReason reason,UPtr caller,UPtr owner,U32 hash,U3
 static void ChapterStartLine() {
     char line[650]={};char* p=line;const char* end=line+sizeof(line)-1;
     AppendText(p,"DSFV29s_CHAPTER_START revision=1 status=",end);AppendNumber(p,g_chapterStatus,end);
-    AppendText(p," setterCall=0076FE95 callerReturn=0076FE9A profiles=80 expandedProfiles=55 namedProfiles=51 unnamedProfiles=4 requests=150 graphics=160 newNativeHooks=0 policy=canonicalListAndUniform150 assetCheckedOnRequest=1\n",end);
+    AppendText(p," setterCall=0076FE95 callerReturn=0076FE9A profiles=80 expandedProfiles=55 namedProfiles=51 unnamedProfiles=4 requests=150 graphics=160 newNativeHooks=0",end);
+#if defined(DSF_V29S_TRAFFIC_POLICY)
+    AppendText(p," policy=",end);AppendText(p,TrafficModeName(),end);
+    AppendText(p,g_trafficPolicy.mode==TrafficPreset150?" assetCheckedOnRequest=1\n":" assetCheckedOnRequest=0\n",end);
+#else
+    AppendText(p," policy=canonicalListAndUniform150 assetCheckedOnRequest=1\n",end);
+#endif
     *p=0;CapacityWrite(line);
+#if defined(DSF_V29S_TRAFFIC_POLICY)
+    p=line;AppendText(p,"DSFV29s_TRAFFIC_POLICY_START revision=1 mode=",end);AppendText(p,TrafficModeName(),end);
+    AppendText(p," reason=",end);AppendText(p,g_trafficPolicy.reason,end);
+    AppendText(p," file=DriverSF_Traffic.ini location=asiDirectory requestCapacity=150 graphics=160 capacityChanges=0 liveReload=0\n",end);
+    *p=0;CapacityWrite(line);
+#endif
 }
 static void ChapterPoll() {
     static U32 last=0;const U32 now=GetTickCount()-g_capacityStart;
@@ -32,6 +44,7 @@ static void ChapterPoll() {
     DiagFAppendKeyU(p," empty=",static_cast<U32>(g_chapterEmpty),end);
     DiagFAppendKeyU(p," unknown=",static_cast<U32>(g_chapterUnknown),end);
     DiagFAppendKeyU(p," nativeProfile=",static_cast<U32>(g_chapterExcluded),end);
+    DiagFAppendKeyU(p," nativeRoster=",static_cast<U32>(g_chapterNative),end);
     DiagFAppendKeyU(p," refused=",static_cast<U32>(g_chapterRefused),end);
     AppendText(p,"\n",end);*p=0;CapacityWrite(line);
     static U32 printed[80]={};
