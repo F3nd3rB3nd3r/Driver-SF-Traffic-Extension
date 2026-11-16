@@ -248,6 +248,9 @@ static void FullStartup(){
     g_capacityHooks=CapacityInstall()?3:-1;CHECK(g_capacityHooks==3 && IndexedInstall());IndexedStartLine();
 #if defined(DSF_V29S_STREAM_HANDLERS)
     CHECK(StreamInstall());
+#if defined(DSF_V29S_MANAGER_KEYS)
+    CHECK(ManagerKeyInstall());
+#endif
 #endif
 #if defined(DSF_V29S_TRAFFIC_QUEUES)
     CapacityStartLine();

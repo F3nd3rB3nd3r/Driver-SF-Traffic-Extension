@@ -1,16 +1,16 @@
-"""Check USER CAP R7 PE/defaults/fixtures and preserve the exact R1 fallback."""
+"""Check USER CAP R8 PE/defaults/fixtures and preserve the exact R1 fallback."""
 import hashlib,json,re,struct,subprocess,xml.etree.ElementTree as ET
 from pathlib import Path
 from static_streaming_audit import PE,DUMPBIN,EXE
 from analyze_generic_limits_log import analyze
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'analysis/wide_limits_r7_2026-11-15'
-ASI=ROOT/'build/v29s_usercap_r7/DriverSF_Unlimiter_USERCAP_R7.asi'
+OUT=ROOT/'analysis/wide_limits_r8_2026-11-16'
+ASI=ROOT/'build/v29s_usercap_r8/DriverSF_Unlimiter_USERCAP_R8.asi'
 def digest(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
     fixture=json.loads((OUT/'fixture_manifest.json').read_text())
     for name,value in fixture['dependencies'].items():assert digest(ROOT/name)==value,('stale fixture',name)
-    assert digest(ROOT/'build/wide_limits_r7_fixtures/wide.exe')==fixture['fixture_sha256']
+    assert digest(ROOT/'build/wide_limits_r8_fixtures/wide.exe')==fixture['fixture_sha256']
     runs=json.loads((OUT/'fixtures.json').read_text());assert len(runs)==19
     assert all(r['exit']==(0x29F3 if r.get('mode') in ('collection-full','allocation-failure','byte-overflow','completed-full','completed-misaligned','completed-foreign') else 0) for r in runs)
     baseline=ROOT/'analysis/wide_limits_r2_2026-11-15/baseline';manifest=json.loads((baseline/'manifest.json').read_text())

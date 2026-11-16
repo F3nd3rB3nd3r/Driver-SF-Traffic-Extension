@@ -53,7 +53,7 @@ static void CapacityOpen() {
 #if defined(DSF_V29S_WIDE_LIMITS)
 #if defined(DSF_V29S_TRAFFIC_QUEUES)
 #if defined(DSF_V29S_STREAM_HANDLERS)
-    AppendText(p,"DSFV29s_usercap_r7_",end);
+    AppendText(p,"DSFV29s_usercap_r8_",end);
 #else
     AppendText(p,"DSFV29s_usercap_r4_",end);
 #endif
@@ -162,6 +162,9 @@ static void CapacityMax(volatile long& destination,U32 value) {
 #include "V29sTrafficQueuesRuntime.inc"
 #endif
 #if defined(DSF_V29S_STREAM_HANDLERS)
+#if defined(DSF_V29S_MANAGER_KEYS)
+#include "V29sManagerKeys.inc"
+#endif
 #include "V29sStreamHandlers.inc"
 #endif
 static void CapacityFirstLine(U32 kind) {
@@ -424,6 +427,9 @@ static void CapacityPoll() {
     TrafficQueuesLog(false,tick);
 #if defined(DSF_V29S_STREAM_HANDLERS)
     StreamLog(false,tick);
+#if defined(DSF_V29S_MANAGER_KEYS)
+    ManagerKeyLog(false,tick);
+#endif
 #endif
 #endif
     for(U32 i=0u;i<4u;++i) {
@@ -466,6 +472,9 @@ static void CapacityStartLine() {
     TrafficQueuesLog(true,0u);
 #if defined(DSF_V29S_STREAM_HANDLERS)
     StreamLog(true,0u);
+#if defined(DSF_V29S_MANAGER_KEYS)
+    ManagerKeyLog(true,0u);
+#endif
 #endif
 #else
     CapacityWrite("DSFV29s_CAP_SCOPE peaksAfterInsert=projected nativeHandleExhaustion=sampled flagsAndReturnValues=preserved boundaryWrites=notPrevented noREADYorDrawableInference=1\n");

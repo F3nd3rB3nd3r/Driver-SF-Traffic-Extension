@@ -1,11 +1,11 @@
-"""Offline R7 traffic queue/native-boundary regression; never starts the game."""
+"""Offline R8 traffic queue/native-boundary regression; never starts the game."""
 import hashlib,json,re,subprocess,xml.etree.ElementTree as ET
 from pathlib import Path
 from static_streaming_audit import DUMPBIN,PE,EXE
 from verify_replay_read1m import sdk_lib
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'analysis/traffic_queues_r7_2026-11-15'
-BUILD=ROOT/'build/traffic_queues_r7_fixtures'
+OUT=ROOT/'analysis/traffic_queues_r8_2026-11-16'
+BUILD=ROOT/'build/traffic_queues_r8_fixtures'
 
 def main():
     OUT.mkdir(exist_ok=True);BUILD.mkdir(exist_ok=True)

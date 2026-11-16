@@ -3569,6 +3569,9 @@ extern "C" __declspec(dllexport) BOOL __stdcall DllMain(HMODULE module, DWORD re
             if(g_capacityHooks!=3)WideAllocationFailure("Unlimiter: traffic queue hooks unavailable; refusing unprotected startup.\n");
 #if defined(DSF_V29S_STREAM_HANDLERS)
             if(!StreamInstall()){StreamLog(true,0u);WideAllocationFailure("Unlimiter: streaming handler hooks unavailable; refusing unprotected startup.\n");}
+#if defined(DSF_V29S_MANAGER_KEYS)
+            if(!ManagerKeyInstall()){ManagerKeyLog(true,0u);WideAllocationFailure("Unlimiter: manager key-list hooks unavailable; refusing unprotected startup.\n");}
+#endif
 #endif
 #endif
 #if defined(DSF_V29S_INDEXED_262144)

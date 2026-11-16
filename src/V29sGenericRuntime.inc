@@ -18,6 +18,9 @@ static void GenericConfigLine(){
     for(U32 i=0;i<8u;++i)DiagFAppendKeyU(p,more[i],sizes[i],end);
 #if defined(DSF_V29S_STREAM_HANDLERS)
     DiagFAppendKeyU(p," streamingHandlers=",StreamCapacity(),end);
+#if defined(DSF_V29S_MANAGER_KEYS)
+    DiagFAppendKeyU(p," managerKeyEntries=",ManagerKeyCapacity(),end);
+#endif
 #endif
     AppendText(p," userCapacities=1 testedDefaultRequests=150 higherConfigurationsUntested=1 compiledCarLists=0 liveReload=0 file=DriverSF_Unlimiter.ini location=asiDirectory\n",end);
 #else

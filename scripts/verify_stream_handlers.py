@@ -1,11 +1,11 @@
-"""Offline R7 streaming-handler and coupled scheduler regression; never starts the game."""
+"""Offline R8 streaming-handler and coupled scheduler regression; never starts the game."""
 import hashlib,json,re,subprocess,xml.etree.ElementTree as ET
 from pathlib import Path
 from static_streaming_audit import DUMPBIN,PE,EXE
 from verify_replay_read1m import sdk_lib
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'analysis/stream_handlers_r7_2026-11-15'
-BUILD=ROOT/'build/stream_handlers_r7_fixtures'
+OUT=ROOT/'analysis/stream_handlers_r8_2026-11-16'
+BUILD=ROOT/'build/stream_handlers_r8_fixtures'
 
 def main():
     OUT.mkdir(exist_ok=True);BUILD.mkdir(exist_ok=True)

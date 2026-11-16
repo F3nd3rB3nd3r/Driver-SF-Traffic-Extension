@@ -1,11 +1,11 @@
-"""R7 isolated retail mission admission regression. Never launches the game."""
+"""R8 isolated retail mission admission regression. Never launches the game."""
 import hashlib,json,re,subprocess,xml.etree.ElementTree as ET
 from pathlib import Path
 from static_streaming_audit import DUMPBIN,EXE,PE
 from verify_replay_read1m import sdk_lib
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'analysis/mission_capacity_r7_2026-11-15'
-BUILD=ROOT/'build/mission_capacity_r7_fixtures'
+OUT=ROOT/'analysis/mission_capacity_r8_2026-11-16'
+BUILD=ROOT/'build/mission_capacity_r8_fixtures'
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     BUILD.mkdir(exist_ok=True);OUT.mkdir(exist_ok=True)

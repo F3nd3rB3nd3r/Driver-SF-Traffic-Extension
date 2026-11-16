@@ -1,7 +1,8 @@
-# Current USER CAP R7 checks
+# Current USER CAP R8 checks
 
 `verify_mission_capacity.py`, `verify_wide_limits.py`,
-`verify_traffic_queues.py` and `verify_stream_handlers.py` exercise 46 expected
+`verify_traffic_queues.py`, `verify_stream_handlers.py` and `verify_manager_keys.py`
+exercise 56 expected
 offline outcomes using fixture-owned state and copied retail native routines.
 They never invoke the game entry point. Their matching `*_build.py` scripts
 verify the compiled ASI, fixture/source hashes, signatures, startup records and
@@ -12,8 +13,9 @@ historical local artifacts named by inherited fallback-preservation checks.
 The repository publication omits full user logs/dumps, backup archives and
 generated asset/build fixtures; restore those prerequisites separately when
 reproducing the complete local verification chain. `analyze_generic_limits_log.py`
-validates a supplied R7 log against recorded INI capacities, including the
-full-width capacity query. An integrity pass is not a rendering/audio guarantee.
+validates a supplied R8 log against recorded INI capacities, including the
+full-width capacity query and manager-key storage. R7 and older log schemas
+remain supported. An integrity pass is not a rendering/audio guarantee.
 
 The entries below describe earlier checks and their original scope.
 

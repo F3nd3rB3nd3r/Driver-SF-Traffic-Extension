@@ -1,17 +1,17 @@
-"""Pin the R7 production ASI to the native queue fixtures and inspect its bridges."""
+"""Pin the R8 production ASI to the native queue fixtures and inspect its bridges."""
 import hashlib,json,re,struct
 from pathlib import Path
 from static_streaming_audit import PE
 from compare_audio_slots_logs import rows
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'analysis/traffic_queues_r7_2026-11-15'
-ASI=ROOT/'build/v29s_usercap_r7/DriverSF_Unlimiter_USERCAP_R7.asi'
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'analysis/traffic_queues_r8_2026-11-16'
+ASI=ROOT/'build/v29s_usercap_r8/DriverSF_Unlimiter_USERCAP_R8.asi'
 
 def main():
     f=json.loads((OUT/'fixture_manifest.json').read_text())
     assert f['result']=='passed' and f['processes']==6
     for name,digest in f['dependencies'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest,('stale fixture',name)
-    assert hashlib.sha256((ROOT/'build/traffic_queues_r7_fixtures/traffic.exe').read_bytes()).hexdigest()==f['fixture_sha256']
-    parent=json.loads((ROOT/'analysis/wide_limits_r7_2026-11-15/build_verification.json').read_text())
+    assert hashlib.sha256((ROOT/'build/traffic_queues_r8_fixtures/traffic.exe').read_bytes()).hexdigest()==f['fixture_sha256']
+    parent=json.loads((ROOT/'analysis/wide_limits_r8_2026-11-16/build_verification.json').read_text())
     digest=hashlib.sha256(ASI.read_bytes()).hexdigest();assert parent['result']=='passed' and parent['sha256']==digest
     pe=PE(ASI)
     symbols={m[1]:int(m[2],16) for line in ASI.with_suffix('.map').read_text().splitlines() if (m:=re.match(r'\s+\w{4}:\w{8}\s+(\S+)\s+([0-9A-Fa-f]{8})',line))}
@@ -37,11 +37,11 @@ def main():
         if name=='Traffic':
             for caller in (0x5A68A7,0x5A7E3D,0x5A7E6D):assert struct.pack('<I',caller) in code
         hooks.append(dict(bridge=name,preserve_fx=True,helper_guard_reachable=True,existing_trampoline=index))
-    for marker in [b'DSFV29s_usercap_r7_',b'DSFV29s_TRAFFIC_QUEUE_START',b'DSFV29s_TRAFFIC_QUEUE_FATAL',b'coldReset=newGeneration',b'headerUnreadable',b'arenaGuard',b'configuredCapacity',b'Unlimiter: traffic queue hooks unavailable']:
+    for marker in [b'DSFV29s_usercap_r8_',b'DSFV29s_TRAFFIC_QUEUE_START',b'DSFV29s_TRAFFIC_QUEUE_FATAL',b'coldReset=newGeneration',b'headerUnreadable',b'arenaGuard',b'configuredCapacity',b'Unlimiter: traffic queue hooks unavailable']:
         assert marker in pe.data,marker
     startups=[]
     for label in ['150','700','1000','customized']:
-        records=rows(ROOT/'analysis/wide_limits_r7_2026-11-15'/('startup_'+label+'.log'))
+        records=rows(ROOT/'analysis/wide_limits_r8_2026-11-16'/('startup_'+label+'.log'))
         cfg=next(r for r in records if r['type']=='DSFV29s_GENERIC_START');expected=max(512,int(cfg['modelSlots'])+int(cfg['retainedReferences']))
         queues=[r for r in records if r['type']=='DSFV29s_TRAFFIC_QUEUE_START']
         assert len(queues)==3 and {r['queue'] for r in queues}=={'retireIds','retainedVehicles','vehicleOperations'}

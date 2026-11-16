@@ -4,32 +4,39 @@ This is an AI generated repository with the intention of extending Driver: San F
 
 Read [START_HERE.md](START_HERE.md), then [NEXT_ACTION.md](NEXT_ACTION.md).
 
-The current tested candidate is **USER CAP R7** in
-[dist/USERCAP_R7](dist/USERCAP_R7/R7_TEST.md). It includes the traffic replacement
-queue, streaming-handler/scheduler and full-width mission-capacity corrections
-needed by the tested 280-car configuration. The active project builds Release/Win32
-to `build/v29s_usercap_r7/`.
+The current tested candidate is **USER CAP R8** in
+[dist/USERCAP_R8](dist/USERCAP_R8/R8_TEST.md). It adds configuration-sized backing
+and integrity checks for fourteen native manager key/refcount lists, fixing the
+Getaway Activity 1 exit freeze found in R7. It retains the earlier traffic queue,
+streaming-handler/scheduler and full-width mission-capacity corrections.
+The active project builds Release/Win32 to `build/v29s_usercap_r8/`.
 
-The compiled defaults remain 150 requests / 160 model slots. The included R7 INI
+The compiled defaults remain 150 requests / 160 model slots. The included R8 INI
 is the tested **280-request / 290-model** example, with 384 audio models,
 4096 global audio entries, 128 MiB shared audio, a 2 MiB replay reader,
 512 retained references and 180000 extra hash nodes. Enable exactly one traffic
 ASI and use installed assets and AI weights appropriate for your chosen roster.
 
-All 46 expected offline fixture outcomes pass. Live tests cover Story loading,
-a speed-trap activity, pursuits, main-menu/Story/Replay changes, two uninterrupted
-replay viewings and normal exit. [Run 11636](analysis/USERCAP_R7_RUN11636_RESULTS_2026-11-15.md)
-passes all 42 logged checks, including 704 successful audio setups with no
-failures. [Run 21688](analysis/USERCAP_R7_RUN21688_RESULTS_2026-11-15.md) also
-worked in gameplay but recorded transient audio setup failures during a traffic
-change; they recovered and did not recur in 11636. These results validate the
-tested workload, not every chapter/activity, larger rosters or indefinite reuse.
-See the [R7 implementation report](analysis/USERCAP_R7_MISSION_CAPACITY_FIX_2026-11-15.md).
+All 56 expected offline outcomes pass. In the 52-minute
+[R8 run 18736](analysis/USERCAP_R8_RUN18736_RESULTS_2026-11-16.md), the previously
+freezing Getaway exit succeeded, all 22 traffic phases reached native READY,
+and the user reported no FPS, audio or rendering issues. The new key-list
+backing was exercised beyond the old 256 entries, peaking at 280 of 802 per list
+without integrity failures. The strict analyzer passes 43 of 44 checks: it
+records 450 audio setup failures, with later successful setup for every affected
+model and no reported audible issue. Their underlying cause remains unclassified.
+
+R8 Story/menu/Replay validation remains open. Earlier
+[R7 run 11636](analysis/USERCAP_R7_RUN11636_RESULTS_2026-11-15.md) covered smooth
+replay and lifecycle changes in R7, before the Getaway-specific failure was found.
+These results retain their exact workload/version scope; they do not validate
+every chapter/activity, larger rosters or indefinite reuse. See the
+[R8 implementation report](analysis/USERCAP_R8_MANAGER_KEY_FIX_2026-11-16.md).
 
 Traffic selection follows the active AI data (`AssetWeights`) or native request
 lists (`Native`), with no compiled car/chapter roster. A larger capacity does not
 supply missing assets, change probabilities or prove sufficient shared budgets.
-R7 has live coverage with the supplied 280-car configuration. Larger asset
+R8 has live Story/activity coverage with the supplied 280-car configuration. Larger asset
 rosters and other capacities still need separate live validation. Entry capacities
 and MiB budgets represent different resources; there is no universal MiB-per-car
 conversion. Missing vehicle assets cannot be fixed by raising limits.
@@ -55,9 +62,9 @@ The supplied [INI](dist/MAIN_150/DriverSF_Traffic.ini) is ignored by older ASIs.
 The latest live-tested baseline is **REPLAY_READ1M_R1**, retaining REGMAP_REUSE_R2 fixes and traffic capacities. It gives file replay readers separate 1 MiB backing and adds targeted refill counters alongside the narrow client probe. Offline checks and [the first live run10556](analysis/REPLAY_READ1M_RUN10556_RESULTS_2026-11-14.md) pass: the earlier client3 waits are absent across two full viewings, and the user reports normal exit. Broader validation remains open. See [the test guide](dist/MAIN_150/REPLAY_READ1M_R1_TEST_2026-11-14.md). The active `DriverSF_V29s_NATIVE_TRACE.slnx` contains only `DriverSF_V29s_ARENA_REUSE.vcxproj`, Release / Win32.
 
 - `src/`: preserved production source and shared conditional implementation.
-- `dist/USERCAP_R7/`: current ASI, INI, validation notes and SHA256 manifest.
+- `dist/USERCAP_R8/`: current ASI, INI, validation notes and SHA256 manifest.
 - `dist/MAIN_150/`: historical candidates and local test inputs.
-- `build/v29s_usercap_r7/`: active candidate output; previous outputs remain preserved locally.
+- `build/v29s_usercap_r8/`: active candidate output; previous outputs remain preserved locally.
 - `analysis/`: current reports plus explicitly retained verification prerequisites; see its README.
 - `scripts/` and `tests/`: current entry points and inherited checks; see their READMEs.
 - `archive/retired_2026-11-06/`: retired projects, tests, ASIs, logs, reports and deferred Forza files, with a SHA256/path manifest.

@@ -1,4 +1,57 @@
-## Current R7 run11636:280-car Replay/Story/menu lifecycle verified in this run
+## Current R8 run18736: Getaway1 fixed in52-minute Story test; Replay next
+
+Read `analysis/USERCAP_R8_RUN18736_RESULTS_2026-11-16.md`.
+User confirms formerly frozen Getaway1 exit worked, no FPS/audio/rendering
+issues, Story-only session.22 accepted phases including eleven280 phases all
+native READY. Key peak280/802, buffer1/redirection1, generation3/destruction2,
+failures0/guardBad0. Native256 threshold actually crossed. Hash55377/180000,
+dispatch290/802, audio registry283/384. No fatal/capacity/queue failures.
+Analyzer passes43/44: audio_setup fails450 times; all43 affected models later
+successfully set up. Most failures near transitions, two clusters during280
+phase; native cause unclassified, no user audible issue. Not a clean44/44 pass.
+R8 Replay unexercised (reader constructs0), normal exit not separately specified.
+Keep R8/current INI/AI; no new build or capacity increase indicated. Next useful
+validation: R8 Story/menu/Replay lifecycle and normal quit. Analysis/handoff
+only; no production/game/build/deploy/INI/asset/save/commit/push changes.
+
+## R8 candidate implementation and offline verification
+
+Read `analysis/USERCAP_R8_MANAGER_KEY_FIX_2026-11-16.md`.
+User authorized audit/fix/build. New dist/USERCAP_R8 contains312832-byte ASI,
+SHA2565a7b62b2...d3838bc, same active280/HASH180K INI values and R8_TEST.md.
+Fourteen manager-owned key/ref lists retain native C18 layout/sentinels; lazy
+external suffix gives max(512,ModelSlots+ReplayRetainedReferences)=802 entries
+each for current INI. Scoped native search/insert guards preserve unrelated
+callers. Register at cold manager construct; retire after package destruction
+at0059D566; stable old generation nodes retained. New MANAGER_KEY telemetry.
+All56 expected offline outcomes/compiled checks pass, including original548
+overflow and captured native lookup hang, five548-key overlap transitions and
+13 manager generations. This is not yet a live Getaway/FPS pass.
+Next user test: replace R7 with R8 (one traffic ASI), same AI/assets/save,
+exit Getaway Activity1 via prior path, then repeat/transitions if successful.
+Return DSFV29s_usercap_r8_<PID>.log; dump if frozen. No game install/INI/assets/
+saves, game/debugger launch, commit or push changed. Active project targets R8.
+Scoped backup/evidence: analysis/manager_keys_r8_2026-11-16/.
+
+## Previous R7 Getaway Activity1 freeze27864: native256-key list
+
+Read `analysis/USERCAP_R7_GETAWAY27864_FREEZE_2026-11-16.md`.
+Supplied full Driver.DMP PID27864, SHA256bde5509d...418923. Actual thread-stream
+CS23/RIP0059E0EE loops in native0059E0D0; WOW TLS VirtualQuery context is stale.
+Manager+0C native256-node12-byte key list is corrupted: header active548,
+lookup key42 reaches adjacent sentinel with key41 and next=self, never reaches
+its own sentinel. Native0059E120 fresh insertion has no capacity guard. The
+exact overflowing write/producer still needs focused static audit. Other mod
+guards0 do not cover this list. R7 query active, vehicle free261/290, dispatch
+556/802, hash54975/180000. Final280 request never READY; completed list18.
+Next proposed: audit manager-list constructors/insert/search/remove/reset/
+lifetimes, then configuration-sized extension with native regression and
+Getaway1 return retry. Dump enough to start; no additional probe needed first.
+Analysis only: no source/ASI/INI/build/deploy/game/debugger/commit/push changes.
+Evidence: analysis/usercap_r7_getaway27864_2026-11-16/. Await implementation
+direction; R7's earlier successful tests remain limited to those workloads.
+
+## Previous R7 run11636:280-car Replay/Story/menu lifecycle verified in that run
 
 Read `analysis/USERCAP_R7_RUN11636_RESULTS_2026-11-15.md`.
 User completed menu->full Replay->menu->Story/driving->Replay->menu->normal

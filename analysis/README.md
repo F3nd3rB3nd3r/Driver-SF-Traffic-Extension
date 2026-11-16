@@ -1,4 +1,12 @@
-Current candidate: [USER CAP R7](USERCAP_R7_MISSION_CAPACITY_FIX_2026-11-15.md).
+Current candidate: [USER CAP R8](USERCAP_R8_MANAGER_KEY_FIX_2026-11-16.md).
+[Run18736](USERCAP_R8_RUN18736_RESULTS_2026-11-16.md) confirms the Getaway1 exit
+fix in a52-minute Story session, with22 all-READY traffic phases and the new
+backing actually exceeding256 entries. Capacity/integrity checks pass; audio
+setup failures recover but keep the strict analyzer at43/44. R8 Replay remains
+unverified. The [R7 freeze diagnosis](USERCAP_R7_GETAWAY27864_FREEZE_2026-11-16.md)
+records the native cyclic lookup. Full dumps/logs/backups remain local.
+
+Previous candidate: [USER CAP R7](USERCAP_R7_MISSION_CAPACITY_FIX_2026-11-15.md).
 [Run11636](USERCAP_R7_RUN11636_RESULTS_2026-11-15.md) supplies successful
 280-car Story/menu/Replay lifecycle coverage, all42 logged checks passing.
 [Run21688](USERCAP_R7_RUN21688_RESULTS_2026-11-15.md) covers Story/activity/

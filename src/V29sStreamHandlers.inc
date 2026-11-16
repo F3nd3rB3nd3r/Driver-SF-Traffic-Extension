@@ -78,6 +78,9 @@ static void StreamConstruct(UPtr owner){
     Write32(owner+0x6FDA0u,a->nodes);a->next=g_streamArenas;g_streamArenas=a;
     InterlockedIncrement(&g_streamGenerations);g_streamLastOwner=owner;
     InterlockedExchange(&g_streamLock,0);
+#if defined(DSF_V29S_MANAGER_KEYS)
+    ManagerKeyConstruct(owner);
+#endif
 }
 static void StreamResize(UPtr inlinePool,U32 originalCount,UPtr source){
     const UPtr owner=inlinePool-0x6FDA0u;

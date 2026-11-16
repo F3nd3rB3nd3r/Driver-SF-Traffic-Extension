@@ -1,4 +1,9 @@
-# Current USER CAP R7 fixtures
+# Current USER CAP R8 fixtures
+
+`ManagerKeyTest.cpp` reproduces the native256-node overflow and captured
+infinite lookup, then verifies guarded external storage for all14 manager lists,
+548-key overlap transitions, reference counts, sorting/recycling and13 owner
+generations. It adds10 expected outcomes to the46 inherited cases below.
 
 `MissionCapacityTest.cpp` reproduces the 280-traffic-plus-one-mission rejection
 against metadata byte255 and verifies full-width configured ModelSlots admission,
@@ -9,7 +14,8 @@ shared fixture support, configured storage and combined cold startup coverage.
 See `scripts/README.md` for current entry points and local prerequisites.
 
 Offline native slices do not certify 700/1000-car gameplay. The current live
-coverage is the supplied280-car Story/activity/pursuit and menu/Replay workload.
+coverage is the supplied280-car Story/activity/pursuit workload, including R8's
+Getaway1 return; menu/Replay coverage is from R7 and remains pending for R8.
 The retained entries below describe preceding fixtures and their original scope.
 
 R3 adds completed-map tests to `WideLimitsTest.cpp`: real native insertion with backing below/above the package, exact capacity, recycling and in-place reconstruction. The original R2 guard fails insertion0 in the retained reproduction; the fixed guard passes the expanded matrix.
