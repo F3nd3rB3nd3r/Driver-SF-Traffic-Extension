@@ -141,6 +141,9 @@ static void AudioModelObserve(AudioModelInstance* r,UPtr owner,U32 count) {
         for(U32 i=0;i<4u;++i)if(Read32(base+kAudioModelCapacity*16u+i*4u)!=kAudioModelGuard)InterlockedIncrement(&g_audioModelInvalid);
     }
 }
+#if defined(DSF_V29S_AUDIO_SETUP_TRACE)
+static void AudioSetupBankFailure(U32* frame);
+#endif
 extern "C" __declspec(noinline) void __cdecl AudioModelEntry(U32 kind,U32* frame) {
     if(kind>=8u)return;InterlockedIncrement(&g_audioModelCalls[kind]);
     const UPtr f=reinterpret_cast<UPtr>(frame),sp=f+36u;
@@ -204,6 +207,9 @@ extern "C" __declspec(noinline) void __cdecl AudioModelEntry(U32 kind,U32* frame
     }
     if(kind==5u) {
         const bool ready=(Read32(f+28u)&255u)!=0u;const U32 selected=Read32(controller+0x10u);
+#if defined(DSF_V29S_AUDIO_SETUP_TRACE)
+        if(!ready)AudioSetupBankFailure(frame);
+#endif
         if(k){if(ready)InterlockedIncrement(&k->bankReady);else InterlockedIncrement(&k->bankNotReady);InterlockedExchange(&k->lastSelected,static_cast<long>(selected));}
         AudioModelRecord(5u,controller,original,selected,ready?1u:0u,Read32(controller+0xBCu),Read32(controller+0xC0u));
         frame[3]=Address(ready?0x00553920u:0x00553AD5u);

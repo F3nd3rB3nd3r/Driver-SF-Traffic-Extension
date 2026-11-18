@@ -1,0 +1,18 @@
+# Candidate files and INIs have byte-level SHA256 manifests. Preserve bytes in
+# GitHub downloads and checkouts instead of applying automatic EOL conversion.
+/dist/USERCAP_R9/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/dist/USERCAP_R10/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/config/*.ini -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/config/profiles/*.ini -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# These new fixture inputs were verified with LF bytes. Keep their recorded
+# hashes stable on Windows; older sources retain their inherited checkout policy.
+/src/V29sAudioSetupTrace.inc -text
+/src/V29sLoggingConfig.inc -text
+/src/V29sLoggingCore.inc -text
+/tests/AudioSetupTraceTest.cpp -text
+/tests/LoggingPolicyTest.cpp -text
+/scripts/test_audio_setup_trace.py -text
+/scripts/verify_audio_setup_trace.py -text
+/scripts/test_logging_policy.py -text
+/scripts/verify_logging_policy.py -text

@@ -1,4 +1,19 @@
-Current candidate: [USER CAP R8](USERCAP_R8_MANAGER_KEY_FIX_2026-11-16.md).
+Current repository candidate: **USER CAP R10**. The
+[logging/configuration implementation](USERCAP_R10_LOGGING_CONFIGURATION_2026-11-18.md)
+retains R9's audio reason diagnostics and the existing capacity/lifetime fixes.
+[R10 Story](USERCAP_R10_RUN20268_RESULTS_2026-11-18.md) and
+[R10 Replay](USERCAP_R10_RUN23108_REPLAY_2026-11-18.md) smoke tests confirm
+280-model loading with 320-capacity backing and compact summary logs. The
+broader activity/Lua/menu/Replay evidence is from
+[R9 run26476](USERCAP_R9_RUN26476_RESULTS_2026-11-18.md); the separate
+[Headroom320 comparison](USERCAP_R9_RUN7044_RESULTS_2026-11-18.md) also uses
+280 actual models. The [configuration guide](../CONFIGURATION.md) explains
+all budgets and an explicitly untested 500-model example. Candidate files are
+in [dist/USERCAP_R10](../dist/USERCAP_R10/README.md). Compact summaries/manifests
+are published; full logs, dumps, backups and generated fixtures remain local.
+Historical reports retain their original date and verification scope.
+
+Previous candidate: [USER CAP R8](USERCAP_R8_MANAGER_KEY_FIX_2026-11-16.md).
 [Run18736](USERCAP_R8_RUN18736_RESULTS_2026-11-16.md) confirms the Getaway1 exit
 fix in a52-minute Story session, with22 all-READY traffic phases and the new
 backing actually exceeding256 entries. Capacity/integrity checks pass; audio

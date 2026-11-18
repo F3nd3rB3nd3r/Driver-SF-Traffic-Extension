@@ -257,7 +257,11 @@ static void FullStartup(){
 #endif
     CHECK(AudioProbeInstall());AudioDefaultPoolInstall();AudioDefaultPoolStartLine();CHECK(g_audioDefaultStatus==1);
     AudioSlotsInstall();AudioSlotsStartLine();CHECK(g_audioSlotsStatus==1);AudioReasonInstall();AudioReasonStartLine();CHECK(g_audioReasonStatus==1);
-    AudioModelInstall();AudioModelStartLine();CHECK(g_audioModelStatus==1);CleanupInstall();CleanupStartLine();CHECK(g_cleanupStatus==1);
+    AudioModelInstall();AudioModelStartLine();CHECK(g_audioModelStatus==1);
+#if defined(DSF_V29S_AUDIO_SETUP_TRACE)
+    CHECK(AudioSetupInstall());AudioSetupStartLine();CHECK(g_audioSetupStatus==1 && AudioSetupSignature(true));
+#endif
+    CleanupInstall();CleanupStartLine();CHECK(g_cleanupStatus==1);
     CHECK(PendingInstall());PendingStartLine();ChapterStartLine();CHECK(CallbackInstall());CallbackStartLine();
     ArenaReuseStartLine();BaselineInstall();CHECK(g_baselineInstalled);NotifyInstall();CHECK(g_notifyStatus==1);ParkInstall();CHECK(g_parkStatus==1);
     ReplayInstall();CHECK(g_replayStatus==1);PauseInstall();CHECK(g_pauseStatus==1);SCInstall();CHECK(g_scStatus==1);RFInstall(true);CHECK(g_rfStatus==1);RegMapStartLine();AudioProbeStartLine();
@@ -276,6 +280,15 @@ extern "C" void WideTestMain(){
     const char badModels[]="[Limits]\nModelSlots=100\n";CHECK(!GenericParse(badModels,sizeof(badModels)-1u).valid);
     g_limits={n,WideMax(192u,n+32u),2048,64,1,WideMax(256u,n),1,true,"configured",0,0,0,0,0,0,0,0,0};g_limits=GenericValidate(g_limits);CHECK(g_limits.valid);
     if(WideContains(GetCommandLineA()," customized"))g_limits=parsed;
+#if defined(DSF_V29S_LOGGING)
+    const char* profile=WideContains(GetCommandLineA()," profile150")?"config/DriverSF_Unlimiter.ini":
+        WideContains(GetCommandLineA()," profile280")?"config/profiles/Expanded280.ini":
+        WideContains(GetCommandLineA()," profile320")?"config/profiles/Headroom320.ini":nullptr;
+    if(profile){HANDLE f=CreateFileA(profile,0x80000000u,1u,nullptr,3u,0u,nullptr);CHECK(f!=reinterpret_cast<HANDLE>(0xFFFFFFFFu));
+        static char data[4097]={};U32 read=0;CHECK(ReadFile(f,data,sizeof(data),&read,nullptr));CloseHandle(f);g_limits=GenericParse(data,read);CHECK(g_limits.valid);}
+    if(WideContains(GetCommandLineA()," log-minimal"))g_diagnosticLevel=0u;
+    if(WideContains(GetCommandLineA()," log-full"))g_diagnosticLevel=2u;
+#endif
     MapNativeImage();CHECK(WideStartupStorage());g_wideFailureSink=&FixtureFailure;
     if(WideContains(GetCommandLineA()," startup"))FullStartup();
     if(WideContains(GetCommandLineA()," allocation-failure")){g_expectedFailure=2;WideAllocate(0x7FFFFFFFu);CHECK(false);}

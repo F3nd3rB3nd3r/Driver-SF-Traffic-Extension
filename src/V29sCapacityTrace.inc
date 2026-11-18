@@ -22,7 +22,13 @@ static U32 g_capacityStart=0,g_capacityFileStatus=0;
 #if defined(DSF_V29S_WIDE_LIMITS)
 #include "V29sWideTelemetry.inc"
 #endif
+#if defined(DSF_V29S_LOGGING)
+#include "V29sLoggingCore.inc"
+#endif
 static void CapacityWrite(const char* line) {
+#if defined(DSF_V29S_LOGGING)
+    if(!LoggingAllow(line,GetTickCount()-g_capacityStart))return;
+#endif
 #if defined(DSF_V29S_WIDE_LIMITS)
     char startup[2400]={};line=WideStartupLine(line,startup,sizeof(startup));
 #endif
@@ -33,6 +39,24 @@ static void CapacityWrite(const char* line) {
             g_capacityFileStatus=2u;
     } else OutputDebugStringA(line);
 }
+#if defined(DSF_V29S_LOGGING)
+static void LoggingStartLine(){
+    static bool emitted=false;if(emitted)return;emitted=true;
+    char line[500]={};char* p=line;const char* end=line+sizeof(line)-1;
+    AppendText(p,"DSFV29s_LOGGING_START revision=1 level=",end);DiagFAppendU(p,g_diagnosticLevel,end);
+    DiagFAppendKeyU(p," fullTrace=",g_diagnosticLevel==2u,end);
+    AppendText(p," summaryMs=30000 checksDisabled=0 outputOnly=1 loggingChangesLimits=0 finalExitSnapshot=0\n",end);*p=0;CapacityWrite(line);
+}
+static void LoggingPoll(){
+    if(!g_diagnosticLevel)return;
+    static U32 last=0;const U32 now=GetTickCount()-g_capacityStart;if(last && now-last<kLoggingSummaryMs)return;last=now?now:1u;
+    char line[500]={};char* p=line;const char* end=line+sizeof(line)-1;
+    AppendText(p,"DSFV29s_LOGGING_STATUS",end);DiagFAppendKeyU(p," tick=",now,end);
+    DiagFAppendKeyU(p," level=",g_diagnosticLevel,end);DiagFAppendKeyU(p," attempted=",static_cast<U32>(g_loggingAttempted),end);
+    DiagFAppendKeyU(p," accepted=",static_cast<U32>(g_loggingAccepted),end);DiagFAppendKeyU(p," suppressed=",static_cast<U32>(g_loggingSuppressed),end);
+    DiagFAppendKeyU(p," fileStatus=",g_capacityFileStatus,end);AppendText(p," countsBeforeThisLine=1\n",end);*p=0;CapacityWrite(line);
+}
+#endif
 static void CapacityOpen() {
     g_capacityStart=GetTickCount();
     char path[300]={};
@@ -53,7 +77,15 @@ static void CapacityOpen() {
 #if defined(DSF_V29S_WIDE_LIMITS)
 #if defined(DSF_V29S_TRAFFIC_QUEUES)
 #if defined(DSF_V29S_STREAM_HANDLERS)
+#if defined(DSF_V29S_AUDIO_SETUP_TRACE)
+#if defined(DSF_V29S_LOGGING)
+    AppendText(p,"DSFV29s_usercap_r10_",end);
+#else
+    AppendText(p,"DSFV29s_usercap_r9_",end);
+#endif
+#else
     AppendText(p,"DSFV29s_usercap_r8_",end);
+#endif
 #else
     AppendText(p,"DSFV29s_usercap_r4_",end);
 #endif
@@ -129,6 +161,9 @@ static void CapacityOpen() {
     if(reinterpret_cast<UPtr>(g_capacityFile)==0xFFFFFFFFu || !g_capacityFile) {
         g_capacityFile=nullptr;g_capacityFileStatus=1u;
     }
+#if defined(DSF_V29S_LOGGING)
+    LoggingStartLine();
+#endif
 }
 #if defined(DSF_V29S_INDEXED_262144)
 static void IndexedStartLine() {
@@ -454,6 +489,9 @@ static void CapacityPoll() {
     }
 }
 static void CapacityStartLine() {
+#if defined(DSF_V29S_LOGGING)
+    LoggingStartLine();
+#endif
     char line[640]={};char* p=line;const char* end=line+sizeof(line)-1;
     AppendText(p,"DSFV29s_CAP_START hooks=",end);DiagFAppendU(p,static_cast<U32>(g_capacityHooks),end);
     AppendText(p," expectedHooks=3 request=150 slots=160 ordered=1 baseline=quiet ED_EF=1 capacityChanges=",end);

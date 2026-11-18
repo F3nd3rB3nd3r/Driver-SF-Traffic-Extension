@@ -14,13 +14,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <PropertyGroup>
-    <TargetName>DriverSF_Unlimiter_USERCAP_R8</TargetName><TargetExt>.asi</TargetExt>
-    <OutDir>$(ProjectDir)build\v29s_usercap_r8\</OutDir>
-    <IntDir>$(ProjectDir)build\v29s_usercap_r8\vs_obj\</IntDir>
+    <TargetName>DriverSF_Unlimiter_USERCAP_R10</TargetName><TargetExt>.asi</TargetExt>
+    <OutDir>$(ProjectDir)build\v29s_usercap_r10\</OutDir>
+    <IntDir>$(ProjectDir)build\v29s_usercap_r10\vs_obj\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>DSF_V29S_MANAGER_KEYS=1;DSF_V29S_STREAM_HANDLERS=1;DSF_V29S_TRAFFIC_QUEUES=1;DSF_V29S_WIDE_LIMITS=1;DSF_V29S_GENERIC_LIMITS=1;DSF_V29S_REPLAY_READ1M=1;DSF_V29S_REPLAY_CLIENT=1;DSF_V29S_REGMAP_REUSE=1;DSF_V29S_REPLAY_PAUSE=1;DSF_V29S_REPLAY150=1;DSF_V29S_PARKED150=1;DSF_V29S_NOTIFY150=1;DSF_V29S_BASELINE150=1;DSF_V29S_ARENA_REUSE=1;DSF_V29S_CALLBACK512=1;DSF_V29S_CHAPTERS=1;DSF_CHAPTER7_ORDERED_ROSTER=1;DSF_CHAPTER7_PRELOAD_COUNT=150;DSF_GRAPHICS_ADMISSION_TARGET=160;DSF_V29S_NATIVE_TRACE=1;DSF_V29S_INCLUDE_EXPANDED=1;DSF_V29S_SPOOL0_EXPANDED=1;DSF_V29S_CLONE_EXPANDED=1;DSF_V29S_MODEL_POOL_EXPANDED=1;DSF_V29S_RESOURCE_COLLECTION_EXPANDED=1;DSF_V29S_PERF_CONTROL=1;DSF_V29S_CAPACITY_TRACE=1;DSF_V29S_INDEXED_262144=1;DSF_V29S_AUDIO_PROBE=1;DSF_V29S_AUDIO_DEFAULT_64M=1;DSF_V29S_AUDIO_SLOTS_2048=1;DSF_V29S_AUDIO_REASON_PROBE=1;DSF_V29S_AUDIO_MODEL192=1;DSF_V29S_CLEANUP_262144=1;DSF_V29S_PENDING512=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DSF_V29S_LOGGING=1;DSF_V29S_AUDIO_SETUP_TRACE=1;DSF_V29S_MANAGER_KEYS=1;DSF_V29S_STREAM_HANDLERS=1;DSF_V29S_TRAFFIC_QUEUES=1;DSF_V29S_WIDE_LIMITS=1;DSF_V29S_GENERIC_LIMITS=1;DSF_V29S_REPLAY_READ1M=1;DSF_V29S_REPLAY_CLIENT=1;DSF_V29S_REGMAP_REUSE=1;DSF_V29S_REPLAY_PAUSE=1;DSF_V29S_REPLAY150=1;DSF_V29S_PARKED150=1;DSF_V29S_NOTIFY150=1;DSF_V29S_BASELINE150=1;DSF_V29S_ARENA_REUSE=1;DSF_V29S_CALLBACK512=1;DSF_V29S_CHAPTERS=1;DSF_CHAPTER7_ORDERED_ROSTER=1;DSF_CHAPTER7_PRELOAD_COUNT=150;DSF_GRAPHICS_ADMISSION_TARGET=160;DSF_V29S_NATIVE_TRACE=1;DSF_V29S_INCLUDE_EXPANDED=1;DSF_V29S_SPOOL0_EXPANDED=1;DSF_V29S_CLONE_EXPANDED=1;DSF_V29S_MODEL_POOL_EXPANDED=1;DSF_V29S_RESOURCE_COLLECTION_EXPANDED=1;DSF_V29S_PERF_CONTROL=1;DSF_V29S_CAPACITY_TRACE=1;DSF_V29S_INDEXED_262144=1;DSF_V29S_AUDIO_PROBE=1;DSF_V29S_AUDIO_DEFAULT_64M=1;DSF_V29S_AUDIO_SLOTS_2048=1;DSF_V29S_AUDIO_REASON_PROBE=1;DSF_V29S_AUDIO_MODEL192=1;DSF_V29S_CLEANUP_262144=1;DSF_V29S_PENDING512=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization>MaxSpeed</Optimization><AdditionalOptions>/Oi- %(AdditionalOptions)</AdditionalOptions>
       <WarningLevel>Level4</WarningLevel><LanguageStandard>stdcpp17</LanguageStandard>
       <BufferSecurityCheck>false</BufferSecurityCheck><ExceptionHandling>false</ExceptionHandling><RuntimeTypeInfo>false</RuntimeTypeInfo>
@@ -45,5 +45,7 @@
   <ItemGroup><ClInclude Include="src\V29sWideConfigCore.inc" /><ClInclude Include="src\V29sWideSupport.inc" /><ClInclude Include="src\V29sWideNativeFrames.inc" /><ClInclude Include="src\V29sWideBootstrap.inc" /><ClInclude Include="src\V29sWideTelemetry.inc" /></ItemGroup>
   <ItemGroup><ClInclude Include="src\V29sTrafficQueuesCore.inc" /><ClInclude Include="src\V29sTrafficQueuesRuntime.inc" /></ItemGroup>
   <ItemGroup><ClInclude Include="src\V29sManagerKeys.inc" /><ClInclude Include="src\V29sStreamHandlers.inc" /><ClInclude Include="src\V29sStreamHandlerLayout.inc" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sAudioSetupTrace.inc" /></ItemGroup>
+  <ItemGroup><ClInclude Include="src\V29sLoggingConfig.inc" /><ClInclude Include="src\V29sLoggingCore.inc" /></ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

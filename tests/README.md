@@ -1,4 +1,24 @@
-# Current USER CAP R8 fixtures
+# Current USER CAP R10 logging/configuration fixtures
+
+`LoggingPolicyTest.cpp` checks the production parser transactionally: omitted,
+valid, invalid and duplicate Diagnostics keys; unchanged resource capacities
+across LogLevel0/1/2; essential failures at every level; summary timing/owner
+streams/first READY and roster selection; real CapacityWrite file output and
+logging metadata. Full output selection preserves the supplied record bytes.
+
+`AudioSetupTraceTest.cpp` retains R9's twenty actual audio bridge ABI invocations.
+`WideLimitsTest.cpp` exercises the same storage/native helpers and copied-image
+startup using the documented150/280/320 profiles. Fixture-only profile/log
+arguments are not ASI runtime entry points. See `test_logging_policy.py` and
+`verify_logging_policy.py`. No fixture starts the game's entry point or loop.
+
+R9's live280-model and Headroom320 results retain their exact scope. R10 has
+offline logging/configuration verification plus run20268's successful Story/
+summary smoke test and run23108's positive Replay smoke. These reduced logs
+retain their narrower evidence scope; exact terminal teardown is not captured.
+The sections below describe earlier fixtures and their original scope.
+
+# Previous USER CAP R8 fixtures
 
 `ManagerKeyTest.cpp` reproduces the native256-node overflow and captured
 infinite lookup, then verifies guarded external storage for all14 manager lists,

@@ -1,4 +1,27 @@
-# Current USER CAP R8 checks
+# Current USER CAP R10 logging/configuration checks
+
+`test_logging_policy.py` compiles/runs20 isolated Win32 processes: production
+INI/parser/output-policy tests, retained R9 audio bridge ABI checks, configured
+storage at18/150/255/256/280/320/500/700/1000 and complete copied-image cold
+startup with the three documented profiles and all output levels. It replays
+only the explicitly named supplied7044 log through the output selector; this
+is not a game or speed benchmark. Output is `analysis/logging_r10_2026-11-18/`.
+
+Build the active solution in Release/Win32, then run `verify_logging_policy.py`
+to check the current PE32, fixture hashes, retained native audio signatures,
+default summary policy and reduced/full parser semantics. These scripts do
+not package, publish, install or launch the game. R9 artifacts stay preserved.
+Other revision-specific verifiers below remain pinned to their original
+outputs/manifests; do not retarget or run their old packaging modes blindly.
+
+`analyze_generic_limits_log.py` recognizes R10's `LOGGING_START` declaration.
+LogLevel0/1 intentionally lack full diagnostic evidence, so
+`logging_full_trace=false` prevents a full integrity certification even when
+available summaries are healthy. This is a scope restriction, not evidence of
+a game fault. R9 and older full-trace logs retain their original checks.
+See [CONFIGURATION.md](../CONFIGURATION.md) for settings/profiles.
+
+# Previous USER CAP R8 checks
 
 `verify_mission_capacity.py`, `verify_wide_limits.py`,
 `verify_traffic_queues.py`, `verify_stream_handlers.py` and `verify_manager_keys.py`

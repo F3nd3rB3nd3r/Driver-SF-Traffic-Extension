@@ -2887,6 +2887,9 @@ static void EfDrainEvents() {
 #endif
 #if defined(DSF_V29S_AUDIO_MODEL192)
 #include "V29sAudioModelRegistry.inc"
+#if defined(DSF_V29S_AUDIO_SETUP_TRACE)
+#include "V29sAudioSetupTrace.inc"
+#endif
 #endif
 #if defined(DSF_V29S_CLEANUP_262144)
 #include "V29sCleanupQueue.inc"
@@ -3035,6 +3038,9 @@ DWORD __stdcall Monitor(void*) {
 #endif
 #if defined(DSF_V29S_AUDIO_MODEL192)
         AudioModelPoll();
+#if defined(DSF_V29S_AUDIO_SETUP_TRACE)
+        AudioSetupPoll();
+#endif
 #endif
 #if defined(DSF_V29S_CLEANUP_262144)
         CleanupPoll();
@@ -3046,6 +3052,9 @@ DWORD __stdcall Monitor(void*) {
         AudioStaticPoolPoll();
 #endif
 #endif
+#endif
+#if defined(DSF_V29S_LOGGING)
+        LoggingPoll();
 #endif
         Sleep(200u);
     }
@@ -3595,6 +3604,10 @@ extern "C" __declspec(dllexport) BOOL __stdcall DllMain(HMODULE module, DWORD re
 #if defined(DSF_V29S_AUDIO_MODEL192)
             AudioModelInstall();
             AudioModelStartLine();
+#if defined(DSF_V29S_AUDIO_SETUP_TRACE)
+            const bool audioSetupInstalled=AudioSetupInstall();AudioSetupStartLine();
+            if(!audioSetupInstalled)WideAllocationFailure("Unlimiter: audio setup diagnostic hooks unavailable.\n");
+#endif
 #endif
 #if defined(DSF_V29S_CLEANUP_262144)
             CleanupInstall();CleanupStartLine();

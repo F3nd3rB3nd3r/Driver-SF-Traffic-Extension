@@ -8,6 +8,9 @@ static void GenericConfigLine(){
     DiagFAppendU(p,g_limits.valid?1u:0u,end);
     AppendText(p," reason=",end);AppendText(p,g_limits.reason,end);
     AppendText(p," rosterSource=",end);AppendText(p,g_limits.assetWeights?"AssetWeights":"Native",end);
+#if defined(DSF_V29S_LOGGING)
+    DiagFAppendKeyU(p," logLevel=",g_diagnosticLevel,end);
+#endif
     const char* keys[]={" requestCapacity="," audioModelEntries="," globalAudioEntries="," defaultAudioMiB="," replayReaderMiB="," retainedReferences="," requestStorage="," parkedStride="," parkedFrame="," notifyFrame="," replayPayloadCapacity="};
     const U32 values[]={g_limits.requests,g_limits.audioModels,g_limits.audioSlots,g_limits.audioMiB,g_limits.replayMiB,g_limits.retained,GenericRequestStorage(),GenericParkStride(),GenericParkFrame(),GenericNotifyFrame(),GenericReplayBytes()};
     for(U32 i=0;i<11u;++i)DiagFAppendKeyU(p,keys[i],values[i],end);

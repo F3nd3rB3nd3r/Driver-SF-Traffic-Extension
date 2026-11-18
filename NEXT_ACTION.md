@@ -1,4 +1,235 @@
-## Current R8 run18736: Getaway1 fixed in52-minute Story test; Replay next
+## Current: user-authorized R10 repository publication
+
+User requested the relevant changes pushed to GitHub. Publication scope is R9
+audio diagnostics, R10 summary logging/parser/analyzer/tests, configuration
+guide/profiles, dated reports and compact verification summaries. The existing
+tested R10 ASI is copied byte-identically into dist/USERCAP_R10 with a baseline
+INI, optional profiles, installation README and SHA256 manifest; no rebuild.
+ASI327168bytes/SHA25611df34dd...b96825f9. All125 recorded fixture dependencies
+and3 fixture executable hashes match; five Python files pass syntax checks;
+run23108 analyzer remains49/50 with only intentional logging_full_trace=false.
+R9 candidate inputs used by verification are retained separately. Full user
+logs/dumps, backups, generated fixtures and unrelated TrafficEditor files stay
+local. No game/install/assets/save changes or new gameplay claims. Actual500+
+rosters remain unverified. Commit/push uses an explicit reviewed file list;
+no force push, broad staging, cleanup or GitHub Release creation.
+
+## Current: configuration explanations and experimental 500-model example
+
+User requested practical limit descriptions and guidance for a 500-model roster.
+CONFIGURATION.md now explains all 15 budgets, roster versus population, coupled
+sizing, evidence for tuning and a worked setup. New config/profiles/Experimental500.ini
+uses requests512/audio640/retained1024; omitted coupled entries derive to models522,
+object/pending/callback526, definitions522 and work1546. Shared budgets retain
+4096 global audio/128MiB audio/4MiB reader/HASH180K from the exercised setup.
+This profile is explicitly untested for actual 500-model gameplay; values are
+trial headroom, not per-car estimates or proven sufficient sizes. Existing
+150/280/320 profiles and installed files unchanged. Static documentation checks
+pass: supported keys, matching embedded INI, dependencies/derived arithmetic,
+relative links, file1769bytes below4096. No native build/game/source/ASI change,
+installation, package, commit or push. R10 run23108 below remains latest live evidence.
+
+## Current R10 run23108: Replay smoke supported, summary log129KB
+
+Read `analysis/USERCAP_R10_RUN23108_REPLAY_2026-11-18.md`.
+User calls run a Replay watch and says everything seemed okay.5m17.3s log,
+128645bytes,532 records,correct320/330/448audio/768refs/4MiB/HASH180K/level1.
+18 and280 phases all READY;280 import/restore matches699365A7. One reader owner,
+4MiB backing,5construct/4destroy/4reuse by last periodic sample, no reader fault.
+Client3begins/2clears/1contextEnd by61.5s, unchanged through303s; open/held0,
+read/dropped/clock errors0. No per-busy/owner detail retained at level1: do not
+claim exact interval timing or zero busy starts from absent records. Final exit
+snapshot/precise normal quit not independently established.430 model-audio
+setups succeed, reason counters0. Separate legacy native per-object16-event
+gate has1 refusal, no identified audible symptom/model/event at summary level;
+retain observation, do not claim every audio request accepted or blindly raise.
+49/50 generic checks true; only intentional logging_full_trace=false. No widened
+storage/reader/guard fatal. R10 Story20268 + Replay23108 smoke now supported;
+no patch/increase or repeat long/full-trace session indicated. Packaging/push
+is a separate stage requiring user authorization. Analysis/docs only; no code/
+binary/INI/build/game/install/assets/saves/package/commit/push changes.
+
+## Previous R10 run20268: Story loads correctly; real summary log135KB/5m17s
+
+Read `analysis/USERCAP_R10_RUN20268_RESULTS_2026-11-18.md`.
+User says it worked. Supplied config/DSFV29s_usercap_r10_20268.log confirms
+correct320/330/448audio/768refs/4MiB/HASH180K INI, level1. Both18 and280 request
+phases reach native READY.441 audio setups succeed, all failure reasons0.
+No fatal/capacity/guard errors. File134687bytes,317406ms (~5m17s),606 records;
+sampled33237 attempted/572accepted/32665suppressed, fileStatus0. Similar rate
+would be~0.76MB/30min, not a hard cap.49/50 analyzer checks true: only intentional
+logging_full_trace=false, so not a full diagnostic certification. No need to
+turn on verbose merely to remove this scope flag. R10 Story/summary smoke now
+has live evidence. Reader constructs/owners/imports/restores all0; playback/
+menu lifecycle and normal Quit not established by this log. Remaining R10
+smoke portion is brief Replay/menu/normal Quit, not repeat capacity tests.
+No patch/increase indicated. Analysis/docs only, no source/binary/INI/build/
+install/game/assets/saves/package/commit/push changes. R9 retains broad Replay/
+activity validation; input backup/manifest from installation remains intact.
+
+## Previous: complete Headroom320 INI installed into SS Test/plugins
+
+User explicitly requested a full INI installed in SS Test/plugins. The shorter
+Headroom320 profile was already complete using automatic/default advanced
+values. Added config/profiles/Headroom320_Full.ini with all15 Limits keys,
+AssetWeights and summary LogLevel1, equivalent at current320/330 dimensions.
+Verified one R10 traffic ASI in plugins and hash11df34dd...b96825f9. Backed up
+the previous installed150 INI byte-for-byte, then copied the full file into
+E:/Games/Driver San Francisco SS Test/plugins/DriverSF_Unlimiter.ini with
+user-authorized sandbox escalation. Readback/hash match source:848 bytes,
+SHA256c0e202ae...22f9b54d. Limits320/330/448audio/768retained/128MiBshared/
+4MiBreader/HASH180000, internal work1098. ASIs/assets/saves unchanged; no game
+launch/build/commit/push. Backup and verified manifest in
+analysis/r10_ini_install_2026-11-18/ (install_20261118_201608_037847.json).
+Restart required; R10 live Story/activity/Replay smoke still pending. Explain
+full configuration does not mean full trace: logging remains summary level1.
+
+## Previous R10 run22856: guarded exit from150 INI against280-model AI
+
+Read `analysis/USERCAP_R10_RUN22856_REFUSAL_2026-11-18.md`.
+Supplied config/dsfv29s_usercap_r10_22856.log explicitly ends GENERIC_FATAL
+rosterExceedsConfiguredCapacity required280/configuredRequests150, partialList0.
+Startup found a valid baseline150 INI (150/160/192audio/256retained/64MiB/1MiB),
+LogLevel1. Initial18 phase READY; subsequent280 request intentionally refused.
+Not an unexplained logging crash. Correct whole installed INI to the existing
+config/profiles/Headroom320.ini, named DriverSF_Unlimiter.ini beside the actual
+R10 ASI, then restart. Profile source verified320/330/448audio/768retained,
+128MiB shared/4MiB reader/HASH180000. Do not change only RequestCapacity or
+remove/bypass the guard. No new ASI/dump needed for this cause. Full installed
+INI path not logged; review did not open/replace game files. R10 live Story/
+activity/Replay smoke remains pending. Essential fatal survived summary mode.
+Analysis/handoff only; no source/binary/INI/build/install/game/assets/saves/
+commit/push changes. R9 remains last successful gameplay-tested candidate.
+
+## Previous R10: optional verbose output and INI documentation implemented
+
+Read `analysis/USERCAP_R10_LOGGING_CONFIGURATION_2026-11-18.md` and
+`CONFIGURATION.md`. User authorized steps1/2 only, not packaging/publication.
+Active Release/Win32 project targets build/v29s_usercap_r10; ASI327168 bytes,
+SHA25611df34dd...b96825f9. R9 artifacts preserved; R9 remains last live-tested.
+Diagnostics LogLevel0=minimal,1=summary(default),2=full trace. Filtering is at
+CapacityWrite only: all native hooks/guards/counters/limits/decisions retained.
+Fatal/refusal/nonzero error records and unexpected audio details bypass output
+filtering. Summary keeps traffic/rosters/first READY and periodic counters;
+full tracing preserves existing record selection. LOGGING_START/STATUS declare
+scope and suppression. Analyzer cannot certify reduced logs as full trace.
+20 offline Win32 processes pass (243 logging/parser/backend assertions,1084
+audio assertions/20 ABI calls,storage18-1000,documented150/280/320 startup and
+output levels). Compiled PE32/filter/native-hook/parser checks pass. Supplied
+7044 output-selection test:16145690 bytes full,218045 summary,15247 minimal;
+full hashes identically. This is not an R10 gameplay/performance test.
+New config/ main baseline150, Expanded280 and Headroom320 keep tested limit
+values, add Diagnostics. New files require R10; existing old INIs work on R10
+with default summary. Keep user's current280/320 values for a smoke test; do
+not replace their280 AI's INI with baseline150. All keys/automatic formulas,
+units/dependencies and live-evidence limits documented. No repeat of the earlier
+completed original/150/280 configuration comparisons is requested.
+No game/debugger/install/asset/save/commit/push or packaging work. Next runtime
+step before declaring R10 tested: short default-summary Story/activity/Replay
+smoke test. Stage3 packaging/publication stays separately authorized work.
+
+## Previous R9 run7044: Headroom320 succeeds with actual280-model traffic
+
+Read `analysis/USERCAP_R9_RUN7044_RESULTS_2026-11-18.md`.
+User reports everything fine playing.8m53.8s log confirms320 requests/330 model
+slots/1098 work-key-handler entries/448 audio profiles/768 retained refs/4MiB
+reader.9 accepted18/280 phases all native READY; actual maximum remains280,
+not320. Four snapshot imports/restores match; reader really uses4MiB, one owner,
+5construct/5destroy/4reuse,1363 reads, no reader fault. Key peak280/1098,2buffers/
+redirects,4generations/3destructions, failures0/guards0. Query330 overridden24
+times. Audio791 attempts,743 successes,48 previewSuppressed, zero other failure
+reasons, dropped0; all6 affected IDs later succeed. Strict analyzer46/47 stays
+unchanged. No capacity/guard/fatal evidence or new patch/increase indicated.
+Exact activity/exit sequence asked separately; do not infer normal Quit from
+zero final active entries. No matching new Driver.log supplied/reused.
+User clarified original AI with150/280 INIs and150 AI with150 INI were covered
+previously; do not request those again solely for R9. This was the one new
+configuration comparison from the proposed group, now exercised at280 demand.
+Other chapter missions/frequency1-4/actual larger rosters retain open scope.
+Analysis/handoff only; no source/binary/build/game/install/INI/assets/saves/
+commit/push changes. Evidence in usercap_r9_run7044_2026-11-18.
+
+## Previous R9 run26476: combined test succeeds; audio132 are preview suppression
+
+Read `analysis/USERCAP_R9_RUN26476_RESULTS_2026-11-18.md`.
+User completed every R9_TEST step1-7/substep, no visual/audio or other issues,
+including normal Quit.49m35s, unchanged280 configuration.26 accepted phases
+(13x18/13x280) all reach native READY. New audio trace classifies all132 false
+returns as previewSuppressed, modes1/3, preview flag1, caller00556541; dropped0.
+All20 affected model IDs later succeed.3769 attempts,3637 successes, no bank/
+profile/default/state/invalid-mode failures. Strict analyzer remains46/47 due
+to setupFail!=0; no waiver or source change. R8's older450 still lack exact
+branch evidence; do not retroactively classify them all from this run.
+Replay7imports/7restores,3 reader owners,15construct/15destroy/12reuse; no faults.
+Four loading0 busy intervals coincide with import transitions, clear23-144ms;
+no evidence of the former repeated uninterrupted-playback hitch pattern.
+Key peak280/802,9generations/8destructions,5buffers/redirects; guards/failures0.
+Activity settings Chapter1/3/5/7 have request evidence. Manual1->7->4->7 Lua
+commands are logged without four extra distinct request/READY phases; do not
+invent Chapter4 allocator coverage. Other chapters' missions remain untested.
+Keep R9/settings; no audio fix or limit increase indicated. Next useful tests:
+Baseline150 with original/150 AI, then same280 assets with Headroom320. This
+run's18 phases still use280-capacity backing. Frequency1-4 and real500-1000
+rosters remain untested. Analysis/handoff only; no binary/build/install/game/
+INI/asset/save/commit/push changes. Evidence in usercap_r9_run26476_2026-11-18.
+
+## Previous R9 diagnostic candidate: combine audio reasons with coverage tests
+
+Read `analysis/USERCAP_R9_AUDIO_AND_COVERAGE_2026-11-17.md` and
+`dist/USERCAP_R9/R9_TEST.md`. User authorized logging extension and review of
+activity/chapter/configuration coverage; available save is Chapter7 plus Lua.
+Active Release/Win32 project now targets USERCAP_R9; R8 artifacts preserved.
+R9 adds10 signature-checked diagnostic hooks, reuses the bank hook, counts7
+outer failures/3 helper subreasons, and drains a1024-record failure detail ring
+throughout the session. Native returns/capacities/selection remain unchanged.
+ASI320512 bytes, SHA25626f738c6...c28409a, packaged in dist/USERCAP_R9 with
+unchanged280/HASH180K main INI and optional Baseline150/Headroom320 profiles.
+15 offline processes pass:1084 trace assertions/20 bridge ABI invocations,
+storage18/150/255/256/280/500/700/1000, full cold startup18/150/280/700/1000 and
+custom700. Compiled hook/parser checks pass; no parent overlap. Existing strict
+audio_setup check unchanged. No live R9 gameplay test yet; high numeric fixture
+counts do not establish high-roster gameplay. Game/install/INI/assets/saves
+untouched, no game/debugger launch or commit/push. Main first test: same280
+setup, Getaway1/Race Takedown/other activities, Lua setting switches, reverse
+Story/menu/Replay lifecycle and normal Quit. Return usercap_r9 log plus notes.
+Lua wrapper uses frequency0; direct setter bypasses its cached previous state,
+so frequency tests are separate. Traffic-setting swaps do not test other
+chapters' actual missions/progression. Separate INI comparisons are documented.
+
+## Previous audio static audit: remaining failures are not a proven capacity problem
+
+Read `analysis/AUDIO_SETUP_STATIC_AUDIT_2026-11-17.md`.
+User authorized static analysis only. Seven branches feed00553AD5; run18736
+excludes disabled vehicle, bank-not-ready and missing model profile: all6128
+attempts have lookup hits/bankReady, disabled0/misses0/bankNotReady0. Remaining
+branches are missing shared default, explicit preview suppression, invalid
+mode and mode-specific vehicle state/snapshot checks. EnterPreview/ExitPreview
+bindings set/clear root+25C byte4; it is a flag, not a capacity. Callers clear
+failed assignments and later selection can retry. All43 affected models recover.
+Early128-result detail sampling ends112532ms; first failure406141ms, so exact
+reason cannot be recovered from this log. Strict audio_setup check unchanged.
+Keep R8/settings. No new limit increase or fix indicated. Optional next step,
+only if authorized: reason-specific failure counters/details across a long run,
+preserving native behavior; no speculative capacity increase. Audit/report/
+handoffs only; no production/build/ASI/game/INI/asset/save/commit/push changes.
+Run3600 and remaining R8 lifecycle validation retain their scope below.
+
+## Current R8 run3600: Story->Replay clean44/44; exit method uncertain
+
+Read `analysis/USERCAP_R8_RUN3600_RESULTS_2026-11-17.md`.
+User did menu->Story->Replay->exit, reports everything fine/no crash; unsure
+whether menu exit or Alt+F4. All44 generic checks pass. Four18/280 phases all
+native READY;280-ID replay import/restore matches699365A7. Reader2MiB actually
+exercised:5construct/5destroy/4reuse,1144 read issues, no read/allocation errors.
+Key peak280/802,2buffers/2redirects,4generations/3destructions; no guard/failure.
+Audio351/351 setup succeeds,0 failures. No non-loading busy episode logged.
+Adds R8 Story->Replay coverage to18736's successful Getaway/Story workload.
+Full reverse Replay->Story/menu matrix and identified normal quit remain
+unverified;18736's recovered transient audio failures remain unclassified.
+Keep R8/current settings; no new fix/increase indicated. Analysis/handoff only,
+no source/build/deploy/game/INI/asset/save/commit/push changes.
+
+## Previous R8 run18736: Getaway1 fixed in52-minute Story test
 
 Read `analysis/USERCAP_R8_RUN18736_RESULTS_2026-11-16.md`.
 User confirms formerly frozen Getaway1 exit worked, no FPS/audio/rendering

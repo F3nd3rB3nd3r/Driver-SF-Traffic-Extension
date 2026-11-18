@@ -1,5 +1,8 @@
 // User capacities. Bounds below come from signed native arithmetic, layouts,
 // alignment and identifier formats, never from the largest live-tested roster.
+#if defined(DSF_V29S_LOGGING)
+#include "V29sLoggingConfig.inc"
+#endif
 struct GenericLimits {
     U32 requests,audioModels,audioSlots,audioMiB,replayMiB,retained,assetWeights;
     bool valid;const char* reason;
@@ -55,23 +58,38 @@ static GenericLimits GenericValidate(GenericLimits v){
 }
 static GenericLimits GenericParse(const char* bytes,U32 size){
     GenericLimits v={150,192,2048,64,1,256,1,true,"configured",0,0,0,0,0,0,0,0,0};
+#if defined(DSF_V29S_LOGGING)
+    U32 diagnosticLevel=1u;
+#endif
     if(size>4096u)return GenericReject(v,"fileTooLarge");U32 at=0,section=0,seen=0;
     if(size>=3u && static_cast<U8>(bytes[0])==0xEFu && static_cast<U8>(bytes[1])==0xBBu && static_cast<U8>(bytes[2])==0xBFu)at=3;
     for(U32 i=at;i<size;++i)if(static_cast<U8>(bytes[i])<32u && bytes[i]!='\n' && bytes[i]!='\r' && bytes[i]!='\t')return GenericReject(v,"invalidEncoding");
     while(at<size){U32 start=at;while(at<size && bytes[at]!='\n')++at;const char* p=bytes+start;const char* e=bytes+at;if(at<size)++at;
         for(const char* c=p;c<e;++c)if(*c==';' || *c=='#'){e=c;break;}GenericTrim(p,e);if(p==e)continue;
-        if(*p=='['){if(e[-1]!=']')return GenericReject(v,"invalidSection");++p;--e;GenericTrim(p,e);section=GenericEqual(p,e,"Limits")?1u:GenericEqual(p,e,"Traffic")?2u:0u;if(!section)return GenericReject(v,"unknownSection");continue;}
+        if(*p=='['){if(e[-1]!=']')return GenericReject(v,"invalidSection");++p;--e;GenericTrim(p,e);section=GenericEqual(p,e,"Limits")?1u:GenericEqual(p,e,"Traffic")?2u:0u;
+#if defined(DSF_V29S_LOGGING)
+            if(GenericEqual(p,e,"Diagnostics"))section=3u;
+#endif
+            if(!section)return GenericReject(v,"unknownSection");continue;}
         if(!section)return GenericReject(v,"settingOutsideSection");const char* eq=p;while(eq<e && *eq!='=')++eq;if(eq==e)return GenericReject(v,"missingEquals");
         const char* ke=eq;GenericTrim(p,ke);U32 key=0;U32* dest=nullptr;
         const char* names[]={"RequestCapacity","AudioModelEntries","GlobalAudioEntries","DefaultAudioMiB","ReplayReaderMiB","ReplayRetainedReferences","ModelSlots","ObjectEntries","DefinitionEntries","PendingEntries","CallbackEntriesPerGroup","CleanupEntries","ResourceCollectionEntries","IndexedReferenceEntries","HashExtraEntries"};
         U32* fields[]={&v.requests,&v.audioModels,&v.audioSlots,&v.audioMiB,&v.replayMiB,&v.retained,&v.models,&v.objects,&v.definitions,&v.pending,&v.callbacks,&v.cleanup,&v.collection,&v.indexed,&v.hashExtra};
         if(section==1u){for(U32 i=0;i<15u;++i)if(GenericEqual(p,ke,names[i])){key=i+1u;dest=fields[i];break;}}
-        else if(GenericEqual(p,ke,"RosterSource"))key=16u;
+        else if(section==2u && GenericEqual(p,ke,"RosterSource"))key=16u;
+#if defined(DSF_V29S_LOGGING)
+        else if(section==3u && GenericEqual(p,ke,"LogLevel")){key=17u;dest=&diagnosticLevel;}
+#endif
         if(!key)return GenericReject(v,"unknownKey");if(seen&(1u<<key))return GenericReject(v,"duplicateKey");seen|=1u<<key;p=eq+1;GenericTrim(p,e);
         if(key==16u){if(GenericEqual(p,e,"Native"))v.assetWeights=0;else if(GenericEqual(p,e,"AssetWeights"))v.assetWeights=1;else return GenericReject(v,"unknownRosterSource");}
-        else if(!GenericNumber(p,e,*dest) || !*dest)return GenericReject(v,"invalidInteger");
+        else if(!GenericNumber(p,e,*dest) || (!*dest && key!=17u))return GenericReject(v,"invalidInteger");
     }
+#if defined(DSF_V29S_LOGGING)
+    if(diagnosticLevel>2u)return GenericReject(v,"diagnosticLogLevel");
+    v=GenericValidate(v);if(v.valid)g_diagnosticLevel=diagnosticLevel;return v;
+#else
     return GenericValidate(v);
+#endif
 }
 static U32 GenericRequestStorage(){return WideMax(50u,g_limits.requests);}
 static U32 GenericParkStride(){return GenericRequestStorage()*4u+4u;}
