@@ -1,5 +1,17 @@
-# Current distribution
+# Current candidate: USERCAP_R10
 
-`MAIN_150/` contains the current ARENA_REUSE_R1 ASI, its guide and latest validated log. Enable only one traffic ASI in the game folder.
+Use [USERCAP_R10](USERCAP_R10/README.md) for the tested R10 ASI, matching INIs,
+installation instructions and hashes. Its main INI is the 150-capacity baseline;
+select an appropriate profile for expanded AI data. Enable one traffic ASI.
 
-Previous ASIs, control45, old guides/logs and the deferred Forza package are preserved under `archive/retired_2026-11-06/dist/`. They are historical evidence, not files to install alongside the current ASI. The current verifier can still read archived baseline ASIs for hash checks.
+[USERCAP_R9](USERCAP_R9/R9_TEST.md) is retained as the preceding broadly tested
+280-model reference and as a verification prerequisite. It is not required to
+be enabled alongside R10.
+
+MAIN_150 and USERCAP_R2 through R8 contain retained historical packages/inputs.
+They are not the current installation choice. Unreferenced old test notes,
+logs and dumps were archived under
+[archive/retired_2026-11-18](../archive/retired_2026-11-18/README.md);
+remaining named inputs are intentionally retained for tools.
+
+TrafficEditor packages are a separate tool and were not modified.

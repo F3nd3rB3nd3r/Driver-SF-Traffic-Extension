@@ -1,1 +1,13 @@
-Continue this workspace by first reading only START_HERE.md and NEXT_ACTION.md, following AGENTS.md. The current validated build is ARENA_REUSE_R1 in the single active DriverSF_V29s_NATIVE_TRACE.slnx project, Release/Win32. Work on the concrete task or explicitly supplied log; do not infer a new probe/build from historical next-step notes. Preserve 150 requests, 160 graphics slots and ED/EF. Current Challenge/menu/reload verification passed; audio setup interpretation, parked fallback and broader chapter coverage remain separate. Old experiments are preserved under archive/retired_2026-11-06 with a manifest. Preserve uncommitted work and read historical evidence only when needed for a specific question.
+Read START_HERE.md and NEXT_ACTION.md first, following AGENTS.md.
+The published candidate is USERCAP_R10; the single active solution is
+DriverSF_V29s_NATIVE_TRACE.slnx, project DriverSF_V29s_ARENA_REUSE.vcxproj,
+Release/Win32. The project name is historical; output is build/v29s_usercap_r10/.
+Work on the user's concrete task/log. Preserve their configured capacities
+and ED/EF; the default 150/160 profile is not mandatory for expanded rosters.
+R9 has broad 280-model activity/lifecycle evidence; R10 has successful Story
+and Replay summary-mode smoke tests. Actual 500+ rosters and other chapters'
+missions remain unverified. No new runtime fix is indicated by the latest tests.
+Use CONFIGURATION.md for limit meanings/profiles. Superseded instructions and
+closed evidence are archived under archive/retired_2026-11-18 with a manifest.
+Keep referenced historical prerequisites and uncommitted work. Do not build,
+deploy, launch the game/debugger or infer new experiments from old notes.

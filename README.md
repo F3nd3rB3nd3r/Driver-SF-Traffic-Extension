@@ -52,3 +52,8 @@ see [scripts/README.md](scripts/README.md) and [tests/README.md](tests/README.md
 Full session logs/dumps, generated fixtures and retired artifacts remain local.
 Do not run old experiments as active build entry points. The dated archive
 preserves earlier paths/bytes and is not a second active build tree.
+
+The [2026-11-18 cleanup](analysis/WORKSPACE_CLEANUP_2026-11-18.md) replaces
+accumulated handoffs and stale baseline/index guidance with current R10 state.
+Superseded documents and closed evidence are preserved in a verified archive;
+retained historical prerequisites are explicitly separate from current tasks.

@@ -1,0 +1,138 @@
+{
+  "result": "passed",
+  "method": "static native-byte validation and captured-memory arithmetic; no native execution",
+  "native_spans": {
+    "005A77E1": "8b8e680e000085c9740d8b4424108b118b52045056ffd2",
+    "0074B660": "83790400740a8b49048b018b4004ffe0c20800",
+    "00754C75": "81ecd0000000",
+    "00754CA4": "8bbc24e4000000",
+    "00754CBB": "8b8c24e00000008d04bd0000000050518d54241c52e84b3b4d0083c40c",
+    "00754D03": "5e81c4d0000000c20800"
+  },
+  "pairs": [
+    {
+      "log": "dist\\MAIN_150\\DSFV29s_baseline150_23504.log",
+      "log_sha256": "f3f25eff82cf7ddedf7574fe2e03b33a172ace56cd6bc8b542face464f02d249",
+      "dump": "dist\\MAIN_150\\Driver_20261106_180604.dmp",
+      "dump_sha256": "0f82fe7beea072f52a20e158be301dddec1b1a8e32745e829949bc640e29dc45",
+      "pid": 23504,
+      "exception": "0xc0000005",
+      "eip": "0x96",
+      "esp": "0x19ede4",
+      "owner": "0x1b277d70",
+      "requested_count": 150,
+      "persistent_active": 150,
+      "persistent_free": 0,
+      "callback_return_slot": "0x19edd8",
+      "payload_start": "0x19ed10",
+      "native_payload_capacity_ids": 50,
+      "copy_bytes": 600,
+      "overflow_bytes": 400,
+      "corrupted_return_value": 150,
+      "first_overflow_source": "owner+0xC8 request count",
+      "matching_owner_to_stack_words": 106,
+      "contiguous_match_offsets": [
+        "0xB0",
+        "0x258"
+      ],
+      "callback_pointer_captured": false,
+      "direct_request_ready_sweeps": 0,
+      "named_events": [
+        {
+          "type": "DSFV29s_CHAPTER_EVENT",
+          "line": 514,
+          "reason": "assetMismatch",
+          "tick": "23594",
+          "caller": "0076FE9A",
+          "owner": "1B277D70",
+          "hash": "AE88E83B",
+          "frequency": "0",
+          "nativeCount": "18",
+          "effectiveCount": "18",
+          "profile": "70"
+        },
+        {
+          "type": "DSFV29s_CHAPTER_EVENT",
+          "line": 724,
+          "reason": "assetMismatch",
+          "tick": "25735",
+          "caller": "0076FE9A",
+          "owner": "1B277D70",
+          "hash": "47EB4D0E",
+          "frequency": "0",
+          "nativeCount": "18",
+          "effectiveCount": "18",
+          "profile": "47"
+        }
+      ]
+    },
+    {
+      "log": "dist\\MAIN_150\\DSFV29s_baseline150_8732.log",
+      "log_sha256": "e6d62c52e58b63fe5518e7fdbd8168cf968d5332aebba36f425b4e31ea7dae3d",
+      "dump": "dist\\MAIN_150\\Driver_20261106_180728.dmp",
+      "dump_sha256": "ddd904d2b0a4f1adc127fda9d1d56ba65e28401688bcc21d1e2a8ee2e7a1d5e3",
+      "pid": 8732,
+      "exception": "0xc0000005",
+      "eip": "0x96",
+      "esp": "0x19ede4",
+      "owner": "0x1ba77db0",
+      "requested_count": 150,
+      "persistent_active": 150,
+      "persistent_free": 0,
+      "callback_return_slot": "0x19edd8",
+      "payload_start": "0x19ed10",
+      "native_payload_capacity_ids": 50,
+      "copy_bytes": 600,
+      "overflow_bytes": 400,
+      "corrupted_return_value": 150,
+      "first_overflow_source": "owner+0xC8 request count",
+      "matching_owner_to_stack_words": 106,
+      "contiguous_match_offsets": [
+        "0xB0",
+        "0x258"
+      ],
+      "callback_pointer_captured": false,
+      "direct_request_ready_sweeps": 0,
+      "named_events": [
+        {
+          "type": "DSFV29s_CHAPTER_EVENT",
+          "line": 530,
+          "reason": "assetMismatch",
+          "tick": "24985",
+          "caller": "0076FE9A",
+          "owner": "1BA77DB0",
+          "hash": "AE88E83B",
+          "frequency": "0",
+          "nativeCount": "18",
+          "effectiveCount": "18",
+          "profile": "70"
+        },
+        {
+          "type": "DSFV29s_CHAPTER_EVENT",
+          "line": 729,
+          "reason": "assetMismatch",
+          "tick": "27063",
+          "caller": "0076FE9A",
+          "owner": "1BA77DB0",
+          "hash": "47EB4D0E",
+          "frequency": "0",
+          "nativeCount": "18",
+          "effectiveCount": "18",
+          "profile": "47"
+        }
+      ]
+    }
+  ],
+  "conclusion": "The150-count copy into the50-ID callback payload overwrites its return address with owner+0xC8=150, matching both dumps.",
+  "required_fix": [
+    "Expand notification payload frame and all affected stack argument/epilogue offsets.",
+    "Obtain IDs51..150 from the request sidecar; owner inline storage contains only50 IDs.",
+    "Audit the recording/replay writer and reader before extending the packet.",
+    "Replay the complete callback with production bytes in a bounded fixture before a new live build."
+  ],
+  "limitations": [
+    "Small minidumps do not capture owner+E68; its live pointer/vtable is inferred through native registration and the exact copy footprint.",
+    "This proves this overflow mechanism, not the absence of additional downstream limits.",
+    "No new ASI or behavior fix was built by this analysis."
+  ]
+}

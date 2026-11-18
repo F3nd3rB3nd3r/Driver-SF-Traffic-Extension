@@ -1,11 +1,27 @@
-# Codex/Visual Studio work rules ? DriverSF V29s
+# Codex / Visual Studio rules: DriverSF Unlimiter
 
-Read only `START_HERE.md` and `NEXT_ACTION.md` first. **Do not automatically scan the full workspace, git history, reference/, archive/, old logs or user folders.** A scoped inventory/hash check is appropriate when the user explicitly requests workspace organization.
+Read only `START_HERE.md` and `NEXT_ACTION.md` first. Do not automatically
+scan the workspace, Git history, reference/, archives, old logs or user folders.
+Scoped inventory/hash checks are appropriate for authorized organization work.
 
-- Work on the latest concrete task or supplied log. Do not treat an archived experiment's next step as the current task. The current working baseline is ARENA_REUSE_R1; its verification scope and open questions are in the two handoff files.
-- The broader goal remains 150 READY/drawable resident vehicles. Preserve 150 requests /160 slots and ED/EF sidecars. Map/request/spool counts do not prove READY/drawable. `0059F3A0` is a spatial query.
-- Do not build, run the game, install dependencies, web-search, benchmark, change request counts or launch debugging tools unless specifically asked. Perform focused checks appropriate to an authorized analysis/verification task. Analyze supplied logs before proposing a patch.
-- Preserve uncommitted work. Do not replace production source, restore old commits or perform broad cleanup. NEVER run `git clean -fdx` or `git reset --hard`. Authorized archiving must retain original bytes/paths in a verified manifest and avoid overwriting unrelated files.
-- Use Release / Win32 only for the active `.slnx`, which contains one ARENA_REUSE project. Do not build retired variants by default. Enable exactly one traffic ASI in the game folder.
-- Some historical evidence remains as a dependency of current checks. Use `scripts/workspace_paths.py` to locate archived baseline files. Do not remove prerequisites merely because their names mention an older test.
-- On opening, report the current state briefly and wait for a concrete task/log if none was supplied. Historical project paths are restore-first material, not active build entry points.
+- Work on the latest concrete task or supplied log. The current published
+  candidate is USERCAP_R10. ARENA_REUSE/NOTIFY150 and earlier USERCAP revisions
+  are historical prerequisites, not current next steps.
+- Preserve existing user-configured capacities and ED/EF sidecars. The default
+  150/160 profile is a baseline, not a mandatory limit for every setup.
+  Request/map/spool/READY counts do not alone certify drawable residency.
+  `0059F3A0` is a spatial query.
+- Do not build, run the game, install dependencies, web-search, benchmark,
+  deploy, change request counts or launch debugging tools unless asked.
+  Analyze supplied logs before proposing patches; use focused checks.
+- Preserve uncommitted work. Do not replace production source, restore old
+  commits or perform broad cleanup. Never use `git clean -fdx` or
+  `git reset --hard`. Authorized archiving retains original bytes/paths in
+  a verified manifest and never overwrites unrelated files.
+- Use Release / Win32 only for the active .slnx, which contains one project.
+  The project filename retains ARENA_REUSE; its current target is R10.
+  Enable exactly one traffic-extension ASI.
+- Historical files may still be prerequisites. Keep them or use
+  `scripts/workspace_paths.py`; older names do not establish irrelevance.
+  Dated verifiers/packages are restore-first/pinned material.
+- On opening, report state briefly and wait if no concrete task/log is supplied.

@@ -1,111 +1,32 @@
 {
-  "revision": 4,
-  "updated": "2026-11-06",
-  "name": "NOTIFY150_R1",
+  "revision": 5,
+  "updated": "2026-11-18",
+  "name": "USERCAP_R10",
   "solution": "DriverSF_V29s_NATIVE_TRACE.slnx",
   "project": "DriverSF_V29s_ARENA_REUSE.vcxproj",
   "configuration": "Release",
   "platform": "Win32",
-  "asi": "dist/MAIN_150/DriverSF_V29s_160Capacity_150Request_NOTIFY150_R1.asi",
-  "sha256": "d9be572176410e41fdbfe54a923ffc1759042a3ef80217f59742ee4f87e482e5",
-  "bytes": 210432,
-  "validated_log": "dist/MAIN_150/DSFV29s_notify150_29344.log",
-  "live_result": "31m23.531s;14 expanded requests,three pending unloads; user confirms correct audio/rendering,roughly100 FPS,Challenges/menu/Story/chases and normal exit",
-  "requests": 150,
-  "graphics_slots": 160,
-  "archive": "archive/retired_2026-11-06",
-  "open_questions": [
-    "PARKED150_R1 live visual validation of parked cache/category correction",
-    "audio setup-return interpretation despite correct audible playback",
-    "broader actual chapter/model coverage and drawable proof",
-    "separate fixed-size full traffic snapshot format"
+  "asi": "dist/USERCAP_R10/DriverSF_Unlimiter_USERCAP_R10.asi",
+  "bytes": 327168,
+  "sha256": "11df34ddf0700f9032f5f75d7e8e71547c366d89b6b7384ce853ac63b96825f9",
+  "published_commit": "9900ef5595fefe6081356d277212a026f076f46d",
+  "configuration_guide": "CONFIGURATION.md",
+  "default_ini": "config/DriverSF_Unlimiter.ini",
+  "default_request_capacity": 150,
+  "default_model_slots": 160,
+  "live_evidence": {
+    "broad_activity_lifecycle": "R9 run26476; 280 actual models; 49m35s and normal Quit",
+    "headroom": "R9 run7044; 320 capacity, 280 actual models",
+    "r10_story": "run20268; 320 capacity, 280 actual models; summary mode",
+    "r10_replay": "run23108; 4MiB reader and matching 280-model import/restore; summary mode; positive user report"
+  },
+  "limitations": [
+    "Actual 500/700/1000-model gameplay unverified.",
+    "Lua traffic switching does not establish all-chapter mission/progression coverage.",
+    "Nonzero traffic-frequency coverage remains separate.",
+    "READY alone does not certify drawable residency; reduced logs are not full-trace certification.",
+    "One local native 16-event audio refusal in run23108 lacks an observed audible symptom."
   ],
-  "pending_test": {
-    "name": "PARKED150_R1",
-    "asi": "dist/MAIN_150/DriverSF_V29s_160Capacity_150Request_PARKED150_R1.asi",
-    "bytes": 218624,
-    "sha256": "6235a3cb814c8d5adf748766d50d06f7fb5d4cfbf7fb85eb59dc5db9aa2c1a36",
-    "log_prefix": "DSFV29s_parked150_",
-    "guide": "dist/MAIN_150/PARKED150_R1_TEST_2026-11-06.md",
-    "verification": "analysis/parked150_r1_2026-11-06/verification.json",
-    "build_report": "analysis/PARKED150_R1_BUILD_2026-11-06.md",
-    "live_status": "pending; staged only, not installed or game-tested",
-    "capacity_changes": {
-      "parked_candidates": [
-        50,
-        150
-      ],
-      "parked_per_category": [
-        50,
-        150
-      ],
-      "categories": 25,
-      "frame_bytes": [
-        5732,
-        15732
-      ],
-      "parked_population_changed": false,
-      "refresh_timing_changed": false,
-      "weights_changed": false,
-      "all_other_settings_preserved": true
-    }
-  },
-  "failed_test": {
-    "name": "BASELINE150_R1",
-    "asi": "dist/MAIN_150/DriverSF_V29s_160Capacity_150Request_BASELINE150_R1.asi",
-    "bytes": 205312,
-    "sha256": "bfbb726524bff658166fbb0dbeb968f94fa3f567f50f120b7e514ab99202247f",
-    "log_prefix": "DSFV29s_baseline150_",
-    "guide": "dist/MAIN_150/BASELINE150_R1_TEST_2026-11-06.md",
-    "verification": "analysis/baseline150_r1_2026-11-06/verification.json",
-    "live_status": "failed direct Lua150 runs23504/8732; native50-ID notification return overwrite diagnosed",
-    "capacity_changes": false,
-    "crash_analysis": "analysis/BASELINE150_CRASH_PAIR_2026-11-06.md"
-  },
-  "previous_baseline": {
-    "name": "ARENA_REUSE_R1",
-    "asi": "dist/MAIN_150/DriverSF_V29s_160Capacity_150Request_ARENA_REUSE_R1.asi",
-    "sha256": "879236089985e71ae7e601d74bfc8a9f5570e3679128ec8957b5ccfbb015b5f7",
-    "bytes": 191488,
-    "validated_log": "dist/MAIN_150/DSFV29s_arena_reuse_20236.log",
-    "live_result": "33 requests and two unloads; user reports normal exit"
-  },
-  "validated_notify_test": {
-    "name": "NOTIFY150_R1",
-    "asi": "dist/MAIN_150/DriverSF_V29s_160Capacity_150Request_NOTIFY150_R1.asi",
-    "bytes": 210432,
-    "sha256": "d9be572176410e41fdbfe54a923ffc1759042a3ef80217f59742ee4f87e482e5",
-    "log_prefix": "DSFV29s_notify150_",
-    "guide": "dist/MAIN_150/NOTIFY150_R1_TEST_2026-11-06.md",
-    "lua_helper": "dist/MAIN_150/NOTIFY150_R1_LUA_TEST.lua",
-    "verification": "analysis/notify150_r1_2026-11-06/verification.json",
-    "build_report": "analysis/NOTIFY150_R1_BUILD_2026-11-06.md",
-    "live_status": "targeted direct150 live pass7480; broader150-model visual/audio/lifecycle validation remains pending",
-    "capacity_changes": {
-      "notification_ids": [
-        50,
-        150
-      ],
-      "notification_frame_bytes": [
-        208,
-        608
-      ],
-      "all_other_settings_preserved": true
-    },
-    "crash_analysis": "analysis/BASELINE150_CRASH_PAIR_2026-11-06.md",
-    "validated_log": "dist/MAIN_150/DSFV29s_notify150_7480.log",
-    "live_report": "analysis/NOTIFY150_RUN7480_RESULTS_2026-11-06.md",
-    "live_checks": {
-      "notification_ids": 150,
-      "roster_hash": "5CBDFFEA",
-      "all_ready_after_ms": 6687,
-      "native_ready_models": 150,
-      "models_observed_in_body_calls": 4,
-      "audio_model_setup_ok": 617,
-      "audio_model_setup_fail": 0,
-      "pending_final": 0,
-      "cleanup_final": 0,
-      "baseline_certified": false
-    }
-  }
+  "archive": "archive/retired_2026-11-18",
+  "previous_archive": "archive/retired_2026-11-06"
 }
